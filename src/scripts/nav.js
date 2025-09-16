@@ -6,7 +6,6 @@ export function loadTrustIndex() {
   const script = document.createElement('script');
   script.src = 'https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7';
   script.async = true;
-  script.defer = true;
   document.head.appendChild(script);
 }
 
