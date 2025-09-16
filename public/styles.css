@@ -69,6 +69,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
 .primary-links {
   list-style: none; display: flex; gap: 1rem;
@@ -77,13 +78,29 @@ header {
 
 .nav-links {
   list-style: none;
+  position: absolute;
+  right: 1rem;
+  top: 100%;
   display: none;
-  flex-direction: column;
-  gap: 1rem;
+  background: var(--primary-blue);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  min-width: 220px;
+  z-index: 1100;
 }
 
 .nav-links.nav-open {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.nav-links a {
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  display: block;
+  line-height: 1.4;
 }
 .main-nav a {
   color: #fff; text-decoration: none; font-weight: bold;
@@ -710,6 +727,8 @@ form button:hover, .quote-form button:hover {
 
 @media (max-width: 700px) {
   .nav-links {
-    width: 100%;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
   }
 }
