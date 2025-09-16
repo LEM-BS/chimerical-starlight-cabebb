@@ -54,7 +54,74 @@
       name="twitter:image"
     />
     <link href="/styles.css" rel="stylesheet" />
-  </head>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.lembuildingsurveying.co.uk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.lembuildingsurveying.co.uk/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Damp & Mould Surveys",
+          "item": "https://www.lembuildingsurveying.co.uk/damp-mould-surveys"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will walls need to be opened up during the inspection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No destructive work is normally required. We rely on calibrated moisture meters, humidity data, thermal imaging, and visual checks to trace the root cause. Where we need to see behind finishes we only use small borescope inspections with your permission."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this report valid for tenancy disputes and housing disrepair claims?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The report records readings, photographic evidence, and actionable recommendations that are routinely accepted by landlords, housing associations, and solicitors. We reference relevant standards so the findings can support case files when needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you check ventilation systems like extractor fans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We test kitchen and bathroom extractors, assess trickle vents and passive airflow, and document the results in the report. You’ll receive practical advice on improving ventilation where upgrades or maintenance are required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you recommend contractors for repairs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We stay completely independent, so we don’t sell treatments or take referral fees. We do outline the type of contractor or specialist to contact and the questions to ask, leaving you free to choose who carries out any remedial work."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
   <body>
     <!-- ░░ HEADER ░░ -->
     <header>
@@ -192,28 +259,45 @@
             services:</em
           >
         </p>
-        <h3>Will walls need to be opened up during the inspection?</h3>
-        <p>
-          Usually not. We use moisture meters, hygrometers, and ventilation
-          checks to assess without damaging your property.
-        </p>
-        <h3>
-          Is this report valid for tenancy disputes and housing disrepair
-          claims?
-        </h3>
-        <p>
-          Yes—our detailed reports are suitable for landlord-tenant disputes and
-          compliance purposes.
-        </p>
-        <h3>Do you check ventilation systems like extractor fans?</h3>
-        <p>
-          Absolutely. We assess all relevant ventilation systems thoroughly.
-        </p>
-        <h3>Do you recommend contractors for repairs?</h3>
-        <p>
-          We can suggest types of specialists but have no commercial
-          affiliations, ensuring unbiased recommendations.
-        </p>
+        <details open>
+          <summary>Will walls need to be opened up during the inspection?</summary>
+          <p>
+            No destructive work is normally required. We rely on calibrated
+            moisture meters, humidity data, thermal imaging, and visual checks to
+            trace the root cause. Where we need to see behind finishes we only
+            use small borescope inspections with your permission.
+          </p>
+        </details>
+        <details>
+          <summary>
+            Is this report valid for tenancy disputes and housing disrepair
+            claims?
+          </summary>
+          <p>
+            Yes. The report records readings, photographic evidence, and
+            actionable recommendations that are routinely accepted by landlords,
+            housing associations, and solicitors. We reference relevant
+            standards so the findings can support case files when needed.
+          </p>
+        </details>
+        <details>
+          <summary>Do you check ventilation systems like extractor fans?</summary>
+          <p>
+            Absolutely. We test kitchen and bathroom extractors, assess trickle
+            vents and passive airflow, and document the results in the report.
+            You’ll receive practical advice on improving ventilation where
+            upgrades or maintenance are required.
+          </p>
+        </details>
+        <details>
+          <summary>Do you recommend contractors for repairs?</summary>
+          <p>
+            We stay completely independent, so we don’t sell treatments or take
+            referral fees. We do outline the type of contractor or specialist to
+            contact and the questions to ask, leaving you free to choose who
+            carries out any remedial work.
+          </p>
+        </details>
       </div>
     </section>
     <!-- SERVICE AREA DROPDOWN -->
