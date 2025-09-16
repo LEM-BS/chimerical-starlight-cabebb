@@ -116,3 +116,25 @@ test('strips legacy head elements while preserving remaining head content', () =
   expect(result.head).not.toMatch(/icon/);
   expect(result.head).not.toMatch(/googletagmanager/);
 });
+
+test('ensures canonical and social URLs include the provided .html page URL', () => {
+  const html = `
+    <html>
+      <head>
+        <link rel="canonical" href="https://example.com/example">
+        <meta property="og:url" content="https://example.com/example">
+        <meta name="twitter:url" content="https://example.com/example">
+      </head>
+      <body></body>
+    </html>
+  `;
+
+  const { head } = parseLegacyHtml(html, {
+    pageUrl: 'https://example.com/example.html',
+  });
+
+  const matches = head.match(/https:\/\/example\.com\/example\.html/g) ?? [];
+
+  expect(matches).toHaveLength(3);
+  expect(head).not.toContain('https://example.com/example"');
+});

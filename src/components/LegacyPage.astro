@@ -8,7 +8,29 @@ interface Props {
 }
 
 const { html } = Astro.props as Props;
-const { head, body } = parseLegacyHtml(html, { testimonialsSnippet });
+const site = Astro.site ?? Astro.url;
+
+function toHtmlPath(pathname: string) {
+  if (!pathname || pathname === '/') {
+    return '/index.html';
+  }
+
+  const trimmedPath = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+
+  if (trimmedPath.endsWith('.html')) {
+    return trimmedPath;
+  }
+
+  return `${trimmedPath}.html`;
+}
+
+const htmlPath = toHtmlPath(Astro.url.pathname);
+const pageUrl = new URL(htmlPath, site).toString();
+
+const { head, body } = parseLegacyHtml(html, {
+  testimonialsSnippet,
+  pageUrl,
+});
 ---
 
 <BaseLayout>
