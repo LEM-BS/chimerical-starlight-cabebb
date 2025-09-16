@@ -114,11 +114,11 @@ header {
 }
 .main-nav a.cta:hover { background: var(--hover-blue); }
 header .main-nav a.cta {
-  background-color: var(--sage-grey) !important;
-  color: var(--text-dark) !important;
+  background-color: var(--accent-blue) !important;
+  color: #fff !important;
 }
 header .main-nav a.cta:hover {
-  background-color: var(--light-grey) !important;
+  background-color: var(--hover-blue) !important;
 }
 .main-nav a[aria-current="page"] {
   border-bottom: 2px solid #fff;
