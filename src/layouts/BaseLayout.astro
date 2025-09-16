@@ -60,6 +60,6 @@ const { headHtml = '', contentHtml } = Astro.props as Props;
       </div>
     )}
     <Footer />
-    <script type="module" src={navScriptUrl} is:inline></script>
+    <script type="module" src={navScriptUrl} defer is:inline></script>
   </body>
 </html>
