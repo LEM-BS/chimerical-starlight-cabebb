@@ -16,6 +16,7 @@ const BODY_PLACEHOLDERS = [
 const NAV_SCRIPT_PATTERN = /<script[^>]*src="\/?nav\.js"[^>]*>\s*<\/script>/gi;
 const INCLUDE_SCRIPT_PATTERN = /<script[^>]*>[\s\S]*?(header\.html|footer\.html|testimonials-snippet\.html)[\s\S]*?<\/script>/gi;
 const ASSET_SCRIPT_PATTERN = /<script[^>]*src="(?:\.\/)??assets\/[^"]+"[^>]*>\s*<\/script>/gi;
+const TESTIMONIALS_PLACEHOLDER_PATTERN = /<div\s+id="testimonials-include"\s*><\/div>/gi;
 
 const HEAD_REMOVALS = [
   /<meta[^>]+charset[^>]*>/gi,
@@ -47,12 +48,11 @@ export function parseLegacyHtml(html: string, options: ParseOptions = {}) {
     bodyContent = bodyContent.replace(pattern, '');
   }
 
-  if (options.testimonialsSnippet) {
-    bodyContent = bodyContent.replace(
-      /<div\s+id="testimonials-include"\s*><\/div>/gi,
-      options.testimonialsSnippet.trim()
-    );
-  }
+  const testimonialsSnippet = options.testimonialsSnippet?.trim();
+  bodyContent = bodyContent.replace(
+    TESTIMONIALS_PLACEHOLDER_PATTERN,
+    testimonialsSnippet ?? ''
+  );
 
   bodyContent = bodyContent
     .replace(NAV_SCRIPT_PATTERN, '')
