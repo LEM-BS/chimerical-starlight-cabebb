@@ -685,6 +685,21 @@ form button:hover,
 }
 
 /*──────────────────────────────────────────────
+  HOME HERO LAYOUT
+──────────────────────────────────────────────*/
+.hero:not(.hero-quote) > .box-container {
+  justify-content: center;
+}
+
+.hero:not(.hero-quote) > .hero-container {
+  justify-content: center;
+}
+
+.home-get-started .box-container {
+  justify-content: center;
+}
+
+/*──────────────────────────────────────────────
   HOME HERO QUOTE FORM
 ──────────────────────────────────────────────*/
 .hero-quote {
