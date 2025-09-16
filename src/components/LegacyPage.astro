@@ -12,6 +12,6 @@ const { head, body } = parseLegacyHtml(html, { testimonialsSnippet });
 ---
 
 <BaseLayout>
-  <astro:fragment slot="head" set:html={head} />
-  <astro:fragment set:html={body} />
+  <Fragment slot="head" set:html={head} />
+  <Fragment set:html={body} />
 </BaseLayout>
