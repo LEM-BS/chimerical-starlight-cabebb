@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import navScript from '../scripts/nav.js?raw';
+import navScriptUrl from '../scripts/nav.js?url';
 
 interface Props {
   headHtml?: string;
@@ -60,6 +60,6 @@ const { headHtml = '', contentHtml } = Astro.props as Props;
       </div>
     )}
     <Footer />
-    <script type="module" is:inline set:html={navScript}></script>
+    <script type="module" src={navScriptUrl} defer is:inline></script>
   </body>
 </html>
