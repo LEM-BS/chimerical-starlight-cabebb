@@ -2,16 +2,18 @@
   1. ROOT VARIABLES & BASE RESET
 ──────────────────────────────────────────────*/
 :root {
-  --primary-blue:   #22314A;   /* header/footer/nav - deep navy */
-  --accent-blue:    #1976D2;   /* action buttons/links */
-  --hover-blue:     #1565C0;   /* button hover, focus */
-  --soft-bg:        #F7F9FB;   /* page background */
-  --card-bg:        #fff;      /* cards and content blocks */
-  --divider-grey:   #E5EAF2;   /* borders/dividers */
-  --text-main:      #232F3E;   /* main text */
-  --text-light:     #516075;   /* secondary text */
+  --primary-blue:   #1E2A38;   /* header/footer/nav - deep navy */
+  --accent-blue:    #2E7DFF;   /* action buttons/links */
+  --hover-blue:     #1B5FCC;   /* button hover, focus */
+  --soft-bg:        #F5F0E6;   /* warm beige page background */
+  --section-bg:     #F5F0E6;   /* forms and large content sections */
+  --card-bg:        #FFFFFF;   /* cards and focused content blocks */
+  --divider-grey:   #E0E0E0;   /* borders/dividers */
+  --text-main:      #444444;   /* main text */
+  --text-light:     #5F6B75;   /* secondary text */
+  --accent-green:   #3E7A4E;   /* trust-building accents */
   --border-radius:  10px;
-  --shadow:         0 2px 12px rgba(34,49,74,0.07);
+  --shadow:         0 2px 12px rgba(30,42,56,0.08);
 }
 *, *::before, *::after {
   margin: 0; padding: 0; box-sizing: border-box;
@@ -192,7 +194,7 @@ section {
   padding: 3.5rem 1rem;
 }
 section > .box-container {
-  background: var(--card-bg);
+  background: var(--section-bg);
   max-width: 1150px; margin: 0 auto;
   padding: 2.2rem 1.4rem; border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -217,7 +219,7 @@ section > .box-container {
 [class*="service"]:hover,
 [class*="survey"]:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(34,49,74,0.09);
+  box-shadow: 0 6px 20px rgba(30,42,56,0.12);
 }
 
 /*──────────────────────────────────────────────
@@ -367,7 +369,7 @@ form button:hover, .quote-form button:hover {
   HOME HERO QUOTE FORM
 ──────────────────────────────────────────────*/
 .hero-quote {
-  background: #ECF1EF;
+  background: var(--section-bg);
   padding: 3rem 0 1rem;
 }
 
@@ -388,7 +390,7 @@ form button:hover, .quote-form button:hover {
 
 .review-badge .rating-text {
   margin-left: .5rem;
-  color: #233038;
+  color: var(--text-main);
 }
 
 .hero-quote h1 {
@@ -402,9 +404,10 @@ form button:hover, .quote-form button:hover {
 }
 
 .quote-form {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--divider-grey);
   padding: 2rem 1.5rem;
   margin-bottom: 2rem;
 }
@@ -425,12 +428,26 @@ form button:hover, .quote-form button:hover {
   width: 100%;
 }
 
+.enquiry-form {
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--divider-grey);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
 .quote-form ul {
   list-style: disc inside;
   margin-top: 1.5rem;
-  color: #233038;
+  color: var(--text-main);
   font-size: 1rem;
   text-align: left;
+}
+
+.quote-form ul strong,
+.enquiry-form strong {
+  color: var(--accent-green);
 }
 
 /*──────────────────────────────────────────────
@@ -440,7 +457,7 @@ form button:hover, .quote-form button:hover {
   position: fixed; bottom: 20px; right: 20px; z-index: 1000;
 }
 .sticky-cta .cta-button {
-  box-shadow: 0 2px 10px rgba(34,49,74,0.18);
+  box-shadow: 0 2px 10px rgba(30,42,56,0.18);
   padding: .95rem 1.7rem;
 }
 @media (max-width: 600px) {
@@ -518,7 +535,11 @@ form button:hover, .quote-form button:hover {
   display: flex; flex-direction: column; align-items: center;
 }
 .trust-list svg {
-  color: var(--accent-blue); margin-bottom: .6rem;
+  color: var(--accent-green); margin-bottom: .6rem;
+}
+
+.why-choose-list strong {
+  color: var(--accent-green);
 }
 
 /*──────────────────────────────────────────────
@@ -584,7 +605,7 @@ form button:hover, .quote-form button:hover {
   transition: box-shadow .18s, border-color .18s;
 }
 .service-slider .service-card:hover {
-  box-shadow: 0 8px 24px rgba(34,49,74,0.18);
+  box-shadow: 0 8px 24px rgba(30,42,56,0.18);
   border-color: var(--accent-blue);
 }
 @media (max-width: 500px) {
@@ -615,7 +636,7 @@ form button:hover, .quote-form button:hover {
   width: 2.5rem; height: 2.5rem;
   border-radius: 50%;
   cursor: pointer; z-index: 10; opacity: 0.94;
-  box-shadow: 0 2px 10px rgba(34,49,74,0.12);
+  box-shadow: 0 2px 10px rgba(30,42,56,0.12);
   display: flex; align-items: center; justify-content: center;
   transition: background .23s, color .23s;
 }
@@ -636,9 +657,10 @@ form button:hover, .quote-form button:hover {
 }
 
 .trust-card {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--divider-grey);
   padding: 1.5rem;
   text-align: center;
   display: flex;
@@ -651,7 +673,7 @@ form button:hover, .quote-form button:hover {
 /* Icon styling (optional) */
 .trust-card svg {
   margin-bottom: 0.75rem;
-  color: var(--primary-color, #1d4ed8);
+  color: var(--accent-green);
   width: 2rem;
   height: 2rem;
 }
@@ -660,26 +682,28 @@ form button:hover, .quote-form button:hover {
 .trust-card strong {
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
+  color: var(--accent-green);
 }
 .trust-card p {
   margin: 0;
-  color: #555;
+  color: var(--text-light);
   flex-grow: 1; /* push CTA (if any) down */
 }
 
-/* Utility: blue section title */
+/* Utility: trust-accent section title */
 .section-title--blue {
-  color: var(--primary-blue);       /* whatever your “blue” variable is */
+  color: var(--accent-green);
   margin-bottom: 1rem;
 }
 
 /* Make box-container look like your timeline card */
 .box-container {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
   padding: 2rem;
   margin-bottom: 2rem;
+  border: 1px solid var(--divider-grey);
 }
 
 /* Trust-features grid (already in place) */
