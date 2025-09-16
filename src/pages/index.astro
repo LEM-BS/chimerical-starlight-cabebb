@@ -1,6 +1,267 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/index.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const siteUrl = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
+const canonicalUrl = new URL('/', siteUrl).toString();
+const ogImageUrl = new URL('/logo-sticker.png', siteUrl).toString();
+const pageTitle = 'Independent Building Surveyor | RICS Surveys, Damp Reports & EPCs | LEM Building Surveying Ltd';
+const pageDescription =
+  'Independent property surveyor providing RICS home surveys, damp reports, EPCs and floorplans. Serving Deeside, Chester, Flintshire, Wrexham & the North West. Trusted, local and accredited.';
+const pageKeywords =
+  'Building Surveyor Deeside, RICS Home Surveys Chester, Damp Reports, EPC with Floorplan, Property Survey Flintshire, Independent Surveyor Wrexham';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={pageKeywords} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:image" content={ogImageUrl} />
+  </Fragment>
+
+  <section class="hero hero-quote" aria-labelledby="quote-title">
+    <div class="hero-container">
+      <div class="review-badge">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">Rated 5 on Google &amp; Direct Reviews</span>
+      </div>
+      <h1 id="quote-title">Book Your RICS Home Survey — Fast, Clear &amp; Local</h1>
+      <p>
+        Make confident property decisions with a qualified surveyor’s report — turnaround in as little as 5–7 days. Get your
+        tailored quote now and secure your survey date.
+      </p>
+      <form action="https://formspree.io/f/xzzdqqqz" method="POST" class="quote-form">
+        <input type="hidden" name="_next" value="/thank-you.html" />
+        <div class="form-grid">
+          <label>
+            Your Name
+            <input type="text" name="name" placeholder="e.g. Jane Smith" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="e.g. jane@example.com" required />
+          </label>
+          <label>
+            Contact Number
+            <input type="text" name="contact" placeholder="e.g. 01234 567890" required />
+          </label>
+          <label>
+            Postcode
+            <input type="text" name="postcode" placeholder="e.g. CH1 2AB" required />
+          </label>
+          <label>
+            Survey Type
+            <select name="survey-type" required>
+              <option value="">Select a survey type</option>
+              <option value="level-1">Level 1 — Condition Report</option>
+              <option value="level-2">Level 2 — HomeBuyer Survey</option>
+              <option value="level-3">Level 3 — Building Survey</option>
+              <option value="unsure">Unsure</option>
+            </select>
+          </label>
+          <label>
+            No. of Bedrooms
+            <input type="text" name="bedrooms" placeholder="e.g. 3" required />
+          </label>
+          <label>
+            Estimated Property Value (£)
+            <input type="number" name="property-value" placeholder="e.g. 250000" min="0.01" step="0.01" inputmode="decimal" required />
+          </label>
+          <button class="cta-button hero-contrast" type="submit">Get My Survey Quote in 60 Minutes</button>
+        </div>
+        <ul>
+          <li><strong>Fast, no-obligation quote</strong> direct from a surveyor</li>
+          <li><strong>Out-of-hours responses</strong> whenever possible</li>
+          <li>100% privacy — your details are <strong>never shared</strong></li>
+          <li>Serving Connah’s Quay, Deeside, Chester, Mold, Buckley, Hawarden &amp; nearby</li>
+        </ul>
+      </form>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="box-container">
+        <h1 id="hero-title">Independent Property Surveyor</h1>
+        <p class="hero-subtitle">Serving Deeside, Chester, Flintshire, Wrexham &amp; the North West with trusted inspections &amp; advice</p>
+        <a class="cta-button hero-contrast" href="/enquiry.html">Get a Free Quote</a>
+      </div>
+    </section>
+
+    <section class="home-services" aria-labelledby="services-title">
+      <div class="service-slider-wrapper">
+        <h2 class="section-title--blue" id="services-title">Our Services</h2>
+        <button type="button" class="slider-arrow prev" aria-label="Previous services">‹</button>
+        <div class="service-slider" role="list">
+          <article class="service-card" role="listitem">
+            <h3>RICS Home Surveys</h3>
+            <p>Level 1, 2 &amp; 3 reports for buyers, landlords and professionals.</p>
+            <a class="inline-link" href="/rics-home-surveys.html">Explore RICS Surveys →</a>
+          </article>
+          <article class="service-card" role="listitem">
+            <h3>Damp &amp; Mould Reports</h3>
+            <p>Assessments for condensation, damp, and disrepair issues.</p>
+            <a class="inline-link" href="/damp-mould-surveys.html">View Damp Reports →</a>
+          </article>
+          <article class="service-card" role="listitem">
+            <h3>Damp &amp; Timber Surveys</h3>
+            <p>For lenders, warranties, or timber decay concerns.</p>
+            <a class="inline-link" href="/damp-timber-surveys.html">Read More →</a>
+          </article>
+          <article class="service-card" role="listitem">
+            <h3>Measured Surveys &amp; Floorplans</h3>
+            <p>Scaled plans and elevations for design or records.</p>
+            <a class="inline-link" href="/measured-surveys.html">See Measured Surveys →</a>
+          </article>
+          <article class="service-card" role="listitem">
+            <h3>EPCs with Floorplans</h3>
+            <p>Certificates &amp; floorplans for lettings, sales &amp; marketing.</p>
+            <a class="inline-link" href="/epc-with-floorplans.html">EPC Options →</a>
+          </article>
+          <article class="service-card" role="listitem">
+            <h3>Ventilation Testing</h3>
+            <p>Anemometer airflow assessments for domestic properties.</p>
+            <a class="inline-link" href="/ventilation-assessments.html">Book Ventilation →</a>
+          </article>
+        </div>
+        <button type="button" class="slider-arrow next" aria-label="Next services">›</button>
+      </div>
+      <div class="center-cta">
+        <a class="cta-button" href="/services.html">Browse All Services</a>
+      </div>
+    </section>
+
+    <section class="resource-highlights" aria-labelledby="insights-title">
+      <div class="box-container">
+        <h2 class="section-title--blue" id="insights-title">Latest Guides &amp; Advice</h2>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3><a href="/level-2-vs-level-3.html">Level 2 vs Level 3 Survey</a></h3>
+            <p>See which RICS report fits your property, renovation plans and risk profile.</p>
+          </article>
+          <article class="service-card">
+            <h3><a href="/independent-damp-survey-vs-contractor.html">Independent Damp Survey vs Contractor</a></h3>
+            <p>Understand the benefit of impartial diagnosis before agreeing to remedial works.</p>
+          </article>
+          <article class="service-card">
+            <h3><a href="/level-1-or-level-2.html">Level 1 or Level 2?</a></h3>
+            <p>Compare lighter-touch surveys for newer, conventional homes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose-us" aria-labelledby="why-title">
+      <div class="box-container">
+        <h2 class="section-title--blue" id="why-title">Why Choose LEM Building Surveying?</h2>
+        <ul class="why-choose-list">
+          <li><strong>Independent &amp; Local:</strong> Honest expert advice, no sales pitch.</li>
+          <li><strong>RICS Aligned:</strong> Surveys follow RICS best practice.</li>
+          <li><strong>Clear Reporting:</strong> Structured, easy-to-action reports.</li>
+          <li><strong>Fast Turnaround:</strong> Reports delivered within 2–5 working days.</li>
+        </ul>
+        <div class="center-cta">
+          <a class="cta-button" href="/about.html">About the Surveyor</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="box-container">
+        <h2 id="testimonials-title">Client Testimonials</h2>
+      </div>
+      <div class="ti-widget ti-goog"></div>
+    </section>
+
+    <nav class="quick-nav jump-to" aria-label="Page contents">
+      <div class="box-container">
+        <p><strong>Jump to:</strong></p>
+        <ul class="toc-list">
+          <li><a href="#services-title">Our Services</a></li>
+          <li><a href="#insights-title">Guides &amp; Advice</a></li>
+          <li><a href="#why-title">Why Choose Us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#areas-title">Areas We Cover</a></li>
+          <li><a href="#cta-title">Get a Quote</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="improved-areas" aria-labelledby="areas-title">
+      <div class="box-container">
+        <h2 class="section-title--blue" id="areas-title">Areas We Cover</h2>
+        <div class="dropdown-card">
+          <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+          <div class="custom-select">
+            <select id="areaDropdown" data-area-select>
+              <option value="">Select an area…</option>
+              <option value="/connahs-quay.html">Connah’s Quay</option>
+              <option value="/buckley.html">Buckley</option>
+              <option value="/hawarden.html">Hawarden</option>
+              <option value="/ewloe.html">Ewloe</option>
+              <option value="/deeside.html">Deeside</option>
+              <option value="/broughton.html">Broughton</option>
+              <option value="/flintshire.html">Flintshire</option>
+              <option value="/chester.html">Chester</option>
+              <option value="/cheshire.html">Cheshire</option>
+              <option value="/northop.html">Northop</option>
+              <option value="/northop-hall.html">Northop Hall</option>
+              <option value="/mold.html">Mold</option>
+              <option value="/north-west-of-england.html">North West of England</option>
+            </select>
+            <span class="chevron" aria-hidden="true">⌄</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-get-started" aria-labelledby="cta-title">
+      <div class="box-container">
+        <h2 class="section-title--blue" id="cta-title">Get a Quote or Ask a Question</h2>
+        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
+        <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta">
+    <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.service-slider-wrapper').forEach((wrapper) => {
+        const slider = wrapper.querySelector('.service-slider');
+        const prevButton = wrapper.querySelector('.prev');
+        const nextButton = wrapper.querySelector('.next');
+        if (!slider || !prevButton || !nextButton) return;
+
+        const scrollByAmount = () => slider.clientWidth * 0.8;
+        prevButton.addEventListener('click', () => {
+          slider.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+        });
+        nextButton.addEventListener('click', () => {
+          slider.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+        });
+      });
+
+      document.querySelectorAll('select[data-area-select]').forEach((select) => {
+        select.addEventListener('change', (event) => {
+          const target = event.currentTarget;
+          if (target instanceof HTMLSelectElement && target.value) {
+            window.location.href = target.value;
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
