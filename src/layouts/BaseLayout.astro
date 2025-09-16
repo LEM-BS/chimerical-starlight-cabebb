@@ -1,0 +1,65 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import navScript from '../scripts/nav.js?raw';
+
+interface Props {
+  headHtml?: string;
+  contentHtml?: string;
+}
+
+const { headHtml = '', contentHtml } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {headHtml && <Fragment set:html={headHtml} />}
+    <slot name="head" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-RXf+QSDCUqzlgfO2z3lBU9rxO9xWJ6gU5AFVOIGuKz6ZlnbqybwVu6vZP4ylDkKUTnSR5Fctj/6aydcZ4IB3BQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/png" href="/logo-sticker.png" />
+    <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+    <script
+      id="usercentrics-cmp"
+      src="https://web.cmp.usercentrics.eu/ui/loader.js"
+      data-settings-id="53YNyaAqMpXqyj"
+      async
+      is:inline
+    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXH0EY936M" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GXH0EY936M');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <Header />
+    {contentHtml ? (
+      <div id="main-content" set:html={contentHtml}></div>
+    ) : (
+      <div id="main-content">
+        <slot />
+      </div>
+    )}
+    <Footer />
+    <script type="module" is:inline set:html={navScript}></script>
+  </body>
+</html>
