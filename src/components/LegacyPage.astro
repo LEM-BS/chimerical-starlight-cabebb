@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { parseLegacyHtml } from '../utils/legacy';
+import testimonialsSnippet from '../legacy/testimonials-snippet.html?raw';
+
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props as Props;
+const { head, body } = parseLegacyHtml(html, { testimonialsSnippet });
+---
+
+<BaseLayout headHtml={head} contentHtml={body} />
