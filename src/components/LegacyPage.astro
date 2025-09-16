@@ -11,7 +11,4 @@ const { html } = Astro.props as Props;
 const { head, body } = parseLegacyHtml(html, { testimonialsSnippet });
 ---
 
-<BaseLayout>
-  <astro:fragment slot="head" set:html={head} />
-  <astro:fragment set:html={body} />
-</BaseLayout>
+<BaseLayout headHtml={head} contentHtml={body} />

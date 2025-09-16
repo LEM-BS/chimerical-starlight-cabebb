@@ -1,7 +1,14 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import navScriptUrl from '../scripts/nav.js?url';
+import navScript from '../scripts/nav.js?raw';
+
+interface Props {
+  headHtml?: string;
+  contentHtml?: string;
+}
+
+const { headHtml = '', contentHtml } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -9,6 +16,7 @@ import navScriptUrl from '../scripts/nav.js?url';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {headHtml && <Fragment set:html={headHtml} />}
     <slot name="head" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,10 +52,14 @@ import navScriptUrl from '../scripts/nav.js?url';
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <Header />
-    <div id="main-content">
-      <slot />
-    </div>
+    {contentHtml ? (
+      <div id="main-content" set:html={contentHtml}></div>
+    ) : (
+      <div id="main-content">
+        <slot />
+      </div>
+    )}
     <Footer />
-    <script src={navScriptUrl} defer is:inline></script>
+    <script type="module" is:inline set:html={navScript}></script>
   </body>
 </html>
