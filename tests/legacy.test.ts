@@ -36,6 +36,37 @@ test('removes legacy placeholders and scripts from body content', () => {
   expect(result.body).not.toMatch(/assets\/legacy\.js/);
 });
 
+test('removes legacy site header while keeping content headers', () => {
+  const html = `
+    <html>
+      <head></head>
+      <body>
+        <header>
+          <div class="header-inner">
+            <nav class="main-nav">
+              <a href="/">Home</a>
+            </nav>
+          </div>
+        </header>
+        <main>
+          <header class="page-header">
+            <h1>Keep me</h1>
+          </header>
+          <p>Useful content.</p>
+        </main>
+      </body>
+    </html>
+  `;
+
+  const result = parseLegacyHtml(html);
+
+  expect(result.body).toContain('class="page-header"');
+  expect(result.body).toContain('Keep me');
+  expect(result.body).toContain('Useful content');
+  expect(result.body).not.toMatch(/header-inner/);
+  expect(result.body).not.toMatch(/main-nav/);
+});
+
 test('injects testimonials snippet when placeholder is present', () => {
   const html = `
     <html>

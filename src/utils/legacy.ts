@@ -9,6 +9,7 @@ const BODY_PLACEHOLDERS = [
   /<div\s+id="footer-include"\s*><\/div>\s*/gi,
   /<a\s+class="skip-link"[\s\S]*?<\/a>/gi,
   /<header[^>]*class=["']site-header["'][^>]*>[\s\S]*?<\/header>/gi,
+  /<header[^>]*>[\s\S]*?<div[^>]*class=["'][^"']*header-inner[^"']*["'][^>]*>[\s\S]*?<\/header>/gi,
   /<footer[^>]*>[\s\S]*?<\/footer>/gi,
 ];
 
