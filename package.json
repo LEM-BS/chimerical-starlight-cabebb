@@ -1,17 +1,21 @@
 {
   "name": "cozy-daffodil-f4598c",
   "version": "1.0.0",
-  "description": "",
-  "main": "nav.js",
+  "private": true,
   "scripts": {
-    "test": "jest"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "jest": "^30.0.5",
-    "jest-environment-jsdom": "^30.0.5",
-    "linkinator": "^6.1.4"
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^20.14.10",
+    "astro": "^4.13.1",
+    "jsdom": "^24.0.0",
+    "linkinator": "^6.1.4",
+    "typescript": "^5.5.4",
+    "vitest": "^1.6.0"
   }
 }
