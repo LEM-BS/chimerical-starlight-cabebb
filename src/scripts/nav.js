@@ -14,6 +14,9 @@ export function toggleNav(navToggle, navLinks) {
   const isOpen = navLinks.classList.toggle('nav-open');
   navToggle.classList.toggle('open', isOpen);
   navToggle.setAttribute('aria-expanded', String(isOpen));
+  if (typeof navLinks.toggleAttribute === 'function') {
+    navLinks.toggleAttribute('hidden', !isOpen);
+  }
   return isOpen;
 }
 
@@ -22,6 +25,9 @@ export function setupNav() {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (navToggle && navLinks) {
+    if (typeof navLinks.toggleAttribute === 'function') {
+      navLinks.toggleAttribute('hidden', !navLinks.classList.contains('nav-open'));
+    }
     navToggle.addEventListener('click', () => {
       toggleNav(navToggle, navLinks);
     });
