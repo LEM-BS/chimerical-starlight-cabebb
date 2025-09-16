@@ -11,6 +11,7 @@ beforeEach(() => {
       <a href="/index.html">Home</a>
     </div>
   `;
+  window.history.pushState({}, '', '/');
 });
 
 test('toggles navigation classes on click', async () => {
@@ -40,4 +41,44 @@ test('loadTrustIndex injects script once', async () => {
 
   const scripts = document.querySelectorAll('script[src^="https://cdn.trustindex.io/loader.js"]');
   expect(scripts).toHaveLength(1);
+});
+
+test('highlights .html link when current path is extensionless', async () => {
+  document.body.innerHTML = `
+    <button class="nav-toggle" aria-expanded="false"></button>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+    </div>
+    <nav class="main-nav">
+      <a href="/services.html" class="services-link">Services</a>
+    </nav>
+  `;
+  window.history.pushState({}, '', '/services');
+
+  const navModule = await import(NAV_MODULE_PATH);
+  const link = document.querySelector<HTMLAnchorElement>('.services-link');
+  expect(link).not.toBeNull();
+  navModule.setupNav();
+
+  expect(link?.getAttribute('aria-current')).toBe('page');
+});
+
+test('highlights extensionless link when current path includes extension', async () => {
+  document.body.innerHTML = `
+    <button class="nav-toggle" aria-expanded="false"></button>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+    </div>
+    <nav class="main-nav">
+      <a href="/services" class="services-link">Services</a>
+    </nav>
+  `;
+  window.history.pushState({}, '', '/services.html');
+
+  const navModule = await import(NAV_MODULE_PATH);
+  const link = document.querySelector<HTMLAnchorElement>('.services-link');
+  expect(link).not.toBeNull();
+  navModule.setupNav();
+
+  expect(link?.getAttribute('aria-current')).toBe('page');
 });
