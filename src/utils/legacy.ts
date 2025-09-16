@@ -1,5 +1,6 @@
 interface ParseOptions {
   testimonialsSnippet?: string;
+  pageUrl?: string;
 }
 
 const BODY_PLACEHOLDERS = [
@@ -17,6 +18,9 @@ const NAV_SCRIPT_PATTERN = /<script[^>]*src="\/?nav\.js"[^>]*>\s*<\/script>/gi;
 const INCLUDE_SCRIPT_PATTERN = /<script[^>]*>[\s\S]*?(header\.html|footer\.html|testimonials-snippet\.html)[\s\S]*?<\/script>/gi;
 const ASSET_SCRIPT_PATTERN = /<script[^>]*src="(?:\.\/)??assets\/[^"]+"[^>]*>\s*<\/script>/gi;
 const TESTIMONIALS_PLACEHOLDER_PATTERN = /<div\s+id="testimonials-include"\s*><\/div>/gi;
+const CANONICAL_LINK_PATTERN = /<link\b[^>]*rel=["']canonical["'][^>]*>/gi;
+const OG_URL_META_PATTERN = /<meta\b[^>]*property=["']og:url["'][^>]*>/gi;
+const TWITTER_URL_META_PATTERN = /<meta\b[^>]*name=["']twitter:url["'][^>]*>/gi;
 
 const HEAD_REMOVALS = [
   /<meta[^>]+charset[^>]*>/gi,
@@ -36,6 +40,46 @@ const HEAD_REMOVALS = [
 ];
 
 const WHITESPACE_PATTERN = /\s+$/;
+
+function replaceAttributeValue(
+  tag: string,
+  attribute: 'href' | 'content',
+  value: string
+) {
+  const attributePattern = new RegExp(
+    `(${attribute}\\s*=\\s*["'])([^"']*)(["'])`,
+    'i'
+  );
+
+  if (!attributePattern.test(tag)) {
+    return tag;
+  }
+
+  return tag.replace(attributePattern, (_, prefix, _oldValue, suffix) => {
+    return `${prefix}${value}${suffix}`;
+  });
+}
+
+function setCanonicalUrls(headContent: string, pageUrl: string) {
+  let updatedContent = headContent;
+
+  updatedContent = updatedContent.replace(
+    CANONICAL_LINK_PATTERN,
+    (tag) => replaceAttributeValue(tag, 'href', pageUrl)
+  );
+
+  updatedContent = updatedContent.replace(
+    OG_URL_META_PATTERN,
+    (tag) => replaceAttributeValue(tag, 'content', pageUrl)
+  );
+
+  updatedContent = updatedContent.replace(
+    TWITTER_URL_META_PATTERN,
+    (tag) => replaceAttributeValue(tag, 'content', pageUrl)
+  );
+
+  return updatedContent;
+}
 
 export function parseLegacyHtml(html: string, options: ParseOptions = {}) {
   const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
@@ -62,6 +106,10 @@ export function parseLegacyHtml(html: string, options: ParseOptions = {}) {
 
   for (const pattern of HEAD_REMOVALS) {
     headContent = headContent.replace(pattern, '');
+  }
+
+  if (options.pageUrl) {
+    headContent = setCanonicalUrls(headContent, options.pageUrl);
   }
 
   headContent = headContent.replace(WHITESPACE_PATTERN, '').trim();
