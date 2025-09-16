@@ -284,6 +284,16 @@
               required=""
               type="text"
             />
+            <input
+              aria-label="Estimated Property Value (£)"
+              inputmode="decimal"
+              min="0.01"
+              name="property-value"
+              placeholder="Estimated Property Value (£)"
+              required=""
+              step="0.01"
+              type="number"
+            />
             <button
               class="cta-button hero-contrast"
               style="margin-top: 1rem; width: 100%"
@@ -698,11 +708,59 @@
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector(".quote-form");
         if (!form) return;
+
+        const propertyValueInput = form.querySelector(
+          'input[name="property-value"]',
+        );
+
+        const normalisePropertyValue = () => {
+          if (!propertyValueInput) {
+            return;
+          }
+
+          const rawValue = propertyValueInput.value.trim();
+
+          if (rawValue === "") {
+            propertyValueInput.setCustomValidity("");
+            return;
+          }
+
+          const numericValue = Number(rawValue);
+
+          if (!Number.isFinite(numericValue) || numericValue <= 0) {
+            propertyValueInput.setCustomValidity(
+              "Please enter a positive number.",
+            );
+          } else {
+            propertyValueInput.setCustomValidity("");
+            propertyValueInput.value = rawValue;
+          }
+        };
+
+        if (propertyValueInput) {
+          propertyValueInput.addEventListener("input", normalisePropertyValue);
+          propertyValueInput.addEventListener("blur", normalisePropertyValue);
+        }
+
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
+
+          normalisePropertyValue();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          const formData = new FormData(form);
+
+          if (propertyValueInput) {
+            formData.set("property-value", propertyValueInput.value.trim());
+          }
+
           const resp = await fetch(form.action, {
             method: form.method,
-            body: new FormData(form),
+            body: formData,
             headers: { Accept: "application/json" },
           });
           if (resp.ok) {
