@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | LEM Building Surveying Ltd</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="canonical"
+      href="https://www.lembuildingsurveying.co.uk/privacy-policy"
+    />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta
+      property="og:url"
+      content="https://www.lembuildingsurveying.co.uk/privacy-policy"
+    />
+    <meta
+      property="og:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta
+      name="twitter:url"
+      content="https://www.lembuildingsurveying.co.uk/privacy-policy"
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+  </head>
+  <body>
+    <div id="header-include"></div>
+
+    <main class="box-container">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: 16 May 2025</p>
+
+      <h2>1. Who we are</h2>
+      <p>LEM Building Surveying Ltd (“we”, “us”)…</p>
+
+      <h2>2. What data we collect</h2>
+      <ul>
+        <li>Name, email, phone (via enquiry form)</li>
+        <li>IP address and behavior (via Google Analytics)</li>
+        <li>Cookies for site performance</li>
+      </ul>
+
+      <h2>3. How we use your data</h2>
+      <p>To reply to your enquiry, improve our website, send you quotes.</p>
+
+      <h2>4. Who we share it with</h2>
+      <p>Mailing-list provider Mailchimp, Google Analytics, our accountant.</p>
+
+      <h2>5. Data retention</h2>
+      <p>
+        Your enquiry data is kept for up to 2 years, unless you ask us to delete
+        it.
+      </p>
+
+      <h2>6. Your rights</h2>
+      <p>
+        Access, correction, deletion — email
+        enquiries@lembuildingsurveying.co.uk
+      </p>
+
+      <h2>7. Contact & complaints</h2>
+      <p>
+        For questions: enquiries@lembuildingsurveying.co.uk.<br />
+        You can lodge a complaint with the ICO: https://ico.org.uk
+      </p>
+    </main>
+
+    <div id="footer-include"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("/header.html")
+          .then((r) => r.text())
+          .then((html) => {
+            document.getElementById("header-include").innerHTML = html;
+            const s = document.createElement("script");
+            s.src = "/nav.js";
+            document.body.appendChild(s);
+          })
+          .catch((err) => console.error("Header include failed:", err));
+
+        fetch("/footer.html")
+          .then((r) => r.text())
+          .then(
+            (html) =>
+              (document.getElementById("footer-include").innerHTML = html),
+          )
+          .catch((err) => console.error("Footer include failed:", err));
+      });
+    </script>
+  </body>
+</html>

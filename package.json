@@ -1,0 +1,17 @@
+{
+  "name": "cozy-daffodil-f4598c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nav.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
+    "linkinator": "^6.1.4"
+  }
+}
