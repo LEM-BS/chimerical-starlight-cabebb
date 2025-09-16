@@ -2,16 +2,17 @@
   1. ROOT VARIABLES & BASE RESET
 ──────────────────────────────────────────────*/
 :root {
-  --primary-blue:   #22314A;   /* header/footer/nav - deep navy */
-  --accent-blue:    #1976D2;   /* action buttons/links */
-  --hover-blue:     #1565C0;   /* button hover, focus */
-  --soft-bg:        #F7F9FB;   /* page background */
-  --card-bg:        #fff;      /* cards and content blocks */
-  --divider-grey:   #E5EAF2;   /* borders/dividers */
-  --text-main:      #232F3E;   /* main text */
-  --text-light:     #516075;   /* secondary text */
+  --primary-blue:   #1E2A38;   /* header/footer/nav - deep navy */
+  --accent:         #8A9A9A;   /* accent for buttons, links, highlights */
+  --soft-bg:        #F5F0E6;   /* warm beige page background */
+  --section-bg:     #F5F0E6;   /* forms and large content sections */
+  --card-bg:        #FFFFFF;   /* cards and focused content blocks */
+  --divider-grey:   #E0E0E0;   /* borders/dividers */
+  --text-main:      #444444;   /* main text */
+  --text-light:     #5F6B75;   /* secondary text */
+  --accent-green:   #3E7A4E;   /* trust-building accents */
   --border-radius:  10px;
-  --shadow:         0 2px 12px rgba(34,49,74,0.07);
+  --shadow:         0 2px 12px rgba(30,42,56,0.08);
 }
 *, *::before, *::after {
   margin: 0; padding: 0; box-sizing: border-box;
@@ -105,20 +106,29 @@ header {
 .main-nav a {
   color: #fff; text-decoration: none; font-weight: bold;
   padding: 7px 13px; border-radius: 6px;
-  transition: background .2s;
+  transition: background .2s, filter .2s;
   font-size: 1rem;
 }
-.main-nav li a:hover { background: var(--hover-blue); }
-.main-nav a.cta {
-  background: var(--accent-blue); color: #fff;
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  background: var(--accent);
+  color: #fff;
+  filter: brightness(0.9);
 }
-.main-nav a.cta:hover { background: var(--hover-blue); }
+.main-nav a.cta {
+  background: var(--accent); color: #fff;
+}
+.main-nav a.cta:hover,
+.main-nav a.cta:focus-visible {
+  filter: brightness(0.9);
+}
 header .main-nav a.cta {
-  background-color: var(--accent-blue) !important;
+  background-color: var(--accent) !important;
   color: #fff !important;
 }
-header .main-nav a.cta:hover {
-  background-color: var(--hover-blue) !important;
+header .main-nav a.cta:hover,
+header .main-nav a.cta:focus-visible {
+  filter: brightness(0.9);
 }
 .main-nav a[aria-current="page"] {
   border-bottom: 2px solid #fff;
@@ -139,9 +149,14 @@ header .main-nav a.cta:hover {
   font-size: 1.1rem; margin-bottom: .5rem; color: #fff;
 }
 .site-footer .footer-col a {
-  color: var(--accent-blue); text-decoration: none;
+  color: var(--accent); text-decoration: none;
+  transition: filter .18s;
 }
-.site-footer .footer-col a:hover { text-decoration: underline; }
+.site-footer .footer-col a:hover,
+.site-footer .footer-col a:focus-visible {
+  text-decoration: underline;
+  filter: brightness(0.9);
+}
 .site-footer .footer-links {
   list-style: none; padding: 0; display: grid; gap: .4rem;
 }
@@ -153,10 +168,10 @@ header .main-nav a.cta:hover {
   margin: .5rem .5rem 0 0;
 }
 .site-footer .footer-cta {
-  background: var(--accent-blue); text-align: center; padding: 1rem;
+  background: var(--accent); text-align: center; padding: 1rem;
 }
 .site-footer .footer-cta .cta-button {
-  background: #fff; color: var(--accent-blue);
+  background: #fff; color: var(--accent);
   font-weight: 600; padding: .6rem 1.2rem; border-radius: 6px;
   text-decoration: none; transition: background .2s;
   margin: .5rem auto 0 auto;
@@ -165,13 +180,22 @@ header .main-nav a.cta:hover {
   background: var(--divider-grey);
 }
 .site-footer .footer-bottom {
-  background: var(--hover-blue); padding: .75rem 1rem;
-  text-align: center; font-size: .85rem; color: #ddd;
+  background: var(--accent);
+  padding: .75rem 1rem;
+  text-align: center;
+  font-size: .85rem;
+  color: #fff;
 }
 .site-footer .footer-bottom a {
-  color: #fff; text-decoration: none;
+  color: #fff;
+  text-decoration: none;
+  transition: filter .18s;
 }
-.site-footer .footer-bottom a:hover { text-decoration: underline; }
+.site-footer .footer-bottom a:hover,
+.site-footer .footer-bottom a:focus-visible {
+  filter: brightness(0.9);
+  text-decoration: underline;
+}
 @media (max-width: 600px) {
   .site-footer .footer-top { flex-direction: column; text-align: center; }
 }
@@ -192,7 +216,7 @@ section {
   padding: 3.5rem 1rem;
 }
 section > .box-container {
-  background: var(--card-bg);
+  background: var(--section-bg);
   max-width: 1150px; margin: 0 auto;
   padding: 2.2rem 1.4rem; border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -217,7 +241,7 @@ section > .box-container {
 [class*="service"]:hover,
 [class*="survey"]:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(34,49,74,0.09);
+  box-shadow: 0 6px 20px rgba(30,42,56,0.12);
 }
 
 /*──────────────────────────────────────────────
@@ -225,28 +249,36 @@ section > .box-container {
 ──────────────────────────────────────────────*/
 .cta-button, .hero-contrast, button[type="submit"] {
   display: inline-block;
-  background: var(--accent-blue); color: #fff;
+  background: var(--accent); color: #fff;
   padding: 1rem 2rem; font-weight: 600;
   border-radius: 30px; text-decoration: none;
   border: none;
   box-shadow: var(--shadow);
-  transition: background .18s, transform .18s;
+  transition: background .18s, transform .18s, filter .18s;
   cursor: pointer; font-size: 1rem;
 }
-.cta-button:hover, .hero-contrast:hover, button[type="submit"]:hover {
-  background: var(--hover-blue); transform: translateY(-2px);
+.cta-button:hover, .hero-contrast:hover, button[type="submit"]:hover,
+.cta-button:focus-visible, .hero-contrast:focus-visible, button[type="submit"]:focus-visible {
+  background: var(--accent);
+  transform: translateY(-2px);
+  filter: brightness(0.9);
 }
 .cta-button.small {
   padding: .6rem 1.2rem; font-size: .96rem;
 }
 .inline-link {
-  color: var(--accent-blue);
+  color: var(--accent);
   text-decoration: underline;
   font-weight: 600;
+  transition: color .18s, filter .18s;
 }
-.inline-link:hover { color: var(--hover-blue); }
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: var(--accent);
+  filter: brightness(0.9);
+}
 a:focus, button:focus, input:focus, select:focus {
-  outline: 2px solid var(--accent-blue); outline-offset: 2px;
+  outline: 2px solid var(--accent); outline-offset: 2px;
 }
 
 /*──────────────────────────────────────────────
@@ -296,10 +328,15 @@ details[open] summary::after { content: "▲"; }
   list-style: none; display: flex; flex-wrap: wrap; gap: 1rem;
 }
 .services-toc a {
-  font-weight: 600; color: var(--accent-blue);
+  font-weight: 600; color: var(--accent);
   text-decoration: none;
+  transition: filter .18s;
 }
-.services-toc a:hover { text-decoration: underline; }
+.services-toc a:hover,
+.services-toc a:focus-visible {
+  text-decoration: underline;
+  filter: brightness(0.9);
+}
 
 /*──────────────────────────────────────────────
   10. PROCESS TIMELINE
@@ -314,7 +351,7 @@ details[open] summary::after { content: "▲"; }
   gap: 2rem; text-align: center;
 }
 .timeline-grid svg {
-  stroke: var(--accent-blue); margin-bottom: .5rem;
+  stroke: var(--accent); margin-bottom: .5rem;
 }
 .timeline-grid p {
   font-weight: 600; font-size: .97rem;
@@ -335,7 +372,7 @@ details[open] summary::after { content: "▲"; }
 }
 .bullet-list li::before {
   content: "•"; position: absolute; left: 0;
-  color: var(--accent-blue); font-size: 1.2rem;
+  color: var(--accent); font-size: 1.2rem;
 }
 
 /*──────────────────────────────────────────────
@@ -351,23 +388,25 @@ form input, form select, form textarea {
   transition: border .2s;
 }
 form input:focus, form select:focus, form textarea:focus {
-  border-color: var(--accent-blue);
+  border-color: var(--accent);
 }
 form button, .quote-form button {
   padding: 1rem 2rem; border: none; border-radius: 30px;
-  font-weight: 600; background: var(--accent-blue);
-  color: #fff; cursor: pointer; transition: background .2s;
+  font-weight: 600; background: var(--accent);
+  color: #fff; cursor: pointer; transition: background .2s, filter .2s;
   box-shadow: var(--shadow);
 }
-form button:hover, .quote-form button:hover {
-  background: var(--hover-blue);
+form button:hover, .quote-form button:hover,
+form button:focus-visible, .quote-form button:focus-visible {
+  background: var(--accent);
+  filter: brightness(0.9);
 }
 
 /*──────────────────────────────────────────────
   HOME HERO QUOTE FORM
 ──────────────────────────────────────────────*/
 .hero-quote {
-  background: #ECF1EF;
+  background: var(--section-bg);
   padding: 3rem 0 1rem;
 }
 
@@ -388,7 +427,7 @@ form button:hover, .quote-form button:hover {
 
 .review-badge .rating-text {
   margin-left: .5rem;
-  color: #233038;
+  color: var(--text-main);
 }
 
 .hero-quote h1 {
@@ -402,9 +441,10 @@ form button:hover, .quote-form button:hover {
 }
 
 .quote-form {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--divider-grey);
   padding: 2rem 1.5rem;
   margin-bottom: 2rem;
 }
@@ -425,12 +465,26 @@ form button:hover, .quote-form button:hover {
   width: 100%;
 }
 
+.enquiry-form {
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--divider-grey);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
 .quote-form ul {
   list-style: disc inside;
   margin-top: 1.5rem;
-  color: #233038;
+  color: var(--text-main);
   font-size: 1rem;
   text-align: left;
+}
+
+.quote-form ul strong,
+.enquiry-form strong {
+  color: var(--accent-green);
 }
 
 /*──────────────────────────────────────────────
@@ -440,7 +494,7 @@ form button:hover, .quote-form button:hover {
   position: fixed; bottom: 20px; right: 20px; z-index: 1000;
 }
 .sticky-cta .cta-button {
-  box-shadow: 0 2px 10px rgba(34,49,74,0.18);
+  box-shadow: 0 2px 10px rgba(30,42,56,0.18);
   padding: .95rem 1.7rem;
 }
 @media (max-width: 600px) {
@@ -518,7 +572,11 @@ form button:hover, .quote-form button:hover {
   display: flex; flex-direction: column; align-items: center;
 }
 .trust-list svg {
-  color: var(--accent-blue); margin-bottom: .6rem;
+  color: var(--accent-green); margin-bottom: .6rem;
+}
+
+.why-choose-list strong {
+  color: var(--accent-green);
 }
 
 /*──────────────────────────────────────────────
@@ -555,7 +613,7 @@ form button:hover, .quote-form button:hover {
   margin-bottom: 2rem;
 }
 .testimonial-section h2 {
-  color: var(--accent-blue); /* Main action blue for heading */
+  color: var(--accent); /* Accent highlight for heading */
   margin-bottom: 2rem;
   font-size: 2rem;
 }
@@ -584,8 +642,8 @@ form button:hover, .quote-form button:hover {
   transition: box-shadow .18s, border-color .18s;
 }
 .service-slider .service-card:hover {
-  box-shadow: 0 8px 24px rgba(34,49,74,0.18);
-  border-color: var(--accent-blue);
+  box-shadow: 0 8px 24px rgba(30,42,56,0.18);
+  border-color: var(--accent);
 }
 @media (max-width: 500px) {
   .service-slider .service-card { min-width: 220px; padding: 1.3rem 1rem;}
@@ -601,7 +659,7 @@ form button:hover, .quote-form button:hover {
 
 .service-card footer {
   font-size: .97em;
-  color: var(--accent-blue);      /* Action blue for name */
+  color: var(--accent);      /* Accent tone for name */
   margin-top: 1rem;
   font-style: italic;
 }
@@ -615,14 +673,14 @@ form button:hover, .quote-form button:hover {
   width: 2.5rem; height: 2.5rem;
   border-radius: 50%;
   cursor: pointer; z-index: 10; opacity: 0.94;
-  box-shadow: 0 2px 10px rgba(34,49,74,0.12);
+  box-shadow: 0 2px 10px rgba(30,42,56,0.12);
   display: flex; align-items: center; justify-content: center;
   transition: background .23s, color .23s;
 }
 .slider-arrow.prev { left: .5rem; }
 .slider-arrow.next { right: .5rem; }
 .slider-arrow:focus {
-  outline: 3px solid var(--accent-blue);
+  outline: 3px solid var(--accent);
   background: var(--primary-blue);
   color: #ffc43a;
 }
@@ -636,9 +694,10 @@ form button:hover, .quote-form button:hover {
 }
 
 .trust-card {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--divider-grey);
   padding: 1.5rem;
   text-align: center;
   display: flex;
@@ -651,7 +710,7 @@ form button:hover, .quote-form button:hover {
 /* Icon styling (optional) */
 .trust-card svg {
   margin-bottom: 0.75rem;
-  color: var(--primary-color, #1d4ed8);
+  color: var(--accent-green);
   width: 2rem;
   height: 2rem;
 }
@@ -660,26 +719,28 @@ form button:hover, .quote-form button:hover {
 .trust-card strong {
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
+  color: var(--accent-green);
 }
 .trust-card p {
   margin: 0;
-  color: #555;
+  color: var(--text-light);
   flex-grow: 1; /* push CTA (if any) down */
 }
 
-/* Utility: blue section title */
+/* Utility: trust-accent section title */
 .section-title--blue {
-  color: var(--primary-blue);       /* whatever your “blue” variable is */
+  color: var(--accent-green);
   margin-bottom: 1rem;
 }
 
 /* Make box-container look like your timeline card */
 .box-container {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
   padding: 2rem;
   margin-bottom: 2rem;
+  border: 1px solid var(--divider-grey);
 }
 
 /* Trust-features grid (already in place) */
@@ -717,12 +778,17 @@ form button:hover, .quote-form button:hover {
   padding: 7px 13px;
   border-radius: 6px;
   cursor: pointer;
-  transition: background .2s;
+  transition: background .2s, filter .2s;
 }
 
 .nav-toggle:hover,
+.nav-toggle:focus-visible {
+  background: var(--accent);
+  filter: brightness(0.9);
+}
+
 .nav-toggle.open {
-  background: var(--hover-blue);
+  background: var(--accent);
 }
 
 @media (max-width: 700px) {
