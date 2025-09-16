@@ -1,3 +1,14 @@
+function normalizePathname(pathname) {
+  if (!pathname) return '';
+  let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  normalized = normalized.replace(/\/index\.html$/, '/');
+  normalized = normalized.replace(/\.html$/, '');
+  if (normalized.length > 1 && normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+  return normalized || '/';
+}
+
 export function loadTrustIndex() {
   if (typeof document === 'undefined') return;
   if (document.querySelector('script[src^="https://cdn.trustindex.io/loader.js"]')) {
@@ -27,15 +38,22 @@ export function setupNav() {
     });
   }
 
-  const path = typeof window !== 'undefined' ? window.location.pathname : '';
-  if (path) {
-    document.querySelectorAll('.main-nav a').forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!href) return;
-      if (href === path || (path === '/' && href === '/index.html')) {
-        link.setAttribute('aria-current', 'page');
-      }
-    });
+  if (typeof window !== 'undefined') {
+    const currentPath = normalizePathname(
+      new URL(window.location.pathname, window.location.origin).pathname,
+    );
+    if (currentPath) {
+      document.querySelectorAll('.main-nav a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const linkPath = normalizePathname(
+          new URL(href, window.location.origin).pathname,
+        );
+        if (linkPath && linkPath === currentPath) {
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+    }
   }
 }
 
