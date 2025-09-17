@@ -1,6 +1,7 @@
-/*──────────────────────────────────────────────
+/*───────────────────────────────────────────────────────
   VIEWPORT LOCK - CRITICAL FOR MOBILE FIX
-──────────────────────────────────────────────*/
+  Prevents zooming and ensures proper mobile rendering
+───────────────────────────────────────────────────────*/
 @viewport {
   width: device-width;
   zoom: 1;
@@ -8,41 +9,51 @@
   max-zoom: 1;
   user-zoom: fixed;
 }
-
 @-ms-viewport {
   width: device-width;
 }
 
-
-
-/*──────────────────────────────────────────────
-  1. ROOT VARIABLES & BASE RESET
-──────────────────────────────────────────────*/
-html {
-  scroll-behavior: smooth;
-}
-
+/*───────────────────────────────────────────────────────
+  0. GLOBAL VARIABLES & CSS RESET
+  Centralized control for colors, fonts, and spacings
+───────────────────────────────────────────────────────*/
 :root {
+  /* Core Color Palette */
   --primary-blue: #0f172a;
   --primary-blue-soft: #15264f;
   --accent-blue: #2563eb;
   --hover-blue: #1d4ed8;
   --cta-gold: #fbbf24;
   --cta-gold-hover: #f59e0b;
+  
+  /* Neutral Colors */
   --soft-bg: #f5f7fb;
   --card-bg: #ffffff;
-  --divider-grey: #e6ecf7;
   --text-main: #1f2937;
   --text-light: #5b6478;
+  --divider-grey: #e6ecf7;
+  
+  /* Effects */
   --border-radius: 14px;
   --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
   --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);
+  
+  /* Typography */
   --heading-font: 'Merriweather', 'Georgia', serif;
   --body-font: 'Open Sans', 'Segoe UI', sans-serif;
 }
+
+/* Modern CSS Reset */
 *, *::before, *::after {
-  margin: 0; padding: 0; box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--body-font);
   background: linear-gradient(
@@ -60,6 +71,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/*───────────────────────────────────────────────────────
+  1. BASE ELEMENT STYLES
+  Standard styles for fundamental HTML elements
+───────────────────────────────────────────────────────*/
 ::selection {
   background: rgba(37, 99, 235, 0.15);
   color: var(--primary-blue);
@@ -95,14 +110,79 @@ a:hover {
 .skip-link:focus {
   left: 1rem;
 }
+
 img, svg {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
-/*──────────────────────────────────────────────
-  2. HEADER & NAVIGATION
-──────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────
+  2. TYPOGRAPHY & TEXT STYLES
+  Consistent heading and text formatting
+───────────────────────────────────────────────────────*/
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-family: var(--heading-font);
+  color: var(--primary-blue);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.35rem, 5vw, 2.9rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.2rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+
+p, ul, ol, blockquote, table {
+  margin-bottom: 1.35rem;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+p.lead, .section-lead {
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+/*───────────────────────────────────────────────────────
+  3. LAYOUT & CONTAINER STYLES
+  Wrappers, sections, and main content areas
+───────────────────────────────────────────────────────*/
+main {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+section {
+  padding: clamp(2.8rem, 6vw, 4rem) 1.2rem;
+}
+
+section > .box-container {
+  background: rgba(255, 255, 255, 0.92);
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+section > .box-container > *:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/*───────────────────────────────────────────────────────
+  4. HEADER & NAVIGATION
+  Main site navigation and header styles
+───────────────────────────────────────────────────────*/
 header {
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(21, 38, 79, 0.97));
   color: #fff;
@@ -113,6 +193,7 @@ header {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .header-inner {
   width: min(1200px, 100%);
   margin: 0 auto;
@@ -123,6 +204,7 @@ header {
   padding: 1rem 1.5rem;
   flex-wrap: wrap;
 }
+
 .branding {
   display: flex;
   align-items: center;
@@ -130,17 +212,20 @@ header {
   gap: 0.75rem;
   margin-bottom: 0;
 }
+
 .logo-link {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
 }
+
 .logo {
   max-height: 60px;
   width: auto;
   filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.25));
 }
+
 .site-name {
   font-size: 1.35rem;
   font-weight: 700;
@@ -150,6 +235,7 @@ header {
   font-family: var(--heading-font);
   text-transform: uppercase;
 }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -157,6 +243,7 @@ header {
   position: relative;
   flex-wrap: wrap;
 }
+
 .primary-links {
   list-style: none;
   display: flex;
@@ -189,6 +276,7 @@ header {
   flex-direction: column;
   gap: 1rem;
 }
+
 .nav-links a {
   font-size: 0.95rem;
   letter-spacing: 0.04em;
@@ -197,6 +285,7 @@ header {
   text-transform: uppercase;
   font-weight: 600;
 }
+
 .main-nav a {
   color: #fff;
   text-decoration: none;
@@ -208,25 +297,30 @@ header {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
 .main-nav li a:hover,
 .main-nav li a:focus-visible {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
+
 .main-nav a.cta {
   background: linear-gradient(135deg, var(--cta-gold), var(--cta-gold-hover));
   color: var(--primary-blue);
   box-shadow: 0 18px 38px rgba(249, 191, 36, 0.35);
 }
+
 .main-nav a.cta:hover,
 .main-nav a.cta:focus-visible {
   background: linear-gradient(135deg, var(--cta-gold-hover), var(--cta-gold));
   color: var(--primary-blue);
 }
+
 .main-nav a[aria-current="page"] {
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
+
 .nav-toggle {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -244,9 +338,10 @@ header {
   color: #fff;
 }
 
-/*──────────────────────────────────────────────
-  3. FOOTER
-──────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────
+  5. FOOTER STYLES
+  Site footer and related components
+───────────────────────────────────────────────────────*/
 .site-footer {
   background: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(21, 38, 79, 0.98) 65%, rgba(37, 99, 235, 0.6));
   color: #fff;
@@ -255,6 +350,7 @@ header {
   position: relative;
   overflow: hidden;
 }
+
 .site-footer::before {
   content: '';
   position: absolute;
@@ -263,10 +359,12 @@ header {
   opacity: 0.9;
   pointer-events: none;
 }
+
 .site-footer > * {
   position: relative;
   z-index: 1;
 }
+
 .site-footer .footer-top {
   display: flex;
   flex-wrap: wrap;
@@ -275,10 +373,12 @@ header {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 2rem;
 }
+
 .site-footer .footer-col {
   flex: 1 1 220px;
   min-width: 210px;
 }
+
 .site-footer .footer-col h3 {
   font-size: 1.1rem;
   margin-bottom: .75rem;
@@ -287,15 +387,18 @@ header {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
 .site-footer .footer-col a {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color .2s ease, transform .2s ease;
 }
+
 .site-footer .footer-col a:hover {
   color: #fff;
   transform: translateX(4px);
 }
+
 .site-footer .footer-links {
   list-style: none;
   padding: 0;
@@ -303,16 +406,20 @@ header {
   display: grid;
   gap: .4rem;
 }
+
 .site-footer .footer-links a {
   color: rgba(255, 255, 255, 0.75);
 }
+
 .site-footer .footer-links a:hover {
   color: #fff;
 }
+
 .site-footer .footer-logos img {
   margin: .5rem .5rem 0 0;
   filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.25));
 }
+
 .site-footer .footer-cta {
   background: linear-gradient(135deg, var(--cta-gold), var(--cta-gold-hover));
   text-align: center;
@@ -322,6 +429,7 @@ header {
   margin: 0 auto 2.5rem;
   box-shadow: 0 26px 45px rgba(249, 191, 36, 0.32);
 }
+
 .site-footer .footer-cta .cta-button {
   background: #fff;
   color: var(--primary-blue);
@@ -333,10 +441,12 @@ header {
   margin: .75rem auto 0 auto;
   display: inline-block;
 }
+
 .site-footer .footer-cta .cta-button:hover {
   background: rgba(255, 255, 255, 0.85);
   transform: translateY(-2px);
 }
+
 .site-footer .footer-bottom {
   background: rgba(15, 23, 42, 0.85);
   padding: 1rem 1rem;
@@ -345,86 +455,27 @@ header {
   color: rgba(255, 255, 255, 0.72);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .site-footer .footer-bottom a {
   color: #fff;
   text-decoration: none;
 }
+
 .site-footer .footer-bottom a:hover {
   text-decoration: underline;
 }
-@media (max-width: 600px) {
-  .site-footer .footer-top {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .site-footer .footer-col {
-    max-width: 320px;
-  }
-}
 
-/*──────────────────────────────────────────────
-  4. TYPOGRAPHY & SECTIONS
-──────────────────────────────────────────────*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1rem;
-  font-family: var(--heading-font);
-  color: var(--primary-blue);
-  line-height: 1.25;
-  text-wrap: balance;
-}
-h1 { font-size: clamp(2.35rem, 5vw, 2.9rem); }
-h2 { font-size: clamp(1.75rem, 4vw, 2.2rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
-p,
-ul,
-ol,
-blockquote,
-table {
-  margin-bottom: 1.35rem;
-  line-height: 1.7;
-  color: var(--text-main);
-}
-p.lead,
-.section-lead {
-  font-size: 1.1rem;
-  color: var(--text-light);
-}
-main {
-  display: grid;
-  gap: clamp(2.5rem, 6vw, 4rem);
-}
-section {
-  padding: clamp(2.8rem, 6vw, 4rem) 1.2rem;
-}
-section > .box-container {
-  background: rgba(255, 255, 255, 0.92);
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: clamp(2rem, 5vw, 3rem);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-  backdrop-filter: blur(6px);
-}
-section > .box-container > *:last-child {
-  margin-bottom: 0;
-}
-
-/*──────────────────────────────────────────────
-  5. GRIDS, CARDS & LISTS
-──────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────
+  6. GRID SYSTEMS & CARDS
+  Layout components and card-based content
+───────────────────────────────────────────────────────*/
 [class*="grid"] {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: clamp(1.5rem, 5vw, 2.5rem);
   margin: 2rem 0;
 }
+
 [class*="card"], [class*="service"], [class*="survey"] {
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.92) 100%);
   padding: clamp(1.8rem, 4vw, 2.4rem);
@@ -433,6 +484,7 @@ section > .box-container > *:last-child {
   border: 1px solid rgba(229, 234, 242, 0.9);
   transition: transform .18s ease, box-shadow .22s ease, border-color .22s ease;
 }
+
 [class*="card"]:hover,
 [class*="service"]:hover,
 [class*="survey"]:hover {
@@ -441,9 +493,17 @@ section > .box-container > *:last-child {
   border-color: rgba(37, 99, 235, 0.35);
 }
 
-/*──────────────────────────────────────────────
-  6. BUTTONS & LINKS
-──────────────────────────────────────────────*/
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/*───────────────────────────────────────────────────────
+  7. BUTTONS & CALLS TO ACTION
+  Button styles and interactive elements
+───────────────────────────────────────────────────────*/
 .cta-button,
 .hero-contrast,
 button[type="submit"] {
@@ -464,6 +524,7 @@ button[type="submit"] {
   font-size: 1rem;
   letter-spacing: 0.02em;
 }
+
 .cta-button:hover,
 .hero-contrast:hover,
 button[type="submit"]:hover {
@@ -471,24 +532,29 @@ button[type="submit"]:hover {
   transform: translateY(-3px);
   box-shadow: 0 22px 42px rgba(245, 158, 11, 0.35);
 }
+
 .cta-button:focus-visible,
 .hero-contrast:focus-visible,
 button[type="submit"]:focus-visible {
   outline: 3px solid var(--accent-blue);
   outline-offset: 3px;
 }
+
 .cta-button.small {
   padding: .65rem 1.3rem;
   font-size: .95rem;
 }
+
 .inline-link {
   color: var(--accent-blue);
   font-weight: 600;
   text-decoration: underline;
 }
+
 .inline-link:hover {
   color: var(--hover-blue);
 }
+
 a:focus,
 button:focus,
 input:focus,
@@ -498,167 +564,17 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/*──────────────────────────────────────────────
-  7. TABLES
-──────────────────────────────────────────────*/
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-th,
-td {
-  border-bottom: 1px solid rgba(229, 234, 242, 0.9);
-  padding: .85rem 1.1rem;
-  text-align: center;
-}
-thead th {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-soft));
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-tbody tr:nth-child(even) {
-  background: rgba(245, 247, 251, 0.6);
-}
-tbody tr:hover {
-  background: rgba(37, 99, 235, 0.08);
-}
-
-/*──────────────────────────────────────────────
-  8. ACCORDIONS
-──────────────────────────────────────────────*/
-details {
-  background: rgba(255, 255, 255, 0.94);
-  border-radius: var(--border-radius);
-  padding: 1.1rem 1.25rem;
-  margin: 1.4rem 0;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-  transition: box-shadow .2s ease, border-color .2s ease;
-}
-details[open] {
-  box-shadow: var(--shadow);
-  border-color: rgba(37, 99, 235, 0.28);
-}
-summary {
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--primary-blue);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-summary::after {
-  content: "\25BC";
-  font-size: 0.85rem;
-  transition: transform .25s ease;
-  color: var(--accent-blue);
-}
-details[open] summary::after {
-  transform: rotate(180deg);
-}
-
-/*──────────────────────────────────────────────
-  9. TABLE OF CONTENTS NAV
-──────────────────────────────────────────────*/
-.services-toc {
-  background: rgba(255, 255, 255, 0.92);
-  padding: 1.4rem 1.8rem;
-  margin: 2.2rem 0;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-.services-toc .toc-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.services-toc a {
-  font-weight: 700;
-  color: var(--accent-blue);
-  text-decoration: none;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  transition: background .2s ease, color .2s ease;
-}
-.services-toc a:hover {
-  background: rgba(37, 99, 235, 0.12);
-  color: var(--hover-blue);
-}
-
-/*──────────────────────────────────────────────
-  10. PROCESS TIMELINE
-──────────────────────────────────────────────*/
-.process-timeline {
-  background: linear-gradient(145deg, rgba(37, 99, 235, 0.08), rgba(251, 191, 36, 0.12));
-  padding: clamp(2rem, 5vw, 2.8rem) 1.5rem;
-  margin: 2rem 0;
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-  box-shadow: var(--shadow-soft);
-}
-.timeline-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  text-align: center;
-}
-.timeline-grid svg {
-  stroke: var(--accent-blue);
-  margin-bottom: .6rem;
-  filter: drop-shadow(0 10px 18px rgba(37, 99, 235, 0.18));
-}
-.timeline-grid p {
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--primary-blue);
-}
-
-/*──────────────────────────────────────────────
-  11. SERVICE BLOCKS & BULLET LISTS
-──────────────────────────────────────────────*/
-.service-block {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-  margin: 2rem 0;
-  padding: clamp(1.8rem, 4vw, 2.5rem);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-.service-block.alt {
-  background: rgba(245, 247, 251, 0.85);
-}
-.bullet-list { list-style: none; padding-left: 0; }
-.bullet-list li {
-  position: relative; padding-left: 1.5rem; margin-bottom: .5rem;
-}
-.bullet-list li::before {
-  content: "•"; position: absolute; left: 0;
-  color: var(--accent-blue); font-size: 1.2rem;
-}
-
-/*──────────────────────────────────────────────
-  12. FORMS
-──────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────
+  8. FORM STYLES
+  Form elements and form layouts
+───────────────────────────────────────────────────────*/
 form label {
   display: block;
   margin-bottom: .5rem;
   font-weight: 700;
   color: var(--primary-blue);
 }
+
 form input,
 form select,
 form textarea {
@@ -673,15 +589,18 @@ form textarea {
   transition: border-color .2s ease, box-shadow .2s ease;
   box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.05);
 }
+
 form input:focus,
 form select:focus,
 form textarea:focus {
   border-color: var(--accent-blue);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
+
 form textarea {
   min-height: 160px;
 }
+
 form button,
 .quote-form button {
   padding: 0.9rem 1.8rem;
@@ -694,6 +613,7 @@ form button,
   transition: transform .18s ease, box-shadow .2s ease, background .2s ease;
   box-shadow: 0 18px 38px rgba(249, 191, 36, 0.32);
 }
+
 form button:hover,
 .quote-form button:hover {
   background: linear-gradient(135deg, var(--cta-gold-hover), var(--cta-gold));
@@ -701,15 +621,17 @@ form button:hover,
   box-shadow: 0 22px 42px rgba(245, 158, 11, 0.35);
 }
 
-/*──────────────────────────────────────────────
-  HOME HERO QUOTE FORM
-──────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────
+  9. HERO & QUOTE FORM COMPONENTS
+  Specialized hero sections and quote forms
+───────────────────────────────────────────────────────*/
 .hero-quote {
   background: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(251, 191, 36, 0.18));
   padding: clamp(3rem, 8vw, 4.2rem) 0 clamp(2rem, 6vw, 3rem);
   position: relative;
   overflow: hidden;
 }
+
 .hero-quote::before {
   content: '';
   position: absolute;
@@ -717,6 +639,7 @@ form button:hover,
   background: radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.55), transparent 55%);
   pointer-events: none;
 }
+
 .hero-quote::after {
   content: '';
   position: absolute;
@@ -822,37 +745,270 @@ form button:hover,
   font-weight: 700;
 }
 
-/*──────────────────────────────────────────────
-  13. STICKY CTA
-──────────────────────────────────────────────*/
-.sticky-cta {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-}
-.sticky-cta .cta-button {
-  box-shadow: 0 22px 38px rgba(249, 191, 36, 0.4);
-  padding: .95rem 1.8rem;
-}
-@media (max-width: 600px) {
-  .sticky-cta {
-    bottom: 18px;
-    right: 16px;
-  }
-  .sticky-cta .cta-button {
-    padding: .75rem 1.3rem;
-    font-size: .95rem;
-  }
+/*───────────────────────────────────────────────────────
+  10. TABLE STYLES
+  Data table formatting
+───────────────────────────────────────────────────────*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(229, 234, 242, 0.9);
 }
 
-/*──────────────────────────────────────────────
-  14. SLIDER (Services)
-──────────────────────────────────────────────*/
+th, td {
+  border-bottom: 1px solid rgba(229, 234, 242, 0.9);
+  padding: .85rem 1.1rem;
+  text-align: center;
+}
+
+thead th {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-soft));
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(245, 247, 251, 0.6);
+}
+
+tbody tr:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.comparison-table th, .comparison-table td {
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.comparison-table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.cost-table th, .cost-table td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--divider-grey);
+}
+
+.cost-table th {
+  background: var(--primary-blue-soft);
+  color: white;
+}
+
+/*───────────────────────────────────────────────────────
+  11. ACCORDION & DETAILS COMPONENTS
+  Expandable content sections
+───────────────────────────────────────────────────────*/
+details {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--border-radius);
+  padding: 1.1rem 1.25rem;
+  margin: 1.4rem 0;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+details[open] {
+  box-shadow: var(--shadow);
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+summary {
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+summary::after {
+  content: "\25BC";
+  font-size: 0.85rem;
+  transition: transform .25s ease;
+  color: var(--accent-blue);
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/*───────────────────────────────────────────────────────
+  12. NAVIGATION COMPONENTS
+  Table of contents and navigation elements
+───────────────────────────────────────────────────────*/
+.services-toc {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 1.4rem 1.8rem;
+  margin: 2.2rem 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+}
+
+.services-toc .toc-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.services-toc a {
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.services-toc a:hover {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--hover-blue);
+}
+
+.quick-nav.jump-to {
+  text-align: center;
+}
+
+.jump-to .toc-list {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jump-to .toc-list li {
+  display: inline-block;
+  margin: 0 .5rem;
+}
+
+/*───────────────────────────────────────────────────────
+  13. PROCESS TIMELINE
+  Step-by-step process visualization
+───────────────────────────────────────────────────────*/
+.process-timeline {
+  background: linear-gradient(145deg, rgba(37, 99, 235, 0.08), rgba(251, 191, 36, 0.12));
+  padding: clamp(2rem, 5vw, 2.8rem) 1.5rem;
+  margin: 2rem 0;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.timeline-grid svg {
+  stroke: var(--accent-blue);
+  margin-bottom: .6rem;
+  filter: drop-shadow(0 10px 18px rgba(37, 99, 235, 0.18));
+}
+
+.timeline-grid p {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary-blue);
+}
+
+/*───────────────────────────────────────────────────────
+  14. SERVICE BLOCKS & LISTS
+  Service-specific components and list styles
+───────────────────────────────────────────────────────*/
+.service-block {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  margin: 2rem 0;
+  padding: clamp(1.8rem, 4vw, 2.5rem);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+}
+
+.service-block.alt {
+  background: rgba(245, 247, 251, 0.85);
+}
+
+.bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.bullet-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+}
+
+.why-choose-list {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.why-choose-list li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.why-choose-list li::before {
+  content: "✓";
+  position: absolute;
+  left: -1.5rem;
+  color: var(--accent-blue);
+  font-weight: bold;
+}
+
+/*───────────────────────────────────────────────────────
+  15. SLIDER COMPONENTS
+  Content sliders and carousels
+───────────────────────────────────────────────────────*/
 .service-slider-wrapper {
   position: relative;
   margin: 2.5rem 0;
 }
+
 .service-slider {
   display: flex;
   gap: 1.5rem;
@@ -862,148 +1018,19 @@ form button:hover,
   padding: 0 0 1.5rem;
   scroll-padding: 1.5rem;
 }
+
 .service-slider::-webkit-scrollbar {
   height: 8px;
 }
+
 .service-slider::-webkit-scrollbar-thumb {
   background: rgba(37, 99, 235, 0.25);
   border-radius: 999px;
 }
+
 .service-slider {
   -ms-overflow-style: none;
   scrollbar-width: thin;
-}
-/*──────────────────────────────────────────────
-  15. “AREAS WE COVER” / DROPDOWN SECTION
-──────────────────────────────────────────────*/
-.improved-areas .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax( clamp(16rem,30vw,24rem), 1fr ));
-  gap: clamp(1rem,5vw,3rem);
-}
-.improved-areas .areas-header,
-.improved-areas .areas-content {
-  display: grid; grid-template-columns: 1fr; gap: 1.5rem;
-}
-.improved-areas .areas-header .lead {
-  color: var(--text-light); font-size: 1.1rem; margin-bottom: 2rem;
-}
-.improved-areas .dropdown-card {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  padding: 1.6rem;
-  position: relative;
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-.improved-areas .custom-select { position: relative; }
-.improved-areas select#areaDropdown {
-  width: 100%;
-  padding: .85rem 1rem;
-  font-size: 1rem;
-  border: 1px solid rgba(229, 234, 242, 0.9);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.95);
-  appearance: none;
-  cursor: pointer;
-}
-.improved-areas .chevron {
-  position: absolute; top: 50%; right: 1rem;
-  transform: translateY(-50%); font-size: 1.25rem; color: var(--accent-blue);
-  pointer-events: none;
-}
-
-/*──────────────────────────────────────────────
-  16. TRUST FEATURES (Icons + Headings)
-──────────────────────────────────────────────*/
-.trust-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.3rem;
-  justify-items: center;
-}
-.trust-list li {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-  padding: clamp(1.3rem, 3vw, 1.8rem);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-.trust-list svg {
-  color: var(--accent-blue);
-  margin-bottom: .6rem;
-  font-size: 2rem;
-}
-
-/*──────────────────────────────────────────────
-  17. RESPONSIVE BREAKPOINTS
-──────────────────────────────────────────────*/
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.25rem;
-    padding: 1rem 1.1rem;
-  }
-  .branding {
-    justify-content: space-between;
-  }
-  .main-nav {
-    width: 100%;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .primary-links {
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-  .hero {
-    padding: 2.2rem 1rem;
-  }
-  section {
-    padding: 2.2rem 1rem;
-  }
-  [class*="grid"] {
-    grid-template-columns: 1fr;
-  }
-  section > .box-container {
-    padding: 1.6rem;
-  }
-}
-
-@media (max-width: 500px) {
-  h1 { font-size: 1.95rem; }
-  h2 { font-size: 1.35rem; }
-  .comparison-table { font-size: 0.9rem; }
-}
-
-/*──────────────────────────────────────────────
-  18. MISC (Table soft wraps, slider arrow tweaks)
-──────────────────────────────────────────────*/
-.comparison-table th, .comparison-table td {
-  word-wrap: break-word; hyphens: auto;
-}
-
-/*──────────────────────────────────────────────
- 11. TESTIMONIALS SECTION — LIGHT, MODERN VERSION
-──────────────────────────────────────────────*/
-.testimonial-section {
-  background: var(--soft-bg); /* Light background */
-  color: var(--text-main);
-  padding: 3rem 1rem;
-  margin-bottom: 2rem;
-}
-.testimonial-section h2 {
-  color: var(--accent-blue); /* Main action blue for heading */
-  margin-bottom: 2rem;
-  font-size: 2rem;
 }
 
 .service-slider .service-card {
@@ -1019,31 +1046,11 @@ form button:hover,
   transition: transform .18s ease, box-shadow .22s ease, border-color .22s ease;
   text-align: left;
 }
+
 .service-slider .service-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
   border-color: rgba(37, 99, 235, 0.28);
-}
-@media (max-width: 500px) {
-  .service-slider .service-card {
-    min-width: 240px;
-    padding: 1.4rem 1.2rem;
-  }
-}
-
-.stars {
-  color: #f59e0b;
-  font-size: 1.45em;
-  font-weight: bold;
-  letter-spacing: .13em;
-  margin-bottom: .7rem;
-}
-
-.service-card footer {
-  font-size: .97em;
-  color: var(--accent-blue);      /* Action blue for name */
-  margin-top: 1rem;
-  font-style: italic;
 }
 
 .slider-arrow {
@@ -1066,87 +1073,13 @@ form button:hover,
   justify-content: center;
   transition: background .23s, color .23s, transform .18s;
 }
-.slider-arrow.prev { left: .5rem; }
-.slider-arrow.next { right: .5rem; }
+
+.slider-arrow.prev {
+  left: .5rem;
+}
+
+.slider-arrow.next {
+  right: .5rem;
+}
+
 .slider-arrow:hover {
-  background: linear-gradient(135deg, var(--cta-gold-hover), var(--cta-gold));
-}
-
-.slider-arrow:focus {
-  outline: 3px solid var(--accent-blue);
-  background: var(--primary-blue);
-  color: #fff;
-}
-
-/* Trust / Why Choose grid (mirrors .process-timeline) */
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.3rem;
-  margin-top: 1rem;
-}
-
-.trust-card {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.92) 100%);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  padding: 1.6rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 200px;
-  border: 1px solid rgba(229, 234, 242, 0.9);
-}
-
-.trust-card svg {
-  margin-bottom: 0.75rem;
-  color: var(--accent-blue);
-  width: 2rem;
-  height: 2rem;
-}
-
-.trust-card strong {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: var(--primary-blue);
-}
-.trust-card p {
-  margin: 0;
-  color: var(--text-light);
-  flex-grow: 1;
-}
-
-.section-title--blue {
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-}
-
-/* Centre the jump-to links */
-.jump-to {
-  text-align: center;
-}
-.jump-to .toc-list {
-  display: inline-block;     /* so the UL itself is centred */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.jump-to .toc-list li {
-  display: inline-block;
-  margin: 0 .5rem;
-}
-
-/* Adjust section-title bottoms for balance */
-.trust-features .section-title--blue,
-.process-timeline .section-title--blue {
-  margin-bottom: 1.5rem;
-}
-@media (max-width: 700px) {
-  .nav-links {
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: min(90vw, 320px);
-  }
-}
