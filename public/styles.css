@@ -1069,3 +1069,137 @@ details[open] summary::after {
 }
 
 .slider-arrow:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+/*───────────────────────────────────────────────────────
+  11. LEGACY PAGE HELPERS
+  Responsive helpers for legacy imported content
+───────────────────────────────────────────────────────*/
+.legacy-container {
+  max-width: min(100vw, 600px);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 1.5rem);
+}
+
+.section-image {
+  margin-top: 1.5rem;
+  display: block;
+}
+
+.map-embed {
+  width: 100%;
+  border: 0;
+  margin-top: 1rem;
+  min-height: 300px;
+}
+
+.cta-section {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent-blue);
+  background: transparent;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .2s ease, color .2s ease, transform .18s ease;
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  background: var(--accent-blue);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.hero-plain {
+  background: #ecf1ef;
+  padding: clamp(2.5rem, 6vw, 3.5rem) 0;
+}
+
+.hero-plain .hero-container {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.hero-plain .review-badge {
+  justify-content: center;
+}
+
+.guide-callout {
+  background: #f5f7f6;
+  padding: clamp(1.25rem, 5vw, 1.75rem) 0;
+}
+
+.guide-callout p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #233038;
+  text-align: center;
+}
+
+.centered-box {
+  text-align: center;
+  padding: clamp(1.75rem, 5vw, 2.25rem);
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 480px;
+}
+
+/* === Core Responsive Layout Fixes === */
+@media (max-width: 900px) {
+  .header-inner, .main-nav, .primary-links {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .service-cards, .latest-guides, .areas-we-cover {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .hero-form, .main-content, .footer-main {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    max-width: 100vw !important;
+  }
+  /* Legacy tables: enable horizontal scroll */
+  table { display: block; overflow-x: auto; width: 100%; }
+}
+
+/* For smallest screens */
+@media (max-width: 600px) {
+  body { font-size: 0.98rem !important; }
+  h1, h2, h3 { font-size: 1.2em !important; }
+  .header-inner, .main-nav { padding: 0.5rem !important; }
+  .footer-main { font-size: 0.94em !important; }
+}
