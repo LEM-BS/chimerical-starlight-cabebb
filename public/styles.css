@@ -418,6 +418,7 @@ header {
 }
 
 @media (min-width: 768px) {
+ codex/refactor-index-page-layout-and-responsiveness
   .header-inner {
     flex-wrap: nowrap;
     gap: 2rem;
@@ -434,10 +435,13 @@ header {
     gap: 1.25rem;
   }
 
+=======
+ main
   .nav-toggle {
     display: none;
   }
 
+ codex/refactor-index-page-layout-and-responsiveness
   .nav-links {
     position: static;
     display: flex;
@@ -456,6 +460,22 @@ header {
 
   .nav-links.nav-open {
     display: flex;
+=======
+  .nav-links,
+  .nav-links.nav-open {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    min-width: auto;
+    backdrop-filter: none;
+  
+    main
   }
 }
 
