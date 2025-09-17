@@ -168,10 +168,6 @@ section,
   padding-block: clamp(24px, 4vw, 64px);
 }
 
-.section > .container {
-  width: 100%;
-}
-
 .section > .box-container {
   background: rgba(255, 255, 255, 0.92);
   width: min(100%, 1150px);
