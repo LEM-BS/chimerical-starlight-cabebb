@@ -39,6 +39,23 @@ export function setupNav() {
   }
 
   if (typeof window !== 'undefined') {
+    if (navToggle && navLinks) {
+      const syncNavForViewport = () => {
+        if (window.innerWidth >= 768) {
+          if (navLinks.classList.contains('nav-open')) {
+            navLinks.classList.remove('nav-open');
+          }
+          if (navToggle.classList.contains('open')) {
+            navToggle.classList.remove('open');
+          }
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      };
+
+      syncNavForViewport();
+      window.addEventListener('resize', syncNavForViewport);
+    }
+
     const currentPath = normalizePathname(
       new URL(window.location.pathname, window.location.origin).pathname,
     );

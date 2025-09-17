@@ -1,3 +1,19 @@
+---
+const primaryLinks = [
+  { href: '/index.html', label: 'Home' },
+  { href: '/rics-home-surveys.html', label: 'RICS Home Surveys' },
+];
+
+const secondaryLinks = [
+  { href: '/services.html', label: 'Services' },
+  { href: '/local-surveys.html', label: 'Areas We Cover' },
+  { href: '/comparison.html', label: 'Pricing' },
+  { href: '/testimonials.html', label: 'Testimonials' },
+  { href: '/contact.html', label: 'Contact' },
+  { href: '/enquiry.html', label: 'Get a Quote', cta: true },
+];
+---
+
 <header>
   <div class="header-inner">
     <div class="branding">
@@ -16,8 +32,11 @@
     </div>
     <nav class="main-nav" aria-label="Main Navigation">
       <ul class="primary-links">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/rics-home-surveys.html">RICS Home Surveys</a></li>
+        {primaryLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
       </ul>
       <button
         class="nav-toggle"
@@ -29,12 +48,13 @@
         Menu
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/local-surveys.html">Areas We Cover</a></li>
-        <li><a href="/comparison.html">Pricing</a></li>
-        <li><a href="/testimonials.html">Testimonials</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/enquiry.html" class="cta">Get a Quote</a></li>
+        {secondaryLinks.map((link) => (
+          <li>
+            <a class={link.cta ? 'cta' : undefined} href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
