@@ -808,7 +808,8 @@ form button:hover,
 
 .quote-form .form-grid {
   display: grid;
-  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
 }
 
 .quote-form label {
@@ -1369,5 +1370,8 @@ details[open] summary::after {
   }
   .footer-main {
     font-size: 0.94em !important;
+  }
+  .quote-form .form-grid {
+    grid-template-columns: 1fr;
   }
 }
