@@ -1,4 +1,21 @@
 /*──────────────────────────────────────────────
+  VIEWPORT LOCK - CRITICAL FOR MOBILE FIX
+──────────────────────────────────────────────*/
+@viewport {
+  width: device-width;
+  zoom: 1;
+  min-zoom: 1;
+  max-zoom: 1;
+  user-zoom: fixed;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+
+/*──────────────────────────────────────────────
   1. ROOT VARIABLES & BASE RESET
 ──────────────────────────────────────────────*/
 html {
