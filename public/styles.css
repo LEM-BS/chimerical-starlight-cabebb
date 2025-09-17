@@ -22,8 +22,6 @@
   --border-radius: 14px;
   --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
   --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);
-  --sticky-cta-height: clamp(4.75rem, 4.2rem + 2vw, 6.25rem);
-  --sticky-cta-offset: 1.5rem;
 
   /* Typography */
   --heading-font: "Merriweather", "Georgia", serif;
@@ -54,7 +52,7 @@ body {
   color: var(--text-main);
   line-height: 1.7;
   min-height: 100vh;
-  padding-bottom: calc(var(--sticky-cta-height) + var(--sticky-cta-offset));
+  padding-bottom: 80px;
   transition:
     background 0.3s,
     color 0.3s;
@@ -398,27 +396,6 @@ header {
   color: #fff;
 }
 
-@media (min-width: 768px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .nav-links,
-  .nav-links.nav-open {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    background: none;
-    padding: 0;
-    box-shadow: none;
-    border: 0;
-    border-radius: 0;
-    min-width: auto;
-    backdrop-filter: none;
-  }
-}
-
 /*───────────────────────────────────────────────────────
   5. FOOTER STYLES
   Site footer and related components
@@ -650,89 +627,6 @@ button[type="submit"]:focus-visible {
 .cta-button.small {
   padding: 0.65rem 1.3rem;
   font-size: 0.95rem;
-}
-
-.sticky-cta {
-  position: fixed;
-  left: 50%;
-  bottom: var(--sticky-cta-offset);
-  transform: translateX(-50%);
-  z-index: 1400;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(0.75rem, 2.5vw, 1.5rem);
-  width: min(92vw, 520px);
-  max-width: calc(100vw - 2rem);
-  padding: clamp(1rem, 2.4vw, 1.35rem) clamp(1.25rem, 3vw, 2rem);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(21, 38, 79, 0.94));
-  color: #fff;
-  border-radius: clamp(1rem, 3vw, 1.6rem);
-  box-shadow: 0 28px 55px rgba(15, 23, 42, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  min-height: var(--sticky-cta-height);
-}
-
-.sticky-cta > * {
-  margin-bottom: 0;
-}
-
-.sticky-cta p {
-  margin-bottom: 0;
-  flex: 1;
-  line-height: 1.45;
-  font-weight: 600;
-  text-wrap: balance;
-}
-
-.sticky-cta .cta-button {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-@supports (padding-bottom: calc(1rem + env(safe-area-inset-bottom))) {
-  body {
-    padding-bottom: calc(
-      var(--sticky-cta-height) + var(--sticky-cta-offset) + env(safe-area-inset-bottom)
-    );
-  }
-
-  .sticky-cta {
-    bottom: calc(var(--sticky-cta-offset) + env(safe-area-inset-bottom));
-  }
-}
-
-@media (max-width: 720px) {
-  .sticky-cta {
-    width: calc(100% - 2.25rem);
-  }
-}
-
-@media (max-width: 600px) {
-  :root {
-    --sticky-cta-height: clamp(7.5rem, 8vw + 4.75rem, 9.25rem);
-  }
-
-  .sticky-cta {
-    width: calc(100% - 1.5rem);
-    padding: 1rem 1.25rem 1.2rem;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.85rem;
-    text-align: left;
-  }
-
-  .sticky-cta .cta-button {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 420px) {
-  .sticky-cta {
-    width: calc(100% - 1rem);
-  }
 }
 
 .inline-link {
