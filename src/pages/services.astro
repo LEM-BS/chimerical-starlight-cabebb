@@ -1,6 +1,175 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/services.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>
+          Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM
+          Building Surveying Ltd
+        </title>
+        <meta name="description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+        <meta name="keywords" content="RICS Home Survey, Building Survey, Damp Report, Measured Survey, Floorplans, EPC with Floorplan, Ventilation Assessment, Property Surveyor Deeside Chester Flintshire">
+        <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/services">
+        <meta property="og:title" content="Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM Building Surveying Ltd">
+        <meta property="og:description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+        <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/services">
+        <meta property="og:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM Building Surveying Ltd">
+        <meta name="twitter:description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+        <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/services">
+        <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
+
+
+    <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://www.lembuildingsurveying.co.uk/services"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- HEADER INCLUDE --><!-- HERO --><section class="hero">
+        <div class="hero-container">
+          <h1>Our Property Surveying Services</h1>
+          <p class="hero-subtitle">
+            Independent, RICS-standard inspections &amp; clear reporting.
+          </p>
+          <a class="cta-button hero-contrast" href="/enquiry.html">Request a Quote</a>
+        </div>
+      </section><!-- TABLE OF CONTENTS --><nav class="services-toc">
+        <div class="box-container">
+          <p><strong>Jump to a service:</strong></p>
+          <ul class="toc-list">
+            <li><a href="#rics">RICS Home Surveys</a></li>
+            <li><a href="#damp">Damp &amp; Timber Reports</a></li>
+            <li><a href="#measured">Measured Surveys &amp; Floorplans</a></li>
+            <li><a href="#epc">EPCs with Floorplans</a></li>
+            <li><a href="#ventilation">Ventilation Assessments</a></li>
+            <li><a href="#additional">Additional Services</a></li>
+          </ul>
+        </div>
+      </nav><!-- SERVICES DETAIL BLOCKS --><section class="services-detail">
+        <!-- RICS Home Surveys -->
+        <article class="service-block" id="rics">
+          <div class="box-container">
+            <h2>RICS Home Surveys – Level 1, 2 &amp; 3</h2>
+            <p>
+              Choose the depth of inspection that matches your property and risk
+              profile, all in line with the latest
+              <strong>RICS Home Survey Standard</strong>.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <strong>Level 1 – Condition Report:</strong> traffic-light
+                overview for newer properties.
+              </li>
+              <li>
+                <strong>Level 2 – HomeBuyer Survey:</strong> most popular
+                pre-purchase report, including photos &amp; advice.
+              </li>
+              <li>
+                <strong>Level 3 – Building Survey:</strong> comprehensive fabric
+                &amp; structural analysis for older or altered homes.
+              </li>
+            </ul>
+            <p>
+              Still choosing between survey levels? Explore our
+              <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 guide</a>
+              for real-world scenarios and pricing tips.
+            </p>
+            <a class="inline-link" href="/rics-home-surveys.html">See full RICS survey guide →</a>
+          </div>
+        </article>
+        <!-- Damp & Timber Reports -->
+        <article class="service-block alt" id="damp">
+          <div class="box-container">
+            <h2>Damp &amp; Timber Reports</h2>
+            <p>
+              Independent diagnosis of rising damp, condensation, penetrating
+              moisture and timber decay – ideal for mortgage lenders or remedial
+              planning.
+            </p>
+            <p>
+              Deciding whether to call a contractor or commission an independent
+              report? Read our
+              <a href="/independent-damp-survey-vs-contractor.html">damp survey vs contractor comparison</a>
+              first.
+            </p>
+            <a class="inline-link" href="/damp-timber-surveys.html">Learn more about Damp &amp; Timber Surveys →</a>
+          </div>
+        </article>
+        <!-- Measured Surveys -->
+        <article class="service-block" id="measured">
+          <div class="box-container">
+            <h2>Measured Surveys &amp; Floorplans</h2>
+            <p>
+              Accurate CAD plans, elevations and sections for extensions,
+              redesigns or documentation. Suitable for homeowners, architects and
+              planning submissions.
+            </p>
+            <a class="inline-link" href="/measured-surveys.html">See Measured Survey options →</a>
+          </div>
+        </article>
+        <!-- EPCs -->
+        <article class="service-block alt" id="epc">
+          <div class="box-container">
+            <h2>EPCs with Floorplans</h2>
+            <p>
+              Domestic Energy Performance Certificates combined with high-quality
+              floorplans – perfect for sales listings and lettings compliance.
+            </p>
+            <a class="inline-link" href="/epc-with-floorplans.html">EPC service details →</a>
+          </div>
+        </article>
+        <!-- Ventilation -->
+        <article class="service-block" id="ventilation">
+          <div class="box-container">
+            <h2>Residential Ventilation Assessments</h2>
+            <p>
+              Evaluate extractor fans, trickle vents and airflow rates using
+              anemometers. Diagnose condensation and mould root causes.
+            </p>
+            <a class="inline-link" href="/ventilation-assessments.html">Ventilation Assessment guide →</a>
+          </div>
+        </article>
+        <!-- Additional Services -->
+        <article class="service-block alt" id="additional">
+          <div class="box-container">
+            <h2>Additional Services</h2>
+            <p>
+              Snagging lists, landlord inspections, planned maintenance schedules,
+              commercial surveys &amp; fire safety assessments available on
+              request.
+            </p>
+            <a class="inline-link" href="/additional-services.html">Full list of additional services →</a>
+          </div>
+        </article>
+      </section><!-- CTA --><section class="services-cta">
+        <div class="box-container">
+          <h2>Ready to Book or Need Advice?</h2>
+          <p>
+            Click below to request your tailored quote – most enquiries answered
+            within the hour.
+          </p>
+          <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+        </div>
+      </section><!-- STICKY CTA --><div class="sticky-cta">
+        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+      </div><!-- FOOTER INCLUDE --><!-- Helper scripts -->
+</BaseLayout>

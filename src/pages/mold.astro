@@ -1,6 +1,102 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/mold.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Building Surveyor in Mold | RICS Home Surveys | LEM Building Surveying Ltd</title>
+    <meta content="Independent RICS surveyor covering Mold. Level 1, Level 2 and Level 3 Home Surveys, Damp Reports and expert advice with quick turnaround." name="description">
+    <link href="https://www.lembuildingsurveying.co.uk/mold" rel="canonical">
+    <meta content="Building Surveyor in Mold | RICS Home Surveys | LEM Building Surveying Ltd" property="og:title">
+    <meta content="Independent RICS surveyor covering Mold. Level 1, Level 2 and Level 3 Home Surveys, Damp Reports and expert advice with quick turnaround." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/mold" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Building Surveyor in Mold | RICS Home Surveys | LEM Building Surveying Ltd" name="twitter:title">
+    <meta content="Independent RICS surveyor covering Mold. Level 1, Level 2 and Level 3 Home Surveys, Damp Reports and expert advice with quick turnaround." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/mold" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- LocalBusiness Schema for Mold -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk/mold.html",
+        "telephone": "+447378732037",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mold",
+          "addressRegion": "Flintshire",
+          "postalCode": "CH7",
+          "addressCountry": "GB"
+        },
+        "areaServed": "Mold, Flintshire",
+        "description": "Qualified building surveyor offering Level 1, 2 and 3 RICS Home Surveys and Damp Reports across Mold.",
+        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+      }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Areas We Cover",
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Mold",
+              "item": "https://www.lembuildingsurveying.co.uk/mold"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <div class="hero-container">
+  <h1>Home &amp; Building Surveys in Mold</h1>
+  <p>RICS Level 1, 2 and 3 Home Surveys, Damp Reports and clear advice — direct from a qualified local surveyor in Mold.</p>
+  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  </div>
+  </section><!-- MAIN CONTENT --><section class="service-detail">
+  <div class="box-container">
+  <h2>Your Independent Mold Surveyor</h2>
+  <p>
+          Based in Connah’s Quay, I regularly serve Mold and the CH7 area. Whether you're buying a period cottage, a 1930s semi, or a modern new-build, I offer thorough inspections and jargon-free reports — delivered quickly.
+        </p>
+  <h2>Surveying Services Available in Mold</h2>
+  <ul>
+  <li><strong>RICS Level 1 Survey:</strong> A condition check for newer or well-maintained homes — fast and budget-friendly.</li>
+  <li><strong>RICS Level 2 Survey:</strong> Ideal for most conventional homes. Includes repair advice, risks and maintenance tips.</li>
+  <li><strong>RICS Level 3 Survey:</strong> Best for older, altered or extended properties. Detailed structural insights and repair options.</li>
+  <li><strong>Damp &amp; Timber Reports:</strong> Diagnosis of damp, mould, or timber decay — unbiased and clear recommendations.</li>
+  <li><strong>Measured Surveys &amp; Floorplans:</strong> Scaled drawings for reconfiguring layouts, planning, or documentation.</li>
+  <li><strong>EPCs with Floorplans:</strong> Energy certificate plus digital plan for letting or property marketing.</li>
+  </ul>
+  <p><a href="/services.html">View all services offered →</a></p>
+  <h2>Why Choose LEM for Mold Surveys?</h2>
+  <ul>
+  <li><strong>Local knowledge:</strong> Familiar with housing styles and common issues across Mold, Mynydd Isa, Sychdyn and surrounding villages.</li>
+  <li><strong>Qualified &amp; Independent:</strong> AssocRICS accredited — no sales targets or upselling, just honest reporting.</li>
+  <li><strong>Fast &amp; clear:</strong> Reports typically delivered within 3–5 working days, often faster.</li>
+  <li><strong>Direct contact:</strong> You’ll speak directly with me — not a call centre.</li>
+  </ul>
+  <h2>Get Your Survey Booked Today</h2>
+  <p>If you’re buying or assessing a property in Mold, I can help. Send your details and I’ll get back to you promptly.</p>
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  </div>
+  </section><!-- FOOTER --><!-- Header/Footer JS Load -->
+</BaseLayout>
