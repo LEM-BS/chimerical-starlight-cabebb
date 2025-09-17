@@ -1,6 +1,156 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/epc-with-floorplans.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>EPCs with Floorplans | Energy Certificates &amp; Property Plans | Flintshire, Cheshire &amp; North West</title>
+    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." name="description">
+    <meta content="EPC, Energy Performance Certificate, Floorplans, Property Marketing, Elmhurst Energy Assessor, Deeside EPC, Cheshire Floorplans, Landlord Compliance, EPC with Floorplan Flintshire Chester Wrexham" name="keywords">
+    <link href="https://www.lembuildingsurveying.co.uk/epc-with-floorplans" rel="canonical">
+    <meta content="EPCs with Floorplans | Energy Certificates &amp; Property Plans | Flintshire, Cheshire &amp; North West" property="og:title">
+    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/epc-with-floorplans" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="EPCs with Floorplans | Energy Certificates &amp; Property Plans | Flintshire, Cheshire &amp; North West" name="twitter:title">
+    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/epc-with-floorplans" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://www.lembuildingsurveying.co.uk/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "EPCs with Floorplans",
+              "item": "https://www.lembuildingsurveying.co.uk/epc-with-floorplans"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <div class="hero-container">
+  <h1>EPCs with Floorplans</h1>
+  <p>Accredited energy assessments and floorplans tailored for compliance and marketing—ideal for sales, lettings or retrofits.</p>
+  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  </div>
+  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
+  <div class="box-container">
+  <h2>Energy Performance Certificates &amp; Floorplans</h2>
+  <p>We provide fast, professional EPCs and floorplan packages for landlords, sellers, estate agents, and homeowners across the region. All assessments are Elmhurst-accredited and lodged to the central register.</p>
+  <div class="survey-grid">
+  <div class="survey-card">
+  <h3>Included Services</h3>
+  <ul>
+  <li><strong>EPCs:</strong> Domestic Energy Assessments performed to legal standards, with official lodgement.</li>
+  <li><strong>2D Floorplans:</strong> Clear, scaled property layouts including room labels and sizes.</li>
+  <li><strong>Combined Visit Option:</strong> Book both services together to save time and money.</li>
+  </ul>
+  </div>
+  <div class="survey-card">
+  <h3>Ideal For:</h3>
+  <ul>
+  <li>Sellers and landlords requiring EPC compliance</li>
+  <li>Estate agents preparing marketing materials</li>
+  <li>Homeowners planning improvements or upgrades</li>
+  </ul>
+  </div>
+  <div class="survey-card">
+  <h3>Pricing Guide</h3>
+  <ul>
+  <li><strong>EPC Only:</strong> £70–£120</li>
+  <li><strong>2D Floorplan Only:</strong> £75–£150</li>
+  <li><strong>Combined EPC &amp; Floorplan:</strong> £120–£200</li>
+  <li><strong>Urgent / Same-Day Option:</strong> +£30–£50 (subject to availability)</li>
+  <li>Custom quotes available for large or complex properties</li>
+  </ul>
+  </div>
+  <div class="survey-card">
+  <h3>Why Choose LEM Building Surveying?</h3>
+  <ul>
+  <li><strong>Elmhurst Accredited:</strong> Fully qualified and registered assessor</li>
+  <li><strong>Fast, Reliable Service:</strong> Flexible appointments with next-day turnaround available</li>
+  <li><strong>Expert Local Knowledge:</strong> Serving Flintshire, Chester, Wrexham, Cheshire &amp; beyond</li>
+  </ul>
+  </div>
+  <!-- SERVICE AREA DROPDOWN -->
+  <section class="home-areas improved-areas">
+  <div class="box-container">
+  <!-- 1. Header column -->
+  <div class="areas-header">
+  <h2>Areas We Cover</h2>
+  <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
+  </div>
+  <!-- 2. Content column -->
+  <div class="areas-content">
+  <!-- a) Styled select card -->
+  <div class="dropdown-card">
+  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+  <div class="custom-select">
+  <select id="areaDropdown" onchange="handleAreaSelect(this)">
+  <option value="">Select an area…</option>
+  <option value="/connahs-quay.html">Connah’s Quay</option>
+  <option value="/buckley.html">Buckley</option>
+  <option value="/hawarden.html">Hawarden</option>
+  <option value="/ewloe.html">Ewloe</option>
+  <option value="/deeside.html">Deeside</option>
+  <option value="/broughton.html">Broughton</option>
+  <option value="/flintshire.html">Flintshire</option>
+  <option value="/chester.html">Chester</option>
+  <option value="/cheshire.html">Cheshire</option>
+  <option value="/northop.html">Northop</option>
+  <option value="/northop-hall.html">Northop Hall</option>
+  <option value="/mold.html">Mold</option>
+  <option value="/north-west-of-england.html">North West of England</option>
+  </select>
+  <span class="chevron">⌄</span>
+  </div>
+  </div>
+  <!-- 3. Footer note spans both columns -->
+  <p class="note"><strong>…and nearby towns across the region.</strong></p>
+  </div>
+  </div></section>
+  <script is:inline>
+    /** @param {HTMLSelectElement} select */
+    function handleAreaSelect(select) {
+      if (select.value) window.location.href = select.value;
+    }
+  </script>
+  <!-- FINAL CTA -->
+  <section class="home-get-started">
+  <div class="box-container">
+  <h2>Get a Quote or Ask a Question</h2>
+  <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
+  <div class="center-cta">
+  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+  </div>
+  </div>
+  </section>
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  </div>
+  <!-- Footer -->
+
+
+  </div></div></section>
+</BaseLayout>

@@ -1,6 +1,298 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/local-surveys.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const areas = [
+  {
+    id: 'flint',
+    navLabel: 'Flint',
+    title: 'Flint Home & Building Surveys',
+    paragraphs: [
+      'We offer professional home, damp, and building surveys in Flint. Our detailed assessments ensure that every property is thoroughly evaluated. Serving Flint and surrounding areas in Flintshire and Cheshire.',
+    ],
+  },
+  {
+    id: 'buckley',
+    navLabel: 'Buckley',
+    title: 'Buckley Home & Building Surveys',
+    paragraphs: [
+      'Expert surveys in Buckley covering home surveys, damp surveys, and building surveys. Our comprehensive reports help you make informed decisions about your property.',
+    ],
+  },
+  {
+    id: 'mold',
+    navLabel: 'Mold',
+    title: 'Mold Home & Building Surveys',
+    paragraphs: [
+      'Our services in Mold include detailed home surveys, damp assessments, and building surveys to ensure your property is safe and well-maintained.',
+    ],
+  },
+  {
+    id: 'connahs-quay',
+    navLabel: 'Connahs Quay',
+    title: 'Connahs Quay Home & Building Surveys',
+    paragraphs: [
+      'We specialise in home, damp, and building surveys in Connahs Quay. Our tailored services help ensure that every property is accurately assessed.',
+    ],
+  },
+  {
+    id: 'broughton',
+    navLabel: 'Broughton',
+    title: 'Broughton Home & Building Surveys',
+    paragraphs: [
+      'We deliver comprehensive home, damp, and building surveys in Broughton. Our expert team provides thorough evaluations to give you peace of mind.',
+    ],
+  },
+  {
+    id: 'saltney',
+    navLabel: 'Saltney',
+    title: 'Saltney Home & Building Surveys',
+    paragraphs: [
+      'Our Saltney services include professional home, damp, and building surveys. We ensure accurate property evaluations with detailed inspections.',
+    ],
+  },
+  {
+    id: 'hawarden',
+    navLabel: 'Hawarden',
+    title: 'Hawarden Home & Building Surveys',
+    paragraphs: [
+      'Providing expert surveys in Hawarden, including home, damp, and building assessments. Our comprehensive inspections ensure your property’s safety and value.',
+    ],
+  },
+  {
+    id: 'ewloe',
+    navLabel: 'Ewloe',
+    title: 'Ewloe Home & Building Surveys',
+    paragraphs: [
+      'We offer comprehensive surveys in Ewloe, including detailed home, damp, and building surveys to ensure your property is thoroughly assessed.',
+    ],
+  },
+  {
+    id: 'northop-hall',
+    navLabel: 'Northop Hall',
+    title: 'Northop Hall Home & Building Surveys',
+    paragraphs: [
+      'Our Northop Hall services include expert home, damp, and building surveys. We provide comprehensive assessments to support your property decisions.',
+    ],
+  },
+  {
+    id: 'northop',
+    navLabel: 'Northop',
+    title: 'Northop Home & Building Surveys',
+    paragraphs: [
+      'We deliver expert home, damp, and building surveys in Northop, ensuring thorough evaluations that help you manage your property effectively.',
+    ],
+  },
+  {
+    id: 'oakenholt',
+    navLabel: 'Oakenholt',
+    title: 'Oakenholt Home & Building Surveys',
+    paragraphs: [
+      'Expert surveys in Oakenholt include detailed home, damp, and building assessments to ensure your property is comprehensively evaluated.',
+    ],
+  },
+  {
+    id: 'shotton',
+    navLabel: 'Shotton',
+    title: 'Shotton Home & Building Surveys',
+    paragraphs: [
+      'Our Shotton services include expert home, damp, and building surveys designed to provide a complete evaluation of your property.',
+    ],
+  },
+  {
+    id: 'queensferry',
+    navLabel: 'Queensferry',
+    title: 'Queensferry Home & Building Surveys',
+    paragraphs: [
+      'Expert home, damp, and building surveys in Queensferry ensure your property is thoroughly assessed and maintained. We serve Queensferry and surrounding areas.',
+    ],
+  },
+  {
+    id: 'tarporley',
+    navLabel: 'Tarporley',
+    title: 'Tarporley Home & Building Surveys',
+    paragraphs: [
+      'Our Tarporley services include comprehensive home, damp, and building surveys to help you make informed property decisions.',
+    ],
+  },
+  {
+    id: 'waverton',
+    navLabel: 'Waverton',
+    title: 'Waverton Home & Building Surveys',
+    paragraphs: [
+      'We provide expert surveys in Waverton, including home, damp, and building assessments designed to ensure your property is safe and well-maintained.',
+    ],
+  },
+  {
+    id: 'hoole',
+    navLabel: 'Hoole',
+    title: 'Hoole Home & Building Surveys',
+    paragraphs: [
+      'Expert home, damp, and building surveys in Hoole are designed to provide you with accurate property evaluations and ensure peace of mind.',
+    ],
+  },
+  {
+    id: 'boughton',
+    navLabel: 'Boughton',
+    title: 'Boughton Home & Building Surveys',
+    paragraphs: [
+      'We offer comprehensive home, damp, and building surveys in Boughton, providing detailed assessments to ensure your property is evaluated accurately.',
+    ],
+  },
+  {
+    id: 'vicars-cross',
+    navLabel: 'Vicars Cross',
+    title: 'Vicars Cross Home & Building Surveys',
+    paragraphs: [
+      'Our services in Vicars Cross include expert home, damp, and building surveys designed to maintain your property’s optimal condition.',
+    ],
+  },
+];
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>
+      Local Home &amp; Building Surveys | LEM Building Surveying Ltd
+    </title>
+    <meta
+      name="description"
+      content="LEM Building Surveying Ltd offers expert home, damp, and building surveys across Flintshire and Cheshire, including Flint, Buckley, Mold, Connahs Quay, Hawarden, Tarporley and more."
+    />
+    <meta
+      name="keywords"
+      content="home surveys, damp surveys, building surveys, Flint, Buckley, Mold, Connahs Quay, Broughton, Saltney, Hawarden, Ewloe, Northop Hall, Northop, Oakenholt, Shotton, Queensferry, Tarporley, Waverton, Hoole, Boughton, Vicars Cross, property survey, LEM Building Surveying"
+    />
+    <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/local-surveys" />
+    <meta
+      property="og:title"
+      content="Local Home &amp; Building Surveys | LEM Building Surveying Ltd"
+    />
+    <meta
+      property="og:description"
+      content="LEM Building Surveying Ltd offers expert home, damp, and building surveys across Flintshire and Cheshire, including Flint, Buckley, Mold, Connahs Quay, Hawarden, Tarporley and more."
+    />
+    <meta
+      property="og:url"
+      content="https://www.lembuildingsurveying.co.uk/local-surveys"
+    />
+    <meta
+      property="og:image"
+      content="https://www.lembuildingsurveying.co.uk/logo.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Local Home &amp; Building Surveys | LEM Building Surveying Ltd"
+    />
+    <meta
+      name="twitter:description"
+      content="LEM Building Surveying Ltd offers expert home, damp, and building surveys across Flintshire and Cheshire, including Flint, Buckley, Mold, Connahs Quay, Hawarden, Tarporley and more."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.lembuildingsurveying.co.uk/local-surveys"
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.lembuildingsurveying.co.uk/logo.png"
+    />
+    <meta name="robots" content="index, follow" />
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "image": "https://www.lembuildingsurveying.co.uk/logo.png",
+        "telephone": "07378 732037",
+        "email": "enquiries@lembuildingsurveying.co.uk",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Your Street Address",
+          "addressLocality": "Various",
+          "addressRegion": "Flintshire & Cheshire",
+          "postalCode": "YOUR_POSTAL_CODE",
+          "addressCountry": "UK"
+        },
+        "url": "https://www.lembuildingsurveying.co.uk/local-surveys.html",
+        "areaServed": [
+          "Flint",
+          "Buckley",
+          "Mold",
+          "Connahs Quay",
+          "Broughton",
+          "Saltney",
+          "Hawarden",
+          "Ewloe",
+          "Northop Hall",
+          "Northop",
+          "Oakenholt",
+          "Shotton",
+          "Queensferry",
+          "Tarporley",
+          "Waverton",
+          "Hoole",
+          "Boughton",
+          "Vicars Cross"
+        ],
+        "description": "LEM Building Surveying Ltd offers expert home, damp, and building surveys across multiple locations in Flintshire and Cheshire."
+      }
+    </script>
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.lembuildingsurveying.co.uk/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Areas We Cover",
+            "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+          }
+        ]
+      }
+    </script>
+  </Fragment>
+
+  <section class="hero hero-plain">
+    <div class="hero-container">
+      <h1>Local Home &amp; Building Surveys</h1>
+      <p>Expert property assessments by LEM Building Surveying Ltd</p>
+    </div>
+  </section>
+
+  <section class="area-navigation">
+    <div class="box-container">
+      <p><strong>Jump to a location:</strong></p>
+      <nav class="area-nav">
+        {areas.map((area) => (
+          <a href={`#${area.id}`}>{area.navLabel}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  {areas.map((area) => (
+    <section id={area.id}>
+      <div class="box-container">
+        <span class="anchor" id={`${area.id}-anchor`}></span>
+        <h2>{area.title}</h2>
+        {area.paragraphs.map((text) => (
+          <p>{text}</p>
+        ))}
+        <p>
+          <strong>Contact:</strong> Call <a href="tel:07378732037">07378 732037</a>
+          or email
+          <a href="mailto:enquiries@lembuildingsurveying.co.uk">
+            enquiries@lembuildingsurveying.co.uk
+          </a>
+        </p>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

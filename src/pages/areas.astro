@@ -1,6 +1,16 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/areas.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Areas - LEM Building Surveying Ltd</title>
+  </Fragment>
+
+  <main id="main">
+      <h1>Service Areas</h1>
+      <p>Proudly serving Connah’s Quay, Deeside, Flintshire, and surrounding regions.</p>
+    </main><footer>
+      <p>© 2025 LEM Building Surveying Ltd</p>
+    </footer>
+</BaseLayout>
