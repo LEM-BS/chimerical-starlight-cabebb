@@ -1,8 +1,12 @@
 function normalizePathname(pathname) {
   if (!pathname) return '';
   let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  normalized = normalized.replace(/\/index\.html$/, '/');
-  normalized = normalized.replace(/\.html$/, '');
+  if (normalized.endsWith('/index.html')) {
+    normalized = normalized.slice(0, -'/index.html'.length) || '/';
+  }
+  if (normalized.endsWith('.html')) {
+    normalized = normalized.slice(0, -'.html'.length);
+  }
   if (normalized.length > 1 && normalized.endsWith('/')) {
     normalized = normalized.slice(0, -1);
   }
@@ -39,6 +43,23 @@ export function setupNav() {
   }
 
   if (typeof window !== 'undefined') {
+    if (navToggle && navLinks) {
+      const syncNavForViewport = () => {
+        if (window.innerWidth >= 768) {
+          if (navLinks.classList.contains('nav-open')) {
+            navLinks.classList.remove('nav-open');
+          }
+          if (navToggle.classList.contains('open')) {
+            navToggle.classList.remove('open');
+          }
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      };
+
+      syncNavForViewport();
+      window.addEventListener('resize', syncNavForViewport);
+    }
+
     const currentPath = normalizePathname(
       new URL(window.location.pathname, window.location.origin).pathname,
     );
