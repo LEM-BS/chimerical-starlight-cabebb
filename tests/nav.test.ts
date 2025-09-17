@@ -43,6 +43,22 @@ test('loadTrustIndex injects script once', async () => {
   expect(scripts).toHaveLength(1);
 });
 
+test('highlights index.html link when current path is root', async () => {
+  document.body.innerHTML = `
+    <nav class="main-nav">
+      <a href="/index.html" class="home-link">Home</a>
+    </nav>
+  `;
+  window.history.pushState({}, '', '/');
+
+  const navModule = await import(NAV_MODULE_PATH);
+  const link = document.querySelector<HTMLAnchorElement>('.home-link');
+  expect(link).not.toBeNull();
+  navModule.setupNav();
+
+  expect(link?.getAttribute('aria-current')).toBe('page');
+});
+
 test('highlights .html link when current path is extensionless', async () => {
   document.body.innerHTML = `
     <button class="nav-toggle" aria-expanded="false"></button>
