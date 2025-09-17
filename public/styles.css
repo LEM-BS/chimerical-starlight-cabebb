@@ -398,6 +398,27 @@ header {
   color: #fff;
 }
 
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links,
+  .nav-links.nav-open {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    min-width: auto;
+    backdrop-filter: none;
+  }
+}
+
 /*───────────────────────────────────────────────────────
   5. FOOTER STYLES
   Site footer and related components
