@@ -2,6 +2,7 @@ node_modules
 .dist
 .astro
 /dist
+tests/__screenshots__/*.png
 
 # Logs
 npm-debug.log*

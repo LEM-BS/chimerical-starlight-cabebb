@@ -7,10 +7,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:mobile": "playwright test tests/mobile.spec.ts"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@playwright/test": "^1.55.0",
     "@types/node": "^20.14.10",
     "astro": "^4.13.1",
     "jsdom": "^24.0.0",
