@@ -5,70 +5,105 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
   <Fragment slot="head">
     <title>Contact LEM Building Surveying Ltd | Phone &amp; Email</title>
-
-        <meta name="description" content="Call or email LEM Building Surveying Ltd for independent property survey advice across Deeside, Chester &amp; the North West.">
-        <meta name="keywords" content="building surveyor contact, surveyor phone Deeside, property survey email Chester">
-        <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/contact">
-        <meta property="og:title" content="Contact LEM Building Surveying Ltd | Phone &amp; Email">
-        <meta property="og:description" content="">
-        <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/contact">
-        <meta property="og:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Contact LEM Building Surveying Ltd | Phone &amp; Email">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/contact">
-        <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
-
-
-
-
-        <!-- Google tag (gtag.js) -->
+    <meta
+      name="description"
+      content="Contact LEM Building Surveying Ltd for independent property survey advice across Deeside, Chester, Flintshire and Cheshire."
+    />
+    <meta
+      name="keywords"
+      content="building surveyor contact, surveyor phone Deeside, property survey email Chester"
+    />
+    <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/contact" />
+    <meta
+      property="og:title"
+      content="Contact LEM Building Surveying Ltd | Phone &amp; Email"
+    />
+    <meta
+      property="og:description"
+      content="Speak directly with Liam at LEM Building Surveying Ltd for quotes, availability and advice on RICS surveys, damp reports and EPCs."
+    />
+    <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/contact" />
+    <meta
+      property="og:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Contact LEM Building Surveying Ltd | Phone &amp; Email"
+    />
+    <meta
+      name="twitter:description"
+      content="Call or email LEM Building Surveying for survey quotes and guidance in Flintshire, Chester and neighbouring areas."
+    />
+    <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/contact" />
+    <meta
+      name="twitter:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
   </Fragment>
 
-  <!-- Shared header --><!-- HERO --><section class="hero">
-        <div class="hero-container">
-          <h1>Get in Touch</h1>
-          <p class="hero-subtitle">
-            Fast answers from a local, independent surveyor
-          </p>
-        </div>
-      </section><!-- CONTACT CARD --><main id="main" class="contact-card">
-        <div class="box-container">
-          <p>
-            <strong>Phone:</strong>
-            <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
-          </p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:enquiries@lembuildingsurveying.co.uk">
-              enquiries@lembuildingsurveying.co.uk</a>
-          </p>
-          <p>
-            If you need a tailored quote, please use our
-            <a href="/enquiry.html" class="inline-link">quick enquiry form</a> for
-            the fastest response.
-          </p>
-          <p class="fine-print">Office hours: Mon–Fri 8:30 am – 5:30 pm</p>
-        </div>
-      </main><!-- CTA --><section class="contact-cta">
-        <div class="box-container">
-          <h2>Ready to arrange a survey?</h2>
-          <p>
-            Click below to send your property details—we’ll respond within the
-            hour.
-          </p>
-          <a href="/enquiry.html" class="cta-button">Request a Quote</a>
-        </div>
-      </section><!-- Sticky CTA --><div class="sticky-cta">
-        <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-      </div><!-- Shared footer --><script is:inline>
-        document.addEventListener("DOMContentLoaded", () => {
-          /* Track mailto clicks (optional) */
-          document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-            link.addEventListener("click", () =>
-              gtag("event", "mailto_click", { email: link.href }),
-            );
-          });
-        });
-      </script>
+  <main>
+    <section class="hero hero-plain">
+      <div class="hero-container">
+        <h1>Get in Touch</h1>
+        <p class="hero-subtitle">
+          Fast answers from a local, independent surveyor
+        </p>
+      </div>
+    </section>
+
+    <section class="box-container contact-card">
+      <p>
+        <strong>Phone:</strong>
+        <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:enquiries@lembuildingsurveying.co.uk">
+          enquiries@lembuildingsurveying.co.uk
+        </a>
+      </p>
+      <p>
+        Prefer to share full property details? Use the
+        <a href="/enquiry.html" class="inline-link">survey enquiry form</a> for a quick,
+        detailed response.
+      </p>
+      <p class="fine-print">Office hours: Mon–Fri 08:30 – 17:30 (appointments by request).</p>
+    </section>
+
+    <section class="box-container">
+      <h2>How We Can Help</h2>
+      <p>
+        Whether you are comparing survey levels, need a damp investigation or want to plan a
+        measured survey, Liam will guide you through the best option for your property. We can
+        also provide sample reports, outline turnaround times and explain what access is needed
+        on the day of inspection.
+      </p>
+      <ul>
+        <li>Advice on choosing between Level 1, Level 2 or Level 3 surveys.</li>
+        <li>Availability checks for urgent purchases and tenancy deadlines.</li>
+        <li>Support for landlords addressing mould, damp or ventilation complaints.</li>
+        <li>Guidance on preparing documents for lenders, insurers or solicitors.</li>
+      </ul>
+    </section>
+
+    <section class="box-container">
+      <h2>Response Times</h2>
+      <p>
+        We aim to reply to all messages within one working hour. If you contact us outside of
+        office hours we will respond as soon as possible the next morning. For urgent
+        enquiries, please call or text so we can prioritise your booking.
+      </p>
+    </section>
+
+    <section class="contact-cta box-container">
+      <h2>Ready to Arrange a Survey?</h2>
+      <p>
+        Provide your property address, preferred survey type and any key concerns. We will
+        confirm fees, explain the process and secure the earliest available appointment.
+      </p>
+      <a href="/enquiry.html" class="cta-button">Request a Quote</a>
+    </section>
+  </main>
 </BaseLayout>

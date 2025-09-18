@@ -5,19 +5,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
   <Fragment slot="head">
     <title>Testimonials | LEM Building Surveying Ltd</title>
-        <meta name="description" content="What our clients say about LEM Building Surveying Ltd.">
+    <meta
+      name="description"
+      content="Read reviews from homeowners and landlords who have used LEM Building Surveying Ltd for RICS surveys, damp reports and property assessments."
+    />
   </Fragment>
 
-  <main>
-        <section class="testimonial-section">
-          <h1>Client Testimonials</h1>
-    <div class="ti-widget ti-goog"></div>
-    <script
-      src="https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7"
-      async
-      defer
-      is:inline
-    ></script>
-        </section>
-      </main>
+  <main class="box-container">
+    <section class="testimonial-section">
+      <h1>Client Testimonials</h1>
+      <p>
+        From first-time buyers to portfolio landlords, our clients value clear reporting,
+        honest advice and quick turnaround times. The live widget below pulls in our latest
+        Google and direct reviews. A few highlights are included for easy reference.
+      </p>
+
+      <article class="testimonial-highlight">
+        <h2>What Clients Say</h2>
+        <p>
+          “Liam explained everything in plain English and spotted issues we never would have
+          seen ourselves. The report arrived ahead of schedule and helped us negotiate money
+          off the purchase price.” – Residential buyer, Chester
+        </p>
+        <p>
+          “We needed an urgent damp assessment for a rental property. LEM Building Surveying
+          provided a thorough inspection and a practical action plan we could share with our
+          contractor.” – Landlord, Flintshire
+        </p>
+        <p>
+          “Measured survey drawings were delivered quickly and accurately, allowing our
+          architect to progress planning designs without delay.” – Homeowner, Tarvin
+        </p>
+      </article>
+
+      <p>
+        We encourage every client to share feedback to ensure our service keeps improving.
+        You can read more reviews or add your own through the widget below.
+      </p>
+
+      <div class="ti-widget ti-goog"></div>
+      <script
+        src="https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7"
+        async
+        defer
+        is:inline
+      ></script>
+
+      <div class="cta-section">
+        <a class="cta-button" href="/enquiry.html">Request a Survey Quote</a>
+        <a class="secondary-button" href="/contact.html">Share Your Experience</a>
+      </div>
+    </section>
+  </main>
 </BaseLayout>

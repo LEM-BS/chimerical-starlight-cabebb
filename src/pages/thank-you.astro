@@ -5,46 +5,84 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
   <Fragment slot="head">
     <title>Thank You | LEM Building Surveying Ltd</title>
-        <meta content="Thank you for your enquiry. We will get back to you soon." name="description">
-        <link href="https://www.lembuildingsurveying.co.uk/thank-you" rel="canonical">
-        <meta content="Thank You | LEM Building Surveying Ltd" property="og:title">
-        <meta content="Thank you for your enquiry. We will get back to you soon." property="og:description">
-        <meta content="https://www.lembuildingsurveying.co.uk/thank-you" property="og:url">
-        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-        <meta content="summary_large_image" name="twitter:card">
-        <meta content="Thank You | LEM Building Surveying Ltd" name="twitter:title">
-        <meta content="Thank you for your enquiry. We will get back to you soon." name="twitter:description">
-        <meta content="https://www.lembuildingsurveying.co.uk/thank-you" name="twitter:url">
-        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-        <!-- Prevent this page from being indexed -->
-        <meta content="noindex, nofollow" name="robots">
-
-        <!-- Global site tag (gtag.js) - Google Analytics/Ads -->
-
-
-        <!-- Google tag (gtag.js) -->
+    <meta
+      name="description"
+      content="Thank you for contacting LEM Building Surveying Ltd. Learn what happens next and explore helpful survey resources while you wait for our reply."
+    />
+    <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/thank-you" />
+    <meta property="og:title" content="Thank You | LEM Building Surveying Ltd" />
+    <meta
+      property="og:description"
+      content="We have received your enquiry. Discover our survey guides, comparison tools and testimonials while we prepare your response."
+    />
+    <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/thank-you" />
+    <meta
+      property="og:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thank You | LEM Building Surveying Ltd" />
+    <meta
+      name="twitter:description"
+      content="Thanks for getting in touch with LEM Building Surveying. See what to expect next and read useful guidance while we confirm your quote."
+    />
+    <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/thank-you" />
+    <meta
+      name="twitter:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <meta name="robots" content="noindex, nofollow" />
   </Fragment>
 
-  <!-- Shared Header --><!-- THANK YOU SECTION --><section class="thank-you">
-        <div class="box-container centered-box">
-          <h2>Thank You!</h2>
-          <p>
-            Your enquiry has been successfully submitted. We will get back to you
-            shortly.
-          </p>
-          <div class="button-group">
-            <a href="/rics-home-surveys.html" class="cta-button">See Survey Levels</a>
-            <a href="/index.html" class="secondary-button">Return Home</a>
-          </div>
-        </div>
-      </section><!-- FOOTER --><footer>
-        <p>© 2025 LEM Building Surveying Ltd. All rights reserved.</p>
-      </footer><!-- Google Ads conversion event (replace IDs) --><script is:inline>
-        /* If the global gtag.js is already loaded site‑wide you only need this event call */
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk" });
-      </script><!-- JavaScript to inject header.html -->
+  <main class="box-container centered-box">
+    <h1>Thank You</h1>
+    <p>
+      Your details have been received and we will be in touch shortly—usually within one
+      working hour. In the meantime, the resources below explain what to expect from your
+      survey and how to prepare the property for inspection.
+    </p>
+
+    <h2>What Happens Next?</h2>
+    <ul>
+      <li>We review the property details and confirm availability for the requested survey.</li>
+      <li>
+        A tailored quote is emailed to you along with the timescales for inspection and
+        report delivery.
+      </li>
+      <li>
+        If we need clarification, we will contact you by your preferred method to gather any
+        extra information before booking.
+      </li>
+    </ul>
+
+    <h2>Helpful Resources While You Wait</h2>
+    <ul>
+      <li>
+        Compare survey levels to double-check you have chosen the right option:
+        <a href="/comparison.html">RICS Survey Comparison Guide</a>.
+      </li>
+      <li>
+        Find local experience near you by exploring the
+        <a href="/local-surveys.html">Areas We Cover directory</a>.
+      </li>
+      <li>
+        Learn how to interpret your report with our
+        <a href="/understanding-your-survey-report.html">survey results guide</a>.
+      </li>
+      <li>
+        See feedback from recent clients on the
+        <a href="/testimonials.html">testimonials page</a>.
+      </li>
+    </ul>
+
+    <div class="cta-section">
+      <a class="cta-button" href="/rics-home-surveys.html">Explore Survey Types</a>
+      <a class="secondary-button" href="/index.html">Return to the Homepage</a>
+    </div>
+
+    <p class="fine-print">
+      If your enquiry is urgent, please call <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
+      and we will prioritise your request.
+    </p>
+  </main>
 </BaseLayout>

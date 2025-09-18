@@ -1338,6 +1338,72 @@ details[open] summary::after {
   justify-items: center;
 }
 
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.area-card,
+.area-card > a {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--divider-grey);
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.area-card > a {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.area-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.area-description {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.area-link {
+  margin-top: auto;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+}
+
+.area-card:hover .area-link,
+.area-card > a:hover .area-link {
+  color: var(--hover-blue);
+}
+
+.testimonial-highlight {
+  background: var(--soft-bg);
+  border-radius: var(--border-radius);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+  border: 1px solid var(--divider-grey);
+  box-shadow: var(--shadow-soft);
+}
+
+.testimonial-highlight p {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
 .secondary-button {
   display: inline-flex;
   align-items: center;

@@ -1,858 +1,185 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serviceAreas } from '../data/serviceAreas';
+
+const areas = [...serviceAreas].sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title>
-    <meta content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West." name="description">
-    <meta content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/measured-surveys" rel="canonical">
-    <meta content="Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire" property="og:title">
-    <meta content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/measured-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire" name="twitter:title">
-    <meta content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/measured-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.lembuildingsurveying.co.uk/services"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Measured Surveys & Floorplans",
-              "item": "https://www.lembuildingsurveying.co.uk/measured-surveys"
-            }
-          ]
-        }
-      </script>
+    <title>Measured Surveys &amp; Floorplans | LEM Building Surveying</title>
+    <meta
+      name="description"
+      content="Accurate measured building surveys, floorplans and elevations for renovations, planning and documentation across Flintshire, Chester and Cheshire."
+    />
+    <link
+      rel="canonical"
+      href="https://www.lembuildingsurveying.co.uk/measured-surveys"
+    />
+    <meta
+      property="og:title"
+      content="Measured Surveys &amp; Floorplans | LEM Building Surveying"
+    />
+    <meta
+      property="og:description"
+      content="Book precise measured surveys, 2D floorplans and elevation drawings for homes across Flintshire, Chester, Cheshire and the wider North West."
+    />
+    <meta
+      property="og:url"
+      content="https://www.lembuildingsurveying.co.uk/measured-surveys"
+    />
+    <meta
+      property="og:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Measured Surveys &amp; Floorplans | LEM Building Surveying"
+    />
+    <meta
+      name="twitter:description"
+      content="Independent surveyor providing floorplans, elevations and measured building surveys for renovation and compliance projects."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.lembuildingsurveying.co.uk/measured-surveys"
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+    />
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.lembuildingsurveying.co.uk/'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Services',
+            item: 'https://www.lembuildingsurveying.co.uk/services'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Measured Surveys & Floorplans',
+            item: 'https://www.lembuildingsurveying.co.uk/measured-surveys'
+          }
+        ]
+      })}
+    </script>
   </Fragment>
 
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Measured Building Surveys &amp; Floorplans</h1>
-  <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Our Measured Survey Services</h2>
-  <ul>
-  <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-  <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-  <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-  </ul>
-  <h2>Who Benefits from Our Surveys</h2>
-  <ul>
-  <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-  <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-  <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-  </ul>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-  <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-  <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-  </ul>
-  <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-  <div class="box-container">
-  <!-- 1. Header column -->
-  <div class="areas-header">
-  <h2>Areas We Cover</h2>
-  <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-  </div>
-  <!-- 2. Content column -->
-  <div class="areas-content">
-  <!-- a) Styled select card -->
-  <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
-  <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
-  <option value="">Select an area…</option>
-  <option value="/connahs-quay.html">Connah’s Quay</option>
-  <option value="/buckley.html">Buckley</option>
-  <option value="/hawarden.html">Hawarden</option>
-  <option value="/ewloe.html">Ewloe</option>
-  <option value="/deeside.html">Deeside</option>
-  <option value="/broughton.html">Broughton</option>
-  <option value="/flintshire.html">Flintshire</option>
-  <option value="/chester.html">Chester</option>
-  <option value="/cheshire.html">Cheshire</option>
-  <option value="/northop.html">Northop</option>
-  <option value="/northop-hall.html">Northop Hall</option>
-  <option value="/mold.html">Mold</option>
-  <option value="/north-west-of-england.html">North West of England</option>
-  </select>
-  <span class="chevron">⌄</span>
-  </div>
-  </div>
-  <!-- 3. Footer note spans both columns -->
-  <p class="note"><strong>…and nearby towns across the region.</strong></p>
-  </div>
-  </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-  <!-- FINAL CTA -->
-  <section class="home-get-started">
-  <div class="box-container">
-  <h2>Get a Quote or Ask a Question</h2>
-  <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-  <div class="center-cta">
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
-  </div>
-  </div>
-  </section>
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  </div>
-  <!-- Footer -->
-
-
-  </div></section><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title><meta content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West." name="description"><meta content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire" name="keywords"><!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Measured Building Surveys &amp; Floorplans</h1>
-  <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Our Measured Survey Services</h2>
-  <ul>
-  <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-  <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-  <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-  </ul>
-  <h2>Who Benefits from Our Surveys</h2>
-  <ul>
-  <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-  <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-  <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-  </ul>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-  <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-  <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-  </ul>
-  <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-  <div class="box-container">
-  <!-- 1. Header column -->
-  <div class="areas-header">
-  <h2>Areas We Cover</h2>
-  <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-  </div>
-  <!-- 2. Content column -->
-  <div class="areas-content">
-  <!-- a) Styled select card -->
-  <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
-  <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
-  <option value="">Select an area…</option>
-  <option value="/connahs-quay.html">Connah’s Quay</option>
-  <option value="/buckley.html">Buckley</option>
-  <option value="/hawarden.html">Hawarden</option>
-  <option value="/ewloe.html">Ewloe</option>
-  <option value="/deeside.html">Deeside</option>
-  <option value="/broughton.html">Broughton</option>
-  <option value="/flintshire.html">Flintshire</option>
-  <option value="/chester.html">Chester</option>
-  <option value="/cheshire.html">Cheshire</option>
-  <option value="/northop.html">Northop</option>
-  <option value="/northop-hall.html">Northop Hall</option>
-  <option value="/mold.html">Mold</option>
-  <option value="/north-west-of-england.html">North West of England</option>
-  </select>
-  <span class="chevron">⌄</span>
-  </div>
-  </div>
-  <!-- 3. Footer note spans both columns -->
-  <p class="note"><strong>…and nearby towns across the region.</strong></p>
-  </div>
-  </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-  <!-- FINAL CTA -->
-  <section class="home-get-started">
-  <div class="box-container">
-  <h2>Get a Quote or Ask a Question</h2>
-  <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-  <div class="center-cta">
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
-  </div>
-  </div>
-  </section>
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  </div>
-  <!-- Footer -->
-
-
-  </div></section><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title><meta content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West." name="description"><meta content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire" name="keywords"><!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Measured Building Surveys &amp; Floorplans</h1>
-  <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Our Measured Survey Services</h2>
-  <ul>
-  <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-  <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-  <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-  </ul>
-  <h2>Who Benefits from Our Surveys</h2>
-  <ul>
-  <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-  <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-  <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-  </ul>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-  <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-  <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-  </ul>
-  <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-  <div class="box-container">
-  <!-- 1. Header column -->
-  <div class="areas-header">
-  <h2>Areas We Cover</h2>
-  <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-  </div>
-  <!-- 2. Content column -->
-  <div class="areas-content">
-  <!-- a) Styled select card -->
-  <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
-  <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
-  <option value="">Select an area…</option>
-  <option value="/connahs-quay.html">Connah’s Quay</option>
-  <option value="/buckley.html">Buckley</option>
-  <option value="/hawarden.html">Hawarden</option>
-  <option value="/ewloe.html">Ewloe</option>
-  <option value="/deeside.html">Deeside</option>
-  <option value="/broughton.html">Broughton</option>
-  <option value="/flintshire.html">Flintshire</option>
-  <option value="/chester.html">Chester</option>
-  <option value="/cheshire.html">Cheshire</option>
-  <option value="/northop.html">Northop</option>
-  <option value="/northop-hall.html">Northop Hall</option>
-  <option value="/mold.html">Mold</option>
-  <option value="/north-west-of-england.html">North West of England</option>
-  </select>
-  <span class="chevron">⌄</span>
-  </div>
-  </div>
-  <!-- 3. Footer note spans both columns -->
-  <p class="note"><strong>…and nearby towns across the region.</strong></p>
-  </div>
-  </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-  <!-- FINAL CTA -->
-  <section class="home-get-started">
-  <div class="box-container">
-  <h2>Get a Quote or Ask a Question</h2>
-  <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-  <div class="center-cta">
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
-  </div>
-  </div>
-  </section>
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  </div>
-  <!-- Footer -->
-
-
-  </div></section><meta name="twitter:description" content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West."><meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/measured-surveys"><meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title><meta name="description" content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West."><meta name="keywords" content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire"><!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <main class="service-page">
+    <section class="hero hero-plain">
       <div class="hero-container">
         <h1>Measured Building Surveys &amp; Floorplans</h1>
-        <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-        <a href="/enquiry.html" class="cta-button">Request a Survey</a>
-      </div>
-    </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-      <div class="box-container">
-        <h2>Our Measured Survey Services</h2>
-        <ul>
-          <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-          <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-          <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-        </ul>
-
-        <h2>Who Benefits from Our Surveys</h2>
-        <ul>
-          <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-          <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-          <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-        </ul>
-
-        <h2>Why Choose LEM Building Surveying?</h2>
-        <ul>
-          <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-          <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-          <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-        </ul>
-
-        <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-    <div class="box-container">
-      <!-- 1. Header column -->
-      <div class="areas-header">
-        <h2>Areas We Cover</h2>
-        <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-      </div>
-
-      <!-- 2. Content column -->
-      <div class="areas-content">
-        <!-- a) Styled select card -->
-        <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
-          <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
-              <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">North West of England</option>
-            </select>
-            <span class="chevron">⌄</span>
-          </div>
-        </div>
-
-      <!-- 3. Footer note spans both columns -->
-      <p class="note"><strong>…and nearby towns across the region.</strong></p>
-    </div>
-  </div></section>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-
-    <!-- FINAL CTA -->
-    <section class="home-get-started">
-      <div class="box-container">
-        <h2>Get a Quote or Ask a Question</h2>
-        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-        <div class="center-cta">
-          <a href="/enquiry.html" class="cta-button">Get My Quote</a>
-        </div>
+        <p>
+          Precise measurements, clear drawings and CAD-ready files to support your
+          renovation, planning or documentation project. Every plan is produced by Liam,
+          your local AssocRICS surveyor.
+        </p>
+        <a class="cta-button" href="/enquiry.html">Request a Measured Survey Quote</a>
       </div>
     </section>
 
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-      <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-    </div>
+    <section class="box-container">
+      <h2>What Our Measured Surveys Include</h2>
+      <ul>
+        <li>
+          <strong>2D floorplans:</strong> Scaled layouts that capture room sizes, door and
+          window openings plus fixed features for designers and contractors.
+        </li>
+        <li>
+          <strong>Elevations and sections:</strong> External and internal profiles that support
+          planning applications, Listed Building consent and extension projects.
+        </li>
+        <li>
+          <strong>Site plans:</strong> Boundary lines, outbuildings and top-level site context for
+          accurate records and feasibility studies.
+        </li>
+        <li>
+          <strong>Digital files:</strong> PDF plans for quick sharing alongside DWG/DXF exports on
+          request for architects and engineers.
+        </li>
+      </ul>
+    </section>
 
-    <!-- Footer -->
+    <section class="box-container">
+      <h2>When to Commission a Measured Survey</h2>
+      <p>
+        A measured survey gives you a dependable baseline before building work begins.
+        It is particularly useful when you are:
+      </p>
+      <ul>
+        <li>Planning an extension, loft conversion or remodelling project.</li>
+        <li>Preparing documentation for lease plans or change-of-use applications.</li>
+        <li>Reviewing the current layout to solve space, ventilation or damp issues.</li>
+        <li>Recording the as-built condition before handing a property back to a landlord.</li>
+      </ul>
+    </section>
 
+    <section class="box-container">
+      <h2>Our Process</h2>
+      <ol>
+        <li>
+          <strong>Brief and quote:</strong> Share drawings required and any format preferences so we
+          can tailor the deliverables.
+        </li>
+        <li>
+          <strong>On-site measurement:</strong> Laser measurements and photographic references are
+          captured methodically to ensure accuracy.
+        </li>
+        <li>
+          <strong>Drawing production:</strong> Plans are drafted in CAD, checked for consistency and
+          annotated with levels or notes agreed during the brief.
+        </li>
+        <li>
+          <strong>Delivery and follow-up:</strong> Receive digital files plus an optional run-through
+          to explain key points or discuss next steps with your design team.
+        </li>
+      </ol>
+      <p>
+        Turnaround times vary depending on property size, but most residential surveys are
+        delivered within five working days of the site visit.
+      </p>
+    </section>
 
-
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title>
-    <meta name="description" content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West.">
-    <meta name="keywords" content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire">
-
-
-
-    <!-- Shared Header -->
-
-
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <h1>Measured Building Surveys &amp; Floorplans</h1>
-        <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-        <a href="/enquiry.html" class="cta-button">Request a Survey</a>
+    <section class="box-container">
+      <h2>Where We Carry Out Measured Surveys</h2>
+      <p>
+        Based in Connah’s Quay, we regularly travel across Flintshire, Chester, Cheshire and
+        neighbouring parts of North West England. Explore a location page below for local
+        examples and service details.
+      </p>
+      <div class="area-grid">
+        {areas.map((area) => (
+          <a class="area-card" href={`/${area.slug}.html`}>
+            <span class="area-name">{area.name}</span>
+            <span class="area-description">{area.description}</span>
+            <span class="area-link">Explore surveys in {area.name}</span>
+          </a>
+        ))}
       </div>
     </section>
 
-    <!-- MAIN CONTENT SECTION -->
-    <section class="service-detail">
-      <div class="box-container">
-        <h2>Our Measured Survey Services</h2>
-        <ul>
-          <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-          <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-          <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-        </ul>
-
-        <h2>Who Benefits from Our Surveys</h2>
-        <ul>
-          <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-          <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-          <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-        </ul>
-
-        <h2>Why Choose LEM Building Surveying?</h2>
-        <ul>
-          <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-          <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-          <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-        </ul>
-
-        <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-    <div class="box-container">
-      <!-- 1. Header column -->
-      <div class="areas-header">
-        <h2>Areas We Cover</h2>
-        <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-      </div>
-
-      <!-- 2. Content column -->
-      <div class="areas-content">
-        <!-- a) Styled select card -->
-        <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
-          <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
-              <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">North West of England</option>
-            </select>
-            <span class="chevron">⌄</span>
-          </div>
-        </div>
-
-      <!-- 3. Footer note spans both columns -->
-      <p class="note"><strong>…and nearby towns across the region.</strong></p>
-    </div>
-  </div></section>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-
-    <!-- FINAL CTA -->
-    <section class="home-get-started">
-      <div class="box-container">
-        <h2>Get a Quote or Ask a Question</h2>
-        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-        <div class="center-cta">
-          <a href="/enquiry.html" class="cta-button">Get My Quote</a>
-        </div>
+    <section class="box-container">
+      <h2>Ready to Get Started?</h2>
+      <p>
+        Send over the property address, drawings required and any existing plans you have.
+        We will confirm availability, price and the deliverables you can expect.
+      </p>
+      <div class="cta-section">
+        <a class="cta-button" href="/enquiry.html">Book a Measured Survey</a>
+        <a class="secondary-button" href="/contact.html">Discuss Your Project</a>
       </div>
     </section>
-
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-      <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-    </div>
-
-    <!-- Footer -->
-
-
-
-
-
-
-    <!-- Shared Header -->
-
-
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <h1>Measured Building Surveys &amp; Floorplans</h1>
-        <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-        <a href="/enquiry.html" class="cta-button">Request a Survey</a>
-      </div>
-    </section>
-
-    <!-- MAIN CONTENT SECTION -->
-    <section class="service-detail">
-      <div class="box-container">
-        <h2>Our Measured Survey Services</h2>
-        <ul>
-          <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-          <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-          <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-        </ul>
-
-        <h2>Who Benefits from Our Surveys</h2>
-        <ul>
-          <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-          <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-          <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-        </ul>
-
-        <h2>Why Choose LEM Building Surveying?</h2>
-        <ul>
-          <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-          <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-          <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-        </ul>
-
-        <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-    <div class="box-container">
-      <!-- 1. Header column -->
-      <div class="areas-header">
-        <h2>Areas We Cover</h2>
-        <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-      </div>
-
-      <!-- 2. Content column -->
-      <div class="areas-content">
-        <!-- a) Styled select card -->
-        <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
-          <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
-              <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">North West of England</option>
-            </select>
-            <span class="chevron">⌄</span>
-          </div>
-        </div>
-
-      <!-- 3. Footer note spans both columns -->
-      <p class="note"><strong>…and nearby towns across the region.</strong></p>
-    </div>
-  </div></section>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-
-    <!-- FINAL CTA -->
-    <section class="home-get-started">
-      <div class="box-container">
-        <h2>Get a Quote or Ask a Question</h2>
-        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-        <div class="center-cta">
-          <a href="/enquiry.html" class="cta-button">Get My Quote</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-      <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-    </div>
-
-    <!-- Footer -->
-
-
-
-
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title>
-    <meta name="description" content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West.">
-    <meta name="keywords" content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire">
-
-
-
-    <!-- Shared Header -->
-
-
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <h1>Measured Building Surveys &amp; Floorplans</h1>
-        <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-        <a href="/enquiry.html" class="cta-button">Request a Survey</a>
-      </div>
-    </section>
-
-    <!-- MAIN CONTENT SECTION -->
-    <section class="service-detail">
-      <div class="box-container">
-        <h2>Our Measured Survey Services</h2>
-        <ul>
-          <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-          <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-          <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-        </ul>
-
-        <h2>Who Benefits from Our Surveys</h2>
-        <ul>
-          <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-          <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-          <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-        </ul>
-
-        <h2>Why Choose LEM Building Surveying?</h2>
-        <ul>
-          <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-          <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-          <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-        </ul>
-
-        <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-    <div class="box-container">
-      <!-- 1. Header column -->
-      <div class="areas-header">
-        <h2>Areas We Cover</h2>
-        <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-      </div>
-
-      <!-- 2. Content column -->
-      <div class="areas-content">
-        <!-- a) Styled select card -->
-        <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
-          <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
-              <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">North West of England</option>
-            </select>
-            <span class="chevron">⌄</span>
-          </div>
-        </div>
-
-      <!-- 3. Footer note spans both columns -->
-      <p class="note"><strong>…and nearby towns across the region.</strong></p>
-    </div>
-  </div></section>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-
-    <!-- FINAL CTA -->
-    <section class="home-get-started">
-      <div class="box-container">
-        <h2>Get a Quote or Ask a Question</h2>
-        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-        <div class="center-cta">
-          <a href="/enquiry.html" class="cta-button">Get My Quote</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-      <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-    </div>
-
-    <!-- Footer -->
-
-
-
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Measured Building Surveys &amp; Floorplans | Plans for Renovations &amp; Extensions | Deeside, Chester, Cheshire</title>
-    <meta name="description" content="Measured surveys and 2D floorplans for extensions, planning applications and documentation. Serving Deeside, Flintshire, Chester, Wrexham, Cheshire &amp; the wider North West.">
-    <meta name="keywords" content="Measured Building Survey, Floorplans, Site Plans, Elevation Drawings, Section Plans, Renovation Planning, Extension Survey, Property Measurement Chester Deeside Cheshire">
-
-
-
-    <!-- Shared Header -->
-
-
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <h1>Measured Building Surveys &amp; Floorplans</h1>
-        <p>Accurate, professional property measurement and floorplans for renovations, extensions, and documentation.</p>
-        <a href="/enquiry.html" class="cta-button">Request a Survey</a>
-      </div>
-    </section>
-
-    <!-- MAIN CONTENT SECTION -->
-    <section class="service-detail">
-      <div class="box-container">
-        <h2>Our Measured Survey Services</h2>
-        <ul>
-          <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing, or lease agreements.</li>
-          <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-          <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions, and records.</li>
-        </ul>
-
-        <h2>Who Benefits from Our Surveys</h2>
-        <ul>
-          <li><strong>Homeowners:</strong> Essential for accurate planning of extensions, renovations, or interior design.</li>
-          <li><strong>Landlords:</strong> Clear, professional floorplans to document layouts, assist with lease agreements, and property management.</li>
-          <li><strong>Property Investors:</strong> Precise measurements to evaluate opportunities, assess alterations, and make informed decisions.</li>
-        </ul>
-
-        <h2>Why Choose LEM Building Surveying?</h2>
-        <ul>
-          <li><strong>Tailored Service:</strong> Personalised survey solutions matching your property's unique characteristics and project goals.</li>
-          <li><strong>Local Expertise:</strong> Familiarity with regional building types, layouts, and planning requirements across the North West.</li>
-          <li><strong>Clear Deliverables:</strong> Professionally presented, easy-to-understand plans and reports that communicate key information clearly.</li>
-        </ul>
-
-        <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-    <div class="box-container">
-      <!-- 1. Header column -->
-      <div class="areas-header">
-        <h2>Areas We Cover</h2>
-        <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-      </div>
-
-      <!-- 2. Content column -->
-      <div class="areas-content">
-        <!-- a) Styled select card -->
-        <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
-          <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
-              <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">North West of England</option>
-            </select>
-            <span class="chevron">⌄</span>
-          </div>
-        </div>
-
-      <!-- 3. Footer note spans both columns -->
-      <p class="note"><strong>…and nearby towns across the region.</strong></p>
-    </div>
-  </div></section>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-
-    <!-- FINAL CTA -->
-    <section class="home-get-started">
-      <div class="box-container">
-        <h2>Get a Quote or Ask a Question</h2>
-        <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-        <div class="center-cta">
-          <a href="/enquiry.html" class="cta-button">Get My Quote</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-      <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-    </div>
-
-    <!-- Footer -->
-
-
-
-  </div></section></div></section></div></section></div></section></div></section>
+  </main>
 </BaseLayout>
