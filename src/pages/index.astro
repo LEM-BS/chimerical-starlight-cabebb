@@ -66,16 +66,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <input name="_next" type="hidden" value="/thank-you.html" />
         <div class="form-grid">
           <label class="field">Your Name
-            <input name="name" placeholder="e.g. Jane Smith" required type="text" />
+            <input autocomplete="name" name="name" placeholder="e.g. Jane Smith" required type="text" />
           </label>
           <label class="field">Email
-            <input name="email" placeholder="e.g. jane@example.com" required type="email" />
+            <input autocomplete="email" name="email" placeholder="e.g. jane@example.com" required type="email" />
           </label>
           <label class="field">Contact Number
-            <input name="contact" placeholder="e.g. 01234 567890" required type="text" />
+            <input autocomplete="tel" inputmode="tel" name="contact" placeholder="e.g. 01234 567890" required type="tel" />
           </label>
           <label class="field">Postcode
-            <input name="postcode" placeholder="e.g. CH1 2AB" required type="text" />
+            <input autocomplete="postal-code" name="postcode" placeholder="e.g. CH1 2AB" required type="text" />
           </label>
           <label class="field">Survey Type
             <select name="survey-type" required>
@@ -87,11 +87,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </select>
           </label>
           <label class="field">No. of Bedrooms
-            <input name="bedrooms" placeholder="e.g. 3" required type="text" />
+            <input inputmode="numeric" min="0" name="bedrooms" placeholder="e.g. 3" required step="1" type="number" />
           </label>
           <label class="field">Estimated Property Value (£)
             <input
               inputmode="decimal"
+              autocomplete="transaction-amount"
               min="0.01"
               name="property-value"
               placeholder="e.g. 250000"
