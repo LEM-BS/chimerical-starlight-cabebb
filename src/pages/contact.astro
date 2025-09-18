@@ -22,7 +22,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
 
-        <!-- Google tag (gtag.js) -->
   </Fragment>
 
   <!-- Shared header --><!-- HERO --><section class="hero">
@@ -59,16 +58,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
           <a href="/enquiry.html" class="cta-button">Request a Quote</a>
         </div>
-      </section><!-- Sticky CTA --><div class="sticky-cta">
-        <a href="/enquiry.html" class="cta-button">Get a Quote</a>
-      </div><!-- Shared footer --><script is:inline>
-        document.addEventListener("DOMContentLoaded", () => {
-          /* Track mailto clicks (optional) */
-          document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-            link.addEventListener("click", () =>
-              gtag("event", "mailto_click", { email: link.href }),
-            );
-          });
-        });
-      </script>
+      </section>
+      <div class="sticky-cta">
+        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+      </div>
 </BaseLayout>

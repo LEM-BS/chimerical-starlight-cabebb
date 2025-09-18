@@ -19,29 +19,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
 
-        <style>
-          .comparison-section .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          .comparison-table {
-            min-width: 600px;
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          .comparison-table th,
-          .comparison-table td {
-            padding: 1em;
-            border: 1px solid #ddd;
-            text-align: left;
-          }
-
-          .comparison-table th {
-            background: #f4f4f4;
-          }
-        </style>
         <!-- JSON-LD structured data -->
         <script type="application/ld+json" is:inline>
           {
@@ -413,7 +390,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="dropdown-card">
               <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
               <div class="custom-select">
-                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                <select id="areaDropdown" data-area-select>
                   <option value="">Select an area…</option>
                   <option value="/connahs-quay.html">Connah’s Quay</option>
                   <option value="/buckley.html">Buckley</option>
@@ -437,12 +414,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
       </section>
-      <script is:inline>
-        /** @param {HTMLSelectElement} select */
-        function handleAreaSelect(select) {
-          if (select.value) window.location.href = select.value;
-        }
-      </script>
       <!-- ░░ TYPICAL FEES ░░ --><section class="cost-bands" id="cost">
         <div class="box-container">
           <h2>Typical Fee Bands</h2>
@@ -543,78 +514,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
           <a class="cta-button" href="/contact.html">Speak to Liam</a>
         </div>
-      </section><!-- Sticky CTA for Mobile/Desktop --><div class="sticky-cta">
+      </section>
+      <div class="sticky-cta">
         <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-      </div><!-- Shared footer --><!-- Fallback JS submit handler --><script is:inline>
-        document.addEventListener("DOMContentLoaded", () => {
-          const form = document.querySelector(".quote-form");
-          if (!form) return;
-
-          const propertyValueInput = form.querySelector(
-            'input[name="property-value"]',
-          );
-
-          const normalisePropertyValue = () => {
-            if (!propertyValueInput) {
-              return;
-            }
-
-            const rawValue = propertyValueInput.value.trim();
-
-            if (rawValue === "") {
-              propertyValueInput.setCustomValidity("");
-              return;
-            }
-
-            const numericValue = Number(rawValue);
-
-            if (!Number.isFinite(numericValue) || numericValue <= 0) {
-              propertyValueInput.setCustomValidity(
-                "Please enter a positive number.",
-              );
-            } else {
-              propertyValueInput.setCustomValidity("");
-              propertyValueInput.value = rawValue;
-            }
-          };
-
-          if (propertyValueInput) {
-            propertyValueInput.addEventListener("input", normalisePropertyValue);
-            propertyValueInput.addEventListener("blur", normalisePropertyValue);
-          }
-
-          form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            normalisePropertyValue();
-
-            if (!form.checkValidity()) {
-              form.reportValidity();
-              return;
-            }
-
-            const formData = new FormData(form);
-
-            if (propertyValueInput) {
-              formData.set("property-value", propertyValueInput.value.trim());
-            }
-
-            const resp = await fetch(form.action, {
-              method: form.method,
-              body: formData,
-              headers: { Accept: "application/json" },
-            });
-            if (resp.ok) {
-              if (window.gtag) {
-                gtag("event", "conversion", {
-                  send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
-                });
-              }
-              window.location.href = "/thank-you.html";
-            } else {
-              alert("Sorry, something went wrong. Please email us directly.");
-            }
-          });
-        });
-      </script>
+      </div>
 </BaseLayout>

@@ -292,7 +292,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Jump to an area:
           </label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown" data-area-select>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -331,13 +331,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
   </main>
-
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
 
   <div class="sticky-cta">
     <a class="cta-button" href="/enquiry.html">Get a Quote</a>
