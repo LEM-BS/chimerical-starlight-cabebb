@@ -23,3 +23,7 @@ The static build is generated in `dist/` using Terser and Lightning CSS to minif
 
 - `npm run check` – static analysis via `astro check`
 - `npm test` – runs unit tests and link checks with Vitest
+
+## Commit conventions
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/) when authoring git messages. Aim for the format `type(scope): summary` using one of the standard types (`feat`, `fix`, `docs`, `chore`, or `perf`). Keep the summary in the imperative mood and under 72 characters. Include additional context in the body if a change needs further explanation.
