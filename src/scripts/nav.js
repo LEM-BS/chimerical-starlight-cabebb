@@ -9,15 +9,47 @@ function normalizePathname(pathname) {
   return normalized || '/';
 }
 
+function shouldLoadTrustIndex() {
+  if (typeof document === 'undefined') return false;
+  return Boolean(document.querySelector('.ti-widget'));
+}
+
 export function loadTrustIndex() {
-  if (typeof document === 'undefined') return;
+  if (!shouldLoadTrustIndex()) return;
   if (document.querySelector('script[src^="https://cdn.trustindex.io/loader.js"]')) {
     return;
   }
   const script = document.createElement('script');
   script.src = 'https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7';
   script.async = true;
+  script.defer = true;
   document.head.appendChild(script);
+}
+
+export function scheduleTrustIndexLoad() {
+  if (typeof window === 'undefined') return;
+  if (!shouldLoadTrustIndex()) return;
+
+  const startLoading = () => {
+    if (typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(() => {
+        loadTrustIndex();
+      });
+    } else {
+      loadTrustIndex();
+    }
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(
+      () => {
+        startLoading();
+      },
+      { timeout: 2000 },
+    );
+  } else {
+    window.setTimeout(startLoading, 300);
+  }
 }
 
 export function toggleNav(navToggle, navLinks) {
@@ -78,7 +110,7 @@ export function setupNav() {
 
 export function init() {
   setupNav();
-  loadTrustIndex();
+  scheduleTrustIndexLoad();
 }
 
 if (typeof document !== 'undefined') {
@@ -91,5 +123,11 @@ if (typeof document !== 'undefined') {
 
 if (typeof window !== 'undefined') {
   window.loadTrustIndex = loadTrustIndex;
-  window.LEMNav = { init, setupNav, loadTrustIndex, toggleNav };
+  window.LEMNav = {
+    init,
+    setupNav,
+    loadTrustIndex,
+    scheduleTrustIndexLoad,
+    toggleNav,
+  };
 }
