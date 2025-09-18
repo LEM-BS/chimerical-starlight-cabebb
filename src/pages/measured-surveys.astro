@@ -85,9 +85,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="areas-content">
   <!-- a) Styled select card -->
   <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+  <label class="dropdown-label" for="areaDropdown1">Jump to an area:</label>
   <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
+  <select id="areaDropdown1" data-area-dropdown>
   <option value="">Select an area…</option>
   <option value="/connahs-quay.html">Connah’s Quay</option>
   <option value="/buckley.html">Buckley</option>
@@ -110,12 +110,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p class="note"><strong>…and nearby towns across the region.</strong></p>
   </div>
   </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
   <!-- FINAL CTA -->
   <section class="home-get-started">
   <div class="box-container">
@@ -171,9 +166,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="areas-content">
   <!-- a) Styled select card -->
   <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+  <label class="dropdown-label" for="areaDropdown2">Jump to an area:</label>
   <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
+  <select id="areaDropdown2" data-area-dropdown>
   <option value="">Select an area…</option>
   <option value="/connahs-quay.html">Connah’s Quay</option>
   <option value="/buckley.html">Buckley</option>
@@ -196,12 +191,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p class="note"><strong>…and nearby towns across the region.</strong></p>
   </div>
   </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
   <!-- FINAL CTA -->
   <section class="home-get-started">
   <div class="box-container">
@@ -257,9 +247,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="areas-content">
   <!-- a) Styled select card -->
   <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+  <label class="dropdown-label" for="areaDropdown3">Jump to an area:</label>
   <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
+  <select id="areaDropdown3" data-area-dropdown>
   <option value="">Select an area…</option>
   <option value="/connahs-quay.html">Connah’s Quay</option>
   <option value="/buckley.html">Buckley</option>
@@ -282,12 +272,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p class="note"><strong>…and nearby towns across the region.</strong></p>
   </div>
   </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
   <!-- FINAL CTA -->
   <section class="home-get-started">
   <div class="box-container">
@@ -347,9 +332,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="areas-content">
         <!-- a) Styled select card -->
         <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
+          <label for="areaDropdown4" class="dropdown-label">Jump to an area:</label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown4" data-area-dropdown>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -374,12 +359,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div></section>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
 
     <!-- FINAL CTA -->
     <section class="home-get-started">
@@ -462,9 +442,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="areas-content">
         <!-- a) Styled select card -->
         <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
+          <label for="areaDropdown5" class="dropdown-label">Jump to an area:</label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown5" data-area-dropdown>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -489,12 +469,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div></section>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
 
     <!-- FINAL CTA -->
     <section class="home-get-started">
@@ -569,9 +544,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="areas-content">
         <!-- a) Styled select card -->
         <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
+          <label for="areaDropdown6" class="dropdown-label">Jump to an area:</label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown6" data-area-dropdown>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -596,12 +571,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div></section>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
 
     <!-- FINAL CTA -->
     <section class="home-get-started">
@@ -685,9 +655,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="areas-content">
         <!-- a) Styled select card -->
         <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
+          <label for="areaDropdown7" class="dropdown-label">Jump to an area:</label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown7" data-area-dropdown>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -712,12 +682,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div></section>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
 
     <!-- FINAL CTA -->
     <section class="home-get-started">
@@ -800,9 +765,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="areas-content">
         <!-- a) Styled select card -->
         <div class="dropdown-card">
-          <label for="areaDropdown" class="dropdown-label">Jump to an area:</label>
+          <label for="areaDropdown8" class="dropdown-label">Jump to an area:</label>
           <div class="custom-select">
-            <select id="areaDropdown" onchange="handleAreaSelect(this)">
+            <select id="areaDropdown8" data-area-dropdown>
               <option value="">Select an area…</option>
               <option value="/connahs-quay.html">Connah’s Quay</option>
               <option value="/buckley.html">Buckley</option>
@@ -827,12 +792,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div></section>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  
 
     <!-- FINAL CTA -->
     <section class="home-get-started">

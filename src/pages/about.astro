@@ -117,12 +117,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <h2>Client Testimonials</h2>
             <div class="ti-widget ti-goog"></div>
           </div>
-          <script
-            src="https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7"
-            async
-            defer
-            is:inline
-          ></script>
         </section>
         <!-- SERVICE AREA DROPDOWN -->
         <section class="home-areas improved-areas">
@@ -141,7 +135,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div class="dropdown-card">
                 <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
                 <div class="custom-select">
-                  <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                  <select id="areaDropdown" data-area-dropdown>
                     <option value="">Select an area…</option>
                     <option value="/connahs-quay.html">Connah’s Quay</option>
                     <option value="/buckley.html">Buckley</option>
@@ -165,12 +159,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
         </section>
-        <script is:inline>
-          /** @param {HTMLSelectElement} select */
-          function handleAreaSelect(select) {
-            if (select.value) window.location.href = select.value;
-          }
-        </script>
       </main><!-- STICKY CTA --><div class="sticky-cta">
         <a class="cta-button" href="/enquiry.html">Speak to Liam</a>
       </div><!-- Shared Footer -->

@@ -24,7 +24,7 @@ const ricsFaqs = [
   },
 ];
 
-const ricsFaqJsonLd = {
+const ricsFaqJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: ricsFaqs.map(({ question, answer }) => ({
@@ -35,7 +35,7 @@ const ricsFaqJsonLd = {
       text: answer,
     },
   })),
-};
+});
 ---
 
 <BaseLayout>
@@ -53,31 +53,6 @@ const ricsFaqJsonLd = {
         <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." name="twitter:description">
         <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys" name="twitter:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-        <style>
-          .comparison-section .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          .comparison-table {
-            min-width: 600px;
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          .comparison-table th,
-          .comparison-table td {
-            padding: 1em;
-            border: 1px solid #ddd;
-            text-align: left;
-          }
-
-          .comparison-table th {
-            background: #f4f4f4;
-          }
-        </style>
         <!-- JSON-LD structured data -->
         <script type="application/ld+json" is:inline>
           {
@@ -152,7 +127,7 @@ const ricsFaqJsonLd = {
         }
       </script>
       <script type="application/ld+json" is:inline>
-        {JSON.stringify(ricsFaqJsonLd, null, 2)}
+        {ricsFaqJsonLd}
       </script>
         <!-- Cookie Consent (Usercentrics) -->
 
@@ -175,7 +150,7 @@ const ricsFaqJsonLd = {
             turnaround in as little as 5–7&nbsp;days. Get your tailored quote now and
             secure your survey date.
           </p>
-          <form action="https://formspree.io/f/xzzdqqqz" class="quote-form" method="POST">
+          <form action="https://formspree.io/f/xzzdqqqz" class="quote-form" data-enhanced-form data-success-redirect="/thank-you.html" data-conversion-id="AW-XXXXXXXXXX/AbCdEFgHiJk" method="POST">
             <input name="_next" type="hidden" value="/thank-you.html">
             <div class="form-grid">
               <input name="name" placeholder="Your Name" required="" type="text">
@@ -404,7 +379,7 @@ const ricsFaqJsonLd = {
             <div class="dropdown-card">
               <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
               <div class="custom-select">
-                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                <select id="areaDropdown" data-area-dropdown>
                   <option value="">Select an area…</option>
                   <option value="/connahs-quay.html">Connah’s Quay</option>
                   <option value="/buckley.html">Buckley</option>
@@ -428,12 +403,6 @@ const ricsFaqJsonLd = {
           </div>
         </div>
       </section>
-      <script is:inline>
-        /** @param {HTMLSelectElement} select */
-        function handleAreaSelect(select) {
-          if (select.value) window.location.href = select.value;
-        }
-      </script>
       <!-- ░░ TYPICAL FEES ░░ --><section class="cost-bands" id="cost">
         <div class="box-container">
           <h2>Typical Fee Bands</h2>
@@ -495,76 +464,5 @@ const ricsFaqJsonLd = {
         </div>
       </section><!-- Sticky CTA for Mobile/Desktop --><div class="sticky-cta">
         <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-      </div><!-- Shared footer --><!-- Fallback JS submit handler --><script is:inline>
-        document.addEventListener("DOMContentLoaded", () => {
-          const form = document.querySelector(".quote-form");
-          if (!form) return;
-
-          const propertyValueInput = form.querySelector(
-            'input[name="property-value"]',
-          );
-
-          const normalisePropertyValue = () => {
-            if (!propertyValueInput) {
-              return;
-            }
-
-            const rawValue = propertyValueInput.value.trim();
-
-            if (rawValue === "") {
-              propertyValueInput.setCustomValidity("");
-              return;
-            }
-
-            const numericValue = Number(rawValue);
-
-            if (!Number.isFinite(numericValue) || numericValue <= 0) {
-              propertyValueInput.setCustomValidity(
-                "Please enter a positive number.",
-              );
-            } else {
-              propertyValueInput.setCustomValidity("");
-              propertyValueInput.value = rawValue;
-            }
-          };
-
-          if (propertyValueInput) {
-            propertyValueInput.addEventListener("input", normalisePropertyValue);
-            propertyValueInput.addEventListener("blur", normalisePropertyValue);
-          }
-
-          form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            normalisePropertyValue();
-
-            if (!form.checkValidity()) {
-              form.reportValidity();
-              return;
-            }
-
-            const formData = new FormData(form);
-
-            if (propertyValueInput) {
-              formData.set("property-value", propertyValueInput.value.trim());
-            }
-
-            const resp = await fetch(form.action, {
-              method: form.method,
-              body: formData,
-              headers: { Accept: "application/json" },
-            });
-            if (resp.ok) {
-              if (window.gtag) {
-                gtag("event", "conversion", {
-                  send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
-                });
-              }
-              window.location.href = "/thank-you.html";
-            } else {
-              alert("Sorry, something went wrong. Please email us directly.");
-            }
-          });
-        });
-      </script>
+      </div><!-- Shared footer -->
 </BaseLayout>

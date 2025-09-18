@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout>
+<BaseLayout pageId="enquiry">
   <Fragment slot="head">
     <title>Request a Property Survey | Get a Quote | LEM Building Surveying Ltd</title>
         <meta content="Submit your property details to request a free, no-obligation quote for a building survey, damp report, EPC, or floorplan. Serving Deeside, Chester &amp; the North West." name="description">
@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             or provide a tailored quote—no obligation.
           </p>
           <!-- Formspree: _next ensures redirect after successful send -->
-          <form action="https://formspree.io/f/xzzdqqqz" class="enquiry-form" method="POST">
+          <form action="https://formspree.io/f/xzzdqqqz" class="enquiry-form" data-enhanced-form data-success-redirect="/thank-you.html" data-conversion-id="AW-XXXXXXXXXX/AbCdEFgHiJk" method="POST">
             <input name="_next" type="hidden" value="https://www.lembuildingsurveying.co.uk/thank-you.html">
             <label for="name">Full Name:</label>
             <input id="name" name="name" required="" type="text">
@@ -88,70 +88,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Thank you—we’ll be in touch shortly to help with your survey needs.
           </p>
         </div>
-      </section><script is:inline>
-        document.addEventListener("DOMContentLoaded", () => {
-          const form = document.querySelector(".enquiry-form");
-          if (!form) {
-            return;
-          }
-
-          const propertyValueInput = form.querySelector("#property-value");
-
-          const normalisePropertyValue = () => {
-            if (!propertyValueInput) {
-              return;
-            }
-
-            const rawValue = propertyValueInput.value.trim();
-            if (rawValue === "") {
-              propertyValueInput.setCustomValidity("");
-              return;
-            }
-
-            const numericValue = Number(rawValue);
-            if (!Number.isFinite(numericValue) || numericValue <= 0) {
-              propertyValueInput.setCustomValidity(
-                "Please enter a positive number.",
-              );
-            } else {
-              propertyValueInput.setCustomValidity("");
-              propertyValueInput.value = rawValue;
-            }
-          };
-
-          if (propertyValueInput) {
-            propertyValueInput.addEventListener("input", normalisePropertyValue);
-            propertyValueInput.addEventListener("blur", normalisePropertyValue);
-          }
-
-          form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            normalisePropertyValue();
-
-            if (!form.checkValidity()) {
-              form.reportValidity();
-              return;
-            }
-            const data = new FormData(form);
-
-            if (propertyValueInput) {
-              data.set("property-value", propertyValueInput.value.trim());
-            }
-
-            const resp = await fetch("https://formspree.io/f/xzzdqqqz", {
-              method: "POST",
-              body: data,
-              headers: { Accept: "application/json" },
-            });
-
-            if (resp.ok) {
-              /* fire Google-Ads conversion before leaving */
-              gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk" });
-              window.location = "/thank-you.html";
-            } else {
-              alert("Sorry, something went wrong. Please email us directly.");
-            }
-          });
-        });
-      </script>
+      </section>
 </BaseLayout>

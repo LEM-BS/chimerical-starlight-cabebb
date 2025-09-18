@@ -14,7 +14,7 @@ const servicesFaqs = [
   },
 ];
 
-const servicesFaqJsonLd = {
+const servicesFaqJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: servicesFaqs.map(({ question, answer }) => ({
@@ -25,7 +25,7 @@ const servicesFaqJsonLd = {
       text: answer,
     },
   })),
-};
+});
 ---
 
 <BaseLayout>
@@ -46,7 +46,7 @@ const servicesFaqJsonLd = {
 
 
     <script type="application/ld+json" is:inline>
-      {JSON.stringify(servicesFaqJsonLd, null, 2)}
+      {servicesFaqJsonLd}
     </script>
     <script type="application/ld+json" is:inline>
         {

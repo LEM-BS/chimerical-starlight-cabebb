@@ -21,7 +21,7 @@ const dampFaqs = [
   },
 ];
 
-const dampFaqJsonLd = {
+const dampFaqJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: dampFaqs.map(({ question, answer }) => ({
@@ -32,7 +32,7 @@ const dampFaqJsonLd = {
       text: answer,
     },
   })),
-};
+});
 ---
 
 <BaseLayout>
@@ -79,7 +79,7 @@ const dampFaqJsonLd = {
         }
       </script>
       <script type="application/ld+json" is:inline>
-        {JSON.stringify(dampFaqJsonLd, null, 2)}
+        {dampFaqJsonLd}
       </script>
   </Fragment>
 
@@ -208,7 +208,7 @@ const dampFaqJsonLd = {
             <div class="dropdown-card">
               <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
               <div class="custom-select">
-                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                <select id="areaDropdown" data-area-dropdown>
                   <option value="">Select an area…</option>
                   <option value="/connahs-quay.html">Connah’s Quay</option>
                   <option value="/buckley.html">Buckley</option>
@@ -235,12 +235,6 @@ const dampFaqJsonLd = {
           </div>
         </div>
       </section>
-      <script is:inline>
-        /** @param {HTMLSelectElement} select */
-        function handleAreaSelect(select) {
-          if (select.value) window.location.href = select.value;
-        }
-      </script>
       <!-- FINAL CTA --><section class="home-get-started">
         <div class="box-container">
           <h2>Get a Quote or Ask a Question</h2>
