@@ -4,20 +4,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>
-          Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside,
-          Chester &amp; North West
-        </title>
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." name="description">
+    <title>Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM</title>
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="description">
         <meta content="Damp Survey, Mould Inspection, Condensation Survey, Ventilation Report, Independent Damp Assessor, Housing Disrepair Inspection, Damp Specialist Deeside Chester Flintshire North West" name="keywords">
         <link href="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" rel="canonical">
-        <meta content="Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside, Chester &amp; North West" property="og:title">
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." property="og:description">
+        <meta content="Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM" property="og:title">
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." property="og:description">
         <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" property="og:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
         <meta content="summary_large_image" name="twitter:card">
-        <meta content="Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside, Chester &amp; North West" name="twitter:title">
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." name="twitter:description">
+        <meta content="Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM" name="twitter:title">
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="twitter:description">
         <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" name="twitter:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
@@ -248,7 +245,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="dropdown-card">
               <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
               <div class="custom-select">
-                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                <select id="areaDropdown" data-area-select>
                   <option value="">Select an area…</option>
                   <option value="/connahs-quay.html">Connah’s Quay</option>
                   <option value="/buckley.html">Buckley</option>
@@ -275,12 +272,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
       </section>
-      <script is:inline>
-        /** @param {HTMLSelectElement} select */
-        function handleAreaSelect(select) {
-          if (select.value) window.location.href = select.value;
-        }
-      </script>
       <!-- FINAL CTA --><section class="home-get-started">
         <div class="box-container">
           <h2>Get a Quote or Ask a Question</h2>

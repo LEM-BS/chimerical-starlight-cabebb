@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import analyticsScriptUrl from '../scripts/analytics.js?url';
+import behaviourScriptUrl from '../scripts/site-behaviours.js?url';
 import navScriptUrl from '../scripts/nav.js?url';
 
 const { pageId = '' } = Astro.props;
@@ -18,6 +20,32 @@ const { pageId = '' } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk",
+        "image": "https://www.lembuildingsurveying.co.uk/logo.png",
+        "logo": "https://www.lembuildingsurveying.co.uk/logo.png",
+        "telephone": "+44 7378 732 037",
+        "description": "Professional building surveying services in Deeside, Flintshire, and across North Wales.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Connah's Quay",
+          "addressLocality": "Deeside",
+          "addressRegion": "Flintshire",
+          "addressCountry": "UK"
+        },
+        "areaServed": [
+          "Deeside",
+          "Flintshire",
+          "Chester",
+          "Cheshire",
+          "North Wales"
+        ]
+      }
+    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -36,20 +64,16 @@ const { pageId = '' } = Astro.props;
       is:inline
     ></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXH0EY936M" is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GXH0EY936M');
-    </script>
+    <script src={analyticsScriptUrl} is:inline></script>
   </head>
   <body data-page={pageId}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <Header />
-    <div id="main-content">
+    <main id="main-content">
       <slot />
-    </div>
+    </main>
     <Footer />
     <script type="module" src={navScriptUrl} is:inline></script>
+    <script type="module" src={behaviourScriptUrl} is:inline></script>
   </body>
 </html>
