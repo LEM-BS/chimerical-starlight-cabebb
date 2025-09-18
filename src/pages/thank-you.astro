@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const conversionSendTo = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_SEND_TO?.trim();
+const hasConversionSendTo =
+  typeof conversionSendTo === 'string' &&
+  conversionSendTo.length > 0 &&
+  !conversionSendTo.includes('XXXX');
+const conversionEventScript = hasConversionSendTo
+  ? `if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "conversion", { send_to: ${JSON.stringify(conversionSendTo)} });
+    }`
+  : '';
 ---
 
 <BaseLayout>
@@ -25,26 +36,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Google tag (gtag.js) -->
   </Fragment>
 
-  <!-- Shared Header --><!-- THANK YOU SECTION --><section class="thank-you">
-        <div class="box-container centered-box">
-          <h2>Thank You!</h2>
-          <p>
-            Your enquiry has been successfully submitted. We will get back to you
-            shortly.
-          </p>
-          <div class="button-group">
-            <a href="/rics-home-surveys.html" class="cta-button">See Survey Levels</a>
-            <a href="/index.html" class="secondary-button">Return Home</a>
-          </div>
+  <main class="thank-you-page">
+    <section class="thank-you">
+      <div class="box-container centered-box">
+        <h2>Thank You!</h2>
+        <p>
+          Your enquiry has been successfully submitted. We will get back to you
+          shortly.
+        </p>
+        <div class="button-group">
+          <a href="/rics-home-surveys.html" class="cta-button">See Survey Levels</a>
+          <a href="/index.html" class="secondary-button">Return Home</a>
         </div>
-      </section><!-- FOOTER --><footer>
-        <p>© 2025 LEM Building Surveying Ltd. All rights reserved.</p>
-      </footer><!-- Google Ads conversion event (replace IDs) --><script is:inline>
-        /* If the global gtag.js is already loaded site‑wide you only need this event call */
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk" });
-      </script><!-- JavaScript to inject header.html -->
+      </div>
+    </section>
+  </main>
+
+  {hasConversionSendTo && (
+    <script is:inline set:html={conversionEventScript} />
+  )}
 </BaseLayout>
