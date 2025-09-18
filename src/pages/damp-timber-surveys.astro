@@ -45,89 +45,259 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           ]
         }
       </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What happens during a damp and timber survey?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We complete a visual inspection inside and out, take moisture and humidity readings, assess timber condition, and map any decay or infestation. Findings are photographed and referenced to floor plans so you understand exactly where issues are located."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you carry out invasive testing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most surveys are non-destructive, relying on calibrated meters and borescope checks. If we believe limited opening up is required we discuss it with you first and can supervise contractors to ensure disruption is kept to a minimum."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will the report satisfy lenders or solicitors?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Reports follow RICS guidance, include evidence, and clearly state the source of defects alongside recommended remedial actions. They are regularly accepted by mortgage lenders, solicitors and housing providers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you revisit to confirm repairs?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We can return after remedial works to re-test moisture levels or check timber treatment. Follow-up visits are quoted separately so you only pay for the time you need."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How quickly will I receive the report?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Turnaround is typically three to five working days. If urgent negotiations are underway we provide a same-day summary call highlighting any high-risk defects or safety issues."
+              }
+            }
+          ]
+        }
+      </script>
   </Fragment>
 
   <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Damp &amp; Timber Surveys</h1>
-  <p>Protect your investment with expert assessments of damp, timber decay, and related issues.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Common Issues Identified</h2>
-  <ul>
-  <li><strong>Rising Damp:</strong> Moisture rising from the ground through walls, potentially damaging finishes and structure.</li>
-  <li><strong>Penetrating Damp:</strong> Water ingress through roofs, walls, windows, or defective flashings.</li>
-  <li><strong>Condensation &amp; Mould:</strong> Unhealthy mould growth and condensation due to poor ventilation or insulation.</li>
-  <li><strong>Woodworm Infestation:</strong> Insect activity in timbers that can weaken structural elements.</li>
-  <li><strong>Wet &amp; Dry Rot:</strong> Fungal decay affecting wood, causing serious structural weakness if left untreated.</li>
-  </ul>
-  <h2>Why Choose LEM for Your Survey?</h2>
-  <ul>
-  <li><strong>Independent &amp; Unbiased:</strong> No commercial ties—just honest, expert advice from a RICS-certified surveyor.</li>
-  <li><strong>Clear, Actionable Reports:</strong> Easy-to-understand findings with photographs and practical recommendations.</li>
-  <li><strong>Local Expertise:</strong> Specialist knowledge of local construction and common regional issues.</li>
-  </ul>
-  <!-- SERVICE AREA DROPDOWN -->
-  <section class="home-areas improved-areas">
-  <div class="box-container">
-  <!-- 1. Header column -->
-  <div class="areas-header">
-  <h2>Areas We Cover</h2>
-  <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
-  </div>
-  <!-- 2. Content column -->
-  <div class="areas-content">
-  <!-- a) Styled select card -->
-  <div class="dropdown-card">
-  <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
-  <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
-  <option value="">Select an area…</option>
-  <option value="/connahs-quay.html">Connah’s Quay</option>
-  <option value="/buckley.html">Buckley</option>
-  <option value="/hawarden.html">Hawarden</option>
-  <option value="/ewloe.html">Ewloe</option>
-  <option value="/deeside.html">Deeside</option>
-  <option value="/broughton.html">Broughton</option>
-  <option value="/flintshire.html">Flintshire</option>
-  <option value="/chester.html">Chester</option>
-  <option value="/cheshire.html">Cheshire</option>
-  <option value="/northop.html">Northop</option>
-  <option value="/northop-hall.html">Northop Hall</option>
-  <option value="/mold.html">Mold</option>
-  <option value="/north-west-of-england.html">North West of England</option>
-  </select>
-  <span class="chevron">⌄</span>
-  </div>
-  </div>
-  <!-- 3. Footer note spans both columns -->
-  <p class="note"><strong>…and nearby towns across the region.</strong></p>
-  </div>
-  </div></section>
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
-  <!-- FINAL CTA -->
-  <section class="home-get-started">
-  <div class="box-container">
-  <h2>Get a Quote or Ask a Question</h2>
-  <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
-  <div class="center-cta">
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
-  </div>
-  </div>
+    <div class="hero-container">
+      <h1>Damp &amp; Timber Surveys</h1>
+      <p>
+        Protect your investment with expert assessments of damp, timber decay,
+        and related issues.
+      </p>
+      <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+    </div>
   </section>
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  </div>
-  <!-- Footer -->
+  <!-- MAIN CONTENT SECTION -->
+  <section class="service-detail">
+    <div class="box-container">
+      <h2>Common Issues Identified</h2>
+      <ul>
+        <li>
+          <strong>Rising Damp:</strong> Moisture tracking from the ground up
+          through walls, potentially damaging finishes and structural timbers.
+        </li>
+        <li>
+          <strong>Penetrating Damp:</strong> Water ingress through roofs,
+          walls, windows, or defective flashings.
+        </li>
+        <li>
+          <strong>Condensation &amp; Mould:</strong> Unhealthy mould growth and
+          condensation due to poor ventilation or insulation.
+        </li>
+        <li>
+          <strong>Woodworm Infestation:</strong> Insect activity in timbers that
+          can weaken structural elements.
+        </li>
+        <li>
+          <strong>Wet &amp; Dry Rot:</strong> Fungal decay affecting wood,
+          causing serious structural weakness if left untreated.
+        </li>
+      </ul>
+      <p>
+        Every property is different. We tailor the investigation to the age of
+        the building, the construction method, and the symptoms you are seeing so
+        that the root cause—not just the visible damage—is identified.
+      </p>
+      <h2>How Our Damp &amp; Timber Surveys Work</h2>
+      <ol>
+        <li>
+          <strong>Preparation:</strong> Before the visit we review plans,
+          historic repairs and your photographs to understand likely moisture
+          pathways or timber vulnerabilities.
+        </li>
+        <li>
+          <strong>On-site inspection:</strong> Moisture meters, hygrometers and
+          borescopes help us map dampness and check hidden timber zones without
+          unnecessary damage.
+        </li>
+        <li>
+          <strong>Diagnosis:</strong> We interpret the readings, ventilation
+          provision and material condition to confirm the source of decay and the
+          urgency of remedial work.
+        </li>
+      </ol>
+      <p>
+        Where areas are inaccessible we explain the limitations and suggest how
+        to gain access safely. We can also liaise with contractors on the day if
+        floorboards or boxing-in need to be lifted.
+      </p>
+      <h2>What You Receive Afterwards</h2>
+      <p>
+        Reports include annotated photographs, moisture maps, timber condition
+        commentary and a prioritised action plan. We set out immediate health and
+        safety actions, medium-term maintenance tasks, and guidance for
+        monitoring so you know what to tackle first.
+      </p>
+      <p>
+        If you need cost guidance or a scope of works for tendering we can add
+        this for a transparent fee. Our independence means recommendations are
+        free from sales pressure—ideal for homeowners, landlords and legal
+        professionals who need impartial evidence.
+      </p>
+      <h2>Why Choose LEM for Your Survey?</h2>
+      <ul>
+        <li>
+          <strong>Independent &amp; Unbiased:</strong> No commercial ties—just
+          honest, expert advice from a RICS-certified surveyor.
+        </li>
+        <li>
+          <strong>Clear, Actionable Reports:</strong> Easy-to-understand
+          findings with photographs and practical recommendations.
+        </li>
+        <li>
+          <strong>Local Expertise:</strong> Specialist knowledge of local
+          construction and common regional issues.
+        </li>
+        <li>
+          <strong>Aftercare Support:</strong> Follow-up calls included so you
+          can plan remedial works with confidence.
+        </li>
+      </ul>
+      <h2>Frequently Asked Questions</h2>
+      <p>
+        <em>Need specifics? These answers explain how our damp and timber surveys
+          run in practice.</em>
+      </p>
+      <details>
+        <summary>What happens during a damp and timber survey?</summary>
+        <p>
+          We inspect the exterior envelope, internal finishes and accessible
+          timbers, taking moisture and humidity readings as we go. Decay or
+          infestation is mapped and photographed so you know exactly where issues
+          are located.
+        </p>
+      </details>
+      <details>
+        <summary>Do you carry out invasive testing?</summary>
+        <p>
+          Most surveys are non-destructive, using calibrated meters and
+          borescopes. If we feel localised opening up is necessary we will agree
+          the approach with you first and can supervise contractors so disruption
+          is minimised.
+        </p>
+      </details>
+      <details>
+        <summary>Will the report satisfy lenders or solicitors?</summary>
+        <p>
+          Yes. Reports are written to RICS guidance with clear evidence, cause
+          analysis and recommended remedial actions. They are regularly submitted
+          to mortgage lenders, conveyancers and housing associations.
+        </p>
+      </details>
+      <details>
+        <summary>Can you revisit to confirm repairs?</summary>
+        <p>
+          We can return after remedial works to verify moisture reduction or
+          check timber treatments. Follow-up visits are quoted separately so you
+          only pay for the support you need.
+        </p>
+      </details>
+      <details>
+        <summary>How quickly will I receive the report?</summary>
+        <p>
+          Turnaround is typically three to five working days. If you have tight
+          deadlines we can deliver a same-day phone summary covering any high-risk
+          defects.
+        </p>
+      </details>
+      <!-- SERVICE AREA DROPDOWN -->
+      <section class="home-areas improved-areas">
+        <div class="box-container">
+          <!-- 1. Header column -->
+          <div class="areas-header">
+            <h2>Areas We Cover</h2>
+            <p class="lead">Based in Connah’s Quay, we serve property owners across Flintshire, Chester, and surrounding areas</p>
+          </div>
+          <!-- 2. Content column -->
+          <div class="areas-content">
+            <!-- a) Styled select card -->
+            <div class="dropdown-card">
+              <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+              <div class="custom-select">
+                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                  <option value="">Select an area…</option>
+                  <option value="/connahs-quay.html">Connah’s Quay</option>
+                  <option value="/buckley.html">Buckley</option>
+                  <option value="/hawarden.html">Hawarden</option>
+                  <option value="/ewloe.html">Ewloe</option>
+                  <option value="/deeside.html">Deeside</option>
+                  <option value="/broughton.html">Broughton</option>
+                  <option value="/flintshire.html">Flintshire</option>
+                  <option value="/chester.html">Chester</option>
+                  <option value="/cheshire.html">Cheshire</option>
+                  <option value="/northop.html">Northop</option>
+                  <option value="/northop-hall.html">Northop Hall</option>
+                  <option value="/mold.html">Mold</option>
+                  <option value="/north-west-of-england.html">North West of England</option>
+                </select>
+                <span class="chevron">⌄</span>
+              </div>
+            </div>
+            <!-- 3. Footer note spans both columns -->
+            <p class="note"><strong>…and nearby towns across the region.</strong></p>
+          </div>
+        </div>
+      </section>
+      <script is:inline>
+        /** @param {HTMLSelectElement} select */
+        function handleAreaSelect(select) {
+          if (select.value) window.location.href = select.value;
+        }
+      </script>
+      <!-- FINAL CTA -->
+      <section class="home-get-started">
+        <div class="box-container">
+          <h2>Get a Quote or Ask a Question</h2>
+          <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
+          <div class="center-cta">
+            <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+          </div>
+        </div>
+      </section>
+      <!-- STICKY CTA -->
+      <div class="sticky-cta">
+        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+      </div>
+      <!-- Footer -->
 
 
-  </div></section>
+    </div></section>
 </BaseLayout>
