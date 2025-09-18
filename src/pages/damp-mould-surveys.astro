@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serviceAreaGroups } from '../data/service-areas';
+
+const dropdownOptions = serviceAreaGroups
+  .flatMap((group) => group.areas)
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <BaseLayout>
@@ -235,39 +240,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </section><!-- SERVICE AREA DROPDOWN --><section class="home-areas improved-areas">
         <div class="box-container">
           <div class="areas-header">
-            <h2>Areas We Cover</h2>
+            <h2>Damp &amp; Mould Support Across the Region</h2>
             <p class="lead">
-              Based in Connah’s Quay, we serve property owners across Flintshire,
-              Chester, and surrounding areas.
+              Pinpoint condensation, leaks and ventilation faults with local expertise wherever you live.
             </p>
           </div>
           <div class="areas-content">
             <div class="dropdown-card">
-              <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+              <label class="dropdown-label" for="dampMouldAreaDropdown">Jump to an area:</label>
               <div class="custom-select">
-                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                <select id="dampMouldAreaDropdown" onchange="handleAreaSelect(this)">
                   <option value="">Select an area…</option>
-                  <option value="/connahs-quay.html">Connah’s Quay</option>
-                  <option value="/buckley.html">Buckley</option>
-                  <option value="/hawarden.html">Hawarden</option>
-                  <option value="/ewloe.html">Ewloe</option>
-                  <option value="/deeside.html">Deeside</option>
-                  <option value="/broughton.html">Broughton</option>
-                  <option value="/flintshire.html">Flintshire</option>
-                  <option value="/chester.html">Chester</option>
-                  <option value="/cheshire.html">Cheshire</option>
-                  <option value="/northop.html">Northop</option>
-                  <option value="/northop-hall.html">Northop Hall</option>
-                  <option value="/mold.html">Mold</option>
-                  <option value="/north-west-of-england.html">
-                    North West of England
-                  </option>
+                  {dropdownOptions.map((area) => (
+                    <option value={`/${area.slug}.html`}>{area.name}</option>
+                  ))}
                 </select>
                 <span class="chevron">⌄</span>
               </div>
             </div>
+            <div class="area-link-groups">
+              {serviceAreaGroups.map((group) => (
+                <div class="area-link-group">
+                  <h3>{group.region}</h3>
+                  <ul>
+                    {group.areas.map((area) => (
+                      <li>
+                        <a href={`/${area.slug}.html`}>
+                          Damp &amp; mould surveys in {area.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
             <p class="note">
-              <strong>…and nearby towns across the region.</strong>
+              <strong>Have a unique issue?</strong> We investigate persistent damp problems across Cheshire, Flintshire and beyond.
             </p>
           </div>
         </div>

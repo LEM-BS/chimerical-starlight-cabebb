@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { serviceAreaGroups } from '../data/service-areas';
+
+const dropdownOptions = serviceAreaGroups
+  .flatMap((group) => group.areas)
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <BaseLayout>
@@ -157,7 +162,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <a class="inline-link" href="/additional-services.html">Full list of additional services →</a>
           </div>
         </article>
-      </section><!-- CTA --><section class="services-cta">
+      </section>
+      <section class="home-areas improved-areas">
+        <div class="box-container">
+          <div class="areas-header">
+            <h2>Survey Coverage Across Flintshire &amp; Cheshire</h2>
+            <p class="lead">
+              From Deeside to rural Cheshire, book independent reports wherever you’re moving.
+            </p>
+          </div>
+          <div class="areas-content">
+            <div class="dropdown-card">
+              <label class="dropdown-label" for="servicesAreaDropdown">Jump to a local page:</label>
+              <div class="custom-select">
+                <select id="servicesAreaDropdown" onchange="handleAreaSelect(this)">
+                  <option value="">Select an area…</option>
+                  {dropdownOptions.map((area) => (
+                    <option value={`/${area.slug}.html`}>{area.name}</option>
+                  ))}
+                </select>
+                <span class="chevron">⌄</span>
+              </div>
+            </div>
+            <div class="area-link-groups">
+              {serviceAreaGroups.map((group) => (
+                <div class="area-link-group">
+                  <h3>{group.region}</h3>
+                  <ul>
+                    {group.areas.map((area) => (
+                      <li>
+                        <a href={`/${area.slug}.html`}>
+                          Property surveying services in {area.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p class="note">
+              <strong>Need another location?</strong> We also cover surrounding towns across Cheshire and North Wales—just ask when you enquire.
+            </p>
+          </div>
+        </div>
+      </section>
+      <script is:inline>
+        /** @param {HTMLSelectElement} select */
+        function handleAreaSelect(select) {
+          if (select.value) window.location.href = select.value;
+        }
+      </script>
+      <!-- CTA --><section class="services-cta">
         <div class="box-container">
           <h2>Ready to Book or Need Advice?</h2>
           <p>

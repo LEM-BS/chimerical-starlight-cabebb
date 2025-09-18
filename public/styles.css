@@ -1413,6 +1413,40 @@ details[open] summary::after {
   min-width: 480px;
 }
 
+/* Service area link grids */
+.area-link-groups {
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+  display: grid;
+  gap: clamp(1.25rem, 2vw, 2rem);
+}
+
+@media (min-width: 768px) {
+  .area-link-groups {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.area-link-group h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.65rem;
+  color: var(--primary-blue);
+}
+
+.area-link-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.area-link-group a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+
 /* For smallest screens */
 @media (max-width: 600px) {
   body {
