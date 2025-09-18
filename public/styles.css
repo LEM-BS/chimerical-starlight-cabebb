@@ -257,6 +257,143 @@ section > .box-container > *:last-child {
   margin-bottom: 0;
 }
 
+.location-hero .location-eyebrow {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+}
+
+.location-hero-description {
+  max-width: 740px;
+}
+
+.location-section {
+  padding: clamp(2.25rem, 6vw, 3.75rem) 0;
+}
+
+.location-layout {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: start;
+}
+
+.location-main > * + * {
+  margin-top: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.location-main ul {
+  padding-left: 1.4rem;
+}
+
+.location-main li {
+  margin-bottom: 0.65rem;
+}
+
+.location-internal-links ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.location-internal-links li {
+  background: rgba(37, 99, 235, 0.05);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.location-internal-links li:last-child {
+  margin-bottom: 0;
+}
+
+.location-sidebar {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.location-card {
+  background: rgba(248, 250, 252, 0.9);
+  border-radius: var(--border-radius);
+  padding: clamp(1.4rem, 3vw, 1.9rem);
+  border: 1px solid rgba(209, 222, 245, 0.8);
+  box-shadow: var(--shadow-soft);
+}
+
+.location-card h2 {
+  margin-bottom: 0.7rem;
+}
+
+.location-card ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.location-card li {
+  margin-bottom: 0.55rem;
+}
+
+.location-card li:last-child {
+  margin-bottom: 0;
+}
+
+.location-card a {
+  font-weight: 600;
+}
+
+.location-faq .faq-items {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.location-faq details {
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-soft);
+}
+
+.location-faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+
+.location-faq details[open] summary {
+  color: var(--accent-blue);
+}
+
+.location-faq p {
+  margin-top: 0.75rem;
+}
+
+.location-cta {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.location-cta p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+
+.location-cta .button-group {
+  justify-content: center;
+}
+
+.location-intro p {
+  font-size: 1.05rem;
+}
+
+@media (min-width: 960px) {
+  .location-layout {
+    grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr);
+  }
+}
+
 .area-navigation .box-container {
   text-align: center;
   display: grid;
