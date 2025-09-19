@@ -4,6 +4,6 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 
 /enquiry  /thank-you  200
 /contact  /thank-you  200
-/thank-you  /thank-you.html  200
+/thank-you.html  /thank-you  301
 /level-2-or-level-3  /level-2-vs-level-3  301
 /level-2-or-level-3.html  /level-2-vs-level-3.html  301
