@@ -4,17 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run build:minified",
+    "build:minified": "astro build --mode production",
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run"
+    ,
+    "generate:sitemap": "node scripts/generate-sitemap.js"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@types/node": "^20.14.10",
     "astro": "^4.13.1",
     "jsdom": "^24.0.0",
+    "lightningcss": "^1.25.1",
     "linkinator": "^6.1.4",
+    "terser": "^5.31.3",
     "typescript": "^5.5.4",
     "vitest": "^1.6.0"
   }

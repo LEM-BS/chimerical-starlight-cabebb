@@ -5,5 +5,11 @@ export default defineConfig({
   output: 'static',
   build: {
     format: 'file'
+  },
+  vite: {
+    build: {
+      minify: 'terser',
+      cssMinify: 'lightningcss'
+    }
   }
 });
