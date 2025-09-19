@@ -1,9 +1,10 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import navScriptUrl from '../scripts/nav.js?url';
+import Seo from '../components/Seo.astro';
+import SiteLinks from '../components/SiteLinks.astro';
 
-const { pageId = '' } = Astro.props;
+const { pageId = '', seo = undefined, hideSiteLinks = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ const { pageId = '' } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {seo && <Seo {...seo} />}
     <slot name="head" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,9 +25,9 @@ const { pageId = '' } = Astro.props;
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk",
-        "image": "https://www.lembuildingsurveying.co.uk/logo.png",
-        "logo": "https://www.lembuildingsurveying.co.uk/logo.png",
+        "url": "https://lembuildingsurveying.co.uk",
+        "image": "https://lembuildingsurveying.co.uk/logo-sticker.png",
+        "logo": "https://lembuildingsurveying.co.uk/logo-sticker.png",
         "telephone": "+44 7378 732 037",
         "description": "Professional building surveying services in Deeside, Flintshire, and across North Wales.",
         "address": {
@@ -51,7 +53,7 @@ const { pageId = '' } = Astro.props;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/assets/styles.min.css" />
     <link rel="icon" type="image/png" href="/logo-sticker.png" />
     <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
     <script
@@ -75,7 +77,8 @@ const { pageId = '' } = Astro.props;
     <div id="main-content">
       <slot />
     </div>
+    {!hideSiteLinks && <SiteLinks />}
     <Footer />
-    <script type="module" src={navScriptUrl} is:inline></script>
+    <script type="module" src="/assets/nav.min.js" is:inline></script>
   </body>
 </html>

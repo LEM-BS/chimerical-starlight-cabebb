@@ -1,0 +1,73 @@
+---
+import { areaPages, featuredAreas, getAreaUrl } from '../data/areas';
+
+const services = [
+  {
+    href: '/rics-home-surveys.html',
+    label: 'RICS Home Surveys',
+    description: 'Level 1, Level 2 and Level 3 reports for buyers and landlords.',
+  },
+  {
+    href: '/damp-mould-surveys.html',
+    label: 'Damp & Mould Surveys',
+    description: 'Independent moisture diagnostics with actionable guidance.',
+  },
+  {
+    href: '/independent-damp-surveys.html',
+    label: 'Independent Damp Surveys',
+    description: 'Objective reporting for disputes, insurance and remedial works.',
+  },
+  {
+    href: '/measured-surveys.html',
+    label: 'Measured Surveys & CAD Plans',
+    description: 'Floor plans, elevations and sections for extensions and compliance.',
+  },
+  {
+    href: '/ventilation-assessments.html',
+    label: 'Ventilation Assessments',
+    description: 'Airflow testing and practical upgrades for healthy homes.',
+  },
+  {
+    href: '/epc-with-floorplans.html',
+    label: 'EPCs with Floorplans',
+    description: 'Energy performance certificates combined with marketing-ready plans.',
+  },
+];
+
+const popularAreas = areaPages.filter((area) => featuredAreas.includes(area.slug));
+---
+
+<section class="site-links" aria-labelledby="site-links-heading">
+  <div class="container site-links__inner">
+    <div class="site-links__column">
+      <h2 class="site-links__heading" id="site-links-heading">Popular survey services</h2>
+      <ul class="site-links__list">
+        {services.map((service) => (
+          <li>
+            <a href={service.href}>
+              <span class="site-links__label">{service.label}</span>
+              <span class="site-links__meta">{service.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="site-links__column">
+      <h2 class="site-links__heading">Survey areas covered</h2>
+      <ul class="site-links__list site-links__list--grid">
+        {popularAreas.map((area) => (
+          <li>
+            <a href={getAreaUrl(area.slug)}>
+              <span class="site-links__label">{area.name}</span>
+              <span class="site-links__meta">Full coverage & turnaround guidance.</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="site-links__more">
+        Looking for a different location? Explore the
+        <a href="/local-surveys.html">full area directory</a>.
+      </p>
+    </div>
+  </div>
+</section>

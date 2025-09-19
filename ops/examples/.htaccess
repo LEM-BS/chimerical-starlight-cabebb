@@ -1,0 +1,18 @@
+# Canonical host and HTTPS enforcement
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.lembuildingsurveying\.co\.uk$ [NC]
+RewriteRule ^(.*)$ https://lembuildingsurveying.co.uk/$1 [L,R=301]
+
+# Normalise duplicate slashes
+RewriteCond %{THE_REQUEST} \\s/+([^\ ]*?)//+ [NC]
+RewriteRule ^ %1 [L,R=301]
+
+# Ensure index requests resolve to root
+RewriteRule ^index\.html$ / [L,R=301]
+
+# Support extensionless routing by mapping to .html outputs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ /$1.html [L,R=301]

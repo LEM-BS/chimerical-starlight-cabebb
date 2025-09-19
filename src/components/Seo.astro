@@ -1,0 +1,131 @@
+---
+type RobotsDirectives = string[] | { index?: boolean; follow?: boolean; advanced?: string[] };
+type BreadcrumbEntry = { name: string; item?: string; path?: string };
+type AlternateLink = { rel?: string; href: string; hreflang?: string };
+type AdditionalMetaTag = { name?: string; property?: string; content: string; [key: string]: string | undefined };
+
+const {
+  title = '',
+  description = '',
+  canonical,
+  canonicalPath,
+  titleSuffix = ' | LEM Building Surveying',
+  fullTitle = false,
+  robots = {},
+  openGraph = {},
+  twitter = {},
+  structuredData = [],
+  breadcrumbs = [],
+  alternates = [],
+  locale = 'en_GB',
+  siteName = 'LEM Building Surveying',
+  image = 'https://lembuildingsurveying.co.uk/logo-sticker.png',
+  additionalMeta = [],
+} = Astro.props as {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  canonicalPath?: string;
+  titleSuffix?: string;
+  fullTitle?: boolean;
+  robots?: RobotsDirectives;
+  openGraph?: Record<string, string>;
+  twitter?: Record<string, string>;
+  structuredData?: Record<string, unknown>[];
+  breadcrumbs?: BreadcrumbEntry[];
+  alternates?: AlternateLink[];
+  locale?: string;
+  siteName?: string;
+  image?: string;
+  additionalMeta?: AdditionalMetaTag[];
+};
+
+const clamp = (value: string, limit = 60) => {
+  if (!value) return '';
+  return value.length <= limit ? value : `${value.slice(0, limit - 1).trim()}…`;
+};
+
+const site = Astro.site ?? new URL('https://lembuildingsurveying.co.uk');
+let canonicalUrl = canonical;
+if (!canonicalUrl) {
+  const base = canonicalPath ?? Astro.url.pathname ?? '/';
+  canonicalUrl = new URL(base, site).toString();
+}
+
+const baseTitle = title?.trim() ?? '';
+const computedTitle = fullTitle
+  ? clamp(baseTitle)
+  : clamp(`${baseTitle}${titleSuffix}`.trim());
+
+const robotsConfig = robots as RobotsDirectives;
+const robotsDirectives: string[] = Array.isArray(robotsConfig)
+  ? (robotsConfig as string[])
+  : [
+      robotsConfig?.index === false ? 'noindex' : 'index',
+      robotsConfig?.follow === false ? 'nofollow' : 'follow',
+      ...((robotsConfig && 'advanced' in robotsConfig && robotsConfig.advanced) || []),
+    ];
+
+const ogTitle = openGraph.title ?? computedTitle;
+const ogDescription = openGraph.description ?? description;
+const ogType = openGraph.type ?? 'website';
+const ogImage = openGraph.image ?? image;
+const ogUrl = openGraph.url ?? canonicalUrl;
+
+const twitterCard = twitter.card ?? 'summary_large_image';
+const twitterTitle = twitter.title ?? computedTitle;
+const twitterDescription = twitter.description ?? description;
+const twitterImage = twitter.image ?? ogImage;
+
+const structuredDataBlocks: Record<string, unknown>[] = [
+  ...((structuredData as Record<string, unknown>[]) ?? []),
+];
+const breadcrumbItems = (breadcrumbs as BreadcrumbEntry[]) ?? [];
+if (breadcrumbItems.length > 0) {
+  structuredDataBlocks.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item: BreadcrumbEntry, index: number) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.item ?? new URL(item.path ?? '#', site).toString(),
+    })),
+  });
+}
+const alternateLinks = (alternates as AlternateLink[]) ?? [];
+const metaEntries = (additionalMeta as AdditionalMetaTag[]) ?? [];
+---
+
+{computedTitle && <title>{computedTitle}</title>}
+{description && <meta name="description" content={description} />}
+<link rel="canonical" href={canonicalUrl} />
+{robotsDirectives.length > 0 && (
+  <meta name="robots" content={robotsDirectives.join(', ')} />
+)}
+<meta property="og:type" content={ogType} />
+{ogTitle && <meta property="og:title" content={ogTitle} />}
+{ogDescription && <meta property="og:description" content={ogDescription} />}
+<meta property="og:url" content={ogUrl} />
+{siteName && <meta property="og:site_name" content={siteName} />}
+{ogImage && <meta property="og:image" content={ogImage} />}
+<meta name="twitter:card" content={twitterCard} />
+{twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
+{twitterDescription && (
+  <meta name="twitter:description" content={twitterDescription} />
+)}
+{twitterImage && <meta name="twitter:image" content={twitterImage} />}
+{alternateLinks.map((alternate: AlternateLink) => (
+  <link
+    rel={alternate.rel ?? 'alternate'}
+    href={alternate.href}
+    hreflang={alternate.hreflang}
+  />
+))}
+{locale && <meta property="og:locale" content={locale} />}
+{metaEntries.map((meta: AdditionalMetaTag) => (
+  <meta {...meta} />
+))}
+{structuredDataBlocks.map((schema) => (
+  <script type="application/ld+json" is:inline>{JSON.stringify(schema)}</script>
+))}
