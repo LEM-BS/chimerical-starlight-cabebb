@@ -1,6 +1,104 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/saighton.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Building Surveyor in Saighton | RICS Home Surveys | LEM Building Surveying</title>
+    <meta content="RICS Home Surveys and property inspections in Saighton, Aldford and surrounding Cheshire villages. Independent, local, and trusted." name="description">
+    <link href="https://www.lembuildingsurveying.co.uk/saighton" rel="canonical">
+    <meta content="Building Surveyor in Saighton | RICS Home Surveys | LEM Building Surveying" property="og:title">
+    <meta content="RICS Home Surveys and property inspections in Saighton, Aldford and surrounding Cheshire villages. Independent, local, and trusted." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/saighton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Building Surveyor in Saighton | RICS Home Surveys | LEM Building Surveying" name="twitter:title">
+    <meta content="RICS Home Surveys and property inspections in Saighton, Aldford and surrounding Cheshire villages. Independent, local, and trusted." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/saighton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- LocalBusiness Schema for Saighton -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk/saighton.html",
+        "telephone": "+447378732037",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Saighton",
+          "addressRegion": "Cheshire",
+          "postalCode": "CH3",
+          "addressCountry": "GB"
+        },
+        "areaServed": "Saighton, Aldford, Huntington, Chester",
+        "description": "RICS Home Surveys and building inspections across Saighton and nearby Cheshire villages. Clear reports and independent advice.",
+        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+      }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Areas We Cover",
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Saighton",
+              "item": "https://www.lembuildingsurveying.co.uk/saighton"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO --><section class="hero">
+  <div class="hero-container">
+  <h1>RICS Home Surveys in Saighton</h1>
+  <p>Buying in Saighton or nearby? Get trusted advice and clear reports with a local, independent surveyor.</p>
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  </div>
+  </section><!-- MAIN CONTENT --><section class="service-detail">
+  <div class="box-container">
+  <h2>Local Surveyor for Saighton, Aldford &amp; Huntington</h2>
+  <p>
+          We carry out independent property surveys across Saighton, Aldford, and surrounding Cheshire villages. From new-builds to listed properties, we provide prompt, impartial reports that help you make informed decisions.
+        </p>
+  <h2>RICS Survey Options</h2>
+  <ul>
+  <li><strong>Level 1 — Condition Report:</strong> Basic condition overview for newer or well-maintained homes.</li>
+  <li><strong>Level 2 — HomeBuyer Report:</strong> Ideal for conventional properties — includes repair guidance and maintenance advice.</li>
+  <li><strong>Level 3 — Building Survey:</strong> Full structural overview with detailed commentary — best for older or altered homes.</li>
+  <li><strong>Damp &amp; Timber Reports:</strong> Clear diagnosis of visible damp or decay with practical next steps.</li>
+  <li><strong>EPCs &amp; Floorplans:</strong> Useful for lettings, listings or future plans.</li>
+  </ul>
+  <h2>Why LEM Building Surveying?</h2>
+  <ul>
+  <li><strong>Local knowledge:</strong> Based near Chester, we know the styles and construction types across Saighton.</li>
+  <li><strong>Clear reporting:</strong> Delivered in 3–5 working days and always jargon-free.</li>
+  <li><strong>Qualified &amp; independent:</strong> Direct from Liam (AssocRICS) — not a franchise or panel firm.</li>
+  </ul>
+  <h2>Book Your Survey</h2>
+  <p>
+          Unsure which level of survey is right? <a href="/comparison.html">Compare RICS surveys</a> or <a href="/contact.html">get in touch for advice</a>.
+        </p>
+  <div class="cta-section">
+  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="secondary-button" href="/services.html">View All Services</a>
+  </div>
+  </div>
+  </section><!-- FOOTER --><!-- Inject shared content -->
+</BaseLayout>

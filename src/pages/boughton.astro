@@ -1,6 +1,103 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/boughton.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Building Surveyor in Boughton, Chester | RICS Home Surveys</title>
+    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." name="description">
+    <link href="https://www.lembuildingsurveying.co.uk/boughton" rel="canonical">
+    <meta content="Building Surveyor in Boughton, Chester | RICS Home Surveys" property="og:title">
+    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/boughton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Building Surveyor in Boughton, Chester | RICS Home Surveys" name="twitter:title">
+    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/boughton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- LocalBusiness Schema for Boughton -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk/boughton.html",
+        "telephone": "+447378732037",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Boughton",
+          "addressRegion": "Cheshire",
+          "postalCode": "CH3",
+          "addressCountry": "GB"
+        },
+        "areaServed": "Boughton, Chester",
+        "description": "RICS Level 1, 2 & 3 Home Surveys in Boughton by an independent AssocRICS surveyor. Clear reports, fast turnaround and local insight.",
+        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+      }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Areas We Cover",
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Boughton",
+              "item": "https://www.lembuildingsurveying.co.uk/boughton"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <div class="hero-container">
+  <h1>Building Surveys in Boughton, Chester</h1>
+  <p>Level 1, 2 &amp; 3 RICS Home Surveys, Damp Reports and floorplans from a local independent surveyor.</p>
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  </div>
+  </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
+  <div class="box-container">
+  <h2>Trusted Surveying in Boughton</h2>
+  <p>
+          Based near Chester, I provide RICS Home Surveys and damp inspections throughout Boughton — from the Victorian terraces on Hoole Lane to modern riverside developments. You get straightforward advice, fast responses, and expert insight from a qualified local surveyor.
+        </p>
+  <h2>Survey Types Available</h2>
+  <ul>
+  <li><strong>RICS Level 1 Home Survey:</strong> Basic condition report for well-kept, newer properties.</li>
+  <li><strong>RICS Level 2 Home Survey:</strong> HomeBuyer Report with repair advice and condition ratings.</li>
+  <li><strong>RICS Level 3 Building Survey:</strong> In-depth analysis for older or altered properties, including structural advice.</li>
+  <li><strong>Damp &amp; Timber Reports:</strong> Clear investigation of damp, mould, or timber decay.</li>
+  <li><strong>Measured Surveys &amp; Floorplans:</strong> Ideal for renovations, planning or letting.</li>
+  <li><strong>Ventilation &amp; EPC Assessments:</strong> Support with airflow or compliance concerns.</li>
+  </ul>
+  <h2>Why Choose LEM?</h2>
+  <ul>
+  <li><strong>Local Knowledge:</strong> Familiar with the housing styles and typical issues across Boughton.</li>
+  <li><strong>No Salespeople:</strong> You deal directly with me — Liam — a qualified AssocRICS surveyor.</li>
+  <li><strong>Fast, Honest Reporting:</strong> No jargon, just clear facts and practical advice.</li>
+  </ul>
+  <h2>Get Your Survey Quote for Boughton</h2>
+  <p>Whether you're buying, planning works, or managing a rental — I’ll help you understand your property clearly and confidently.</p>
+  <div class="cta-section">
+  <a class="cta-button" href="/enquiry.html">Get a Free Quote</a>
+  <a class="secondary-button" href="/comparison.html">Compare Survey Types</a>
+  </div>
+  </div>
+  </section><!-- FOOTER --><!-- Load Header/Footer -->
+</BaseLayout>

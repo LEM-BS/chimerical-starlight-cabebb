@@ -1,6 +1,204 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/hawarden.html?raw';
----
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
-<LegacyPage html={html} />
+const hero = {
+  eyebrow: 'Hawarden Surveyors',
+  heading: 'Home & Building Surveys in Hawarden',
+  description:
+    'Local RICS surveyor providing tailored home surveys, damp diagnostics and renovation guidance for buyers and homeowners in Hawarden, Ewloe and the surrounding villages.',
+  cta: {
+    label: 'Book a Hawarden survey',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Hawarden’s tree-lined streets and historic core make it a popular place to settle, whether you are upsizing within Flintshire or relocating from Chester. From the sandstone cottages clustered near St Deiniol’s Church to larger family homes off The Highway, each property comes with its own quirks. As a local surveying practice we blend regional building knowledge with national RICS standards so that your report reflects the realities of maintaining and adapting Hawarden homes.',
+  'Much of the village sits within a conservation area, meaning sympathetic repairs and extensions are essential. We regularly inspect Victorian villas with slate roofs, coach houses converted into offices, and inter-war semis that have been modernised piecemeal. Understanding how earlier alterations were executed—particularly with drainage, damp proofing and roof structures—helps us explain ongoing risks before you exchange contracts.',
+  'We also work with the thriving commuter communities around Ewloe, Broughton and St David’s Park where newer estates mix with custom self-builds. Purchasers often juggle busy careers with home moves and need prompt, direct advice. Our reports cut through jargon, highlight priority actions and outline practical steps so you can keep negotiations and renovation plans on track.',
+];
+
+const sellingPoints = {
+  heading: 'Why Hawarden residents work with LEM',
+  points: [
+    'AssocRICS surveyor familiar with Hawarden’s sandstone, slate roofs and estate-built layouts.',
+    'Recommendations grounded in local contractor knowledge and realistic costs for Flintshire trades.',
+    'Flexible scheduling around work and school commitments, with weekend or early appointments where possible.',
+    'Post-survey support to review quotes, liaise with professionals and sense-check remedial strategies.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys and inspections for Hawarden property styles',
+  intro:
+    'Choose the level of reporting that matches your property and plans—from character cottages that need a comprehensive approach to modern builds where reassurance and clarity are key.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most Victorian and post-war homes across Hawarden and Ewloe, providing condition ratings, repair advice and maintenance forecasts.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for period properties, heavily extended houses or dwellings with unusual construction where detailed analysis of structure, moisture and materials is required.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Concise overview suited to well-maintained apartments and newer developments around St David’s Park and the A55 corridor.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Independent assessment of moisture ingress, condensation and timber decay—particularly relevant for sandstone cottages, cellars and garden rooms.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Evidence-based recommendations to improve airflow, balance extraction and reduce condensation in busy family homes.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate drawings and site data to support extensions, garden offices and layout reconfigurations, including heritage-sensitive proposals.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Local knowledge for Hawarden moves',
+  paragraphs: [
+    'The conservation area protects Hawarden’s distinctive character but also introduces extra considerations for buyers. We review stonework pointing, chimney stability and roof coverings to flag where specialist repairs may be necessary. External joinery, gutters and boundary walls are checked closely because tree cover and mature planting can accelerate wear.',
+    'Modern estates around Ewloe, Manor Lane and Hawarden Business Park often feature timber-frame or lightweight steel construction. We inspect cladding interfaces, window flashings and loft ventilation to ensure performance matches modern expectations. Where integral garages have been converted, we confirm structural support and fire compartmentation meet regulations.',
+    'Rural fringes towards Mancot, Bretton and Broughton bring larger plots, private drainage and mixed ground conditions. Here we pay particular attention to soakaways, retaining walls and signs of historic movement, giving you a clear view of maintenance commitments before you proceed.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Support with renovations and heritage considerations',
+    paragraphs: [
+      'Many Hawarden purchases include plans for open-plan kitchens, loft conversions or garden studios. Our surveys assess load-bearing walls, roof structures and service routes so you can brief designers with confidence. Where properties are listed or in sensitive settings, we signpost the approvals process and advise on sympathetic materials.',
+      'If you are tackling long-standing damp or ventilation issues, we trace moisture sources rather than relying on generic chemical treatments. This ensures remedial budgets are spent on effective solutions that protect the building fabric and the wellbeing of everyone living there.',
+    ],
+  },
+  {
+    heading: 'Transparent communication and next steps',
+    paragraphs: [
+      'Before attending site we discuss your goals, concerns and any paperwork provided by the seller. During the inspection we document observations with photographs and thermal readings where appropriate so that explanations are meaningful and evidence-based.',
+      'After delivery we remain on hand to answer questions, join calls with contractors or provide written clarifications for solicitors and lenders. Our aim is to give you confidence in every decision, whether you are negotiating price, scheduling works or planning future upgrades.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Hawarden clients',
+  description:
+    'Discover how our specialist services support Hawarden homeowners, movers and investors by exploring the pages below.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2.html',
+      description: 'See the inspection scope and reporting style we use on Hawarden’s traditional family homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3.html',
+      description: 'Review the comprehensive checks we carry out on complex, extended or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys.html',
+      description: 'Understand how we diagnose the damp concerns that crop up in stone cottages and shaded plots.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments.html',
+      description: 'Learn how balanced ventilation can improve comfort in busy Hawarden households.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys.html',
+      description: 'Explore how precise measurements support planning applications and design work.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Hawarden surveying FAQs',
+  items: [
+    {
+      question: 'Can you survey properties within the Hawarden conservation area?',
+      answer:
+        'Yes. We regularly inspect homes within the conservation area and adapt our reports to highlight heritage considerations, likely consent requirements and appropriate repair methods.',
+    },
+    {
+      question: 'Do you work with homes in Ewloe, St David’s Park and nearby villages?',
+      answer:
+        'We cover the entire Hawarden catchment including Ewloe, St David’s Park, Broughton, Mancot and Aston. Each neighbourhood has different construction styles, and our experience across them informs the recommendations we provide.',
+    },
+    {
+      question: 'Will you liaise with my Hawarden estate agent or vendor?',
+      answer:
+        'Absolutely. We coordinate access, share key observations where appropriate and keep you updated so the process stays smooth. If further information is needed after the survey, we can contact the agent or vendor directly.',
+    },
+    {
+      question: 'What if I need advice on reinstatement costs or planned extensions?',
+      answer:
+        'Let us know at instruction stage and we can factor these into the survey scope. We provide indicative rebuild guidance where possible and can deliver measured surveys or follow-on advice for extension proposals.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas we cover around Hawarden',
+  description: 'We support movers and homeowners across Hawarden and the surrounding A55 corridor.',
+  areas: [
+    'Hawarden village centre',
+    'Ewloe & St David’s Park',
+    'Mancot & Aston',
+    'Broughton & Bretton fringes',
+    'Sandycroft & Manor Lane',
+    'Buckley, Dobshill & Higher Shotton links',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Hawarden survey',
+  paragraphs: [
+    'Tell us about the property, your moving timetable and any areas of concern. We will recommend the appropriate survey level and provide a transparent fee proposal before you commit. Because we are based minutes away, we can react quickly when chains move or builders become available.',
+    'Once instructed we manage the booking from start to finish, liaising with agents or keyholders and keeping you informed. After the report is issued we remain by your side, helping you interpret recommendations and plan the right course of action for your Hawarden home.',
+  ],
+  primaryCta: {
+    label: 'Book a Hawarden survey',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+---
+<LocationPageTemplate
+  townName="Hawarden"
+  county="Flintshire"
+  postalCode="CH5"
+  pageTitle="Home & Building Surveys in Hawarden | LEM Building Surveying Ltd"
+  metaDescription="Independent Hawarden surveyor delivering RICS Level 1, Level 2 & Level 3 home surveys, damp investigations and ventilation advice across Ewloe and the A55 corridor."
+  canonicalPath="hawarden"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+/>

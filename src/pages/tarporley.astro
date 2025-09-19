@@ -1,6 +1,105 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/tarporley.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>RICS Building Surveys in Tarporley | LEM Building Surveying Ltd</title>
+    <meta content="RICS Home Surveys in Tarporley from an independent local building surveyor. Level 1, 2 and 3 surveys with fast reporting and clear, honest advice." name="description">
+    <link href="https://www.lembuildingsurveying.co.uk/tarporley" rel="canonical">
+    <meta content="RICS Building Surveys in Tarporley | LEM Building Surveying Ltd" property="og:title">
+    <meta content="RICS Home Surveys in Tarporley from an independent local building surveyor. Level 1, 2 and 3 surveys with fast reporting and clear, honest advice." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/tarporley" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="RICS Building Surveys in Tarporley | LEM Building Surveying Ltd" name="twitter:title">
+    <meta content="RICS Home Surveys in Tarporley from an independent local building surveyor. Level 1, 2 and 3 surveys with fast reporting and clear, honest advice." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/tarporley" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- LocalBusiness Schema for Tarporley -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk/tarporley.html",
+        "telephone": "+447378732037",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tarporley",
+          "addressRegion": "Cheshire",
+          "postalCode": "CW6",
+          "addressCountry": "GB"
+        },
+        "areaServed": "Tarporley, Cheshire",
+        "description": "RICS Level 1, 2 and 3 Home Surveys and Building Surveys in Tarporley. Independent property surveyor with fast reporting and expert local knowledge.",
+        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+      }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Areas We Cover",
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Tarporley",
+              "item": "https://www.lembuildingsurveying.co.uk/tarporley"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <div class="hero-container">
+  <h1>Building Surveys in Tarporley</h1>
+  <p>Independent RICS Home Surveys, damp inspections and expert property advice for buyers and homeowners in Tarporley and surrounding Cheshire villages.</p>
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  </div>
+  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
+  <div class="box-container">
+  <h2>Your Independent Surveyor in Tarporley</h2>
+  <p>
+          Buying a character property in Tarporley? Whether it's a stone-built cottage, listed home or newer development, we provide clear, qualified survey reports across the CW6 area. Liam (AssocRICS) carries out every inspection himself — no call centres or third parties.
+        </p>
+  <h2>Survey Services Available</h2>
+  <ul>
+  <li><strong>RICS Level 1 Condition Report:</strong> A basic, entry-level survey for modern, well-maintained properties with no major concerns.</li>
+  <li><strong>RICS Level 2 HomeBuyer Survey:</strong> Includes repair advice and maintenance recommendations — ideal for standard properties.</li>
+  <li><strong>RICS Level 3 Building Survey:</strong> In-depth structural reporting for older, altered or non-standard homes — including renovation advice.</li>
+  <li><strong>Damp &amp; Timber Reports:</strong> Identify and explain issues like damp, rot, or mould — with no upselling or referrals.</li>
+  <li><strong>Floorplans &amp; Measured Surveys:</strong> Accurate drawings for extensions, documentation, or space planning.</li>
+  <li><strong>Ventilation Surveys:</strong> Assess airflow and condensation risk in traditional or energy-efficient homes.</li>
+  </ul>
+  <h2>Why Tarporley Clients Choose LEM</h2>
+  <ul>
+  <li><strong>Local insight:</strong> Familiar with older cottages, extended homes and high-end rural properties in Tarporley and nearby villages.</li>
+  <li><strong>Clear reports, fast turnaround:</strong> Most delivered in 3–5 days — with prioritised findings.</li>
+  <li><strong>Direct service:</strong> Speak with Liam before and after the survey for honest, pressure-free advice.</li>
+  </ul>
+  <h2>Get a Quote or Ask a Question</h2>
+  <p>
+          Unsure which survey to choose? <a href="/comparison.html">Compare Tarporley survey types side by side</a> or <a href="/contact.html">send a quick message</a> for advice. We’re always happy to help.
+        </p>
+  <div class="cta-section">
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="secondary-button" href="/services.html">View Full Services</a>
+  </div>
+  </div>
+  </section><!-- FOOTER --><!-- Inject shared header/footer -->
+</BaseLayout>

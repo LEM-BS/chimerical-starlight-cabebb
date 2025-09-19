@@ -1,6 +1,106 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/shotton.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Building Surveyor in Shotton | RICS Home Surveys | LEM Building Surveying</title>
+    <meta content="RICS Level 1, 2 and 3 Home Surveys in Shotton by a local, independent building surveyor. Clear reports, quick turnaround, and honest advice." name="description">
+    <link href="https://www.lembuildingsurveying.co.uk/shotton" rel="canonical">
+    <meta content="Building Surveyor in Shotton | RICS Home Surveys | LEM Building Surveying" property="og:title">
+    <meta content="RICS Level 1, 2 and 3 Home Surveys in Shotton by a local, independent building surveyor. Clear reports, quick turnaround, and honest advice." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/shotton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Building Surveyor in Shotton | RICS Home Surveys | LEM Building Surveying" name="twitter:title">
+    <meta content="RICS Level 1, 2 and 3 Home Surveys in Shotton by a local, independent building surveyor. Clear reports, quick turnaround, and honest advice." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/shotton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- LocalBusiness Schema for Shotton -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk/shotton.html",
+        "telephone": "+447378732037",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Shotton",
+          "addressRegion": "Flintshire",
+          "postalCode": "CH5",
+          "addressCountry": "GB"
+        },
+        "areaServed": "Shotton, Connah’s Quay, Queensferry, Deeside, Flintshire",
+        "description": "Qualified independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Shotton and the surrounding Deeside area.",
+        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+      }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Areas We Cover",
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Shotton",
+              "item": "https://www.lembuildingsurveying.co.uk/shotton"
+            }
+          ]
+        }
+      </script>
+  </Fragment>
+
+  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
+  <div class="hero-container">
+  <h1>RICS Home Surveys in Shotton</h1>
+  <p>Buying a home in Shotton? Get a clear, fast and local building survey from an independent RICS-qualified surveyor.</p>
+  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  </div>
+  </section><!-- MAIN CONTENT --><section class="service-detail">
+  <div class="box-container">
+  <h2>Your Local Shotton Surveyor</h2>
+  <p>
+          LEM Building Surveying Ltd offers RICS Level 1, 2 and 3 Home Surveys in Shotton, covering everything from newer builds to older terraced homes and extensions common throughout the Deeside area.
+          Liam is based just minutes away in Connah’s Quay and carries out all surveys himself — no subcontractors or salespeople.
+        </p>
+  <h2>Survey Services Offered in Shotton</h2>
+  <ul>
+  <li><strong>RICS Level 1 Condition Report:</strong> For newer properties in good condition — includes traffic-light ratings and summary of key issues.</li>
+  <li><strong>RICS Level 2 HomeBuyer Survey:</strong> Detailed inspection covering condition, repairs, and future maintenance — perfect for conventional homes.</li>
+  <li><strong>RICS Level 3 Building Survey:</strong> Comprehensive survey for older, extended, or non-standard homes — includes advice on defects, repairs, and risks.</li>
+  <li><strong>Damp &amp; Timber Reports:</strong> Identify causes of damp, mould or timber decay with independent, unbiased findings.</li>
+  <li><strong>Measured Floorplans:</strong> Scaled internal layouts suitable for planning, redesign or documentation.</li>
+  <li><strong>Ventilation &amp; Condensation Assessments:</strong> Helpful for landlords or tenants experiencing indoor air quality or mould issues.</li>
+  </ul>
+  <h2>Why Choose LEM for Surveys in Shotton?</h2>
+  <ul>
+  <li><strong>Local knowledge:</strong> Based in Connah’s Quay, we know the housing stock of Shotton and Deeside well.</li>
+  <li><strong>Quick turnaround:</strong> Reports typically delivered in 3–5 working days.</li>
+  <li><strong>Direct service:</strong> Speak to Liam directly — no admin teams or third parties.</li>
+  </ul>
+  <h2>Ready to Book?</h2>
+  <p>
+          If you’re unsure which survey is right, <a href="/comparison.html">compare RICS survey levels for Shotton properties</a> or <a href="/contact.html">send us a message</a> for honest advice.
+        </p>
+  <div class="cta-section">
+  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="secondary-button" href="/services.html">View Full Services</a>
+  </div>
+  </div>
+  </section><!-- FOOTER --><!-- Inject shared header/footer -->
+</BaseLayout>

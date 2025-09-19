@@ -1,6 +1,204 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/connahs-quay.html?raw';
----
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
-<LegacyPage html={html} />
+const hero = {
+  eyebrow: 'Connah’s Quay Surveyors',
+  heading: 'Home & Building Surveys in Connah’s Quay',
+  description:
+    'Independent RICS surveyor based in Deeside delivering thorough home surveys, damp inspections and clear reports for buyers, sellers and landlords.',
+  cta: {
+    label: 'Request a Connah’s Quay quote',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Connah’s Quay sits on the Dee Estuary and blends long-established streets with waterside regeneration. When clients invite us into properties on Wepre Drive, Bryn Road or the newer Deeside developments, they want straight-talking insight before committing to a purchase or major works. Because LEM Building Surveying Ltd is headquartered in the town, we recognise how salt-laden air, concrete framed extensions and an industrious past influence building performance. Our job is to turn that local knowledge into dependable advice that fits your budget, time frame and appetite for maintenance.',
+  'Many of the homes we inspect were built during the post-war boom, when rapid expansion produced variations in cavity wall construction, damp-proofing and heating systems. Others are terraced cottages close to the docks or self-builds tucked behind the high street. Each style presents different considerations, from uneven floor slabs and repointed brickwork to loft conversions where permissions need to be checked. We tailor every inspection to the age, alterations and materials we find on site so that you understand the true condition before you sign contracts.',
+  'Our clients span first-time buyers moving from across Flintshire, landlords refreshing rental portfolios and families preparing to invest in upgrades. They value accessible language, timely reporting and the opportunity to discuss recommendations directly with their surveyor. We keep communication personal and responsive, arranging surveys around your commitments and providing realistic next steps rather than generic checklists. The result is a report you can rely on when negotiating price, prioritising repairs or planning improvements.'
+];
+
+const sellingPoints = {
+  heading: 'Why Connah’s Quay homeowners choose LEM',
+  points: [
+    'AssocRICS surveyor living locally with first-hand experience of Deeside housing stock.',
+    'Clear reports with annotated photos, traffic-light priorities and plain-language maintenance advice.',
+    'Independent guidance with no referral fees or sales targets—just what is best for your property.',
+    'Aftercare call included to discuss findings and agree a practical action plan with you or your contractor.',
+  ],
+};
+
+const services = {
+  heading: 'Surveying services tailored to Connah’s Quay homes',
+  intro:
+    'Whether you are looking at a red-brick terrace off the High Street or a timber-framed self-build near the estuary, our investigations adapt to the property and your plans.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'A balanced inspection for most conventional houses and bungalows, highlighting visible defects, urgent repairs and budgeting tips for the next few years.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Full fabric review for older cottages, non-standard construction and major projects, including analysis of alterations, damp sources and structural movement.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Snapshot of key risks on newer or well-maintained homes—ideal for landlords renewing insurance or investors completing quickly.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description:
+        'Moisture profiling, timber decay assessment and ventilation checks so you can address condensation in Dee View flats or lender queries with confidence.',
+    },
+    {
+      name: 'Ventilation & Condensation Assessment',
+      description:
+        'Room-by-room airflow review to help households tackle coastal humidity, extractor upgrades and persistent mould patches.',
+    },
+    {
+      name: 'Measured Surveys & EPC with Floorplans',
+      description:
+        'Accurate plans and compliant energy certificates to support extensions, marketing packs or change of use applications throughout the Deeside area.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Property insight for Connah’s Quay buyers',
+  paragraphs: [
+    'Wepre Park’s hillside streets typically feature split-level designs and retaining walls that need to be checked for movement and drainage routes. Along the river you will find 1960s and 1970s estates where cavity wall insulation and replacement windows have been retrofitted with varying success. We examine detailing around lintels, sills and parapets to ensure rainwater is managed effectively in exposed locations.',
+    'In streets close to the industrial estate we regularly encounter reinforced concrete outbuildings, extended garages and mixed roofing materials. Slab levels, drainage falls and the condition of flat roofs are closely inspected because even small defects can channel water towards neighbouring properties. We also verify service routes and meter access where properties have been expanded in stages.',
+    'Energy efficiency is a common priority. Older terraced homes may still rely on solid walls and suspended timber floors while newer houses have been upgraded with solar panels or air-source heat pumps. We report on insulation, ventilation pathways and achievable improvements so you can plan realistic retrofit steps without risking condensation or compromising the building fabric.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Guidance for renovation and retrofit projects',
+    paragraphs: [
+      'Connah’s Quay offers plenty of opportunity for value-adding alterations, from opening up kitchen-diners to converting detached garages into studios. Our surveys highlight structural considerations, load paths and services capacity so you can brief architects or contractors with confidence. Where historic materials or non-standard construction are present, we recommend suitable repair techniques and outline where specialist input may be required.',
+      'We are often asked to review previous damp proofing, cavity wall extractions and insulation upgrades. Rather than recommending costly treatments by default, we trace moisture pathways, ventilation imbalances and workmanship issues so remedial budgets are spent wisely. The report includes prioritised actions, allowing you to phase improvements in line with budgets or rental schedules.',
+    ],
+  },
+  {
+    heading: 'Straightforward communication at every step',
+    paragraphs: [
+      'Before the inspection we arrange a call to understand your concerns, timescales and any documentation supplied by the seller or agent. During the survey we photograph key findings and note queries to raise with you afterwards. If urgent issues are discovered we will contact you straight away so you can make timely decisions.',
+      'Once the written report lands in your inbox we remain available for follow-up conversations. Many clients share the document with contractors or solicitors and invite us to clarify recommendations. This continuity ensures you feel supported from initial viewing through to completion and beyond.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Explore our core surveying services',
+  description:
+    'Use the links below to dive deeper into our main service pages and see how each option supports property decisions in Connah’s Quay and the wider Deeside area.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2.html',
+      description: 'See what’s included in our Level 2 reports and how we flag emerging maintenance issues.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3.html',
+      description: 'Understand the extra investigative work we carry out on complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys.html',
+      description: 'Learn how we diagnose moisture concerns common in coastal Deeside homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments.html',
+      description: 'Find out how improved ventilation prevents condensation in busy family homes.',
+    },
+    {
+      label: 'EPC with Floorplans',
+      href: '/epc-with-floorplans.html',
+      description: 'Combine compliance and marketing materials for rentals and sales in one visit.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Connah’s Quay survey FAQs',
+  items: [
+    {
+      question: 'Do you cover properties on the Deeside Industrial Estate or newer estates near the A548?',
+      answer:
+        'Yes. We survey residential properties across the industrial estate fringes and the new-build sites close to the A548. Access arrangements can be more involved around live commercial premises, so we coordinate closely with agents or site managers to agree safe inspection times.',
+    },
+    {
+      question: 'How quickly can I receive my Connah’s Quay survey report?',
+      answer:
+        'Most reports are delivered within three to four working days of the site visit. If a purchase deadline is approaching, let us know when you book and we will reserve time for faster turnaround without compromising quality.',
+    },
+    {
+      question: 'Can you help if my lender has raised damp or timber concerns?',
+      answer:
+        'Absolutely. Our independent damp and timber investigations provide evidence-based recommendations that satisfy lender requirements. We explain the underlying causes, suggest appropriate remedial works and remain available to clarify findings with valuers or brokers.',
+    },
+    {
+      question: 'What information do you need before inspecting a Connah’s Quay home?',
+      answer:
+        'Details on the property age, planned works, previous reports and any specific worries help us prepare thoroughly. Title plans, warranties, guarantees and photographic evidence of recurring issues are also useful when shaping the inspection strategy.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Connah’s Quay areas we survey',
+  description: 'We work across the town and neighbouring communities to keep transactions and projects moving.',
+  areas: [
+    'Wepre and Wepre Park fringes',
+    'Golftyn & Central Road estates',
+    'Kelsterton and Bryn Deva',
+    'Pentre & Dee View',
+    'Shotton and Queensferry borders',
+    'Garden City & Sealand',
+  ],
+};
+
+const closing = {
+  heading: 'Plan your Connah’s Quay survey',
+  paragraphs: [
+    'Share your timescales, property details and goals and we will shape the right level of inspection. From first instructions to discussing the final report, you work directly with Liam so nothing is lost in translation. We appreciate that every purchase or refurbishment has its own pressures, and we align our site visits and communication accordingly.',
+    'Call or send an enquiry to secure a survey slot that fits around chains, contractor availability or mortgage deadlines. We can coordinate with estate agents, keyholders and tenants, keeping you updated at each stage so there are no surprises.',
+  ],
+  primaryCta: {
+    label: 'Request a Connah’s Quay quote',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+---
+<LocationPageTemplate
+  townName="Connah’s Quay"
+  county="Flintshire"
+  postalCode="CH5"
+  pageTitle="Home & Building Surveys in Connah’s Quay | LEM Building Surveying Ltd"
+  metaDescription="Independent RICS surveyor in Connah’s Quay providing Level 1, Level 2 & Level 3 home surveys, damp assessments and local property advice across Deeside."
+  canonicalPath="connahs-quay"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+/>

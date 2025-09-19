@@ -1,6 +1,114 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/comparison.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Compare RICS Home Survey Levels | Level 1, 2 &amp; 3 | LEM Building Surveying</title>
+    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." name="description">
+    <meta content="RICS Home Survey Comparison, RICS Survey Levels, Level 1 Survey, Level 2 HomeBuyer Report, Level 3 Building Survey, Property Surveyor Deeside Chester Flintshire" name="keywords">
+    <link href="https://www.lembuildingsurveying.co.uk/comparison" rel="canonical">
+    <meta content="Compare RICS Home Survey Levels | Level 1, 2 &amp; 3 | LEM Building Surveying" property="og:title">
+    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." property="og:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/comparison" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Compare RICS Home Survey Levels | Level 1, 2 &amp; 3 | LEM Building Surveying" name="twitter:title">
+    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." name="twitter:description">
+    <meta content="https://www.lembuildingsurveying.co.uk/comparison" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <style>
+        .table-responsive {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .comparison-table {
+          min-width: 600px;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        .comparison-table th,
+        .comparison-table td {
+          padding: 1em;
+          border: 1px solid #ddd;
+          text-align: left;
+        }
+        .comparison-table th {
+          background-color: #f4f4f4;
+        }
+      </style>
+    <!-- Google tag (gtag.js) -->
+  </Fragment>
+
+  <!-- Shared Header --><!-- COMPARISON INTRO SECTION --><section class="comparison-intro">
+  <div class="container">
+  <h1>Compare RICS Survey Levels</h1>
+  <p>
+          Unsure which home survey is right for your property? Use the table below to compare the three RICS-approved survey levels—so you can choose the most appropriate option with confidence.
+        </p>
+  <p>
+          All surveys follow the <strong>RICS Home Survey Standard</strong> and are carried out by an independent local expert.
+        </p>
+  </div>
+  </section><!-- COMPARISON TABLE SECTION --><section class="comparison-section">
+  <div class="container">
+  <div class="table-responsive">
+  <table class="comparison-table">
+  <thead>
+  <tr>
+  <th>Survey Level</th>
+  <th>What’s Included</th>
+  <th>Best For</th>
+  <th>Starting Price</th>
+  <th>More Info</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><strong>Level 1</strong><br>Condition Report</td>
+  <td>
+                  Visual checks of accessible areas. Identifies urgent issues. Traffic-light ratings only. No repair advice.
+                </td>
+  <td>
+                  Newer or well-maintained homes under 10 years old with no obvious problems.
+                </td>
+  <td>From £350</td>
+  <td><a href="/level-1.html">Find out more →</a></td>
+  </tr>
+  <tr>
+  <td><strong>Level 2</strong><br>HomeBuyer Report</td>
+  <td>
+                  All Level 1 checks plus advice on repairs, ongoing maintenance.
+                </td>
+  <td>
+                  Conventional properties in reasonable condition built from standard materials.
+                </td>
+  <td>From £475</td>
+  <td><a href="/level-2.html">Find out more →</a></td>
+  </tr>
+  <tr>
+  <td><strong>Level 3</strong><br>Building Survey</td>
+  <td>
+                  Full structural analysis of materials, defects, causes, and repair options. Optional costings and additional tests.
+                </td>
+  <td>
+                  Older, extended, listed or non-standard properties—or homes needing renovation.
+                </td>
+  <td>From £650</td>
+  <td><a href="/level-3.html">Find out more →</a></td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </section><!-- CTA SECTION --><section class="cta-section">
+  <div class="container">
+  <h2>Need Help Choosing?</h2>
+  <p>
+          Still not sure which survey suits your property? Liam is happy to help. Get in touch for honest, expert advice with no pressure.
+        </p>
+  <a class="cta-button" href="/contact.html">Speak to Liam</a>
+  </div>
+  </section><!-- FOOTER --><!-- Load Header via JavaScript -->
+</BaseLayout>

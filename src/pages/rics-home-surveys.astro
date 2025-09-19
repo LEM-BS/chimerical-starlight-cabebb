@@ -1,6 +1,570 @@
 ---
-import LegacyPage from '../components/LegacyPage.astro';
-import html from '../legacy/rics-home-surveys.html?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ricsFaqs = [
+  {
+    question: 'Which survey level should I choose for my property?',
+    answer: `Level 1 suits newer, well-maintained homes that just need a quick condition check. Level 2 is the default choice for most conventional purchases and includes repair advice and traffic-light ratings. Choose a Level 3 building survey if the property is older, heavily altered, or you have concerns about the structure. Share the property details when you enquire and we’ll confirm the most appropriate level for you.`,
+  },
+  {
+    question: 'How quickly will I receive the survey report?',
+    answer: `Inspection slots are usually available within 5–7 working days, and reports follow within 3–5 working days after the visit. If something urgent crops up we can provide a same-day summary call, and we’ll do our best to prioritise tight exchange deadlines when you let us know.`,
+  },
+  {
+    question: 'Do you coordinate access with the estate agent or vendor?',
+    answer: `Yes. Once you instruct us we arrange access directly with the agent, vendor, or key holder and keep you copied into the updates so you always know when the inspection is booked.`,
+  },
+  {
+    question: 'Can I discuss the findings with you after reading the report?',
+    answer: `Absolutely. Every survey includes a follow-up call so you can walk through the findings, ask questions, and prioritise next steps. We are also happy to clarify anything by email afterwards.`,
+  },
+  {
+    question: 'What if I need to upgrade to a different survey level?',
+    answer: `If a deeper inspection is required we can switch levels before the visit and you only pay the difference in the fee. We’ll advise if an upgrade looks sensible once we’ve reviewed the property details or if anything unexpected appears on site.`,
+  },
+];
+
+const ricsFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ricsFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
-<LegacyPage html={html} />
+<BaseLayout>
+  <Fragment slot="head">
+    <title>RICS Home Surveys in Deeside &amp; Chester | LEM</title>
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." name="description">
+        <meta content="RICS Home Survey Level 1, Level 2 survey cost, Level 3 Building Survey, HomeBuyer Survey Chester, property survey Deeside" name="keywords">
+        <link href="https://www.lembuildingsurveying.co.uk/rics-home-surveys" rel="canonical">
+        <meta content="RICS Home Surveys in Deeside &amp; Chester | LEM" property="og:title">
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." property="og:description">
+        <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys" property="og:url">
+        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
+        <meta content="summary_large_image" name="twitter:card">
+        <meta content="RICS Home Surveys in Deeside &amp; Chester | LEM" name="twitter:title">
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." name="twitter:description">
+        <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys" name="twitter:url">
+        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+
+        <style>
+          .comparison-section .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .comparison-table {
+            min-width: 600px;
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          .comparison-table th,
+          .comparison-table td {
+            padding: 1em;
+            border: 1px solid #ddd;
+            text-align: left;
+          }
+
+          .comparison-table th {
+            background: #f4f4f4;
+          }
+        </style>
+        <!-- JSON-LD structured data -->
+        <script type="application/ld+json" is:inline>
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "RICS Home Surveys",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "LEM Building Surveying Ltd",
+              "areaServed": [
+                "Deeside",
+                "Chester",
+                "Flintshire",
+                "Cheshire",
+                "North West"
+              ],
+              "url": "https://lembuildingsurveying.co.uk"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "RICS Survey Levels",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Level 1 Condition Report"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Level 2 HomeBuyer Survey"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Level 3 Building Survey"
+                  }
+                }
+              ]
+            }
+          }
+        </script>
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.lembuildingsurveying.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://www.lembuildingsurveying.co.uk/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "RICS Home Surveys",
+              "item": "https://www.lembuildingsurveying.co.uk/rics-home-surveys"
+            }
+          ]
+        }
+      </script>
+      <script type="application/ld+json" is:inline>
+        {JSON.stringify(ricsFaqJsonLd, null, 2)}
+      </script>
+        <!-- Cookie Consent (Usercentrics) -->
+
+
+        <!-- GA4 -->
+
+
+        <!-- Font Awesome (icons used in trust features) -->
+  </Fragment>
+
+  <!-- ░░ HEADER ░░ --><!-- ░░ HERO + QUOTE FORM ░░ --><section class="hero hero-plain">
+        <div class="hero-container legacy-container">
+          <div class="review-badge">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">Rated 5 on Google &amp; Direct Reviews</span>
+          </div>
+          <h1>Book Your RICS Home Survey — Fast, Clear &amp; Local</h1>
+          <p>
+            Make confident property decisions with a qualified surveyor’s report —
+            turnaround in as little as 5–7&nbsp;days. Get your tailored quote now and
+            secure your survey date.
+          </p>
+          <form action="https://formspree.io/f/xzzdqqqz" class="quote-form" method="POST">
+            <input name="_next" type="hidden" value="/thank-you.html">
+            <div class="form-grid">
+              <input name="name" placeholder="Your Name" required="" type="text">
+              <input name="email" placeholder="Your Email" required="" type="email">
+              <input name="contact" placeholder="Contact Number" required="" type="text">
+              <input name="postcode" placeholder="Postcode" required="" type="text">
+              <select name="survey-type" required="">
+                <option value="">Survey Type</option>
+                <option value="level-1">Level 1 — Condition Report</option>
+                <option value="level-2">Level 2 — HomeBuyer Survey</option>
+                <option value="level-3">Level 3 — Building Survey</option>
+                <option value="unsure">Unsure</option>
+              </select>
+              <input name="bedrooms" placeholder="No. of Bedrooms" required="" type="text">
+              <input aria-label="Estimated Property Value (£)" inputmode="decimal" min="0.01" name="property-value" placeholder="Estimated Property Value (£)" required="" step="0.01" type="number">
+              <button class="cta-button hero-contrast" type="submit">
+                Get My Survey Quote in 60 Minutes
+              </button>
+            </div>
+            <ul>
+              <li>
+                <strong>Fast, no-obligation quote</strong> direct from a surveyor
+              </li>
+              <li><strong>Out-of-hours responses</strong> whenever possible</li>
+              <li>
+                100% privacy — your details are <strong>never shared</strong>
+              </li>
+              <li>
+                Serving Connah’s Quay, Deeside, Chester, Mold, Buckley, Hawarden
+                &amp; nearby
+              </li>
+            </ul>
+          </form>
+        </div>
+      </section><section class="guide-callout">
+        <div class="box-container">
+          <p>
+            Not sure which survey level suits your property? Read our
+            <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 comparison guide</a>
+            for examples of when to upgrade and how the reports differ.
+          </p>
+        </div>
+      </section><!-- ░░ TRUST FEATURES ░░ --><section class="trust-features" id="trust">
+        <div class="box-container">
+          <h2 class="section-title--blue">Why Choose LEM Building Surveying</h2>
+          <div class="trust-grid">
+            <div class="trust-card">
+              <svg fill="none" height="24" stroke="currentColor" stroke-width="2" width="24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <strong>5–7 Day Turnaround</strong>
+              <p>Rapid scheduling &amp; report delivery</p>
+            </div>
+            <div class="trust-card">
+              <svg fill="none" height="24" stroke="currentColor" stroke-width="2" width="24">
+                <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 17.5 5.5 21 7 14 2 9h7z"></path>
+              </svg>
+              <strong>Qualified AssocRICS Surveyor</strong>
+              <p>Trusted local expertise</p>
+            </div>
+            <div class="trust-card">
+              <svg fill="none" height="24" stroke="currentColor" stroke-width="2" width="24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <strong>RICS-Compliant Reports</strong>
+              <p>Latest Home Survey Standards</p>
+            </div>
+            <div class="trust-card">
+              <svg fill="none" height="24" stroke="currentColor" stroke-width="2" width="24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                <circle cx="12" cy="9" r="2.5"></circle>
+              </svg>
+              <strong>Local Knowledge</strong>
+              <p>Deeside, Chester &amp; North West</p>
+            </div>
+          </div>
+        </div>
+      </section><!--░░ QUICK NAVIGATION ░░ --><section class="quick-nav">
+        <div class="box-container jump-to">
+          <p><strong>Jump to:</strong></p>
+          <ul class="toc-list">
+            <li><a href="#timeline">Process Timeline</a></li>
+            <li><a href="#comparison">Compare Survey Levels</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#cost">Typical Fees</a></li>
+            <li><a href="#faq">FAQs</a></li>
+          </ul>
+        </div>
+      </section><!-- ░░ PROCESS TIMELINE ░░ --><section class="process-timeline" id="timeline">
+        <div class="box-container">
+          <h2>Your Survey in 4 Simple Steps</h2>
+          <div class="timeline-grid">
+            <div class="step">
+              <svg fill="none" height="38" stroke="currentColor" viewBox="0 0 24 24" width="38">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9 12h6M12 9v6"></path>
+              </svg>
+              <p>Request Quote</p>
+            </div>
+            <div class="step">
+              <svg fill="none" height="38" stroke="currentColor" viewBox="0 0 24 24" width="38">
+                <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V8"></path>
+                <path d="M17 16h-2a2 2 0 0 1-2-2v-2"></path>
+              </svg>
+              <p>Schedule Visit</p>
+            </div>
+            <div class="step">
+              <svg fill="none" height="38" stroke="currentColor" viewBox="0 0 24 24" width="38">
+                <path d="M4 4h16v16H4z"></path>
+                <path d="M4 9h16"></path>
+              </svg>
+              <p>Site Inspection</p>
+            </div>
+            <div class="step">
+              <svg fill="none" height="38" stroke="currentColor" viewBox="0 0 24 24" width="38">
+                <path d="M22 12l-4-4v3H3v2h15v3z"></path>
+              </svg>
+              <p>Report &amp; Call</p>
+            </div>
+          </div>
+        </div>
+      </section><!-- ░░ COMPARISON INTRO ░░ --><section class="comparison-intro container" id="comparison">
+        <h2>Compare RICS Survey Levels</h2>
+        <p>
+          Unsure which home survey is right for your property? Use the table below
+          to compare the three RICS-approved survey levels—so you can choose the
+          most appropriate option with confidence.
+        </p>
+        <p>
+          All surveys follow the <strong>RICS Home Survey Standard</strong> and
+          are carried out by an independent local expert.
+        </p>
+      </section><!-- ░░ COMPARISON TABLE (mobile-friendly) ░░ --><section class="comparison-section">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Survey Level</th>
+                <th>What’s Included</th>
+                <th>Best For</th>
+                <th>Starting Price</th>
+                <th>More Info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Level 1</strong><br>Condition Report</td>
+                <td>
+                  Visual checks of accessible areas. Identifies urgent issues.
+                  Traffic-light ratings only. No repair advice.
+                </td>
+                <td>
+                  Newer or well-maintained homes &lt;10 years old with no obvious
+                  problems.
+                </td>
+                <td>From £350</td>
+                <td><a href="/level-1.html">Find out more →</a></td>
+              </tr>
+              <tr>
+                <td><strong>Level 2</strong><br>HomeBuyer Report</td>
+                <td>
+                  All Level 1 checks plus advice on repairs and ongoing
+                  maintenance.
+                </td>
+                <td>
+                  Conventional properties in reasonable condition built from
+                  standard materials.
+                </td>
+                <td>From £475</td>
+                <td><a href="/level-2.html">Find out more →</a></td>
+              </tr>
+              <tr>
+                <td><strong>Level 3</strong><br>Building Survey</td>
+                <td>
+                  Full structural analysis of materials, defects, causes &amp;
+                  repair options. Optional costings &amp; additional tests.
+                </td>
+                <td>
+                  Older, extended, listed or non-standard properties—or homes
+                  needing renovation.
+                </td>
+                <td>From £650</td>
+                <td><a href="/level-3.html">Find out more →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section><!-- ░░ CHOOSING GUIDANCE ░░ --><section class="container" id="choosing">
+        <h2>Choosing the Right Survey for Your Property</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3>Property Age &amp; Condition</h3>
+            <p>
+              New-builds and well-maintained homes may only require a Level 1
+              report. Period properties or those with known issues often benefit
+              from a Level 2 or Level 3 survey.
+            </p>
+          </div>
+          <div>
+            <h3>Extent of Renovation or Maintenance Needed</h3>
+            <p>
+              Level 3 surveys are essential when structural changes are planned or
+              suspected problems exist.
+            </p>
+          </div>
+          <div>
+            <h3>Your Long-Term Plans</h3>
+            <p>
+              If you're investing heavily or planning to let or redevelop a
+              property, a higher-level survey gives greater clarity and
+              protection.
+            </p>
+          </div>
+        </div>
+      </section><!-- TESTIMONIALS --><div id="testimonials-include"><div class="ti-widget ti-goog"></div></div><!-- AREAS WE COVER --><section class="home-areas improved-areas">
+        <div class="box-container">
+          <div class="areas-header">
+            <h2>Areas We Cover</h2>
+            <p class="lead">
+              Based in Connah’s Quay, we serve property owners across Flintshire,
+              Chester, and surrounding areas
+            </p>
+          </div>
+          <div class="areas-content">
+            <div class="dropdown-card">
+              <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
+              <div class="custom-select">
+                <select id="areaDropdown" onchange="handleAreaSelect(this)">
+                  <option value="">Select an area…</option>
+                  <option value="/connahs-quay.html">Connah’s Quay</option>
+                  <option value="/buckley.html">Buckley</option>
+                  <option value="/hawarden.html">Hawarden</option>
+                  <option value="/ewloe.html">Ewloe</option>
+                  <option value="/deeside.html">Deeside</option>
+                  <option value="/broughton.html">Broughton</option>
+                  <option value="/flintshire.html">Flintshire</option>
+                  <option value="/chester.html">Chester</option>
+                  <option value="/cheshire.html">Cheshire</option>
+                  <option value="/northop.html">Northop</option>
+                  <option value="/northop-hall.html">Northop Hall</option>
+                  <option value="/mold.html">Mold</option>
+                  <option value="/north-west-of-england.html">
+                    North West of England
+                  </option>
+                </select>
+                <span class="chevron">⌄</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script is:inline>
+        /** @param {HTMLSelectElement} select */
+        function handleAreaSelect(select) {
+          if (select.value) window.location.href = select.value;
+        }
+      </script>
+      <!-- ░░ TYPICAL FEES ░░ --><section class="cost-bands" id="cost">
+        <div class="box-container">
+          <h2>Typical Fee Bands</h2>
+          <div class="table-responsive">
+            <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Bedrooms</th>
+                <th>Level 1</th>
+                <th>Level 2</th>
+                <th>Level 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1–2</td>
+                <td>£350</td>
+                <td>£475</td>
+                <td>£650</td>
+              </tr>
+              <tr>
+                <td>3–4</td>
+                <td>£395</td>
+                <td>£525</td>
+                <td>£725</td>
+              </tr>
+              <tr>
+                <td>5+</td>
+                <td>POA</td>
+                <td>POA</td>
+                <td>POA</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+          <p class="small">
+            POA = Price on Application. Exact quote provided within an hour of
+            enquiry.
+          </p>
+        </div>
+      </section><!-- FAQs --><section class="survey-faq" id="faq">
+        <div class="box-container">
+          <h2>FAQs</h2>
+          {ricsFaqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section><!-- CTA SECTION --><section class="cta-section">
+        <div class="container">
+          <h2>Need Help Choosing?</h2>
+          <p>
+            Still not sure which survey suits your property? Liam is happy to
+            help. Get in touch for honest, expert advice with no pressure.
+          </p>
+          <a class="cta-button" href="/contact.html">Speak to Liam</a>
+        </div>
+      </section><!-- Sticky CTA for Mobile/Desktop --><div class="sticky-cta">
+        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+      </div><!-- Shared footer --><!-- Fallback JS submit handler --><script is:inline>
+        document.addEventListener("DOMContentLoaded", () => {
+          const form = document.querySelector(".quote-form");
+          if (!form) return;
+
+          const propertyValueInput = form.querySelector(
+            'input[name="property-value"]',
+          );
+
+          const normalisePropertyValue = () => {
+            if (!propertyValueInput) {
+              return;
+            }
+
+            const rawValue = propertyValueInput.value.trim();
+
+            if (rawValue === "") {
+              propertyValueInput.setCustomValidity("");
+              return;
+            }
+
+            const numericValue = Number(rawValue);
+
+            if (!Number.isFinite(numericValue) || numericValue <= 0) {
+              propertyValueInput.setCustomValidity(
+                "Please enter a positive number.",
+              );
+            } else {
+              propertyValueInput.setCustomValidity("");
+              propertyValueInput.value = rawValue;
+            }
+          };
+
+          if (propertyValueInput) {
+            propertyValueInput.addEventListener("input", normalisePropertyValue);
+            propertyValueInput.addEventListener("blur", normalisePropertyValue);
+          }
+
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            normalisePropertyValue();
+
+            if (!form.checkValidity()) {
+              form.reportValidity();
+              return;
+            }
+
+            const formData = new FormData(form);
+
+            if (propertyValueInput) {
+              formData.set("property-value", propertyValueInput.value.trim());
+            }
+
+            const resp = await fetch(form.action, {
+              method: form.method,
+              body: formData,
+              headers: { Accept: "application/json" },
+            });
+            if (resp.ok) {
+              if (window.gtag) {
+                gtag("event", "conversion", {
+                  send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
+                });
+              }
+              window.location.href = "/thank-you.html";
+            } else {
+              alert("Sorry, something went wrong. Please email us directly.");
+            }
+          });
+        });
+      </script>
+</BaseLayout>
