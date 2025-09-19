@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>EPCs with Floorplans | Energy Certificates &amp; Property Plans | Flintshire, Cheshire &amp; North West</title>
+    <title>EPCs &amp; Floorplans | Energy Certificates &amp; Plans | North West</title>
     <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." name="description">
     <meta content="EPC, Energy Performance Certificate, Floorplans, Property Marketing, Elmhurst Energy Assessor, Deeside EPC, Cheshire Floorplans, Landlord Compliance, EPC with Floorplan Flintshire Chester Wrexham" name="keywords">
     <link href="https://www.lembuildingsurveying.co.uk/epc-with-floorplans" rel="canonical">
@@ -45,6 +45,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           ]
         }
       </script>
+      <!-- Structured data: Service for EPCs with Floorplans -->
+      <script type="application/ld+json" is:inline>{`{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "EPCs with Floorplans",
+        "name": "EPCs with Floorplans",
+        "description": "Elmhurst-accredited energy performance certificates combined with floorplans for sales, lettings and compliance across Deeside, Chester and the North West.",
+        "provider": {
+          "@type": "Organization",
+          "name": "LEM Building Surveying Ltd",
+          "url": "https://www.lembuildingsurveying.co.uk"
+        },
+        "areaServed": "North West England"
+      }`}</script>
   </Fragment>
 
   <!-- Shared Header --><!-- HERO SECTION --><section class="hero">

@@ -1,24 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ricsFaqs = [
+  {
+    question: 'Which survey level should I choose for my property?',
+    answer: `Level 1 suits newer, well-maintained homes that just need a quick condition check. Level 2 is the default choice for most conventional purchases and includes repair advice and traffic-light ratings. Choose a Level 3 building survey if the property is older, heavily altered, or you have concerns about the structure. Share the property details when you enquire and we’ll confirm the most appropriate level for you.`,
+  },
+  {
+    question: 'How quickly will I receive the survey report?',
+    answer: `Inspection slots are usually available within 5–7 working days, and reports follow within 3–5 working days after the visit. If something urgent crops up we can provide a same-day summary call, and we’ll do our best to prioritise tight exchange deadlines when you let us know.`,
+  },
+  {
+    question: 'Do you coordinate access with the estate agent or vendor?',
+    answer: `Yes. Once you instruct us we arrange access directly with the agent, vendor, or key holder and keep you copied into the updates so you always know when the inspection is booked.`,
+  },
+  {
+    question: 'Can I discuss the findings with you after reading the report?',
+    answer: `Absolutely. Every survey includes a follow-up call so you can walk through the findings, ask questions, and prioritise next steps. We are also happy to clarify anything by email afterwards.`,
+  },
+  {
+    question: 'What if I need to upgrade to a different survey level?',
+    answer: `If a deeper inspection is required we can switch levels before the visit and you only pay the difference in the fee. We’ll advise if an upgrade looks sensible once we’ve reviewed the property details or if anything unexpected appears on site.`,
+  },
+];
+
+const ricsFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ricsFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>
-          RICS Home Surveys – Level 1, 2 &amp; 3 | LEM Building Surveying Ltd
-        </title>
-        <meta content="Compare RICS Level 1, Level 2 and Level 3 surveys, see typical fees and book the right inspection for your property across Deeside, Chester &amp; the North-West." name="description">
+    <title>RICS Home Surveys in Deeside &amp; Chester | LEM</title>
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." name="description">
         <meta content="RICS Home Survey Level 1, Level 2 survey cost, Level 3 Building Survey, HomeBuyer Survey Chester, property survey Deeside" name="keywords">
         <link href="https://www.lembuildingsurveying.co.uk/rics-home-surveys" rel="canonical">
-        <meta content="RICS Home Surveys – Level 1, 2 &amp; 3 | LEM Building Surveying Ltd" property="og:title">
-        <meta content="Compare RICS Level 1, Level 2 and Level 3 surveys, see typical fees and book the right inspection for your property across Deeside, Chester &amp; the North-West." property="og:description">
+        <meta content="RICS Home Surveys in Deeside &amp; Chester | LEM" property="og:title">
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." property="og:description">
         <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys" property="og:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
         <meta content="summary_large_image" name="twitter:card">
-        <meta content="RICS Home Surveys – Level 1, 2 &amp; 3 | LEM Building Surveying Ltd" name="twitter:title">
-        <meta content="Compare RICS Level 1, Level 2 and Level 3 surveys, see typical fees and book the right inspection for your property across Deeside, Chester &amp; the North-West." name="twitter:description">
+        <meta content="RICS Home Surveys in Deeside &amp; Chester | LEM" name="twitter:title">
+        <meta content="Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports." name="twitter:description">
         <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys" name="twitter:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
+
+    <!-- Structured data: BreadcrumbList and Service for RICS Home Surveys -->
+    <script type="application/ld+json" is:inline>{`{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.lembuildingsurveying.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "RICS Home Surveys", "item": "https://www.lembuildingsurveying.co.uk/rics-home-surveys" }
+      ]
+    }`}</script>
+    <script type="application/ld+json" is:inline>{`{
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "RICS Home Surveys",
+      "name": "RICS Home Surveys",
+      "description": "Professional Level 1, Level 2 and Level 3 RICS home surveys for Deeside, Chester and the wider North West.",
+      "provider": {
+        "@type": "Organization",
+        "name": "LEM Building Surveying Ltd",
+        "url": "https://www.lembuildingsurveying.co.uk"
+      },
+      "areaServed": "North West England"
+    }`}</script>
 
 
         <style>
@@ -118,52 +175,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
       </script>
       <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Which survey level should I choose for my property?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Level 1 suits newer, well-maintained homes that just need a quick condition check. Level 2 is the default choice for most conventional purchases and includes repair advice and traffic-light ratings. Choose a Level 3 building survey if the property is older, heavily altered, or you have concerns about the structure. Share the property details when you enquire and we’ll confirm the most appropriate level for you."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How quickly will I receive the survey report?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Inspection slots are usually available within 5–7 working days, and reports follow within 3–5 working days after the visit. If something urgent crops up we can provide a same-day summary call, and we’ll do our best to prioritise tight exchange deadlines when you let us know."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you coordinate access with the estate agent or vendor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Once you instruct us we arrange access directly with the agent, vendor, or key holder and keep you copied into the updates so you always know when the inspection is booked."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I discuss the findings with you after reading the report?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely. Every survey includes a follow-up call so you can walk through the findings, ask questions, and prioritise next steps. We are also happy to clarify anything by email afterwards."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What if I need to upgrade to a different survey level?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "If a deeper inspection is required we can switch levels before the visit and you only pay the difference in the fee. We’ll advise if an upgrade looks sensible once we’ve reviewed the property details or if anything unexpected appears on site."
-              }
-            }
-          ]
-        }
+        {JSON.stringify(ricsFaqJsonLd, null, 2)}
       </script>
         <!-- Cookie Consent (Usercentrics) -->
 
@@ -488,53 +500,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </section><!-- FAQs --><section class="survey-faq" id="faq">
         <div class="box-container">
           <h2>FAQs</h2>
-          <details open="">
-            <summary>Which survey level should I choose for my property?</summary>
-            <p>
-              Level 1 suits newer, well-maintained homes that just need a quick
-              condition check. Level 2 is the default choice for most conventional
-              purchases and includes repair advice and traffic-light ratings.
-              Choose a Level 3 building survey if the property is older, heavily
-              altered, or you have concerns about the structure. Share the
-              property details when you enquire and we’ll confirm the most
-              appropriate level for you.
-            </p>
-          </details>
-          <details>
-            <summary>How quickly will I receive the survey report?</summary>
-            <p>
-              Inspection slots are usually available within 5–7 working days, and
-              reports follow within 3–5 working days after the visit. If something
-              urgent crops up we can provide a same-day summary call, and we’ll do
-              our best to prioritise tight exchange deadlines when you let us
-              know.
-            </p>
-          </details>
-          <details>
-            <summary>Do you coordinate access with the estate agent or vendor?</summary>
-            <p>
-              Yes. Once you instruct us we arrange access directly with the agent,
-              vendor, or key holder and keep you copied into the updates so you
-              always know when the inspection is booked.
-            </p>
-          </details>
-          <details>
-            <summary>Can I discuss the findings with you after reading the report?</summary>
-            <p>
-              Absolutely. Every survey includes a follow-up call so you can walk
-              through the findings, ask questions, and prioritise next steps. We
-              are also happy to clarify anything by email afterwards.
-            </p>
-          </details>
-          <details>
-            <summary>What if I need to upgrade to a different survey level?</summary>
-            <p>
-              If a deeper inspection is required we can switch levels before the
-              visit and you only pay the difference in the fee. We’ll advise if an
-              upgrade looks sensible once we’ve reviewed the property details or
-              if anything unexpected appears on site.
-            </p>
-          </details>
+          {ricsFaqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </section><!-- CTA SECTION --><section class="cta-section">
         <div class="container">

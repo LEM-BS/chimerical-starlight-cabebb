@@ -88,7 +88,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Thank you—we’ll be in touch shortly to help with your survey needs.
           </p>
         </div>
-      </section><script is:inline>
+      </section>
+
+      <!-- Additional information and links -->
+      <section class="enquiry-info">
+        <div class="box-container">
+          <h2>Need help choosing?</h2>
+          <p>
+            Our
+            <a href="/rics-home-surveys" class="inline-link">RICS Home Survey guide</a>
+            explains the differences between Level 1, Level 2 and Level 3
+            surveys. You can also learn about our specialist
+            <a href="/damp-mould-surveys" class="inline-link">damp &amp; timber reports</a>,
+            <a href="/measured-surveys" class="inline-link">measured surveys</a>,
+            <a href="/epc-with-floorplans" class="inline-link">EPC &amp; floorplans</a>
+            and
+            <a href="/ventilation-assessments" class="inline-link">ventilation assessments</a>.
+          </p>
+          <p>
+            If you’re not sure where to start, take a look at our
+            <a href="/services" class="inline-link">services page</a> or read
+            our <a href="/faqs" class="inline-link">FAQs</a>.
+          </p>
+          <p>
+            Still have questions? Feel free to call us on
+            <a href="tel:07378732037" class="inline-link">07378&nbsp;732&nbsp;037</a>
+            or email
+            <a href="mailto:enquiries@lembuildingsurveying.co.uk" class="inline-link">
+              enquiries@lembuildingsurveying.co.uk</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <script is:inline>
         document.addEventListener("DOMContentLoaded", () => {
           const form = document.querySelector(".enquiry-form");
           if (!form) {

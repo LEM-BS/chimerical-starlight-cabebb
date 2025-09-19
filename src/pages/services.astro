@@ -1,27 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const servicesFaqs = [
+  {
+    question: 'Still choosing between survey levels?',
+    answer:
+      'Explore our Level 2 vs Level 3 guide for real-world scenarios and pricing tips.',
+  },
+  {
+    question:
+      'Deciding whether to call a contractor or commission an independent report?',
+    answer: 'Read our damp survey vs contractor comparison first.',
+  },
+];
+
+const servicesFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: servicesFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>
-          Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM
-          Building Surveying Ltd
-        </title>
-        <meta name="description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+    <title>Surveying Services in Deeside &amp; Chester | LEM</title>
+        <meta name="description" content="Explore RICS surveys, damp reports, EPCs and measured surveys in Deeside, Chester and Flintshire with LEM. Specialists delivering independent inspections.">
         <meta name="keywords" content="RICS Home Survey, Building Survey, Damp Report, Measured Survey, Floorplans, EPC with Floorplan, Ventilation Assessment, Property Surveyor Deeside Chester Flintshire">
         <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/services">
-        <meta property="og:title" content="Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM Building Surveying Ltd">
-        <meta property="og:description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+        <meta property="og:title" content="Surveying Services in Deeside &amp; Chester | LEM">
+        <meta property="og:description" content="Explore RICS surveys, damp reports, EPCs and measured surveys in Deeside, Chester and Flintshire with LEM. Specialists delivering independent inspections.">
         <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/services">
         <meta property="og:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Property Surveying Services | RICS Surveys, Damp Reports &amp; EPCs | LEM Building Surveying Ltd">
-        <meta name="twitter:description" content="Explore the full range of property surveying services from LEM Building Surveying Ltd: RICS Home Surveys, Damp &amp; Timber Reports, Measured Surveys, EPCs, Ventilation Assessments and more across Deeside, Chester &amp; the North West.">
+        <meta name="twitter:title" content="Surveying Services in Deeside &amp; Chester | LEM">
+        <meta name="twitter:description" content="Explore RICS surveys, damp reports, EPCs and measured surveys in Deeside, Chester and Flintshire with LEM. Specialists delivering independent inspections.">
         <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/services">
         <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
 
 
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify(servicesFaqJsonLd, null, 2)}
+    </script>
     <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -111,7 +137,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <a href="/independent-damp-survey-vs-contractor.html">damp survey vs contractor comparison</a>
               first.
             </p>
-            <a class="inline-link" href="/damp-timber-surveys.html">Learn more about Damp &amp; Timber Surveys →</a>
+            <a class="inline-link" href="/damp-timber-surveys.html">Review our Damp &amp; Timber Surveys for Deeside and Chester →</a>
           </div>
         </article>
         <!-- Measured Surveys -->

@@ -1,23 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const dampFaqs = [
+  {
+    question: 'Will walls need to be opened up during the inspection?',
+    answer: `No destructive work is normally required. We rely on calibrated moisture meters, humidity data, thermal imaging, and visual checks to trace the root cause. Where we need to see behind finishes we only use small borescope inspections with your permission.`,
+  },
+  {
+    question:
+      'Is this report valid for tenancy disputes and housing disrepair claims?',
+    answer: `Yes. The report records readings, photographic evidence, and actionable recommendations that are routinely accepted by landlords, housing associations, and solicitors. We reference relevant standards so the findings can support case files when needed.`,
+  },
+  {
+    question: 'Do you check ventilation systems like extractor fans?',
+    answer: `Absolutely. We test kitchen and bathroom extractors, assess trickle vents and passive airflow, and document the results in the report. You’ll receive practical advice on improving ventilation where upgrades or maintenance are required.`,
+  },
+  {
+    question: 'Do you recommend contractors for repairs?',
+    answer: `We stay completely independent, so we don’t sell treatments or take referral fees. We do outline the type of contractor or specialist to contact and the questions to ask, leaving you free to choose who carries out any remedial work.`,
+  },
+];
+
+const dampFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: dampFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>
-          Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside,
-          Chester &amp; North West
-        </title>
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." name="description">
+    <title>Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM</title>
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="description">
         <meta content="Damp Survey, Mould Inspection, Condensation Survey, Ventilation Report, Independent Damp Assessor, Housing Disrepair Inspection, Damp Specialist Deeside Chester Flintshire North West" name="keywords">
         <link href="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" rel="canonical">
-        <meta content="Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside, Chester &amp; North West" property="og:title">
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." property="og:description">
+        <meta content="Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM" property="og:title">
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." property="og:description">
         <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" property="og:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
         <meta content="summary_large_image" name="twitter:card">
-        <meta content="Damp &amp; Mould Surveys | Independent Moisture Assessments | Deeside, Chester &amp; North West" name="twitter:title">
-        <meta content="Expert independent damp &amp; mould surveys across Deeside, Flintshire, Chester, Wrexham &amp; Cheshire. Get clear advice, no sales pitch, and actionable moisture &amp; ventilation reports." name="twitter:description">
+        <meta content="Damp &amp; Mould Surveys in Deeside &amp; Chester | LEM" name="twitter:title">
+        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="twitter:description">
         <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys" name="twitter:url">
         <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
@@ -48,45 +78,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           ]
         }
       </script>
+      <!-- Structured data: Service for Damp & Mould Surveys -->
+      <script type="application/ld+json" is:inline>{`{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Damp and Mould Surveys",
+        "name": "Damp & Mould Surveys",
+        "description": "Independent assessments for condensation, damp and mould issues across Deeside, Chester and the wider North West.",
+        "provider": {
+          "@type": "Organization",
+          "name": "LEM Building Surveying Ltd",
+          "url": "https://www.lembuildingsurveying.co.uk"
+        },
+        "areaServed": "North West England"
+      }`}</script>
       <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Will walls need to be opened up during the inspection?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No destructive work is normally required. We rely on calibrated moisture meters, humidity data, thermal imaging, and visual checks to trace the root cause. Where we need to see behind finishes we only use small borescope inspections with your permission."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is this report valid for tenancy disputes and housing disrepair claims?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. The report records readings, photographic evidence, and actionable recommendations that are routinely accepted by landlords, housing associations, and solicitors. We reference relevant standards so the findings can support case files when needed."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you check ventilation systems like extractor fans?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely. We test kitchen and bathroom extractors, assess trickle vents and passive airflow, and document the results in the report. You’ll receive practical advice on improving ventilation where upgrades or maintenance are required."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you recommend contractors for repairs?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We stay completely independent, so we don’t sell treatments or take referral fees. We do outline the type of contractor or specialist to contact and the questions to ask, leaving you free to choose who carries out any remedial work."
-              }
-            }
-          ]
-        }
+        {JSON.stringify(dampFaqJsonLd, null, 2)}
       </script>
   </Fragment>
 
@@ -195,45 +202,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <em>Below are common queries about our damp &amp; mould inspection
               services:</em>
           </p>
-          <details open="">
-            <summary>Will walls need to be opened up during the inspection?</summary>
-            <p>
-              No destructive work is normally required. We rely on calibrated
-              moisture meters, humidity data, thermal imaging, and visual checks to
-              trace the root cause. Where we need to see behind finishes we only
-              use small borescope inspections with your permission.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Is this report valid for tenancy disputes and housing disrepair
-              claims?
-            </summary>
-            <p>
-              Yes. The report records readings, photographic evidence, and
-              actionable recommendations that are routinely accepted by landlords,
-              housing associations, and solicitors. We reference relevant
-              standards so the findings can support case files when needed.
-            </p>
-          </details>
-          <details>
-            <summary>Do you check ventilation systems like extractor fans?</summary>
-            <p>
-              Absolutely. We test kitchen and bathroom extractors, assess trickle
-              vents and passive airflow, and document the results in the report.
-              You’ll receive practical advice on improving ventilation where
-              upgrades or maintenance are required.
-            </p>
-          </details>
-          <details>
-            <summary>Do you recommend contractors for repairs?</summary>
-            <p>
-              We stay completely independent, so we don’t sell treatments or take
-              referral fees. We do outline the type of contractor or specialist to
-              contact and the questions to ask, leaving you free to choose who
-              carries out any remedial work.
-            </p>
-          </details>
+          {dampFaqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </section><!-- SERVICE AREA DROPDOWN --><section class="home-areas improved-areas">
         <div class="box-container">
