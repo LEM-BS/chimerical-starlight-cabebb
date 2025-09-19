@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-The development server runs on <http://localhost:4321>. Pages live in `src/pages` and share a common layout that renders the global header and footer.
+`npm run dev` now runs a lightweight asset pipeline alongside the Astro dev server. The watcher compiles `src/scripts/nav.js` and `src/css/style.css` into minified bundles inside `public/assets/`. Pages live in `src/pages` and share a common layout that renders the global header, footer and sitewide internal-link block.
 
 ## Building
 
@@ -17,7 +17,7 @@ The development server runs on <http://localhost:4321>. Pages live in `src/pages
 npm run build
 ```
 
-The static build is generated in `dist/` using Terser and Lightning CSS to minify JavaScript and styles for production. Deploy the contents of this directory. For Netlify, set the build command to `npm run build:minified` and the publish directory to `dist`.
+`npm run build` runs the asset builder (`npm run build:assets`) before invoking `astro build`, producing minified CSS/JS in `public/assets/` and a static site in `dist/`. Deploy the contents of `dist/`. For Netlify, set the build command to `npm run build` and the publish directory to `dist`.
 
 ## Quality checks
 

@@ -42,6 +42,7 @@ function sanitizeHead(html) {
     'link[href*="fonts.gstatic.com"]',
     'link[href*="styles.css"]',
     'link[rel="preload"][href*="styles.css"]',
+    'link[href*="styles.min.css"]',
     'link[rel="icon"]',
     'link[href*="font-awesome"]',
     'script[src*="googletagmanager.com"]',
@@ -115,7 +116,7 @@ function sanitizeBody(html) {
 
   document
     .querySelectorAll(
-      'link[rel="stylesheet"], link[href*="styles.css"], link[rel="icon"]',
+      'link[rel="stylesheet"], link[href*="styles.css"], link[href*="styles.min.css"], link[rel="icon"]',
     )
     .forEach((link) => link.remove());
 

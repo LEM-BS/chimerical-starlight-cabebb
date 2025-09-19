@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const baseDir = path.join(__dirname, '..', 'src', 'legacy');
-const baseUrl = 'https://www.lembuildingsurveying.co.uk';
+const baseUrl = 'https://lembuildingsurveying.co.uk';
 
 const titleOverrides = {
   'connahs-quay': 'Connah’s Quay',

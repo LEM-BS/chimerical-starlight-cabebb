@@ -1,0 +1,22 @@
+---
+import { areaPages, getAreaUrl } from '../data/areas';
+---
+
+<section class="area-directory" aria-labelledby="area-directory-heading">
+  <div class="container">
+    <h2 class="section-title area-directory__heading" id="area-directory-heading">
+      Full list of local survey areas
+    </h2>
+    <p class="area-directory__intro">
+      Every location listed below links to an in-depth guide covering survey availability, typical property profiles and fast
+      booking options for that area.
+    </p>
+    <ul class="area-directory__list">
+      {areaPages.map((area) => (
+        <li>
+          <a href={getAreaUrl(area.slug)}>{area.name} building surveyor</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
