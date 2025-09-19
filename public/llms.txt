@@ -13,6 +13,6 @@ Services:
 - Additional surveying support on request, including snagging lists, landlord inspections, planned maintenance schedules, commercial property surveys and fire safety assessments.
 
 Canonical URLs:
-- Home: https://lembuildingsurveying.co.uk/
-- Services Overview: https://lembuildingsurveying.co.uk/services.html
-- RICS Home Surveys: https://lembuildingsurveying.co.uk/rics-home-surveys.html
+- Home: https://www.lembuildingsurveying.co.uk/
+- Services Overview: https://www.lembuildingsurveying.co.uk/services.html
+- RICS Home Surveys: https://www.lembuildingsurveying.co.uk/rics-home-surveys.html

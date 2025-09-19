@@ -1,6 +1,6 @@
-http://www.lembuildingsurveying.co.uk/*  https://lembuildingsurveying.co.uk/:splat  301!
-https://www.lembuildingsurveying.co.uk/*  https://lembuildingsurveying.co.uk/:splat  301!
-http://lembuildingsurveying.co.uk/*  https://lembuildingsurveying.co.uk/:splat  301!
+http://www.lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
+http://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
+https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
 
 /enquiry  /thank-you  200
 /contact  /thank-you  200
