@@ -33,9 +33,28 @@ export function setupNav() {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (navToggle && navLinks) {
+    /**
+     * Ensure desktop state always shows navigation without relying on
+     * `.nav-open` while keeping the toggle reset for wider viewports.
+     */
+    const enforceDesktopState = () => {
+      if (typeof window === 'undefined') return;
+      if (window.innerWidth >= 768) {
+        navLinks.classList.remove('nav-open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    navToggle.setAttribute('aria-expanded', 'false');
     navToggle.addEventListener('click', () => {
       toggleNav(navToggle, navLinks);
     });
+
+    if (typeof window !== 'undefined') {
+      enforceDesktopState();
+      window.addEventListener('resize', enforceDesktopState);
+    }
   }
 
   if (typeof window !== 'undefined') {
