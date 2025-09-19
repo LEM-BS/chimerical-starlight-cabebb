@@ -9,8 +9,6 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run"
-    ,
-    "generate:sitemap": "node scripts/generate-sitemap.js"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
