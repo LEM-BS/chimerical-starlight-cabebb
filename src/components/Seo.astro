@@ -19,7 +19,7 @@ const {
   alternates = [],
   locale = 'en_GB',
   siteName = 'LEM Building Surveying',
-  image = 'https://lembuildingsurveying.co.uk/logo-sticker.png',
+  image = 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
   additionalMeta = [],
 } = Astro.props as {
   title?: string;
@@ -45,7 +45,7 @@ const clamp = (value: string, limit = 60) => {
   return value.length <= limit ? value : `${value.slice(0, limit - 1).trim()}…`;
 };
 
-const site = Astro.site ?? new URL('https://lembuildingsurveying.co.uk');
+const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
 let canonicalUrl = canonical;
 if (!canonicalUrl) {
   const base = canonicalPath ?? Astro.url.pathname ?? '/';
