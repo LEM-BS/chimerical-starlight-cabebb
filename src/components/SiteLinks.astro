@@ -1,5 +1,5 @@
 ---
-import { areaPages, featuredAreas, getAreaUrl } from '../data/areas';
+import { areaPages, featuredAreas, getAreaPermalink } from '../data/areas';
 
 const services = [
   {
@@ -57,7 +57,7 @@ const popularAreas = areaPages.filter((area) => featuredAreas.includes(area.slug
       <ul class="site-links__list site-links__list--grid">
         {popularAreas.map((area) => (
           <li>
-            <a href={getAreaUrl(area.slug)}>
+            <a href={getAreaPermalink(area.slug)}>
               <span class="site-links__label">{area.name}</span>
               <span class="site-links__meta">Full coverage & turnaround guidance.</span>
             </a>

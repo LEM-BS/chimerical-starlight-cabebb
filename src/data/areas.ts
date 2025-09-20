@@ -1,62 +1,82 @@
 export type AreaLink = {
+  /**
+   * Short identifier used for anchor IDs and legacy URL lookups.
+   */
   slug: string;
+  /**
+   * Optional override for anchor IDs. Defaults to the slug when omitted.
+   */
+  anchor?: string;
   name: string;
+  /**
+   * SEO-friendly permalink (without the `.html` suffix).
+   */
+  permalink: string;
 };
 
+const createAreaEntry = (slug: string, name: string, anchor?: string): AreaLink => ({
+  slug,
+  anchor,
+  name,
+  permalink: `/service-areas/${slug}-damp-surveys-rics-home-surveys`,
+});
+
 const areaEntries: AreaLink[] = [
-  { slug: 'aldford', name: 'Aldford' },
-  { slug: 'boughton', name: 'Boughton' },
-  { slug: 'bretton', name: 'Bretton' },
-  { slug: 'broughton', name: 'Broughton' },
-  { slug: 'buckley', name: 'Buckley' },
-  { slug: 'cheshire', name: 'Cheshire' },
-  { slug: 'chester', name: 'Chester' },
-  { slug: 'christleton', name: 'Christleton' },
-  { slug: 'connahs-quay', name: 'Connah’s Quay' },
-  { slug: 'curzon-park', name: 'Curzon Park' },
-  { slug: 'deeside', name: 'Deeside' },
-  { slug: 'dobshill', name: 'Dobshill' },
-  { slug: 'dodleston', name: 'Dodleston' },
-  { slug: 'eccleston', name: 'Eccleston' },
-  { slug: 'ewloe', name: 'Ewloe' },
-  { slug: 'farndon', name: 'Farndon' },
-  { slug: 'flint', name: 'Flint' },
-  { slug: 'flintshire', name: 'Flintshire' },
-  { slug: 'gresford', name: 'Gresford' },
-  { slug: 'guilden-sutton', name: 'Guilden Sutton' },
-  { slug: 'handbridge', name: 'Handbridge' },
-  { slug: 'hawarden', name: 'Hawarden' },
-  { slug: 'helsby', name: 'Helsby' },
-  { slug: 'higher-kinnerton', name: 'Higher Kinnerton' },
-  { slug: 'holywell', name: 'Holywell' },
-  { slug: 'hoole', name: 'Hoole' },
-  { slug: 'huntington', name: 'Huntington' },
-  { slug: 'lower-kinnerton', name: 'Lower Kinnerton' },
-  { slug: 'marford', name: 'Marford' },
-  { slug: 'mold', name: 'Mold' },
-  { slug: 'mynydd-isa', name: 'Mynydd Isa' },
-  { slug: 'new-brighton', name: 'New Brighton' },
-  { slug: 'newton', name: 'Newton' },
-  { slug: 'north-west-of-england', name: 'North West of England' },
-  { slug: 'northop', name: 'Northop' },
-  { slug: 'northop-hall', name: 'Northop Hall' },
-  { slug: 'oakenholt', name: 'Oakenholt' },
-  { slug: 'penyffordd', name: 'Penyffordd' },
-  { slug: 'pulford', name: 'Pulford' },
-  { slug: 'queensferry', name: 'Queensferry' },
-  { slug: 'rossett', name: 'Rossett' },
-  { slug: 'saighton', name: 'Saighton' },
-  { slug: 'saltney', name: 'Saltney' },
-  { slug: 'sandycroft', name: 'Sandycroft' },
-  { slug: 'shotton', name: 'Shotton' },
-  { slug: 'sychdyn', name: 'Sychdyn' },
-  { slug: 'tarporley', name: 'Tarporley' },
-  { slug: 'tarvin', name: 'Tarvin' },
-  { slug: 'tattenhall', name: 'Tattenhall' },
-  { slug: 'vicars-cross', name: 'Vicars Cross' },
-  { slug: 'waverton', name: 'Waverton' },
-  { slug: 'westminster-park', name: 'Westminster Park' },
+  createAreaEntry('aldford', 'Aldford'),
+  createAreaEntry('boughton', 'Boughton'),
+  createAreaEntry('bretton', 'Bretton'),
+  createAreaEntry('broughton', 'Broughton'),
+  createAreaEntry('buckley', 'Buckley'),
+  createAreaEntry('cheshire', 'Cheshire'),
+  createAreaEntry('chester', 'Chester'),
+  createAreaEntry('christleton', 'Christleton'),
+  createAreaEntry('connahs-quay', 'Connah’s Quay'),
+  createAreaEntry('curzon-park', 'Curzon Park'),
+  createAreaEntry('deeside', 'Deeside'),
+  createAreaEntry('dobshill', 'Dobshill'),
+  createAreaEntry('dodleston', 'Dodleston'),
+  createAreaEntry('eccleston', 'Eccleston'),
+  createAreaEntry('ewloe', 'Ewloe'),
+  createAreaEntry('farndon', 'Farndon'),
+  createAreaEntry('flint', 'Flint'),
+  createAreaEntry('flintshire', 'Flintshire'),
+  createAreaEntry('gresford', 'Gresford'),
+  createAreaEntry('guilden-sutton', 'Guilden Sutton'),
+  createAreaEntry('handbridge', 'Handbridge'),
+  createAreaEntry('hawarden', 'Hawarden'),
+  createAreaEntry('helsby', 'Helsby'),
+  createAreaEntry('higher-kinnerton', 'Higher Kinnerton'),
+  createAreaEntry('holywell', 'Holywell'),
+  createAreaEntry('hoole', 'Hoole'),
+  createAreaEntry('huntington', 'Huntington'),
+  createAreaEntry('lower-kinnerton', 'Lower Kinnerton'),
+  createAreaEntry('marford', 'Marford'),
+  createAreaEntry('mold', 'Mold'),
+  createAreaEntry('mynydd-isa', 'Mynydd Isa'),
+  createAreaEntry('new-brighton', 'New Brighton'),
+  createAreaEntry('newton', 'Newton'),
+  createAreaEntry('north-west-of-england', 'North West of England'),
+  createAreaEntry('northop', 'Northop'),
+  createAreaEntry('northop-hall', 'Northop Hall'),
+  createAreaEntry('oakenholt', 'Oakenholt'),
+  createAreaEntry('penyffordd', 'Penyffordd'),
+  createAreaEntry('pulford', 'Pulford'),
+  createAreaEntry('queensferry', 'Queensferry'),
+  createAreaEntry('rossett', 'Rossett'),
+  createAreaEntry('saighton', 'Saighton'),
+  createAreaEntry('saltney', 'Saltney'),
+  createAreaEntry('sandycroft', 'Sandycroft'),
+  createAreaEntry('shotton', 'Shotton'),
+  createAreaEntry('sychdyn', 'Sychdyn'),
+  createAreaEntry('tarporley', 'Tarporley'),
+  createAreaEntry('tarvin', 'Tarvin'),
+  createAreaEntry('tattenhall', 'Tattenhall'),
+  createAreaEntry('vicars-cross', 'Vicars Cross'),
+  createAreaEntry('waverton', 'Waverton'),
+  createAreaEntry('westminster-park', 'Westminster Park'),
 ];
+
+const areaLookup = new Map(areaEntries.map((area) => [area.slug, area]));
 
 export const areaPages = areaEntries;
 
@@ -71,4 +91,52 @@ export const featuredAreas = [
   'queensferry',
 ];
 
-export const getAreaUrl = (slug: string) => `/${slug}.html`;
+export const areaSelectorSlugs = [
+  'connahs-quay',
+  'buckley',
+  'hawarden',
+  'ewloe',
+  'deeside',
+  'broughton',
+  'flintshire',
+  'chester',
+  'cheshire',
+  'northop',
+  'northop-hall',
+  'mold',
+  'north-west-of-england',
+];
+
+export const getAreaBySlug = (slug: string) => areaLookup.get(slug);
+
+export const getAreaPermalink = (slug: string) => {
+  const area = areaLookup.get(slug);
+  if (!area) {
+    return `/${slug}.html`;
+  }
+
+  return area.permalink.endsWith('.html') ? area.permalink : `${area.permalink}.html`;
+};
+
+export const getAreaAnchor = (slug: string) => areaLookup.get(slug)?.anchor ?? slug;
+
+export const buildAreaOptions = (slugs: string[]) =>
+  slugs
+    .map((slug) => {
+      const area = areaLookup.get(slug);
+      if (!area) {
+        return undefined;
+      }
+
+      return {
+        slug,
+        name: area.name,
+        anchor: area.anchor ?? area.slug,
+        permalink: getAreaPermalink(slug),
+      };
+    })
+    .filter((option): option is { slug: string; name: string; anchor: string; permalink: string } =>
+      Boolean(option),
+    );
+
+export const areaSelectorOptions = buildAreaOptions(areaSelectorSlugs);

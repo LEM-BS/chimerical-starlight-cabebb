@@ -8,11 +8,20 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const pagesDir = path.join(repoRoot, 'src', 'pages');
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
+const areasPath = path.join(repoRoot, 'src', 'data', 'areas.ts');
 
 const skipFiles = new Set(['404.astro']);
 
 const now = new Date().toISOString().slice(0, 10);
 
+const areaSource = await fs.readFile(areasPath, 'utf8');
+const areaSlugMatches = Array.from(areaSource.matchAll(/createAreaEntry\('([^']+)'/g));
+const areaSlugs = new Set(areaSlugMatches.map((match) => match[1]));
+
+const entries = await fs.readdir(pagesDir, { withFileTypes: true });
+const astroFiles = entries
+  .filter((entry) => entry.isFile() && entry.name.endsWith('.astro') && !skipFiles.has(entry.name))
+  .map((entry) => entry.name);
 const collectAstroFiles = async (dir, relativeDir = '') => {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
@@ -47,6 +56,10 @@ const urls = astroFiles.map((relativePath) => {
   if (baseName === 'index') {
     return `${site}/`;
   }
+  if (areaSlugs.has(baseName)) {
+    return `${site}/service-areas/${baseName}-damp-surveys-rics-home-surveys.html`;
+  }
+  return `${site}/${baseName}.html`;
   const normalizedPath = baseName.split(path.sep).join('/');
   return `${site}/${normalizedPath}.html`;
 });

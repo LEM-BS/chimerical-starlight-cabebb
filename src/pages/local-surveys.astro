@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AreaDirectory from '../components/AreaDirectory.astro';
-import { areaPages } from '../data/areas';
+import { areaPages, getAreaAnchor, getAreaPermalink } from '../data/areas';
 
 const areaParagraphs: Record<string, string[]> = {
   flint: [
@@ -66,10 +66,12 @@ const defaultParagraphs = (name: string) => [
 ];
 
 const areas = areaPages.map(({ slug, name }) => ({
-  id: slug,
+  id: getAreaAnchor(slug),
+  slug,
   navLabel: name,
   title: `${name} Home and Building Surveys`,
   paragraphs: areaParagraphs[slug] ?? defaultParagraphs(name),
+  href: getAreaPermalink(slug),
 }));
 
 const localSurveysSchema = {
@@ -191,7 +193,7 @@ const localSurveysSchema = {
           <p>{text}</p>
         ))}
         <p>
-          <a href={`/${area.id}.html`}>
+          <a href={area.href}>
             Learn more about surveys in {area.navLabel}
           </a>
         </p>

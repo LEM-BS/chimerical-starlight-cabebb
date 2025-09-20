@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { areaSelectorOptions } from '../data/areas';
 ---
 
 <BaseLayout productKey="epc">
@@ -106,22 +107,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="dropdown-card">
   <label class="dropdown-label" for="areaDropdown">Jump to an area:</label>
   <div class="custom-select">
-  <select id="areaDropdown" onchange="handleAreaSelect(this)">
-  <option value="">Select an area…</option>
-  <option value="/connahs-quay.html">Connah’s Quay</option>
-  <option value="/buckley.html">Buckley</option>
-  <option value="/hawarden.html">Hawarden</option>
-  <option value="/ewloe.html">Ewloe</option>
-  <option value="/deeside.html">Deeside</option>
-  <option value="/broughton.html">Broughton</option>
-  <option value="/flintshire.html">Flintshire</option>
-  <option value="/chester.html">Chester</option>
-  <option value="/cheshire.html">Cheshire</option>
-  <option value="/northop.html">Northop</option>
-  <option value="/northop-hall.html">Northop Hall</option>
-  <option value="/mold.html">Mold</option>
-  <option value="/north-west-of-england.html">North West of England</option>
-  </select>
+<select id="areaDropdown" onchange="handleAreaSelect(this)">
+<option value="">Select an area…</option>
+  {areaSelectorOptions.map((area) => (
+    <option value={area.permalink}>{area.name}</option>
+  ))}
+</select>
   <span class="chevron">⌄</span>
   </div>
   </div>

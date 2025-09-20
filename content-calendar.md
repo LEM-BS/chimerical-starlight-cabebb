@@ -15,4 +15,4 @@
 | Jun 2026 | Case Study | Surveying a Grade II Listed Property in Farndon | "Farndon listed building survey" |
 | Jul 2026 | RICS Standards | Understanding RICS Requirements for Ventilation Assessments | "RICS ventilation assessment" |
 
-Each article should include internal links to relevant service pages (e.g., `/level-3.html`) and location pages (e.g., `/chester.html`).
+Each article should include internal links to relevant service pages (e.g., `/level-3.html`) and location pages (e.g., `/service-areas/chester-damp-surveys-rics-home-surveys.html`).
