@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 export const title =
   "Damp Surveys in North Wales & Cheshire | LEM Building Surveying";
 export const description =
-  "Professional, evidence-led damp & mould surveys by RICS-accredited surveyors. Serving Chester, Wrexham, Flintshire and nearby towns.";
+  "Professional damp surveys by RICS-accredited surveyors. Serving Chester, Wrexham, Flintshire and beyond. Identify rising, penetrating, or condensation damp today.";
 
 const canonicalPath = "/services/damp-surveys";
 const canonicalUrl = `https://www.lembuildingsurveying.co.uk${canonicalPath}`;
@@ -34,10 +34,12 @@ const seo = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Professional Damp & Mould Surveys",
+  name: "Professional Damp Surveys",
   provider: { "@type": "Organization", name: "LEM Building Surveying Ltd" },
-  areaServed: ["Chester", "Wrexham", "Flintshire", "Connah’s Quay"],
-  serviceType: "Building Survey - Damp & Mould",
+  areaServed: ["Chester", "Wrexham", "Flintshire", "Connah's Quay"],
+  serviceType: "Professional damp survey",
+  description:
+    "Professional damp surveys by RICS-accredited surveyors serving Chester, Wrexham, Flintshire and nearby towns.",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Damp & Mould Investigation",
@@ -46,7 +48,7 @@ const serviceSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Evidence-led Damp/Mould Investigation & Report (BRE 245 where justified)",
+          name: "RICS-accredited damp survey and recommendations report",
         },
       },
     ],
@@ -57,67 +59,67 @@ const serviceSchema = {
 <BaseLayout seo={seo}>
   <article itemscope itemtype="https://schema.org/Service">
     <header>
-      <h1 itemprop="name">Professional Damp &amp; Mould Surveys</h1>
+      <h1 itemprop="name">Professional Damp Surveys</h1>
       <p>
-        <strong>Service areas:</strong> Chester, Wrexham, Flintshire, Connah’s Quay
-        and nearby towns.
+        <strong>Service areas:</strong> Chester, Wrexham, Flintshire, Connah's Quay and
+        nearby towns.
       </p>
     </header>
 
     <section itemprop="serviceType">
-      <h2>Why book a damp survey?</h2>
+      <h2>Why Get a Damp Survey?</h2>
       <p>
-        Whether you’re buying a home or dealing with persistent mould, an
-        evidence-led survey gets to the root cause — not just the symptoms.
+        Whether you're buying a home or spotting suspicious patches in your current
+        property, a professional damp survey can reveal hidden moisture issues before
+        they cause serious damage. Our <strong>RICS-accredited surveys</strong>
+        identify:
       </p>
       <ul>
-        <li>
-          <strong>Condensation</strong> — ventilation, insulation and thermal-bridge
-          related issues
-        </li>
-        <li>
-          <strong>Penetrating damp</strong> — envelope defects and cavity insulation
-          bridging
-        </li>
-        <li>
-          <strong>Low-level moisture</strong> — we treat “rising damp” claims with
-          caution; we investigate bridging/alterations first and confirm capillary
-          rise via BRE 245 only where justified
-        </li>
+        <li><strong>Rising Damp</strong> – Often due to failed or missing damp-proof courses</li>
+        <li><strong>Penetrating Damp</strong> – Leaks through walls, roofs, or windows</li>
+        <li><strong>Condensation</strong> – Typically from poor ventilation or insulation</li>
       </ul>
     </section>
 
     <section>
-      <h2>What’s included</h2>
+      <h2>What's Included in Our Survey</h2>
+      <p>Our damp inspections include:</p>
       <ul>
-        <li>Moisture pattern mapping &amp; meter screening</li>
-        <li>Thermal imaging (where justified)</li>
-        <li>
-          Hygrothermal checks; ventilation assessment &amp; commissioning advice
-        </li>
-        <li>
-          Clear, prioritised action plan (defect repairs before treatments)
-        </li>
-        <li>Optional follow-up with the surveyor</li>
+        <li>Moisture meter readings</li>
+        <li>Thermal imaging (if needed)</li>
+        <li>Ventilation assessment</li>
+        <li>Written report with recommendations</li>
+        <li>Optional follow-up advice with our surveyor</li>
       </ul>
       <p>
-        We tailor our approach by building age and type — from Victorian
-        terraces in Chester to 1950s semis in Wrexham.
+        We tailor our approach based on building type and age – from Victorian terraces
+        in Chester to 1950s semis in Wrexham.
       </p>
     </section>
 
     <section>
-      <h2>What happens next?</h2>
+      <h2>Who Should Book This?</h2>
+      <ul>
+        <li>Homebuyers wanting peace of mind before exchange</li>
+        <li>Landlords managing rental property risks</li>
+        <li>Owners dealing with persistent mould or cold walls</li>
+      </ul>
+      <p>
+        <strong>Early detection saves money</strong> — book a damp survey to avoid
+        costly surprises.
+      </p>
+    </section>
+
+    <section>
+      <h2>What Happens Next?</h2>
       <ol>
-        <li>Request a free quote</li>
+        <li>Contact us for a free quote</li>
         <li>We arrange a convenient inspection date</li>
-        <li>You receive your report within 48–72 hours</li>
+        <li>You receive a report within 48–72 hours</li>
       </ol>
       <p>
-        Learn more about causes &amp; fixes: <a
-          href="/blog/damp-mould-practical-guide"
-          >Damp &amp; Mould: The Practical Guide →</a
-        >
+        Need more details? <a href="/blog/damp-and-mould">Read our guide to damp and
+        mould →</a>
       </p>
     </section>
 
