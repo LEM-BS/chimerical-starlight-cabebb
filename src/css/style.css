@@ -67,6 +67,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Hide shared include containers until populated */
+#header-include:empty,
+#footer-include:empty {
+  display: none;
+}
+
+/* Prevent jitter during header/footer injection */
+.pre-hydrate body {
+  visibility: hidden;
+}
+
 /*───────────────────────────────────────────────────────
   1. BASE ELEMENT STYLES
   Standard styles for fundamental HTML elements
@@ -804,31 +815,31 @@ header {
 }
 
 .site-footer .footer-social .social-links {
+  list-style: none;
   display: flex;
   gap: 0.75rem;
+  padding: 0;
+  margin: 0.5rem 0 0;
   flex-wrap: wrap;
 }
 
-.site-footer .social-links a {
+.site-footer .footer-social .social-links a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  gap: 0.5rem;
   color: #fff;
+  text-decoration: none;
+  transform: none;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer .footer-social .social-links a:hover {
+  opacity: 0.85;
   transform: none;
 }
 
-.site-footer .social-links a:hover {
-  color: var(--primary-blue);
-  background: #fff;
-  transform: translateY(-2px);
-}
-
-.site-footer .social-links i {
-  font-size: 1rem;
+.site-footer .footer-social .social-links svg {
+  display: block;
 }
 
 .site-footer .footer-logos img {
