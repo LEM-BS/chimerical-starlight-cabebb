@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout>
+<BaseLayout productKey="level-3">
   <Fragment slot="head">
     <title>RICS Level 3 Building Survey | LEM Building Surveying</title>
     <meta content="Planning to buy or renovate an older or altered property? Our RICS Level 3 Building Survey offers in-depth analysis, repair advice, and full structural clarity." name="description">
@@ -85,6 +85,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <a class="cta-button" href="/enquiry.html">Request a Survey</a>
     </div>
+    <div data-include="/partials/reviews-level-3.html"></div>
   </section>
   <section class="service-detail">
     <div class="box-container">
@@ -257,4 +258,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
   <!-- FOOTER --><!-- Load Header via JavaScript -->
+  <Fragment slot="body-end">
+    <script src="/assets/js/includes.js" defer is:inline></script>
+    <script src="/assets/js/review-schema.js" defer is:inline></script>
+  </Fragment>
 </BaseLayout>

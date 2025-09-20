@@ -4,7 +4,12 @@ import Footer from '../components/Footer.astro';
 import Seo from '../components/Seo.astro';
 import SiteLinks from '../components/SiteLinks.astro';
 
-const { pageId = '', seo = undefined, hideSiteLinks = false } = Astro.props;
+const {
+  pageId = '',
+  seo = undefined,
+  hideSiteLinks = false,
+  productKey = undefined,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -71,7 +76,7 @@ const { pageId = '', seo = undefined, hideSiteLinks = false } = Astro.props;
       gtag('config', 'G-GXH0EY936M');
     </script>
   </head>
-  <body data-page={pageId}>
+  <body data-page={pageId} data-product-key={productKey}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <Header />
     <div id="main-content">
@@ -79,6 +84,7 @@ const { pageId = '', seo = undefined, hideSiteLinks = false } = Astro.props;
     </div>
     {!hideSiteLinks && <SiteLinks />}
     <Footer />
+    <slot name="body-end" />
     <script type="module" src="/assets/nav.min.js" is:inline></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout>
+<BaseLayout productKey="level-1">
   <Fragment slot="head">
     <title>RICS Level 1 Condition Report | LEM Building Surveying</title>
     <meta content="Need a quick health-check on a modern home? Our RICS Level 1 Condition Report gives you clear, traffic-light ratings and peace of mind—fast." name="description">
@@ -94,4 +94,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
   </div>
   </section><p>Want to explore more? Browse our <a href="../blog-index.html">blog articles about RICS Home Surveys</a> for detailed insights and helpful advice.</p><!-- FOOTER --><!-- Load Header via JavaScript -->
+  <Fragment slot="body-end">
+    <script src="/assets/js/includes.js" defer is:inline></script>
+    <script src="/assets/js/review-schema.js" defer is:inline></script>
+  </Fragment>
 </BaseLayout>
