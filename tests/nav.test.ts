@@ -8,7 +8,7 @@ beforeEach(() => {
   document.body.innerHTML = `
     <button class="nav-toggle" aria-expanded="false"></button>
     <div class="nav-links">
-      <a href="/index.html">Home</a>
+      <a href="/">Home</a>
     </div>
   `;
   window.history.pushState({}, '', '/');
@@ -41,6 +41,16 @@ test('loadTrustIndex injects script once', async () => {
 
   const scripts = document.querySelectorAll('script[src^="https://cdn.trustindex.io/loader.js"]');
   expect(scripts).toHaveLength(1);
+});
+
+test('normalizePathname strips index.html and .html suffixes', async () => {
+  const { normalizePathname } = await import(NAV_MODULE_PATH);
+
+  expect(normalizePathname('/index.html')).toBe('/');
+  expect(normalizePathname('/services/index.html')).toBe('/services');
+  expect(normalizePathname('/contact.html')).toBe('/contact');
+  expect(normalizePathname('local-surveys.html')).toBe('/local-surveys');
+  expect(normalizePathname('')).toBe('');
 });
 
 test('highlights .html link when current path is extensionless', async () => {
