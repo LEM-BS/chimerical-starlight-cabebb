@@ -1,62 +1,62 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { createServiceSeo } from '../utils/structuredData';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { createServiceSeo } from "../utils/structuredData";
 
 const independentDampFaqs = [
   {
-    question: 'Why choose an independent damp surveyor?',
+    question: "Why choose an independent damp surveyor?",
     answer:
-      'Independent surveyors provide unbiased assessments that focus on diagnosing real moisture issues rather than selling treatments. You receive advice that protects your budget and targets the root cause of damp.',
+      "Independent surveyors provide unbiased assessments that focus on diagnosing real moisture issues rather than selling treatments. You receive advice that protects your budget and targets the root cause of damp.",
   },
   {
-    question: 'What equipment is used during the inspection?',
+    question: "What equipment is used during the inspection?",
     answer:
-      'Surveys typically include visual inspections, moisture and humidity readings, borescope checks and thermal imaging where required. This combination helps trace leaks, condensation and timber decay that may be hidden from view.',
+      "Surveys typically include visual inspections, moisture and humidity readings, borescope checks and thermal imaging where required. This combination helps trace leaks, condensation and timber decay that may be hidden from view.",
   },
   {
-    question: 'When should I book an independent damp survey?',
+    question: "When should I book an independent damp survey?",
     answer:
-      'Arrange a survey when buying a property, after leaks or flooding, or whenever you notice damp patches, musty odours or timber deterioration. Early diagnosis prevents costly secondary damage.',
+      "Arrange a survey when buying a property, after leaks or flooding, or whenever you notice damp patches, musty odours or timber deterioration. Early diagnosis prevents costly secondary damage.",
   },
 ];
 
 const description =
-  'Discover how independent damp surveys support Deeside and Chester homes, covering inspection tools, warning signs and the best time to book expert advice.';
+  "Discover how independent damp surveys support Deeside and Chester homes, covering inspection tools, warning signs and the best time to book expert advice.";
 
 const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'Independent Damp Surveys | LEM Building Surveying',
+  title: "Independent Damp Surveys | LEM Building Surveying",
   description,
-  canonicalPath: '/independent-damp-surveys',
-  serviceName: 'Independent Damp Surveys',
+  canonicalPath: "/independent-damp-surveys",
+  serviceName: "Independent Damp Surveys",
   faqs: independentDampFaqs,
   review: {
-    author: 'Buyer in Chester',
-    body: 'The independent damp survey highlighted real issues without pushing treatments and helped us renegotiate confidently.',
+    author: "Buyer in Chester",
+    body: "The independent damp survey highlighted real issues without pushing treatments and helped us renegotiate confidently.",
     ratingValue: 5,
-    datePublished: '2024-05-22',
+    datePublished: "2024-05-22",
   },
 });
 
 const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
   itemListElement: [
     {
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: 1,
-      name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
+      name: "Home",
+      item: "https://www.lembuildingsurveying.co.uk/",
     },
     {
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: 2,
-      name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
+      name: "Services",
+      item: "https://www.lembuildingsurveying.co.uk/services",
     },
     {
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: 3,
-      name: 'Independent Damp Surveys',
+      name: "Independent Damp Surveys",
       item: pageUrl,
     },
   ],
@@ -69,7 +69,6 @@ const seo = {
 ---
 
 <BaseLayout pageId="independent-damp-surveys" seo={seo}>
-
   <main>
     <section class="service-detail">
       <div class="box-container">
@@ -78,28 +77,37 @@ const seo = {
         <section>
           <h2>Understanding the Importance of Independent Damp Surveys</h2>
           <p>
-            Damp issues can wreak havoc on properties, leading to costly repairs and health risks. Independent damp surveys offer
-            a solution by providing unbiased assessments. These surveys are crucial for identifying hidden moisture problems. They
-            help homeowners and buyers make informed decisions.
+            Damp issues can wreak havoc on properties, leading to costly repairs
+            and health risks. Independent damp surveys offer a solution by
+            providing unbiased assessments. These surveys are crucial for
+            identifying hidden moisture problems. They help homeowners and
+            buyers make informed decisions.
           </p>
           <p>
-            Unlike surveys tied to repair companies, independent damp surveys ensure objectivity; they focus solely on assessing
-            the property's condition. This approach prevents unnecessary treatments and misdiagnosis. Homeowners can save money and
-            avoid future headaches. Independent damp surveyors use specialised tools to detect issues not visible to the naked eye.
+            Unlike surveys tied to repair companies, independent damp surveys
+            ensure objectivity; they focus solely on assessing the property's
+            condition. This approach prevents unnecessary treatments and
+            misdiagnosis. Homeowners can save money and avoid future headaches.
+            Independent damp surveyors use specialised tools to detect issues
+            not visible to the naked eye.
           </p>
           <p>
-            For property buyers, these surveys are essential. They reveal potential problems before purchase, safeguarding
-            investments. Understanding the importance of independent damp surveys is key to maintaining a safe, healthy home.
+            For property buyers, these surveys are essential. They reveal
+            potential problems before purchase, safeguarding investments.
+            Understanding the importance of independent damp surveys is key to
+            maintaining a safe, healthy home.
           </p>
         </section>
 
         <section>
           <h2>What Are Independent Damp Surveys?</h2>
           <p>
-            Independent damp surveys examine moisture issues in properties without commercial bias. Conducted by impartial
-            surveyors, they detect damp problems accurately. These surveys differ from those linked to repair firms; they provide
-            objective evaluations focused on identifying real issues, which prevents unnecessary treatments based on misleading
-            findings.
+            Independent damp surveys examine moisture issues in properties
+            without commercial bias. Conducted by impartial surveyors, they
+            detect damp problems accurately. These surveys differ from those
+            linked to repair firms; they provide objective evaluations focused
+            on identifying real issues, which prevents unnecessary treatments
+            based on misleading findings.
           </p>
           <ul>
             <li>Detailed moisture mapping</li>
@@ -107,17 +115,21 @@ const seo = {
             <li>Identification of rising damp, leaks, and condensation</li>
           </ul>
           <p>
-            Surveyors use advanced equipment such as thermal imaging cameras and moisture meters, ensuring thorough inspections. By
-            focusing on fact-based evaluations, they offer homeowners reliable information. With independent damp surveys, you can
-            trust the findings to guide your decisions.
+            Surveyors use advanced equipment such as thermal imaging cameras and
+            moisture meters, ensuring thorough inspections. By focusing on
+            fact-based evaluations, they offer homeowners reliable information.
+            With independent damp surveys, you can trust the findings to guide
+            your decisions.
           </p>
         </section>
 
         <section>
           <h2>Why Choose an Independent Damp Surveyor?</h2>
           <p>
-            Choosing an independent damp surveyor offers several advantages. They provide an unbiased assessment, free from the
-            influence of repair companies. This ensures the advice you receive is honest and purely focused on your best interests.
+            Choosing an independent damp surveyor offers several advantages.
+            They provide an unbiased assessment, free from the influence of
+            repair companies. This ensures the advice you receive is honest and
+            purely focused on your best interests.
           </p>
           <ul>
             <li>Rising damp and its causes</li>
@@ -125,18 +137,22 @@ const seo = {
             <li>Condition and health of timber structures</li>
           </ul>
           <p>
-            Their assessments are thorough and backed by training and certification. This ensures they understand the complexities
-            of property moisture problems. Trusting an independent surveyor helps protect your investment and maintain your
-            property’s health.
+            Their assessments are thorough and backed by training and
+            certification. This ensures they understand the complexities of
+            property moisture problems. Trusting an independent surveyor helps
+            protect your investment and maintain your property’s health.
           </p>
         </section>
 
         <section>
           <h2>Key Benefits of Independent Damp and Timber Surveys</h2>
           <p>
-            The advantages of independent damp and timber surveys are significant. They bring value by identifying underlying
-            issues without bias. Homeowners find these surveys essential for maintaining their property's integrity. An unbiased
-            survey can save you money; misdiagnosis of damp problems often leads to costly, unnecessary repairs.
+            The advantages of independent damp and timber surveys are
+            significant. They bring value by identifying underlying issues
+            without bias. Homeowners find these surveys essential for
+            maintaining their property's integrity. An unbiased survey can save
+            you money; misdiagnosis of damp problems often leads to costly,
+            unnecessary repairs.
           </p>
           <ul>
             <li>Unbiased assessment and recommendations</li>
@@ -149,15 +165,19 @@ const seo = {
               alt="Property Damp Inspection"
               loading="lazy"
             />
-            <figcaption>Photo by Fabian Kleiser (unsplash.com/@fabiankleiser)</figcaption>
+            <figcaption>
+              Photo by Fabian Kleiser (unsplash.com/@fabiankleiser)
+            </figcaption>
           </figure>
         </section>
 
         <section>
           <h2>How Do Independent Damp Survey Services Work?</h2>
           <p>
-            Independent damp survey services involve a systematic process to ensure thorough inspections. These surveys use
-            precise, advanced tools for accurate results, and are conducted by highly trained professionals for unbiased outcomes.
+            Independent damp survey services involve a systematic process to
+            ensure thorough inspections. These surveys use precise, advanced
+            tools for accurate results, and are conducted by highly trained
+            professionals for unbiased outcomes.
           </p>
           <ol>
             <li>Initial property walkthrough</li>
@@ -170,16 +190,20 @@ const seo = {
               alt="Surveyor at Work"
               loading="lazy"
             />
-            <figcaption>Photo by Samuel Daniel (unsplash.com/@samda)</figcaption>
+            <figcaption>
+              Photo by Samuel Daniel (unsplash.com/@samda)
+            </figcaption>
           </figure>
         </section>
 
         <section>
           <h2>Common Signs of Damp and Timber Issues</h2>
           <p>
-            Identifying damp and timber issues early can prevent extensive damage. Common indicators include a musty odour, visible
-            mould, or peeling wallpaper. You may also notice discoloured patches on walls, signalling moisture issues. Timber issues
-            may cause wood to feel soft or appear decayed.
+            Identifying damp and timber issues early can prevent extensive
+            damage. Common indicators include a musty odour, visible mould, or
+            peeling wallpaper. You may also notice discoloured patches on walls,
+            signalling moisture issues. Timber issues may cause wood to feel
+            soft or appear decayed.
           </p>
           <ul>
             <li>Stains or patches on ceilings and walls</li>
@@ -193,15 +217,18 @@ const seo = {
               alt="Signs of Damp on Wall"
               loading="lazy"
             />
-            <figcaption>Photo by Brett Jordan (unsplash.com/@brett_jordan)</figcaption>
+            <figcaption>
+              Photo by Brett Jordan (unsplash.com/@brett_jordan)
+            </figcaption>
           </figure>
         </section>
 
         <section>
           <h2>When Should You Book an Independent Damp Survey?</h2>
           <p>
-            Timing is essential when it comes to damp surveys. Ideally, book a survey if you notice any signs of dampness or before
-            buying a property. Consider booking a survey:
+            Timing is essential when it comes to damp surveys. Ideally, book a
+            survey if you notice any signs of dampness or before buying a
+            property. Consider booking a survey:
           </p>
           <ul>
             <li>When buying or selling a property</li>
@@ -209,16 +236,18 @@ const seo = {
             <li>After a flood or heavy rainfall</li>
           </ul>
           <p>
-            These surveys are also crucial for older properties, as they are more susceptible to hidden issues. Acting swiftly
-            ensures your property remains in optimal condition.
+            These surveys are also crucial for older properties, as they are
+            more susceptible to hidden issues. Acting swiftly ensures your
+            property remains in optimal condition.
           </p>
         </section>
 
         <section>
           <h2>What to Expect in a Damp Survey Report</h2>
           <p>
-            A comprehensive damp survey report provides detailed findings. It highlights the extent and severity of identified
-            issues. Typically, a damp survey report may contain:
+            A comprehensive damp survey report provides detailed findings. It
+            highlights the extent and severity of identified issues. Typically,
+            a damp survey report may contain:
           </p>
           <ul>
             <li>Detailed moisture readings</li>
@@ -228,17 +257,28 @@ const seo = {
             <li>Estimated repair costs</li>
           </ul>
           <p>
-            These reports are essential for understanding your property's needs and offer a clear direction for addressing damp
-            issues promptly. An independent report ensures you make informed decisions without bias.
+            These reports are essential for understanding your property's needs
+            and offer a clear direction for addressing damp issues promptly. An
+            independent report ensures you make informed decisions without bias.
           </p>
         </section>
 
         <section>
-          <h2>Conclusion: Protecting Your Property with Independent Damp Surveys</h2>
+          <h2>
+            Conclusion: Protecting Your Property with Independent Damp Surveys
+          </h2>
           <p>
-            Independent damp surveys are invaluable for safeguarding your investment. They provide an unbiased assessment,
-            ensuring you address only real issues. Regular surveys can identify potential damp problems early on, offering peace of
-            mind and a safe living environment. Investing in independent damp surveys is wise for every homeowner.
+            Independent damp surveys are invaluable for safeguarding your
+            investment. They provide an unbiased assessment, ensuring you
+            address only real issues. Regular surveys can identify potential
+            damp problems early on, offering peace of mind and a safe living
+            environment. Investing in independent damp surveys is wise for every
+            homeowner.
+          </p>
+          <p>
+            When you are ready to book, explore our
+            <a href="/services/damp-surveys">professional damp survey service</a
+            > to see what’s included and how we support you after the report.
           </p>
         </section>
       </div>
