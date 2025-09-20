@@ -2,6 +2,8 @@ http://www.lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/
 http://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
 https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
 
+# Form confirmation pages should only be served after a successful submission.
+# Do not redirect enquiry or contact requests to the thank-you page.
 /thank-you.html  /thank-you  301
 /level-2-or-level-3  /level-2-vs-level-3  301
 /level-2-or-level-3.html  /level-2-vs-level-3  301
