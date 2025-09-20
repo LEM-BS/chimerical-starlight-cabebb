@@ -13,17 +13,42 @@ const skipFiles = new Set(['404.astro']);
 
 const now = new Date().toISOString().slice(0, 10);
 
-const entries = await fs.readdir(pagesDir, { withFileTypes: true });
-const astroFiles = entries
-  .filter((entry) => entry.isFile() && entry.name.endsWith('.astro') && !skipFiles.has(entry.name))
-  .map((entry) => entry.name);
+const collectAstroFiles = async (dir, relativeDir = '') => {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  const files = [];
 
-const urls = astroFiles.map((filename) => {
-  const baseName = filename.replace(/\.astro$/, '');
+  for (const entry of entries) {
+    const relativePath = relativeDir ? `${relativeDir}/${entry.name}` : entry.name;
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      files.push(...(await collectAstroFiles(fullPath, relativePath)));
+      continue;
+    }
+
+    if (!entry.isFile() || !entry.name.endsWith('.astro')) {
+      continue;
+    }
+
+    if (skipFiles.has(entry.name) || skipFiles.has(relativePath)) {
+      continue;
+    }
+
+    files.push(relativePath);
+  }
+
+  return files;
+};
+
+const astroFiles = await collectAstroFiles(pagesDir);
+
+const urls = astroFiles.map((relativePath) => {
+  const baseName = relativePath.replace(/\.astro$/, '');
   if (baseName === 'index') {
     return `${site}/`;
   }
-  return `${site}/${baseName}.html`;
+  const normalizedPath = baseName.split(path.sep).join('/');
+  return `${site}/${normalizedPath}.html`;
 });
 
 const sortedUrls = urls.sort((a, b) => a.localeCompare(b));
