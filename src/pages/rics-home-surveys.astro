@@ -83,18 +83,33 @@ const ricsFaqJsonLd = {
           {
             "@context": "https://schema.org",
             "@type": "Service",
+            "@id": "https://www.lembuildingsurveying.co.uk/rics-home-surveys.html#service",
+            "name": "RICS Home Surveys",
+            "description": "Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with LEM. Get pricing guidance, quick booking and clear reports.",
+            "url": "https://www.lembuildingsurveying.co.uk/rics-home-surveys.html",
             "serviceType": "RICS Home Surveys",
             "provider": {
               "@type": "LocalBusiness",
+              "@id": "https://www.lembuildingsurveying.co.uk/#organization",
               "name": "LEM Building Surveying Ltd",
+              "url": "https://www.lembuildingsurveying.co.uk/",
+              "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png",
+              "telephone": "+447378732037",
+              "description": "Independent RICS surveyor providing clear home survey advice across Cheshire, Flintshire and the surrounding border villages.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Deeside",
+                "addressRegion": "Flintshire",
+                "postalCode": "CH5",
+                "addressCountry": "GB"
+              },
               "areaServed": [
-                "Deeside",
-                "Chester",
+                "Deeside, Flintshire",
+                "Chester, Cheshire",
                 "Flintshire",
                 "Cheshire",
-                "North West"
-              ],
-              "url": "https://www.lembuildingsurveying.co.uk"
+                "North Wales"
+              ]
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
@@ -129,6 +144,7 @@ const ricsFaqJsonLd = {
         {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
+          "@id": "https://www.lembuildingsurveying.co.uk/rics-home-surveys.html#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
