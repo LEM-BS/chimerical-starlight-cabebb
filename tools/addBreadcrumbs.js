@@ -99,7 +99,7 @@ function updateLocationBreadcrumb(fileName) {
   const name = titleOverrides[locationSlug] || toTitleCase(locationSlug);
   const breadcrumb = buildBreadcrumb([
     { name: 'Home', item: ensureTrailingSlash(baseUrl) },
-    { name: 'Areas We Cover', item: `${baseUrl}/local-surveys` },
+    { name: 'Areas We Cover', item: `${baseUrl}/local-surveys.html` },
     { name, item: canonical },
   ]);
 

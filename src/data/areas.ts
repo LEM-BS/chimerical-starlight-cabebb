@@ -26,6 +26,7 @@ const areaEntries: AreaLink[] = [
   { slug: 'guilden-sutton', name: 'Guilden Sutton' },
   { slug: 'handbridge', name: 'Handbridge' },
   { slug: 'hawarden', name: 'Hawarden' },
+  { slug: 'helsby', name: 'Helsby' },
   { slug: 'higher-kinnerton', name: 'Higher Kinnerton' },
   { slug: 'holywell', name: 'Holywell' },
   { slug: 'hoole', name: 'Hoole' },

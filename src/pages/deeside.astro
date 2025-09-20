@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'deeside';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Building Surveyors Near Me | LEM Building Surveying</title>
     <meta content="Looking for building surveyors near me in Deeside? Book RICS Level 1, 2 &amp; 3 home surveys, structural surveys and damp reports with a qualified independent surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/deeside" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/deeside.html" rel="canonical">
     <meta content="Building Surveyors Near Me | LEM Building Surveying" property="og:title">
     <meta content="Qualified RICS surveyor offering Level 1, 2 &amp; 3 home surveys in Deeside. Fast, clear and local property survey reports with no sales pressure." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/deeside" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/deeside.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Building Surveyors Near Me | LEM Building Surveying" name="twitter:title">
     <meta content="Qualified RICS surveyor offering Level 1, 2 &amp; 3 home surveys in Deeside. Fast, clear and local property survey reports with no sales pressure." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/deeside" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/deeside.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Deeside -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Deeside",
-              "item": "https://www.lembuildingsurveying.co.uk/deeside"
+              "item": "https://www.lembuildingsurveying.co.uk/deeside.html"
             }
           ]
         }
@@ -114,5 +117,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/services.html">Browse All Services</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Shared Includes -->
 </BaseLayout>

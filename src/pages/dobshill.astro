@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'dobshill';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Home Surveys in Dobshill | LEM Building Surveying</title>
     <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/dobshill" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/dobshill.html" rel="canonical">
     <meta content="RICS Home Surveys in Dobshill | LEM Building Surveying" property="og:title">
     <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dobshill" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/dobshill.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Home Surveys in Dobshill | LEM Building Surveying" name="twitter:title">
     <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dobshill" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/dobshill.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Dobshill -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Dobshill",
-              "item": "https://www.lembuildingsurveying.co.uk/dobshill"
+              "item": "https://www.lembuildingsurveying.co.uk/dobshill.html"
             }
           ]
         }
@@ -98,5 +101,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p>Fill out a quick form or call direct for a fast quote — no obligation, just honest advice.</p>
   <a class="cta-button" href="/enquiry.html">Get My Survey Quote</a>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Inject header/footer -->
 </BaseLayout>

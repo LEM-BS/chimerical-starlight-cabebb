@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'buckley';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Building Surveys & Damp Reports | LEM Building Surveying</title>
     <meta content="Independent building surveyor in Buckley and across Cheshire villages such as Cholmondeley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/buckley" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/buckley.html" rel="canonical">
     <meta content="Building Surveys & Damp Reports | LEM Building Surveying" property="og:title">
     <meta content="Independent building surveyor in Buckley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Friendly, local and professional." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/buckley" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/buckley.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Building Surveys & Damp Reports | LEM Building Surveying" name="twitter:title">
     <meta content="Independent building surveyor in Buckley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Friendly, local and professional." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/buckley" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/buckley.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Buckley -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Buckley",
-              "item": "https://www.lembuildingsurveying.co.uk/buckley"
+              "item": "https://www.lembuildingsurveying.co.uk/buckley.html"
             }
           ]
         }
@@ -106,5 +109,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="cta-button" href="/enquiry.html">Request Your Survey Quote</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Footer --><!-- JS for header/footer includes -->
 </BaseLayout>

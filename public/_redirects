@@ -7,3 +7,5 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /thank-you.html  /thank-you  301
 /level-2-or-level-3  /level-2-vs-level-3  301
 /level-2-or-level-3.html  /level-2-vs-level-3.html  301
+/areas.html  /local-surveys.html  301
+/areas  /local-surveys.html  301

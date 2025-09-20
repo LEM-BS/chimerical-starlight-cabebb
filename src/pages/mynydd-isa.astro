@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'mynydd-isa';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Surveys in Mynydd Isa | LEM Building Surveying</title>
     <meta content="Independent building surveyor in Mynydd Isa providing RICS Home Surveys, Building Surveys &amp; Damp Reports. Clear, local and professional service." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/mynydd-isa" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/mynydd-isa.html" rel="canonical">
     <meta content="RICS Surveys in Mynydd Isa | LEM Building Surveying" property="og:title">
     <meta content="Independent building surveyor in Mynydd Isa providing RICS Home Surveys, Building Surveys &amp; Damp Reports. Clear, local and professional service." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/mynydd-isa" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/mynydd-isa.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Surveys in Mynydd Isa | LEM Building Surveying" name="twitter:title">
     <meta content="Independent building surveyor in Mynydd Isa providing RICS Home Surveys, Building Surveys &amp; Damp Reports. Clear, local and professional service." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/mynydd-isa" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/mynydd-isa.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Mynydd Isa -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Mynydd Isa",
-              "item": "https://www.lembuildingsurveying.co.uk/mynydd-isa"
+              "item": "https://www.lembuildingsurveying.co.uk/mynydd-isa.html"
             }
           ]
         }
@@ -104,5 +107,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="cta-button" href="/enquiry.html">Request a Survey</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Shared Footer --><!-- Header/Footer JS -->
 </BaseLayout>

@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'lower-kinnerton';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Home & Building Surveys in Lower | LEM Building Surveying</title>
     <meta content="Independent surveyor offering RICS Level 1, 2 &amp; 3 Home Surveys in Lower Kinnerton. Clear, fast reports from a qualified local expert." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/lower-kinnerton" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/lower-kinnerton.html" rel="canonical">
     <meta content="Home & Building Surveys in Lower | LEM Building Surveying" property="og:title">
     <meta content="Independent surveyor offering RICS Level 1, 2 &amp; 3 Home Surveys in Lower Kinnerton. Clear, fast reports from a qualified local expert." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/lower-kinnerton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/lower-kinnerton.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Home & Building Surveys in Lower | LEM Building Surveying" name="twitter:title">
     <meta content="Independent surveyor offering RICS Level 1, 2 &amp; 3 Home Surveys in Lower Kinnerton. Clear, fast reports from a qualified local expert." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/lower-kinnerton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/lower-kinnerton.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Lower Kinnerton -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Lower Kinnerton",
-              "item": "https://www.lembuildingsurveying.co.uk/lower-kinnerton"
+              "item": "https://www.lembuildingsurveying.co.uk/lower-kinnerton.html"
             }
           ]
         }
@@ -98,5 +101,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p>For a fast quote or honest guidance on which survey suits your property best, feel free to get in touch below.</p>
   <a class="cta-button" href="/enquiry.html">Get a Quote</a>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Shared Footer --><!-- Inject header & footer -->
 </BaseLayout>

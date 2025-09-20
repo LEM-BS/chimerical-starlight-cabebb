@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'newton';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Home & Building Surveys in Newton | LEM Building Surveying</title>
     <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/newton" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/newton.html" rel="canonical">
     <meta content="Home & Building Surveys in Newton | LEM Building Surveying" property="og:title">
     <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/newton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/newton.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Home & Building Surveys in Newton | LEM Building Surveying" name="twitter:title">
     <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/newton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/newton.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Newton -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Newton",
-              "item": "https://www.lembuildingsurveying.co.uk/newton"
+              "item": "https://www.lembuildingsurveying.co.uk/newton.html"
             }
           ]
         }
@@ -101,5 +104,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/comparison.html">Compare Survey Types</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>

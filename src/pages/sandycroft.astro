@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'sandycroft';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Building Surveyor in Sandycroft | LEM Building Surveying</title>
     <meta content="Qualified building surveyor covering Sandycroft. RICS Level 1, 2 &amp; 3 Home Surveys, Damp &amp; Timber Reports, and honest advice direct from Liam, AssocRICS." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/sandycroft" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/sandycroft.html" rel="canonical">
     <meta content="Building Surveyor in Sandycroft | LEM Building Surveying" property="og:title">
     <meta content="Qualified building surveyor covering Sandycroft. RICS Level 1, 2 &amp; 3 Home Surveys, Damp &amp; Timber Reports, and honest advice direct from Liam, AssocRICS." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/sandycroft" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/sandycroft.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Building Surveyor in Sandycroft | LEM Building Surveying" name="twitter:title">
     <meta content="Qualified building surveyor covering Sandycroft. RICS Level 1, 2 &amp; 3 Home Surveys, Damp &amp; Timber Reports, and honest advice direct from Liam, AssocRICS." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/sandycroft" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/sandycroft.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Sandycroft -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Sandycroft",
-              "item": "https://www.lembuildingsurveying.co.uk/sandycroft"
+              "item": "https://www.lembuildingsurveying.co.uk/sandycroft.html"
             }
           ]
         }
@@ -100,5 +103,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
   <a class="cta-button" href="/enquiry.html">Request My Survey</a>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>
