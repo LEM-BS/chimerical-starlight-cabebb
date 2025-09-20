@@ -17,26 +17,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/queensferry" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Queensferry -->
+    <!-- Service schema for Queensferry -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/queensferry.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Queensferry",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/queensferry#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Queensferry",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Queensferry, Shotton, Sandycroft, Connah’s Quay, Deeside",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Queensferry"
+          },
+          {
+            "@type": "Place",
+            "name": "Shotton"
+          },
+          {
+            "@type": "Place",
+            "name": "Sandycroft"
+          },
+          {
+            "@type": "Place",
+            "name": "Connah’s Quay"
+          },
+          {
+            "@type": "Place",
+            "name": "Deeside"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS-qualified building surveyor offering Home Surveys and damp reports in Queensferry and the surrounding area.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/queensferry",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Queensferry",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH5",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Queensferry</h1>
   <p>Trusted property inspections and RICS Home Surveys carried out by a qualified local surveyor — fast, clear and independent.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -96,12 +132,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Including Shotton, Sandycroft, Connah’s Quay, Ewloe and Hawarden.
         </p>
   <p>
-          Not sure which survey type is right? <a href="/comparison.html">Compare Level 1, Level 2, and Level 3 surveys for Queensferry homes</a> or <a href="/contact.html">ask Liam for advice</a>.
+          Not sure which survey type is right? <a href="/comparison">Compare Level 1, Level 2, and Level 3 surveys for Queensferry homes</a> or <a href="/contact">ask Liam for advice</a>.
         </p>
   <!-- CTA -->
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  <a class="secondary-button" href="/services.html">View All Services</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
+  <a class="secondary-button" href="/services">View All Services</a>
   </div>
   </div>
   </section><!-- Shared Footer --><!-- Header & Footer Injection -->

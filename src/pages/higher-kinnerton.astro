@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/higher-kinnerton" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Higher Kinnerton -->
+    <!-- Service schema for Higher Kinnerton -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/higher-kinnerton.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Higher Kinnerton",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/higher-kinnerton#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Higher Kinnerton",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Higher Kinnerton, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Higher Kinnerton"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Home Surveys, Building Surveys and Damp Reports in Higher Kinnerton. Local, qualified and independent.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/higher-kinnerton",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Higher Kinnerton",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Higher Kinnerton</h1>
   <p>RICS-accredited surveys and damp reports for buyers, sellers, and owners in Higher Kinnerton — clear, fast and fully independent.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate floorplans for home improvement, extensions or planning.</li>
   <li><strong>EPCs with Floorplans:</strong> Required for sales or lettings — includes an Energy Performance Certificate with layout drawing.</li>
   </ul>
-  <p><a href="/services.html">Explore all services →</a></p>
+  <p><a href="/services">Explore all services →</a></p>
   <h2>Why Choose LEM Building Surveying?</h2>
   <ul>
   <li><strong>AssocRICS Qualified:</strong> Surveys carried out personally by Liam, your local independent surveyor.</li>
@@ -96,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Book or Enquire</h2>
   <p>For a tailored quote or to ask a question, send your details through now and I’ll be in touch — usually within the hour.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Fast Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
   </div>
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>

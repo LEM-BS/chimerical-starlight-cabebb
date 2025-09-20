@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/mynydd-isa" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Mynydd Isa -->
+    <!-- Service schema for Mynydd Isa -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/mynydd-isa.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Mynydd Isa",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH7",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/mynydd-isa#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Mynydd Isa",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Mynydd Isa, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Mynydd Isa"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Home Surveys and building inspections for buyers and homeowners in Mynydd Isa.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/mynydd-isa",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mynydd Isa",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH7",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Surveys in Mynydd Isa</h1>
   <p>Qualified, independent home surveys and damp reports for properties in Mynydd Isa and surrounding areas.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate plans for planning, documentation, or layout purposes.</li>
   <li><strong>Ventilation Assessments:</strong> Check airflow, condensation risks, and indoor air quality issues.</li>
   </ul>
-  <li><a href="/services.html">View All Services Offered</a></li>
+  <li><a href="/services">View All Services Offered</a></li>
   <h2>Why Choose LEM Building Surveying?</h2>
   <ul>
   <li><strong>Locally Based:</strong> Just minutes away in Connah’s Quay, with knowledge of Flintshire property types.</li>
@@ -100,8 +120,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <div class="cta-section">
   <h2>Book Your Survey Today</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">use the quick form</a> for a fast response.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">use the quick form</a> for a fast response.</p>
+  <a class="cta-button" href="/enquiry">Request a Survey</a>
   </div>
   </div>
   </section><!-- Shared Footer --><!-- Header/Footer JS -->

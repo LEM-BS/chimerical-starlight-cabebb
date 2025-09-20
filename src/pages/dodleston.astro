@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/dodleston" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Dodleston -->
+    <!-- Service schema for Dodleston -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/dodleston.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dodleston",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/dodleston#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Dodleston",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Dodleston, Cheshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Dodleston"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "RICS surveys and property inspections in Dodleston including HomeBuyer Reports, Building Surveys, and Damp Reports.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/dodleston",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dodleston",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Dodleston</h1>
   <p>Local RICS surveys, damp reports, and clear advice for homebuyers and homeowners in Dodleston and surrounding Cheshire villages.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><section class="service-detail">
   <div class="box-container">
@@ -84,7 +104,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Combined energy rating and layout plan, ideal for property marketing or lettings.</li>
   <li><strong>Ventilation Assessments:</strong> Identify poor airflow, condensation risks, or persistent damp issues.</li>
   </ul>
-  <p><a href="/services.html">View all survey services →</a></p>
+  <p><a href="/services">View all survey services →</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Local Knowledge:</strong> We’re based near Dodleston and understand the area's housing types and conditions.</li>
@@ -97,7 +117,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="cta-section">
   <h2>Arrange a Survey in Dodleston</h2>
   <p>Get in touch for a quote or to ask a question — we’re happy to help.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+  <a class="cta-button" href="/enquiry">Request a Survey</a>
   </div>
   </div>
   </section>

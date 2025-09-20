@@ -17,26 +17,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/saltney" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Saltney -->
+    <!-- Service schema for Saltney -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/saltney.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Saltney",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/saltney#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Saltney",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Saltney, Chester, Bretton, Lache, Broughton",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Saltney"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Bretton"
+          },
+          {
+            "@type": "Place",
+            "name": "Lache"
+          },
+          {
+            "@type": "Place",
+            "name": "Broughton"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Building surveyor for Saltney and surrounding areas offering RICS Home Surveys and property inspection services.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/saltney",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saltney",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Saltney</h1>
   <p>Buying, selling, or maintaining a property in Saltney? Get clear, local advice from a qualified independent surveyor.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -93,12 +129,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Get Advice or Book Now</h2>
   <p>
-          Still unsure which survey level you need? <a href="/comparison.html">Compare Level 1, 2 and 3 surveys</a> or <a href="/contact.html">ask Liam directly</a> for tailored advice.
+          Still unsure which survey level you need? <a href="/comparison">Compare Level 1, 2 and 3 surveys</a> or <a href="/contact">ask Liam directly</a> for tailored advice.
         </p>
   <!-- CTA -->
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  <a class="secondary-button" href="/services.html">View All Services</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
+  <a class="secondary-button" href="/services">View All Services</a>
   </div>
   </div>
   </section><!-- Shared Footer --><!-- Header & Footer Injection -->

@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/penyffordd" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Penyffordd -->
+    <!-- Service schema for Penyffordd -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/penyffordd.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Penyffordd",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/penyffordd#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Penyffordd",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Penyffordd, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Penyffordd"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Home Surveys, Building Surveys and Damp Reports in Penyffordd, delivered by a qualified local surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/penyffordd",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Penyffordd",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Penyffordd</h1>
   <p>Independent RICS Home Surveys, Damp Inspections, and Building Reports for homeowners and buyers in Penyffordd.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -88,7 +108,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Energy Performance Certificates with scaled floorplans for compliance and marketing.</li>
   <li><strong>Residential Ventilation Checks:</strong> Identify risks from poor airflow, condensation or high humidity levels.</li>
   </ul>
-  <p><a href="/services.html">View All Services Offered</a></p>
+  <p><a href="/services">View All Services Offered</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Personal Service:</strong> Surveys are carried out by me, Liam — a qualified AssocRICS surveyor with local knowledge.</li>
@@ -101,8 +121,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA SECTION -->
   <div class="cta-section">
   <h2>Book a Survey in Penyffordd</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">request a quote online</a>.</p>
-  <a class="cta-button" href="/services.html">Explore Full Services</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">request a quote online</a>.</p>
+  <a class="cta-button" href="/services">Explore Full Services</a>
   </div>
   </div>
   </section><!-- Shared Footer -->

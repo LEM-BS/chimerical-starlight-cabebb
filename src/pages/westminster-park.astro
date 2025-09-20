@@ -17,26 +17,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/westminster-park" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Westminster Park -->
+    <!-- Service schema for Westminster Park -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/westminster-park.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Westminster Park",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/westminster-park#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Westminster Park",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Westminster Park, Chester",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Westminster Park"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "RICS Home Surveys and Building Surveys in Westminster Park, Chester. Fast, clear reports from a local AssocRICS surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/westminster-park",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Westminster Park",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +93,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home Surveys in Westminster Park, Chester</h1>
   <p>Professional RICS Home Surveys, Damp Reports, and Measured Surveys for properties in Westminster Park and surrounding Chester areas.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Personal Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Personal Quote</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -97,8 +121,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Whether you’re buying a family home or investing in property, I’ll help you understand its true condition with independent, professional insight.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Request Your Quote</a>
-  <a class="secondary-button" href="/comparison.html">Compare Survey Levels</a>
+  <a class="cta-button" href="/enquiry">Request Your Quote</a>
+  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Load Header/Footer -->

@@ -17,26 +17,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/curzon-park" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Curzon Park -->
+    <!-- Service schema for Curzon Park -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/curzon-park.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Curzon Park",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/curzon-park#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Curzon Park",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Curzon Park, Chester",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Curzon Park"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "Independent building surveyor offering RICS Level 1, 2 & 3 Home Surveys and damp inspections in Curzon Park, Chester.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/curzon-park",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Curzon Park",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +93,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home Surveys in Curzon Park, Chester</h1>
   <p>RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and Measured Surveys for high-value properties in Curzon Park.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
   <div class="box-container">
@@ -95,8 +119,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <h2>Arrange Your Survey Today</h2>
   <p>Buying or maintaining a property in Curzon Park? Get professional insight and practical advice, with no pushy sales or commissions.</p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Personal Quote</a>
-  <a class="secondary-button" href="/comparison.html">Survey Comparison Guide</a>
+  <a class="cta-button" href="/enquiry">Get a Personal Quote</a>
+  <a class="secondary-button" href="/comparison">Survey Comparison Guide</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Load Shared Header/Footer -->

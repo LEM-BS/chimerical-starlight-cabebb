@@ -37,7 +37,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
           <!-- Formspree: _next ensures redirect after successful send -->
           <form action="https://formspree.io/f/xzzdqqqz" class="enquiry-form" method="POST">
-            <input name="_next" type="hidden" value="https://www.lembuildingsurveying.co.uk/thank-you.html">
+            <input name="_next" type="hidden" value="https://www.lembuildingsurveying.co.uk/thank-you">
             <label for="name">Full Name:</label>
             <input id="name" name="name" required="" type="text">
 
@@ -147,7 +147,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             if (resp.ok) {
               /* fire Google-Ads conversion before leaving */
               gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk" });
-              window.location = "/thank-you.html";
+              window.location = "/thank-you";
             } else {
               alert("Sorry, something went wrong. Please email us directly.");
             }

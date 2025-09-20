@@ -20,22 +20,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/gresford.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Gresford",
-          "addressRegion": "Wrexham",
-          "postalCode": "LL12",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/gresford#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Gresford",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Gresford, Wrexham",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Gresford"
+          },
+          {
+            "@type": "Place",
+            "name": "Wrexham"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Wrexham"
+        },
         "description": "AssocRICS building surveyor offering Level 2 and Level 3 RICS surveys, damp reports and floorplans in Gresford.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/gresford",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gresford",
+            "addressRegion": "Wrexham",
+            "postalCode": "LL12",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -68,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Gresford</h1>
   <p>Independent RICS surveys, damp inspections and expert reporting — tailored for homes in Gresford and surrounding areas.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -82,7 +102,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Floorplans &amp; Measured Surveys:</strong> Useful for renovations, documentation or pre-sale preparation.</li>
   <li><strong>Residential Ventilation Checks:</strong> Improve air quality and identify hidden causes of condensation or mould.</li>
   </ul>
-  <li><a href="/services.html">View Full List of Services</a></li>
+  <li><a href="/services">View Full List of Services</a></li>
   <h2>Why Gresford Clients Choose LEM</h2>
   <ul>
   <li><strong>AssocRICS Qualified:</strong> All work completed by Liam, a trusted and qualified surveyor.</li>
@@ -94,8 +114,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <iframe allowfullscreen="" height="300" loading="lazy" src="https://www.google.com/maps?q=Gresford,+Wrexham,+UK&amp;output=embed" class="map-embed" width="100%"></iframe>
   <div class="cta-section">
   <h2>Get a Quote or Ask a Question</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">send a message online</a> to arrange your survey.</p>
-  <a class="cta-button" href="/enquiry.html">Get My Survey Quote</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">send a message online</a> to arrange your survey.</p>
+  <a class="cta-button" href="/enquiry">Get My Survey Quote</a>
   </div>
   </div>
   </section>
