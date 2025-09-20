@@ -10,7 +10,20 @@ const pagesDir = path.join(repoRoot, 'src', 'pages');
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
 const areasPath = path.join(repoRoot, 'src', 'data', 'areas.ts');
 
-const skipFiles = new Set(['404.astro', 'thank-you.astro']);
+const skipFiles = new Set(['404.astro']);
+
+const noindexPatterns = [
+  /robots\s*:\s*{[\s\S]*?\bindex\s*:\s*false\b/i,
+  /robots\s*:\s*\[[\s\S]*?['"]noindex['"][\s\S]*?\]/i,
+  /<meta[^>]*name=["']robots["'][^>]*noindex/i,
+  /<meta[^>]*noindex[^>]*name=["']robots["']/i,
+];
+
+const isNoindexPage = async (relativePath) => {
+  const pagePath = path.join(pagesDir, relativePath);
+  const contents = await fs.readFile(pagePath, 'utf8');
+  return noindexPatterns.some((pattern) => pattern.test(contents));
+};
 
 const now = new Date().toISOString().slice(0, 10);
 
@@ -47,7 +60,26 @@ const collectAstroFiles = async (dir, relativeDir = '') => {
 
 const astroFiles = await collectAstroFiles(pagesDir);
 
-const urls = astroFiles.map((relativePath) => {
+const includableFiles = [];
+const excludedNoindexFiles = [];
+
+for (const relativePath of astroFiles) {
+  if (await isNoindexPage(relativePath)) {
+    excludedNoindexFiles.push(relativePath);
+    continue;
+  }
+  includableFiles.push(relativePath);
+}
+
+if (excludedNoindexFiles.length > 0) {
+  console.log(
+    `Skipping ${excludedNoindexFiles.length} noindex page(s): ${excludedNoindexFiles
+      .map((file) => file.replace(/\.astro$/, ''))
+      .join(', ')}`,
+  );
+}
+
+const urls = includableFiles.map((relativePath) => {
   const baseName = relativePath.replace(/\.astro$/, '');
   const slug = path.basename(baseName);
   if (baseName === 'index') {
