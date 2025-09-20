@@ -1,3 +1,15 @@
+User-agent: GPTBot
+Allow: /
+Disallow:
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow:
+
+User-agent: CCBot
+Allow: /
+Disallow:
+
 User-agent: *
 Allow: /
 Disallow: /thank-you
