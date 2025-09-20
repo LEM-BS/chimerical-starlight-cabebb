@@ -10,7 +10,7 @@ const pagesDir = path.join(repoRoot, 'src', 'pages');
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
 const areasPath = path.join(repoRoot, 'src', 'data', 'areas.ts');
 
-const skipFiles = new Set(['404.astro']);
+const skipFiles = new Set(['404.astro', 'thank-you.astro']);
 
 const now = new Date().toISOString().slice(0, 10);
 

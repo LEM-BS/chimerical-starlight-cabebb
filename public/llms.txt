@@ -14,5 +14,5 @@ Services:
 
 Canonical URLs:
 - Home: https://www.lembuildingsurveying.co.uk/
-- Services Overview: https://www.lembuildingsurveying.co.uk/services.html
-- RICS Home Surveys: https://www.lembuildingsurveying.co.uk/rics-home-surveys.html
+- Services Overview: https://www.lembuildingsurveying.co.uk/services
+- RICS Home Surveys: https://www.lembuildingsurveying.co.uk/rics-home-surveys
