@@ -123,6 +123,9 @@ const heroEyebrow = hero.eyebrow ?? 'Local RICS Surveyors';
 const heroCta = hero.cta ?? { label: 'Request a Quote', href: '/enquiry.html' };
 const heroSecondaryCta = hero.secondaryCta;
 const resolvedMapEmbedTitle = mapEmbedTitle ?? `Map of ${townName}, ${county}`;
+const computedMapEmbedUrl = mapEmbedUrl ?? `https://www.google.com/maps?q=${encodeURIComponent(
+  townName + ', ' + county + ', UK'
+)}&output=embed`;
 
 const getBreadcrumbSchema = () =>
   JSON.stringify({
@@ -285,16 +288,31 @@ const structuredData = {
           </div>
         ) : null}
 
-        {mapEmbedUrl ? (
-          <iframe
-            class="map-embed"
-            src={mapEmbedUrl}
-            loading="lazy"
-            allowfullscreen=""
-            title={resolvedMapEmbedTitle}
-            width="100%"
-            height="300"
-          ></iframe>
+        {/* Location map */}
+        {computedMapEmbedUrl ? (
+          <div class="map-block">
+            <h2 class="visually-hidden">Map: {townName}</h2>
+            <iframe
+              class="map-embed"
+              src={computedMapEmbedUrl}
+              loading="lazy"
+              allowfullscreen
+              title={resolvedMapEmbedTitle}
+              width="100%"
+              height="300"
+            ></iframe>
+            <noscript>
+              <p>
+                View on{' '}
+                <a
+                  href={`https://www.google.com/maps/search/${encodeURIComponent(townName + ' ' + county + ' UK')}`}
+                >
+                  Google Maps
+                </a>
+                .
+              </p>
+            </noscript>
+          </div>
         ) : null}
 
         {faqs?.items?.length ? (
