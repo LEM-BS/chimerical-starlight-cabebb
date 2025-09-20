@@ -34,6 +34,16 @@ test('toggles navigation classes on click', async () => {
   expect(navToggle?.getAttribute('aria-expanded')).toBe('false');
 });
 
+test('normalizePathname collapses index pages to root', async () => {
+  const { normalizePathname } = await import(NAV_MODULE_PATH);
+  expect(normalizePathname('/')).toBe('/');
+  expect(normalizePathname('/index.html')).toBe('/');
+  expect(normalizePathname('index.html')).toBe('/');
+  expect(normalizePathname('/about.html')).toBe('/about');
+  expect(normalizePathname('/nested/index.html')).toBe('/nested');
+  expect(normalizePathname('/nested/page.html')).toBe('/nested/page');
+});
+
 test('loadTrustIndex injects script once', async () => {
   const navModule = await import(NAV_MODULE_PATH);
   navModule.loadTrustIndex();

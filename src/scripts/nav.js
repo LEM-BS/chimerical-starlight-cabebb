@@ -1,7 +1,7 @@
-function normalizePathname(pathname) {
+export function normalizePathname(pathname) {
   if (!pathname) return '';
   let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  normalized = normalized.replace(/\/index\.html$/, '/');
+  normalized = normalized.replace(/(?:^|\/)index\.html$/, '/');
   normalized = normalized.replace(/\.html$/, '');
   if (normalized.length > 1 && normalized.endsWith('/')) {
     normalized = normalized.slice(0, -1);
