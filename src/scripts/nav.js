@@ -11,6 +11,9 @@ function normalizePathname(pathname) {
 
 export function loadTrustIndex() {
   if (typeof document === 'undefined') return;
+  if (!document.querySelector('.ti-widget')) {
+    return;
+  }
   if (document.querySelector('script[src^="https://cdn.trustindex.io/loader.js"]')) {
     return;
   }
