@@ -1,7 +1,9 @@
-function normalizePathname(pathname) {
+const INDEX_HTML_SUFFIX = /\/index\.html$/;
+
+export function normalizePathname(pathname) {
   if (!pathname) return '';
   let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  normalized = normalized.replace(/\/index\.html$/, '/');
+  normalized = normalized.replace(INDEX_HTML_SUFFIX, '/');
   normalized = normalized.replace(/\.html$/, '');
   if (normalized.length > 1 && normalized.endsWith('/')) {
     normalized = normalized.slice(0, -1);
