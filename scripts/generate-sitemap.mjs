@@ -54,10 +54,10 @@ const urls = astroFiles.map((relativePath) => {
     return `${site}/`;
   }
   if (areaSlugs.has(slug)) {
-    return `${site}/service-areas/${slug}-damp-surveys-rics-home-surveys.html`;
+    return `${site}/${slug}-damp-surveys`;
   }
   const normalizedPath = baseName.split(path.sep).join('/');
-  return `${site}/${normalizedPath}.html`;
+  return `${site}/${normalizedPath}`;
 });
 
 const sortedUrls = urls.sort((a, b) => a.localeCompare(b));

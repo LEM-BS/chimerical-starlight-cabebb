@@ -1,51 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const additionalServicesFaqs = [
+  {
+    question: 'Do you offer tailored inspection bundles?',
+    answer:
+      'Yes. We regularly combine snagging, landlord compliance and commercial condition reports so you only pay for the visits you need.',
+  },
+  {
+    question: 'Can you work alongside our existing property team?',
+    answer:
+      'We collaborate with managing agents, facilities teams and contractors, providing clear reporting that fits seamlessly with their workflows.',
+  },
+  {
+    question: 'Are commercial sites within your coverage area?',
+    answer:
+      'Absolutely. We survey retail, office and light industrial premises across Flintshire, Cheshire and the wider North West.',
+  },
+];
+
+const description =
+  'Specialist snagging, landlord, commercial and fire safety surveys for property owners across Deeside, Chester and Flintshire delivered by independent experts.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Specialist & Additional Surveying | LEM Building Surveying',
+  description,
+  canonicalPath: '/additional-services',
+  serviceName: 'Specialist & Additional Surveying Services',
+  serviceType: 'Specialist Building Surveying',
+  faqs: additionalServicesFaqs,
+  review: {
+    author: 'Property manager in Wrexham',
+    body: 'Detailed landlord inspections and reports that kept our compliance schedule on track.',
+    ratingValue: 5,
+    datePublished: '2024-06-12',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Additional Services',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Specialist & Additional Surveying | LEM Building Surveying</title>
-    <meta content="Explore additional property surveying services from LEM Building Surveying Ltd including snagging lists, landlord inspections, commercial surveys and more across Deeside, Chester and the North West." name="description">
-    <meta content="Snagging Survey Deeside, Commercial Survey Chester, Landlord Inspection, Fire Door Survey, Schedules of Condition, Building Surveyor Flintshire North West" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/additional-services.html" rel="canonical">
-    <meta content="Specialist & Additional Surveying | LEM Building Surveying" property="og:title">
-    <meta content="Explore additional property surveying services from LEM Building Surveying Ltd including snagging lists, landlord inspections, commercial surveys and more across Deeside, Chester and the North West." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/additional-services.html" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Specialist & Additional Surveying | LEM Building Surveying" name="twitter:title">
-    <meta content="Explore additional property surveying services from LEM Building Surveying Ltd including snagging lists, landlord inspections, commercial surveys and more across Deeside, Chester and the North West." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/additional-services.html" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.lembuildingsurveying.co.uk/services.html"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Additional Services",
-              "item": "https://www.lembuildingsurveying.co.uk/additional-services.html"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
   <div class="hero-container">
@@ -72,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p>Visual inspection and advice to identify breaches in fire resistance across floors, walls and service penetrations—essential for property managers and commercial clients.</p>
   <p>Need something else? Get in touch—we may be able to help with other bespoke surveying requests.</p>
   <div class="centered-cta">
-  <a class="cta-button" href="/contact.html">Make an Enquiry</a>
+  <a class="cta-button" href="/contact">Make an Enquiry</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Load Header/Footer via JS -->

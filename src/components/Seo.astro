@@ -50,11 +50,8 @@ let canonicalUrl = canonical;
 if (!canonicalUrl) {
   const base = canonicalPath ?? Astro.url.pathname ?? '/';
   const url = new URL(base, site);
-  if (url.pathname !== '/' && !url.pathname.endsWith('.html')) {
-    const pathWithoutTrailingSlash = url.pathname.endsWith('/')
-      ? url.pathname.slice(0, -1)
-      : url.pathname;
-    url.pathname = pathWithoutTrailingSlash ? `${pathWithoutTrailingSlash}.html` : '/';
+  if (url.pathname !== '/' && url.pathname.endsWith('/')) {
+    url.pathname = url.pathname.slice(0, -1);
   }
   canonicalUrl = url.toString();
 }

@@ -44,11 +44,18 @@ const isActive = (href: string) => {
   <div class="header-inner container">
     <div class="branding">
       <a href="/" class="logo-link" aria-label="LEM Building Surveying Ltd home">
-        <img
-          src="/logo-sticker.png"
-          alt="LEM Building Surveying Ltd Logo"
-          class="logo"
-        />
+        <picture>
+          <source srcset="/logo-sticker.webp" type="image/webp" />
+          <img
+            src="/logo-sticker.png"
+            alt="LEM Building Surveying Ltd logo"
+            class="logo"
+            width="90"
+            height="60"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
         <span class="site-name">LEM Building Surveying Ltd.</span>
       </a>
     </div>

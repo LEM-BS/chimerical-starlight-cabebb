@@ -1,23 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const levelOneFaqs = [
+  {
+    question: 'When is a Level 1 survey the right choice?',
+    answer:
+      'Level 1 suits newer homes built with standard materials where you need a quick condition snapshot and there are no signs of major defects.',
+  },
+  {
+    question: 'Will the report include repair advice?',
+    answer:
+      'Level 1 reports highlight urgent risks using traffic-light ratings but do not provide detailed repair advice or cost estimates. We will advise if a higher level is more suitable.',
+  },
+  {
+    question: 'How fast can I receive the Level 1 report?',
+    answer:
+      'Turnaround is typically within two working days of the inspection, and we can provide same-day updates if anything urgent is spotted.',
+  },
+];
+
+const description =
+  'Need a quick health-check on a modern home? Our RICS Level 1 Condition Report delivers traffic-light ratings and impartial advice across Deeside, Chester and Flintshire.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'RICS Level 1 Condition Report | LEM Building Surveying',
+  description,
+  canonicalPath: '/level-1',
+  serviceName: 'RICS Level 1 Condition Report',
+  serviceType: 'Level 1 Condition Report',
+  faqs: levelOneFaqs,
+  review: {
+    author: 'First-time buyer in Deeside',
+    body: 'Helpful Level 1 snapshot that confirmed the property was in good order without paying for a deeper survey.',
+    ratingValue: 5,
+    datePublished: '2024-05-18',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Level 1 Condition Report',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout productKey="level-1">
-  <Fragment slot="head">
-    <title>RICS Level 1 Condition Report | LEM Building Surveying</title>
-    <meta content="Need a quick health-check on a modern home? Our RICS Level 1 Condition Report gives you clear, traffic-light ratings and peace of mind—fast." name="description">
-    <meta content="RICS Level 1 survey, Condition Report, basic home survey, AssocRICS surveyor Chester, building surveyor Deeside, Flintshire, Wrexham, Cheshire, North West property survey" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/level-1" rel="canonical">
-    <meta content="RICS Level 1 Condition Report | LEM Building Surveying" property="og:title">
-    <meta content="Need a quick health-check on a modern home? Our RICS Level 1 Condition Report gives you clear, traffic-light ratings and peace of mind—fast." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/level-1" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Level 1 Condition Report | LEM Building Surveying" name="twitter:title">
-    <meta content="Need a quick health-check on a modern home? Our RICS Level 1 Condition Report gives you clear, traffic-light ratings and peace of mind—fast." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/level-1" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-  </Fragment>
+<BaseLayout productKey="level-1" seo={seo}>
 
   <section class="hero">
   <div class="hero-container">

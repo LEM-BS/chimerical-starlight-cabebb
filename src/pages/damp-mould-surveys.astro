@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
+import { createServiceSeo } from '../utils/structuredData';
 
 const dampFaqs = [
   {
@@ -22,67 +23,55 @@ const dampFaqs = [
   },
 ];
 
-const dampFaqJsonLd = {
+const serviceDescription =
+  'Independent damp and mould surveys across Deeside, Chester, Flintshire and Wrexham, tracing condensation, leaks and ventilation faults with impartial reports.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Damp & Mould Surveys | LEM Building Surveying',
+  description: serviceDescription,
+  canonicalPath: '/damp-mould-surveys',
+  serviceName: 'Damp & Mould Surveys',
+  faqs: dampFaqs,
+  review: {
+    author: 'Homeowner in Flintshire',
+    body: 'Liam pinpointed the ventilation faults behind our mould issues and produced a report that satisfied our housing association.',
+    ratingValue: 5,
+    datePublished: '2024-06-18',
+  },
+});
+
+const breadcrumbSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: dampFaqs.map(({ question, answer }) => ({
-    '@type': 'Question',
-    name: question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: answer,
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
     },
-  })),
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Damp & Mould Surveys',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
 };
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Damp & Mould Surveys | LEM Building Surveying</title>
-        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="description">
-        <meta content="Damp Survey, Mould Inspection, Condensation Survey, Ventilation Report, Independent Damp Assessor, Housing Disrepair Inspection, Damp Specialist Deeside Chester Flintshire North West" name="keywords">
-        <link href="https://www.lembuildingsurveying.co.uk/damp-mould-surveys.html" rel="canonical">
-        <meta content="Damp & Mould Surveys | LEM Building Surveying" property="og:title">
-        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." property="og:description">
-        <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys.html" property="og:url">
-        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-        <meta content="summary_large_image" name="twitter:card">
-        <meta content="Damp & Mould Surveys | LEM Building Surveying" name="twitter:title">
-        <meta content="Independent damp and mould surveys in Deeside, Chester, Flintshire, Wrexham. LEM pinpoints condensation, leaks and ventilation faults with impartial reporting." name="twitter:description">
-        <meta content="https://www.lembuildingsurveying.co.uk/damp-mould-surveys.html" name="twitter:url">
-        <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.lembuildingsurveying.co.uk/services.html"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Damp & Mould Surveys",
-              "item": "https://www.lembuildingsurveying.co.uk/damp-mould-surveys.html"
-            }
-          ]
-        }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {JSON.stringify(dampFaqJsonLd, null, 2)}
-      </script>
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <!-- ░░ HEADER ░░ --><!-- HERO SECTION --><section class="hero">
         <div class="hero-container">
@@ -91,13 +80,13 @@ const dampFaqJsonLd = {
             Independent, expert damp &amp; mould assessments for homeowners,
             landlords, buyers &amp; social housing providers.
           </p>
-          <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+          <a class="cta-button" href="/enquiry">Request a Survey</a>
         </div>
       </section><section class="guide-callout">
         <div class="box-container">
           <p>
             Unsure whether to call a damp-proofing company or an independent surveyor?
-            Our <a href="/independent-damp-survey-vs-contractor.html">damp survey vs contractor guide</a>
+            Our <a href="/independent-damp-survey-vs-contractor">damp survey vs contractor guide</a>
             explains the difference, typical costs and how impartial reports protect your budget.
           </p>
         </div>
@@ -181,8 +170,8 @@ const dampFaqJsonLd = {
           </ul>
           <p>
             Looking for broader property insights? Explore our
-            <a href="/rics-home-surveys.html">RICS Home Surveys</a> or view all
-            <a href="/services.html">building services</a>.
+            <a href="/rics-home-surveys">RICS Home Surveys</a> or view all
+            <a href="/services">building services</a>.
           </p>
           <h2>Frequently Asked Questions</h2>
           <p>
@@ -238,10 +227,10 @@ const dampFaqJsonLd = {
             options.
           </p>
           <div class="center-cta">
-            <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+            <a class="cta-button" href="/enquiry">Get My Quote</a>
           </div>
         </div>
       </section><!-- STICKY CTA --><div class="sticky-cta">
-        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+        <a class="cta-button" href="/enquiry">Get a Quote</a>
       </div><!-- Footer -->
 </BaseLayout>

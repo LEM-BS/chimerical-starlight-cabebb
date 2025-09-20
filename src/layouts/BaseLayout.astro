@@ -3,6 +3,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Seo from '../components/Seo.astro';
 import SiteLinks from '../components/SiteLinks.astro';
+import inlineTableStyles from '../css/inline-table.css?raw';
+import { buildLocalBusinessSchema } from '../utils/structuredData';
 
 const {
   pageId = '',
@@ -10,6 +12,16 @@ const {
   hideSiteLinks = false,
   productKey = undefined,
 } = Astro.props;
+
+const facebookPixelId = import.meta.env.PUBLIC_FACEBOOK_PIXEL_ID ?? '';
+
+const localBusinessSchema = JSON.stringify(
+  buildLocalBusinessSchema({
+    description:
+      'Professional building surveying services in Deeside, Flintshire, and across North Wales.',
+    areaServed: ['Deeside', 'Flintshire', 'Chester', 'Cheshire', 'North Wales'],
+  }),
+);
 ---
 
 <!DOCTYPE html>
@@ -25,33 +37,7 @@ const {
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png",
-        "logo": "https://www.lembuildingsurveying.co.uk/logo-sticker.png",
-        "telephone": "+44 7378 732 037",
-        "email": "enquiries@lembuildingsurveying.co.uk",
-        "description": "Professional building surveying services in Deeside, Flintshire, and across North Wales.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Connah's Quay",
-          "addressLocality": "Deeside",
-          "addressRegion": "Flintshire",
-          "addressCountry": "UK"
-        },
-        "areaServed": [
-          "Deeside",
-          "Flintshire",
-          "Chester",
-          "Cheshire",
-          "North Wales"
-        ]
-      }
-    </script>
+    <script type="application/ld+json" is:inline>{localBusinessSchema}</script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -59,8 +45,16 @@ const {
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="/assets/styles.min.css" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="preload"
+      as="style"
+      href="/assets/styles.min.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/assets/styles.min.css" />
+    </noscript>
+    <style is:inline set:html={inlineTableStyles}></style>
     <link rel="icon" type="image/png" href="/logo-sticker.png" />
     <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
     <script
@@ -77,13 +71,35 @@ const {
       gtag('js', new Date());
       gtag('config', 'G-GXH0EY936M');
     </script>
+    {facebookPixelId && (
+      <Fragment>
+        <script is:inline>
+          {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);
+          }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init','${facebookPixelId}');fbq('track','PageView');`}
+        </script>
+        <noscript>
+          <img
+            src={`https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1`}
+            height="1"
+            width="1"
+            style="display:none"
+            alt=""
+            loading="lazy"
+          />
+        </noscript>
+      </Fragment>
+    )}
   </head>
   <body data-page={pageId} data-product-key={productKey}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <Header />
-    <div id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
-    </div>
+    </main>
     {!hideSiteLinks && <SiteLinks />}
     <Footer />
     <slot name="body-end" />

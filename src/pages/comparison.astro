@@ -1,23 +1,69 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const comparisonFaqs = [
+  {
+    question: 'Which survey level suits a 1930s semi-detached house?',
+    answer:
+      'Most buyers choose a Level 2 HomeBuyer Survey for standard homes of that age unless the property has been heavily altered, in which case a Level 3 survey may be recommended.',
+  },
+  {
+    question: 'Can I upgrade the survey level after booking?',
+    answer:
+      'Yes. If we identify that a deeper inspection is appropriate we can switch levels before the visit and you simply pay the difference in fee.',
+  },
+  {
+    question: 'How quickly will I receive the survey report?',
+    answer:
+      'Reports are typically delivered within five working days of the inspection, with faster updates available for urgent chains when requested.',
+  },
+];
+
+const description =
+  'Compare Level 1, Level 2 and Level 3 RICS surveys so you can choose the right inspection for your property purchase in Deeside, Chester and Flintshire.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Compare RICS Survey Levels | LEM Building Surveying',
+  description,
+  canonicalPath: '/comparison',
+  serviceName: 'RICS Survey Level Comparison',
+  serviceType: 'RICS Survey Guidance',
+  faqs: comparisonFaqs,
+  review: {
+    author: 'Buyer in Chester',
+    body: 'The comparison table made it easy to see the difference between survey levels before booking.',
+    ratingValue: 5,
+    datePublished: '2024-07-04',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Compare Surveys',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Compare RICS Survey Levels | LEM Building Surveying</title>
-    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." name="description">
-    <meta content="RICS Home Survey Comparison, RICS Survey Levels, Level 1 Survey, Level 2 HomeBuyer Report, Level 3 Building Survey, Property Surveyor Deeside Chester Flintshire" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/comparison" rel="canonical">
-    <meta content="Compare RICS Survey Levels | LEM Building Surveying" property="og:title">
-    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/comparison" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Compare RICS Survey Levels | LEM Building Surveying" name="twitter:title">
-    <meta content="Not sure which RICS Home Survey you need? Compare Level 1, Level 2 (HomeBuyer Report), and Level 3 (Building Survey) to choose the right one for your property." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/comparison" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <!-- Shared Header --><!-- COMPARISON INTRO SECTION --><section class="comparison-intro">
   <div class="container">
