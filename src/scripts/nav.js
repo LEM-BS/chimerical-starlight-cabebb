@@ -1,8 +1,11 @@
+const INDEX_HTML_PATTERN = /\/index\.html$/;
+const HTML_EXTENSION_PATTERN = /\.html$/;
+
 function normalizePathname(pathname) {
   if (!pathname) return '';
   let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  normalized = normalized.replace(/\/index\.html$/, '/');
-  normalized = normalized.replace(/\.html$/, '');
+  normalized = normalized.replace(INDEX_HTML_PATTERN, '/');
+  normalized = normalized.replace(HTML_EXTENSION_PATTERN, '');
   if (normalized.length > 1 && normalized.endsWith('/')) {
     normalized = normalized.slice(0, -1);
   }
