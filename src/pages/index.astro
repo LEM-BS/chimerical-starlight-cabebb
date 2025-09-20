@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { areaSelectorOptions } from '../data/areas';
 ---
 
 <BaseLayout>
@@ -159,8 +160,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>
           We frequently assist clients searching for
           <a href="/local-surveys.html">surveyors in Flintshire</a>, a trusted
-          <a href="/deeside.html">building surveyor in Deeside</a>, or an
-          <a href="/cheshire.html">independent building surveyor in the North West</a>.
+          <a href="/service-areas/deeside-damp-surveys-rics-home-surveys.html">building surveyor in Deeside</a>, or an
+          <a href="/service-areas/cheshire-damp-surveys-rics-home-surveys.html">independent building surveyor in the North West</a>.
           Our measured building survey service also travels further afield for
           specialist projects, supporting developments in locations such as
           Moorside, Bredbury, Wardle and even Hayling Island when detailed
@@ -332,21 +333,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="custom-select">
             <select id="areaDropdown" onchange="handleAreaSelect(this)">
               <option value="">Select an area…</option>
-              <option value="/connahs-quay.html">Connah’s Quay</option>
-              <option value="/buckley.html">Buckley</option>
-              <option value="/hawarden.html">Hawarden</option>
-              <option value="/ewloe.html">Ewloe</option>
-              <option value="/deeside.html">Deeside</option>
-              <option value="/broughton.html">Broughton</option>
-              <option value="/flintshire.html">Flintshire</option>
-              <option value="/chester.html">Chester</option>
-              <option value="/cheshire.html">Cheshire</option>
-              <option value="/northop.html">Northop</option>
-              <option value="/northop-hall.html">Northop Hall</option>
-              <option value="/mold.html">Mold</option>
-              <option value="/north-west-of-england.html">
-                North West of England
-              </option>
+              {areaSelectorOptions.map((area) => (
+                <option value={area.permalink}>{area.name}</option>
+              ))}
             </select>
             <span class="chevron">⌄</span>
           </div>
@@ -358,31 +347,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
           <ul>
             <li>
-              <a href="/flintshire.html">AssocRICS surveyor in Flintshire</a>
+              <a href="/service-areas/flintshire-damp-surveys-rics-home-surveys.html">AssocRICS surveyor in Flintshire</a>
               providing structural surveys and RICS Level 3 reports.
             </li>
             <li>
-              <a href="/mold.html">Right of light surveys in Mold</a> alongside
+              <a href="/service-areas/mold-damp-surveys-rics-home-surveys.html">Right of light surveys in Mold</a> alongside
               homebuyer and building survey options.
             </li>
             <li>
-              <a href="/broughton.html">Building surveys in Broughton</a>
+              <a href="/service-areas/broughton-damp-surveys-rics-home-surveys.html">Building surveys in Broughton</a>
               plus residential surveyors for nearby Saltney.
             </li>
             <li>
-              <a href="/buckley.html">Building surveys in Buckley</a> covering
+              <a href="/service-areas/buckley-damp-surveys-rics-home-surveys.html">Building surveys in Buckley</a> covering
               neighbouring villages such as Cholmondeley and Mynydd Isa.
             </li>
             <li>
-              <a href="/deeside.html">Building surveyors near you in Deeside</a>
+              <a href="/service-areas/deeside-damp-surveys-rics-home-surveys.html">Building surveyors near you in Deeside</a>
               for Level 1, 2 and 3 inspections.
             </li>
             <li>
-              <a href="/chester.html">Home buyer surveys in Chester</a> and the
+              <a href="/service-areas/chester-damp-surveys-rics-home-surveys.html">Home buyer surveys in Chester</a> and the
               surrounding suburbs including Hoole and Churton.
             </li>
             <li>
-              <a href="/cheshire.html">Home condition reports across Cheshire</a>
+              <a href="/service-areas/cheshire-damp-surveys-rics-home-surveys.html">Home condition reports across Cheshire</a>
               from Helsby to Warmingham.
             </li>
           </ul>

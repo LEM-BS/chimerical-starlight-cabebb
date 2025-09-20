@@ -1,5 +1,5 @@
 ---
-import { areaPages, getAreaUrl } from '../data/areas';
+import { areaPages, getAreaPermalink } from '../data/areas';
 ---
 
 <section class="area-directory" aria-labelledby="area-directory-heading">
@@ -14,7 +14,7 @@ import { areaPages, getAreaUrl } from '../data/areas';
     <ul class="area-directory__list">
       {areaPages.map((area) => (
         <li>
-          <a href={getAreaUrl(area.slug)}>{area.name} building surveyor</a>
+          <a href={getAreaPermalink(area.slug)}>{area.name} building surveyor</a>
         </li>
       ))}
     </ul>
