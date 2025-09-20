@@ -34,13 +34,22 @@ test('toggles navigation classes on click', async () => {
   expect(navToggle?.getAttribute('aria-expanded')).toBe('false');
 });
 
-test('loadTrustIndex injects script once', async () => {
+test('loadTrustIndex injects script once when widget is present', async () => {
+  document.body.insertAdjacentHTML('beforeend', '<div class="ti-widget"></div>');
   const navModule = await import(NAV_MODULE_PATH);
   navModule.loadTrustIndex();
   navModule.loadTrustIndex();
 
   const scripts = document.querySelectorAll('script[src^="https://cdn.trustindex.io/loader.js"]');
   expect(scripts).toHaveLength(1);
+});
+
+test('loadTrustIndex skips injection when widget is absent', async () => {
+  const navModule = await import(NAV_MODULE_PATH);
+  navModule.loadTrustIndex();
+
+  const scripts = document.querySelectorAll('script[src^="https://cdn.trustindex.io/loader.js"]');
+  expect(scripts).toHaveLength(0);
 });
 
 test('highlights .html link when current path is extensionless', async () => {
