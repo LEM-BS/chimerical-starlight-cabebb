@@ -109,6 +109,15 @@ a:hover {
   left: 1rem;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 img,
 svg {
   max-width: 100%;
@@ -280,6 +289,15 @@ section > .box-container > *:last-child {
 
 .location-main > * + * {
   margin-top: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.map-block {
+  margin-top: 1.25rem;
+}
+
+.map-embed {
+  border: 0;
+  display: block;
 }
 
 .location-main ul {
