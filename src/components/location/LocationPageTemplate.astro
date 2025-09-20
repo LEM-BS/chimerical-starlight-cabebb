@@ -87,8 +87,13 @@ interface Props {
   faqs: FaqSection;
   neighbourhoods?: NeighbourhoodsSection;
   closing: ClosingSection;
+<<<<<<< HEAD
   mapEmbedUrl?: string | null;
   mapEmbedTitle?: string | null;
+=======
+  mapEmbedUrl?: string;
+  mapEmbedTitle?: string;
+>>>>>>> origin/REV-25.09.17
 }
 
 const {
@@ -108,8 +113,13 @@ const {
   faqs,
   neighbourhoods,
   closing,
+<<<<<<< HEAD
   mapEmbedUrl: initialMapEmbedUrl,
   mapEmbedTitle: initialMapEmbedTitle,
+=======
+  mapEmbedUrl,
+  mapEmbedTitle,
+>>>>>>> origin/REV-25.09.17
 } = Astro.props as Props;
 
 const normalizedPath = canonicalPath.replace(/^\/+/, '').replace(/\/+$/, '');
@@ -122,6 +132,7 @@ const heroDescription = hero.description;
 const heroEyebrow = hero.eyebrow ?? 'Local RICS Surveyors';
 const heroCta = hero.cta ?? { label: 'Request a Quote', href: '/enquiry.html' };
 const heroSecondaryCta = hero.secondaryCta;
+<<<<<<< HEAD
 const mapQueryParts = [townName, county, 'UK']
   .map((part) => part?.toString().trim())
   .filter((part): part is string => Boolean(part?.length));
@@ -145,6 +156,9 @@ const resolvedMapEmbedTitle = providedMapEmbedTitle?.length
   : `Map of ${townName}, ${county}`;
 
 const shouldRenderMap = Boolean(resolvedMapEmbedUrl);
+=======
+const resolvedMapEmbedTitle = mapEmbedTitle ?? `Map of ${townName}, ${county}`;
+>>>>>>> origin/REV-25.09.17
 
 const getBreadcrumbSchema = () =>
   JSON.stringify({
@@ -307,10 +321,17 @@ const structuredData = {
           </div>
         ) : null}
 
+<<<<<<< HEAD
         {shouldRenderMap && resolvedMapEmbedUrl ? (
           <iframe
             class="map-embed"
             src={resolvedMapEmbedUrl}
+=======
+        {mapEmbedUrl ? (
+          <iframe
+            class="map-embed"
+            src={mapEmbedUrl}
+>>>>>>> origin/REV-25.09.17
             loading="lazy"
             allowfullscreen=""
             title={resolvedMapEmbedTitle}
