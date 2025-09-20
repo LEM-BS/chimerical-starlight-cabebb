@@ -1559,15 +1559,6 @@ details[open] summary::after {
   justify-content: center;
 }
 
-.table-responsive {
-  overflow-x: auto;
-}
-
-.table-responsive table {
-  width: 100%;
-  min-width: 480px;
-}
-
 /* For smallest screens */
 @media (max-width: 600px) {
   body {
