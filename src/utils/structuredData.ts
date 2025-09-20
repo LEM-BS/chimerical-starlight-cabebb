@@ -3,12 +3,61 @@ export const LOGO_WEBP_URL = `${SITE_URL}/logo-sticker.webp`;
 export const LOGO_PNG_URL = `${SITE_URL}/logo-sticker.png`;
 export const BUSINESS_ID = `${SITE_URL}#localBusiness`;
 
+export const CONTACT_EMAIL = 'enquiries@lembuildingsurveying.co.uk';
+
+export const GOOGLE_BUSINESS_PROFILE_URL = 'https://share.google/Ab6iUZ0rNTNvHr2xa';
+export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/BAQ5QRVn7q3Bimdi9';
+
 export const SOCIAL_PROFILES = [
-  'https://www.facebook.com/LEMBuildingSurveying',
-  'https://twitter.com/LEMSurveying',
-  'https://www.linkedin.com/company/lem-building-surveying',
-  'https://www.instagram.com/lem_buildingsurveying',
-  'https://www.youtube.com/@LEMBuildingSurveying',
+  GOOGLE_BUSINESS_PROFILE_URL,
+  GOOGLE_MAPS_URL,
+  'https://www.facebook.com/share/1FcAuDEpT4/',
+  'https://www.linkedin.com/company/lem-building-surveying-ltd/',
+];
+
+const REVIEWS = [
+  {
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Lindsey M.',
+    },
+    reviewBody:
+      'We used Liam to carry out a Level 2 Survey on a property we are purchasing. We found him very responsive, professional and knowledgeable. Liam highlighted issues without frightening us, offering advice on how to move forward. Would highly recommend him.',
+  },
+  {
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Chris S.',
+    },
+    reviewBody:
+      'LEM provided an excellent service from start to finish. His report was clear and explained everything simply and with enough detail for me to make informed choices. I would recommend LEM to anyone needing Building Surveying services.',
+  },
+  {
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Helen H.',
+    },
+    reviewBody:
+      'Liam was fantastic—professional, efficient, and really knowledgeable. He explained everything clearly, which made the whole process much easier. I’d definitely recommend LEM Building Surveying to anyone needing EPCs, floorplans, or a property survey. A smooth and stress-free experience from start to finish!',
+  },
 ];
 
 export const buildLocalBusinessSchema = (overrides: Record<string, unknown> = {}) => ({
@@ -19,16 +68,48 @@ export const buildLocalBusinessSchema = (overrides: Record<string, unknown> = {}
   url: SITE_URL,
   image: LOGO_WEBP_URL,
   logo: LOGO_PNG_URL,
-  telephone: '+44 7378 732 037',
+  telephone: '+44 7378 732037',
+  email: CONTACT_EMAIL,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: "Connah's Quay",
-    addressLocality: 'Deeside',
-    addressRegion: 'Flintshire',
-    postalCode: 'CH5',
+    streetAddress: 'Marlowe Avenue',
+    addressLocality: "Connah's Quay",
+    addressRegion: 'Deeside, Flintshire',
+    postalCode: 'CH5 4HS',
     addressCountry: 'GB',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 53.2203,
+    longitude: -3.065,
+  },
+  openingHours: 'Mo-Fr 08:30-17:30',
+  founder: {
+    '@type': 'Person',
+    name: 'Liam Butler',
+    alumniOf: 'John Moores University',
+    hasCredential: [
+      'BSc (Building Surveying)',
+      'AssocRICS (Building Surveying)',
+      'MRPSA',
+      'RICS',
+      'RPSA',
+    ],
+  },
+  memberOf: [
+    {
+      '@type': 'Organization',
+      name: 'Royal Institution of Chartered Surveyors (RICS)',
+      url: 'https://www.rics.org/',
+    },
+    {
+      '@type': 'Organization',
+      name: 'Residential Property Surveyors Association (RPSA)',
+      url: 'https://www.rpsa.org.uk/',
+    },
+  ],
   sameAs: SOCIAL_PROFILES,
+  review: REVIEWS,
   ...overrides,
 });
 

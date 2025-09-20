@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { buildLocalBusinessSchema, SITE_URL } from '../utils/structuredData';
+import {
+  CONTACT_EMAIL,
+  GOOGLE_BUSINESS_PROFILE_URL,
+  GOOGLE_MAPS_URL,
+  buildLocalBusinessSchema,
+  SITE_URL,
+} from '../utils/structuredData';
 
 const pageTitle = 'Get in Touch | LEM Building Surveying';
 const description =
@@ -57,16 +63,42 @@ const seo = {
         <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
       </p>
       <p>
+        <strong>Email:</strong>
+        <a class="inline-link" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
+      <address>
+        <strong>Office:</strong>
+        <br />
+        Marlowe Avenue
+        <br />
+        Connah's Quay
+        <br />
+        Deeside, Flintshire
+        <br />
+        CH5&nbsp;4HS
+      </address>
+      <p>
         <strong>Request a callback:</strong>
         <a class="inline-link" href="/enquiry">Complete our quick enquiry form</a>
         and we will respond within the hour whenever possible.
+      </p>
+      <p>
+        <strong>Find us on Google:</strong>
+        <a class="inline-link" href={GOOGLE_BUSINESS_PROFILE_URL} rel="noopener" target="_blank">
+          View our Google Business Profile
+        </a>
+        {' '}or{' '}
+        <a class="inline-link" href={GOOGLE_MAPS_URL} rel="noopener" target="_blank">
+          open directions in Google Maps
+        </a>
+        .
       </p>
       <p>
         We support homeowners, landlords and agents across Flintshire, Chester and the
         wider North West. Share your property details and preferred contact method so we
         can prepare the right advice before we call.
       </p>
-      <p class="fine-print">Office hours: Mon–Fri 8:30 am – 5:30 pm</p>
+      <p class="fine-print">Office hours: Mon–Fri, 08:30–17:30</p>
     </div>
   </main>
 
