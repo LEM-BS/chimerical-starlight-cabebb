@@ -1,0 +1,44 @@
+---
+import { areaPages, getAreaUrl } from '../../data/areas';
+
+interface Props {
+  currentSlug: string;
+  title?: string;
+}
+
+const { currentSlug, title = 'Nearby areas' } = Astro.props as Props;
+
+const index = areaPages.findIndex((area) => area.slug === currentSlug);
+const safeIndex = index === -1 ? 0 : index;
+const maxIndex = areaPages.length;
+const candidateSet = new Set<number>();
+
+for (let offset = 1; candidateSet.size < 3 && offset < maxIndex; offset += 1) {
+  const before = safeIndex - offset;
+  if (before >= 0) {
+    candidateSet.add(before);
+  }
+
+  const after = safeIndex + offset;
+  if (after < maxIndex && candidateSet.size < 3) {
+    candidateSet.add(after);
+  }
+}
+
+const related = Array.from(candidateSet)
+  .sort((a, b) => a - b)
+  .map((candidate) => areaPages[candidate])
+  .filter((area) => area && area.slug !== currentSlug);
+---
+{related.length ? (
+  <section class="location-card related-areas">
+    <h2>{title}</h2>
+    <ul>
+      {related.map((area) => (
+        <li>
+          <a href={getAreaUrl(area.slug)}>{area.name} building surveyor</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+) : null}

@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'pulford';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Home & Building Surveys in Pulford | LEM Building Surveying</title>
     <meta content="RICS Building Surveyor for Pulford — providing Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Local, independent and trusted." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/pulford" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/pulford.html" rel="canonical">
     <meta content="Home & Building Surveys in Pulford | LEM Building Surveying" property="og:title">
     <meta content="RICS Building Surveyor for Pulford — providing Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Local, independent and trusted." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/pulford" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/pulford.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Home & Building Surveys in Pulford | LEM Building Surveying" name="twitter:title">
     <meta content="RICS Building Surveyor for Pulford — providing Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Local, independent and trusted." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/pulford" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/pulford.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Pulford -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Pulford",
-              "item": "https://www.lembuildingsurveying.co.uk/pulford"
+              "item": "https://www.lembuildingsurveying.co.uk/pulford.html"
             }
           ]
         }
@@ -101,5 +104,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="cta-button" href="/enquiry.html">Submit an Enquiry</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Shared Footer --><!-- Inject Header/Footer -->
 </BaseLayout>

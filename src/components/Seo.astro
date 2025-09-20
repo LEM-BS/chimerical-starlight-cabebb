@@ -49,7 +49,14 @@ const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
 let canonicalUrl = canonical;
 if (!canonicalUrl) {
   const base = canonicalPath ?? Astro.url.pathname ?? '/';
-  canonicalUrl = new URL(base, site).toString();
+  const url = new URL(base, site);
+  if (url.pathname !== '/' && !url.pathname.endsWith('.html')) {
+    const pathWithoutTrailingSlash = url.pathname.endsWith('/')
+      ? url.pathname.slice(0, -1)
+      : url.pathname;
+    url.pathname = pathWithoutTrailingSlash ? `${pathWithoutTrailingSlash}.html` : '/';
+  }
+  canonicalUrl = url.toString();
 }
 
 const baseTitle = title?.trim() ?? '';

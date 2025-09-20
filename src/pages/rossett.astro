@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'rossett';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Building Surveyor in Rossett | LEM Building Surveying</title>
     <meta content="Independent building surveyor covering Rossett. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and professional advice from a qualified local surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/rossett" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/rossett.html" rel="canonical">
     <meta content="Building Surveyor in Rossett | LEM Building Surveying" property="og:title">
     <meta content="Independent building surveyor covering Rossett. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and professional advice from a qualified local surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/rossett" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/rossett.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Building Surveyor in Rossett | LEM Building Surveying" name="twitter:title">
     <meta content="Independent building surveyor covering Rossett. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and professional advice from a qualified local surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/rossett" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/rossett.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Rossett -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Rossett",
-              "item": "https://www.lembuildingsurveying.co.uk/rossett"
+              "item": "https://www.lembuildingsurveying.co.uk/rossett.html"
             }
           ]
         }
@@ -96,5 +99,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p>If you're buying, investigating an issue or need trusted advice, I’d be happy to help. Submit a quick form or call directly for a tailored quote.</p>
   <a class="cta-button" href="/enquiry.html">Book Your Survey</a>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>

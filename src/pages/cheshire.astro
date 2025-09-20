@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'cheshire';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Home Surveys in Cheshire | LEM Building Surveying</title>
     <meta content="Independent building surveyor for Cheshire delivering RICS Level 1, Level 2 &amp; Level 3 surveys, homebuyers reports, damp inspections and home condition reports in Chester, Helsby, Farndon, Northwich and beyond." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/cheshire" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/cheshire.html" rel="canonical">
     <meta content="RICS Home Surveys in Cheshire | LEM Building Surveying" property="og:title">
     <meta content="RICS Home Surveys across Cheshire. Clear, independent reporting by a qualified surveyor. Level 1, Level 2 &amp; Level 3 surveys, damp inspections, and floorplans available." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/cheshire" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/cheshire.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Home Surveys in Cheshire | LEM Building Surveying" name="twitter:title">
     <meta content="RICS Home Surveys across Cheshire. Clear, independent reporting by a qualified surveyor. Level 1, Level 2 &amp; Level 3 surveys, damp inspections, and floorplans available." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/cheshire" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/cheshire.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- JSON-LD Schema for Cheshire -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Cheshire",
-              "item": "https://www.lembuildingsurveying.co.uk/cheshire"
+              "item": "https://www.lembuildingsurveying.co.uk/cheshire.html"
             }
           ]
         }
@@ -126,5 +129,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
   <a class="cta-button" href="/enquiry.html">Get a Quote</a>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Shared Footer --><!-- Header/Footer Inject -->
 </BaseLayout>

@@ -109,7 +109,10 @@ const {
 } = Astro.props as Props;
 
 const normalizedPath = canonicalPath.replace(/^\/+/, '').replace(/\/+$/, '');
-const canonicalUrl = `https://www.lembuildingsurveying.co.uk/${normalizedPath}`;
+const canonicalFile = normalizedPath.endsWith('.html')
+  ? normalizedPath
+  : `${normalizedPath}.html`;
+const canonicalUrl = `https://www.lembuildingsurveying.co.uk/${canonicalFile}`;
 const heroHeading = hero.heading ?? `Home & Building Surveys in ${townName}`;
 const heroDescription = hero.description;
 const heroEyebrow = hero.eyebrow ?? 'Local RICS Surveyors';
@@ -131,7 +134,7 @@ const getBreadcrumbSchema = () =>
         '@type': 'ListItem',
         position: 2,
         name: 'Areas We Cover',
-        item: 'https://www.lembuildingsurveying.co.uk/local-surveys',
+        item: 'https://www.lembuildingsurveying.co.uk/local-surveys.html',
       },
       {
         '@type': 'ListItem',

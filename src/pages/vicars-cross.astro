@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'vicars-cross';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Home & Building Surveys in Vicars | LEM Building Surveying</title>
     <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/vicars-cross" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/vicars-cross.html" rel="canonical">
     <meta content="Home & Building Surveys in Vicars | LEM Building Surveying" property="og:title">
     <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Home & Building Surveys in Vicars | LEM Building Surveying" name="twitter:title">
     <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Vicars Cross -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Vicars Cross",
-              "item": "https://www.lembuildingsurveying.co.uk/vicars-cross"
+              "item": "https://www.lembuildingsurveying.co.uk/vicars-cross.html"
             }
           ]
         }
@@ -99,5 +102,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/comparison.html">Compare Survey Levels</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Shared Content -->
 </BaseLayout>

@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'flint';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Home & Building Surveys in Flint | LEM Building Surveying</title>
     <meta content="AssocRICS surveyor offering Level 1, 2 and 3 RICS Home Surveys in Flint. Clear, fast and independent building surveys with expert advice." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/flint" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/flint.html" rel="canonical">
     <meta content="Home & Building Surveys in Flint | LEM Building Surveying" property="og:title">
     <meta content="AssocRICS surveyor offering Level 1, 2 and 3 RICS Home Surveys in Flint. Clear, fast and independent building surveys with expert advice." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/flint" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/flint.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Home & Building Surveys in Flint | LEM Building Surveying" name="twitter:title">
     <meta content="AssocRICS surveyor offering Level 1, 2 and 3 RICS Home Surveys in Flint. Clear, fast and independent building surveys with expert advice." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/flint" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/flint.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Flint -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Flint",
-              "item": "https://www.lembuildingsurveying.co.uk/flint"
+              "item": "https://www.lembuildingsurveying.co.uk/flint.html"
             }
           ]
         }
@@ -104,5 +107,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/services.html">View All Services</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Shared Header/Footer -->
 </BaseLayout>

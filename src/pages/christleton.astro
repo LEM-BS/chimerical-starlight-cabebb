@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'christleton';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>Building Surveys in Christleton | LEM Building Surveying</title>
     <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/christleton" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/christleton.html" rel="canonical">
     <meta content="Building Surveys in Christleton | LEM Building Surveying" property="og:title">
     <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/christleton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/christleton.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Building Surveys in Christleton | LEM Building Surveying" name="twitter:title">
     <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/christleton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/christleton.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Christleton -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Christleton",
-              "item": "https://www.lembuildingsurveying.co.uk/christleton"
+              "item": "https://www.lembuildingsurveying.co.uk/christleton.html"
             }
           ]
         }
@@ -101,5 +104,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/comparison.html">Compare Survey Types</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>

@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'waverton';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Home Surveys in Waverton | LEM Building Surveying</title>
     <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/waverton" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/waverton.html" rel="canonical">
     <meta content="RICS Home Surveys in Waverton | LEM Building Surveying" property="og:title">
     <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/waverton" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/waverton.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Home Surveys in Waverton | LEM Building Surveying" name="twitter:title">
     <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/waverton" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/waverton.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Waverton -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Waverton",
-              "item": "https://www.lembuildingsurveying.co.uk/waverton"
+              "item": "https://www.lembuildingsurveying.co.uk/waverton.html"
             }
           ]
         }
@@ -100,5 +103,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/comparison.html">Compare Survey Types</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Load Header/Footer -->
 </BaseLayout>

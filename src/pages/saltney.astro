@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'saltney';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Home Surveys in Saltney | LEM Building Surveying</title>
     <meta content="Independent building surveyor in Saltney providing RICS Home Surveys and damp reports. Clear, honest advice direct from a local AssocRICS surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/saltney" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/saltney.html" rel="canonical">
     <meta content="RICS Home Surveys in Saltney | LEM Building Surveying" property="og:title">
     <meta content="Independent building surveyor in Saltney providing RICS Home Surveys and damp reports. Clear, honest advice direct from a local AssocRICS surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/saltney" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/saltney.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Home Surveys in Saltney | LEM Building Surveying" name="twitter:title">
     <meta content="Independent building surveyor in Saltney providing RICS Home Surveys and damp reports. Clear, honest advice direct from a local AssocRICS surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/saltney" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/saltney.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Saltney -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Saltney",
-              "item": "https://www.lembuildingsurveying.co.uk/saltney"
+              "item": "https://www.lembuildingsurveying.co.uk/saltney.html"
             }
           ]
         }
@@ -101,5 +104,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/services.html">View All Services</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- Shared Footer --><!-- Header & Footer Injection -->
 </BaseLayout>

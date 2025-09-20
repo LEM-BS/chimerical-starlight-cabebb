@@ -10,7 +10,8 @@
     "build:assets:watch": "node tools/build-assets.mjs --watch",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "sitemap": "node scripts/generate-sitemap.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

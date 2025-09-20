@@ -1,20 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedAreas from '../components/location/RelatedAreas.astro';
+const currentSlug = 'farndon';
+
 ---
 
 <BaseLayout>
   <Fragment slot="head">
     <title>RICS Home Surveys in Farndon | LEM Building Surveying</title>
     <meta content="Local surveyor covering Farndon and surrounding Cheshire villages. RICS Home Surveys, Building Surveys and damp inspections with fast turnaround and clear advice." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/farndon" rel="canonical">
+    <link href="https://www.lembuildingsurveying.co.uk/farndon.html" rel="canonical">
     <meta content="RICS Home Surveys in Farndon | LEM Building Surveying" property="og:title">
     <meta content="Local surveyor covering Farndon and surrounding Cheshire villages. RICS Home Surveys, Building Surveys and damp inspections with fast turnaround and clear advice." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/farndon" property="og:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/farndon.html" property="og:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="RICS Home Surveys in Farndon | LEM Building Surveying" name="twitter:title">
     <meta content="Local surveyor covering Farndon and surrounding Cheshire villages. RICS Home Surveys, Building Surveys and damp inspections with fast turnaround and clear advice." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/farndon" name="twitter:url">
+    <meta content="https://www.lembuildingsurveying.co.uk/farndon.html" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
     <!-- LocalBusiness Schema for Farndon -->
@@ -52,13 +55,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               "@type": "ListItem",
               "position": 2,
               "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
+              "item": "https://www.lembuildingsurveying.co.uk/local-surveys.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Farndon",
-              "item": "https://www.lembuildingsurveying.co.uk/farndon"
+              "item": "https://www.lembuildingsurveying.co.uk/farndon.html"
             }
           ]
         }
@@ -100,5 +103,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <a class="secondary-button" href="/services.html">View All Services</a>
   </div>
   </div>
+  <RelatedAreas currentSlug={currentSlug} />
   </section><!-- FOOTER --><!-- Inject header/footer -->
 </BaseLayout>

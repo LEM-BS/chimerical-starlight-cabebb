@@ -1,0 +1,190 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Helsby Surveyors',
+  heading: 'Home & Building Surveys in Helsby',
+  description:
+    'Independent RICS surveyor supporting Helsby moves with detailed home surveys, damp investigations and ventilation advice across the WA6 area.',
+  cta: {
+    label: 'Request a Helsby quote',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Helsby combines sandstone cottages, hillside semis and newer estates clustered around the train station. Each brings different considerations when you are buying or planning works. As a local practice we evaluate structure, moisture risks and alterations in context so that your report reflects Helsby’s building styles and ground conditions.',
+  'Clients ask us to inspect everything from Victorian terraces near Chester Road to modern homes edging towards Frodsham and Ince. We trace how previous upgrades—such as cavity insulation, loft conversions or garden rooms—have been executed and highlight maintenance priorities so you can budget confidently.',
+  'Whether you are upsizing locally or relocating for the commute, expect straight-talking advice and responsive communication. We arrange surveys quickly, keep you informed throughout and remain available once the report lands to discuss next steps with you or your contractor.',
+];
+
+const sellingPoints = {
+  heading: 'Why Helsby homeowners choose LEM',
+  points: [
+    'AssocRICS surveyor with first-hand experience across Helsby, Frodsham and the wider Cheshire countryside.',
+    'Reports combine clear defect explanations, realistic cost expectations and tailored maintenance priorities.',
+    'Independent guidance with no referral fees—just honest advice based on what we find on site.',
+    'Follow-up call included so you can clarify findings, plan negotiations or brief trades with confidence.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys matched to Helsby properties',
+  intro:
+    'Choose the reporting level that fits your property and plans. Every inspection is adapted to reflect the construction, alterations and moisture profile we observe.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most post-war semis and newer homes around Lower Robin Hood Lane, highlighting urgent repairs, condition ratings and maintenance advice.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Comprehensive investigation for period cottages, large detached homes or projects involving significant alterations.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Concise overview suited to modern apartments and well-kept homes where you need reassurance without extensive detail.',
+    },
+    {
+      name: 'Independent Damp & Timber Survey',
+      description:
+        'Targeted moisture profiling and timber assessment to get to the root cause of condensation, leaks or decay before you commit to remedial works.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Room-by-room assessment of airflow, extraction and insulation balance to reduce mould and improve comfort for busy households.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate drawings and site data to support extensions, conversions or layout changes across Helsby, Frodsham and Ince.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What we look for in Helsby homes',
+  paragraphs: [
+    'Helsby Hill’s sloping plots demand careful checks of retaining walls, drainage falls and suspended floor ventilation. We pay particular attention to ground levels, damp proof courses and runoff management where gardens step down towards the house.',
+    'Sandstone cottages and inter-war houses often show signs of historic movement or past damp proofing. We examine masonry, chimney stacks and roof structures to assess ongoing risks and the effectiveness of previous repairs.',
+    'Newer estates near the A56 and Chester services introduce mixed construction including timber frame and lightweight steel. We review junction detailing, insulation, ventilation routes and services capacity to flag workmanship issues early.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Support for renovation and retrofit plans',
+    paragraphs: [
+      'Many clients intend to remodel kitchens, open up living spaces or add garden studios. We outline structural considerations, planning sensitivities and utility upgrades so you can brief designers with confidence.',
+      'Where damp or condensation has been treated before, we investigate moisture pathways and ventilation balance to recommend effective, fabric-first solutions instead of generic chemical treatments.',
+    ],
+  },
+  {
+    heading: 'Clear communication from instruction to aftercare',
+    paragraphs: [
+      'Ahead of the visit we discuss your concerns and timings, coordinating directly with agents or keyholders. Urgent findings are shared promptly so you can keep the transaction moving.',
+      'After the report is delivered we remain available for follow-up conversations, helping you prioritise works, negotiate costs or coordinate with contractors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Helsby clients',
+  description: 'Explore related pages to see how we support decisions across Cheshire.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2.html',
+      description: 'Understand the scope we use on conventional semis and family homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3.html',
+      description: 'See how we investigate complex, older or heavily altered properties.',
+    },
+    {
+      label: 'Independent Damp Surveys',
+      href: '/independent-damp-surveys.html',
+      description: 'Find out how our moisture investigations pinpoint causes and remedies.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments.html',
+      description: 'Learn how we rebalance airflow to cut condensation and mould.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Helsby surveying FAQs',
+  items: [
+    {
+      question: 'Do you cover surrounding villages like Frodsham and Ince?',
+      answer:
+        'Yes. We regularly inspect homes across Helsby, Frodsham, Ince and the wider WA6 catchment, adapting advice to the building styles in each area.',
+    },
+    {
+      question: 'How quickly can you deliver a Helsby survey report?',
+      answer:
+        'Reports are typically turned around within 3–5 working days, with urgent issues flagged sooner so you can make timely decisions.',
+    },
+    {
+      question: 'Can you help prioritise repairs after the survey?',
+      answer:
+        'Absolutely. We discuss findings with you, highlight immediate risks versus maintenance tasks and can liaise with contractors if needed.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Nearby areas we also cover',
+  description: 'Serving homeowners and movers across mid-Cheshire and Deeside.',
+  areas: [
+    'Frodsham and Helsby Hill',
+    'Ince and Elton',
+    'Chester fringes including Tarvin and Mickle Trafford',
+  ],
+};
+
+const closing = {
+  heading: 'Book your Helsby survey',
+  paragraphs: [
+    'Share the property address, your questions and any plans for the home. We will recommend the right survey level and arrange a convenient inspection date.',
+    'After the visit we remain on hand to interpret findings, suggest next steps and keep your move or project progressing smoothly.',
+  ],
+  primaryCta: {
+    label: 'Get a Helsby quote',
+    href: '/enquiry.html',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+---
+<LocationPageTemplate
+  townName="Helsby"
+  county="Cheshire"
+  postalCode="WA6"
+  pageTitle="Home & Building Surveys in Helsby | LEM Building Surveying Ltd"
+  metaDescription="RICS Level 2 & 3 home surveys, damp investigations and ventilation advice for Helsby homeowners and buyers."
+  canonicalPath="helsby.html"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+/>
