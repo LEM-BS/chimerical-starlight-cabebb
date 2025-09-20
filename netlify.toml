@@ -1,3 +1,15 @@
 [build]
   command = "astro build"
   publish = "dist"
+
+[[redirects]]
+  from = "/areas"
+  to = "/local-surveys"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/areas.html"
+  to = "/local-surveys"
+  status = 301
+  force = true

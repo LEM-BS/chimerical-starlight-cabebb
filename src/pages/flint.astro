@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/flint" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Flint -->
+    <!-- Service schema for Flint -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/flint.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Flint",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH6",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/flint#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Flint",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Flint, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Flint"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Home Surveys and property inspections in Flint by a qualified AssocRICS building surveyor. Level 1, Level 2 and Level 3 reports available.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/flint",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Flint",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH6",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Flint</h1>
   <p>Level 1, 2 &amp; 3 RICS Home Surveys and independent building reports for buyers, sellers, and landlords in Flint and surrounding areas.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Fast Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -87,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Energy certificate plus floorplan — ideal for letting or selling properties.</li>
   <li><strong>Ventilation Assessments:</strong> Helps identify causes of condensation and poor airflow affecting indoor air quality.</li>
   </ul>
-  <p><a href="/comparison.html">Compare Survey Levels →</a></p>
+  <p><a href="/comparison">Compare Survey Levels →</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Based Locally:</strong> We cover all areas of Flint and surrounding villages.</li>
@@ -100,8 +120,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Whether you’re buying, selling or just want to check a property's condition, we’ll provide clear advice and a tailored quote — fast.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Request a Survey Quote</a>
-  <a class="secondary-button" href="/services.html">View All Services</a>
+  <a class="cta-button" href="/enquiry">Request a Survey Quote</a>
+  <a class="secondary-button" href="/services">View All Services</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Load Shared Header/Footer -->

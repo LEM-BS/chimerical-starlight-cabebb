@@ -80,51 +80,27 @@ const ricsFaqJsonLd = {
         </style>
         <!-- JSON-LD structured data -->
         <script type="application/ld+json" is:inline>
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "RICS Home Surveys",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "LEM Building Surveying Ltd",
-              "areaServed": [
-                "Deeside",
-                "Chester",
-                "Flintshire",
-                "Cheshire",
-                "North West"
-              ],
-              "url": "https://lembuildingsurveying.co.uk"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "RICS Survey Levels",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Level 1 Condition Report"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Level 2 HomeBuyer Survey"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Level 3 Building Survey"
-                  }
-                }
-              ]
-            }
-          }
-        </script>
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/rics-home-surveys#residential-property-surveying",
+        "serviceType": "RICS Home Surveys",
+        "name": "RICS Home Surveys",
+        "description": "Level 1, Level 2 and Level 3 RICS home surveys for buyers and homeowners across North Wales and Cheshire.",
+        "url": "https://www.lembuildingsurveying.co.uk/rics-home-surveys",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
+        },
+        "areaServed": [
+          { "@type": "Place", "name": "Flintshire" },
+          { "@type": "Place", "name": "Cheshire" },
+          { "@type": "Place", "name": "Deeside" },
+          { "@type": "Place", "name": "Chester" },
+          { "@type": "Place", "name": "North Wales" }
+        ]
+      }
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -176,7 +152,7 @@ const ricsFaqJsonLd = {
             secure your survey date.
           </p>
           <form action="https://formspree.io/f/xzzdqqqz" class="quote-form" method="POST">
-            <input name="_next" type="hidden" value="/thank-you.html">
+            <input name="_next" type="hidden" value="/thank-you">
             <div class="form-grid">
               <input name="name" placeholder="Your Name" required="" type="text">
               <input name="email" placeholder="Your Email" required="" type="email">
@@ -214,7 +190,7 @@ const ricsFaqJsonLd = {
         <div class="box-container">
           <p>
             Not sure which survey level suits your property? Read our
-            <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 comparison guide</a>
+            <a href="/level-2-vs-level-3">Level 2 vs Level 3 comparison guide</a>
             for examples of when to upgrade and how the reports differ.
           </p>
         </div>
@@ -333,7 +309,7 @@ const ricsFaqJsonLd = {
                   problems.
                 </td>
                 <td>From £350</td>
-                <td><a href="/level-1.html">Find out more →</a></td>
+                <td><a href="/level-1">Find out more →</a></td>
               </tr>
               <tr>
                 <td><strong>Level 2</strong><br>HomeBuyer Report</td>
@@ -346,7 +322,7 @@ const ricsFaqJsonLd = {
                   standard materials.
                 </td>
                 <td>From £475</td>
-                <td><a href="/level-2.html">Find out more →</a></td>
+                <td><a href="/level-2">Find out more →</a></td>
               </tr>
               <tr>
                 <td><strong>Level 3</strong><br>Building Survey</td>
@@ -359,7 +335,7 @@ const ricsFaqJsonLd = {
                   needing renovation.
                 </td>
                 <td>From £650</td>
-                <td><a href="/level-3.html">Find out more →</a></td>
+                <td><a href="/level-3">Find out more →</a></td>
               </tr>
             </tbody>
           </table>
@@ -406,19 +382,19 @@ const ricsFaqJsonLd = {
               <div class="custom-select">
                 <select id="areaDropdown" onchange="handleAreaSelect(this)">
                   <option value="">Select an area…</option>
-                  <option value="/connahs-quay.html">Connah’s Quay</option>
-                  <option value="/buckley.html">Buckley</option>
-                  <option value="/hawarden.html">Hawarden</option>
-                  <option value="/ewloe.html">Ewloe</option>
-                  <option value="/deeside.html">Deeside</option>
-                  <option value="/broughton.html">Broughton</option>
-                  <option value="/flintshire.html">Flintshire</option>
-                  <option value="/chester.html">Chester</option>
-                  <option value="/cheshire.html">Cheshire</option>
-                  <option value="/northop.html">Northop</option>
-                  <option value="/northop-hall.html">Northop Hall</option>
-                  <option value="/mold.html">Mold</option>
-                  <option value="/north-west-of-england.html">
+                  <option value="/connahs-quay">Connah’s Quay</option>
+                  <option value="/buckley">Buckley</option>
+                  <option value="/hawarden">Hawarden</option>
+                  <option value="/ewloe">Ewloe</option>
+                  <option value="/deeside">Deeside</option>
+                  <option value="/broughton">Broughton</option>
+                  <option value="/flintshire">Flintshire</option>
+                  <option value="/chester">Chester</option>
+                  <option value="/cheshire">Cheshire</option>
+                  <option value="/northop">Northop</option>
+                  <option value="/northop-hall">Northop Hall</option>
+                  <option value="/mold">Mold</option>
+                  <option value="/north-west-of-england">
                     North West of England
                   </option>
                 </select>
@@ -491,10 +467,10 @@ const ricsFaqJsonLd = {
             Still not sure which survey suits your property? Liam is happy to
             help. Get in touch for honest, expert advice with no pressure.
           </p>
-          <a class="cta-button" href="/contact.html">Speak to Liam</a>
+          <a class="cta-button" href="/contact">Speak to Liam</a>
         </div>
       </section><!-- Sticky CTA for Mobile/Desktop --><div class="sticky-cta">
-        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+        <a class="cta-button" href="/enquiry">Get a Quote</a>
       </div><!-- Shared footer --><!-- Fallback JS submit handler --><script is:inline>
         document.addEventListener("DOMContentLoaded", () => {
           const form = document.querySelector(".quote-form");
@@ -560,7 +536,7 @@ const ricsFaqJsonLd = {
                   send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
                 });
               }
-              window.location.href = "/thank-you.html";
+              window.location.href = "/thank-you";
             } else {
               alert("Sorry, something went wrong. Please email us directly.");
             }

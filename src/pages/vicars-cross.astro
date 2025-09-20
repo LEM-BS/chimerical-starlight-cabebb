@@ -17,26 +17,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Vicars Cross -->
+    <!-- Service schema for Vicars Cross -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/vicars-cross.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Vicars Cross",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/vicars-cross#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Vicars Cross",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Vicars Cross, Chester",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Vicars Cross"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "RICS Level 1, 2 and 3 Home Surveys in Vicars Cross. Independent property surveyor offering clear reports, damp inspections and more.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/vicars-cross",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vicars Cross",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH3",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +93,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Vicars Cross</h1>
   <p>RICS-qualified surveyor offering Level 1, 2 and 3 surveys for homes in Vicars Cross. Clear advice and fast, impartial reporting.</p>
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+  <a class="cta-button" href="/enquiry">Get My Quote</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -95,8 +119,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <h2>Next Steps</h2>
   <p>Unsure which survey to choose? Use the links below to compare options or submit your details and I’ll get back to you with a tailored quote.</p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Fast Quote</a>
-  <a class="secondary-button" href="/comparison.html">Compare Survey Levels</a>
+  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
+  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Load Shared Content -->

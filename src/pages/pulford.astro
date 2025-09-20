@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/pulford" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Pulford -->
+    <!-- Service schema for Pulford -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/pulford.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Pulford",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/pulford#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Pulford",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Pulford, Cheshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Pulford"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "Independent building surveyor offering RICS Home Surveys, Level 3 Building Surveys, and Damp Reports in Pulford, Cheshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/pulford",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pulford",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Pulford</h1>
   <p>Expert RICS surveys, damp inspections and property reports for homes in Pulford and the surrounding Cheshire villages.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -83,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Precise internal measurements for extensions or renovation plans.</li>
   <li><strong>Ventilation Reports:</strong> Highlight condensation, airflow and indoor air quality concerns.</li>
   </ul>
-  <li><a href="/services.html">Explore all available services</a></li>
+  <li><a href="/services">Explore all available services</a></li>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Local Knowledge:</strong> Based near Chester, we understand the construction styles common to Pulford and surrounding villages.</li>
@@ -98,7 +118,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="cta-section">
   <h2>Book a Survey in Pulford</h2>
   <p>Contact Liam for tailored advice or a quick quote. Call <a href="tel:07378732037">07378 732037</a> or submit an enquiry below.</p>
-  <a class="cta-button" href="/enquiry.html">Submit an Enquiry</a>
+  <a class="cta-button" href="/enquiry">Submit an Enquiry</a>
   </div>
   </div>
   </section><!-- Shared Footer --><!-- Inject Header/Footer -->

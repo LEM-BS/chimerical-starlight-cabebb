@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/dobshill" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Dobshill -->
+    <!-- Service schema for Dobshill -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/dobshill.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dobshill",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/dobshill#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Dobshill",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Dobshill, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Dobshill"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Home Surveys, Building Surveys and Damp Reports in Dobshill, Flintshire. Independent, qualified and local.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/dobshill",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dobshill",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH5",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Dobshill</h1>
   <p>Serving Dobshill with RICS Level 1, 2 &amp; 3 Home Surveys, damp reports and expert inspections — direct from a qualified local surveyor.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+  <a class="cta-button" href="/enquiry">Request a Survey</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Floorplans:</strong> Accurate layout drawings for planning, redesign or property records.</li>
   <li><strong>EPCs with Floorplans:</strong> Energy Performance Certificate and visual layout — ideal for listings or compliance.</li>
   </ul>
-  <p><a href="/services.html">View all services →</a></p>
+  <p><a href="/services">View all services →</a></p>
   <h2>Why LEM Surveying?</h2>
   <ul>
   <li><strong>AssocRICS Qualified:</strong> Every survey is carried out by Liam — not subcontracted.</li>
@@ -96,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Book or Enquire Now</h2>
   <p>Fill out a quick form or call direct for a fast quote — no obligation, just honest advice.</p>
-  <a class="cta-button" href="/enquiry.html">Get My Survey Quote</a>
+  <a class="cta-button" href="/enquiry">Get My Survey Quote</a>
   </div>
   </section><!-- FOOTER --><!-- Inject header/footer -->
 </BaseLayout>

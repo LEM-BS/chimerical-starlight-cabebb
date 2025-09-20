@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/new-brighton" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for New Brighton -->
+    <!-- Service schema for New Brighton -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/new-brighton.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "New Brighton",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH45",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/new-brighton#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in New Brighton",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "New Brighton, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "New Brighton"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Independent building surveyor offering RICS Home Surveys, Building Surveys and Damp Reports in New Brighton, Flintshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/new-brighton",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "New Brighton",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH45",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in New Brighton</h1>
   <p>Trusted, local property surveyor offering detailed and impartial advice for home buyers and homeowners in New Brighton.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate measurements for planning, extensions, or space assessments.</li>
   <li><strong>Ventilation Assessments:</strong> Evaluate indoor air quality and resolve condensation problems.</li>
   </ul>
-  <li><a href="/services.html">View All Services Offered</a></li>
+  <li><a href="/services">View All Services Offered</a></li>
   <h2>Why Choose LEM Building Surveying?</h2>
   <ul>
   <li><strong>Local Expertise:</strong> We know the area and the common property issues in New Brighton.</li>
@@ -100,8 +120,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <div class="cta-section">
   <h2>Book Your Survey Today</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">use the quick form</a> for a fast response.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">use the quick form</a> for a fast response.</p>
+  <a class="cta-button" href="/enquiry">Request a Survey</a>
   </div>
   </div>
   </section><!-- Shared Footer --><!-- Header/Footer JS -->

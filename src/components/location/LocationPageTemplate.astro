@@ -108,12 +108,13 @@ const {
   closing,
 } = Astro.props as Props;
 
+const PRIMARY_ENTITY_ID = 'https://www.lembuildingsurveying.co.uk/#/schema/local-business';
 const normalizedPath = canonicalPath.replace(/^\/+/, '').replace(/\/+$/, '');
 const canonicalUrl = `https://www.lembuildingsurveying.co.uk/${normalizedPath}`;
 const heroHeading = hero.heading ?? `Home & Building Surveys in ${townName}`;
 const heroDescription = hero.description;
 const heroEyebrow = hero.eyebrow ?? 'Local RICS Surveyors';
-const heroCta = hero.cta ?? { label: 'Request a Quote', href: '/enquiry.html' };
+const heroCta = hero.cta ?? { label: 'Request a Quote', href: '/enquiry' };
 const heroSecondaryCta = hero.secondaryCta;
 
 const getBreadcrumbSchema = () =>
@@ -142,25 +143,45 @@ const getBreadcrumbSchema = () =>
     ],
   });
 
-const areaServedList = [townName, ...(neighbourhoods?.areas ?? [])];
+const uniqueAreaServed = Array.from(
+  new Set([townName, county, ...(neighbourhoods?.areas ?? [])].filter(Boolean)),
+);
 
-const getLocalBusinessSchema = () =>
+const getServiceSchema = () =>
   JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'LEM Building Surveying Ltd',
-    url: canonicalUrl,
-    image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
-    telephone: '+447378732037',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: townName,
-      addressRegion: county,
-      ...(postalCode ? { postalCode } : {}),
-      addressCountry: 'GB',
-    },
-    areaServed: areaServedList.map((area) => `${area}, ${county}`),
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#residential-property-surveying`,
+    serviceType: 'Residential property surveying',
+    name: `Home surveys in ${townName}`,
     description: metaDescription,
+    url: canonicalUrl,
+    provider: {
+      '@type': 'LocalBusiness',
+      '@id': PRIMARY_ENTITY_ID,
+    },
+    areaServed: uniqueAreaServed.map((area) => ({
+      '@type': 'Place',
+      name: area,
+    })),
+    ...(county
+      ? {
+          serviceArea: {
+            '@type': 'AdministrativeArea',
+            name: county,
+          },
+        }
+      : {}),
+    serviceLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: townName,
+        addressRegion: county,
+        ...(postalCode ? { postalCode } : {}),
+        addressCountry: 'GB',
+      },
+    },
   });
 
 const getFaqSchema = () =>
@@ -181,7 +202,7 @@ const getFaqSchema = () =>
 
 const structuredData = {
   breadcrumb: getBreadcrumbSchema(),
-  localBusiness: getLocalBusinessSchema(),
+  service: getServiceSchema(),
   faq: getFaqSchema(),
 };
 ---
@@ -199,7 +220,7 @@ const structuredData = {
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" />
-    <script type="application/ld+json" is:inline>{structuredData.localBusiness}</script>
+    <script type="application/ld+json" is:inline>{structuredData.service}</script>
     <script type="application/ld+json" is:inline>{structuredData.breadcrumb}</script>
     {structuredData.faq ? <script type="application/ld+json" is:inline>{structuredData.faq}</script> : null}
   </Fragment>
@@ -319,7 +340,7 @@ const structuredData = {
         <div class="location-card">
           <h2>Talk to Liam</h2>
           <p>
-            Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">request a call back</a> for
+            Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">request a call back</a> for
             friendly advice.
           </p>
         </div>
