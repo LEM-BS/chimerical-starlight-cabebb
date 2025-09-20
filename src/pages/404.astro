@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Page not found',
+  description: "We couldn't find the page you were looking for. Use the links below to continue browsing LEM Building Surveying.",
+  canonical: 'https://www.lembuildingsurveying.co.uk/404',
+  robots: { index: false, follow: false },
+  openGraph: {
+    title: 'Page not found | LEM Building Surveying',
+    description:
+      "We couldn't find the page you were looking for. Explore our surveying services or request a quote in just a few clicks.",
+    url: 'https://www.lembuildingsurveying.co.uk/404',
+  },
+  twitter: {
+    title: 'Page not found | LEM Building Surveying',
+    description:
+      "We couldn't find the page you were looking for. Explore our surveying services or request a quote in just a few clicks.",
+  },
+};
+---
+
+<BaseLayout pageId="404" seo={seo}>
+  <section class="hero">
+    <div class="hero-container">
+      <h1>We can’t find that page</h1>
+      <p>
+        The page may have moved or no longer exists. Try one of the helpful links below or head back to the
+        homepage to continue exploring our surveying services.
+      </p>
+      <div class="button-group">
+        <a class="cta-button" href="/">Go to the homepage</a>
+        <a class="secondary-button" href="/contact">Contact the team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail">
+    <div class="box-container">
+      <h2>Popular destinations</h2>
+      <ul>
+        <li>
+          <a href="/rics-home-surveys">Compare RICS survey levels</a>
+        </li>
+        <li>
+          <a href="/services">Browse all surveying services</a>
+        </li>
+        <li>
+          <a href="/local-surveys">See the areas we cover</a>
+        </li>
+        <li>
+          <a href="/blog-index">Read the latest guides and case studies</a>
+        </li>
+        <li>
+          <a href="/enquiry">Request a quote in minutes</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
