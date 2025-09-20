@@ -1,0 +1,26 @@
+{
+  "level-1": {
+    "name": "RICS Level 1 Home Survey (Condition Report)",
+    "description": "Traffic-light condition overview for newer or well-maintained homes.",
+    "ratingValue": 5.0,
+    "reviewCount": 0
+  },
+  "level-2": {
+    "name": "RICS Level 2 Home Survey (HomeBuyer Survey)",
+    "description": "Most popular pre-purchase report with photos and advice.",
+    "ratingValue": 5.0,
+    "reviewCount": 2
+  },
+  "level-3": {
+    "name": "RICS Level 3 Building Survey",
+    "description": "Comprehensive fabric and structural analysis for older or altered homes.",
+    "ratingValue": 5.0,
+    "reviewCount": 2
+  },
+  "epc": {
+    "name": "EPC & Floorplans",
+    "description": "Energy Performance Certificates and estate-agent ready floorplans.",
+    "ratingValue": 5.0,
+    "reviewCount": 1
+  }
+}
