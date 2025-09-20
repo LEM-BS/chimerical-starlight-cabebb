@@ -564,6 +564,28 @@ header {
   margin-top: 0.75rem;
 }
 
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav .nav-links,
+  .main-nav .nav-links.nav-open {
+    position: static;
+    top: auto;
+    right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+  }
+}
+
 .nav-links a {
   font-size: 0.95rem;
   letter-spacing: 0.04em;
