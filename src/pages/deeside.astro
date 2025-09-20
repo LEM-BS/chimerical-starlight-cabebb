@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/deeside" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Deeside -->
+    <!-- Service schema for Deeside -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/deeside.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Deeside",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/deeside#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Deeside",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Deeside, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Deeside"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Property surveyor offering RICS Level 1, 2 & 3 home surveys and damp reports in Deeside and surrounding areas.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/deeside",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Deeside",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH5",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Deeside</h1>
   <p>Qualified and independent RICS home surveys with clear advice — covering all areas of Deeside and surrounding Flintshire.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Fast Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -87,12 +107,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Energy certificates with floorplan included — ideal for letting or resale.</li>
   <li><strong>Ventilation Assessments:</strong> Diagnose condensation, stuffy rooms or poor indoor air quality.</li>
   </ul>
-  <p><a href="/comparison.html">Compare Survey Levels →</a></p>
+  <p><a href="/comparison">Compare Survey Levels →</a></p>
   <p>
           Need extra detail before booking? Read our
-          <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 survey guide</a>
+          <a href="/level-2-vs-level-3">Level 2 vs Level 3 survey guide</a>
           and
-          <a href="/independent-damp-survey-vs-contractor.html">independent damp survey comparison</a>
+          <a href="/independent-damp-survey-vs-contractor">independent damp survey comparison</a>
           to see how we approach complex properties in Deeside.
         </p>
   <h2>Why Clients in Deeside Choose LEM</h2>
@@ -107,8 +127,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Whether you're purchasing, refinancing or planning a renovation, we’ll help you make a confident decision about your property in Deeside.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
-  <a class="secondary-button" href="/services.html">Browse All Services</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
+  <a class="secondary-button" href="/services">Browse All Services</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Shared Includes -->

@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/mold" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Mold -->
+    <!-- Service schema for Mold -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/mold.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Mold",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH7",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/mold#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Mold",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Mold, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Mold"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Qualified building surveyor offering Level 1, 2 and 3 RICS Home Surveys and Damp Reports across Mold.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/mold",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mold",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH7",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Mold</h1>
   <p>RICS Level 1, 2 and 3 Home Surveys, Damp Reports and clear advice — direct from a qualified local surveyor in Mold.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Scaled drawings for reconfiguring layouts, planning, or documentation.</li>
   <li><strong>EPCs with Floorplans:</strong> Energy certificate plus digital plan for letting or property marketing.</li>
   </ul>
-  <p><a href="/services.html">View all services offered →</a></p>
+  <p><a href="/services">View all services offered →</a></p>
   <h2>Why Choose LEM for Mold Surveys?</h2>
   <ul>
   <li><strong>Local knowledge:</strong> Familiar with housing styles and common issues across Mold, Mynydd Isa, Sychdyn and surrounding villages.</li>
@@ -96,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Get Your Survey Booked Today</h2>
   <p>If you’re buying or assessing a property in Mold, I can help. Send your details and I’ll get back to you promptly.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- FOOTER --><!-- Header/Footer JS Load -->
 </BaseLayout>

@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/bretton" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Bretton -->
+    <!-- Service schema for Bretton -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/bretton.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bretton",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/bretton#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Bretton",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Bretton, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Bretton"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Qualified RICS surveyor providing Level 1, 2 and 3 Home Surveys in Bretton, Flintshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/bretton",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bretton",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Bretton</h1>
   <p>Independent RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and expert inspections in Bretton and nearby.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>Measured Surveys &amp; Floorplans:</strong> Internal layouts and dimensions for redesign, records or planning use.</li>
   <li><strong>EPCs with Floorplans:</strong> Energy Performance Certificate with detailed floorplan included.</li>
   </ul>
-  <p><a href="/services.html">See all services →</a></p>
+  <p><a href="/services">See all services →</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Local Knowledge:</strong> Based just minutes from Bretton with experience in the area’s housing stock.</li>
@@ -96,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Request Your Survey</h2>
   <p>If you're buying, selling or maintaining a property in Bretton, get in touch now for trusted advice and a no-obligation quote.</p>
-  <a class="cta-button" href="/enquiry.html">Book Now</a>
+  <a class="cta-button" href="/enquiry">Book Now</a>
   </div>
   </section><!-- FOOTER --><!-- Inject header/footer -->
 </BaseLayout>

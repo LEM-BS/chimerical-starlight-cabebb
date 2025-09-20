@@ -17,26 +17,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/shotton" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Shotton -->
+    <!-- Service schema for Shotton -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/shotton.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Shotton",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/shotton#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Shotton",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Shotton, Connah’s Quay, Queensferry, Deeside, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Shotton"
+          },
+          {
+            "@type": "Place",
+            "name": "Connah’s Quay"
+          },
+          {
+            "@type": "Place",
+            "name": "Queensferry"
+          },
+          {
+            "@type": "Place",
+            "name": "Deeside"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Qualified independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Shotton and the surrounding Deeside area.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/shotton",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Shotton",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH5",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +101,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Shotton</h1>
   <p>Buying a home in Shotton? Get a clear, fast and local building survey from an independent RICS-qualified surveyor.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -95,11 +127,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Ready to Book?</h2>
   <p>
-          If you’re unsure which survey is right, <a href="/comparison.html">compare RICS survey levels for Shotton properties</a> or <a href="/contact.html">send us a message</a> for honest advice.
+          If you’re unsure which survey is right, <a href="/comparison">compare RICS survey levels for Shotton properties</a> or <a href="/contact">send us a message</a> for honest advice.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
-  <a class="secondary-button" href="/services.html">View Full Services</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
+  <a class="secondary-button" href="/services">View Full Services</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Inject shared header/footer -->

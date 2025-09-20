@@ -17,26 +17,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/saighton" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Saighton -->
+    <!-- Service schema for Saighton -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/saighton.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Saighton",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/saighton#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Saighton",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Saighton, Aldford, Huntington, Chester",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Saighton"
+          },
+          {
+            "@type": "Place",
+            "name": "Aldford"
+          },
+          {
+            "@type": "Place",
+            "name": "Huntington"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "RICS Home Surveys and building inspections across Saighton and nearby Cheshire villages. Clear reports and independent advice.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/saighton",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saighton",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH3",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +101,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Saighton</h1>
   <p>Buying in Saighton or nearby? Get trusted advice and clear reports with a local, independent surveyor.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -93,11 +125,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Book Your Survey</h2>
   <p>
-          Unsure which level of survey is right? <a href="/comparison.html">Compare RICS surveys</a> or <a href="/contact.html">get in touch for advice</a>.
+          Unsure which level of survey is right? <a href="/comparison">Compare RICS surveys</a> or <a href="/contact">get in touch for advice</a>.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  <a class="secondary-button" href="/services.html">View All Services</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
+  <a class="secondary-button" href="/services">View All Services</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Inject shared content -->

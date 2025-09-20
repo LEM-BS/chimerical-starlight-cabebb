@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/northop" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Northop -->
+    <!-- Service schema for Northop -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/northop.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Northop",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH7",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/northop#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Northop",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Northop, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Northop"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "RICS Level 1, Level 2, and Level 3 Home Surveys and Damp Reports in Northop and surrounding areas.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/northop",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Northop",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH7",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Home &amp; Building Surveys in Northop</h1>
   <p>Independent RICS Home Surveys and property reports from a local, qualified surveyor covering Northop and nearby villages.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -87,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs &amp; Floorplans:</strong> Great for landlords, sellers or renovation plans.</li>
   <li><strong>Ventilation Checks:</strong> Identify airflow and condensation risks before they become expensive problems.</li>
   </ul>
-  <p><a href="/services.html">View All Services Offered</a></p>
+  <p><a href="/services">View All Services Offered</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>AssocRICS Qualified:</strong> You’ll deal directly with me—Liam—a trained, insured surveyor with local knowledge.</li>
@@ -99,8 +119,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <iframe allowfullscreen="" height="300" loading="lazy" src="https://www.google.com/maps?q=Northop,+Flintshire,+UK&amp;output=embed" class="map-embed" width="100%"></iframe>
   <div class="cta-section">
   <h2>Book a Survey in Northop</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">submit your request online</a>.</p>
-  <a class="cta-button" href="/services.html">Explore All Services</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">submit your request online</a>.</p>
+  <a class="cta-button" href="/services">Explore All Services</a>
   </div>
   </div>
   </section><!-- Footer Include -->

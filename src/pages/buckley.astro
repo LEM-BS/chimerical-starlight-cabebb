@@ -17,26 +17,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/buckley" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Buckley -->
+    <!-- Service schema for Buckley -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/buckley.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Buckley",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH7",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/buckley#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Buckley",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Buckley, Flintshire",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Buckley"
+          },
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Professional property surveys and damp inspections for homes in Buckley and surrounding areas.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/buckley",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Buckley",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH7",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Building Surveys &amp; Damp Reports in Buckley</h1>
   <p>RICS Level 2 &amp; 3 Surveys, expert damp inspections, and local property advice for homeowners, landlords and buyers in Buckley.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -86,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Energy ratings + layout — useful for listings and compliance.</li>
   <li><strong>Ventilation Assessments:</strong> Identify airflow issues contributing to damp, condensation and poor air quality.</li>
   </ul>
-  <p><a href="/services.html">View Full List of Services</a></p>
+  <p><a href="/services">View Full List of Services</a></p>
   <h2>Why Choose LEM?</h2>
   <ul>
   <li><strong>Experienced &amp; Qualified:</strong> Reports delivered by Liam, an AssocRICS surveyor — no salespeople or third parties.</li>
@@ -101,8 +121,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <div class="cta-section">
   <h2>Book a Survey in Buckley</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">request your quote online</a>.</p>
-  <a class="cta-button" href="/enquiry.html">Request Your Survey Quote</a>
+  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">request your quote online</a>.</p>
+  <a class="cta-button" href="/enquiry">Request Your Survey Quote</a>
   </div>
   </div>
   </section><!-- Footer --><!-- JS for header/footer includes -->

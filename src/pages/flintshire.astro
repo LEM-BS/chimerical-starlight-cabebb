@@ -21,22 +21,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/flintshire.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Flintshire",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/flintshire#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Flintshire",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Flintshire, North Wales",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Flintshire"
+          },
+          {
+            "@type": "Place",
+            "name": "North Wales"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Flintshire"
+        },
         "description": "Building surveyor offering RICS Level 1, 2 and 3 surveys, damp reports, and inspections across Flintshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/flintshire",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Flintshire",
+            "addressRegion": "Flintshire",
+            "postalCode": "CH5",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>Building Surveyor Covering Flintshire</h1>
   <p>RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and tailored inspections for buyers, landlords and homeowners across Flintshire.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+  <a class="cta-button" href="/enquiry">Request a Survey</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -87,12 +107,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Combined Energy Performance Certificate and marketing-ready layout plans.</li>
   <li><strong>Ventilation Assessments:</strong> Ideal for condensation and indoor air quality concerns.</li>
   </ul>
-  <p><a href="/services.html">View all services offered →</a></p>
+  <p><a href="/services">View all services offered →</a></p>
   <p>
           Unsure which inspection will suit a Flintshire property? Our
-          <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 survey guide</a>
+          <a href="/level-2-vs-level-3">Level 2 vs Level 3 survey guide</a>
           and
-          <a href="/independent-damp-survey-vs-contractor.html">independent damp survey comparison</a>
+          <a href="/independent-damp-survey-vs-contractor">independent damp survey comparison</a>
           share examples from local homes so you can book with confidence.
         </p>
   <h2>Why Choose LEM?</h2>
@@ -111,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Book a Survey in Flintshire</h2>
   <p>Get a tailored quote with no obligation. Call <a href="tel:07378732037">07378 732037</a> or use the quick enquiry form below:</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- FOOTER --><!-- Header/Footer Inject -->
 </BaseLayout>

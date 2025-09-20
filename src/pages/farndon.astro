@@ -17,26 +17,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <meta content="https://www.lembuildingsurveying.co.uk/farndon" name="twitter:url">
     <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
 
-    <!-- LocalBusiness Schema for Farndon -->
+    <!-- Service schema for Farndon -->
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/farndon.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Farndon",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/farndon#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Farndon",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Farndon, Holt, Aldford, Churton, Chester",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Farndon"
+          },
+          {
+            "@type": "Place",
+            "name": "Holt"
+          },
+          {
+            "@type": "Place",
+            "name": "Aldford"
+          },
+          {
+            "@type": "Place",
+            "name": "Churton"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "RICS Home Surveys and independent property inspections in Farndon and rural Cheshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/farndon",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Farndon",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH3",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Farndon</h1>
   <p>Independent building surveys for homes in Farndon, Holt, and nearby villages — clear advice, fast reports, and personal service.</p>
-  <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+  <a class="cta-button" href="/enquiry">Request a Quote</a>
   </div>
   </section><!-- MAIN CONTENT --><section class="service-detail">
   <div class="box-container">
@@ -93,11 +129,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </ul>
   <h2>Next Steps</h2>
   <p>
-          Compare <a href="/comparison.html">Level 1, Level 2, and Level 3 survey options for Farndon homes</a>, or contact us for advice on which survey suits your property best.
+          Compare <a href="/comparison">Level 1, Level 2, and Level 3 survey options for Farndon homes</a>, or contact us for advice on which survey suits your property best.
         </p>
   <div class="cta-section">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
-  <a class="secondary-button" href="/services.html">View All Services</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
+  <a class="secondary-button" href="/services">View All Services</a>
   </div>
   </div>
   </section><!-- FOOTER --><!-- Inject header/footer -->

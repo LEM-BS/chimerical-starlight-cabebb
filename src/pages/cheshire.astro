@@ -21,22 +21,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/cheshire.html",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Cheshire",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
+        "@type": "Service",
+        "@id": "https://www.lembuildingsurveying.co.uk/cheshire#residential-property-surveying",
+        "serviceType": "Residential property surveying",
+        "name": "Home surveys in Cheshire",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://www.lembuildingsurveying.co.uk/#/schema/local-business"
         },
-        "areaServed": "Cheshire, Chester, North Wales Border",
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Cheshire"
+          },
+          {
+            "@type": "Place",
+            "name": "Chester"
+          },
+          {
+            "@type": "Place",
+            "name": "North Wales Border"
+          }
+        ],
+        "serviceArea": {
+          "@type": "AdministrativeArea",
+          "name": "Cheshire"
+        },
         "description": "Independent building surveyor providing RICS Home Surveys and inspections in Cheshire including Chester, Pulford, Kinnerton and beyond.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
+        "url": "https://www.lembuildingsurveying.co.uk/cheshire",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cheshire",
+            "addressRegion": "Cheshire",
+            "postalCode": "CH4",
+            "addressCountry": "GB"
+          }
+        }
       }
-      </script>
+    </script>
       <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -69,7 +93,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="hero-container">
   <h1>RICS Home Surveys in Cheshire</h1>
   <p>Clear, independent property reports across Cheshire — from Chester to Pulford, Kinnerton and surrounding areas.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -87,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <li><strong>EPCs with Floorplans:</strong> Perfect for listings, compliance or landlord records.</li>
   <li><strong>Ventilation Reports:</strong> Helpful where mould, condensation or air quality is a concern.</li>
   </ul>
-  <p><a href="/services.html">See all services →</a></p>
+  <p><a href="/services">See all services →</a></p>
   <h2>Why Use LEM?</h2>
   <ul>
   <li><strong>Independent &amp; Qualified:</strong> All surveys are carried out by Liam — an AssocRICS building surveyor with local experience.</li>
@@ -105,7 +129,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <p>
           Click below to request your tailored quote or get no-obligation advice. Fast response guaranteed.
         </p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- Shared Footer --><!-- Header/Footer Inject -->
 </BaseLayout>
