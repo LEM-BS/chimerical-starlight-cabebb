@@ -2,10 +2,11 @@ http://www.lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/
 http://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
 https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:splat  301
 
-/enquiry  /thank-you  200
-/contact  /thank-you  200
 /thank-you.html  /thank-you  301
 /level-2-or-level-3  /level-2-vs-level-3  301
-/level-2-or-level-3.html  /level-2-vs-level-3.html  301
-/areas.html  /local-surveys.html  301
-/areas  /local-surveys.html  301
+/level-2-or-level-3.html  /level-2-vs-level-3  301
+/areas.html  /local-surveys  301
+/areas  /local-surveys  301
+/local-surveys.html  /local-surveys  301
+/googlefe4d6e01876d87e3.html  /googlefe4d6e01876d87e3.html  200
+/:page.html  /:page  301

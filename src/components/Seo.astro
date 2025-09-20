@@ -48,14 +48,11 @@ const clamp = (value: string, limit = 60) => {
 const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
 let canonicalUrl = canonical;
 if (!canonicalUrl) {
-  const base = canonicalPath ?? Astro.url.pathname ?? '/';
-  const url = new URL(base, site);
-  if (url.pathname !== '/' && !url.pathname.endsWith('.html')) {
-    const pathWithoutTrailingSlash = url.pathname.endsWith('/')
-      ? url.pathname.slice(0, -1)
-      : url.pathname;
-    url.pathname = pathWithoutTrailingSlash ? `${pathWithoutTrailingSlash}.html` : '/';
+  let basePath = canonicalPath ?? Astro.url.pathname ?? '/';
+  if (basePath !== '/' && basePath.endsWith('/')) {
+    basePath = basePath.slice(0, -1);
   }
+  const url = new URL(basePath, site);
   canonicalUrl = url.toString();
 }
 

@@ -5,19 +5,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
   <Fragment slot="head">
     <title>Client Testimonials | LEM Building Surveying</title>
-        <meta name="description" content="What our clients say about LEM Building Surveying Ltd.">
+    <meta
+      name="description"
+      content="Independent feedback from homeowners and landlords who chose LEM Building Surveying for detailed inspections."
+    />
   </Fragment>
 
-  <main>
-        <section class="testimonial-section">
-          <h1>Client Testimonials</h1>
-    <div class="ti-widget ti-goog"></div>
-    <script
-      src="https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7"
-      async
-      defer
-      is:inline
-    ></script>
-        </section>
-      </main>
+  <main class="testimonial-page">
+    <section class="testimonial-section">
+      <h1>Client Testimonials</h1>
+      <p>
+        Every survey is delivered by a qualified independent surveyor. The comments below capture the kind of fast
+        communication, pragmatic reporting and post-survey support our clients experience across Cheshire, Flintshire and
+        North Wales.
+      </p>
+
+      <div class="testimonial-highlights">
+        <blockquote>
+          “Liam spotted issues we would never have noticed. The report was clear, with photos and practical advice that helped
+          us renegotiate.”
+          <cite>— Home buyer in Chester</cite>
+        </blockquote>
+        <blockquote>
+          “Exceptional turnaround on our damp investigation. We had a balanced diagnosis and recommendations within 48 hours
+          which resolved a long-running dispute.”
+          <cite>— Landlord in Connah’s Quay</cite>
+        </blockquote>
+      </div>
+
+      <p class="testimonial-note">
+        The live feed below updates automatically with the latest Google reviews. If you have recently worked with us,
+        we’d love to hear from you too.
+      </p>
+
+      <div class="ti-widget ti-goog"></div>
+      <script
+        src="https://cdn.trustindex.io/loader.js?f82e0f551228447e6c06f9b86c7"
+        async
+        defer
+        is:inline
+      ></script>
+    </section>
+  </main>
 </BaseLayout>

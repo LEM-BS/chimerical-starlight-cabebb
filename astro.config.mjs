@@ -4,7 +4,7 @@ export default defineConfig({
   site: 'https://www.lembuildingsurveying.co.uk',
   output: 'static',
   build: {
-    format: 'file'
+    format: 'directory'
   },
   vite: {
     build: {

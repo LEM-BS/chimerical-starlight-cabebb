@@ -22,18 +22,33 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      />
+    </noscript>
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://www.lembuildingsurveying.co.uk/#lem-building-surveying",
         "name": "LEM Building Surveying Ltd",
         "url": "https://www.lembuildingsurveying.co.uk",
         "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png",
         "logo": "https://www.lembuildingsurveying.co.uk/logo-sticker.png",
         "telephone": "+44 7378 732 037",
+        "email": "enquiries@lembuildingsurveying.co.uk",
         "description": "Professional building surveying services in Deeside, Flintshire, and across North Wales.",
         "address": {
           "@type": "PostalAddress",

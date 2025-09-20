@@ -71,4 +71,4 @@ export const featuredAreas = [
   'queensferry',
 ];
 
-export const getAreaUrl = (slug: string) => `/${slug}.html`;
+export const getAreaUrl = (slug: string) => `/${slug}`;
