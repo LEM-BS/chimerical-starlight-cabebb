@@ -1,35 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const suburbanSurveyFaqs = [
+  {
+    question: 'Which RICS survey suits Flintshire and Chester suburbs?',
+    answer:
+      'Level 2 surveys suit most suburban homes, while older cottages, heavily extended houses or renovation projects usually benefit from the depth of a Level 3 building survey.',
+  },
+  {
+    question: 'How quickly can you arrange inspections in the area?',
+    answer:
+      'Appointments are typically available within a week and we coordinate access directly with agents or vendors so you stay updated without extra admin.',
+  },
+  {
+    question: 'Do you cover surrounding villages and rural properties?',
+    answer:
+      'Yes. We regularly survey properties across the wider Flintshire and Chester suburbs, including rural hamlets that need specialist attention to materials and construction methods.',
+  },
+];
+
+const description =
+  'Explore how RICS Level 1, 2 and 3 surveys apply to Flintshire and Chester suburbs, including local housing trends, pricing guidance and when to choose each inspection.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'RICS Home Surveys in Flintshire & Chester Suburbs | LEM Building Surveying',
+  description,
+  canonicalPath: '/rics-home-surveys-in-flintshire-and-chester',
+  serviceName: 'RICS Home Surveys in Flintshire & Chester',
+  serviceType: 'RICS Home Survey Guidance',
+  faqs: suburbanSurveyFaqs,
+  review: {
+    author: 'Buyer in Hawarden',
+    body: 'Local insight into Chester and Flintshire properties made it easy to choose the right survey level for our purchase.',
+    ratingValue: 5,
+    datePublished: '2024-05-15',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Survey Guides',
+      item: 'https://www.lembuildingsurveying.co.uk/rics-home-surveys',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'RICS Home Surveys in Flintshire & Chester',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Flintshire &amp; Chester Suburbs | LEM Building Surveying</title>
-    <meta
-      content="Comprehensive guide to RICS Home Surveys across the suburbs of Flintshire and Chester. Learn about survey levels, local issues, pricing and how to choose an accredited surveyor."
-      name="description"
-    />
-    <meta
-      content="RICS Home Survey Flintshire, RICS survey Chester, Level 1 survey guide, Level 2 HomeBuyer Report, Level 3 Building Survey, chartered surveyor Flintshire, chartered surveyor Chester"
-      name="keywords"
-    />
-    <link href="https://www.lembuildingsurveying.co.uk/rics-home-surveys-in-flintshire-and-chester.html" rel="canonical" />
-    <meta content="RICS Home Surveys in Flintshire &amp; Chester Suburbs | LEM Building Surveying" property="og:title" />
-    <meta
-      content="Understand the differences between Level 1, 2 and 3 RICS Home Surveys, what they cost locally and how they protect buyers in Flintshire and Chester."
-      property="og:description"
-    />
-    <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys-in-flintshire-and-chester.html" property="og:url" />
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image" />
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta content="RICS Home Surveys in Flintshire &amp; Chester Suburbs | LEM Building Surveying" name="twitter:title" />
-    <meta
-      content="Understand the differences between Level 1, 2 and 3 RICS Home Surveys, what they cost locally and how they protect buyers in Flintshire and Chester."
-      name="twitter:description"
-    />
-    <meta content="https://www.lembuildingsurveying.co.uk/rics-home-surveys-in-flintshire-and-chester.html" name="twitter:url" />
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image" />
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <section class="hero">
     <div class="hero-container">
@@ -210,7 +250,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="cta-section">
         <h2>Ready to Book Your Survey?</h2>
         <p>Contact LEM Building Surveying for tailored advice on the best RICS survey for your next purchase.</p>
-        <a class="cta-button" href="/enquiry.html">Request a Quote</a>
+        <a class="cta-button" href="/enquiry">Request a Quote</a>
       </div>
     </div>
   </section>

@@ -1,52 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
+
+const seo = {
+  title: 'Independent Building Surveyor',
+  description:
+    'Independent building surveyor delivering RICS home surveys, damp reports and measured surveys across Deeside, Chester and Flintshire with fast, friendly support.',
+  canonicalPath: '/',
+  image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Independent Building Surveyor | LEM Building Surveying</title>
-    <meta
-      content="Independent building surveyor for Deeside, Chester, Flintshire and the North West. Book RICS home surveys, measured building surveys and damp reports with fast, friendly support."
-      name="description"
-    />
-    <meta
-      content="Independent building surveyor, RICS home surveys, land surveyors Moorside, building surveyor Bredbury, measured building survey Hayling Island, building surveyor Chester, Flintshire surveyors"
-      name="keywords"
-    />
-    <link href="https://www.lembuildingsurveying.co.uk/" rel="canonical" />
-    <meta
-      content="Independent Building Surveyor | LEM Building Surveying"
-      property="og:title"
-    />
-    <meta
-      content="Book RICS home, damp and EPC surveys across Deeside, Chester and Flintshire with LEM. Local surveyor delivering fast inspections, reports and honest advice."
-      property="og:description"
-    />
-    <meta content="https://www.lembuildingsurveying.co.uk/" property="og:url" />
-    <meta
-      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      property="og:image"
-    />
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta
-      content="Independent Building Surveyor | LEM Building Surveying"
-      name="twitter:title"
-    />
-    <meta
-      content="Book RICS home, damp and EPC surveys across Deeside, Chester and Flintshire with LEM. Local surveyor delivering fast inspections, reports and honest advice."
-      name="twitter:description"
-    />
-    <meta content="https://www.lembuildingsurveying.co.uk/" name="twitter:url" />
-    <meta
-      content="https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      name="twitter:image"
-    />
-    <!-- Preconnect & Google Fonts -->
-    <!-- Main stylesheet -->
-    <!-- Usercentrics & GA4 -->
-  </Fragment>
-
+<BaseLayout seo={seo}>
   <section class="section hero hero-quote">
     <div class="container hero-container">
       <div class="review-badge">
@@ -134,7 +99,7 @@ import { areaSelectorOptions } from '../data/areas';
           trusted inspections &amp; advice
         </p>
         <div class="center-cta">
-          <a class="cta-button hero-contrast" href="/enquiry.html">
+          <a class="cta-button hero-contrast" href="/enquiry">
             Get a Free Quote
           </a>
         </div>
@@ -159,9 +124,9 @@ import { areaSelectorOptions } from '../data/areas';
         </p>
         <p>
           We frequently assist clients searching for
-          <a href="/local-surveys.html">surveyors in Flintshire</a>, a trusted
-          <a href="/service-areas/deeside-damp-surveys-rics-home-surveys.html">building surveyor in Deeside</a>, or an
-          <a href="/service-areas/cheshire-damp-surveys-rics-home-surveys.html">independent building surveyor in the North West</a>.
+          <a href="/local-surveys">surveyors in Flintshire</a>, a trusted
+          <a href="/deeside-damp-surveys">building surveyor in Deeside</a>, or an
+          <a href="/cheshire-damp-surveys">independent building surveyor in the North West</a>.
           Our measured building survey service also travels further afield for
           specialist projects, supporting developments in locations such as
           Moorside, Bredbury, Wardle and even Hayling Island when detailed
@@ -169,10 +134,10 @@ import { areaSelectorOptions } from '../data/areas';
         </p>
         <p>
           Need advice fast? Explore our resources on
-          <a href="/level-1-or-level-2.html">survey levels</a>,
-          <a href="/level-3.html">Level 3 building surveys</a>, or our guide to
-          <a href="/independent-damp-survey-vs-contractor.html">independent damp surveys</a>,
-          and visit our <a href="/blog-index.html">blog for property survey advice</a> before
+          <a href="/level-1-or-level-2">survey levels</a>,
+          <a href="/level-3">Level 3 building surveys</a>, or our guide to
+          <a href="/independent-damp-survey-vs-contractor">independent damp surveys</a>,
+          and visit our <a href="/blog-index">blog for property survey advice</a> before
           booking. Every report is tailored to the property type so you receive
           actionable insight rather than template commentary.
         </p>
@@ -194,46 +159,46 @@ import { areaSelectorOptions } from '../data/areas';
               Level&nbsp;1, 2 &amp; 3 reports for buyers, landlords and
               professionals.
             </p>
-            <a class="inline-link" href="/rics-home-surveys.html">
+            <a class="inline-link" href="/rics-home-surveys">
               Explore RICS Surveys →
             </a>
           </article>
           <article class="card service-card">
             <h3>Damp &amp; Mould Reports</h3>
             <p>Assessments for condensation, damp, and disrepair issues.</p>
-            <a class="inline-link" href="/damp-mould-surveys.html">
+            <a class="inline-link" href="/damp-mould-surveys">
               View Damp Reports →
             </a>
           </article>
           <article class="card service-card">
             <h3>Damp &amp; Timber Surveys</h3>
             <p>For lenders, warranties, or timber decay concerns.</p>
-            <a class="inline-link" href="/damp-timber-surveys.html">Learn about Damp &amp; Timber Surveys →</a>
+            <a class="inline-link" href="/damp-timber-surveys">Learn about Damp &amp; Timber Surveys →</a>
           </article>
           <article class="card service-card">
             <h3>Measured Surveys &amp; Floorplans</h3>
             <p>Scaled plans and elevations for design or records.</p>
-            <a class="inline-link" href="/measured-surveys.html">
+            <a class="inline-link" href="/measured-surveys">
               See Measured Surveys →
             </a>
           </article>
           <article class="card service-card">
             <h3>EPCs with Floorplans</h3>
             <p>Certificates &amp; floorplans for lettings, sales &amp; marketing.</p>
-            <a class="inline-link" href="/epc-with-floorplans.html">
+            <a class="inline-link" href="/epc-with-floorplans">
               EPC Options →
             </a>
           </article>
           <article class="card service-card">
             <h3>Ventilation Testing</h3>
             <p>Anemometer airflow assessments for domestic properties.</p>
-            <a class="inline-link" href="/ventilation-assessments.html">
+            <a class="inline-link" href="/ventilation-assessments">
               Book Ventilation →
             </a>
           </article>
         </div>
         <div class="center-cta">
-          <a class="cta-button" href="/services.html">Browse All Services</a>
+          <a class="cta-button" href="/services">Browse All Services</a>
         </div>
       </div>
     </section>
@@ -246,7 +211,7 @@ import { areaSelectorOptions } from '../data/areas';
         <div class="cards guide-cards">
           <article class="card guide-card">
             <h3>
-              <a href="/level-2-vs-level-3.html">Level 2 vs Level 3 Survey</a>
+              <a href="/level-2-vs-level-3">Level 2 vs Level 3 Survey</a>
             </h3>
             <p>
               See which RICS report fits your property, renovation plans and
@@ -255,7 +220,7 @@ import { areaSelectorOptions } from '../data/areas';
           </article>
           <article class="card guide-card">
             <h3>
-              <a href="/independent-damp-survey-vs-contractor.html">
+              <a href="/independent-damp-survey-vs-contractor">
                 Independent Damp Survey vs Contractor
               </a>
             </h3>
@@ -265,12 +230,12 @@ import { areaSelectorOptions } from '../data/areas';
             </p>
           </article>
           <article class="card guide-card">
-            <h3><a href="/level-1-or-level-2.html">Level 1 or Level 2?</a></h3>
+            <h3><a href="/level-1-or-level-2">Level 1 or Level 2?</a></h3>
             <p>Compare lighter-touch surveys for newer, conventional homes.</p>
           </article>
         </div>
         <div class="center-cta">
-          <a class="cta-button" href="/blog-index.html">Explore All Articles</a>
+          <a class="cta-button" href="/blog-index">Explore All Articles</a>
         </div>
       </div>
     </section>
@@ -297,7 +262,7 @@ import { areaSelectorOptions } from '../data/areas';
           </li>
         </ul>
         <div class="center-cta">
-          <a class="cta-button" href="/about.html">About the Surveyor</a>
+          <a class="cta-button" href="/about">About the Surveyor</a>
         </div>
       </div>
     </section>
@@ -351,31 +316,31 @@ import { areaSelectorOptions } from '../data/areas';
           </p>
           <ul>
             <li>
-              <a href="/service-areas/flintshire-damp-surveys-rics-home-surveys.html">AssocRICS surveyor in Flintshire</a>
+              <a href="/flintshire-damp-surveys">AssocRICS surveyor in Flintshire</a>
               providing structural surveys and RICS Level 3 reports.
             </li>
             <li>
-              <a href="/service-areas/mold-damp-surveys-rics-home-surveys.html">Right of light surveys in Mold</a> alongside
+              <a href="/mold-damp-surveys">Right of light surveys in Mold</a> alongside
               homebuyer and building survey options.
             </li>
             <li>
-              <a href="/service-areas/broughton-damp-surveys-rics-home-surveys.html">Building surveys in Broughton</a>
+              <a href="/broughton-damp-surveys">Building surveys in Broughton</a>
               plus residential surveyors for nearby Saltney.
             </li>
             <li>
-              <a href="/service-areas/buckley-damp-surveys-rics-home-surveys.html">Building surveys in Buckley</a> covering
+              <a href="/buckley-damp-surveys">Building surveys in Buckley</a> covering
               neighbouring villages such as Cholmondeley and Mynydd Isa.
             </li>
             <li>
-              <a href="/service-areas/deeside-damp-surveys-rics-home-surveys.html">Building surveyors near you in Deeside</a>
+              <a href="/deeside-damp-surveys">Building surveyors near you in Deeside</a>
               for Level 1, 2 and 3 inspections.
             </li>
             <li>
-              <a href="/service-areas/chester-damp-surveys-rics-home-surveys.html">Home buyer surveys in Chester</a> and the
+              <a href="/chester-damp-surveys">Home buyer surveys in Chester</a> and the
               surrounding suburbs including Hoole and Churton.
             </li>
             <li>
-              <a href="/service-areas/cheshire-damp-surveys-rics-home-surveys.html">Home condition reports across Cheshire</a>
+              <a href="/cheshire-damp-surveys">Home condition reports across Cheshire</a>
               from Helsby to Warmingham.
             </li>
           </ul>
@@ -393,7 +358,7 @@ import { areaSelectorOptions } from '../data/areas';
           options.
         </p>
         <div class="center-cta">
-          <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+          <a class="cta-button" href="/enquiry">Get My Quote</a>
         </div>
       </div>
     </section>
@@ -407,6 +372,6 @@ import { areaSelectorOptions } from '../data/areas';
   </script>
 
   <div class="sticky-cta">
-    <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+    <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
 </BaseLayout>

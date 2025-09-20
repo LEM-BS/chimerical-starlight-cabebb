@@ -9,12 +9,14 @@ const currentYear = new Date().getFullYear();
       <p><strong>LEM Building Surveying Ltd</strong></p>
       <p>Connah’s Quay, Deeside<br />Flintshire</p>
       <p>
-        <strong>T:</strong> <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a><br />
-        <strong>E:</strong>
-        <a href="mailto:enquiries@lembuildingsurveying.co.uk">enquiries@lembuildingsurveying.co.uk</a>
+        <strong>T:</strong> <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
       </p>
-      <p><a href="/contact.html">Contact us</a></p>
-      <p><a href="/local-surveys.html">Areas we cover (full directory)</a></p>
+      <p>
+        <strong>Enquiries:</strong>
+        <a href="/enquiry">Request a survey quote</a>
+      </p>
+      <p><a href="/contact">Contact our team</a></p>
+      <p><a href="/local-surveys">Areas we cover (full directory)</a></p>
       <p class="small">Mon–Fri</p>
       <p class="small">08:30–17:30</p>
     </section>
@@ -22,29 +24,90 @@ const currentYear = new Date().getFullYear();
     <nav class="footer-col" aria-label="Footer navigation">
       <h3>Quick Links</h3>
       <ul class="footer-links">
-        <li><a href="/rics-home-surveys.html">RICS Home Surveys</a></li>
-        <li><a href="/damp-mould-surveys.html">Damp &amp; Mould Reports</a></li>
-        <li><a href="/epc-with-floorplans.html">EPCs &amp; Floorplans</a></li>
-        <li><a href="/ventilation-assessments.html">Ventilation Assessments</a></li>
-        <li><a href="/services.html">All Services</a></li>
-        <li><a href="/faqs.html">FAQs</a></li>
-        <li><a href="/enquiry.html">Get a Quote</a></li>
+        <li><a href="/rics-home-surveys">RICS Home Surveys</a></li>
+        <li><a href="/damp-mould-surveys">Damp &amp; Mould Reports</a></li>
+        <li><a href="/epc-with-floorplans">EPCs &amp; Floorplans</a></li>
+        <li><a href="/ventilation-assessments">Ventilation Assessments</a></li>
+        <li><a href="/services">All Services</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/enquiry">Get a Quote</a></li>
       </ul>
     </nav>
 
     <section class="footer-col footer-logos" aria-label="Accreditations">
       <h3>Accreditations</h3>
-      <img src="/rics-logo.png" alt="Member of RICS" height="40" loading="lazy" />
-      <img src="/rpsa-logo.png" alt="Member of RPSA" height="40" loading="lazy" />
+      <picture>
+        <source srcset="/rics-logo.webp" type="image/webp" />
+        <img
+          src="/rics-logo.png"
+          alt="Member of RICS"
+          width="132"
+          height="48"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <picture>
+        <source srcset="/rpsa-logo.webp" type="image/webp" />
+        <img
+          src="/rpsa-logo.png"
+          alt="Member of RPSA"
+          width="86"
+          height="48"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </section>
+
+    <section class="footer-col footer-social" aria-label="Social media">
+      <h3>Connect</h3>
+      <ul class="footer-links social-links">
+        <li>
+          <a href="https://www.facebook.com/LEMBuildingSurveying" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            <span class="visually-hidden">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/LEMSurveying" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+            <span class="visually-hidden">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/company/lem-building-surveying"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            <span class="visually-hidden">LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lem_buildingsurveying" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <span class="visually-hidden">Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@LEMBuildingSurveying" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            <span class="visually-hidden">YouTube</span>
+          </a>
+        </li>
+      </ul>
     </section>
   </div>
 
   <div class="footer-cta">
-    <a href="/enquiry.html" class="cta-button">Request a Survey Quote</a>
+    <a href="/enquiry" class="cta-button">Request a Survey Quote</a>
   </div>
 
   <div class="footer-bottom">
     <p>&copy; {currentYear} LEM Building Surveying Ltd. All rights reserved.</p>
-    <p class="small"><a href="/privacy-policy.html">Privacy Policy</a></p>
+    <p class="small"><a href="/privacy-policy">Privacy Policy</a></p>
   </div>
 </footer>

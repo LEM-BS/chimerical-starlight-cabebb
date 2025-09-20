@@ -1,100 +1,85 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
+import { createServiceSeo } from '../utils/structuredData';
+
+const dampTimberFaqs = [
+  {
+    question: 'What happens during a damp and timber survey?',
+    answer:
+      'We complete a visual inspection inside and out, take moisture and humidity readings, assess timber condition and map any decay or infestation. Findings are photographed and referenced so you can see exactly where issues are located.',
+  },
+  {
+    question: 'Do you carry out invasive testing?',
+    answer:
+      'Most surveys are non-destructive, relying on calibrated meters and small borescope checks. If limited opening up is required we discuss it with you first and can supervise contractors to keep disruption to a minimum.',
+  },
+  {
+    question: 'Will the report satisfy lenders or solicitors?',
+    answer:
+      'Yes. Reports follow RICS guidance, include evidence and clearly state the source of defects alongside recommended remedial actions. They are regularly accepted by mortgage lenders, solicitors and housing providers.',
+  },
+  {
+    question: 'Can you revisit to confirm repairs?',
+    answer:
+      'We can return after remedial works to re-test moisture levels or check timber treatment. Follow-up visits are quoted separately so you only pay for the time you need.',
+  },
+  {
+    question: 'How quickly will I receive the report?',
+    answer:
+      'Turnaround is typically three to five working days. If urgent negotiations are underway we provide a same-day summary call highlighting any high-risk defects or safety issues.',
+  },
+];
+
+const serviceDescription =
+  'Independent damp and timber surveys for Deeside, Chester and Flintshire, diagnosing woodworm, rot and moisture issues with impartial reports and repair advice.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Damp & Timber Surveys | LEM Building Surveying',
+  description: serviceDescription,
+  canonicalPath: '/damp-timber-surveys',
+  serviceName: 'Damp & Timber Surveys',
+  faqs: dampTimberFaqs,
+  review: {
+    author: 'Investor in Chester',
+    body: 'The timber report arrived within three days with clear photos and repair priorities that satisfied our lender and contractor.',
+    ratingValue: 5,
+    datePublished: '2024-07-04',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Damp & Timber Surveys',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Damp & Timber Surveys | LEM Building Surveying</title>
-    <meta content="Book independent damp and timber surveys in Cheshire, Deeside, Chester and Flintshire with LEM. We diagnose woodworm, rot and moisture issues with thorough inspections." name="description">
-    <meta content="Damp and Timber Survey, Woodworm Inspection, Dry Rot, Wet Rot, Rising Damp, Timber Decay, Structural Damp Report, Property Surveyor Deeside Flintshire Chester Cheshire North West" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/damp-timber-surveys.html" rel="canonical">
-    <meta content="Damp & Timber Surveys | LEM Building Surveying" property="og:title">
-    <meta content="Book independent damp and timber surveys in Deeside, Chester and Flintshire with LEM. We diagnose woodworm, rot and moisture issues with thorough inspections." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/damp-timber-surveys.html" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Damp & Timber Surveys | LEM Building Surveying" name="twitter:title">
-    <meta content="Book independent damp and timber surveys in Deeside, Chester and Flintshire with LEM. We diagnose woodworm, rot and moisture issues with thorough inspections." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/damp-timber-surveys.html" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.lembuildingsurveying.co.uk/services.html"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Damp & Timber Surveys",
-              "item": "https://www.lembuildingsurveying.co.uk/damp-timber-surveys.html"
-            }
-          ]
-        }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What happens during a damp and timber survey?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We complete a visual inspection inside and out, take moisture and humidity readings, assess timber condition, and map any decay or infestation. Findings are photographed and referenced to floor plans so you understand exactly where issues are located."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you carry out invasive testing?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Most surveys are non-destructive, relying on calibrated meters and borescope checks. If we believe limited opening up is required we discuss it with you first and can supervise contractors to ensure disruption is kept to a minimum."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Will the report satisfy lenders or solicitors?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Reports follow RICS guidance, include evidence, and clearly state the source of defects alongside recommended remedial actions. They are regularly accepted by mortgage lenders, solicitors and housing providers."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can you revisit to confirm repairs?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We can return after remedial works to re-test moisture levels or check timber treatment. Follow-up visits are quoted separately so you only pay for the time you need."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How quickly will I receive the report?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Turnaround is typically three to five working days. If urgent negotiations are underway we provide a same-day summary call highlighting any high-risk defects or safety issues."
-              }
-            }
-          ]
-        }
-      </script>
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
     <div class="hero-container">
@@ -103,7 +88,7 @@ import { areaSelectorOptions } from '../data/areas';
         Protect your investment with expert assessments of damp, timber decay,
         and related issues.
       </p>
-      <a class="cta-button" href="/enquiry.html">Request a Survey</a>
+      <a class="cta-button" href="/enquiry">Request a Survey</a>
     </div>
   </section>
   <!-- MAIN CONTENT SECTION -->
@@ -286,13 +271,13 @@ import { areaSelectorOptions } from '../data/areas';
           <h2>Get a Quote or Ask a Question</h2>
           <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
           <div class="center-cta">
-            <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+            <a class="cta-button" href="/enquiry">Get My Quote</a>
           </div>
         </div>
       </section>
       <!-- STICKY CTA -->
       <div class="sticky-cta">
-        <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+        <a class="cta-button" href="/enquiry">Get a Quote</a>
       </div>
       <!-- Footer -->
 

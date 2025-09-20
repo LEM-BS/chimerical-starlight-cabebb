@@ -1,23 +1,69 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const levelComparisonFaqs = [
+  {
+    question: 'How do I decide between a Level 1 and Level 2 survey?',
+    answer:
+      'Choose Level 1 for newer, straightforward properties needing a simple condition snapshot. Pick Level 2 when you want repair advice, maintenance guidance and commentary on potential hidden defects.',
+  },
+  {
+    question: 'Can I upgrade if a Level 1 survey is not enough?',
+    answer:
+      'Yes. If inspection notes or the property history suggest more detail is needed we can move your booking to Level 2 or Level 3 and you only pay the fee difference.',
+  },
+  {
+    question: 'Do you help buyers understand the survey results?',
+    answer:
+      'Absolutely. Every client receives a follow-up call to discuss findings, next steps and any negotiations the report might support.',
+  },
+];
+
+const description =
+  'Unsure whether a Level 1 Condition Report or Level 2 HomeBuyer Survey is right for you? Compare both options and get impartial guidance tailored to homes in Chester, Wrexham and Flintshire.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Do I Need a Level 1 or Level 2 | LEM Building Surveying',
+  description,
+  canonicalPath: '/level-1-or-level-2',
+  serviceName: 'Level 1 vs Level 2 Survey Guide',
+  serviceType: 'RICS Survey Guidance',
+  faqs: levelComparisonFaqs,
+  review: {
+    author: 'Buyer in Wrexham',
+    body: 'Clear explanation of when to choose Level 1 or Level 2, which made booking straightforward.',
+    ratingValue: 5,
+    datePublished: '2024-05-27',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Survey Guides',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Do I Need a Level 1 or Level 2 | LEM Building Surveying</title>
-    <meta content="Not sure whether to choose a Level 1 survey or Level 2 homebuyer report? Compare each survey level with expert guidance from LEM Building Surveying Ltd in Chester, Wrexham, Flintshire &amp; beyond." name="description">
-    <meta content="Level 1 survey, Level 2 survey, survey level comparison, right to light survey Wrexham, right of light survey Wrexham, right to light surveyor Wrexham, Level 1 Condition Report, Level 2 HomeBuyer Report" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/level-1-or-level-2.html" rel="canonical">
-    <meta content="Do I Need a Level 1 or Level 2 | LEM Building Surveying" property="og:title">
-    <meta content="Not sure whether to choose a Level 1 or Level 2 home survey? Compare both options with expert guidance from LEM Building Surveying Ltd in Chester, Flintshire &amp; beyond." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/level-1-or-level-2.html" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Do I Need a Level 1 or Level 2 | LEM Building Surveying" name="twitter:title">
-    <meta content="Not sure whether to choose a Level 1 or Level 2 home survey? Compare both options with expert guidance from LEM Building Surveying Ltd in Chester, Flintshire &amp; beyond." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/level-1-or-level-2.html" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-  </Fragment>
+<BaseLayout seo={seo}>
 
   <!-- Shared Header --><!-- BLOG CONTENT --><section class="about-box">
   <div class="container">
@@ -76,7 +122,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
   <h2>Book Your Survey or Get Advice First</h2>
   <p>Still unsure? Liam is happy to help you choose the right survey before you commit.</p>
-  <p><strong>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry.html">submit an enquiry</a> to schedule your Level 1 or Level 2 Home Survey today.</strong></p>
+  <p><strong>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">submit an enquiry</a> to schedule your Level 1 or Level 2 Home Survey today.</strong></p>
   <p>Make the right choice with clarity and confidence.</p>
   </div>
   </section><!-- FOOTER --><!-- Load Header/Footer -->

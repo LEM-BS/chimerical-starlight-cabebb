@@ -1,58 +1,87 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
+import { createServiceSeo } from '../utils/structuredData';
+
+const epcFaqs = [
+  {
+    question: 'How quickly can you deliver the EPC and floorplan?',
+    answer:
+      'Most appointments are completed within a week of enquiry and reports are issued within 48 hours. Let us know if you need a faster turnaround and we will prioritise your slot.',
+  },
+  {
+    question: 'Are the EPC assessments fully accredited?',
+    answer:
+      'Yes. All EPCs are completed by an Elmhurst-accredited Domestic Energy Assessor and lodged to the central register with the appropriate certification.',
+  },
+  {
+    question: 'Can I book the EPC and floorplan together?',
+    answer:
+      'Absolutely. Combining the visit keeps disruption to a minimum and often reduces the overall fee compared to arranging the services separately.',
+  },
+  {
+    question: 'Do you provide digital copies of the floorplans?',
+    answer:
+      'You receive clear PDF floorplans sized for marketing plus high-resolution files that agents can add straight to sales or lettings listings.',
+  },
+];
+
+const description =
+  'Elmhurst-accredited EPCs with professional 2D floorplans for sales, lettings and compliance across Flintshire, Chester, Wrexham and Cheshire with fast turnaround.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'EPCs with Floorplans | LEM Building Surveying',
+  description,
+  canonicalPath: '/epc-with-floorplans',
+  serviceName: 'EPCs with Floorplans',
+  serviceType: 'Domestic Energy Performance Certificate',
+  faqs: epcFaqs,
+  review: {
+    author: 'Lettings agent in Chester',
+    body: 'Professional EPC and floorplan package with quick booking and clear outputs for our marketing.',
+    ratingValue: 5,
+    datePublished: '2024-06-05',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'EPCs with Floorplans',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout productKey="epc">
-  <Fragment slot="head">
-    <title>EPCs with Floorplans | LEM Building Surveying</title>
-    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." name="description">
-    <meta content="EPC, Energy Performance Certificate, Floorplans, Property Marketing, Elmhurst Energy Assessor, Deeside EPC, Cheshire Floorplans, Landlord Compliance, EPC with Floorplan Flintshire Chester Wrexham" name="keywords">
-    <link href="https://www.lembuildingsurveying.co.uk/epc-with-floorplans.html" rel="canonical">
-    <meta content="EPCs with Floorplans | LEM Building Surveying" property="og:title">
-    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/epc-with-floorplans.html" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="EPCs with Floorplans | LEM Building Surveying" name="twitter:title">
-    <meta content="Elmhurst-accredited EPCs with 2D floorplans for property sales, lettings, and compliance. Serving Flintshire, Chester, Wrexham, Cheshire &amp; the North West. Fast turnaround available." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/epc-with-floorplans.html" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.lembuildingsurveying.co.uk/services.html"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "EPCs with Floorplans",
-              "item": "https://www.lembuildingsurveying.co.uk/epc-with-floorplans.html"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
+<BaseLayout productKey="epc" seo={seo}>
 
   <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
+        <div class="hero-container">
   <h1>EPCs with Floorplans</h1>
   <p>Accredited energy assessments and floorplans tailored for compliance and marketing—ideal for sales, lettings or retrofits.</p>
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
   <div class="box-container">
@@ -132,13 +161,13 @@ import { areaSelectorOptions } from '../data/areas';
   <h2>Get a Quote or Ask a Question</h2>
   <p>We’re happy to help whether you’re ready to book or just comparing options.</p>
   <div class="center-cta">
-  <a class="cta-button" href="/enquiry.html">Get My Quote</a>
+  <a class="cta-button" href="/enquiry">Get My Quote</a>
   </div>
   </div>
   </section>
   <!-- STICKY CTA -->
   <div class="sticky-cta">
-  <a class="cta-button" href="/enquiry.html">Get a Quote</a>
+  <a class="cta-button" href="/enquiry">Get a Quote</a>
   </div>
   <!-- Footer -->
 

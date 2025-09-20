@@ -18,7 +18,7 @@ const createAreaEntry = (slug: string, name: string, anchor?: string): AreaLink 
   slug,
   anchor,
   name,
-  permalink: `/service-areas/${slug}-damp-surveys-rics-home-surveys`,
+  permalink: `/${slug}-damp-surveys`,
 });
 
 const areaEntries: AreaLink[] = [
@@ -112,10 +112,10 @@ export const getAreaBySlug = (slug: string) => areaLookup.get(slug);
 export const getAreaPermalink = (slug: string) => {
   const area = areaLookup.get(slug);
   if (!area) {
-    return `/${slug}.html`;
+    return `/${slug}`;
   }
 
-  return area.permalink.endsWith('.html') ? area.permalink : `${area.permalink}.html`;
+  return area.permalink;
 };
 
 export const getAreaAnchor = (slug: string) => areaLookup.get(slug)?.anchor ?? slug;

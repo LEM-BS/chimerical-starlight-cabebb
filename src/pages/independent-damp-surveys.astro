@@ -1,16 +1,74 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const independentDampFaqs = [
+  {
+    question: 'Why choose an independent damp surveyor?',
+    answer:
+      'Independent surveyors provide unbiased assessments that focus on diagnosing real moisture issues rather than selling treatments. You receive advice that protects your budget and targets the root cause of damp.',
+  },
+  {
+    question: 'What equipment is used during the inspection?',
+    answer:
+      'Surveys typically include visual inspections, moisture and humidity readings, borescope checks and thermal imaging where required. This combination helps trace leaks, condensation and timber decay that may be hidden from view.',
+  },
+  {
+    question: 'When should I book an independent damp survey?',
+    answer:
+      'Arrange a survey when buying a property, after leaks or flooding, or whenever you notice damp patches, musty odours or timber deterioration. Early diagnosis prevents costly secondary damage.',
+  },
+];
+
+const description =
+  'Discover how independent damp surveys support Deeside and Chester homes, covering inspection tools, warning signs and the best time to book expert advice.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Independent Damp Surveys | LEM Building Surveying',
+  description,
+  canonicalPath: '/independent-damp-surveys',
+  serviceName: 'Independent Damp Surveys',
+  faqs: independentDampFaqs,
+  review: {
+    author: 'Buyer in Chester',
+    body: 'The independent damp survey highlighted real issues without pushing treatments and helped us renegotiate confidently.',
+    ratingValue: 5,
+    datePublished: '2024-05-22',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Independent Damp Surveys',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
 ---
 
-<BaseLayout pageId="independent-damp-surveys">
-  <Fragment slot="head">
-    <title>Independent Damp Surveys: Essential | LEM Building Surveying</title>
-    <meta
-      name="description"
-      content="Ensure your property's longevity with Independent Damp Surveys. Obtain unbiased insights into damp and timber issues to make informed decisions."
-    />
-    <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/independent-damp-surveys.html" />
-  </Fragment>
+<BaseLayout pageId="independent-damp-surveys" seo={seo}>
 
   <main>
     <section class="service-detail">
