@@ -1,0 +1,78 @@
+---
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+
+type ServiceSection = {
+  id?: string;
+  heading: string;
+  kicker?: string;
+  intro?: string;
+  body: string;
+};
+
+type ServiceFaq = {
+  q: string;
+  a: string;
+};
+
+type ServiceFaqGroup = {
+  heading?: string;
+  intro?: string;
+  items: ServiceFaq[];
+};
+
+type Props = {
+  sections?: ServiceSection[];
+  faqs?: ServiceFaqGroup;
+};
+
+const { sections = [], faqs } = Astro.props as Props;
+
+const markdown = await createMarkdownProcessor();
+
+const renderedSections = await Promise.all(
+  sections.map(async (section) => ({
+    ...section,
+    bodyHtml: (await markdown.render(section.body ?? '')).code,
+  }))
+);
+
+const faqItems = faqs?.items ?? [];
+
+const renderedFaqItems = await Promise.all(
+  faqItems.map(async (faq) => ({
+    ...faq,
+    answerHtml: (await markdown.render(faq.a ?? '')).code,
+  }))
+);
+---
+{renderedSections.length ? (
+  <section class="service-content__sections">
+    {renderedSections.map((section) => {
+      const { id, heading, kicker, intro, bodyHtml } = section;
+
+      return (
+        <article class="service-content__section" id={id ?? undefined}>
+          {kicker ? <p class="service-content__kicker">{kicker}</p> : null}
+          <h2>{heading}</h2>
+          {intro ? <p class="service-content__intro">{intro}</p> : null}
+          <div class="service-content__body" set:html={bodyHtml} />
+        </article>
+      );
+    })}
+  </section>
+) : null}
+
+{faqItems.length ? (
+  <section class="service-content__faqs">
+    <h2>{faqs?.heading ?? 'Service FAQs'}</h2>
+    {faqs?.intro ? <p class="service-content__faq-intro">{faqs.intro}</p> : null}
+    <div class="service-content__faq-items">
+      {renderedFaqItems.map((faq) => (
+        <details>
+          <summary>{faq.q}</summary>
+          <div class="service-content__faq-answer" set:html={faq.answerHtml} />
+        </details>
+      ))}
+    </div>
+  </section>
+) : null}
