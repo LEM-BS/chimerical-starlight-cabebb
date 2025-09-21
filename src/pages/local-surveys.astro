@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AreaLinks from '../components/AreaLinks';
 
 const areas = [
   {
@@ -268,12 +269,8 @@ const areas = [
 
   <section class="area-navigation">
     <div class="box-container">
-      <p><strong>Jump to a location:</strong></p>
-      <nav class="area-nav">
-        {areas.map((area) => (
-          <a href={`#${area.id}`}>{area.navLabel}</a>
-        ))}
-      </nav>
+      <p><strong>Check guide pricing for your area:</strong></p>
+      <AreaLinks client:idle areaIds={areas.map((area) => area.id)} />
     </div>
   </section>
 
