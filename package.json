@@ -20,5 +20,9 @@
     "terser": "^5.31.3",
     "typescript": "^5.5.4",
     "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "resend": "^6.1.0"
   }
 }
