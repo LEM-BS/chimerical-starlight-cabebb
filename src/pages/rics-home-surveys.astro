@@ -3,6 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
 
+const conversionSendToValue =
+  import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_SEND_TO?.trim();
+const hasConversionSendTo =
+  typeof conversionSendToValue === 'string' &&
+  conversionSendToValue.length > 0 &&
+  !conversionSendToValue.includes('XXXX');
+const conversionSendToAttribute = hasConversionSendTo
+  ? conversionSendToValue
+  : undefined;
+
 const ricsFaqs = [
   {
     question: 'Which survey level should I choose for my property?',
@@ -89,7 +99,12 @@ const seo = {
             turnaround in as little as 5–7&nbsp;days. Get your tailored quote now and
             secure your survey date.
           </p>
-          <form action="https://formspree.io/f/xzzdqqqz" class="quote-form" method="POST">
+          <form
+            action="https://formspree.io/f/xzzdqqqz"
+            class="quote-form"
+            data-conversion-send-to={conversionSendToAttribute}
+            method="POST"
+          >
             <input
               name="_next"
               type="hidden"
@@ -406,6 +421,7 @@ const seo = {
           const form = document.querySelector(".quote-form");
           if (!form) return;
 
+          const conversionSendTo = form.dataset.conversionSendTo || null;
           const propertyValueInput = form.querySelector(
             'input[name="property-value"]',
           );
@@ -461,9 +477,13 @@ const seo = {
               headers: { Accept: "application/json" },
             });
             if (resp.ok) {
-              if (window.gtag) {
-                gtag("event", "conversion", {
-                  send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
+              if (
+                conversionSendTo &&
+                typeof window !== "undefined" &&
+                typeof window.gtag === "function"
+              ) {
+                window.gtag("event", "conversion", {
+                  send_to: conversionSendTo,
                 });
               }
               window.location.href = "/thank-you";
