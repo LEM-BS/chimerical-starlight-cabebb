@@ -1,24 +1,113 @@
 ---
-
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import type { CollectionEntry } from 'astro:content';
+
+interface ServiceSection {
+  id?: string;
+  heading: string;
+  kicker?: string;
+  intro?: string;
+  body?: string;
+}
+
+interface ServiceFaq {
+  q: string;
+  a: string;
+}
+
+interface ServiceFaqGroup {
+  heading?: string;
+  intro?: string;
+  items: ServiceFaq[];
+}
 
 interface Props {
   entry: CollectionEntry<'services'>;
+  sections?: ServiceSection[];
+  faqs?: ServiceFaqGroup;
 }
 
-const { entry } = Astro.props as Props;
+const { entry, sections = [], faqs } = Astro.props as Props;
+
 const hasAsideSlot = Astro.slots.has('aside');
 const gridClasses = ['box-container', 'service-content__grid'];
 
 if (hasAsideSlot) {
   gridClasses.push('service-content__grid--has-aside');
 }
+
+const faqItems = faqs?.items ?? [];
+
+let markdown: Awaited<ReturnType<typeof createMarkdownProcessor>> | undefined;
+const ensureMarkdown = async () => {
+  if (!markdown) {
+    markdown = await createMarkdownProcessor();
+  }
+  return markdown;
+};
+
+const renderedSections = sections.length
+  ? await Promise.all(
+      sections.map(async (section) => {
+        const processor = await ensureMarkdown();
+        return {
+          ...section,
+          bodyHtml: (await processor.render(section.body ?? '')).code,
+        };
+      }),
+    )
+  : [];
+
+const renderedFaqItems = faqItems.length
+  ? await Promise.all(
+      faqItems.map(async (faq) => {
+        const processor = await ensureMarkdown();
+        return {
+          ...faq,
+          answerHtml: (await processor.render(faq.a ?? '')).code,
+        };
+      }),
+    )
+  : [];
 ---
 <section class="service-content" data-entry-id={entry.id}>
   <div class={gridClasses.join(' ')}>
     <article class="service-content__article">
       <slot />
+
+      {renderedSections.length ? (
+        <section class="service-content__sections">
+          {renderedSections.map((section) => {
+            const { id, heading, kicker, intro, bodyHtml } = section;
+
+            return (
+              <article class="service-content__section" id={id ?? undefined}>
+                {kicker ? <p class="service-content__kicker">{kicker}</p> : null}
+                <h2>{heading}</h2>
+                {intro ? <p class="service-content__intro">{intro}</p> : null}
+                <div class="service-content__body" set:html={bodyHtml} />
+              </article>
+            );
+          })}
+        </section>
+      ) : null}
+
+      {renderedFaqItems.length ? (
+        <section class="service-content__faqs">
+          <h2>{faqs?.heading ?? 'Service FAQs'}</h2>
+          {faqs?.intro ? <p class="service-content__faq-intro">{faqs.intro}</p> : null}
+          <div class="service-content__faq-items">
+            {renderedFaqItems.map((faq) => (
+              <details>
+                <summary>{faq.q}</summary>
+                <div class="service-content__faq-answer" set:html={faq.answerHtml} />
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </article>
+
     {hasAsideSlot ? (
       <aside class="service-content__aside">
         <slot name="aside" />
@@ -26,80 +115,3 @@ if (hasAsideSlot) {
     ) : null}
   </div>
 </section>
-import { createMarkdownProcessor } from '@astrojs/markdown-remark';
-
-type ServiceSection = {
-  id?: string;
-  heading: string;
-  kicker?: string;
-  intro?: string;
-  body: string;
-};
-
-type ServiceFaq = {
-  q: string;
-  a: string;
-};
-
-type ServiceFaqGroup = {
-  heading?: string;
-  intro?: string;
-  items: ServiceFaq[];
-};
-
-type Props = {
-  sections?: ServiceSection[];
-  faqs?: ServiceFaqGroup;
-};
-
-const { sections = [], faqs } = Astro.props as Props;
-
-const markdown = await createMarkdownProcessor();
-
-const renderedSections = await Promise.all(
-  sections.map(async (section) => ({
-    ...section,
-    bodyHtml: (await markdown.render(section.body ?? '')).code,
-  }))
-);
-
-const faqItems = faqs?.items ?? [];
-
-const renderedFaqItems = await Promise.all(
-  faqItems.map(async (faq) => ({
-    ...faq,
-    answerHtml: (await markdown.render(faq.a ?? '')).code,
-  }))
-);
----
-{renderedSections.length ? (
-  <section class="service-content__sections">
-    {renderedSections.map((section) => {
-      const { id, heading, kicker, intro, bodyHtml } = section;
-
-      return (
-        <article class="service-content__section" id={id ?? undefined}>
-          {kicker ? <p class="service-content__kicker">{kicker}</p> : null}
-          <h2>{heading}</h2>
-          {intro ? <p class="service-content__intro">{intro}</p> : null}
-          <div class="service-content__body" set:html={bodyHtml} />
-        </article>
-      );
-    })}
-  </section>
-) : null}
-
-{faqItems.length ? (
-  <section class="service-content__faqs">
-    <h2>{faqs?.heading ?? 'Service FAQs'}</h2>
-    {faqs?.intro ? <p class="service-content__faq-intro">{faqs.intro}</p> : null}
-    <div class="service-content__faq-items">
-      {renderedFaqItems.map((faq) => (
-        <details>
-          <summary>{faq.q}</summary>
-          <div class="service-content__faq-answer" set:html={faq.answerHtml} />
-        </details>
-      ))}
-    </div>
-  </section>
-) : null}
