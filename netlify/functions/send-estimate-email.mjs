@@ -312,15 +312,20 @@ const createEmailText = (estimate, prepared, company) => {
   const lines = [
     `Hello ${name},`,
     '',
-    `Please find attached your ${surveyType.toLowerCase()} estimate.`,
+    `Thanks for requesting a confirmed fee for your ${surveyType.toLowerCase()}.`,
+    'Attached is your estimate while we double-check the details.',
   ];
 
+  if (estimate.reference) {
+    lines.push('', `Reference: ${estimate.reference}`);
+  }
+
   if (prepared.total !== null && prepared.formatted.total) {
-    lines.push('', `Total: ${prepared.formatted.total}`);
+    lines.push('', `Estimated total: ${prepared.formatted.total}`);
   }
 
   if (estimate.turnaround) {
-    lines.push('', `Turnaround: ${estimate.turnaround}.`);
+    lines.push('', `Typical turnaround: ${estimate.turnaround}.`);
   }
 
   if (prepared.validForDays) {
@@ -335,7 +340,8 @@ const createEmailText = (estimate, prepared, company) => {
 
   lines.push(
     '',
-    'Let me know if you have any questions or if you would like to proceed.',
+    'We’ll review the property information you provided and confirm the final fee shortly.',
+    'If there’s anything else we should know, just reply to this email.',
     '',
     'Kind regards,',
     company.name || 'LEM Building Surveying',
@@ -701,11 +707,33 @@ export async function handler(event) {
   const includePdfInResponse = payload.includePdf !== false;
 
   const subjectPrefix = company.name ? `${company.name} — ` : '';
-  const subject =
-    payload.subject ||
-    `${subjectPrefix}${
-      estimate.surveyType ? `${estimate.surveyType} ` : ''
-    }Estimate${estimate.reference ? ` (${estimate.reference})` : ''}`;
+  const subjectParts = [];
+  if (estimate.reference) {
+    subjectParts.push(estimate.reference);
+  }
+  if (estimate.surveyType) {
+    subjectParts.push(estimate.surveyType);
+  }
+
+  const subjectLocation = (() => {
+    const raw =
+      payload.postcode ||
+      payload.postcodeArea ||
+      payload.propertyPostcode ||
+      estimate.propertyAddress;
+    if (!raw || typeof raw !== 'string') {
+      return null;
+    }
+    const firstLine = raw.split(/\r?\n/)[0].trim();
+    return firstLine || null;
+  })();
+
+  if (subjectLocation) {
+    subjectParts.push(subjectLocation);
+  }
+
+  const subjectSuffix = subjectParts.length ? ` — ${subjectParts.join(' — ')}` : '';
+  const subject = payload.subject || `${subjectPrefix}Request for confirmed fee${subjectSuffix}`;
 
   const emailText = payload.text || createEmailText(estimate, prepared, company);
   const emailHtml = payload.html || buildEmailHtml(emailText);
@@ -718,11 +746,19 @@ export async function handler(event) {
     : payload.cc
     ? [payload.cc]
     : undefined;
-  const bcc = Array.isArray(payload.bcc)
-    ? payload.bcc
+
+  const requestedBcc = Array.isArray(payload.bcc)
+    ? payload.bcc.filter(Boolean)
     : payload.bcc
     ? [payload.bcc]
-    : undefined;
+    : [];
+
+  const envBcc = (process.env.ESTIMATE_BCC || 'enquiries@lembuildingsurveying.co.uk')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  const bcc = Array.from(new Set([...requestedBcc, ...envBcc]));
 
   const replyTo = payload.replyTo || company.email || undefined;
 

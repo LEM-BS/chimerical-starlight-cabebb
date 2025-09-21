@@ -30,7 +30,8 @@ const CONTACT_STATUS_ID = 'quote-contact-status';
 const POSTCODE_SUGGESTIONS_ID = 'quote-postcode-suggestions';
 
 const FORM_ENDPOINT = import.meta.env.PUBLIC_QUOTE_FORM_ENDPOINT?.trim() || 'https://formspree.io/f/xzzdqqqz';
-const BEACON_URL = import.meta.env.PUBLIC_QUOTE_BEACON_URL?.trim() ?? '';
+const BEACON_URL =
+  import.meta.env.PUBLIC_QUOTE_BEACON_URL?.trim() || '/.netlify/functions/send-estimate-email';
 
 const propertyValueFormatter = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
 
@@ -40,6 +41,15 @@ const formatRange = (range: QuoteRange): string => {
 };
 
 const formatVat = (value: number): string => `£${value.toFixed(2)}`;
+
+const createQuoteReference = (): string => {
+  const now = new Date();
+  const datePart = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(
+    now.getDate(),
+  ).padStart(2, '0')}`;
+  const randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `LEM-${datePart}-${randomPart}`;
+};
 
 interface DistanceLookupState {
   query: string;
@@ -235,7 +245,7 @@ const QuoteCalculator = (): JSX.Element => {
 
   const contactStatusMessage =
     submissionState === 'success'
-      ? 'Thanks! We will confirm your quote shortly.'
+      ? 'Thanks! We will confirm your fee shortly.'
       : submissionState === 'error'
       ? submissionError
       : null;
@@ -256,6 +266,8 @@ const QuoteCalculator = (): JSX.Element => {
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
     const trimmedNotes = notes.trim();
+    const trimmedPostcode = postcodeInput.trim();
+    const reference = createQuoteReference();
 
     data.set('name', trimmedName);
     data.set('email', trimmedEmail);
@@ -271,7 +283,7 @@ const QuoteCalculator = (): JSX.Element => {
     data.set('distance-band', selectedDistanceBand?.label ?? 'Not specified');
     data.set('distance-band-id', selectedDistanceBand?.id ?? '');
 
-    if (postcodeInput.trim()) data.set('postcode', postcodeInput.trim());
+    if (trimmedPostcode) data.set('postcode', trimmedPostcode);
 
     if (distanceLookup) {
       if (Number.isFinite(distanceLookup.miles)) data.set('distance-miles', distanceLookup.miles.toString());
@@ -287,6 +299,9 @@ const QuoteCalculator = (): JSX.Element => {
         .map((adj) => `${adj.label}: ${formatCurrency(adj.amount.gross)}`)
         .join('; ') || 'None',
     );
+    data.set('estimate-reference', reference);
+    data.set('estimate-total', formatCurrency(quote.total.gross));
+    data.set('estimate-range', formatRange(quote.range));
 
     setSubmissionState('idle');
     setSubmissionError(null);
@@ -307,34 +322,140 @@ const QuoteCalculator = (): JSX.Element => {
         throw new Error(message);
       }
 
-      if (BEACON_URL && typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
-        try {
-          const payload = {
-            name: trimmedName,
-            email: trimmedEmail,
-            phone: trimmedPhone,
-            notes: trimmedNotes,
-            surveyType,
-            propertyValue,
-            bedrooms,
-            complexity,
-            distanceBandId: selectedDistanceBand?.id ?? null,
-            distance: distanceLookup
-              ? { miles: distanceLookup.miles, kilometres: distanceLookup.kilometres }
-              : null,
+      if (BEACON_URL && trimmedEmail) {
+        const distanceMiles =
+          distanceLookup && Number.isFinite(distanceLookup.miles)
+            ? distanceLookup.miles
+            : null;
+        const distanceKilometres =
+          distanceLookup && Number.isFinite(distanceLookup.kilometres)
+            ? distanceLookup.kilometres
+            : null;
+
+        const propertyValueText =
+          propertyValue > 0 ? formatCurrency(propertyValue) : 'Not provided';
+        const rangeText = formatRange(quote.range);
+        const travelLabel = selectedDistanceBand?.label ?? 'Not specified';
+
+        const adjustmentsForForm = quote.adjustments.map((adjustment) => ({
+          id: adjustment.id,
+          label: adjustment.label,
+          amount: adjustment.amount.gross,
+        }));
+
+        const estimateAdjustments = adjustmentsForForm.map((adjustment) => ({
+          description: adjustment.label,
+          amount: adjustment.amount,
+        }));
+
+        const notesLines = [
+          trimmedPostcode ? `Postcode or area: ${trimmedPostcode}` : null,
+          distanceMiles !== null
+            ? `Approximate distance from CH5 4HS: ${distanceMiles.toFixed(1)} miles${
+                distanceKilometres !== null ? ` (${distanceKilometres.toFixed(1)} km)` : ''
+              }`
+            : null,
+          `Travel band: ${travelLabel}`,
+          `Estimated property value: ${propertyValueText}`,
+          `Bedrooms: ${bedrooms}`,
+          `Property complexity: ${selectedComplexity.label}`,
+          `Estimate range: ${rangeText}`,
+          trimmedNotes ? `Client notes: ${trimmedNotes}` : null,
+          'This estimate is for guidance only. A Director will review the details and confirm the final fee.',
+        ].filter((line): line is string => Boolean(line));
+
+        const lineItems = [
+          {
+            description: `${selectedSurvey.label}${
+              selectedComplexity.id !== 'standard' ? ` — ${selectedComplexity.label}` : ''
+            }`,
+            amount: quote.base.gross,
+          },
+        ];
+
+        const subjectDetails = [reference];
+        if (trimmedPostcode) subjectDetails.push(trimmedPostcode);
+        const subjectSuffix = subjectDetails.length ? ` — ${subjectDetails.join(' — ')}` : '';
+        const subject = `Request for confirmed fee${subjectSuffix}`;
+
+        const submittedAt = new Date().toISOString();
+
+        const estimatePayload = {
+          to: trimmedEmail,
+          replyTo: trimmedEmail || undefined,
+          bcc: 'enquiries@lembuildingsurveying.co.uk',
+          subject,
+          clientName: trimmedName || undefined,
+          clientEmail: trimmedEmail,
+          postcode: trimmedPostcode || undefined,
+          estimate: {
+            reference,
+            clientName: trimmedName || undefined,
+            clientEmail: trimmedEmail,
+            propertyAddress: trimmedPostcode || undefined,
+            surveyType: selectedSurvey.label,
+            turnaround: selectedSurvey.turnaround,
+            summary:
+              'Request for a confirmed fee submitted via the online calculator. A Director will review the details and follow up shortly.',
+            lineItems,
+            adjustments: estimateAdjustments,
+            tax: quote.total.vat,
             total: quote.total.gross,
-            range: quote.range,
-            adjustments: quote.adjustments.map((a) => ({
-              id: a.id,
-              label: a.label,
-              amount: a.amount.gross,
-            })),
-            timestamp: new Date().toISOString(),
-          };
-          const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-          navigator.sendBeacon(BEACON_URL, blob);
-        } catch (be) {
-          console.warn('Quote beacon failed', be);
+            validForDays: 14,
+            notes: notesLines.join('\n'),
+          },
+          filename: `lem-estimate-${reference}.pdf`,
+          form: {
+            name: trimmedName || null,
+            email: trimmedEmail,
+            phone: trimmedPhone || null,
+            notes: trimmedNotes || null,
+            surveyType: surveyType,
+            surveyLabel: selectedSurvey.label,
+            complexityId: complexity,
+            complexityLabel: selectedComplexity.label,
+            propertyValue: propertyValue > 0 ? propertyValue : null,
+            bedrooms,
+            postcode: trimmedPostcode || null,
+            distanceBandId: selectedDistanceBand?.id ?? null,
+            distanceBandLabel: travelLabel,
+            distanceMiles,
+            distanceKilometres,
+            adjustments: adjustmentsForForm,
+            estimateRange: quote.range,
+            estimateTotal: quote.total.gross,
+            turnaround: selectedSurvey.turnaround,
+            rangeText,
+            propertyValueText,
+            source: 'quote-calculator',
+          },
+          metadata: {
+            submittedAt,
+          },
+        };
+
+        const jsonBody = JSON.stringify(estimatePayload);
+
+        let beaconSent = false;
+
+        if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+          try {
+            const blob = new Blob([jsonBody], { type: 'application/json' });
+            beaconSent = navigator.sendBeacon(BEACON_URL, blob);
+          } catch (beaconError) {
+            console.warn('Quote beacon failed', beaconError);
+          }
+        }
+
+        if (!beaconSent && typeof fetch === 'function') {
+          fetch(BEACON_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: jsonBody,
+            keepalive: true,
+          }).catch((error) => {
+            console.warn('Quote beacon fetch failed', error);
+          });
         }
       }
 
@@ -493,7 +614,7 @@ const QuoteCalculator = (): JSX.Element => {
           </fieldset>
 
           <fieldset className="lem-quote-calculator__fieldset">
-            <legend className="lem-quote-calculator__legend">Request your guide quote</legend>
+            <legend className="lem-quote-calculator__legend">Request a confirmed fee</legend>
 
             <div className="lem-quote-calculator__field">
               <label htmlFor="contact-name">Your name</label>
@@ -552,7 +673,7 @@ const QuoteCalculator = (): JSX.Element => {
 
             <div className="lem-quote-calculator__cta">
               <button type="submit" className="cta-button" disabled={submitting} aria-describedby={CONTACT_STATUS_ID}>
-                {submitting ? 'Sending…' : 'Email this guide quote'}
+                {submitting ? 'Sending…' : 'Send enquiry — request confirmed fee'}
               </button>
               <p className="lem-quote-calculator__hint" id={CONTACT_STATUS_ID} aria-live="polite">
                 {contactStatusMessage ?? ' '}
@@ -575,14 +696,14 @@ const QuoteCalculator = (): JSX.Element => {
           ) : null}
 
           <div>
-            <span className="lem-quote-calculator__label">Guide fee</span>
+            <span className="lem-quote-calculator__label">Estimated fee</span>
             <p className="lem-quote-calculator__figure">{formatCurrency(quote.total.gross)}</p>
             <span className="lem-quote-calculator__range">Typically {formatRange(quote.range)}</span>
             <p className="lem-quote-calculator__turnaround">{selectedSurvey.turnaround}</p>
           </div>
 
           <div>
-            <span className="lem-quote-calculator__label">Breakdown</span>
+            <span className="lem-quote-calculator__label">Estimate breakdown</span>
             <dl className="lem-quote-calculator__breakdown">
               <div className="lem-quote-calculator__breakdown-row">
                 <dt>Base survey</dt>
@@ -615,11 +736,11 @@ const QuoteCalculator = (): JSX.Element => {
           </div>
 
           <p className="lem-quote-calculator__disclaimer">
-            Guide assumes {selectedComplexity.label.toLowerCase()} and typical access.
+            Estimate assumes {selectedComplexity.label.toLowerCase()} and typical access.
             {selectedDistanceBand
               ? ` Travel band: ${selectedDistanceBand.label}.`
               : ' Travel within our standard area.'}
-            {' '}We'll confirm a fixed fee once we review your enquiry.
+            {' '}A Director will review your enquiry and confirm the final fee by email.
           </p>
         </aside>
       </div>
