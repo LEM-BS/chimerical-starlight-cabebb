@@ -175,9 +175,12 @@ const QuoteCalculator = ({
   );
 
   useEffect(() => {
-    setSubmission((current) =>
-      current.status === 'idle' ? current : { status: 'idle' },
-    );
+    setSubmission((current) => {
+      if (current.status === 'idle') {
+        return current;
+      }
+      return { status: 'idle' };
+    });
   }, [
     name,
     email,
