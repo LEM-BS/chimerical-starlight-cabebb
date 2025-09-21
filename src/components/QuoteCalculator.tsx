@@ -493,4 +493,138 @@ const QuoteCalculator = (): JSX.Element => {
           </fieldset>
 
           <fieldset className="lem-quote-calculator__fieldset">
-            <legend className="lem-quote-calculator__legend">Request
+            <legend className="lem-quote-calculator__legend">Request your guide quote</legend>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="contact-name">Your name</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                autoComplete="name"
+                required
+              />
+            </div>
+
+            <div className="lem-quote-calculator__field-grid">
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  autoComplete="email"
+                  required
+                />
+              </div>
+
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="contact-phone">Phone (optional)</label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  autoComplete="tel"
+                />
+              </div>
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="contact-notes">Notes (optional)</label>
+              <textarea
+                id="contact-notes"
+                name="notes"
+                rows={4}
+                value={notes}
+                onChange={(event) => setNotes(event.target.value)}
+                aria-describedby={CONTACT_HINT_ID}
+              />
+              <p className="lem-quote-calculator__hint" id={CONTACT_HINT_ID}>
+                Tell us about access, timescales or anything else we should know. We usually reply within an hour.
+              </p>
+            </div>
+
+            <div className="lem-quote-calculator__cta">
+              <button type="submit" className="cta-button" disabled={submitting} aria-describedby={CONTACT_STATUS_ID}>
+                {submitting ? 'Sending…' : 'Email this guide quote'}
+              </button>
+              <p className="lem-quote-calculator__hint" id={CONTACT_STATUS_ID} aria-live="polite">
+                {contactStatusMessage ?? ' '}
+              </p>
+            </div>
+          </fieldset>
+
+          <datalist id={POSTCODE_SUGGESTIONS_ID}>
+            {AREA_SUGGESTIONS.map((suggestion) => (
+              <option key={suggestion.id} value={suggestion.outcode}>
+                {suggestion.label}
+              </option>
+            ))}
+          </datalist>
+        </form>
+
+        <aside className="lem-quote-calculator__result" aria-live="polite">
+          {selectedSurvey.badge ? (
+            <span className="lem-quote-calculator__badge">{selectedSurvey.badge}</span>
+          ) : null}
+
+          <div>
+            <span className="lem-quote-calculator__label">Guide fee</span>
+            <p className="lem-quote-calculator__figure">{formatCurrency(quote.total.gross)}</p>
+            <span className="lem-quote-calculator__range">Typically {formatRange(quote.range)}</span>
+            <p className="lem-quote-calculator__turnaround">{selectedSurvey.turnaround}</p>
+          </div>
+
+          <div>
+            <span className="lem-quote-calculator__label">Breakdown</span>
+            <dl className="lem-quote-calculator__breakdown">
+              <div className="lem-quote-calculator__breakdown-row">
+                <dt>Base survey</dt>
+                <dd>{formatCurrency(quote.base.gross)}</dd>
+              </div>
+              {quote.adjustments.map((adjustment) => (
+                <div key={adjustment.id} className="lem-quote-calculator__breakdown-row">
+                  <dt>{adjustment.label}</dt>
+                  <dd>{formatCurrency(adjustment.amount.gross)}</dd>
+                </div>
+              ))}
+              <div className="lem-quote-calculator__breakdown-row">
+                <dt>VAT (20%)</dt>
+                <dd>{formatVat(quote.total.vat)}</dd>
+              </div>
+              <div className="lem-quote-calculator__breakdown-row lem-quote-calculator__breakdown-row--total">
+                <dt>Total incl. VAT</dt>
+                <dd>{formatCurrency(quote.total.gross)}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div>
+            <span className="lem-quote-calculator__label">Included as standard</span>
+            <ul className="lem-quote-calculator__highlights">
+              {selectedSurvey.highlights.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="lem-quote-calculator__disclaimer">
+            Guide assumes {selectedComplexity.label.toLowerCase()} and typical access.
+            {selectedDistanceBand
+              ? ` Travel band: ${selectedDistanceBand.label}.`
+              : ' Travel within our standard area.'}
+            {' '}We'll confirm a fixed fee once we review your enquiry.
+          </p>
+        </aside>
+      </div>
+    </div>
+  );
+};
+
+export default QuoteCalculator;
