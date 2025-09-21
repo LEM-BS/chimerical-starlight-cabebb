@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { createLocationSeo } from '../../utils/seo';
 
 interface Cta {
   label: string;
@@ -126,56 +127,26 @@ const computedMapEmbedUrl = mapEmbedUrl ?? `https://www.google.com/maps?q=${enco
   townName + ', ' + county + ', UK'
 )}&output=embed`;
 
-const getBreadcrumbSchema = () =>
-  JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.lembuildingsurveying.co.uk/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Areas We Cover',
-        item: 'https://www.lembuildingsurveying.co.uk/local-surveys',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: townName,
-        item: canonicalUrl,
-      },
-    ],
-  });
-
 const areaServedList = [townName, ...(neighbourhoods?.areas ?? [])];
+const areaServed = areaServedList.map((area) => `${area}, ${county}`);
 
-const getLocalBusinessSchema = () =>
-  JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'LEM Building Surveying Ltd',
-    url: canonicalUrl,
-    image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
-    telephone: '+447378732037',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: townName,
-      addressRegion: county,
-      ...(postalCode ? { postalCode } : {}),
-      addressCountry: 'GB',
-    },
-    areaServed: areaServedList.map((area) => `${area}, ${county}`),
+const baseSeo = createLocationSeo({
+  title: pageTitle,
+  description: metaDescription,
+  canonical: canonicalUrl,
+  breadcrumbLabel: townName,
+  localBusiness: {
+    addressLocality: townName,
+    addressRegion: county,
+    postalCode,
+    areaServed,
     description: metaDescription,
-  });
+  },
+});
 
-const getFaqSchema = () =>
+const faqStructuredData =
   faqs?.items?.length
-    ? JSON.stringify({
+    ? {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: faqs.items.map((faq) => ({
@@ -186,34 +157,19 @@ const getFaqSchema = () =>
             text: faq.answer,
           },
         })),
-      })
+      }
     : null;
 
-const structuredData = {
-  breadcrumb: getBreadcrumbSchema(),
-  localBusiness: getLocalBusinessSchema(),
-  faq: getFaqSchema(),
+const seo = {
+  ...baseSeo,
+  fullTitle: true,
+  structuredData: [
+    ...(baseSeo.structuredData ?? []),
+    ...(faqStructuredData ? [faqStructuredData] : []),
+  ],
 };
 ---
-<BaseLayout pageId="location-page">
-  <Fragment slot="head">
-    <title>{pageTitle}</title>
-    <meta name="description" content={metaDescription} />
-    <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={metaDescription} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" />
-    <script type="application/ld+json" is:inline>{structuredData.localBusiness}</script>
-    <script type="application/ld+json" is:inline>{structuredData.breadcrumb}</script>
-    {structuredData.faq ? <script type="application/ld+json" is:inline>{structuredData.faq}</script> : null}
-  </Fragment>
-
+<BaseLayout pageId="location-page" seo={seo}>
   <section class="hero-plain location-hero">
     <div class="hero-container">
       {heroEyebrow ? <p class="location-eyebrow">{heroEyebrow}</p> : null}
