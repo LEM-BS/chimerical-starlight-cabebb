@@ -99,6 +99,10 @@
   line-height: 1.5;
 }
 
+.lem-quote-calculator__hint--error {
+  color: var(--error-red, #b91c1c);
+}
+
 .lem-quote-calculator__result {
   background: linear-gradient(160deg, rgba(241, 245, 255, 0.55), rgba(237, 244, 255, 0.15));
   border-radius: var(--border-radius, 16px);
