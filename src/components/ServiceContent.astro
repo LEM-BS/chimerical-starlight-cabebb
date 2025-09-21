@@ -1,117 +1,173 @@
 ---
-import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import type { CollectionEntry } from 'astro:content';
+
+interface HeroCta {
+  href: string;
+  label: string;
+}
+
+interface HeroContent {
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  body?: string;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
+}
 
 interface ServiceSection {
   id?: string;
-  heading: string;
+  heading?: string;
   kicker?: string;
   intro?: string;
   body?: string;
 }
 
-interface ServiceFaq {
-  q: string;
-  a: string;
+interface ServiceFaqItem {
+  question: string;
+  answer: string;
 }
 
 interface ServiceFaqGroup {
   heading?: string;
   intro?: string;
-  items: ServiceFaq[];
+  items?: ServiceFaqItem[];
 }
 
-interface Props {
-  entry: CollectionEntry<'services'>;
+interface ServiceEntryData {
+  title?: string;
+  intro?: string;
+  hero?: HeroContent;
   sections?: ServiceSection[];
   faqs?: ServiceFaqGroup;
 }
 
-const { entry, sections = [], faqs } = Astro.props as Props;
-
-const hasAsideSlot = Astro.slots.has('aside');
-const gridClasses = ['box-container', 'service-content__grid'];
-
-if (hasAsideSlot) {
-  gridClasses.push('service-content__grid--has-aside');
+interface Props {
+  entry: CollectionEntry<'services'>;
 }
 
-const faqItems = faqs?.items ?? [];
+const { entry } = Astro.props as Props;
 
-let markdown: Awaited<ReturnType<typeof createMarkdownProcessor>> | undefined;
-const ensureMarkdown = async () => {
-  if (!markdown) {
-    markdown = await createMarkdownProcessor();
+const data = entry.data as ServiceEntryData;
+const hero = data.hero ?? {};
+const heroEyebrow = hero.eyebrow ?? null;
+const heroHeading = hero.heading ?? data.title ?? entry.id;
+const heroPrimaryCta =
+  hero.primaryCta && hero.primaryCta.href && hero.primaryCta.label ? hero.primaryCta : null;
+const heroSecondaryCta =
+  hero.secondaryCta && hero.secondaryCta.href && hero.secondaryCta.label
+    ? hero.secondaryCta
+    : null;
+
+const astroMarkdown = (
+  Astro as unknown as {
+    markdown?: (markdown: string) => Promise<{ html: string }>;
   }
-  return markdown;
+).markdown;
+
+const renderMarkdown = async (value?: string | null) => {
+  if (!value) {
+    return null;
+  }
+
+  if (!astroMarkdown) {
+    throw new Error('Astro.markdown is not available in this environment.');
+  }
+
+  const { html } = await astroMarkdown(value);
+  const trimmed = html.trim();
+
+  return trimmed.length > 0 ? html : null;
 };
 
-const renderedSections = sections.length
+const heroDescriptionHtml = await renderMarkdown(hero.description ?? data.intro);
+const heroBodyHtml = await renderMarkdown(hero.body);
+
+const sections = Array.isArray(data.sections) ? data.sections : [];
+const sectionsWithHtml = await Promise.all(
+  sections.map(async (section) => ({
+    ...section,
+    introHtml: await renderMarkdown(section.intro),
+    bodyHtml: await renderMarkdown(section.body),
+  })),
+);
+
+const faqs = data.faqs;
+const faqIntroHtml = await renderMarkdown(faqs?.intro);
+const faqItems = faqs?.items
   ? await Promise.all(
-      sections.map(async (section) => {
-        const processor = await ensureMarkdown();
-        return {
-          ...section,
-          bodyHtml: (await processor.render(section.body ?? '')).code,
-        };
-      }),
+      faqs.items.map(async (faq) => ({
+        ...faq,
+        answerHtml: await renderMarkdown(faq.answer),
+      })),
     )
   : [];
 
-const renderedFaqItems = faqItems.length
-  ? await Promise.all(
-      faqItems.map(async (faq) => {
-        const processor = await ensureMarkdown();
-        return {
-          ...faq,
-          answerHtml: (await processor.render(faq.a ?? '')).code,
-        };
-      }),
-    )
-  : [];
+const { Content } = await entry.render();
 ---
+<section class="hero hero-plain service-hero">
+  <div class="hero-container">
+    {heroEyebrow ? <p class="service-hero__eyebrow">{heroEyebrow}</p> : null}
+    <h1>{heroHeading}</h1>
+    {heroDescriptionHtml ? (
+      <div class="hero-subtitle" set:html={heroDescriptionHtml} />
+    ) : null}
+    {heroBodyHtml ? <div class="service-hero__body" set:html={heroBodyHtml} /> : null}
+    {heroPrimaryCta || heroSecondaryCta ? (
+      <div class="button-group">
+        {heroPrimaryCta ? (
+          <a class="cta-button" href={heroPrimaryCta.href}>
+            {heroPrimaryCta.label}
+          </a>
+        ) : null}
+        {heroSecondaryCta ? (
+          <a class="secondary-button" href={heroSecondaryCta.href}>
+            {heroSecondaryCta.label}
+          </a>
+        ) : null}
+      </div>
+    ) : null}
+  </div>
+</section>
+
 <section class="service-content" data-entry-id={entry.id}>
-  <div class={gridClasses.join(' ')}>
+  <div class="box-container service-content__grid">
     <article class="service-content__article">
-      <slot />
-
-      {renderedSections.length ? (
+      <Content />
+      {sectionsWithHtml.length ? (
         <section class="service-content__sections">
-          {renderedSections.map((section) => {
-            const { id, heading, kicker, intro, bodyHtml } = section;
-
-            return (
-              <article class="service-content__section" id={id ?? undefined}>
-                {kicker ? <p class="service-content__kicker">{kicker}</p> : null}
-                <h2>{heading}</h2>
-                {intro ? <p class="service-content__intro">{intro}</p> : null}
-                <div class="service-content__body" set:html={bodyHtml} />
-              </article>
-            );
-          })}
+          {sectionsWithHtml.map((section) => (
+            <article class="service-content__section" id={section.id ?? undefined}>
+              {section.kicker ? <p class="service-content__kicker">{section.kicker}</p> : null}
+              {section.heading ? <h2>{section.heading}</h2> : null}
+              {section.introHtml ? (
+                <div class="service-content__intro" set:html={section.introHtml} />
+              ) : null}
+              {section.bodyHtml ? (
+                <div class="service-content__body" set:html={section.bodyHtml} />
+              ) : null}
+            </article>
+          ))}
         </section>
       ) : null}
-
-      {renderedFaqItems.length ? (
+      {faqItems.length ? (
         <section class="service-content__faqs">
           <h2>{faqs?.heading ?? 'Service FAQs'}</h2>
-          {faqs?.intro ? <p class="service-content__faq-intro">{faqs.intro}</p> : null}
+          {faqIntroHtml ? (
+            <div class="service-content__faq-intro" set:html={faqIntroHtml} />
+          ) : null}
           <div class="service-content__faq-items">
-            {renderedFaqItems.map((faq) => (
+            {faqItems.map((faq) => (
               <details>
-                <summary>{faq.q}</summary>
-                <div class="service-content__faq-answer" set:html={faq.answerHtml} />
+                <summary>{faq.question}</summary>
+                {faq.answerHtml ? (
+                  <div class="service-content__faq-answer" set:html={faq.answerHtml} />
+                ) : null}
               </details>
             ))}
           </div>
         </section>
       ) : null}
     </article>
-
-    {hasAsideSlot ? (
-      <aside class="service-content__aside">
-        <slot name="aside" />
-      </aside>
-    ) : null}
   </div>
 </section>
