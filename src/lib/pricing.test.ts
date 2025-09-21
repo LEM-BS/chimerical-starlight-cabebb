@@ -41,7 +41,7 @@ describe('pricing helpers', () => {
     expect(applyVat(100)).toBeCloseTo(120);
     expect(stripVat(120)).toBeCloseTo(100);
     expect(calculateVatFromGross(120)).toBeCloseTo(20);
-    const gross = 465;
+    const gross = 535;
     const net = stripVat(gross);
     const vat = calculateVatFromGross(gross);
     expect(net + vat).toBeCloseTo(gross);
@@ -75,11 +75,11 @@ describe('quote engine', () => {
     expect(result.survey).toEqual(getSurveyById('level2'));
     expect(result.complexity).toEqual(COMPLEXITY_OPTIONS[0]);
     expect(result.adjustments).toHaveLength(0);
-    expect(result.base.gross).toBe(465);
-    expect(result.total.gross).toBe(465);
-    expect(result.total.net).toBeCloseTo(387.5);
-    expect(result.total.vat).toBeCloseTo(77.5);
-    expect(result.range).toEqual({ min: 465, max: 500 });
+    expect(result.base.gross).toBe(535);
+    expect(result.total.gross).toBe(535);
+    expect(result.total.net).toBeCloseTo(445.83);
+    expect(result.total.vat).toBeCloseTo(89.17);
+    expect(result.range).toEqual({ min: 535, max: 580 });
   });
 
   it('applies value, bedroom, complexity and travel adjustments', () => {
@@ -97,9 +97,9 @@ describe('quote engine', () => {
       'bedrooms',
       'travel',
     ]);
-    expect(result.total.gross).toBe(885);
-    expect(result.total.net).toBeCloseTo(737.5);
-    expect(result.total.vat).toBeCloseTo(147.5);
-    expect(result.range).toEqual({ min: 815, max: 955 });
+    expect(result.total.gross).toBe(955);
+    expect(result.total.net).toBeCloseTo(795.83);
+    expect(result.total.vat).toBeCloseTo(159.17);
+    expect(result.range).toEqual({ min: 880, max: 1030 });
   });
 });
