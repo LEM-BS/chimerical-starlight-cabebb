@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceContent from '../components/ServiceContent.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { getEntry } from 'astro:content';
 
 const measuredSurveyFaqs = [
   {
@@ -67,6 +69,9 @@ const seo = {
   ...baseSeo,
   structuredData: [...baseSeo.structuredData, breadcrumbSchema],
 };
+
+const entry = await getEntry('services', 'measured-surveys');
+const { Content } = await entry.render();
 ---
 
 <BaseLayout seo={seo}>
@@ -79,44 +84,19 @@ const seo = {
     </div>
   </section>
 
-  <section class="service-detail">
-    <div class="box-container">
-      <h2>Our Measured Survey Services</h2>
-      <ul>
-        <li><strong>2D Floorplans:</strong> Clear, precise layouts of property interiors—ideal for renovation planning, property marketing or lease agreements.</li>
-        <li><strong>Elevations &amp; Sections:</strong> Accurate external and internal views supporting detailed planning applications or structural assessments.</li>
-        <li><strong>Site Plans:</strong> Detailed property and boundary measurements crucial for development, planning permissions and records.</li>
-      </ul>
+  <ServiceContent entry={entry}>
+    <Content />
 
-      <h2>Who Benefits from Our Surveys</h2>
-      <ul>
-        <li><strong>Homeowners:</strong> Essential for extensions, loft conversions and interior redesigns.</li>
-        <li><strong>Landlords:</strong> Professional floorplans to document layouts, assist with compliance and support tenancy handovers.</li>
-        <li><strong>Property Professionals:</strong> Architects, contractors and investors who need dependable CAD-ready data before committing to works.</li>
-      </ul>
-
-      <h2>Why Choose LEM Building Surveying?</h2>
-      <ul>
-        <li><strong>Tailored Output:</strong> Drawings supplied in PDF and CAD formats with the level of detail your project requires.</li>
-        <li><strong>Local Knowledge:</strong> Experience with traditional cottages, modern estates and complex commercial sites across the North West.</li>
-        <li><strong>Rapid Turnaround:</strong> Efficient site work with clear communication so design teams can progress without delay.</li>
-      </ul>
-
-      <p>
-        From listed buildings in Chester to new developments across Flintshire, our measured surveys capture accurate dimensions, levels and features so your designers and contractors can work with confidence.
-      </p>
-
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        {measuredSurveyFaqs.map((faq, index) => (
-          <details open={index === 0}>
-            <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
-          </details>
-        ))}
-      </div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {measuredSurveyFaqs.map((faq, index) => (
+        <details open={index === 0}>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
     </div>
-  </section>
+  </ServiceContent>
 
   <section class="home-areas improved-areas">
     <div class="box-container">

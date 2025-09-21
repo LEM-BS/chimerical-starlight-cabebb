@@ -1790,3 +1790,80 @@ details[open] summary::after {
 .testimonial-rating span {
   letter-spacing: 0.2rem;
 }
+
+/*───────────────────────────────────────────────────────
+  Service content layout
+  Shared container for MDX-driven service prose
+───────────────────────────────────────────────────────*/
+.service-content {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+}
+
+.service-content__grid {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.service-content__grid--has-aside {
+  align-items: start;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+}
+
+@media (max-width: 960px) {
+  .service-content__grid--has-aside {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-content__article {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.service-content__article > * + * {
+  margin-top: clamp(1.1rem, 3vw, 1.8rem);
+}
+
+.service-content__article ul,
+.service-content__article ol {
+  padding-left: 1.25rem;
+}
+
+.service-content__article li + li {
+  margin-top: 0.5rem;
+}
+
+.service-content__article strong {
+  color: var(--primary-blue);
+}
+
+.service-content__article details {
+  background: var(--soft-bg);
+  border: 1px solid var(--divider-grey);
+  border-radius: calc(var(--border-radius) - 4px);
+  padding: 1rem 1.25rem;
+}
+
+.service-content__article details + details {
+  margin-top: 1rem;
+}
+
+.service-content__article summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.service-content__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.service-content__aside > * {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
