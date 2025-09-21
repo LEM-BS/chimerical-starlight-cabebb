@@ -39,8 +39,6 @@ const formatRange = (range: QuoteRange): string => {
   return `${formatCurrency(range.min)} – ${formatCurrency(range.max)}`;
 };
 
-const formatVat = (value: number): string => `£${value.toFixed(2)}`;
-
 interface DistanceLookupState {
   query: string;
   miles: number;
@@ -579,30 +577,6 @@ const QuoteCalculator = (): JSX.Element => {
             <p className="lem-quote-calculator__figure">{formatCurrency(quote.total.gross)}</p>
             <span className="lem-quote-calculator__range">Typically {formatRange(quote.range)}</span>
             <p className="lem-quote-calculator__turnaround">{selectedSurvey.turnaround}</p>
-          </div>
-
-          <div>
-            <span className="lem-quote-calculator__label">Breakdown</span>
-            <dl className="lem-quote-calculator__breakdown">
-              <div className="lem-quote-calculator__breakdown-row">
-                <dt>Base survey</dt>
-                <dd>{formatCurrency(quote.base.gross)}</dd>
-              </div>
-              {quote.adjustments.map((adjustment) => (
-                <div key={adjustment.id} className="lem-quote-calculator__breakdown-row">
-                  <dt>{adjustment.label}</dt>
-                  <dd>{formatCurrency(adjustment.amount.gross)}</dd>
-                </div>
-              ))}
-              <div className="lem-quote-calculator__breakdown-row">
-                <dt>VAT (20%)</dt>
-                <dd>{formatVat(quote.total.vat)}</dd>
-              </div>
-              <div className="lem-quote-calculator__breakdown-row lem-quote-calculator__breakdown-row--total">
-                <dt>Total incl. VAT</dt>
-                <dd>{formatCurrency(quote.total.gross)}</dd>
-              </div>
-            </dl>
           </div>
 
           <div>

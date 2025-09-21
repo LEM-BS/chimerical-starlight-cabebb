@@ -156,37 +156,6 @@
   margin-top: 0.35rem;
 }
 
-.lem-quote-calculator__breakdown {
-  display: grid;
-  gap: 0.65rem;
-  margin: 0;
-}
-
-.lem-quote-calculator__breakdown-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  color: var(--text-main, #1f2937);
-  font-size: 0.95rem;
-}
-
-.lem-quote-calculator__breakdown-row dt {
-  font-weight: 500;
-}
-
-.lem-quote-calculator__breakdown-row dd {
-  margin: 0;
-  font-weight: 600;
-  color: var(--primary-blue, #0f172a);
-}
-
-.lem-quote-calculator__breakdown-row--total {
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--divider-grey, #dfe6f5);
-  font-size: 1.05rem;
-}
-
 .lem-quote-calculator__highlights {
   margin: 0;
   padding-left: 1.1rem;
