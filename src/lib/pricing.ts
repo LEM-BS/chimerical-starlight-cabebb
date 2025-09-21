@@ -88,7 +88,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level1',
     label: 'RICS Level 1 Home Survey',
-    baseFee: 325,
+    baseFee: 375,
     summary:
       'For modern flats or houses in good condition that need a concise overview.',
     turnaround: 'Report within 2–3 working days of the inspection.',
@@ -102,7 +102,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level2',
     label: 'RICS Level 2 Home Survey',
-    baseFee: 465,
+    baseFee: 535,
     summary: 'Our most requested survey for conventional homes built after 1900.',
     turnaround: 'Report typically delivered 3–5 working days after inspection.',
     valueWeight: 1,
@@ -116,7 +116,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level3',
     label: 'RICS Level 3 Building Survey',
-    baseFee: 695,
+    baseFee: 800,
     summary: 'Best suited to older, extended or complex properties needing deeper analysis.',
     turnaround: 'Allow 5–7 working days for the full written report.',
     valueWeight: 1.35,
@@ -130,7 +130,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'damp',
     label: 'Specialist Damp & Timber Investigation',
-    baseFee: 285,
+    baseFee: 545,
     summary: 'Independent moisture diagnosis with root-cause analysis and action plan.',
     turnaround: 'Report issued within 2–3 working days of the visit.',
     valueWeight: 0.65,
@@ -145,7 +145,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'ventilation',
     label: 'Ventilation & Condensation Assessment',
-    baseFee: 225,
+    baseFee: 525,
     summary: 'Airflow testing and practical guidance for persistent condensation or mould.',
     turnaround: 'Report typically ready within 3–4 working days.',
     valueWeight: 0.7,
@@ -160,7 +160,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'epc',
     label: 'EPC with Floorplan',
-    baseFee: 155,
+    baseFee: 180,
     summary: 'Energy certificate and marketing-ready floorplan for sales or lettings.',
     turnaround: '48-hour turnaround is usually available.',
     valueWeight: 0.45,
@@ -175,7 +175,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'measured',
     label: 'Measured Survey & Floorplans',
-    baseFee: 345,
+    baseFee: 395,
     summary: 'Laser-measured internal survey producing CAD-ready drawings.',
     turnaround: 'Drawings provided within 5–7 working days.',
     valueWeight: 0.95,
