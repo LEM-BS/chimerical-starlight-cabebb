@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceContent from '../components/ServiceContent.astro';
+import {
+  createServiceSeo,
+  type ServiceSeoOptions,
+} from '../utils/structuredData';
+import { getEntry } from 'astro:content';
+
+export interface Breadcrumb {
+  name: string;
+  path?: string;
+  item?: string;
+}
+
+export interface ServiceSection {
+  id?: string;
+  heading: string;
+  kicker?: string;
+  intro?: string;
+  body?: string;
+}
+
+export interface ServiceFaqItem {
+  q: string;
+  a: string;
+}
+
+export interface ServiceFaqGroup {
+  heading?: string;
+  intro?: string;
+  items: ServiceFaqItem[];
+}
+
+type ServiceSeoResult = ReturnType<typeof createServiceSeo>;
+type SeoConfig = ServiceSeoResult['seo'];
+type ExtendedSeoConfig = SeoConfig & { breadcrumbs?: Breadcrumb[] };
+
+export interface Props extends ServiceSeoOptions {
+  slug?: string;
+  pageId?: string;
+  hideSiteLinks?: boolean;
+  productKey?: string;
+  breadcrumbs?: Breadcrumb[];
+  sections?: ServiceSection[];
+  faqGroup?: ServiceFaqGroup;
+  additionalStructuredData?: Record<string, unknown>[];
+  seoOverrides?: Partial<ExtendedSeoConfig>;
+}
+
+const props = Astro.props as Props;
+const {
+  slug,
+  pageId,
+  hideSiteLinks = false,
+  productKey,
+  breadcrumbs: providedBreadcrumbs,
+  sections,
+  faqGroup,
+  additionalStructuredData = [],
+} = props;
+
+if (!slug) {
+  throw new Error(
+    'Service wrapper requires a `slug` prop to retrieve the corresponding entry from the `services` collection.',
+  );
+}
+
+const entry = await getEntry('services', slug);
+if (!entry) {
+  throw new Error(`No service entry found for slug "${slug}". Check src/content/services for a matching file.`);
+}
+const { Content } = await entry.render();
+
+const serviceSeoOptions: ServiceSeoOptions = {
+  title: props.title,
+  description: props.description,
+  canonicalPath: props.canonicalPath,
+  serviceName: props.serviceName,
+  serviceType: props.serviceType,
+  areaServed: props.areaServed,
+  faqs: props.faqs,
+  review: props.review,
+  openGraphImage: props.openGraphImage,
+};
+
+const { seo: baseSeo, pageUrl } = createServiceSeo(serviceSeoOptions);
+
+const seoOverrides = props.seoOverrides ?? {};
+const {
+  breadcrumbs: overrideBreadcrumbs,
+  structuredData: overrideStructuredData,
+  ...restSeoOverrides
+} = seoOverrides;
+
+const defaultBreadcrumbs: Breadcrumb[] = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  {
+    name: entry.data.title ?? props.serviceName,
+    item: pageUrl,
+  },
+];
+
+const hasProvidedBreadcrumbs = Array.isArray(providedBreadcrumbs) && providedBreadcrumbs.length > 0;
+const hasOverrideBreadcrumbs = Array.isArray(overrideBreadcrumbs) && overrideBreadcrumbs.length > 0;
+
+const breadcrumbs = hasProvidedBreadcrumbs
+  ? providedBreadcrumbs
+  : hasOverrideBreadcrumbs
+    ? (overrideBreadcrumbs as Breadcrumb[])
+    : defaultBreadcrumbs;
+
+const baseStructuredData = Array.isArray(overrideStructuredData)
+  ? overrideStructuredData
+  : baseSeo.structuredData ?? [];
+const structuredData = [...baseStructuredData, ...additionalStructuredData];
+
+const seo: ExtendedSeoConfig = {
+  ...baseSeo,
+  ...restSeoOverrides,
+  breadcrumbs,
+  structuredData,
+};
+---
+<BaseLayout pageId={pageId} seo={seo} hideSiteLinks={hideSiteLinks} productKey={productKey}>
+  <slot name="hero" />
+  <ServiceContent entry={entry} sections={sections} faqs={faqGroup}>
+    <Content />
+    <slot />
+    <Fragment slot="aside">
+      <slot name="aside" />
+    </Fragment>
+  </ServiceContent>
+  <slot name="after-content" />
+</BaseLayout>
