@@ -128,7 +128,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             return;
           }
 
+          const ENQUIRIES_EMAIL = "enquiries@lembuildingsurveying.co.uk";
           const propertyValueInput = form.querySelector("#property-value");
+          const surveyTypeSelect = form.querySelector("#survey-type");
+
+          const currencyFormatter = new Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "GBP",
+            maximumFractionDigits: 0,
+          });
+
+          const CONTACT_METHOD_LABELS = {
+            email: "Email",
+            "phone-call": "Phone call",
+            "text-message": "SMS / Text Message",
+            whatsapp: "WhatsApp",
+            "no-preference": "No preference",
+          };
 
           const normalisePropertyValue = () => {
             if (!propertyValueInput) {
@@ -157,6 +173,144 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             propertyValueInput.addEventListener("blur", normalisePropertyValue);
           }
 
+          const buildEstimatePayload = (fields) => {
+            const email =
+              typeof fields.email === "string" ? fields.email.trim() : "";
+            if (!email) {
+              return null;
+            }
+
+            const name =
+              typeof fields.name === "string" && fields.name.trim()
+                ? fields.name.trim()
+                : undefined;
+
+            let surveyLabel = "";
+            if (surveyTypeSelect instanceof HTMLSelectElement) {
+              const selectedOption =
+                surveyTypeSelect.options[surveyTypeSelect.selectedIndex];
+              if (selectedOption) {
+                surveyLabel = selectedOption.text.trim();
+              }
+            }
+
+            if (
+              !surveyLabel &&
+              typeof fields["survey-type"] === "string" &&
+              fields["survey-type"].trim()
+            ) {
+              surveyLabel = fields["survey-type"].trim();
+            }
+
+            const rawPropertyValue =
+              typeof fields["property-value"] === "string"
+                ? fields["property-value"].trim()
+                : "";
+            const cleanedPropertyValue = rawPropertyValue.replace(/[,£\s]+/g, "");
+            const propertyValueNumber = cleanedPropertyValue
+              ? Number.parseFloat(cleanedPropertyValue)
+              : Number.NaN;
+            const hasPropertyValue =
+              Number.isFinite(propertyValueNumber) && propertyValueNumber > 0;
+            const formattedPropertyValue = hasPropertyValue
+              ? currencyFormatter.format(propertyValueNumber)
+              : null;
+
+            let contactMethodLabel = "";
+            if (
+              typeof fields["contact-method"] === "string" &&
+              fields["contact-method"].trim()
+            ) {
+              const rawContactMethod = fields["contact-method"].trim();
+              contactMethodLabel =
+                CONTACT_METHOD_LABELS[rawContactMethod] || rawContactMethod;
+            }
+
+            const notes = [
+              "Fee to be confirmed after our review of your enquiry.",
+            ];
+
+            if (contactMethodLabel) {
+              notes.push(`Preferred contact method: ${contactMethodLabel}.`);
+            }
+
+            if (typeof fields.phone === "string" && fields.phone.trim()) {
+              notes.push(`Phone: ${fields.phone.trim()}`);
+            }
+
+            if (formattedPropertyValue) {
+              notes.push(`Estimated property value: ${formattedPropertyValue}.`);
+            }
+
+            if (typeof fields.details === "string" && fields.details.trim()) {
+              notes.push(
+                `Additional notes from client:\n${fields.details.trim()}`,
+              );
+            }
+
+            const lineItemDescription = `${
+              surveyLabel || "Survey"
+            } fee (to be confirmed)`;
+            const lineItem = formattedPropertyValue
+              ? {
+                  description: lineItemDescription,
+                  notes: `Based on an estimated property value of ${formattedPropertyValue}.`,
+                }
+              : { description: lineItemDescription };
+
+            const estimateNotes = notes.join("\n\n");
+
+            return {
+              to: email,
+              bcc: ENQUIRIES_EMAIL,
+              replyTo: ENQUIRIES_EMAIL,
+              subject: surveyLabel
+                ? `${surveyLabel} enquiry – fee to be confirmed`
+                : "Survey enquiry – fee to be confirmed",
+              estimate: {
+                clientName: name,
+                clientEmail: email,
+                surveyType: surveyLabel || undefined,
+                propertyAddress:
+                  typeof fields.address === "string" && fields.address.trim()
+                    ? fields.address.trim()
+                    : undefined,
+                lineItems: [lineItem],
+                notes: estimateNotes,
+                summary: "Fee to be confirmed after review.",
+                turnaround: "We will confirm your fixed fee shortly.",
+              },
+            };
+          };
+
+          const sendEstimateEmail = async (fields) => {
+            const payload = buildEstimatePayload(fields);
+            if (!payload) {
+              return;
+            }
+
+            const response = await fetch(
+              "/.netlify/functions/send-estimate-email",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              },
+            );
+
+            if (!response.ok) {
+              const errorPayload = await response.json().catch(() => null);
+              const message =
+                (errorPayload &&
+                  typeof errorPayload.error === "string" &&
+                  errorPayload.error) ||
+                "Failed to send estimate email.";
+              throw new Error(message);
+            }
+
+            return response.json().catch(() => null);
+          };
+
           form.addEventListener("submit", async (e) => {
             e.preventDefault();
             normalisePropertyValue();
@@ -171,15 +325,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               data.set("property-value", propertyValueInput.value.trim());
             }
 
-            const resp = await fetch("https://formspree.io/f/xzzdqqqz", {
-              method: "POST",
-              body: data,
-              headers: { Accept: "application/json" },
+            const fields = {};
+            data.forEach((value, key) => {
+              if (typeof value === "string") {
+                fields[key] = value.trim();
+              } else {
+                fields[key] = value;
+              }
             });
 
-            if (resp.ok) {
-              /* fire Google-Ads conversion before leaving */
-              gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk" });
+            let formspreeResponse;
+            try {
+              formspreeResponse = await fetch("https://formspree.io/f/xzzdqqqz", {
+                method: "POST",
+                body: data,
+                headers: { Accept: "application/json" },
+              });
+            } catch (error) {
+              alert("Sorry, something went wrong. Please email us directly.");
+              return;
+            }
+
+            if (formspreeResponse.ok) {
+              try {
+                await sendEstimateEmail(fields);
+              } catch (error) {
+                console.error("Unable to send estimate email", error);
+              }
+
+              if (
+                typeof window !== "undefined" &&
+                typeof window.gtag === "function"
+              ) {
+                window.gtag("event", "conversion", {
+                  send_to: "AW-XXXXXXXXXX/AbCdEFgHiJk",
+                });
+              }
+
               window.location = "/thank-you.html";
             } else {
               alert("Sorry, something went wrong. Please email us directly.");

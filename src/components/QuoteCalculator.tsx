@@ -235,7 +235,7 @@ const QuoteCalculator = (): JSX.Element => {
 
   const contactStatusMessage =
     submissionState === 'success'
-      ? 'Thanks! We will confirm your quote shortly.'
+      ? 'Thanks! We will confirm your fee shortly.'
       : submissionState === 'error'
       ? submissionError
       : null;
@@ -493,7 +493,7 @@ const QuoteCalculator = (): JSX.Element => {
           </fieldset>
 
           <fieldset className="lem-quote-calculator__fieldset">
-            <legend className="lem-quote-calculator__legend">Request your guide quote</legend>
+            <legend className="lem-quote-calculator__legend">Request your confirmed fee</legend>
 
             <div className="lem-quote-calculator__field">
               <label htmlFor="contact-name">Your name</label>
@@ -552,7 +552,7 @@ const QuoteCalculator = (): JSX.Element => {
 
             <div className="lem-quote-calculator__cta">
               <button type="submit" className="cta-button" disabled={submitting} aria-describedby={CONTACT_STATUS_ID}>
-                {submitting ? 'Sending…' : 'Email this guide quote'}
+                {submitting ? 'Sending…' : 'Send enquiry'}
               </button>
               <p className="lem-quote-calculator__hint" id={CONTACT_STATUS_ID} aria-live="polite">
                 {contactStatusMessage ?? ' '}
@@ -575,7 +575,7 @@ const QuoteCalculator = (): JSX.Element => {
           ) : null}
 
           <div>
-            <span className="lem-quote-calculator__label">Guide fee</span>
+            <span className="lem-quote-calculator__label">Estimated fee</span>
             <p className="lem-quote-calculator__figure">{formatCurrency(quote.total.gross)}</p>
             <span className="lem-quote-calculator__range">Typically {formatRange(quote.range)}</span>
             <p className="lem-quote-calculator__turnaround">{selectedSurvey.turnaround}</p>
@@ -615,7 +615,7 @@ const QuoteCalculator = (): JSX.Element => {
           </div>
 
           <p className="lem-quote-calculator__disclaimer">
-            Guide assumes {selectedComplexity.label.toLowerCase()} and typical access.
+            Estimate assumes {selectedComplexity.label.toLowerCase()} and typical access.
             {selectedDistanceBand
               ? ` Travel band: ${selectedDistanceBand.label}.`
               : ' Travel within our standard area.'}
