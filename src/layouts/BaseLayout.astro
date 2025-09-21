@@ -14,6 +14,20 @@ const {
 } = Astro.props;
 
 const facebookPixelId = import.meta.env.PUBLIC_FACEBOOK_PIXEL_ID ?? '';
+const googleAdsConversionId = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_ID?.trim();
+const hasGoogleAdsConversionId =
+  typeof googleAdsConversionId === 'string' &&
+  googleAdsConversionId.length > 0 &&
+  !googleAdsConversionId.includes('XXXX');
+const gtagBootstrapScript = [
+  'window.dataLayer = window.dataLayer || [];',
+  'function gtag(){dataLayer.push(arguments);}',
+  "gtag('js', new Date());",
+  "gtag('config', 'G-GXH0EY936M');",
+  hasGoogleAdsConversionId ? `gtag('config', ${JSON.stringify(googleAdsConversionId)});` : null,
+]
+  .filter(Boolean)
+  .join('\n');
 
 const localBusinessSchema = JSON.stringify(
   buildLocalBusinessSchema({
@@ -63,12 +77,7 @@ const localBusinessSchema = JSON.stringify(
       is:inline
     ></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXH0EY936M" is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GXH0EY936M');
-    </script>
+    <script is:inline set:html={gtagBootstrapScript} />
     {facebookPixelId && (
       <Fragment>
         <script is:inline>
