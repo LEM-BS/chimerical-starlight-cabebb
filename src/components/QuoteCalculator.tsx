@@ -1,5 +1,5 @@
 import type { FormEvent } from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 type SurveyType =
   | 'level1'
@@ -46,6 +46,13 @@ interface QuoteEstimate {
   total: number;
   adjustments: AdjustmentDetail[];
   range: QuoteRange;
+}
+
+type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+interface SubmissionState {
+  status: SubmissionStatus;
+  message: string;
 }
 
 const SURVEY_OPTIONS: SurveyOption[] = [
@@ -286,6 +293,14 @@ const QuoteCalculator = (): JSX.Element => {
   const [propertyValueInput, setPropertyValueInput] = useState('250000');
   const [bedroomsInput, setBedroomsInput] = useState('3');
   const [complexity, setComplexity] = useState<ComplexityType>('standard');
+  const [submission, setSubmission] = useState<SubmissionState>({ status: 'idle', message: '' });
+
+  const previousFormValuesRef = useRef({
+    surveyType,
+    propertyValueInput,
+    bedroomsInput,
+    complexity,
+  });
 
   const selectedOption = useMemo(
     () => SURVEY_OPTIONS.find((option) => option.value === surveyType) ?? SURVEY_OPTIONS[0],
@@ -305,6 +320,30 @@ const QuoteCalculator = (): JSX.Element => {
     [selectedOption, propertyValue, bedrooms, complexityOption],
   );
 
+  useEffect(() => {
+    const previousValues = previousFormValuesRef.current;
+    const hasChanged =
+      previousValues.surveyType !== surveyType ||
+      previousValues.propertyValueInput !== propertyValueInput ||
+      previousValues.bedroomsInput !== bedroomsInput ||
+      previousValues.complexity !== complexity;
+
+    if (!hasChanged) {
+      return;
+    }
+
+    previousFormValuesRef.current = {
+      surveyType,
+      propertyValueInput,
+      bedroomsInput,
+      complexity,
+    };
+
+    setSubmission((current) =>
+      current.status === 'idle' ? current : { status: 'idle', message: '' },
+    );
+  }, [surveyType, propertyValueInput, bedroomsInput, complexity]);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
@@ -322,7 +361,11 @@ const QuoteCalculator = (): JSX.Element => {
   };
 
   return (
-    <div className="lem-quote-calculator" data-calculator>
+    <div
+      className="lem-quote-calculator"
+      data-calculator
+      data-submission-status={submission.status}
+    >
       <div className="lem-quote-calculator__layout">
         <form className="lem-quote-calculator__form" onSubmit={handleSubmit} noValidate>
           <fieldset className="lem-quote-calculator__fieldset">
