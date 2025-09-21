@@ -1,6 +1,18 @@
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 import { Resend } from 'resend';
 
+const FALLBACK_FROM_EMAIL =
+  'LEM Building Surveying <no-reply@lembuildingsurveying.co.uk>';
+
+const normaliseEmailAddress = (value) => {
+  if (!value || typeof value !== 'string') {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  return trimmed || null;
+};
+
 const BASE_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
@@ -710,8 +722,20 @@ export async function handler(event) {
   const emailText = payload.text || createEmailText(estimate, prepared, company);
   const emailHtml = payload.html || buildEmailHtml(emailText);
 
-  const fromAddress =
-    payload.from || process.env.RESEND_FROM_EMAIL || company.email || null;
+  const providedFromAddress = normaliseEmailAddress(payload.from);
+  const envFromAddress = normaliseEmailAddress(process.env.RESEND_FROM_EMAIL);
+
+  let fromAddress = providedFromAddress || envFromAddress;
+
+  if (!fromAddress) {
+    fromAddress = FALLBACK_FROM_EMAIL;
+
+    if (!envFromAddress) {
+      console.warn(
+        `RESEND_FROM_EMAIL is not configured and no "from" address was provided. Using fallback sender "${FALLBACK_FROM_EMAIL}".`,
+      );
+    }
+  }
 
   const cc = Array.isArray(payload.cc)
     ? payload.cc
@@ -724,7 +748,24 @@ export async function handler(event) {
     ? [payload.bcc]
     : undefined;
 
-  const replyTo = payload.replyTo || company.email || undefined;
+  const customerEmail =
+    normaliseEmailAddress(estimate.clientEmail) ||
+    normaliseEmailAddress(payload.clientEmail) ||
+    normaliseEmailAddress(payload.email);
+
+  const replyToCandidates = [
+    customerEmail,
+    normaliseEmailAddress(payload.replyTo),
+    normaliseEmailAddress(company.email),
+  ].filter(Boolean);
+
+  let replyTo;
+  for (const address of replyToCandidates) {
+    if (address && address !== fromAddress) {
+      replyTo = address;
+      break;
+    }
+  }
 
   let emailResult;
 
