@@ -18,6 +18,191 @@ import {
   type QuoteRange,
   type SurveyType,
 } from '../lib/pricing';
+import type { FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+type SurveyType =
+  | 'level1'
+  | 'level2'
+  | 'level3'
+  | 'damp'
+  | 'ventilation'
+  | 'epc'
+  | 'measured';
+
+type ComplexityType = 'standard' | 'extended' | 'period';
+
+interface SurveyOption {
+  value: SurveyType;
+  label: string;
+  baseFee: number;
+  summary: string;
+  turnaround: string;
+  valueWeight: number;
+  highlights: string[];
+  bedroomsIncluded?: number;
+  badge?: string;
+}
+
+interface ComplexityOption {
+  value: ComplexityType;
+  label: string;
+  adjustment: number;
+  helper: string;
+}
+
+interface AdjustmentDetail {
+  label: string;
+  amount: number;
+}
+
+interface QuoteRange {
+  min: number;
+  max: number;
+}
+
+interface QuoteEstimate {
+  baseFee: number;
+  total: number;
+  adjustments: AdjustmentDetail[];
+  range: QuoteRange;
+}
+
+type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+interface SubmissionState {
+  status: SubmissionStatus;
+  message: string;
+}
+
+const SURVEY_OPTIONS: SurveyOption[] = [
+  {
+    value: 'level1',
+    label: 'RICS Level 1 Home Survey',
+    baseFee: 325,
+    summary: 'For modern flats or houses in good condition that need a concise overview.',
+    turnaround: 'Report within 2–3 working days of the inspection.',
+    valueWeight: 0.85,
+    highlights: [
+      'Traffic-light condition ratings with clear next steps.',
+      'Focus on urgent defects and maintenance priorities.',
+      'Includes a follow-up call to discuss the findings.',
+    ],
+  },
+  {
+    value: 'level2',
+    label: 'RICS Level 2 Home Survey',
+    baseFee: 465,
+    summary: 'Our most requested survey for conventional homes built after 1900.',
+    turnaround: 'Report typically delivered 3–5 working days after inspection.',
+    valueWeight: 1,
+    highlights: [
+      'Detailed inspection of the structure, services and finishes.',
+      'Advice on repairs, maintenance and budgeting priorities.',
+      'Dedicated surveyor to review the report with you.',
+    ],
+    badge: 'Most requested',
+  },
+  {
+    value: 'level3',
+    label: 'RICS Level 3 Building Survey',
+    baseFee: 695,
+    summary: 'Best suited to older, extended or complex properties needing deeper analysis.',
+    turnaround: 'Allow 5–7 working days for the full written report.',
+    valueWeight: 1.35,
+    highlights: [
+      'Comprehensive fabric analysis with photographic documentation.',
+      'Defect diagnosis plus guidance on remedial works and specialists.',
+      'Extended phone review to walk through priorities and options.',
+    ],
+    bedroomsIncluded: 4,
+  },
+  {
+    value: 'damp',
+    label: 'Specialist Damp & Timber Investigation',
+    baseFee: 285,
+    summary: 'Independent moisture diagnosis with root-cause analysis and action plan.',
+    turnaround: 'Report issued within 2–3 working days of the visit.',
+    valueWeight: 0.65,
+    highlights: [
+      'Moisture profiling and timber checks without upselling treatments.',
+      'Clear next steps to resolve condensation, rising damp or leaks.',
+      'Optional verification visit once remedial work is complete.',
+    ],
+    bedroomsIncluded: 0,
+  },
+  {
+    value: 'ventilation',
+    label: 'Ventilation & Condensation Assessment',
+    baseFee: 225,
+    summary: 'Airflow testing and practical guidance for persistent condensation or mould.',
+    turnaround: 'Report typically ready within 3–4 working days.',
+    valueWeight: 0.7,
+    highlights: [
+      'Indoor air quality checks and ventilation performance review.',
+      'Practical improvements tailored to the property layout.',
+      'Advice on balancing heat recovery, trickle vents and extraction.',
+    ],
+    bedroomsIncluded: 0,
+  },
+  {
+    value: 'epc',
+    label: 'EPC with Floorplan',
+    baseFee: 155,
+    summary: 'Energy certificate and marketing-ready floorplan for sales or lettings.',
+    turnaround: '48-hour turnaround is usually available.',
+    valueWeight: 0.45,
+    highlights: [
+      'Digital EPC lodged with the national register.',
+      'High-quality floorplans supplied as PDF and JPG files.',
+      'Guidance on quick-win efficiency improvements.',
+    ],
+    bedroomsIncluded: 0,
+  },
+  {
+    value: 'measured',
+    label: 'Measured Survey & Floorplans',
+    baseFee: 345,
+    summary: 'Laser-measured internal survey producing CAD-ready drawings.',
+    turnaround: 'Drawings provided within 5–7 working days.',
+    valueWeight: 0.95,
+    highlights: [
+      'Accurate measurements captured with professional equipment.',
+      'Ideal for redesigns, extensions or compliance submissions.',
+      'Includes PDF and DWG outputs with minor tweaks included.',
+    ],
+  },
+];
+
+const COMPLEXITY_OPTIONS: ComplexityOption[] = [
+  {
+    value: 'standard',
+    label: 'Standard construction',
+    adjustment: 0,
+    helper: 'Typical brick or block construction without major alterations.',
+  },
+  {
+    value: 'extended',
+    label: 'Extended / altered',
+    adjustment: 70,
+    helper: 'Includes loft conversions, sizeable extensions or multiple outbuildings.',
+  },
+  {
+    value: 'period',
+    label: 'Period / non-standard',
+    adjustment: 130,
+    helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
+  },
+];
+
+const VALUE_TIERS: { limit: number; amount: number }[] = [
+  { limit: 250_000, amount: 0 },
+  { limit: 400_000, amount: 35 },
+  { limit: 550_000, amount: 70 },
+  { limit: 750_000, amount: 115 },
+  { limit: 950_000, amount: 170 },
+  { limit: Number.POSITIVE_INFINITY, amount: 240 },
+];
 
 const SURVEY_HINT_ID = 'quote-survey-hint';
 const VALUE_HINT_ID = 'quote-value-hint';
@@ -100,6 +285,18 @@ const QuoteCalculator = (): JSX.Element => {
         distanceBandId,
       }),
     [surveyType, propertyValue, bedrooms, complexity, distanceBandId],
+  const [submission, setSubmission] = useState<SubmissionState>({ status: 'idle', message: '' });
+
+  const previousFormValuesRef = useRef({
+    surveyType,
+    propertyValueInput,
+    bedroomsInput,
+    complexity,
+  });
+
+  const selectedOption = useMemo(
+    () => SURVEY_OPTIONS.find((option) => option.value === surveyType) ?? SURVEY_OPTIONS[0],
+    [surveyType],
   );
 
   const matchedAreas = useMemo(
@@ -193,6 +390,33 @@ const QuoteCalculator = (): JSX.Element => {
       window.clearTimeout(timer);
     };
   }, [postcodeInput]);
+  useEffect(() => {
+    const previousValues = previousFormValuesRef.current;
+    const hasChanged =
+      previousValues.surveyType !== surveyType ||
+      previousValues.propertyValueInput !== propertyValueInput ||
+      previousValues.bedroomsInput !== bedroomsInput ||
+      previousValues.complexity !== complexity;
+
+    if (!hasChanged) {
+      return;
+    }
+
+    previousFormValuesRef.current = {
+      surveyType,
+      propertyValueInput,
+      bedroomsInput,
+      complexity,
+    };
+
+    setSubmission((current) =>
+      current.status === 'idle' ? current : { status: 'idle', message: '' },
+    );
+  }, [surveyType, propertyValueInput, bedroomsInput, complexity]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
   const handleValueBlur = () => {
     if (propertyValue > 0) {
@@ -380,7 +604,11 @@ const QuoteCalculator = (): JSX.Element => {
   };
 
   return (
-    <div className="lem-quote-calculator" data-calculator>
+    <div
+      className="lem-quote-calculator"
+      data-calculator
+      data-submission-status={submission.status}
+    >
       <div className="lem-quote-calculator__layout">
         <form className="lem-quote-calculator__form" onSubmit={handleSubmit} noValidate>
           <fieldset className="lem-quote-calculator__fieldset">
