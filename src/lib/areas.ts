@@ -237,7 +237,11 @@ export const getAreasForOutcode = (outcode: string): AreaInfo[] => {
     return [];
   }
 
-  return OUTCODE_LOOKUP.get(normaliseOutcode(outcode)) ?? [];
+  const normalised = normaliseOutcode(outcode);
+  const match = normalised.match(/^([A-Z]{1,2}\d[A-Z\d]?)(\d[A-Z]{2})$/);
+  const outwardCode = match ? match[1] : normalised;
+
+  return OUTCODE_LOOKUP.get(outwardCode) ?? [];
 };
 
 export const getPrimaryOutcodeForArea = (areaId: AreaKey): string | undefined => {
