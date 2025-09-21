@@ -77,5 +77,115 @@ const { pageId = '' } = Astro.props;
     </div>
     <Footer />
     <script type="module" src={navScriptUrl} is:inline></script>
+    <script is:inline>
+      (() => {
+        const normalisedPath = window.location.pathname.replace(/\/+$/, "");
+        if (
+          normalisedPath !== "/quote-calculator" &&
+          normalisedPath !== "/quote-calculator.html"
+        ) {
+          return;
+        }
+
+        /**
+         * Finds the nearest removable ancestor for a breakdown fragment while
+         * avoiding removing the entire document body.
+         * @param {Element} element
+         */
+        const findContainer = (element) => {
+          const candidates = [
+            element.closest("details"),
+            element.closest("section"),
+            element.closest("article"),
+            element.closest("div"),
+          ];
+
+          for (const candidate of candidates) {
+            if (
+              candidate &&
+              candidate !== document.body &&
+              candidate !== document.documentElement
+            ) {
+              return candidate;
+            }
+          }
+
+          return element;
+        };
+
+        const selectors = [
+          '[data-component*="breakdown" i]',
+          '[data-role*="breakdown" i]',
+          '[data-testid*="breakdown" i]',
+          '[data-test*="breakdown" i]',
+          '[id*="breakdown" i]',
+          '[class*="breakdown" i]',
+        ];
+
+        const removeBreakdown = () => {
+          let removed = false;
+
+          selectors.forEach((selector) => {
+            document.querySelectorAll(selector).forEach((element) => {
+              if (!(element instanceof HTMLElement)) {
+                return;
+              }
+
+              const target = findContainer(element);
+              if (
+                target instanceof HTMLElement &&
+                target !== document.body &&
+                target !== document.documentElement
+              ) {
+                target.remove();
+                removed = true;
+              }
+            });
+          });
+
+          if (!removed) {
+            const fallback = Array.from(
+              document.querySelectorAll("section, article, div, details"),
+            ).find((node) => {
+              if (!(node instanceof HTMLElement)) {
+                return false;
+              }
+
+              const heading = node.querySelector(
+                "h2, h3, h4, summary, .section-title",
+              );
+              return heading
+                ? /breakdown/i.test(heading.textContent ?? "")
+                : false;
+            });
+
+            if (
+              fallback instanceof HTMLElement &&
+              fallback !== document.body &&
+              fallback !== document.documentElement
+            ) {
+              fallback.remove();
+            }
+          }
+        };
+
+        const observer = new MutationObserver(() => {
+          removeBreakdown();
+        });
+
+        const initialise = () => {
+          removeBreakdown();
+          observer.observe(document.body, { childList: true, subtree: true });
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initialise, {
+            once: true,
+          });
+        } else {
+          initialise();
+        }
+      })();
+    </script>
   </body>
 </html>
