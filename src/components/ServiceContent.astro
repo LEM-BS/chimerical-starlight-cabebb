@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'services'>;
+}
+
+const { entry } = Astro.props as Props;
+const hasAsideSlot = Astro.slots.has('aside');
+const gridClasses = ['box-container', 'service-content__grid'];
+
+if (hasAsideSlot) {
+  gridClasses.push('service-content__grid--has-aside');
+}
+---
+<section class="service-content" data-entry-id={entry.id}>
+  <div class={gridClasses.join(' ')}>
+    <article class="service-content__article">
+      <slot />
+    </article>
+    {hasAsideSlot ? (
+      <aside class="service-content__aside">
+        <slot name="aside" />
+      </aside>
+    ) : null}
+  </div>
+</section>

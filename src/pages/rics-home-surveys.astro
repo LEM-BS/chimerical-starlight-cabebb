@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceContent from '../components/ServiceContent.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { getEntry } from 'astro:content';
 
 const conversionSendToValue =
   import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_SEND_TO?.trim();
@@ -83,6 +85,9 @@ const seo = {
   ...baseSeo,
   structuredData: [...baseSeo.structuredData, breadcrumbSchema],
 };
+
+const entry = await getEntry('services', 'rics-home-surveys');
+const { Content } = await entry.render();
 ---
 
 <BaseLayout seo={seo}>
@@ -198,7 +203,11 @@ const seo = {
             <li><a href="#faq">FAQs</a></li>
           </ul>
         </div>
-      </section><!-- ░░ PROCESS TIMELINE ░░ --><section class="process-timeline" id="timeline">
+      </section>
+      <ServiceContent entry={entry}>
+        <Content />
+      </ServiceContent>
+      <!-- ░░ PROCESS TIMELINE ░░ --><section class="process-timeline" id="timeline">
         <div class="box-container">
           <h2>Your Survey in 4 Simple Steps</h2>
           <div class="timeline-grid">
