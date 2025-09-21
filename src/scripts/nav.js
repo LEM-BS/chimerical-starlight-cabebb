@@ -196,14 +196,8 @@ export function setupNav() {
 }
 
 export function init() {
-  try {
-    setupNav();
-    loadTrustIndex();
-  } finally {
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.remove('pre-hydrate');
-    }
-  }
+  setupNav();
+  loadTrustIndex();
 }
 
 if (typeof document !== 'undefined') {
