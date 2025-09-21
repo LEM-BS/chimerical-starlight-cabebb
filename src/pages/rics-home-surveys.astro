@@ -5,6 +5,42 @@ import { serviceAreaGroups } from '../data/service-areas';
 const dropdownOptions = serviceAreaGroups
   .flatMap((group) => group.areas)
   .sort((a, b) => a.name.localeCompare(b.name));
+
+const ricsFaqs = [
+  {
+    question: 'Which survey level should I choose for my property?',
+    answer: `Level 1 suits newer, well-maintained homes that just need a quick condition check. Level 2 is the default choice for most conventional purchases and includes repair advice and traffic-light ratings. Choose a Level 3 building survey if the property is older, heavily altered, or you have concerns about the structure. Share the property details when you enquire and we’ll confirm the most appropriate level for you.`,
+  },
+  {
+    question: 'How quickly will I receive the survey report?',
+    answer: `Inspection slots are usually available within 5–7 working days, and reports follow within 3–5 working days after the visit. If something urgent crops up we can provide a same-day summary call, and we’ll do our best to prioritise tight exchange deadlines when you let us know.`,
+  },
+  {
+    question: 'Do you coordinate access with the estate agent or vendor?',
+    answer: `Yes. Once you instruct us we arrange access directly with the agent, vendor, or key holder and keep you copied into the updates so you always know when the inspection is booked.`,
+  },
+  {
+    question: 'Can I discuss the findings with you after reading the report?',
+    answer: `Absolutely. Every survey includes a follow-up call so you can walk through the findings, ask questions, and prioritise next steps. We are also happy to clarify anything by email afterwards.`,
+  },
+  {
+    question: 'What if I need to upgrade to a different survey level?',
+    answer: `If a deeper inspection is required we can switch levels before the visit and you only pay the difference in the fee. We’ll advise if an upgrade looks sensible once we’ve reviewed the property details or if anything unexpected appears on site.`,
+  },
+];
+
+const ricsFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ricsFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout>
@@ -121,52 +157,7 @@ const dropdownOptions = serviceAreaGroups
         }
       </script>
       <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Which survey level should I choose for my property?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Level 1 suits newer, well-maintained homes that just need a quick condition check. Level 2 is the default choice for most conventional purchases and includes repair advice and traffic-light ratings. Choose a Level 3 building survey if the property is older, heavily altered, or you have concerns about the structure. Share the property details when you enquire and we’ll confirm the most appropriate level for you."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How quickly will I receive the survey report?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Inspection slots are usually available within 5–7 working days, and reports follow within 3–5 working days after the visit. If something urgent crops up we can provide a same-day summary call, and we’ll do our best to prioritise tight exchange deadlines when you let us know."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you coordinate access with the estate agent or vendor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Once you instruct us we arrange access directly with the agent, vendor, or key holder and keep you copied into the updates so you always know when the inspection is booked."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I discuss the findings with you after reading the report?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely. Every survey includes a follow-up call so you can walk through the findings, ask questions, and prioritise next steps. We are also happy to clarify anything by email afterwards."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What if I need to upgrade to a different survey level?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "If a deeper inspection is required we can switch levels before the visit and you only pay the difference in the fee. We’ll advise if an upgrade looks sensible once we’ve reviewed the property details or if anything unexpected appears on site."
-              }
-            }
-          ]
-        }
+        {JSON.stringify(ricsFaqJsonLd, null, 2)}
       </script>
         <!-- Cookie Consent (Usercentrics) -->
 
@@ -497,53 +488,12 @@ const dropdownOptions = serviceAreaGroups
       </section><!-- FAQs --><section class="survey-faq" id="faq">
         <div class="box-container">
           <h2>FAQs</h2>
-          <details open="">
-            <summary>Which survey level should I choose for my property?</summary>
-            <p>
-              Level 1 suits newer, well-maintained homes that just need a quick
-              condition check. Level 2 is the default choice for most conventional
-              purchases and includes repair advice and traffic-light ratings.
-              Choose a Level 3 building survey if the property is older, heavily
-              altered, or you have concerns about the structure. Share the
-              property details when you enquire and we’ll confirm the most
-              appropriate level for you.
-            </p>
-          </details>
-          <details>
-            <summary>How quickly will I receive the survey report?</summary>
-            <p>
-              Inspection slots are usually available within 5–7 working days, and
-              reports follow within 3–5 working days after the visit. If something
-              urgent crops up we can provide a same-day summary call, and we’ll do
-              our best to prioritise tight exchange deadlines when you let us
-              know.
-            </p>
-          </details>
-          <details>
-            <summary>Do you coordinate access with the estate agent or vendor?</summary>
-            <p>
-              Yes. Once you instruct us we arrange access directly with the agent,
-              vendor, or key holder and keep you copied into the updates so you
-              always know when the inspection is booked.
-            </p>
-          </details>
-          <details>
-            <summary>Can I discuss the findings with you after reading the report?</summary>
-            <p>
-              Absolutely. Every survey includes a follow-up call so you can walk
-              through the findings, ask questions, and prioritise next steps. We
-              are also happy to clarify anything by email afterwards.
-            </p>
-          </details>
-          <details>
-            <summary>What if I need to upgrade to a different survey level?</summary>
-            <p>
-              If a deeper inspection is required we can switch levels before the
-              visit and you only pay the difference in the fee. We’ll advise if an
-              upgrade looks sensible once we’ve reviewed the property details or
-              if anything unexpected appears on site.
-            </p>
-          </details>
+          {ricsFaqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </section><!-- CTA SECTION --><section class="cta-section">
         <div class="container">

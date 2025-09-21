@@ -17,9 +17,13 @@ The development server runs on <http://localhost:4321>. Pages live in `src/pages
 npm run build
 ```
 
-The static build is generated in `dist/`. Deploy the contents of this directory. For Netlify, set the build command to `astro build` and the publish directory to `dist`.
+The static build is generated in `dist/` using Terser and Lightning CSS to minify JavaScript and styles for production. Deploy the contents of this directory. For Netlify, set the build command to `npm run build:minified` and the publish directory to `dist`.
 
 ## Quality checks
 
 - `npm run check` – static analysis via `astro check`
 - `npm test` – runs unit tests and link checks with Vitest
+
+## Commit conventions
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/) when authoring git messages. Aim for the format `type(scope): summary` using one of the standard types (`feat`, `fix`, `docs`, `chore`, or `perf`). Keep the summary in the imperative mood and under 72 characters. Include additional context in the body if a change needs further explanation.

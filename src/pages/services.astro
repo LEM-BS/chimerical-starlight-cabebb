@@ -5,6 +5,32 @@ import { serviceAreaGroups } from '../data/service-areas';
 const dropdownOptions = serviceAreaGroups
   .flatMap((group) => group.areas)
   .sort((a, b) => a.name.localeCompare(b.name));
+
+const servicesFaqs = [
+  {
+    question: 'Still choosing between survey levels?',
+    answer:
+      'Explore our Level 2 vs Level 3 guide for real-world scenarios and pricing tips.',
+  },
+  {
+    question:
+      'Deciding whether to call a contractor or commission an independent report?',
+    answer: 'Read our damp survey vs contractor comparison first.',
+  },
+];
+
+const servicesFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: servicesFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout>
@@ -24,6 +50,9 @@ const dropdownOptions = serviceAreaGroups
         <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png">
 
 
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify(servicesFaqJsonLd, null, 2)}
+    </script>
     <script type="application/ld+json" is:inline>
         {
           "@context": "https://schema.org",
@@ -113,7 +142,7 @@ const dropdownOptions = serviceAreaGroups
               <a href="/independent-damp-survey-vs-contractor.html">damp survey vs contractor comparison</a>
               first.
             </p>
-            <a class="inline-link" href="/damp-timber-surveys.html">Learn more about Damp &amp; Timber Surveys →</a>
+            <a class="inline-link" href="/damp-timber-surveys.html">Review our Damp &amp; Timber Surveys for Deeside and Chester →</a>
           </div>
         </article>
         <!-- Measured Surveys -->
