@@ -1,10 +1,6 @@
 const focusableSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-if (typeof document !== 'undefined') {
-  document.documentElement.classList.add('pre-hydrate');
-}
-
 function normalizePathname(pathname) {
   if (!pathname) return '';
   let normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;

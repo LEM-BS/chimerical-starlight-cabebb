@@ -73,11 +73,6 @@ body {
   display: none;
 }
 
-/* Prevent jitter during header/footer injection */
-.pre-hydrate body {
-  visibility: hidden;
-}
-
 /*───────────────────────────────────────────────────────
   1. BASE ELEMENT STYLES
   Standard styles for fundamental HTML elements
