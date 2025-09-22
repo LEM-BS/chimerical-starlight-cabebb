@@ -15,7 +15,7 @@ import {
   roundToNearestFive,
   stripVat,
   VAT_RATE,
-} from './pricing';
+} from './lib/pricing';
 
 describe('pricing helpers', () => {
   it('parses currency strings safely', () => {

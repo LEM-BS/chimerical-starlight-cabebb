@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { getAreasForOutcode } from './areas';
+import { getAreasForOutcode } from './lib/areas';
 
 describe('getAreasForOutcode', () => {
   it('returns expected areas for CH5 outcode', () => {
