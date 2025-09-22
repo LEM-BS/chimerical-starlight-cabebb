@@ -65,7 +65,8 @@
 }
 
 .lem-quote-calculator__field input,
-.lem-quote-calculator__field select {
+.lem-quote-calculator__field select,
+.lem-quote-calculator__field textarea {
   appearance: none;
   border-radius: 0.75rem;
   border: 1px solid var(--divider-grey, #dfe6f5);
@@ -77,7 +78,8 @@
 }
 
 .lem-quote-calculator__field input:focus,
-.lem-quote-calculator__field select:focus {
+.lem-quote-calculator__field select:focus,
+.lem-quote-calculator__field textarea:focus {
   outline: none;
   border-color: var(--accent-blue, #2563eb);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
@@ -101,6 +103,21 @@
 
 .lem-quote-calculator__hint--error {
   color: var(--error-red, #b91c1c);
+}
+
+.lem-quote-calculator__option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+}
+
+.lem-quote-calculator__option-list label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: var(--text-main, #1f2937);
 }
 
 .lem-quote-calculator__result {

@@ -1,10 +1,9 @@
-import type { ChangeEvent, FormEvent } from 'react';
+import type { FormEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { AREA_SUGGESTIONS, getAreasForOutcode, normaliseOutcode } from '../lib/areas';
 import {
   calculateQuote,
-  DISTANCE_BANDS,
   formatCurrency,
   getComplexityById,
   getDistanceBandById,
@@ -21,13 +20,43 @@ import {
 const SURVEY_HINT_ID = 'quote-survey-hint';
 const VALUE_HINT_ID = 'quote-value-hint';
 const BEDROOM_HINT_ID = 'quote-bedroom-hint';
-const COMPLEXITY_HINT_ID = 'quote-complexity-hint';
 const POSTCODE_HINT_ID = 'quote-postcode-hint';
-const TRAVEL_HINT_ID = 'quote-travel-hint';
 const DISTANCE_STATUS_ID = 'quote-distance-status';
 const CONTACT_HINT_ID = 'quote-contact-hint';
 const CONTACT_STATUS_ID = 'quote-contact-status';
 const POSTCODE_SUGGESTIONS_ID = 'quote-postcode-suggestions';
+
+const PROPERTY_TYPE_OPTIONS = [
+  { id: 'detached-house', label: 'Detached house' },
+  { id: 'semi-detached-house', label: 'Semi-detached house' },
+  { id: 'terraced-house', label: 'Mid-terrace house' },
+  { id: 'end-terrace-house', label: 'End-terrace house' },
+  { id: 'flat-apartment', label: 'Flat / apartment' },
+  { id: 'bungalow', label: 'Bungalow' },
+  { id: 'cottage', label: 'Cottage' },
+  { id: 'maisonette', label: 'Maisonette' },
+  { id: 'other', label: 'Other / not listed' },
+] as const;
+type PropertyTypeId = (typeof PROPERTY_TYPE_OPTIONS)[number]['id'];
+
+const PROPERTY_AGE_OPTIONS = [
+  { id: 'unknown', label: 'Unknown' },
+  { id: 'new-build', label: 'New build (0–2 years)' },
+  { id: 'post-2000', label: '2000s onwards' },
+  { id: '1980-1999', label: '1980s–1990s' },
+  { id: '1945-1979', label: '1945–1970s' },
+  { id: 'interwar', label: '1919–1944' },
+  { id: 'victorian-edwardian', label: 'Victorian / Edwardian' },
+  { id: 'pre-1900', label: 'Pre-1900' },
+] as const;
+type PropertyAgeId = (typeof PROPERTY_AGE_OPTIONS)[number]['id'];
+
+const EXTENSION_STATUS_OPTIONS = [
+  { id: 'unknown', label: 'Unknown' },
+  { id: 'no', label: 'No' },
+  { id: 'yes', label: 'Yes' },
+] as const;
+type ExtensionStatusId = (typeof EXTENSION_STATUS_OPTIONS)[number]['id'];
 
 const FORM_ENDPOINT = import.meta.env.PUBLIC_QUOTE_FORM_ENDPOINT?.trim() || 'https://formspree.io/f/xzzdqqqz';
 const BEACON_URL = import.meta.env.PUBLIC_QUOTE_BEACON_URL?.trim() ?? '';
@@ -52,35 +81,49 @@ interface DistanceLookupState {
 
 const QuoteCalculator = (): JSX.Element => {
   const [surveyType, setSurveyType] = useState<SurveyType>('level2');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [propertyAddress, setPropertyAddress] = useState('');
+  const [postcodeInput, setPostcodeInput] = useState('');
+  const [propertyType, setPropertyType] = useState<PropertyTypeId>('detached-house');
+  const [propertyAge, setPropertyAge] = useState<PropertyAgeId>('unknown');
+  const [extensionStatus, setExtensionStatus] = useState<ExtensionStatusId>('unknown');
+  const [extensionTypes, setExtensionTypes] = useState({ extended: false, converted: false });
   const [propertyValueInput, setPropertyValueInput] = useState('250000');
   const [bedroomsInput, setBedroomsInput] = useState('3');
   const [complexity, setComplexity] = useState<ComplexityType>('standard');
-  const [postcodeInput, setPostcodeInput] = useState('');
   const [distanceBandId, setDistanceBandId] = useState<DistanceBandId>('within-20-miles');
-  const [userSelectedBand, setUserSelectedBand] = useState(false);
-  const userSelectedBandRef = useRef(userSelectedBand);
 
   const [distanceLookup, setDistanceLookup] = useState<DistanceLookupState | null>(null);
   const [isLookingUpDistance, setIsLookingUpDistance] = useState(false);
   const [distanceError, setDistanceError] = useState<string | null>(null);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [notes, setNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submissionState, setSubmissionState] = useState<'idle' | 'success' | 'error'>('idle');
   const [submissionError, setSubmissionError] = useState<string | null>(null);
-
-  useEffect(() => {
-    userSelectedBandRef.current = userSelectedBand;
-  }, [userSelectedBand]);
 
   const selectedSurvey = useMemo(() => getSurveyById(surveyType), [surveyType]);
   const selectedComplexity = useMemo(() => getComplexityById(complexity), [complexity]);
   const propertyValue = useMemo(() => parseCurrencyValue(propertyValueInput), [propertyValueInput]);
   const bedrooms = useMemo(() => parseBedroomsValue(bedroomsInput), [bedroomsInput]);
   const selectedDistanceBand = useMemo(() => getDistanceBandById(distanceBandId), [distanceBandId]);
+  const { extended: hasExtended, converted: hasConverted } = extensionTypes;
+  const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
+  const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
+
+  const extensionSummary = useMemo(() => {
+    if (extensionStatus !== 'yes') {
+      if (extensionStatus === 'no') return 'no';
+      return 'unknown';
+    }
+
+    if (hasExtended && hasConverted) return 'extended and converted';
+    if (hasExtended) return 'extended';
+    if (hasConverted) return 'converted';
+    return 'yes (details not specified)';
+  }, [extensionStatus, hasConverted, hasExtended]);
 
   const quote = useMemo(
     () =>
@@ -99,6 +142,13 @@ const QuoteCalculator = (): JSX.Element => {
     propertyValueInput,
     bedroomsInput,
     complexity,
+    postcodeInput,
+    propertyType,
+    propertyAge,
+    extensionStatus,
+    hasExtended,
+    hasConverted,
+    propertyAddress,
   });
 
   const matchedAreas = useMemo(
@@ -118,6 +168,46 @@ const QuoteCalculator = (): JSX.Element => {
       setSurveyType(surveyParam as SurveyType);
     }
   }, []);
+
+  useEffect(() => {
+    if (extensionStatus !== 'yes' && (hasExtended || hasConverted)) {
+      setExtensionTypes({ extended: false, converted: false });
+    }
+  }, [extensionStatus, hasConverted, hasExtended]);
+
+  useEffect(() => {
+    const candidateComplexities: ComplexityType[] = [];
+
+    if (propertyAge === 'pre-1900') {
+      candidateComplexities.push('period');
+    } else if (propertyAge === 'victorian-edwardian') {
+      candidateComplexities.push('victorian');
+    } else if (propertyAge === 'interwar') {
+      candidateComplexities.push('interwar');
+    }
+
+    if (hasBothExtensionDetails) {
+      candidateComplexities.push('extended-and-converted');
+    } else if (hasExtensionDetail) {
+      candidateComplexities.push('extended');
+    }
+
+    let nextComplexity: ComplexityType = 'standard';
+    for (const candidate of candidateComplexities) {
+      const bestOption = getComplexityById(nextComplexity);
+      const candidateOption = getComplexityById(candidate);
+      if (candidateOption.adjustment >= bestOption.adjustment) {
+        nextComplexity = candidateOption.id;
+      }
+    }
+
+    if (complexity !== nextComplexity) setComplexity(nextComplexity);
+  }, [
+    complexity,
+    hasBothExtensionDetails,
+    hasExtensionDetail,
+    propertyAge,
+  ]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -164,7 +254,7 @@ const QuoteCalculator = (): JSX.Element => {
         setDistanceLookup(lookup);
         setDistanceError(null);
 
-        if (band && !userSelectedBandRef.current) setDistanceBandId(band.id);
+        if (band) setDistanceBandId(band.id);
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') return;
         setDistanceLookup(null);
@@ -186,13 +276,45 @@ const QuoteCalculator = (): JSX.Element => {
       prev.surveyType !== surveyType ||
       prev.propertyValueInput !== propertyValueInput ||
       prev.bedroomsInput !== bedroomsInput ||
-      prev.complexity !== complexity;
+      prev.complexity !== complexity ||
+      prev.postcodeInput !== postcodeInput ||
+      prev.propertyType !== propertyType ||
+      prev.propertyAge !== propertyAge ||
+      prev.extensionStatus !== extensionStatus ||
+      prev.hasExtended !== hasExtended ||
+      prev.hasConverted !== hasConverted ||
+      prev.propertyAddress !== propertyAddress;
 
     if (!changed) return;
 
-    previousFormValuesRef.current = { surveyType, propertyValueInput, bedroomsInput, complexity };
+    previousFormValuesRef.current = {
+      surveyType,
+      propertyValueInput,
+      bedroomsInput,
+      complexity,
+      postcodeInput,
+      propertyType,
+      propertyAge,
+      extensionStatus,
+      hasExtended,
+      hasConverted,
+      propertyAddress,
+    };
     if (submissionState !== 'idle') setSubmissionState('idle');
-  }, [surveyType, propertyValueInput, bedroomsInput, complexity, submissionState]);
+  }, [
+    surveyType,
+    propertyValueInput,
+    bedroomsInput,
+    complexity,
+    postcodeInput,
+    propertyType,
+    propertyAge,
+    extensionStatus,
+    hasExtended,
+    hasConverted,
+    propertyAddress,
+    submissionState,
+  ]);
 
   const handleValueBlur = () => {
     if (propertyValue > 0) {
@@ -206,30 +328,22 @@ const QuoteCalculator = (): JSX.Element => {
 
   const handlePostcodeChange = (value: string) => {
     setPostcodeInput(value.toUpperCase());
-    setUserSelectedBand(false);
     setDistanceError(null);
   };
 
   const handlePostcodeBlur = () => setPostcodeInput((current) => normaliseOutcode(current));
 
-  const handleDistanceBandChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setDistanceBandId(event.target.value as DistanceBandId);
-    setUserSelectedBand(true);
-  };
-
   const distanceStatusMessage = useMemo(() => {
-    if (isLookingUpDistance) return 'Checking distance…';
+    if (isLookingUpDistance) return 'Checking coverage…';
     if (distanceError) return distanceError;
 
     if (distanceLookup && Number.isFinite(distanceLookup.miles)) {
-      const miles = distanceLookup.miles.toFixed(1);
-      const label = distanceLookup.band?.label ?? selectedDistanceBand?.label;
-      return `Approx. ${miles} miles from CH5 4HS${label ? ` (${label})` : ''}.`;
+      return 'We cover this area. Travel is calculated automatically.';
     }
 
-    if (postcodeInput.trim().length >= 3) return 'Enter a full postcode to refine the travel band.';
+    if (postcodeInput.trim().length >= 3) return 'Enter the full postcode so we can confirm coverage.';
     return ' ';
-  }, [distanceError, distanceLookup, isLookingUpDistance, postcodeInput, selectedDistanceBand]);
+  }, [distanceError, distanceLookup, isLookingUpDistance, postcodeInput]);
 
   const contactStatusMessage =
     submissionState === 'success'
@@ -254,11 +368,27 @@ const QuoteCalculator = (): JSX.Element => {
     const trimmedEmail = email.trim();
     const trimmedPhone = phone.trim();
     const trimmedNotes = notes.trim();
+    const trimmedAddress = propertyAddress.trim();
+    const trimmedPostcode = postcodeInput.trim();
+    const propertyTypeOption = PROPERTY_TYPE_OPTIONS.find((option) => option.id === propertyType);
+    const propertyAgeOption = PROPERTY_AGE_OPTIONS.find((option) => option.id === propertyAge);
+    const extensionStatusOption = EXTENSION_STATUS_OPTIONS.find((option) => option.id === extensionStatus);
 
     data.set('name', trimmedName);
     data.set('email', trimmedEmail);
     data.set('phone', trimmedPhone);
     data.set('notes', trimmedNotes);
+    data.set('property-address', trimmedAddress);
+    data.set('postcode', trimmedPostcode);
+    data.set('property-type', propertyTypeOption?.label ?? propertyType);
+    data.set('property-type-id', propertyType);
+    data.set('property-age', propertyAgeOption?.label ?? propertyAge);
+    data.set('property-age-id', propertyAge);
+    data.set('extension-status', extensionStatusOption?.label ?? extensionStatus);
+    data.set('extension-status-id', extensionStatus);
+    data.set('extension-summary', extensionSummary);
+    data.set('extension-detail-extended', hasExtended ? 'yes' : 'no');
+    data.set('extension-detail-converted', hasConverted ? 'yes' : 'no');
 
     data.set('survey-type', selectedSurvey.label);
     data.set('survey-id', surveyType);
@@ -268,8 +398,6 @@ const QuoteCalculator = (): JSX.Element => {
     data.set('bedrooms', bedrooms.toString());
     data.set('distance-band', selectedDistanceBand?.label ?? 'Not specified');
     data.set('distance-band-id', selectedDistanceBand?.id ?? '');
-
-    if (postcodeInput.trim()) data.set('postcode', postcodeInput.trim());
 
     if (distanceLookup) {
       if (Number.isFinite(distanceLookup.miles)) data.set('distance-miles', distanceLookup.miles.toString());
@@ -305,18 +433,36 @@ const QuoteCalculator = (): JSX.Element => {
         throw new Error(message);
       }
 
-      if (BEACON_URL && typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+          if (BEACON_URL && typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
         try {
           const payload = {
             name: trimmedName,
             email: trimmedEmail,
             phone: trimmedPhone,
             notes: trimmedNotes,
+            propertyAddress: trimmedAddress,
+            postcode: trimmedPostcode,
             surveyType,
             propertyValue,
             bedrooms,
             complexity,
+            propertyType: {
+              id: propertyType,
+              label: propertyTypeOption?.label ?? propertyType,
+            },
+            propertyAge: {
+              id: propertyAge,
+              label: propertyAgeOption?.label ?? propertyAge,
+            },
+            extension: {
+              status: extensionStatus,
+              label: extensionStatusOption?.label ?? extensionStatus,
+              summary: extensionSummary,
+              extended: hasExtended,
+              converted: hasConverted,
+            },
             distanceBandId: selectedDistanceBand?.id ?? null,
+            distanceBandLabel: selectedDistanceBand?.label ?? null,
             distance: distanceLookup
               ? { miles: distanceLookup.miles, kilometres: distanceLookup.kilometres }
               : null,
@@ -354,7 +500,7 @@ const QuoteCalculator = (): JSX.Element => {
       <div className="lem-quote-calculator__layout">
         <form className="lem-quote-calculator__form" onSubmit={handleSubmit} noValidate>
           <fieldset className="lem-quote-calculator__fieldset">
-            <legend className="lem-quote-calculator__legend">Tell us about the property</legend>
+            <legend className="lem-quote-calculator__legend">Request your confirmed fee</legend>
 
             <div className="lem-quote-calculator__field">
               <label htmlFor="survey-type">Survey or service</label>
@@ -374,6 +520,170 @@ const QuoteCalculator = (): JSX.Element => {
               <p className="lem-quote-calculator__hint" id={SURVEY_HINT_ID}>
                 {selectedSurvey.summary}
               </p>
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="contact-name">Full name</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                autoComplete="name"
+                required
+              />
+            </div>
+
+            <div className="lem-quote-calculator__field-grid">
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="contact-email">Email address</label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  autoComplete="email"
+                  required
+                />
+              </div>
+
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="contact-phone">Phone number (optional)</label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  autoComplete="tel"
+                />
+              </div>
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="property-address">Property address</label>
+              <textarea
+                id="property-address"
+                name="property-address"
+                rows={3}
+                value={propertyAddress}
+                onChange={(event) => setPropertyAddress(event.target.value)}
+                autoComplete="street-address"
+                placeholder="e.g. 10 High Street, Chester"
+              />
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="property-postcode">Postcode</label>
+              <input
+                id="property-postcode"
+                name="postcode"
+                list={POSTCODE_SUGGESTIONS_ID}
+                value={postcodeInput}
+                onChange={(event) => handlePostcodeChange(event.target.value)}
+                onBlur={handlePostcodeBlur}
+                autoComplete="postal-code"
+                aria-describedby={`${POSTCODE_HINT_ID} ${DISTANCE_STATUS_ID}`}
+                placeholder="e.g. CH7 1AA or CH7"
+              />
+              <p className="lem-quote-calculator__hint" id={POSTCODE_HINT_ID}>
+                Select a suggestion if available to help us confirm coverage.
+              </p>
+              <p
+                className={`lem-quote-calculator__hint${distanceError ? ' lem-quote-calculator__hint--error' : ''}`}
+                id={DISTANCE_STATUS_ID}
+                aria-live="polite"
+              >
+                {distanceStatusMessage}
+              </p>
+              {matchedAreas.length > 0 && (
+                <p className="lem-quote-calculator__hint">
+                  Serving {matchedAreas.map((area) => area.label).join(', ')}.
+                </p>
+              )}
+            </div>
+
+            <div className="lem-quote-calculator__field-grid">
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="property-type">Property type</label>
+                <select
+                  id="property-type"
+                  name="property-type"
+                  value={propertyType}
+                  onChange={(event) => setPropertyType(event.target.value as PropertyTypeId)}
+                >
+                  {PROPERTY_TYPE_OPTIONS.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="property-age">Approximate age</label>
+                <select
+                  id="property-age"
+                  name="property-age"
+                  value={propertyAge}
+                  onChange={(event) => setPropertyAge(event.target.value as PropertyAgeId)}
+                >
+                  {PROPERTY_AGE_OPTIONS.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="extension-status">Extended or converted?</label>
+              <select
+                id="extension-status"
+                name="extension-status"
+                value={extensionStatus}
+                onChange={(event) => setExtensionStatus(event.target.value as ExtensionStatusId)}
+              >
+                {EXTENSION_STATUS_OPTIONS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <p className="lem-quote-calculator__hint">
+                Let us know about major alterations so we can adjust inspection time.
+              </p>
+              {extensionStatus === 'yes' ? (
+                <div className="lem-quote-calculator__option-list" role="group" aria-label="Extension details">
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="extension-detail-extended"
+                      value="yes"
+                      checked={hasExtended}
+                      onChange={(event) =>
+                        setExtensionTypes((prev) => ({ ...prev, extended: event.target.checked }))
+                      }
+                    />
+                    <span>Extended</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="extension-detail-converted"
+                      value="yes"
+                      checked={hasConverted}
+                      onChange={(event) =>
+                        setExtensionTypes((prev) => ({ ...prev, converted: event.target.checked }))
+                      }
+                    />
+                    <span>Converted</span>
+                  </label>
+                </div>
+              ) : null}
             </div>
 
             <div className="lem-quote-calculator__field-grid">
@@ -398,7 +708,7 @@ const QuoteCalculator = (): JSX.Element => {
               </div>
 
               <div className="lem-quote-calculator__field">
-                <label htmlFor="bedrooms">Bedrooms</label>
+                <label htmlFor="bedrooms">Number of bedrooms</label>
                 <input
                   id="bedrooms"
                   name="bedrooms"
@@ -413,123 +723,6 @@ const QuoteCalculator = (): JSX.Element => {
                 <p className="lem-quote-calculator__hint" id={BEDROOM_HINT_ID}>
                   Include loft rooms used as bedrooms.
                 </p>
-              </div>
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="property-postcode">Postcode or area</label>
-              <input
-                id="property-postcode"
-                name="postcode"
-                list={POSTCODE_SUGGESTIONS_ID}
-                value={postcodeInput}
-                onChange={(event) => handlePostcodeChange(event.target.value)}
-                onBlur={handlePostcodeBlur}
-                autoComplete="postal-code"
-                aria-describedby={`${POSTCODE_HINT_ID} ${DISTANCE_STATUS_ID}`}
-                placeholder="e.g. CH5 4HS or CH7"
-              />
-              <p className="lem-quote-calculator__hint" id={POSTCODE_HINT_ID}>
-                Select a suggestion to auto-complete the travel distance.
-              </p>
-              <p
-                className={`lem-quote-calculator__hint${distanceError ? ' lem-quote-calculator__hint--error' : ''}`}
-                id={DISTANCE_STATUS_ID}
-                aria-live="polite"
-              >
-                {distanceStatusMessage}
-              </p>
-              {matchedAreas.length > 0 && (
-                <p className="lem-quote-calculator__hint">
-                  Serving {matchedAreas.map((area) => area.label).join(', ')}.
-                </p>
-              )}
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="travel-band">Travel distance</label>
-              <select
-                id="travel-band"
-                name="travel-band"
-                value={distanceBandId}
-                onChange={handleDistanceBandChange}
-                aria-describedby={TRAVEL_HINT_ID}
-              >
-                {DISTANCE_BANDS.map((band) => (
-                  <option key={band.id} value={band.id}>
-                    {band.label}
-                  </option>
-                ))}
-              </select>
-              <p className="lem-quote-calculator__hint" id={TRAVEL_HINT_ID}>
-                Travel adjustments are added automatically when required.
-              </p>
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="complexity">Property complexity</label>
-              <select
-                id="complexity"
-                name="complexity"
-                value={complexity}
-                onChange={(event) => setComplexity(event.target.value as ComplexityType)}
-                aria-describedby={COMPLEXITY_HINT_ID}
-              >
-                {['standard', 'extended', 'period'].map((id) => {
-                  const opt = getComplexityById(id as ComplexityType);
-                  return (
-                    <option key={id} value={id}>
-                      {opt.label}
-                    </option>
-                  );
-                })}
-              </select>
-              <p className="lem-quote-calculator__hint" id={COMPLEXITY_HINT_ID}>
-                {selectedComplexity.helper}
-              </p>
-            </div>
-          </fieldset>
-
-          <fieldset className="lem-quote-calculator__fieldset">
-            <legend className="lem-quote-calculator__legend">Request your confirmed fee</legend>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="contact-name">Your name</label>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                autoComplete="name"
-                required
-              />
-            </div>
-
-            <div className="lem-quote-calculator__field-grid">
-              <div className="lem-quote-calculator__field">
-                <label htmlFor="contact-email">Email</label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  autoComplete="email"
-                  required
-                />
-              </div>
-
-              <div className="lem-quote-calculator__field">
-                <label htmlFor="contact-phone">Phone (optional)</label>
-                <input
-                  id="contact-phone"
-                  name="phone"
-                  type="tel"
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
-                  autoComplete="tel"
-                />
               </div>
             </div>
 
@@ -589,11 +782,8 @@ const QuoteCalculator = (): JSX.Element => {
           </div>
 
           <p className="lem-quote-calculator__disclaimer">
-            Estimate assumes {selectedComplexity.label.toLowerCase()} and typical access.
-            {selectedDistanceBand
-              ? ` Travel band: ${selectedDistanceBand.label}.`
-              : ' Travel within our standard area.'}
-            {' '}We'll confirm a fixed fee once we review your enquiry.
+            Estimate assumes {selectedComplexity.label.toLowerCase()} and typical access. Travel adjustments are applied
+            automatically once we confirm your location. We'll confirm a fixed fee after reviewing your enquiry.
           </p>
         </aside>
       </div>
