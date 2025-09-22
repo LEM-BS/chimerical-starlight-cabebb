@@ -42,7 +42,7 @@ describe('QuoteCalculator extension handling', () => {
     const updatedDisclaimer = container.querySelector<HTMLParagraphElement>(
       '.lem-quote-calculator__disclaimer',
     );
-    expect(updatedDisclaimer?.textContent).toContain('extended / altered');
+    expect(updatedDisclaimer?.textContent).toContain('extended or converted');
   });
 
   test('prevents submission when extension is yes without details', async () => {

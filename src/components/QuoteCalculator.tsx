@@ -112,7 +112,6 @@ const QuoteCalculator = (): JSX.Element => {
   const { extended: hasExtended, converted: hasConverted } = extensionTypes;
   const hasExtensionDetailSelection = hasExtended || hasConverted;
   const requiresExtendedComplexity = extensionStatus === 'yes';
-  const isPeriodProperty = propertyAge === 'victorian-edwardian' || propertyAge === 'pre-1900';
   const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
   const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
 
@@ -179,7 +178,7 @@ const QuoteCalculator = (): JSX.Element => {
   }, [extensionStatus, hasConverted, hasExtended]);
 
   useEffect(() => {
-    const candidateComplexities: ComplexityType[] = [];
+    const candidateComplexities: ComplexityType[] = ['standard'];
 
     if (propertyAge === 'pre-1900') {
       candidateComplexities.push('period');
@@ -191,19 +190,11 @@ const QuoteCalculator = (): JSX.Element => {
 
     if (hasBothExtensionDetails) {
       candidateComplexities.push('extended-and-converted');
-    } else if (hasExtensionDetail) {
+    } else if (hasExtensionDetail || requiresExtendedComplexity) {
       candidateComplexities.push('extended');
     }
 
-    let nextComplexity: ComplexityType = 'standard';
-    if (isPeriodProperty) {
-      nextComplexity = 'period';
-    } else if (requiresExtendedComplexity) {
-      nextComplexity = 'extended';
-    }
-
-    if (complexity !== nextComplexity) setComplexity(nextComplexity);
-  }, [complexity, isPeriodProperty, requiresExtendedComplexity]);
+    let nextComplexity = candidateComplexities[0];
     for (const candidate of candidateComplexities) {
       const bestOption = getComplexityById(nextComplexity);
       const candidateOption = getComplexityById(candidate);
@@ -218,6 +209,7 @@ const QuoteCalculator = (): JSX.Element => {
     hasBothExtensionDetails,
     hasExtensionDetail,
     propertyAge,
+    requiresExtendedComplexity,
   ]);
 
   useEffect(() => {
