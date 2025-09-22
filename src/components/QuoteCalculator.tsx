@@ -1,7 +1,7 @@
 import type { FormEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { AREA_SUGGESTIONS, getAreasForOutcode, normaliseOutcode } from '../areas';
+import { AREA_SUGGESTIONS, getAreasForOutcode, normaliseOutcode } from '../lib/areas';
 import {
   calculateQuote,
   formatCurrency,
@@ -15,7 +15,7 @@ import {
   type DistanceBandId,
   type QuoteRange,
   type SurveyType,
-} from '../pricing';
+} from '../lib/pricing';
 
 const SURVEY_HINT_ID = 'quote-survey-hint';
 const VALUE_HINT_ID = 'quote-value-hint';
