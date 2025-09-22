@@ -244,31 +244,31 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'interwar',
     label: 'Interwar era (1919–1944)',
-    adjustment: 25,
+    adjustment: 15,
     helper: 'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
   },
   {
     id: 'extended',
     label: 'Extended or converted',
-    adjustment: 50,
+    adjustment: 20,
     helper: 'Includes a loft conversion or sizeable extension requiring additional inspection time.',
   },
   {
     id: 'extended-and-converted',
     label: 'Extended & converted',
-    adjustment: 75,
+    adjustment: 35,
     helper: 'Both an extension and a conversion or multiple major alterations needing further analysis.',
   },
   {
     id: 'victorian',
     label: 'Victorian / Edwardian',
-    adjustment: 50,
+    adjustment: 30,
     helper: 'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
   {
     id: 'period',
     label: 'Pre-1900 / non-standard',
-    adjustment: 130,
+    adjustment: 70,
     helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
   },
 ] as const;
