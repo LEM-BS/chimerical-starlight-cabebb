@@ -37,7 +37,7 @@
 .lem-quote-calculator__legend {
   font-family: var(--heading-font, 'Merriweather', serif);
   font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
-  color: var(--cta-gold, #fbbf24);
+  color: var(--primary-blue, #0f172a);
   margin-bottom: 0.5rem;
 }
 
