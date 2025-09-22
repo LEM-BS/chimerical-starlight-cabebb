@@ -112,8 +112,6 @@ const QuoteCalculator = (): JSX.Element => {
   const { extended: hasExtended, converted: hasConverted } = extensionTypes;
   const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
   const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
-  const hasExtensionSelection = extensionStatus === 'yes' && (hasExtended || hasConverted);
-  const isPeriodProperty = propertyAge === 'victorian-edwardian' || propertyAge === 'pre-1900';
 
   const extensionSummary = useMemo(() => {
     if (extensionStatus !== 'yes') {
@@ -210,15 +208,6 @@ const QuoteCalculator = (): JSX.Element => {
     hasExtensionDetail,
     propertyAge,
   ]);
-    let nextComplexity: ComplexityType = 'standard';
-    if (isPeriodProperty) {
-      nextComplexity = 'period';
-    } else if (hasExtensionSelection) {
-      nextComplexity = 'extended';
-    }
-
-    if (complexity !== nextComplexity) setComplexity(nextComplexity);
-  }, [complexity, hasExtensionSelection, isPeriodProperty]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
