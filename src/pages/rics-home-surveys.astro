@@ -4,6 +4,7 @@ import ServiceContent from '../components/ServiceContent.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
 import { getEntry } from 'astro:content';
+import HomeInstantEstimate from '../components/HomeInstantEstimate';
 
 const conversionSendToValue =
   import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_SEND_TO?.trim();
