@@ -16,6 +16,7 @@ import {
   type ExtensionStatusId,
   type PropertyAgeId,
   type PropertyTypeId,
+  type QuoteInput,
   type QuoteRange,
   type SurveyType,
 } from '../lib/pricing';
@@ -127,19 +128,18 @@ const QuoteCalculator = (): JSX.Element => {
     return 'yes (details not specified)';
   }, [extensionStatus, hasConverted, hasExtended]);
 
-  const quote = useMemo(
-    () =>
-      calculateQuote({
-        surveyType,
-        propertyValue,
-        bedrooms,
-        complexity,
-        distanceBandId,
-        propertyType,
-        propertyAge,
-        extensionStatus,
-        extensionDetails: { extended: hasExtended, converted: hasConverted },
-      }),
+  const quoteInput = useMemo<QuoteInput>(
+    () => ({
+      surveyType,
+      propertyValue,
+      bedrooms,
+      complexity,
+      distanceBandId,
+      propertyType,
+      propertyAge,
+      extensionStatus,
+      extensionDetails: { extended: hasExtended, converted: hasConverted },
+    }),
     [
       surveyType,
       propertyValue,
@@ -153,6 +153,8 @@ const QuoteCalculator = (): JSX.Element => {
       hasConverted,
     ],
   );
+
+  const quote = useMemo(() => calculateQuote(quoteInput), [quoteInput]);
 
   const previousFormValuesRef = useRef({
     surveyType,
