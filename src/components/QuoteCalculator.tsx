@@ -110,6 +110,9 @@ const QuoteCalculator = (): JSX.Element => {
   const bedrooms = useMemo(() => parseBedroomsValue(bedroomsInput), [bedroomsInput]);
   const selectedDistanceBand = useMemo(() => getDistanceBandById(distanceBandId), [distanceBandId]);
   const { extended: hasExtended, converted: hasConverted } = extensionTypes;
+  const hasExtensionDetailSelection = hasExtended || hasConverted;
+  const requiresExtendedComplexity = extensionStatus === 'yes';
+  const isPeriodProperty = propertyAge === 'victorian-edwardian' || propertyAge === 'pre-1900';
   const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
   const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
 
@@ -193,6 +196,14 @@ const QuoteCalculator = (): JSX.Element => {
     }
 
     let nextComplexity: ComplexityType = 'standard';
+    if (isPeriodProperty) {
+      nextComplexity = 'period';
+    } else if (requiresExtendedComplexity) {
+      nextComplexity = 'extended';
+    }
+
+    if (complexity !== nextComplexity) setComplexity(nextComplexity);
+  }, [complexity, isPeriodProperty, requiresExtendedComplexity]);
     for (const candidate of candidateComplexities) {
       const bestOption = getComplexityById(nextComplexity);
       const candidateOption = getComplexityById(candidate);
@@ -359,6 +370,19 @@ const QuoteCalculator = (): JSX.Element => {
     const form = event.currentTarget;
     if (!form.checkValidity()) {
       form.reportValidity();
+      return;
+    }
+
+    if (extensionStatus === 'yes' && !hasExtensionDetailSelection) {
+      const firstDetailInput = form.querySelector<HTMLInputElement>('input[name="extension-detail-extended"]');
+      if (firstDetailInput) {
+        firstDetailInput.setCustomValidity('Select at least one extension detail.');
+        firstDetailInput.reportValidity();
+        firstDetailInput.setCustomValidity('');
+        firstDetailInput.focus();
+      }
+      setSubmissionState('error');
+      setSubmissionError('Select at least one extension detail so we can confirm the surcharge.');
       return;
     }
 
