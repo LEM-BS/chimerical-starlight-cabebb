@@ -38,14 +38,14 @@ describe('pricing helpers', () => {
   });
 
   it('performs VAT maths consistently', () => {
-    expect(applyVat(100)).toBeCloseTo(100);
-    expect(stripVat(120)).toBeCloseTo(120);
-    expect(calculateVatFromGross(120)).toBeCloseTo(0);
+    expect(applyVat(100)).toBe(100);
+    expect(stripVat(120)).toBe(120);
+    expect(calculateVatFromGross(120)).toBe(0);
     const gross = 535;
     const net = stripVat(gross);
     const vat = calculateVatFromGross(gross);
-    expect(net + vat).toBeCloseTo(gross);
-    expect(net).toBeCloseTo(gross / (1 + VAT_RATE));
+    expect(net + vat).toBe(gross);
+    expect(net).toBe(gross / (1 + VAT_RATE));
   });
 });
 
