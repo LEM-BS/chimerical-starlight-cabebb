@@ -1315,6 +1315,14 @@ form button:hover,
   border-color: rgba(37, 99, 235, 0.28);
 }
 
+.enquiry-form .instant-estimate {
+  margin-top: clamp(1.25rem, 1rem + 0.6vw, 1.8rem);
+}
+
+.enquiry-form .instant-estimate + .cta-button {
+  margin-top: clamp(1rem, 0.85rem + 0.4vw, 1.5rem);
+}
+
 .quote-form ul {
   list-style: none;
   margin-top: 1.75rem;

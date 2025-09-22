@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeInstantEstimate from '../components/HomeInstantEstimate';
 
 const conversionSendToValue =
   import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_SEND_TO?.trim();
@@ -17,6 +18,7 @@ const conversionSendToAttribute = hasConversionSendTo
     <title>Request a Property Survey | LEM Building Surveying</title>
         <meta content="Submit your property details to request a free, no-obligation quote for a building survey, damp report, EPC, or floorplan. Serving Deeside, Chester &amp; the North West." name="description">
         <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/enquiry">
+        <link rel="stylesheet" href="/lem-quote.css">
         <meta property="og:title" content="Request a Property Survey | LEM Building Surveying">
         <meta property="og:description" content="Submit your property details to request a free, no-obligation quote for a building survey, damp report, EPC, or floorplan. Serving Deeside, Chester &amp; the North West.">
         <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/enquiry">
@@ -44,7 +46,6 @@ const conversionSendToAttribute = hasConversionSendTo
             Complete the form below and Liam will be in touch to confirm details
             or provide a tailored quote—no obligation.
           </p>
-          <HomeInstantEstimate client:load />
           <!-- Formspree: _next ensures redirect after successful send -->
           <form
             action="https://formspree.io/f/xzzdqqqz"
@@ -97,6 +98,7 @@ const conversionSendToAttribute = hasConversionSendTo
             <label for="details">Additional Notes:</label>
             <textarea id="details" name="details" placeholder="Any known issues, preferred times, or questions." rows="4"></textarea>
 
+            <HomeInstantEstimate client:load />
             <button class="cta-button" type="submit">Submit Enquiry</button>
           </form>
           <p class="thank-you-note">
