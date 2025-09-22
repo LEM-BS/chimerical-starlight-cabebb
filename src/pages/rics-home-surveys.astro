@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceContent from '../components/ServiceContent.astro';
+import HomeInstantEstimate from '../components/HomeInstantEstimate';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
 import { getEntry } from 'astro:content';
@@ -91,6 +92,9 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout seo={seo}>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/lem-quote.css" />
+  </Fragment>
 
   <!-- ░░ HEADER ░░ --><!-- ░░ HERO + QUOTE FORM ░░ --><section class="hero hero-plain">
         <div class="hero-container legacy-container">
@@ -104,8 +108,7 @@ const { Content } = await entry.render();
             turnaround in as little as 5–7&nbsp;days. Get your tailored quote now and
             secure your survey date.
           </p>
-           <HomeInstantEstimate client:load />
-           <form
+          <form
             action="https://formspree.io/f/xzzdqqqz"
             class="quote-form"
             data-conversion-send-to={conversionSendToAttribute}
@@ -130,9 +133,12 @@ const { Content } = await entry.render();
               </select>
               <input name="bedrooms" placeholder="No. of Bedrooms" required="" type="text">
               <input aria-label="Estimated Property Value (£)" inputmode="decimal" min="0.01" name="property-value" placeholder="Estimated Property Value (£)" required="" step="0.01" type="number">
-              <button class="cta-button hero-contrast" type="submit">
-                Get My Survey Quote in 60 Minutes
-              </button>
+              <HomeInstantEstimate client:load />
+              <div class="field full">
+                <button class="cta-button hero-contrast" type="submit">
+                  Get My Survey Quote in 60 Minutes
+                </button>
+              </div>
             </div>
             <ul>
               <li>
