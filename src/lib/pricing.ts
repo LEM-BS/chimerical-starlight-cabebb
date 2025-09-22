@@ -178,7 +178,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
       'Defect diagnosis plus guidance on remedial works and specialists.',
       'Extended phone review to walk through priorities and options.',
     ],
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
   },
   {
     id: 'damp',
@@ -305,43 +305,59 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 0,
     maxValue: 150_000,
-    bedroomsIncluded: 3,
-    level1: 375,
-    level2: 525,
-    level3: 750,
+    bedroomsIncluded: 2,
+    level1: 350,
+    level2: 475,
+    level3: 650,
   },
   {
     minValue: 150_001,
     maxValue: 250_000,
-    bedroomsIncluded: 3,
-    level1: 395,
-    level2: 545,
-    level3: 800,
+    bedroomsIncluded: 2,
+    level1: 370,
+    level2: 495,
+    level3: 700,
   },
   {
     minValue: 250_001,
     maxValue: 400_000,
-    bedroomsIncluded: 3,
-    level1: 415,
-    level2: 595,
-    level3: 875,
+    bedroomsIncluded: 2,
+    level1: 390,
+    level2: 545,
+    level3: 735,
   },
   {
     minValue: 400_001,
     maxValue: 600_000,
-    bedroomsIncluded: 4,
-    level1: 435,
-    level2: 645,
-    level3: 995,
+    bedroomsIncluded: 2,
+    level1: 410,
+    level2: 595,
+    level3: 825,
   },
   {
     minValue: 600_001,
-    maxValue: Number.POSITIVE_INFINITY,
-    bedroomsIncluded: 4,
-    level1: 465,
-    level2: 695,
-    level3: 1125,
+    maxValue: 850_000,
+    bedroomsIncluded: 2,
+    level1: 490,
+    level2: 675,
+    level3: 995,
   },
+  {
+    minValue: 850_001,
+    maxValue: 999_999,
+    bedroomsIncluded: 2,
+    level1: 575,
+    level2: 750,
+    level3: 1100,
+  },
+  {
+    minValue: 1_000_000,
+    maxValue: 1_500_000,
+    bedroomsIncluded: 2,
+    level1: 675,
+    level2: 875,
+    level3: 1300,
+  }
 ] as const;
 
 export const EXTRA_BEDROOM_SURCHARGE = 30;
@@ -395,7 +411,7 @@ export const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, number> = {
 export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> = {
   unknown: 0,
   no: 0,
-  yes: 75,
+  yes: 20,
 };
 
 const VALUE_TIERS: { limit: number; amount: number }[] = [
