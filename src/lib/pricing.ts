@@ -299,7 +299,7 @@ export const DISTANCE_BANDS: readonly DistanceBand[] = [
   },
 ] as const;
 
-const LEVEL_SURVEYS: readonly SurveyType[] = ['level1', 'level2', 'level3'] as const;
+const LEVEL_SURVEYS = ['level1', 'level2', 'level3'] as const;
 
 export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {

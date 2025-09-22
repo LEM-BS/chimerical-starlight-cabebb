@@ -198,6 +198,13 @@
   gap: 0.75rem;
 }
 
+.instant-estimate__panel .lem-quote-calculator {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
 .lem-quote-calculator__cta .cta-button {
   padding-inline: 1.6rem;
 }
