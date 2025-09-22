@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuoteCalculator from '../components/QuoteCalculator';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Survey Quote Calculator | Instant Guide Pricing | LEM Building Surveying Ltd</title>
+    <meta
+      name="description"
+      content="Generate a quick guide price for RICS home surveys, damp investigations and specialist reports across Deeside, Chester and the North West. Adjust survey type, bedrooms and property value to see our typical fees."
+    />
+    <meta
+      name="keywords"
+      content="survey quote calculator, RICS survey cost, building survey quote, damp survey price, EPC floorplan quote"
+    />
+    <link rel="canonical" href="https://www.lembuildingsurveying.co.uk/quote" />
+    <meta
+      property="og:title"
+      content="Survey Quote Calculator | Instant Guide Pricing | LEM Building Surveying Ltd"
+    />
+    <meta
+      property="og:description"
+      content="Generate a quick guide price for RICS home surveys, damp investigations and specialist reports across Deeside, Chester and the North West."
+    />
+    <meta property="og:url" content="https://www.lembuildingsurveying.co.uk/quote" />
+    <meta property="og:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Survey Quote Calculator | Instant Guide Pricing | LEM Building Surveying Ltd"
+    />
+    <meta
+      name="twitter:description"
+      content="Generate a quick guide price for RICS home surveys, damp investigations and specialist reports across Deeside, Chester and the North West."
+    />
+    <meta name="twitter:url" content="https://www.lembuildingsurveying.co.uk/quote" />
+    <meta name="twitter:image" content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" />
+    <link rel="stylesheet" href="/lem-quote.css" />
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.lembuildingsurveying.co.uk/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Survey Quote Calculator",
+            "item": "https://www.lembuildingsurveying.co.uk/quote"
+          }
+        ]
+      }
+    </script>
+  </Fragment>
+
+  <main class="quote-page">
+    <section class="hero hero-quote-calculator">
+      <div class="container hero-container">
+        <p class="hero-eyebrow">Instant guide pricing</p>
+        <h1>Survey Quote Calculator</h1>
+        <p>
+          Get a tailored estimate for RICS home surveys, damp inspections, ventilation assessments and more.
+          Adjust the details to see the guide fee we usually charge across Deeside, Chester and the wider North West.
+        </p>
+        <div class="hero-cta">
+          <a class="cta-button hero-contrast" href="#calculator">Jump to the calculator</a>
+          <a class="inline-link" href="/enquiry.html">Request a confirmed quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-page__intro">
+      <div class="container">
+        <p>
+          Every property is different, but this quick tool shows the range most clients pay before we fine-tune the fee.
+          Enter the property value, bedrooms and construction type to see how inspection time influences the cost.
+        </p>
+        <ul>
+          <li>Guide pricing covers RICS Level&nbsp;1, 2 &amp; 3 surveys plus damp, ventilation, EPC and measured surveys.</li>
+          <li>All figures include VAT and reflect the turnaround times delivered by our Deeside-based surveyor.</li>
+          <li>Planning a portfolio or combination of services? Submit the enquiry form for a tailored proposal within the hour.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="quote-page__calculator" id="calculator" aria-labelledby="calculator-title">
+      <div class="container">
+        <div class="quote-page__calculator-header">
+          <h2 id="calculator-title">Calculate your guide fee</h2>
+          <p>Adjust the options to see how property complexity and size affect the inspection time and fee.</p>
+        </div>
+        <QuoteCalculator client:load />
+      </div>
+    </section>
+
+    <section class="quote-page__support">
+      <div class="container">
+        <h2>Ready for a firm quote?</h2>
+        <p>
+          Share your property details using the
+          <a href="/enquiry.html" class="inline-link">online enquiry form</a> or call
+          <a href="tel:07378732037" class="inline-link">07378&nbsp;732&nbsp;037</a> for no-obligation advice. We’ll confirm
+          availability, turnaround and a fixed fee in writing.
+        </p>
+        <p>
+          Prefer email? Contact
+          <a href="mailto:enquiries@lembuildingsurveying.co.uk" class="inline-link">enquiries@lembuildingsurveying.co.uk</a>
+          with any plans or estate agent links—responses are usually within 60 minutes.
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
