@@ -113,6 +113,8 @@ const QuoteCalculator = (): JSX.Element => {
   const hasExtensionDetailSelection = hasExtended || hasConverted;
   const requiresExtendedComplexity = extensionStatus === 'yes';
   const isPeriodProperty = propertyAge === 'victorian-edwardian' || propertyAge === 'pre-1900';
+  const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
+  const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
 
   const extensionSummary = useMemo(() => {
     if (extensionStatus !== 'yes') {
@@ -177,6 +179,22 @@ const QuoteCalculator = (): JSX.Element => {
   }, [extensionStatus, hasConverted, hasExtended]);
 
   useEffect(() => {
+    const candidateComplexities: ComplexityType[] = [];
+
+    if (propertyAge === 'pre-1900') {
+      candidateComplexities.push('period');
+    } else if (propertyAge === 'victorian-edwardian') {
+      candidateComplexities.push('victorian');
+    } else if (propertyAge === 'interwar') {
+      candidateComplexities.push('interwar');
+    }
+
+    if (hasBothExtensionDetails) {
+      candidateComplexities.push('extended-and-converted');
+    } else if (hasExtensionDetail) {
+      candidateComplexities.push('extended');
+    }
+
     let nextComplexity: ComplexityType = 'standard';
     if (isPeriodProperty) {
       nextComplexity = 'period';
@@ -186,6 +204,21 @@ const QuoteCalculator = (): JSX.Element => {
 
     if (complexity !== nextComplexity) setComplexity(nextComplexity);
   }, [complexity, isPeriodProperty, requiresExtendedComplexity]);
+    for (const candidate of candidateComplexities) {
+      const bestOption = getComplexityById(nextComplexity);
+      const candidateOption = getComplexityById(candidate);
+      if (candidateOption.adjustment >= bestOption.adjustment) {
+        nextComplexity = candidateOption.id;
+      }
+    }
+
+    if (complexity !== nextComplexity) setComplexity(nextComplexity);
+  }, [
+    complexity,
+    hasBothExtensionDetails,
+    hasExtensionDetail,
+    propertyAge,
+  ]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
