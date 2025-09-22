@@ -1,17 +1,7 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.lembuildingsurveying.co.uk',
-  output: 'static',
-  integrations: [mdx()],
-  build: {
-    format: 'file'
-  },
-  vite: {
-    build: {
-      minify: 'terser',
-      cssMinify: 'lightningcss'
-    }
-  }
+  integrations: [sitemap()]
 });
