@@ -341,9 +341,9 @@ const PROPERTY_TYPE_LABELS: Record<PropertyTypeId, string> = {
 };
 
 export const PROPERTY_TYPE_ADJUSTMENTS: Record<PropertyTypeId, number> = {
-  'detached-house': 55,
-  'semi-detached-house': 35,
-  'end-terrace-house': 20,
+  'detached-house': 35,
+  'semi-detached-house': 20,
+  'end-terrace-house': 15,
   'mid-terrace-house': 10,
   'flat-apartment': 0,
   bungalow: 25,
@@ -367,11 +367,11 @@ export const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, number> = {
   unknown: 20,
   'new-build': 0,
   'post-2000': 0,
-  '1980-1999': 10,
-  '1945-1979': 15,
-  interwar: 45,
-  'victorian-edwardian': 65,
-  'pre-1900': 95,
+  '1980-1999': 5,
+  '1945-1979': 10,
+  interwar: 25,
+  'victorian-edwardian': 50,
+  'pre-1900': 90,
 };
 
 export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> = {
