@@ -135,7 +135,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level1',
     label: 'RICS Level 1 Home Survey',
-    baseFee: 375,
+    baseFee: 350,
     summary:
       'For modern flats or houses in good condition that need a concise overview.',
     turnaround: 'Report within 2–3 working days of the inspection.',
@@ -149,7 +149,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level2',
     label: 'RICS Level 2 Home Survey',
-    baseFee: 535,
+    baseFee: 475,
     summary: 'Our most requested survey for conventional homes built after 1900.',
     turnaround: 'Report typically delivered 3–5 working days after inspection.',
     valueWeight: 1,
@@ -163,7 +163,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level3',
     label: 'RICS Level 3 Building Survey',
-    baseFee: 800,
+    baseFee: 650,
     summary: 'Best suited to older, extended or complex properties needing deeper analysis.',
     turnaround: 'Allow 5–7 working days for the full written report.',
     valueWeight: 1.35,
