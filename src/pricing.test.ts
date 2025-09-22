@@ -52,7 +52,7 @@ describe('pricing helpers', () => {
 describe('distance band helpers', () => {
   it('finds a distance band by identifier', () => {
     expect(getDistanceBandById('within-35-miles')).toEqual(DISTANCE_BANDS[2]);
-    expect(getDistanceBandById(null)).toBeUndefined();
+    expect(getDistanceBandById(null)).toBeNull();
   });
 
   it('selects the correct band for a mileage figure', () => {
@@ -79,7 +79,7 @@ describe('quote engine', () => {
     expect(result.total.gross).toBe(545);
     expect(result.total.net).toBeCloseTo(454.17);
     expect(result.total.vat).toBeCloseTo(90.83);
-    expect(result.range).toEqual({ min: 545, max: 575 });
+    expect(result.range).toEqual({ min: 515, max: 575 });
   });
 
   it('applies value, bedroom, complexity and travel adjustments', () => {
@@ -100,5 +100,70 @@ describe('quote engine', () => {
     expect(result.total.net).toBeCloseTo(783.33);
     expect(result.total.vat).toBeCloseTo(156.67);
     expect(result.range).toEqual({ min: 910, max: 970 });
+  });
+
+  it('applies property metadata surcharges for a mid-terrace 1980s home', () => {
+    const result = calculateQuote({
+      surveyType: 'level2',
+      propertyValue: 185000,
+      bedrooms: 3,
+      complexity: 'standard',
+      distanceBandId: 'within-10-miles',
+      propertyType: 'mid-terrace-house',
+      propertyAge: '1980-1999',
+    });
+
+    expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
+      ['property-type', 10],
+      ['property-age', 10],
+    ]);
+    expect(result.adjustments.every((entry) => entry.amount.gross > 0)).toBe(true);
+    expect(result.total.gross).toBe(565);
+    expect(result.range).toEqual({ min: 535, max: 595 });
+  });
+
+  it('applies extension and distance surcharges for a Victorian detached home', () => {
+    const result = calculateQuote({
+      surveyType: 'level2',
+      propertyValue: 425000,
+      bedrooms: 4,
+      complexity: 'standard',
+      distanceBandId: 'within-20-miles',
+      propertyType: 'detached-house',
+      propertyAge: 'victorian-edwardian',
+      extensionStatus: 'yes',
+    });
+
+    expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
+      ['property-type', 55],
+      ['property-age', 65],
+      ['extension', 75],
+      ['distance', 25],
+    ]);
+    expect(result.total.gross).toBe(865);
+    expect(result.range).toEqual({ min: 835, max: 895 });
+  });
+
+  it('totals the larger surcharges for a complex level 3 survey', () => {
+    const result = calculateQuote({
+      surveyType: 'level3',
+      propertyValue: 645000,
+      bedrooms: 5,
+      complexity: 'standard',
+      distanceBandId: 'within-50-miles',
+      propertyType: 'detached-house',
+      propertyAge: 'pre-1900',
+      extensionStatus: 'yes',
+    });
+
+    expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
+      ['property-type', 55],
+      ['property-age', 95],
+      ['extension', 75],
+      ['extra-bedrooms', 30],
+      ['distance', 65],
+    ]);
+    expect(result.total.gross).toBe(1445);
+    expect(result.range).toEqual({ min: 1395, max: 1495 });
   });
 });
