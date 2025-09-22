@@ -129,7 +129,7 @@ export interface QuoteResult {
   range: QuoteRange;
 }
 
-export const VAT_RATE = 0.2;
+export const VAT_RATE = 0.0;
 
 export const SURVEYS: readonly SurveyDefinition[] = [
   {
