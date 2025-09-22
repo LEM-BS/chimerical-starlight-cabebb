@@ -120,6 +120,7 @@ const { Content } = await entry.render();
               value="https://www.lembuildingsurveying.co.uk/thank-you"
             >
             <div class="form-grid">
+              <HomeInstantEstimate client:load />
               <input name="name" placeholder="Your Name" required="" type="text">
               <input name="email" placeholder="Your Email" required="" type="email">
               <input name="contact" placeholder="Contact Number" required="" type="text">
@@ -133,7 +134,6 @@ const { Content } = await entry.render();
               </select>
               <input name="bedrooms" placeholder="No. of Bedrooms" required="" type="text">
               <input aria-label="Estimated Property Value (£)" inputmode="decimal" min="0.01" name="property-value" placeholder="Estimated Property Value (£)" required="" step="0.01" type="number">
-              <HomeInstantEstimate client:load />
               <div class="field full">
                 <button class="cta-button hero-contrast" type="submit">
                   Get My Survey Quote in 60 Minutes
