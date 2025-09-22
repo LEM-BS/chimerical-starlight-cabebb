@@ -11,7 +11,13 @@ export type SurveyType =
   | 'epc'
   | 'measured';
 
-export type ComplexityType = 'standard' | 'extended' | 'period';
+export type ComplexityType =
+  | 'standard'
+  | 'interwar'
+  | 'extended'
+  | 'extended-and-converted'
+  | 'victorian'
+  | 'period';
 
 export type DistanceBandId =
   | 'within-10-miles'
@@ -195,14 +201,32 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
     helper: 'Typical brick or block construction without major alterations.',
   },
   {
+    id: 'interwar',
+    label: 'Interwar era (1919–1944)',
+    adjustment: 25,
+    helper: 'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
+  },
+  {
     id: 'extended',
-    label: 'Extended / altered',
-    adjustment: 70,
-    helper: 'Includes loft conversions, sizeable extensions or multiple outbuildings.',
+    label: 'Extended or converted',
+    adjustment: 50,
+    helper: 'Includes a loft conversion or sizeable extension requiring additional inspection time.',
+  },
+  {
+    id: 'extended-and-converted',
+    label: 'Extended & converted',
+    adjustment: 75,
+    helper: 'Both an extension and a conversion or multiple major alterations needing further analysis.',
+  },
+  {
+    id: 'victorian',
+    label: 'Victorian / Edwardian',
+    adjustment: 50,
+    helper: 'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
   {
     id: 'period',
-    label: 'Period / non-standard',
+    label: 'Pre-1900 / non-standard',
     adjustment: 130,
     helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
   },
