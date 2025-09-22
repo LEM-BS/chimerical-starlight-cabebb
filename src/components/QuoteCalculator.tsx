@@ -13,6 +13,9 @@ import {
   SURVEYS,
   type ComplexityType,
   type DistanceBandId,
+  type ExtensionStatusId,
+  type PropertyAgeId,
+  type PropertyTypeId,
   type QuoteRange,
   type SurveyType,
 } from '../lib/pricing';
@@ -26,20 +29,19 @@ const CONTACT_HINT_ID = 'quote-contact-hint';
 const CONTACT_STATUS_ID = 'quote-contact-status';
 const POSTCODE_SUGGESTIONS_ID = 'quote-postcode-suggestions';
 
-const PROPERTY_TYPE_OPTIONS = [
+const PROPERTY_TYPE_OPTIONS: ReadonlyArray<{ id: PropertyTypeId; label: string }> = [
   { id: 'detached-house', label: 'Detached house' },
   { id: 'semi-detached-house', label: 'Semi-detached house' },
-  { id: 'terraced-house', label: 'Mid-terrace house' },
+  { id: 'mid-terrace-house', label: 'Mid-terrace house' },
   { id: 'end-terrace-house', label: 'End-terrace house' },
   { id: 'flat-apartment', label: 'Flat / apartment' },
   { id: 'bungalow', label: 'Bungalow' },
   { id: 'cottage', label: 'Cottage' },
   { id: 'maisonette', label: 'Maisonette' },
   { id: 'other', label: 'Other / not listed' },
-] as const;
-type PropertyTypeId = (typeof PROPERTY_TYPE_OPTIONS)[number]['id'];
+];
 
-const PROPERTY_AGE_OPTIONS = [
+const PROPERTY_AGE_OPTIONS: ReadonlyArray<{ id: PropertyAgeId; label: string }> = [
   { id: 'unknown', label: 'Unknown' },
   { id: 'new-build', label: 'New build (0–2 years)' },
   { id: 'post-2000', label: '2000s onwards' },
@@ -48,15 +50,13 @@ const PROPERTY_AGE_OPTIONS = [
   { id: 'interwar', label: '1919–1944' },
   { id: 'victorian-edwardian', label: 'Victorian / Edwardian' },
   { id: 'pre-1900', label: 'Pre-1900' },
-] as const;
-type PropertyAgeId = (typeof PROPERTY_AGE_OPTIONS)[number]['id'];
+];
 
-const EXTENSION_STATUS_OPTIONS = [
+const EXTENSION_STATUS_OPTIONS: ReadonlyArray<{ id: ExtensionStatusId; label: string }> = [
   { id: 'unknown', label: 'Unknown' },
   { id: 'no', label: 'No' },
   { id: 'yes', label: 'Yes' },
-] as const;
-type ExtensionStatusId = (typeof EXTENSION_STATUS_OPTIONS)[number]['id'];
+];
 
 const FORM_ENDPOINT = import.meta.env.PUBLIC_QUOTE_FORM_ENDPOINT?.trim() || 'https://formspree.io/f/xzzdqqqz';
 const BEACON_URL = import.meta.env.PUBLIC_QUOTE_BEACON_URL?.trim() ?? '';
@@ -135,8 +135,23 @@ const QuoteCalculator = (): JSX.Element => {
         bedrooms,
         complexity,
         distanceBandId,
+        propertyType,
+        propertyAge,
+        extensionStatus,
+        extensionDetails: { extended: hasExtended, converted: hasConverted },
       }),
-    [surveyType, propertyValue, bedrooms, complexity, distanceBandId],
+    [
+      surveyType,
+      propertyValue,
+      bedrooms,
+      complexity,
+      distanceBandId,
+      propertyType,
+      propertyAge,
+      extensionStatus,
+      hasExtended,
+      hasConverted,
+    ],
   );
 
   const previousFormValuesRef = useRef({

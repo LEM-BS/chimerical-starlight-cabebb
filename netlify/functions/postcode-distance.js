@@ -17,10 +17,10 @@ const HOME_BASE = {
 };
 
 const DISTANCE_BANDS = [
-  { id: 'within-10-miles', label: '0-10 miles', maxMiles: 10 },
-  { id: 'within-20-miles', label: '10-20 miles', maxMiles: 20 },
-  { id: 'within-35-miles', label: '20-35 miles', maxMiles: 35 },
-  { id: 'within-50-miles', label: '35-50 miles', maxMiles: 50 },
+  { id: 'within-10-miles', label: '0–10 miles', maxMiles: 10 },
+  { id: 'within-20-miles', label: '10–20 miles', maxMiles: 20 },
+  { id: 'within-35-miles', label: '20–35 miles', maxMiles: 35 },
+  { id: 'within-50-miles', label: '35–50 miles', maxMiles: 50 },
   { id: 'over-50-miles', label: '50+ miles', maxMiles: Infinity },
 ];
 

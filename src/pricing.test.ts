@@ -75,11 +75,11 @@ describe('quote engine', () => {
     expect(result.survey).toEqual(getSurveyById('level2'));
     expect(result.complexity).toEqual(COMPLEXITY_OPTIONS[0]);
     expect(result.adjustments).toHaveLength(0);
-    expect(result.base.gross).toBe(535);
-    expect(result.total.gross).toBe(535);
-    expect(result.total.net).toBeCloseTo(445.83);
-    expect(result.total.vat).toBeCloseTo(89.17);
-    expect(result.range).toEqual({ min: 535, max: 580 });
+    expect(result.base.gross).toBe(545);
+    expect(result.total.gross).toBe(545);
+    expect(result.total.net).toBeCloseTo(454.17);
+    expect(result.total.vat).toBeCloseTo(90.83);
+    expect(result.range).toEqual({ min: 545, max: 575 });
   });
 
   it('applies value, bedroom, complexity and travel adjustments', () => {
@@ -93,13 +93,12 @@ describe('quote engine', () => {
 
     expect(result.adjustments.map((entry) => entry.id)).toEqual([
       'complexity',
-      'value',
-      'bedrooms',
-      'travel',
+      'extra-bedrooms',
+      'distance',
     ]);
-    expect(result.total.gross).toBe(955);
-    expect(result.total.net).toBeCloseTo(795.83);
-    expect(result.total.vat).toBeCloseTo(159.17);
-    expect(result.range).toEqual({ min: 880, max: 1030 });
+    expect(result.total.gross).toBe(940);
+    expect(result.total.net).toBeCloseTo(783.33);
+    expect(result.total.vat).toBeCloseTo(156.67);
+    expect(result.range).toEqual({ min: 910, max: 970 });
   });
 });
