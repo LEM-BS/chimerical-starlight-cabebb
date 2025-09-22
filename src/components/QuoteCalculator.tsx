@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react';
+import type { FormEvent, ReactElement } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { AREA_SUGGESTIONS, getAreasForOutcode, normaliseOutcode } from '../lib/areas';
@@ -80,7 +80,7 @@ interface DistanceLookupState {
   };
 }
 
-const QuoteCalculator = (): JSX.Element => {
+const QuoteCalculator = (): ReactElement => {
   const [surveyType, setSurveyType] = useState<SurveyType>('level2');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
