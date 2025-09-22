@@ -65,16 +65,25 @@ export type PropertyTypeId =
   | 'other';
 
 export type PropertyAgeId =
+  | 'unknown'
   | 'new-build'
   | 'post-2000'
   | '1980-1999'
   | '1945-1979'
   | 'interwar'
   | 'victorian-edwardian'
-  | 'pre-1900'
-  | 'unknown';
+  | 'pre-1900';
 
 export type ExtensionStatusId = 'unknown' | 'no' | 'yes';
+
+export interface SurveyFeeBand {
+  minValue: number;
+  maxValue: number;
+  bedroomsIncluded: number;
+  level1: number;
+  level2: number;
+  level3: number;
+}
 
 export interface ExtensionDetailsInput {
   extended?: boolean;
@@ -274,7 +283,7 @@ export const DISTANCE_BANDS: readonly DistanceBand[] = [
 
 const LEVEL_SURVEYS: readonly SurveyType[] = ['level1', 'level2', 'level3'] as const;
 
-const SURVEY_FEE_BANDS = [
+export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 0,
     maxValue: 150_000,
@@ -317,31 +326,59 @@ const SURVEY_FEE_BANDS = [
   },
 ] as const;
 
-const PROPERTY_TYPE_ADJUSTMENTS: Record<PropertyTypeId, { amount: number; label: string }> = {
-  'detached-house': { amount: 55, label: 'Detached house' },
-  'semi-detached-house': { amount: 35, label: 'Semi-detached house' },
-  'end-terrace-house': { amount: 20, label: 'End-terrace house' },
-  'mid-terrace-house': { amount: 10, label: 'Mid-terrace house' },
-  'flat-apartment': { amount: 0, label: 'Flat / apartment' },
-  bungalow: { amount: 25, label: 'Bungalow' },
-  cottage: { amount: 45, label: 'Cottage' },
-  maisonette: { amount: 20, label: 'Maisonette' },
-  other: { amount: 30, label: 'Other / not listed' },
+export const EXTRA_BEDROOM_SURCHARGE = 30;
+
+const PROPERTY_TYPE_LABELS: Record<PropertyTypeId, string> = {
+  'detached-house': 'Detached house',
+  'semi-detached-house': 'Semi-detached house',
+  'end-terrace-house': 'End-terrace house',
+  'mid-terrace-house': 'Mid-terrace house',
+  'flat-apartment': 'Flat / apartment',
+  bungalow: 'Bungalow',
+  cottage: 'Cottage',
+  maisonette: 'Maisonette',
+  other: 'Other / not listed',
 };
 
-const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, { amount: number; label: string }> = {
-  'new-build': { amount: 0, label: 'New build (0–2 years)' },
-  'post-2000': { amount: 0, label: '2000s onwards' },
-  '1980-1999': { amount: 10, label: '1980s–1990s' },
-  '1945-1979': { amount: 15, label: '1945–1970s' },
-  interwar: { amount: 45, label: 'Interwar (1919–1944)' },
-  'victorian-edwardian': { amount: 65, label: 'Victorian / Edwardian' },
-  'pre-1900': { amount: 95, label: 'Pre-1900' },
-  unknown: { amount: 20, label: 'Unknown age' },
+export const PROPERTY_TYPE_ADJUSTMENTS: Record<PropertyTypeId, number> = {
+  'detached-house': 55,
+  'semi-detached-house': 35,
+  'end-terrace-house': 20,
+  'mid-terrace-house': 10,
+  'flat-apartment': 0,
+  bungalow: 25,
+  cottage: 45,
+  maisonette: 20,
+  other: 30,
 };
 
-const EXTENSION_ADJUSTMENT_AMOUNT = 75;
-const EXTRA_BEDROOM_FEE = 30;
+const PROPERTY_AGE_LABELS: Record<PropertyAgeId, string> = {
+  unknown: 'Unknown',
+  'new-build': 'New build (0–2 years)',
+  'post-2000': '2000s onwards',
+  '1980-1999': '1980s–1990s',
+  '1945-1979': '1945–1970s',
+  interwar: '1919–1944',
+  'victorian-edwardian': 'Victorian / Edwardian',
+  'pre-1900': 'Pre-1900',
+};
+
+export const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, number> = {
+  unknown: 20,
+  'new-build': 0,
+  'post-2000': 0,
+  '1980-1999': 10,
+  '1945-1979': 15,
+  interwar: 45,
+  'victorian-edwardian': 65,
+  'pre-1900': 95,
+};
+
+export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> = {
+  unknown: 0,
+  no: 0,
+  yes: 75,
+};
 
 const VALUE_TIERS: { limit: number; amount: number }[] = [
   { limit: 250_000, amount: 0 },
@@ -409,8 +446,15 @@ export const getSurveyById = (id: SurveyType): SurveyDefinition =>
 export const getComplexityById = (id: ComplexityType): ComplexityOption =>
   COMPLEXITY_OPTIONS.find((option) => option.id === id) ?? COMPLEXITY_OPTIONS[0];
 
-export const getDistanceBandById = (id: DistanceBandId | null | undefined): DistanceBand | undefined =>
-  (id ? DISTANCE_BANDS.find((band) => band.id === id) : undefined);
+export const getDistanceBandById = (
+  id: DistanceBandId | null | undefined,
+): DistanceBand | null => {
+  if (!id) {
+    return null;
+  }
+
+  return DISTANCE_BANDS.find((band) => band.id === id) ?? null;
+};
 
 export const getDistanceBandForMiles = (distanceMiles: number): DistanceBand => {
   const clamped = Math.max(0, distanceMiles);
@@ -484,27 +528,6 @@ const normaliseExtensionStatus = (value: QuoteInput['extensionStatus']): Extensi
   return 'unknown';
 };
 
-const describeExtensionAdjustment = (
-  status: ExtensionStatusId,
-  details: ExtensionDetailsInput | null | undefined,
-): { label: string; amount: number } | null => {
-  if (status !== 'yes') {
-    return null;
-  }
-
-  const extended = Boolean(details?.extended);
-  const converted = Boolean(details?.converted);
-
-  let label = 'Extended';
-  if (extended && converted) {
-    label = 'Extended & converted';
-  } else if (converted && !extended) {
-    label = 'Converted';
-  }
-
-  return { label, amount: EXTENSION_ADJUSTMENT_AMOUNT };
-};
-
 const SURVEY_RANGE_VARIANCE: Partial<Record<SurveyType, number>> = {
   level1: 25,
   level2: 30,
@@ -529,11 +552,10 @@ export const calculateQuote = ({
   propertyType,
   propertyAge,
   extensionStatus,
-  extensionDetails,
 }: QuoteInput): QuoteResult => {
   const survey = getSurveyById(surveyType);
   const complexityOption = getComplexityById(complexity);
-  const distanceBand = getDistanceBandById(distanceBandId ?? undefined);
+  const distanceBand = getDistanceBandById(distanceBandId ?? null) ?? undefined;
 
   const isLevelSurvey = isLevelSurveyType(survey.id);
   const band = isLevelSurvey ? findSurveyFeeBand(propertyValue) : null;
@@ -541,7 +563,6 @@ export const calculateQuote = ({
   const normalisedPropertyType = normalisePropertyType(propertyType);
   const normalisedPropertyAge = normalisePropertyAge(propertyAge);
   const normalisedExtension = normaliseExtensionStatus(extensionStatus);
-  const extensionDescriptor = describeExtensionAdjustment(normalisedExtension, extensionDetails);
 
   const adjustments: QuoteAdjustment[] = [];
 
@@ -584,45 +605,48 @@ export const calculateQuote = ({
   }
 
   if (isLevelSurvey && normalisedPropertyType) {
-    const typeAdjustment = PROPERTY_TYPE_ADJUSTMENTS[normalisedPropertyType];
-    if (typeAdjustment.amount > 0) {
+    const typeAmount = PROPERTY_TYPE_ADJUSTMENTS[normalisedPropertyType] ?? 0;
+    if (typeAmount > 0) {
       adjustments.push({
         id: 'property-type',
-        label: typeAdjustment.label,
-        amount: toBreakdown(typeAdjustment.amount),
+        label: PROPERTY_TYPE_LABELS[normalisedPropertyType],
+        amount: toBreakdown(typeAmount),
       });
-      runningTotal += typeAdjustment.amount;
+      runningTotal += typeAmount;
     }
   }
 
   if (isLevelSurvey && normalisedPropertyAge) {
-    const ageAdjustment = PROPERTY_AGE_ADJUSTMENTS[normalisedPropertyAge];
-    if (ageAdjustment.amount > 0) {
+    const ageAmount = PROPERTY_AGE_ADJUSTMENTS[normalisedPropertyAge] ?? 0;
+    if (ageAmount > 0) {
       adjustments.push({
         id: 'property-age',
-        label: ageAdjustment.label,
-        amount: toBreakdown(ageAdjustment.amount),
+        label: PROPERTY_AGE_LABELS[normalisedPropertyAge],
+        amount: toBreakdown(ageAmount),
       });
-      runningTotal += ageAdjustment.amount;
+      runningTotal += ageAmount;
     }
   }
 
-  if (isLevelSurvey && extensionDescriptor) {
-    adjustments.push({
-      id: 'extension',
-      label: extensionDescriptor.label,
-      amount: toBreakdown(extensionDescriptor.amount),
-    });
-    runningTotal += extensionDescriptor.amount;
+  if (isLevelSurvey) {
+    const extensionAmount = EXTENDED_CONVERTED_ADJUSTMENTS[normalisedExtension] ?? 0;
+    if (extensionAmount > 0) {
+      adjustments.push({
+        id: 'extension',
+        label: 'Extended/converted',
+        amount: toBreakdown(extensionAmount),
+      });
+      runningTotal += extensionAmount;
+    }
   }
 
   if (bedroomsIncluded > 0) {
     const extraBedrooms = Math.max(0, bedrooms - bedroomsIncluded);
     if (extraBedrooms > 0) {
-      const bedroomAmount = roundToNearestFive(extraBedrooms * EXTRA_BEDROOM_FEE);
+      const bedroomAmount = roundToNearestFive(extraBedrooms * EXTRA_BEDROOM_SURCHARGE);
       adjustments.push({
         id: 'extra-bedrooms',
-        label: `${extraBedrooms} extra bedroom${extraBedrooms > 1 ? 's' : ''}`,
+        label: 'Extra bedrooms',
         amount: toBreakdown(bedroomAmount),
       });
       runningTotal += bedroomAmount;
@@ -645,10 +669,9 @@ export const calculateQuote = ({
   const totalBreakdown = toBreakdown(roundedTotal);
 
   const variance = getRangeVariance(survey.id, roundedTotal);
-  const minCandidate = Math.max(baseBreakdown.gross, roundedTotal - variance);
   const range: QuoteRange = {
-    min: Math.min(minCandidate, roundedTotal),
-    max: Math.max(roundedTotal + variance, roundedTotal),
+    min: Math.max(0, roundedTotal - variance),
+    max: roundedTotal + variance,
   };
 
   return {
