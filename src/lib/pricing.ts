@@ -163,7 +163,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level3',
     label: 'RICS Level 3 Building Survey',
-    baseFee: 650,
+    baseFee: 625,
     summary: 'Best suited to older, extended or complex properties needing deeper analysis.',
     turnaround: 'Allow 5–7 working days for the full written report.',
     valueWeight: 1.35,
@@ -244,31 +244,31 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'interwar',
     label: 'Interwar era (1919–1944)',
-    adjustment: 15,
+    adjustment: 10,
     helper: 'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
   },
   {
     id: 'extended',
     label: 'Extended or converted',
-    adjustment: 20,
+    adjustment: 10,
     helper: 'Includes a loft conversion or sizeable extension requiring additional inspection time.',
   },
   {
     id: 'extended-and-converted',
     label: 'Extended & converted',
-    adjustment: 35,
+    adjustment: 20,
     helper: 'Both an extension and a conversion or multiple major alterations needing further analysis.',
   },
   {
     id: 'victorian',
     label: 'Victorian / Edwardian',
-    adjustment: 30,
+    adjustment: 25,
     helper: 'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
   {
     id: 'period',
     label: 'Pre-1900 / non-standard',
-    adjustment: 70,
+    adjustment: 45,
     helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
   },
 ] as const;
