@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/markdown-remark": "^6.3.7",
     "@astrojs/mdx": "^3.1.0",
     "@types/node": "^20.14.10",
     "astro": "^4.13.1",
