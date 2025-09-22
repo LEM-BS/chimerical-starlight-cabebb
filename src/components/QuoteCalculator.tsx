@@ -110,6 +110,8 @@ const QuoteCalculator = (): JSX.Element => {
   const bedrooms = useMemo(() => parseBedroomsValue(bedroomsInput), [bedroomsInput]);
   const selectedDistanceBand = useMemo(() => getDistanceBandById(distanceBandId), [distanceBandId]);
   const { extended: hasExtended, converted: hasConverted } = extensionTypes;
+  const hasExtensionDetail = extensionStatus === 'yes' && (hasExtended || hasConverted);
+  const hasBothExtensionDetails = extensionStatus === 'yes' && hasExtended && hasConverted;
   const hasExtensionSelection = extensionStatus === 'yes' && (hasExtended || hasConverted);
   const isPeriodProperty = propertyAge === 'victorian-edwardian' || propertyAge === 'pre-1900';
 
@@ -176,6 +178,38 @@ const QuoteCalculator = (): JSX.Element => {
   }, [extensionStatus, hasConverted, hasExtended]);
 
   useEffect(() => {
+    const candidateComplexities: ComplexityType[] = [];
+
+    if (propertyAge === 'pre-1900') {
+      candidateComplexities.push('period');
+    } else if (propertyAge === 'victorian-edwardian') {
+      candidateComplexities.push('victorian');
+    } else if (propertyAge === 'interwar') {
+      candidateComplexities.push('interwar');
+    }
+
+    if (hasBothExtensionDetails) {
+      candidateComplexities.push('extended-and-converted');
+    } else if (hasExtensionDetail) {
+      candidateComplexities.push('extended');
+    }
+
+    let nextComplexity: ComplexityType = 'standard';
+    for (const candidate of candidateComplexities) {
+      const bestOption = getComplexityById(nextComplexity);
+      const candidateOption = getComplexityById(candidate);
+      if (candidateOption.adjustment >= bestOption.adjustment) {
+        nextComplexity = candidateOption.id;
+      }
+    }
+
+    if (complexity !== nextComplexity) setComplexity(nextComplexity);
+  }, [
+    complexity,
+    hasBothExtensionDetails,
+    hasExtensionDetail,
+    propertyAge,
+  ]);
     let nextComplexity: ComplexityType = 'standard';
     if (isPeriodProperty) {
       nextComplexity = 'period';
