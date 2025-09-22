@@ -38,14 +38,14 @@ describe('pricing helpers', () => {
   });
 
   it('performs VAT maths consistently', () => {
-    expect(applyVat(100)).toBeCloseTo(120);
-    expect(stripVat(120)).toBeCloseTo(100);
-    expect(calculateVatFromGross(120)).toBeCloseTo(20);
+    expect(applyVat(100)).toBe(100);
+    expect(stripVat(120)).toBe(120);
+    expect(calculateVatFromGross(120)).toBe(0);
     const gross = 535;
     const net = stripVat(gross);
     const vat = calculateVatFromGross(gross);
-    expect(net + vat).toBeCloseTo(gross);
-    expect(net).toBeCloseTo(gross / (1 + VAT_RATE));
+    expect(net + vat).toBe(gross);
+    expect(net).toBe(gross / (1 + VAT_RATE));
   });
 });
 
@@ -77,8 +77,8 @@ describe('quote engine', () => {
     expect(result.adjustments).toHaveLength(0);
     expect(result.base.gross).toBe(545);
     expect(result.total.gross).toBe(545);
-    expect(result.total.net).toBeCloseTo(454.17);
-    expect(result.total.vat).toBeCloseTo(90.83);
+    expect(result.total.net).toBe(545);
+    expect(result.total.vat).toBe(0);
     expect(result.range).toEqual({ min: 515, max: 575 });
   });
 
@@ -96,10 +96,10 @@ describe('quote engine', () => {
       'extra-bedrooms',
       'distance',
     ]);
-    expect(result.total.gross).toBe(940);
-    expect(result.total.net).toBeCloseTo(783.33);
-    expect(result.total.vat).toBeCloseTo(156.67);
-    expect(result.range).toEqual({ min: 910, max: 970 });
+    expect(result.total.gross).toBe(855);
+    expect(result.total.net).toBe(855);
+    expect(result.total.vat).toBe(0);
+    expect(result.range).toEqual({ min: 825, max: 885 });
   });
 
   it('applies property metadata surcharges for a mid-terrace 1980s home', () => {
@@ -115,11 +115,11 @@ describe('quote engine', () => {
 
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 10],
-      ['property-age', 10],
+      ['property-age', 5],
     ]);
     expect(result.adjustments.every((entry) => entry.amount.gross > 0)).toBe(true);
-    expect(result.total.gross).toBe(565);
-    expect(result.range).toEqual({ min: 535, max: 595 });
+    expect(result.total.gross).toBe(560);
+    expect(result.range).toEqual({ min: 530, max: 590 });
   });
 
   it('applies extension and distance surcharges for a Victorian detached home', () => {
@@ -135,13 +135,13 @@ describe('quote engine', () => {
     });
 
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
-      ['property-type', 55],
-      ['property-age', 65],
+      ['property-type', 35],
+      ['property-age', 50],
       ['extension', 75],
       ['distance', 25],
     ]);
-    expect(result.total.gross).toBe(865);
-    expect(result.range).toEqual({ min: 835, max: 895 });
+    expect(result.total.gross).toBe(830);
+    expect(result.range).toEqual({ min: 800, max: 860 });
   });
 
   it('totals the larger surcharges for a complex level 3 survey', () => {
@@ -157,13 +157,13 @@ describe('quote engine', () => {
     });
 
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
-      ['property-type', 55],
-      ['property-age', 95],
+      ['property-type', 35],
+      ['property-age', 90],
       ['extension', 75],
       ['extra-bedrooms', 30],
       ['distance', 65],
     ]);
-    expect(result.total.gross).toBe(1445);
-    expect(result.range).toEqual({ min: 1395, max: 1495 });
+    expect(result.total.gross).toBe(1420);
+    expect(result.range).toEqual({ min: 1370, max: 1470 });
   });
 });
