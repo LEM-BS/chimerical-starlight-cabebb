@@ -1,5 +1,10 @@
+// path: src/pricing/engine.ts
+
 /*
  * Pricing engine and shared helpers for the quote calculator.
+ * Note:
+ * - Level 1–3 bases come from SURVEY_FEE_BANDS (not SURVEYS[].baseFee).
+ * - travelMultiplier now scales distance surcharge so per-survey travel tweaks reflect.
  */
 
 export type SurveyType =
@@ -36,7 +41,7 @@ export interface SurveyDefinition {
   valueWeight: number;
   bedroomsIncluded?: number;
   badge?: string;
-  travelMultiplier?: number;
+  travelMultiplier?: number; // scales distance surcharge
 }
 
 export interface ComplexityOption {
@@ -135,7 +140,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level1',
     label: 'RICS Level 1 Home Survey',
-    baseFee: 350,
+    baseFee: 350, // ignored for level surveys; adjust SURVEY_FEE_BANDS instead
     summary:
       'For modern flats or houses in good condition that need a concise overview.',
     turnaround: 'Report within 2–3 working days of the inspection.',
@@ -149,7 +154,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level2',
     label: 'RICS Level 2 Home Survey',
-    baseFee: 475,
+    baseFee: 475, // ignored for level surveys
     summary: 'Our most requested survey for conventional homes built after 1900.',
     turnaround: 'Report typically delivered 3–5 working days after inspection.',
     valueWeight: 1,
@@ -163,8 +168,9 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'level3',
     label: 'RICS Level 3 Building Survey',
-    baseFee: 625,
-    summary: 'Best suited to older, extended or complex properties needing deeper analysis.',
+    baseFee: 650, // ignored for level surveys
+    summary:
+      'Best suited to older, extended or complex properties needing deeper analysis.',
     turnaround: 'Allow 5–7 working days for the full written report.',
     valueWeight: 1.35,
     highlights: [
@@ -178,7 +184,8 @@ export const SURVEYS: readonly SurveyDefinition[] = [
     id: 'damp',
     label: 'Specialist Damp & Timber Investigation',
     baseFee: 545,
-    summary: 'Independent moisture diagnosis with root-cause analysis and action plan.',
+    summary:
+      'Independent moisture diagnosis with root-cause analysis and action plan.',
     turnaround: 'Report issued within 2–3 working days of the visit.',
     valueWeight: 0.65,
     highlights: [
@@ -193,7 +200,8 @@ export const SURVEYS: readonly SurveyDefinition[] = [
     id: 'ventilation',
     label: 'Ventilation & Condensation Assessment',
     baseFee: 525,
-    summary: 'Airflow testing and practical guidance for persistent condensation or mould.',
+    summary:
+      'Airflow testing and practical guidance for persistent condensation or mould.',
     turnaround: 'Report typically ready within 3–4 working days.',
     valueWeight: 0.7,
     highlights: [
@@ -208,7 +216,8 @@ export const SURVEYS: readonly SurveyDefinition[] = [
     id: 'epc',
     label: 'EPC with Floorplan',
     baseFee: 180,
-    summary: 'Energy certificate and marketing-ready floorplan for sales or lettings.',
+    summary:
+      'Energy certificate and marketing-ready floorplan for sales or lettings.',
     turnaround: '48-hour turnaround is usually available.',
     valueWeight: 0.45,
     highlights: [
@@ -244,31 +253,35 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'interwar',
     label: 'Interwar era (1919–1944)',
-    adjustment: 5,
-    helper: 'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
+    adjustment: 15,
+    helper:
+      'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
   },
   {
     id: 'extended',
     label: 'Extended or converted',
-    adjustment: 5,
-    helper: 'Includes a loft conversion or sizeable extension requiring additional inspection time.',
+    adjustment: 20,
+    helper:
+      'Includes a loft conversion or sizeable extension requiring additional inspection time.',
   },
   {
     id: 'extended-and-converted',
     label: 'Extended & converted',
-    adjustment: 10,
-    helper: 'Both an extension and a conversion or multiple major alterations needing further analysis.',
+    adjustment: 35,
+    helper:
+      'Both an extension and a conversion or multiple major alterations needing further analysis.',
   },
   {
     id: 'victorian',
     label: 'Victorian / Edwardian',
-    adjustment: 15,
-    helper: 'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
+    adjustment: 30,
+    helper:
+      'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
   {
     id: 'period',
     label: 'Pre-1900 / non-standard',
-    adjustment: 25,
+    adjustment: 70,
     helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
   },
 ] as const;
@@ -278,7 +291,12 @@ export const DISTANCE_BANDS: readonly DistanceBand[] = [
   { id: 'within-20-miles', label: '10–20 miles', maxMiles: 20, surcharge: 25 },
   { id: 'within-35-miles', label: '20–35 miles', maxMiles: 35, surcharge: 45 },
   { id: 'within-50-miles', label: '35–50 miles', maxMiles: 50, surcharge: 65 },
-  { id: 'over-50-miles', label: '50+ miles', maxMiles: Number.POSITIVE_INFINITY, surcharge: 85 },
+  {
+    id: 'over-50-miles',
+    label: '50+ miles',
+    maxMiles: Number.POSITIVE_INFINITY,
+    surcharge: 85,
+  },
 ] as const;
 
 const LEVEL_SURVEYS: readonly SurveyType[] = ['level1', 'level2', 'level3'] as const;
@@ -287,50 +305,42 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 0,
     maxValue: 150_000,
-    bedroomsIncluded: 2,
-    level1: 350,
-    level2: 475,
-    level3: 625,
+    bedroomsIncluded: 3,
+    level1: 375,
+    level2: 525,
+    level3: 750,
   },
   {
     minValue: 150_001,
     maxValue: 250_000,
-    bedroomsIncluded: 2,
-    level1: 375,
-    level2: 590,
-    level3: 650,
+    bedroomsIncluded: 3,
+    level1: 395,
+    level2: 545,
+    level3: 800,
   },
   {
     minValue: 250_001,
     maxValue: 400_000,
-    bedroomsIncluded: 2,
-    level1: 395,
-    level2: 615,
-    level3: 725,
+    bedroomsIncluded: 3,
+    level1: 415,
+    level2: 595,
+    level3: 875,
   },
   {
     minValue: 400_001,
     maxValue: 600_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 435,
-    level2: 655,
-    level3: 825,
-  },
-  {
-    minValue: 600_001,
-    maxValue: 800_001,
-    bedroomsIncluded: 2,
-    level1: 465,
-    level2: 695,
+    level2: 645,
     level3: 995,
   },
   {
-    minValue: 800_001,
-    maxValue: 1000_001,
-    bedroomsIncluded: 2,
-    level1: 550,
-    level2: 795,
-    level3: 1250,
+    minValue: 600_001,
+    maxValue: Number.POSITIVE_INFINITY,
+    bedroomsIncluded: 4,
+    level1: 465,
+    level2: 695,
+    level3: 1125,
   },
 ] as const;
 
@@ -411,36 +421,26 @@ export const parseCurrencyValue = (value: string | number): number => {
   if (typeof value === 'number') {
     return Number.isFinite(value) && value > 0 ? value : 0;
   }
-
-  const numeric = Number.parseFloat(value.replace(/[^0-9.]/g, ''));
-  if (!Number.isFinite(numeric) || numeric <= 0) {
-    return 0;
-  }
-
+  const numeric = Number.parseFloat(String(value).replace(/[^0-9.]/g, ''));
+  if (!Number.isFinite(numeric) || numeric <= 0) return 0;
   return numeric;
 };
 
 export const parseBedroomsValue = (value: string | number): number => {
   if (typeof value === 'number') {
-    if (!Number.isFinite(value) || value <= 0) {
-      return 1;
-    }
-
+    if (!Number.isFinite(value) || value <= 0) return 1;
     return Math.min(Math.round(value), 8);
   }
-
-  const numeric = Number.parseInt(value.replace(/[^0-9]/g, ''), 10);
-  if (!Number.isFinite(numeric) || numeric <= 0) {
-    return 1;
-  }
-
+  const numeric = Number.parseInt(String(value).replace(/[^0-9]/g, ''), 10);
+  if (!Number.isFinite(numeric) || numeric <= 0) return 1;
   return Math.min(numeric, 8);
 };
 
 export const formatCurrency = (value: number): string =>
   currencyFormatter.format(Math.max(0, roundToNearestFive(value)));
 
-export const applyVat = (net: number, rate = VAT_RATE): number => toTwoDecimals(net * (1 + rate));
+export const applyVat = (net: number, rate = VAT_RATE): number =>
+  toTwoDecimals(net * (1 + rate));
 
 export const stripVat = (gross: number, rate = VAT_RATE): number =>
   toTwoDecimals(gross / (1 + rate));
@@ -457,30 +457,23 @@ export const getComplexityById = (id: ComplexityType): ComplexityOption =>
 export const getDistanceBandById = (
   id: DistanceBandId | null | undefined,
 ): DistanceBand | null => {
-  if (!id) {
-    return null;
-  }
-
+  if (!id) return null;
   return DISTANCE_BANDS.find((band) => band.id === id) ?? null;
 };
 
 export const getDistanceBandForMiles = (distanceMiles: number): DistanceBand => {
   const clamped = Math.max(0, distanceMiles);
   for (const band of DISTANCE_BANDS) {
-    if (clamped <= band.maxMiles) {
-      return band;
-    }
+    if (clamped <= band.maxMiles) return band;
   }
-
   return DISTANCE_BANDS[DISTANCE_BANDS.length - 1];
 };
 
 const getValueAdjustment = (propertyValue: number, weight: number): number => {
-  if (!(propertyValue > 0)) {
-    return 0;
-  }
-
-  const tier = VALUE_TIERS.find((entry) => propertyValue <= entry.limit) ?? VALUE_TIERS[VALUE_TIERS.length - 1];
+  if (!(propertyValue > 0)) return 0;
+  const tier =
+    VALUE_TIERS.find((entry) => propertyValue <= entry.limit) ??
+    VALUE_TIERS[VALUE_TIERS.length - 1];
   return roundToNearestFive(tier.amount * weight);
 };
 
@@ -488,7 +481,6 @@ const toBreakdown = (gross: number): MoneyBreakdown => {
   const roundedGross = roundToNearestFive(gross);
   const net = stripVat(roundedGross);
   const vat = calculateVatFromGross(roundedGross);
-
   return { gross: roundedGross, net, vat };
 };
 
@@ -504,35 +496,20 @@ const findSurveyFeeBand = (propertyValue: number) => {
 };
 
 const normalisePropertyType = (value: QuoteInput['propertyType']): PropertyTypeId | null => {
-  if (!value) {
-    return null;
-  }
-
+  if (!value) return null;
   const candidate = value === 'terraced-house' ? 'mid-terrace-house' : value;
-  if (candidate in PROPERTY_TYPE_ADJUSTMENTS) {
-    return candidate as PropertyTypeId;
-  }
-
+  if (candidate in PROPERTY_TYPE_ADJUSTMENTS) return candidate as PropertyTypeId;
   return null;
 };
 
 const normalisePropertyAge = (value: QuoteInput['propertyAge']): PropertyAgeId | null => {
-  if (!value) {
-    return null;
-  }
-
-  if (value in PROPERTY_AGE_ADJUSTMENTS) {
-    return value as PropertyAgeId;
-  }
-
+  if (!value) return null;
+  if (value in PROPERTY_AGE_ADJUSTMENTS) return value as PropertyAgeId;
   return null;
 };
 
 const normaliseExtensionStatus = (value: QuoteInput['extensionStatus']): ExtensionStatusId => {
-  if (value === 'yes' || value === 'no') {
-    return value;
-  }
-
+  if (value === 'yes' || value === 'no') return value;
   return 'unknown';
 };
 
@@ -544,11 +521,19 @@ const SURVEY_RANGE_VARIANCE: Partial<Record<SurveyType, number>> = {
 
 const getRangeVariance = (surveyType: SurveyType, roundedTotal: number): number => {
   const override = SURVEY_RANGE_VARIANCE[surveyType];
-  if (typeof override === 'number') {
-    return roundToNearestFive(Math.max(0, override));
-  }
-
+  if (typeof override === 'number') return roundToNearestFive(Math.max(0, override));
   return Math.max(30, roundToNearestFive(roundedTotal * 0.08));
+};
+
+/** Apply per-survey travel scaling so reduced multipliers reflect. */
+const getDistanceSurcharge = (
+  survey: SurveyDefinition,
+  band: DistanceBand | undefined,
+): number => {
+  if (!band || band.surcharge <= 0) return 0;
+  const multiplier = survey.travelMultiplier ?? 1; // why: enable per-survey travel tuning
+  const scaled = band.surcharge * multiplier;
+  return roundToNearestFive(scaled);
 };
 
 export const calculateQuote = ({
@@ -574,6 +559,9 @@ export const calculateQuote = ({
 
   const adjustments: QuoteAdjustment[] = [];
 
+  // Base fee selection:
+  // - Level surveys: take from fee band (SURVEY_FEE_BANDS). SURVEYS[].baseFee is ignored here by design.
+  // - Non-level: use SURVEYS[].baseFee directly.
   let baseGross = survey.baseFee;
   let bedroomsIncluded = survey.bedroomsIncluded ?? 3;
 
@@ -585,6 +573,7 @@ export const calculateQuote = ({
 
   let runningTotal = baseGross;
 
+  // Complexity (scaled by valueWeight)
   if (complexityOption.adjustment !== 0) {
     const complexityAmount = roundToNearestFive(complexityOption.adjustment * survey.valueWeight);
     if (complexityAmount !== 0) {
@@ -597,21 +586,21 @@ export const calculateQuote = ({
     }
   }
 
+  // Value tier scaling only for non-level surveys
   if (!isLevelSurvey) {
     const valueAdjustment = getValueAdjustment(propertyValue, survey.valueWeight);
     if (valueAdjustment !== 0) {
       adjustments.push({
         id: 'value',
         label:
-          propertyValue >= 750_000
-            ? 'Higher value property review'
-            : 'Property value scaling',
+          propertyValue >= 750_000 ? 'Higher value property review' : 'Property value scaling',
         amount: toBreakdown(valueAdjustment),
       });
       runningTotal += valueAdjustment;
     }
   }
 
+  // Property type / age / extension only for level surveys
   if (isLevelSurvey && normalisedPropertyType) {
     const typeAmount = PROPERTY_TYPE_ADJUSTMENTS[normalisedPropertyType] ?? 0;
     if (typeAmount > 0) {
@@ -648,6 +637,7 @@ export const calculateQuote = ({
     }
   }
 
+  // Extra bedrooms
   if (bedroomsIncluded > 0) {
     const extraBedrooms = Math.max(0, bedrooms - bedroomsIncluded);
     if (extraBedrooms > 0) {
@@ -661,13 +651,15 @@ export const calculateQuote = ({
     }
   }
 
-  if (distanceBand && distanceBand.surcharge > 0) {
+  // Distance surcharge with per-survey scaling
+  const scaledDistance = getDistanceSurcharge(survey, distanceBand);
+  if (distanceBand && scaledDistance > 0) {
     adjustments.push({
       id: 'distance',
       label: distanceBand.label,
-      amount: toBreakdown(distanceBand.surcharge),
+      amount: toBreakdown(scaledDistance),
     });
-    runningTotal += distanceBand.surcharge;
+    runningTotal += scaledDistance;
   }
 
   const roundedBase = roundToNearestFive(baseGross);
