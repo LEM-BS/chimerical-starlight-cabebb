@@ -165,16 +165,187 @@ const { pageId = '' } = Astro.props;
               fallback !== document.documentElement
             ) {
               fallback.remove();
+              removed = true;
             }
           }
+
+          return removed;
+        };
+
+        const normaliseText = (value) =>
+          (value ?? "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, " ")
+            .trim();
+
+        const matchesTarget = (value, target) => {
+          if (!value) {
+            return false;
+          }
+
+          const normalisedValue = normaliseText(value);
+          return normalisedValue === target || normalisedValue.includes(target);
+        };
+
+        const containerSelectors = [
+          '[data-field-type]',
+          '[data-field-id]',
+          '[data-role*="field" i]',
+          '[class*="field" i]',
+          '[class*="question" i]',
+          '[class*="row" i]',
+          '[class*="column" i]',
+          'label',
+          'fieldset',
+          'li',
+          'p',
+          'div',
+        ];
+
+        const resolveContainer = (start) => {
+          if (!(start instanceof HTMLElement)) {
+            return null;
+          }
+
+          for (const selector of containerSelectors) {
+            const candidate = start.closest(selector);
+            if (
+              candidate instanceof HTMLElement &&
+              candidate.tagName !== "FORM" &&
+              candidate !== document.body &&
+              candidate !== document.documentElement
+            ) {
+              if (
+                (selector === "div" || selector === "p") &&
+                !candidate.querySelector("input, select, textarea")
+              ) {
+                continue;
+              }
+
+              return candidate;
+            }
+          }
+
+          return start;
+        };
+
+        const resolveFromLabel = (label) => {
+          if (!(label instanceof HTMLElement)) {
+            return null;
+          }
+
+          const controlSelector = "input, select, textarea";
+          const controlId = label.getAttribute("for");
+
+          if (controlId) {
+            const control = document.getElementById(controlId);
+            if (control instanceof HTMLElement) {
+              return resolveContainer(control);
+            }
+          }
+
+          const nestedControl = label.querySelector(controlSelector);
+          if (nestedControl instanceof HTMLElement) {
+            return resolveContainer(nestedControl);
+          }
+
+          return resolveContainer(label);
+        };
+
+        const findFieldByLabel = (labelText) => {
+          const target = normaliseText(labelText);
+          if (!target) {
+            return null;
+          }
+
+          const potentialLabels = document.querySelectorAll(
+            'label, legend, [data-field-label], [class*="label" i], [class*="question" i], [class*="title" i]'
+          );
+
+          for (const node of potentialLabels) {
+            if (!(node instanceof HTMLElement)) {
+              continue;
+            }
+
+            if (matchesTarget(node.textContent, target)) {
+              const container = resolveFromLabel(node);
+              if (container instanceof HTMLElement) {
+                return container;
+              }
+            }
+          }
+
+          const controls = document.querySelectorAll(
+            'input, select, textarea'
+          );
+
+          for (const control of controls) {
+            if (!(control instanceof HTMLElement)) {
+              continue;
+            }
+
+            const metadata = [
+              control.getAttribute("aria-label"),
+              control.getAttribute("placeholder"),
+              control.getAttribute("name"),
+              control.getAttribute("id"),
+              control.getAttribute("data-name"),
+              control.getAttribute("title"),
+            ];
+
+            if (metadata.some((value) => matchesTarget(value, target))) {
+              return resolveContainer(control);
+            }
+
+            const parentLabel = control.closest("label");
+            if (parentLabel && matchesTarget(parentLabel.textContent, target)) {
+              return resolveContainer(control);
+            }
+          }
+
+          return null;
+        };
+
+        const reorderQuoteFields = () => {
+          const surveyField = findFieldByLabel("Survey or service");
+          const propertyField = findFieldByLabel("Property type");
+          const postcodeField = findFieldByLabel("Postcode");
+
+          let changed = false;
+
+          if (
+            postcodeField instanceof HTMLElement &&
+            surveyField instanceof HTMLElement
+          ) {
+            const next = postcodeField.nextElementSibling;
+            if (next !== surveyField) {
+              postcodeField.insertAdjacentElement("afterend", surveyField);
+              changed = true;
+            }
+          }
+
+          if (
+            surveyField instanceof HTMLElement &&
+            propertyField instanceof HTMLElement
+          ) {
+            const next = surveyField.nextElementSibling;
+            if (next !== propertyField) {
+              surveyField.insertAdjacentElement("afterend", propertyField);
+              changed = true;
+            }
+          }
+
+          return changed;
         };
 
         const observer = new MutationObserver(() => {
           removeBreakdown();
+          reorderQuoteFields();
         });
 
         const initialise = () => {
           removeBreakdown();
+          reorderQuoteFields();
           observer.observe(document.body, { childList: true, subtree: true });
         };
 
