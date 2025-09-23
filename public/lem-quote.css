@@ -77,6 +77,14 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.lem-quote-calculator__field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%231f2937' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1.75L6 6.25 11 1.75'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 0.75rem;
+  padding-right: 2.5rem;
+}
+
 .lem-quote-calculator__field input:focus,
 .lem-quote-calculator__field select:focus,
 .lem-quote-calculator__field textarea:focus {
