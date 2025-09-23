@@ -1,7 +1,7 @@
 import type { FormEvent, ReactElement } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { AREA_SUGGESTIONS, getAreasForOutcode, normaliseOutcode } from '../lib/areas';
+import { getAreasForOutcode, normaliseOutcode } from '../lib/areas';
 import {
   calculateQuote,
   formatCurrency,
@@ -24,11 +24,58 @@ import {
 const SURVEY_HINT_ID = 'quote-survey-hint';
 const VALUE_HINT_ID = 'quote-value-hint';
 const BEDROOM_HINT_ID = 'quote-bedroom-hint';
-const POSTCODE_HINT_ID = 'quote-postcode-hint';
+const ADDRESS_HINT_ID = 'quote-address-hint';
 const DISTANCE_STATUS_ID = 'quote-distance-status';
 const CONTACT_HINT_ID = 'quote-contact-hint';
 const CONTACT_STATUS_ID = 'quote-contact-status';
-const POSTCODE_SUGGESTIONS_ID = 'quote-postcode-suggestions';
+
+const FULL_POSTCODE_PATTERN = /^([A-Z]{1,2}\d[A-Z\d]?)(\d[A-Z]{2})$/;
+const OUTWARD_POSTCODE_PATTERN = /^[A-Z]{1,2}\d[A-Z\d]?$/;
+
+export const extractPostcodeFromAddress = (address: string): string => {
+  if (!address) return '';
+
+  const tailTokens = address
+    .toUpperCase()
+    .trim()
+    .split(/[\s,]+/)
+    .filter(Boolean)
+    .slice(-4);
+
+  if (tailTokens.length === 0) return '';
+
+  let outwardFallback = '';
+
+  const evaluate = (raw: string, allowOutwardFallback: boolean): string | null => {
+    const normalised = normaliseOutcode(raw);
+    if (!normalised) return null;
+
+    const fullMatch = normalised.match(FULL_POSTCODE_PATTERN);
+    if (fullMatch) {
+      return `${fullMatch[1]} ${fullMatch[2]}`;
+    }
+
+    if (allowOutwardFallback && !outwardFallback && OUTWARD_POSTCODE_PATTERN.test(normalised)) {
+      outwardFallback = normalised;
+    }
+
+    return null;
+  };
+
+  for (let index = tailTokens.length - 1; index >= 0; index -= 1) {
+    const current = tailTokens[index];
+
+    if (index > 0) {
+      const combined = evaluate(`${tailTokens[index - 1]}${current}`, false);
+      if (combined) return combined;
+    }
+
+    const single = evaluate(current, true);
+    if (single) return single;
+  }
+
+  return outwardFallback;
+};
 
 const PROPERTY_TYPE_OPTIONS: ReadonlyArray<{ id: PropertyTypeId; label: string }> = [
   { id: 'detached-house', label: 'Detached house' },
@@ -346,12 +393,13 @@ const QuoteCalculator = (): ReactElement => {
 
   const handleBedroomsBlur = () => setBedroomsInput(String(bedrooms));
 
-  const handlePostcodeChange = (value: string) => {
-    setPostcodeInput(value.toUpperCase());
-    setDistanceError(null);
+  const handlePropertyAddressChange = (value: string) => {
+    setPropertyAddress(value);
+    const extracted = extractPostcodeFromAddress(value);
+    const nextPostcode = extracted ? normaliseOutcode(extracted) : '';
+    setPostcodeInput(nextPostcode);
+    if (extracted) setDistanceError(null);
   };
-
-  const handlePostcodeBlur = () => setPostcodeInput((current) => normaliseOutcode(current));
 
   const distanceStatusMessage = useMemo(() => {
     if (isLookingUpDistance) return 'Checking coverage…';
@@ -361,7 +409,8 @@ const QuoteCalculator = (): ReactElement => {
       return 'We cover this area. Travel is calculated automatically.';
     }
 
-    if (postcodeInput.trim().length >= 3) return 'Enter the full postcode so we can confirm coverage.';
+    if (postcodeInput.trim().length >= 3)
+      return 'Add the full postcode to the address so we can confirm coverage.';
     return ' ';
   }, [distanceError, distanceLookup, isLookingUpDistance, postcodeInput]);
 
@@ -602,27 +651,13 @@ const QuoteCalculator = (): ReactElement => {
                 name="property-address"
                 rows={3}
                 value={propertyAddress}
-                onChange={(event) => setPropertyAddress(event.target.value)}
+                onChange={(event) => handlePropertyAddressChange(event.target.value)}
                 autoComplete="street-address"
-                placeholder="e.g. 10 High Street, Chester"
+                placeholder="e.g. 10 High Street, Chester CH7 1AA"
+                aria-describedby={`${ADDRESS_HINT_ID} ${DISTANCE_STATUS_ID}`}
               />
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="property-postcode">Postcode</label>
-              <input
-                id="property-postcode"
-                name="postcode"
-                list={POSTCODE_SUGGESTIONS_ID}
-                value={postcodeInput}
-                onChange={(event) => handlePostcodeChange(event.target.value)}
-                onBlur={handlePostcodeBlur}
-                autoComplete="postal-code"
-                aria-describedby={`${POSTCODE_HINT_ID} ${DISTANCE_STATUS_ID}`}
-                placeholder="e.g. CH7 1AA or CH7"
-              />
-              <p className="lem-quote-calculator__hint" id={POSTCODE_HINT_ID}>
-                Select a suggestion if available to help us confirm coverage.
+              <p className="lem-quote-calculator__hint" id={ADDRESS_HINT_ID}>
+                Include the full address and postcode so we can check coverage.
               </p>
               <p
                 className={`lem-quote-calculator__hint${distanceError ? ' lem-quote-calculator__hint--error' : ''}`}
@@ -784,13 +819,6 @@ const QuoteCalculator = (): ReactElement => {
             </div>
           </fieldset>
 
-          <datalist id={POSTCODE_SUGGESTIONS_ID}>
-            {AREA_SUGGESTIONS.map((suggestion) => (
-              <option key={suggestion.id} value={suggestion.outcode}>
-                {suggestion.label}
-              </option>
-            ))}
-          </datalist>
         </form>
 
         <aside className="lem-quote-calculator__result" aria-live="polite">
