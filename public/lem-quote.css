@@ -20,6 +20,12 @@
   .lem-quote-calculator__layout {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   }
+
+  .lem-quote-calculator__result {
+    position: sticky;
+    top: calc(4.5rem + clamp(1.5rem, 1.2rem + 1vw, 2.5rem));
+    align-self: start;
+  }
 }
 
 .lem-quote-calculator__form {
