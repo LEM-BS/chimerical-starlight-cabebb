@@ -64,7 +64,7 @@
   letter-spacing: 0.01em;
 }
 
-.lem-quote-calculator__field input,
+.lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']),
 .lem-quote-calculator__field select,
 .lem-quote-calculator__field textarea {
   appearance: none;
@@ -77,7 +77,7 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.lem-quote-calculator__field input:focus,
+.lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']):focus,
 .lem-quote-calculator__field select:focus,
 .lem-quote-calculator__field textarea:focus {
   outline: none;
@@ -118,6 +118,54 @@
   gap: 0.45rem;
   font-weight: 600;
   color: var(--text-main, #1f2937);
+}
+
+.lem-quote-calculator__option-list input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  box-sizing: border-box;
+  border: 1.5px solid var(--divider-grey, #dfe6f5);
+  border-radius: 0.3rem;
+  background-color: #ffffff;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.lem-quote-calculator__option-list input[type='checkbox']::after {
+  content: '';
+  width: 0.45rem;
+  height: 0.3rem;
+  display: block;
+  border: solid #ffffff;
+  border-width: 0 0.2rem 0.2rem 0;
+  transform: rotate(45deg) scale(0);
+  transform-origin: bottom left;
+  transition: transform 0.2s ease;
+}
+
+.lem-quote-calculator__option-list input[type='checkbox']:hover {
+  border-color: var(--accent-blue, #2563eb);
+}
+
+.lem-quote-calculator__option-list input[type='checkbox']:focus-visible {
+  outline: none;
+  border-color: var(--accent-blue, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.lem-quote-calculator__option-list input[type='checkbox']:checked {
+  border-color: var(--accent-blue, #2563eb);
+  background-color: var(--accent-blue, #2563eb);
+}
+
+.lem-quote-calculator__option-list input[type='checkbox']:checked::after {
+  transform: rotate(45deg) scale(1);
 }
 
 .lem-quote-calculator__result {
@@ -364,7 +412,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lem-quote-calculator__field input,
+  .lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']),
   .lem-quote-calculator__field select,
   .lem-quote-calculator__result {
     transition: none;
@@ -372,7 +420,7 @@
   }
 }
 /* 1. Enhance input and select hover */
-.lem-quote-calculator__field input:hover,
+.lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']):hover,
 .lem-quote-calculator__field select:hover,
 .lem-quote-calculator__field textarea:hover {
   border-color: var(--accent-blue, #2563eb);
@@ -450,7 +498,7 @@
 }
 
 /* 8. Make inputs a little larger and accessible */
-.lem-quote-calculator__field input,
+.lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']),
 .lem-quote-calculator__field select,
 .lem-quote-calculator__field textarea {
   min-height: 2.6rem;
@@ -465,7 +513,7 @@
 }
 
 /* 9. Add micro-interaction to field focus */
-.lem-quote-calculator__field input:focus,
+.lem-quote-calculator__field input:not([type='checkbox']):not([type='radio']):not([type='range']):focus,
 .lem-quote-calculator__field select:focus,
 .lem-quote-calculator__field textarea:focus {
   background: #eef3fc;
