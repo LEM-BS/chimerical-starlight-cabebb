@@ -19,6 +19,13 @@ const primaryLinks: NavLink[] = [
   { href: '/rics-home-surveys', label: 'RICS Home Surveys' },
 ];
 
+const ctaLinks: NavLink[] = [
+  { href: '/', label: 'Home' },
+  { href: '/rics-home-surveys', label: 'RICS Home Surveys' },
+  { href: '/damp-surveys-index', label: 'Damp Surveys' },
+  { href: '/quote', label: 'Instant Estimate', isCta: true },
+];
+
 const secondaryLinks: NavLink[] = [
   { href: '/services', label: 'Services' },
   { href: '/local-surveys', label: 'Areas We Cover' },
@@ -56,10 +63,22 @@ const isActive = (href: string) => {
             fetchpriority="high"
           />
         </picture>
-        <span class="site-name">LEM Building Surveying Ltd.</span>
       </a>
     </div>
     <nav class="main-nav" aria-label="Main Navigation">
+      <ul class="cta-links">
+        {ctaLinks.map(({ href, label, isCta }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={isActive(href) ? 'page' : undefined}
+              class:list={{ cta: isCta }}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
       <button
         class="nav-toggle"
         type="button"
