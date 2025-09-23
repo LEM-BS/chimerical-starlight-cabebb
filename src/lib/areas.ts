@@ -4,15 +4,17 @@ export interface AreaInfo {
   county: string;
   outcodes: string[];
   aliases?: string[];
+  feeBand?: 'low' | 'standard' | 'premium';
 }
 
 export const AREA_OUTCODES = {
+  // Flintshire & Deeside
   deeside: {
     id: 'deeside',
     label: 'Deeside',
     county: 'Flintshire',
     outcodes: ['CH5', 'CH6'],
-    aliases: ['Connah\u2019s Quay', 'Shotton', 'Queensferry'],
+    aliases: ['Connah’s Quay', 'Shotton', 'Queensferry'],
   },
   flint: {
     id: 'flint',
@@ -31,12 +33,6 @@ export const AREA_OUTCODES = {
     label: 'Mold',
     county: 'Flintshire',
     outcodes: ['CH7'],
-  },
-  'connahs-quay': {
-    id: 'connahs-quay',
-    label: 'Connah\u2019s Quay',
-    county: 'Flintshire',
-    outcodes: ['CH5'],
   },
   broughton: {
     id: 'broughton',
@@ -62,15 +58,15 @@ export const AREA_OUTCODES = {
     county: 'Flintshire',
     outcodes: ['CH5'],
   },
-  'northop-hall': {
-    id: 'northop-hall',
-    label: 'Northop Hall',
-    county: 'Flintshire',
-    outcodes: ['CH7'],
-  },
   northop: {
     id: 'northop',
     label: 'Northop',
+    county: 'Flintshire',
+    outcodes: ['CH7'],
+  },
+  northopHall: {
+    id: 'northopHall',
+    label: 'Northop Hall',
     county: 'Flintshire',
     outcodes: ['CH7'],
   },
@@ -80,60 +76,152 @@ export const AREA_OUTCODES = {
     county: 'Flintshire',
     outcodes: ['CH6'],
   },
-  shotton: {
-    id: 'shotton',
-    label: 'Shotton',
-    county: 'Flintshire',
-    outcodes: ['CH5'],
-  },
-  queensferry: {
-    id: 'queensferry',
-    label: 'Queensferry',
-    county: 'Flintshire',
-    outcodes: ['CH5'],
-  },
-  tarporley: {
-    id: 'tarporley',
-    label: 'Tarporley',
-    county: 'Cheshire',
-    outcodes: ['CW6'],
-  },
-  waverton: {
-    id: 'waverton',
-    label: 'Waverton',
-    county: 'Cheshire',
-    outcodes: ['CH3'],
+
+  // Chester & Cheshire West
+  chester: {
+    id: 'chester',
+    label: 'Chester',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CH1', 'CH2', 'CH3', 'CH4'],
   },
   hoole: {
     id: 'hoole',
     label: 'Hoole',
-    county: 'Cheshire',
+    county: 'Cheshire West and Chester',
     outcodes: ['CH2'],
   },
   boughton: {
     id: 'boughton',
     label: 'Boughton',
-    county: 'Cheshire',
+    county: 'Cheshire West and Chester',
     outcodes: ['CH3'],
   },
-  'vicars-cross': {
-    id: 'vicars-cross',
+  vicarsCross: {
+    id: 'vicarsCross',
     label: 'Vicars Cross',
-    county: 'Cheshire',
+    county: 'Cheshire West and Chester',
     outcodes: ['CH3'],
   },
-  chester: {
-    id: 'chester',
-    label: 'Chester',
-    county: 'Cheshire',
-    outcodes: ['CH1', 'CH2', 'CH3', 'CH4'],
+  waverton: {
+    id: 'waverton',
+    label: 'Waverton',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CH3'],
   },
-  'ellesmere-port': {
-    id: 'ellesmere-port',
+  tarporley: {
+    id: 'tarporley',
+    label: 'Tarporley',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CW6'],
+  },
+  ellesmerePort: {
+    id: 'ellesmerePort',
     label: 'Ellesmere Port',
-    county: 'Cheshire',
+    county: 'Cheshire West and Chester',
     outcodes: ['CH65', 'CH66'],
   },
+  frodsham: {
+    id: 'frodsham',
+    label: 'Frodsham',
+    county: 'Cheshire West and Chester',
+    outcodes: ['WA6'],
+  },
+  helsby: {
+    id: 'helsby',
+    label: 'Helsby',
+    county: 'Cheshire West and Chester',
+    outcodes: ['WA6'],
+  },
+  winsford: {
+    id: 'winsford',
+    label: 'Winsford',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CW7'],
+  },
+  northwich: {
+    id: 'northwich',
+    label: 'Northwich',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CW8', 'CW9'],
+  },
+  malpas: {
+    id: 'malpas',
+    label: 'Malpas',
+    county: 'Cheshire West and Chester',
+    outcodes: ['SY14'],
+  },
+  kelsall: {
+    id: 'kelsall',
+    label: 'Kelsall',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CW6'],
+  },
+  tarvin: {
+    id: 'tarvin',
+    label: 'Tarvin',
+    county: 'Cheshire West and Chester',
+    outcodes: ['CH3'],
+  },
+
+  // Cheshire East
+  nantwich: {
+    id: 'nantwich',
+    label: 'Nantwich',
+    county: 'Cheshire East',
+    outcodes: ['CW5'],
+  },
+  crewe: {
+    id: 'crewe',
+    label: 'Crewe',
+    county: 'Cheshire East',
+    outcodes: ['CW1', 'CW2'],
+  },
+  sandbach: {
+    id: 'sandbach',
+    label: 'Sandbach',
+    county: 'Cheshire East',
+    outcodes: ['CW11'],
+  },
+  alsager: {
+    id: 'alsager',
+    label: 'Alsager',
+    county: 'Cheshire East',
+    outcodes: ['ST7'],
+  },
+  macclesfield: {
+    id: 'macclesfield',
+    label: 'Macclesfield',
+    county: 'Cheshire East',
+    outcodes: ['SK10', 'SK11'],
+  },
+
+  // Wrexham & North East Wales
+  wrexham: {
+    id: 'wrexham',
+    label: 'Wrexham',
+    county: 'Wrexham',
+    outcodes: ['LL11', 'LL12', 'LL13'],
+  },
+  chirk: {
+    id: 'chirk',
+    label: 'Chirk',
+    county: 'Wrexham',
+    outcodes: ['LL14'],
+  },
+  ruabon: {
+    id: 'ruabon',
+    label: 'Ruabon',
+    county: 'Wrexham',
+    outcodes: ['LL14'],
+  },
+  llangollen: {
+    id: 'llangollen',
+    label: 'Llangollen & Dee Valley',
+    county: 'Denbighshire',
+    outcodes: ['LL20'],
+  },
+
+  // Wirral
   heswall: {
     id: 'heswall',
     label: 'Heswall & Neston',
@@ -146,48 +234,32 @@ export const AREA_OUTCODES = {
     county: 'Wirral',
     outcodes: ['CH46', 'CH47', 'CH48'],
   },
-  wrexham: {
-    id: 'wrexham',
-    label: 'Wrexham',
-    county: 'Wrexham',
-    outcodes: ['LL11', 'LL12', 'LL13'],
-  },
-  llangollen: {
-    id: 'llangollen',
-    label: 'Llangollen & Dee Valley',
-    county: 'Denbighshire',
-    outcodes: ['LL20'],
+
+  // Border/Other
+  ellesmere: {
+    id: 'ellesmere',
+    label: 'Ellesmere',
+    county: 'Shropshire',
+    outcodes: ['SY12'],
   },
 } as const satisfies Record<string, AreaInfo>;
 
 export type AreaKey = keyof typeof AREA_OUTCODES;
 
 export const AREA_ORDER: AreaKey[] = [
-  'flint',
-  'buckley',
-  'mold',
-  'connahs-quay',
-  'shotton',
-  'queensferry',
-  'hawarden',
-  'ewloe',
-  'northop',
-  'northop-hall',
-  'oakenholt',
-  'broughton',
-  'saltney',
-  'deeside',
-  'chester',
-  'hoole',
-  'boughton',
-  'vicars-cross',
-  'waverton',
-  'tarporley',
-  'ellesmere-port',
-  'heswall',
-  'wirral',
-  'wrexham',
-  'llangollen',
+  // Core Flintshire & Deeside
+  'flint', 'buckley', 'mold', 'deeside', 'hawarden', 'ewloe', 'northop', 'northopHall', 'oakenholt', 'broughton', 'saltney',
+  // Chester & Cheshire West
+  'chester', 'hoole', 'boughton', 'vicarsCross', 'waverton', 'tarporley', 'kelsall', 'tarvin',
+  'ellesmerePort', 'frodsham', 'helsby', 'winsford', 'northwich', 'malpas',
+  // Cheshire East
+  'nantwich', 'crewe', 'sandbach', 'alsager', 'macclesfield',
+  // Wrexham & North East Wales
+  'wrexham', 'chirk', 'ruabon', 'llangollen',
+  // Wirral
+  'heswall', 'wirral',
+  // Border/Other
+  'ellesmere',
 ] as AreaKey[];
 
 export const AREA_LIST: AreaInfo[] = AREA_ORDER.map((key) => AREA_OUTCODES[key]);
@@ -236,11 +308,9 @@ export const getAreasForOutcode = (outcode: string): AreaInfo[] => {
   if (!outcode) {
     return [];
   }
-
   const normalised = normaliseOutcode(outcode);
-  const match = normalised.match(/^([A-Z]{1,2}\d[A-Z\d]?)(\d[A-Z]{2})$/);
+  const match = normalised.match(/^([A-Z]{1,2}\\d[A-Z\\d]?)(\\d[A-Z]{2})$/);
   const outwardCode = match ? match[1] : normalised;
-
   return OUTCODE_LOOKUP.get(outwardCode) ?? [];
 };
 
