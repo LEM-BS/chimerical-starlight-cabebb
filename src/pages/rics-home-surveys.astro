@@ -96,7 +96,7 @@ const { Content } = await entry.render();
     <link rel="stylesheet" href="/lem-quote.css" />
   </Fragment>
 
-  <!-- ░░ HEADER ░░ --><!-- ░░ HERO + QUOTE FORM ░░ --><section class="hero hero-plain">
+  <!-- ░░ HEADER ░░ --><!-- ░░ HERO + QUOTE FORM ░░ --><section class="hero hero-plain hero-plain--survey">
         <div class="hero-container legacy-container">
           <div class="review-badge">
             <span class="stars">★★★★★</span>
@@ -140,23 +140,25 @@ const { Content } = await entry.render();
                 </button>
               </div>
             </div>
-            <ul>
-              <li>
-                <strong>Fast, no-obligation quote</strong> direct from a surveyor
-              </li>
-              <li><strong>Out-of-hours responses</strong> whenever possible</li>
-              <li>
-                100% privacy — your details are <strong>never shared</strong>
-              </li>
-              <li>
-                Serving Connah’s Quay, Deeside, Chester, Mold, Buckley, Hawarden
-                &amp; nearby
-              </li>
-            </ul>
-            <div class="center-cta">
-              <a class="cta-button hero-contrast" href="/quote">
-                Get Instant Estimate
-              </a>
+            <div class="quote-form__footer">
+              <ul class="quote-benefits">
+                <li>
+                  <strong>Fast, no-obligation quote</strong> direct from a surveyor
+                </li>
+                <li><strong>Out-of-hours responses</strong> whenever possible</li>
+                <li>
+                  100% privacy — your details are <strong>never shared</strong>
+                </li>
+                <li>
+                  Serving Connah’s Quay, Deeside, Chester, Mold, Buckley,
+                  Hawarden &amp; nearby
+                </li>
+              </ul>
+              <div class="center-cta center-cta--full">
+                <a class="cta-button hero-contrast" href="/quote">
+                  Get Instant Estimate
+                </a>
+              </div>
             </div>
           </form>
         </div>
