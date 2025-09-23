@@ -371,3 +371,124 @@
     animation: none;
   }
 }
+/* 1. Enhance input and select hover */
+.lem-quote-calculator__field input:hover,
+.lem-quote-calculator__field select:hover,
+.lem-quote-calculator__field textarea:hover {
+  border-color: var(--accent-blue, #2563eb);
+  background-color: #f6f9ff;
+}
+
+/* 2. Field grouping background */
+.lem-quote-calculator__fieldset {
+  background: rgba(241, 245, 255, 0.22);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+}
+
+/* 3. Add spacing between fields */
+.lem-quote-calculator__field {
+  margin-bottom: 1rem;
+}
+
+/* 4. Primary button improvement */
+.cta-button,
+.lem-quote-calculator__cta .cta-button {
+  background: linear-gradient(94deg, #2563eb 60%, #1741b6 100%);
+  color: #fff;
+  font-size: 1.07rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 22px rgba(37,99,235,0.07);
+  transition: background 0.18s, box-shadow 0.2s, transform 0.1s;
+  cursor: pointer;
+}
+
+.cta-button:hover,
+.lem-quote-calculator__cta .cta-button:hover {
+  background: linear-gradient(94deg, #1741b6 60%, #2563eb 100%);
+  box-shadow: 0 7px 24px rgba(37,99,235,0.13);
+  transform: translateY(-2px) scale(1.035);
+}
+
+/* 5. Option list improvement */
+.lem-quote-calculator__option-list label {
+  border: 1px solid var(--divider-grey, #dfe6f5);
+  background: #f3f7fc;
+  border-radius: 2rem;
+  padding: 0.37rem 1rem;
+  transition: border 0.16s, background 0.17s;
+  cursor: pointer;
+}
+.lem-quote-calculator__option-list input:checked + label,
+.lem-quote-calculator__option-list label:active {
+  border: 1.5px solid var(--accent-blue, #2563eb);
+  background: #e7f0ff;
+}
+
+/* 6. Form legend/title upgrade */
+.lem-quote-calculator__legend {
+  font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem);
+  font-weight: 800;
+  color: var(--primary-blue, #0f172a);
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+/* 7. Error styling for accessibility */
+.lem-quote-calculator__hint--error {
+  color: var(--error-red, #b91c1c);
+  font-weight: 700;
+  background: #ffe9e9;
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.7rem;
+  margin-top: 0.4rem;
+}
+
+/* 8. Make inputs a little larger and accessible */
+.lem-quote-calculator__field input,
+.lem-quote-calculator__field select,
+.lem-quote-calculator__field textarea {
+  min-height: 2.6rem;
+  font-size: 1.08rem;
+  border-width: 1.5px;
+  letter-spacing: 0.01em;
+}
+
+.lem-quote-calculator__field label {
+  font-size: 0.97rem;
+  opacity: 0.96;
+}
+
+/* 9. Add micro-interaction to field focus */
+.lem-quote-calculator__field input:focus,
+.lem-quote-calculator__field select:focus,
+.lem-quote-calculator__field textarea:focus {
+  background: #eef3fc;
+  border-color: var(--accent-blue, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+}
+
+/* 10. Result card pop effect */
+.lem-quote-calculator__result {
+  box-shadow: 0 6px 40px rgba(15, 23, 42, 0.13);
+  border-width: 1.5px;
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 500px) {
+  .lem-quote-calculator__fieldset {
+    padding: 1rem;
+  }
+  .lem-quote-calculator__result {
+    padding: 1rem;
+  }
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}
