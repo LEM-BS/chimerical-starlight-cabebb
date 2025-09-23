@@ -1299,6 +1299,48 @@ form button:hover,
   font-size: 1.08rem;
 }
 
+@media (max-width: 720px) {
+  .hero-quote {
+    padding: clamp(2.6rem, 8vw, 3.25rem) 0 clamp(1.6rem, 6vw, 2.4rem);
+  }
+
+  .hero-quote .hero-container {
+    gap: clamp(1rem, 3.5vw, 1.6rem);
+  }
+
+  .hero-quote .review-badge {
+    margin-bottom: 0.9rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+
+  .hero-quote .review-badge .stars {
+    font-size: 1.3rem;
+  }
+
+  .hero-quote .hero-container > p {
+    font-size: 1.02rem;
+  }
+
+  .quote-form {
+    padding: clamp(1.5rem, 5vw, 2rem) clamp(1.1rem, 4vw, 1.6rem);
+  }
+
+  .quote-form .form-grid {
+    gap: clamp(0.85rem, 3vw, 1.1rem);
+  }
+
+  .quote-form ul {
+    margin-top: clamp(1.4rem, 5vw, 1.9rem);
+    font-size: 0.98rem;
+  }
+
+  .quote-form .center-cta {
+    margin-top: clamp(1.1rem, 4vw, 1.6rem);
+  }
+}
+
 .hero-intro {
   display: grid;
   gap: clamp(12px, 2vw, 20px);
