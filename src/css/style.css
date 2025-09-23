@@ -1984,3 +1984,17 @@ details[open] summary::after {
   box-shadow: var(--shadow-soft);
   padding: clamp(1.25rem, 3vw, 2rem);
 }
+
+@media (max-width: 600px) {
+  html {
+    overflow-x: auto;
+  }
+
+  body {
+    transform: scale(0.67);
+    transform-origin: top left;
+    width: 149.25vw;
+    height: 149.25vh;
+    overflow: auto;
+  }
+}
