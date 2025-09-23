@@ -183,7 +183,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'damp',
     label: 'Specialist Damp & Timber Investigation',
-    baseFee: 545,
+    baseFee: 575,
     summary:
       'Independent moisture diagnosis with root-cause analysis and action plan.',
     turnaround: 'Report issued within 2–3 working days of the visit.',
@@ -199,7 +199,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
   {
     id: 'ventilation',
     label: 'Ventilation & Condensation Assessment',
-    baseFee: 525,
+    baseFee: 575,
     summary:
       'Airflow testing and practical guidance for persistent condensation or mould.',
     turnaround: 'Report typically ready within 3–4 working days.',
@@ -253,7 +253,7 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'interwar',
     label: 'Interwar era (1919–1944)',
-    adjustment: 5,
+    adjustment: 15,
     helper:
       'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
   },
@@ -274,7 +274,7 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'victorian',
     label: 'Victorian / Edwardian',
-    adjustment: 15,
+    adjustment: 30,
     helper:
       'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
