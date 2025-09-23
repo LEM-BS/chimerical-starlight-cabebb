@@ -28,6 +28,13 @@
   }
 }
 
+@media (min-width: 900px) {
+  .lem-quote-calculator__result {
+    position: sticky;
+    top: clamp(1.5rem, 1rem + 1vw, 3rem);
+  }
+}
+
 .lem-quote-calculator__form {
   display: block;
 }
