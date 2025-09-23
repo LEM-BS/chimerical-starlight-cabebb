@@ -1722,10 +1722,16 @@ details[open] summary::after {
     font-size: 0.98rem;
   }
 
-  h1,
-  h2,
+  h1 {
+    font-size: clamp(1.5rem, 6.2vw, 2.1rem);
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+  }
+
   h3 {
-    font-size: 1.2em;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
 }
 /*───────────────────────────────────────────────────────
