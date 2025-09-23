@@ -1347,6 +1347,42 @@ form button:hover,
   font-weight: 700;
 }
 
+.quote-form__instant-estimate {
+  margin: clamp(1.75rem, 5vw, 2.75rem) auto clamp(2.5rem, 6vw, 3.5rem);
+  width: 100%;
+  display: grid;
+  gap: clamp(1rem, 2.8vw, 1.6rem);
+}
+
+.quote-form__instant-estimate .cta-button {
+  width: 100%;
+  justify-content: center;
+  padding: clamp(0.9rem, 2.5vw, 1.1rem) clamp(1.4rem, 4vw, 2.1rem);
+  font-size: clamp(1rem, 2.4vw, 1.1rem);
+}
+
+.quote-form__instant-estimate-panel {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(229, 234, 242, 0.9);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  width: 100%;
+  scroll-margin-top: 120px;
+}
+
+.quote-form__instant-estimate-panel:focus {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  .quote-form__instant-estimate {
+    margin-top: clamp(2.25rem, 4vw, 3rem);
+    margin-bottom: clamp(3rem, 6vw, 4rem);
+  }
+}
+
 /*───────────────────────────────────────────────────────
   10. TABLE STYLES
   Data table formatting

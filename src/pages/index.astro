@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import QuoteCalculator from '../components/QuoteCalculator';
 import { areaSelectorOptions } from '../data/areas';
 import HomeInstantEstimate from '../components/HomeInstantEstimate';
 
@@ -101,6 +102,26 @@ const seo = {
           </a>
         </div>
       </form>
+      <div class="quote-form__instant-estimate">
+        <button
+          class="cta-button hero-contrast quote-form__instant-estimate-toggle"
+          type="button"
+          aria-controls="instant-estimate-panel"
+          aria-expanded="false"
+          data-instant-estimate-toggle
+        >
+          Get instant estimate
+        </button>
+        <div
+          id="instant-estimate-panel"
+          class="quote-form__instant-estimate-panel"
+          hidden
+          tabindex="-1"
+          data-instant-estimate-panel
+        >
+          <QuoteCalculator client:load />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -378,12 +399,49 @@ const seo = {
     </section>
   </main>
 
-  <script is:inline>
-    /** @param {HTMLSelectElement} select */
-    function handleAreaSelect(select) {
-      if (select.value) window.location.href = select.value;
-    }
-  </script>
+  <Fragment slot="body-end">
+    <script is:inline>
+      /** @param {HTMLSelectElement} select */
+      function handleAreaSelect(select) {
+        if (select.value) window.location.href = select.value;
+      }
+    </script>
+    <script is:inline>
+      const instantEstimateToggle = document.querySelector('[data-instant-estimate-toggle]');
+      const instantEstimatePanel = document.querySelector('[data-instant-estimate-panel]');
+
+      if (instantEstimateToggle && instantEstimatePanel) {
+        const focusCalculator = () => {
+          const focusTarget = instantEstimatePanel.querySelector(
+            'input, select, textarea, button, [tabindex]:not([tabindex="-1"])'
+          );
+
+          if (focusTarget instanceof HTMLElement) {
+            focusTarget.focus({ preventScroll: true });
+          } else {
+            instantEstimatePanel.focus({ preventScroll: true });
+          }
+        };
+
+        instantEstimateToggle.addEventListener('click', () => {
+          const isHidden = instantEstimatePanel.hasAttribute('hidden');
+
+          if (isHidden) {
+            instantEstimatePanel.removeAttribute('hidden');
+            instantEstimateToggle.setAttribute('aria-expanded', 'true');
+
+            requestAnimationFrame(() => {
+              instantEstimatePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.setTimeout(focusCalculator, 200);
+            });
+          } else {
+            instantEstimatePanel.setAttribute('hidden', '');
+            instantEstimateToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    </script>
+  </Fragment>
 
   <div class="sticky-cta">
     <a class="cta-button" href="/enquiry">Get a Quote</a>
