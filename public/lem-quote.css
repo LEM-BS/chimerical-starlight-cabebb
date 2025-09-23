@@ -257,10 +257,73 @@
 }
 
 .lem-quote-calculator__cta {
+  --lem-cta-padding: 0;
+  --lem-cta-status-color: var(--text-light, #5b6478);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
+  padding: var(--lem-cta-padding, 0);
+  border-radius: clamp(0.9rem, 0.8rem + 0.4vw, 1.2rem);
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease,
+    padding 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lem-quote-calculator__cta {
+    transition: none;
+  }
+}
+
+.lem-quote-calculator__cta > .lem-quote-calculator__hint {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 1.35rem;
+  color: var(--lem-cta-status-color, var(--text-light, #5b6478));
+}
+
+.lem-quote-calculator__cta > .lem-quote-calculator__hint::before {
+  content: '';
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta {
+  --lem-cta-padding: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  --lem-cta-status-color: #166534;
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.9), rgba(187, 247, 208, 0.55));
+  border-color: rgba(22, 101, 52, 0.35);
+  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.15);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  --lem-cta-padding: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  --lem-cta-status-color: #b91c1c;
+  background: linear-gradient(135deg, rgba(254, 226, 226, 0.95), rgba(254, 202, 202, 0.6));
+  border-color: rgba(185, 28, 28, 0.45);
+  box-shadow: 0 16px 40px rgba(185, 28, 28, 0.14);
+}
+
+.lem-quote-calculator[data-submission-status='success']
+  .lem-quote-calculator__cta
+  > .lem-quote-calculator__hint::before {
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2720%27%20height%3D%2720%27%20viewBox%3D%270%200%2020%2020%27%20fill%3D%27none%27%3E%3Ccircle%20cx%3D%2710%27%20cy%3D%2710%27%20r%3D%2710%27%20fill%3D%27%23dcfce7%27%2F%3E%3Cpath%20d%3D%27M8.246%2012.71%205.508%209.972%206.922%208.558%208.246%209.882%2012.864%205.264%2014.278%206.678%208.246%2012.71Z%27%20fill%3D%27%23166534%27%2F%3E%3C%2Fsvg%3E");
+}
+
+.lem-quote-calculator[data-submission-status='error']
+  .lem-quote-calculator__cta
+  > .lem-quote-calculator__hint::before {
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2720%27%20height%3D%2720%27%20viewBox%3D%270%200%2020%2020%27%20fill%3D%27none%27%3E%3Ccircle%20cx%3D%2710%27%20cy%3D%2710%27%20r%3D%2710%27%20fill%3D%27%23fee2e2%27%2F%3E%3Cpath%20d%3D%27M10.75%2010l2.5%202.5-1.5%201.5-2.5-2.5-2.5%202.5-1.5-1.5%202.5-2.5-2.5-2.5%201.5-1.5%202.5%202.5%202.5-2.5%201.5%201.5-2.5%202.5Z%27%20fill%3D%27%23b91c1c%27%2F%3E%3C%2Fsvg%3E");
 }
 
 .instant-estimate__panel .lem-quote-calculator {
