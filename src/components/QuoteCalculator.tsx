@@ -29,6 +29,11 @@ const DISTANCE_STATUS_ID = 'quote-distance-status';
 const CONTACT_HINT_ID = 'quote-contact-hint';
 const CONTACT_STATUS_ID = 'quote-contact-status';
 
+const CONTACT_SECTION_HEADING_ID = 'quote-contact-heading';
+const PROPERTY_SECTION_HEADING_ID = 'quote-property-heading';
+const SURVEY_SECTION_HEADING_ID = 'quote-survey-preferences-heading';
+const NOTES_SECTION_HEADING_ID = 'quote-additional-info-heading';
+
 const FULL_POSTCODE_PATTERN = /^([A-Z]{1,2}\d[A-Z\d]?)(\d[A-Z]{2})$/;
 const OUTWARD_POSTCODE_PATTERN = /^[A-Z]{1,2}\d[A-Z\d]?$/;
 
@@ -421,6 +426,34 @@ const QuoteCalculator = (): ReactElement => {
       ? submissionError
       : null;
 
+  const contactStatusIcon =
+    contactStatusMessage && submissionState === 'success'
+      ? (
+          <span className="lem-quote-calculator__status-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" focusable="false">
+              <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="M7 10.5 9.2 12.7 13.25 8.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        )
+      : contactStatusMessage && submissionState === 'error'
+      ? (
+          <span className="lem-quote-calculator__status-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" focusable="false">
+              <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M10 6.25v4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="10" cy="13.75" r="0.75" fill="currentColor" />
+            </svg>
+          </span>
+        )
+      : null;
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (submitting) return;
@@ -584,136 +617,267 @@ const QuoteCalculator = (): ReactElement => {
           <fieldset className="lem-quote-calculator__fieldset">
             <legend className="lem-quote-calculator__legend">Request your confirmed fee</legend>
 
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="contact-name">Full name</label>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                autoComplete="name"
-                required
-              />
-            </div>
+            <div
+              className="lem-quote-calculator__section"
+              role="region"
+              aria-labelledby={CONTACT_SECTION_HEADING_ID}
+            >
+              <h3
+                id={CONTACT_SECTION_HEADING_ID}
+                className="lem-quote-calculator__section-heading"
+                tabIndex={0}
+              >
+                Contact details
+              </h3>
 
-            <div className="lem-quote-calculator__field-grid">
               <div className="lem-quote-calculator__field">
-                <label htmlFor="contact-email">Email address</label>
+                <label htmlFor="contact-name">Full name</label>
                 <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  autoComplete="email"
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  autoComplete="name"
                   required
                 />
               </div>
 
+              <div className="lem-quote-calculator__field-grid">
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="contact-email">Email address</label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    autoComplete="email"
+                    required
+                  />
+                </div>
+
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="contact-phone">Phone number (optional)</label>
+                  <input
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(event) => setPhone(event.target.value)}
+                    autoComplete="tel"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="lem-quote-calculator__section"
+              role="region"
+              aria-labelledby={PROPERTY_SECTION_HEADING_ID}
+            >
+              <h3
+                id={PROPERTY_SECTION_HEADING_ID}
+                className="lem-quote-calculator__section-heading"
+                tabIndex={0}
+              >
+                Property details
+              </h3>
+
               <div className="lem-quote-calculator__field">
-                <label htmlFor="contact-phone">Phone number (optional)</label>
-                <input
-                  id="contact-phone"
-                  name="phone"
-                  type="tel"
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
-                  autoComplete="tel"
+                <label htmlFor="property-address">Property address</label>
+                <textarea
+                  id="property-address"
+                  name="property-address"
+                  rows={3}
+                  value={propertyAddress}
+                  onChange={(event) => handlePropertyAddressChange(event.target.value)}
+                  autoComplete="street-address"
+                  placeholder="e.g. 10 High Street, Chester CH7 1AA"
+                  aria-describedby={`${ADDRESS_HINT_ID} ${DISTANCE_STATUS_ID}`}
                 />
-              </div>
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="property-address">Property address</label>
-              <textarea
-                id="property-address"
-                name="property-address"
-                rows={3}
-                value={propertyAddress}
-                onChange={(event) => handlePropertyAddressChange(event.target.value)}
-                autoComplete="street-address"
-                placeholder="e.g. 10 High Street, Chester CH7 1AA"
-                aria-describedby={`${ADDRESS_HINT_ID} ${DISTANCE_STATUS_ID}`}
-              />
-              <p className="lem-quote-calculator__hint" id={ADDRESS_HINT_ID}>
-                Include the full address and postcode so we can check coverage.
-              </p>
-              <p
-                className={`lem-quote-calculator__hint${distanceError ? ' lem-quote-calculator__hint--error' : ''}`}
-                id={DISTANCE_STATUS_ID}
-                aria-live="polite"
-              >
-                {distanceStatusMessage}
-              </p>
-              {matchedAreas.length > 0 && (
-                <p className="lem-quote-calculator__hint">
-                  Serving {matchedAreas.map((area) => area.label).join(', ')}.
+                <p className="lem-quote-calculator__hint" id={ADDRESS_HINT_ID}>
+                  Include the full address and postcode so we can check coverage.
                 </p>
-              )}
+                <p
+                  className={`lem-quote-calculator__hint${distanceError ? ' lem-quote-calculator__hint--error' : ''}`}
+                  id={DISTANCE_STATUS_ID}
+                  aria-live="polite"
+                >
+                  {distanceStatusMessage}
+                </p>
+                {matchedAreas.length > 0 && (
+                  <p className="lem-quote-calculator__hint">
+                    Serving {matchedAreas.map((area) => area.label).join(', ')}.
+                  </p>
+                )}
+              </div>
+
+              <div className="lem-quote-calculator__field-grid">
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="property-type">Property type</label>
+                  <select
+                    id="property-type"
+                    name="property-type"
+                    value={propertyType}
+                    onChange={(event) => setPropertyType(event.target.value as PropertyTypeId)}
+                  >
+                    {PROPERTY_TYPE_OPTIONS.map((option) => (
+                      <option key={option.id} value={option.id}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="property-age">Approximate age</label>
+                  <select
+                    id="property-age"
+                    name="property-age"
+                    value={propertyAge}
+                    onChange={(event) => setPropertyAge(event.target.value as PropertyAgeId)}
+                  >
+                    {PROPERTY_AGE_OPTIONS.map((option) => (
+                      <option key={option.id} value={option.id}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="extension-status">Extended or converted?</label>
+                <select
+                  id="extension-status"
+                  name="extension-status"
+                  value={extensionStatus}
+                  onChange={(event) => setExtensionStatus(event.target.value as ExtensionStatusId)}
+                >
+                  {EXTENSION_STATUS_OPTIONS.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <p className="lem-quote-calculator__hint">
+                  Let us know about major alterations so we can adjust inspection time.
+                </p>
+                {extensionStatus === 'yes' ? (
+                  <div className="lem-quote-calculator__option-list" role="group" aria-label="Extension details">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="extension-detail-extended"
+                        value="yes"
+                        checked={hasExtended}
+                        onChange={(event) =>
+                          setExtensionTypes((prev) => ({ ...prev, extended: event.target.checked }))
+                        }
+                      />
+                      <span>Extended</span>
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="extension-detail-converted"
+                        value="yes"
+                        checked={hasConverted}
+                        onChange={(event) =>
+                          setExtensionTypes((prev) => ({ ...prev, converted: event.target.checked }))
+                        }
+                      />
+                      <span>Converted</span>
+                    </label>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="lem-quote-calculator__field-grid">
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="property-value">Estimated property value (£)</label>
+                  <input
+                    id="property-value"
+                    name="property-value"
+                    inputMode="numeric"
+                    min="0"
+                    step="1000"
+                    value={propertyValueInput}
+                    onChange={(event) => setPropertyValueInput(event.target.value)}
+                    onBlur={handleValueBlur}
+                    aria-describedby={VALUE_HINT_ID}
+                    placeholder="e.g. 275000"
+                    autoComplete="off"
+                  />
+                  <p className="lem-quote-calculator__hint" id={VALUE_HINT_ID}>
+                    An estimate is fine; this helps us gauge inspection time.
+                  </p>
+                </div>
+
+                <div className="lem-quote-calculator__field">
+                  <label htmlFor="bedrooms">Number of bedrooms</label>
+                  <input
+                    id="bedrooms"
+                    name="bedrooms"
+                    inputMode="numeric"
+                    min="1"
+                    step="1"
+                    value={bedroomsInput}
+                    onChange={(event) => setBedroomsInput(event.target.value)}
+                    onBlur={handleBedroomsBlur}
+                    aria-describedby={BEDROOM_HINT_ID}
+                  />
+                  <p className="lem-quote-calculator__hint" id={BEDROOM_HINT_ID}>
+                    Include loft rooms used as bedrooms.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="survey-type">Survey or service</label>
-              <select
-                id="survey-type"
-                name="survey-type"
-                value={surveyType}
-                onChange={(event) => setSurveyType(event.target.value as SurveyType)}
-                aria-describedby={SURVEY_HINT_ID}
+            <div
+              className="lem-quote-calculator__section"
+              role="region"
+              aria-labelledby={SURVEY_SECTION_HEADING_ID}
+            >
+              <h3
+                id={SURVEY_SECTION_HEADING_ID}
+                className="lem-quote-calculator__section-heading"
+                tabIndex={0}
               >
-                {SURVEYS.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <p className="lem-quote-calculator__hint" id={SURVEY_HINT_ID}>
-                {selectedSurvey.summary}
-              </p>
-            </div>
+                Survey preferences
+              </h3>
 
-            <div className="lem-quote-calculator__field-grid">
               <div className="lem-quote-calculator__field">
-                <label htmlFor="property-type">Property type</label>
+                <label htmlFor="survey-type">Survey or service</label>
                 <select
-                  id="property-type"
-                  name="property-type"
-                  value={propertyType}
-                  onChange={(event) => setPropertyType(event.target.value as PropertyTypeId)}
+                  id="survey-type"
+                  name="survey-type"
+                  value={surveyType}
+                  onChange={(event) => setSurveyType(event.target.value as SurveyType)}
+                  aria-describedby={SURVEY_HINT_ID}
                 >
-                  {PROPERTY_TYPE_OPTIONS.map((option) => (
+                  {SURVEYS.map((option) => (
                     <option key={option.id} value={option.id}>
                       {option.label}
                     </option>
                   ))}
                 </select>
-              </div>
-
-              <div className="lem-quote-calculator__field">
-                <label htmlFor="property-age">Approximate age</label>
-                <select
-                  id="property-age"
-                  name="property-age"
-                  value={propertyAge}
-                  onChange={(event) => setPropertyAge(event.target.value as PropertyAgeId)}
-                >
-                  {PROPERTY_AGE_OPTIONS.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <p className="lem-quote-calculator__hint" id={SURVEY_HINT_ID}>
+                  {selectedSurvey.summary}
+                </p>
               </div>
             </div>
 
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="extension-status">Extended or converted?</label>
-              <select
-                id="extension-status"
-                name="extension-status"
-                value={extensionStatus}
-                onChange={(event) => setExtensionStatus(event.target.value as ExtensionStatusId)}
+            <div
+              className="lem-quote-calculator__section"
+              role="region"
+              aria-labelledby={NOTES_SECTION_HEADING_ID}
+            >
+              <h3
+                id={NOTES_SECTION_HEADING_ID}
+                className="lem-quote-calculator__section-heading"
+                tabIndex={0}
               >
                 {EXTENSION_STATUS_OPTIONS.map((option) => (
                   <option key={option.id} value={option.id}>
@@ -778,47 +942,32 @@ const QuoteCalculator = (): ReactElement => {
                   An estimate is fine; this helps us gauge inspection time.
                 </p>
               </div>
+                Additional information
+              </h3>
 
               <div className="lem-quote-calculator__field">
-                <label htmlFor="bedrooms">Number of bedrooms</label>
-                <input
-                  id="bedrooms"
-                  name="bedrooms"
-                  inputMode="numeric"
-                  min="1"
-                  step="1"
-                  value={bedroomsInput}
-                  onChange={(event) => setBedroomsInput(event.target.value)}
-                  onBlur={handleBedroomsBlur}
-                  aria-describedby={BEDROOM_HINT_ID}
+                <label htmlFor="contact-notes">Notes (optional)</label>
+                <textarea
+                  id="contact-notes"
+                  name="notes"
+                  rows={4}
+                  value={notes}
+                  onChange={(event) => setNotes(event.target.value)}
+                  aria-describedby={CONTACT_HINT_ID}
                 />
-                <p className="lem-quote-calculator__hint" id={BEDROOM_HINT_ID}>
-                  Include loft rooms used as bedrooms.
+                <p className="lem-quote-calculator__hint" id={CONTACT_HINT_ID}>
+                  Tell us about access, timescales or anything else we should know. We usually reply within an hour.
                 </p>
               </div>
-            </div>
-
-            <div className="lem-quote-calculator__field">
-              <label htmlFor="contact-notes">Notes (optional)</label>
-              <textarea
-                id="contact-notes"
-                name="notes"
-                rows={4}
-                value={notes}
-                onChange={(event) => setNotes(event.target.value)}
-                aria-describedby={CONTACT_HINT_ID}
-              />
-              <p className="lem-quote-calculator__hint" id={CONTACT_HINT_ID}>
-                Tell us about access, timescales or anything else we should know. We usually reply within an hour.
-              </p>
             </div>
 
             <div className="lem-quote-calculator__cta">
               <button type="submit" className="cta-button" disabled={submitting} aria-describedby={CONTACT_STATUS_ID}>
                 {submitting ? 'Sending…' : 'Send enquiry'}
               </button>
-              <p className="lem-quote-calculator__hint" id={CONTACT_STATUS_ID} aria-live="polite">
-                {contactStatusMessage ?? ' '}
+              <p className="lem-quote-calculator__hint lem-quote-calculator__status" id={CONTACT_STATUS_ID} aria-live="polite">
+                {contactStatusIcon}
+                <span className="lem-quote-calculator__status-text">{contactStatusMessage ?? ' '}</span>
               </p>
             </div>
           </fieldset>

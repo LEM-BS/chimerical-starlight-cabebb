@@ -20,6 +20,12 @@
   .lem-quote-calculator__layout {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   }
+
+  .lem-quote-calculator__result {
+    position: sticky;
+    top: calc(4.5rem + clamp(1.5rem, 1.2rem + 1vw, 2.5rem));
+    align-self: start;
+  }
 }
 
 .lem-quote-calculator__form {
@@ -39,6 +45,33 @@
   font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
   color: var(--primary-blue, #0f172a);
   margin-bottom: 0.5rem;
+}
+
+.lem-quote-calculator__section {
+  display: grid;
+  gap: clamp(1rem, 0.85rem + 0.4vw, 1.5rem);
+}
+
+.lem-quote-calculator__section:not(:first-of-type) {
+  padding-top: clamp(1rem, 0.8rem + 0.4vw, 1.4rem);
+  border-top: 1px solid var(--divider-grey, #dfe6f5);
+}
+
+.lem-quote-calculator__section-heading {
+  margin: 0;
+  font-family: var(--heading-font, 'Merriweather', serif);
+  font-size: clamp(1.05rem, 0.95rem + 0.3vw, 1.3rem);
+  font-weight: 700;
+  color: var(--primary-blue, #0f172a);
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  outline: none;
+}
+
+.lem-quote-calculator__section-heading:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.45);
+  outline-offset: 0.2rem;
+  border-radius: 0.4rem;
 }
 
 .lem-quote-calculator__field {
@@ -257,10 +290,78 @@
 }
 
 .lem-quote-calculator__cta {
+  --lem-cta-padding: 0;
+  --lem-cta-status-color: var(--text-light, #5b6478);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
+  border-radius: 0.9rem;
+  border: 1px solid transparent;
+  padding: 0;
+  background: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: var(--lem-cta-padding, 0);
+  border-radius: clamp(0.9rem, 0.8rem + 0.4vw, 1.2rem);
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease,
+    padding 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lem-quote-calculator__cta {
+    transition: none;
+  }
+}
+
+.lem-quote-calculator__cta > .lem-quote-calculator__hint {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 1.35rem;
+  color: var(--lem-cta-status-color, var(--text-light, #5b6478));
+}
+
+.lem-quote-calculator__cta > .lem-quote-calculator__hint::before {
+  content: '';
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta {
+  --lem-cta-padding: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  --lem-cta-status-color: #166534;
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.9), rgba(187, 247, 208, 0.55));
+  border-color: rgba(22, 101, 52, 0.35);
+  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.15);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  --lem-cta-padding: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  --lem-cta-status-color: #b91c1c;
+  background: linear-gradient(135deg, rgba(254, 226, 226, 0.95), rgba(254, 202, 202, 0.6));
+  border-color: rgba(185, 28, 28, 0.45);
+  box-shadow: 0 16px 40px rgba(185, 28, 28, 0.14);
+}
+
+.lem-quote-calculator[data-submission-status='success']
+  .lem-quote-calculator__cta
+  > .lem-quote-calculator__hint::before {
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2720%27%20height%3D%2720%27%20viewBox%3D%270%200%2020%2020%27%20fill%3D%27none%27%3E%3Ccircle%20cx%3D%2710%27%20cy%3D%2710%27%20r%3D%2710%27%20fill%3D%27%23dcfce7%27%2F%3E%3Cpath%20d%3D%27M8.246%2012.71%205.508%209.972%206.922%208.558%208.246%209.882%2012.864%205.264%2014.278%206.678%208.246%2012.71Z%27%20fill%3D%27%23166534%27%2F%3E%3C%2Fsvg%3E");
+}
+
+.lem-quote-calculator[data-submission-status='error']
+  .lem-quote-calculator__cta
+  > .lem-quote-calculator__hint::before {
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2720%27%20height%3D%2720%27%20viewBox%3D%270%200%2020%2020%27%20fill%3D%27none%27%3E%3Ccircle%20cx%3D%2710%27%20cy%3D%2710%27%20r%3D%2710%27%20fill%3D%27%23fee2e2%27%2F%3E%3Cpath%20d%3D%27M10.75%2010l2.5%202.5-1.5%201.5-2.5-2.5-2.5%202.5-1.5-1.5%202.5-2.5-2.5-2.5%201.5-1.5%202.5%202.5%202.5-2.5%201.5%201.5-2.5%202.5Z%27%20fill%3D%27%23b91c1c%27%2F%3E%3C%2Fsvg%3E");
 }
 
 .instant-estimate__panel .lem-quote-calculator {
@@ -272,10 +373,75 @@
 
 .lem-quote-calculator__cta .cta-button {
   padding-inline: 1.6rem;
+  flex-shrink: 0;
 }
 
 .lem-quote-calculator__cta .inline-link {
   font-weight: 600;
+}
+
+.lem-quote-calculator__status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: inherit;
+}
+
+.lem-quote-calculator__status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.lem-quote-calculator__status-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lem-quote-calculator__status-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta,
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  padding: clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem);
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.12);
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__status {
+  color: #047857;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__status-icon {
+  color: #0f766e;
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  background: #fef2f2;
+  border-color: #fecaca;
+  box-shadow: 0 12px 30px rgba(248, 113, 113, 0.16);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__status {
+  color: var(--error-red, #b91c1c);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__status-icon {
+  color: var(--error-red, #b91c1c);
 }
 
 @media (min-width: 640px) {
@@ -459,8 +625,7 @@
 }
 
 /* 4. Primary button improvement */
-.cta-button,
-.lem-quote-calculator__cta .cta-button {
+.lem-quote-calculator .cta-button {
   background: linear-gradient(94deg, #2563eb 60%, #1741b6 100%);
   color: #fff;
   font-size: 1.07rem;
@@ -473,8 +638,7 @@
   cursor: pointer;
 }
 
-.cta-button:hover,
-.lem-quote-calculator__cta .cta-button:hover {
+.lem-quote-calculator .cta-button:hover {
   background: linear-gradient(94deg, #1741b6 60%, #2563eb 100%);
   box-shadow: 0 7px 24px rgba(37,99,235,0.13);
   transform: translateY(-2px) scale(1.035);
@@ -552,7 +716,7 @@
   .lem-quote-calculator__result {
     padding: 1rem;
   }
-  .cta-button {
+  .lem-quote-calculator .cta-button {
     width: 100%;
     text-align: center;
   }
