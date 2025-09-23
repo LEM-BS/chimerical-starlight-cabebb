@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServiceSeo } from '../utils/structuredData';
+
+const description =
+  'Compare independent damp inspection options for homes, landlords and housing providers across Deeside, Chester and Flintshire.';
+
+const { seo: baseSeo, pageUrl } = createServiceSeo({
+  title: 'Damp Survey Options & Independent Reports | LEM Building Surveying',
+  description,
+  canonicalPath: '/damp-surveys-index',
+  serviceName: 'Damp Survey Options',
+  serviceType: 'Damp Investigation Services',
+  review: {
+    author: 'Homeowner in Chester',
+    body: 'Our chosen damp inspection explained the source of moisture clearly and the impartial recommendations helped us plan repairs without overspending.',
+    ratingValue: 5,
+    datePublished: '2024-07-12',
+  },
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.lembuildingsurveying.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://www.lembuildingsurveying.co.uk/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Damp Survey Options',
+      item: pageUrl,
+    },
+  ],
+};
+
+const seo = {
+  ...baseSeo,
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+};
+
+const serviceCards = [
+  {
+    href: '/services/damp-surveys',
+    title: 'Buyer & homeowner damp surveys',
+    description:
+      'RICS-aligned damp inspections that map moisture, prioritise repairs and support pre-purchase negotiations.',
+    cta: 'Explore pre-purchase damp surveys →',
+  },
+  {
+    href: '/damp-mould-surveys',
+    title: 'Damp & mould surveys',
+    description:
+      'Independent diagnosis of condensation, leaks and ventilation faults with reports accepted by landlords and housing teams.',
+    cta: 'View damp & mould surveys →',
+  },
+  {
+    href: '/damp-timber-surveys',
+    title: 'Damp & timber surveys',
+    description:
+      'Specialist assessments for woodworm, rot and moisture in structural timbers, complete with remedial action plans.',
+    cta: 'Review damp & timber surveys →',
+  },
+  {
+    href: '/independent-damp-surveys',
+    title: 'Independent damp surveys',
+    description:
+      'Objective reporting for disputes, insurance cases and large portfolios—free from contractor sales agendas.',
+    cta: 'Learn about independent damp surveys →',
+  },
+];
+---
+
+<BaseLayout seo={seo}>
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Damp Survey Options for Every Property</h1>
+      <p class="hero-subtitle">
+        Compare impartial investigations for condensation, mould, timber decay and persistent damp before you commit to costly works.
+      </p>
+      <a class="cta-button hero-contrast" href="/enquiry">Book a Damp Consultation</a>
+    </div>
+  </section>
+
+  <section class="guide-callout">
+    <div class="box-container">
+      <p>
+        Unsure which inspection suits your situation? Use this hub to decide in minutes, then
+        <a href="/independent-damp-survey-vs-contractor">see how independent surveys differ from contractor quotes</a>
+        before you spend on treatments.
+      </p>
+    </div>
+  </section>
+
+  <section class="service-detail">
+    <div class="box-container">
+      <p class="lead">
+        Every property faces different moisture risks. Start by selecting the service that matches your goals, whether you are purchasing, managing housing stock or resolving tenant complaints.
+      </p>
+      <div class="service-grid">
+        {serviceCards.map((card) => (
+          <div class="service-card">
+            <h2>
+              <a href={card.href}>{card.title}</a>
+            </h2>
+            <p>{card.description}</p>
+            <a class="read-more" href={card.href}>{card.cta}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail">
+    <div class="box-container">
+      <h2>What to expect from our damp investigations</h2>
+      <ul>
+        <li>
+          <strong>Pre-visit planning:</strong> share photos, plans and previous reports so we can target likely moisture pathways and ventilation gaps.
+        </li>
+        <li>
+          <strong>On-site diagnostics:</strong> calibrated moisture readings, humidity logging, borescope checks and thermal imaging where required.
+        </li>
+        <li>
+          <strong>Clear reporting:</strong> impartial findings, photographs and remedial priorities that help you brief contractors or satisfy compliance teams.
+        </li>
+      </ul>
+      <p>
+        Need broader governance? Our
+        <a href="/damp-and-mould-action-plans">damp &amp; mould action plans</a>
+        support housing associations and portfolio managers with evidence-led monitoring.
+      </p>
+      <p>
+        Planning a general condition survey as well? Explore our
+        <a href="/rics-home-surveys">RICS home survey levels</a>
+        to cover the wider building fabric alongside moisture risks.
+      </p>
+    </div>
+  </section>
+
+  <section class="services-cta">
+    <div class="box-container">
+      <h2>Talk through your damp concerns</h2>
+      <p>
+        Tell us about the symptoms you are seeing and we will recommend the right level of investigation and a fast survey date.
+      </p>
+      <a class="cta-button" href="/enquiry">Request a tailored quote</a>
+    </div>
+  </section>
+
+  <div class="sticky-cta">
+    <a class="cta-button" href="/enquiry">Get a Damp Survey Quote</a>
+  </div>
+</BaseLayout>
