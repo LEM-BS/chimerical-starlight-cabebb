@@ -296,6 +296,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
+  border-radius: 0.9rem;
+  border: 1px solid transparent;
+  padding: 0;
+  background: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   padding: var(--lem-cta-padding, 0);
   border-radius: clamp(0.9rem, 0.8rem + 0.4vw, 1.2rem);
   border: 1px solid transparent;
@@ -368,10 +373,75 @@
 
 .lem-quote-calculator__cta .cta-button {
   padding-inline: 1.6rem;
+  flex-shrink: 0;
 }
 
 .lem-quote-calculator__cta .inline-link {
   font-weight: 600;
+}
+
+.lem-quote-calculator__status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: inherit;
+}
+
+.lem-quote-calculator__status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.lem-quote-calculator__status-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lem-quote-calculator__status-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta,
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  padding: clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem);
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__cta {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.12);
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__status {
+  color: #047857;
+}
+
+.lem-quote-calculator[data-submission-status='success'] .lem-quote-calculator__status-icon {
+  color: #0f766e;
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__cta {
+  background: #fef2f2;
+  border-color: #fecaca;
+  box-shadow: 0 12px 30px rgba(248, 113, 113, 0.16);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__status {
+  color: var(--error-red, #b91c1c);
+}
+
+.lem-quote-calculator[data-submission-status='error'] .lem-quote-calculator__status-icon {
+  color: var(--error-red, #b91c1c);
 }
 
 @media (min-width: 640px) {

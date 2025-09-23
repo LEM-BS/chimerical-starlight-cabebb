@@ -426,6 +426,34 @@ const QuoteCalculator = (): ReactElement => {
       ? submissionError
       : null;
 
+  const contactStatusIcon =
+    contactStatusMessage && submissionState === 'success'
+      ? (
+          <span className="lem-quote-calculator__status-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" focusable="false">
+              <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="M7 10.5 9.2 12.7 13.25 8.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        )
+      : contactStatusMessage && submissionState === 'error'
+      ? (
+          <span className="lem-quote-calculator__status-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" focusable="false">
+              <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M10 6.25v4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="10" cy="13.75" r="0.75" fill="currentColor" />
+            </svg>
+          </span>
+        )
+      : null;
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (submitting) return;
@@ -874,8 +902,9 @@ const QuoteCalculator = (): ReactElement => {
               <button type="submit" className="cta-button" disabled={submitting} aria-describedby={CONTACT_STATUS_ID}>
                 {submitting ? 'Sending…' : 'Send enquiry'}
               </button>
-              <p className="lem-quote-calculator__hint" id={CONTACT_STATUS_ID} aria-live="polite">
-                {contactStatusMessage ?? ' '}
+              <p className="lem-quote-calculator__hint lem-quote-calculator__status" id={CONTACT_STATUS_ID} aria-live="polite">
+                {contactStatusIcon}
+                <span className="lem-quote-calculator__status-text">{contactStatusMessage ?? ' '}</span>
               </p>
             </div>
           </fieldset>
