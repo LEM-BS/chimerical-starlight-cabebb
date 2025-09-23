@@ -552,7 +552,7 @@
   .lem-quote-calculator__result {
     padding: 1rem;
   }
-  .cta-button {
+  .lem-quote-calculator__cta .cta-button {
     width: 100%;
     text-align: center;
   }
