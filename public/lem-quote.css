@@ -728,3 +728,15 @@
     text-align: center;
   }
 }
+
+/* --- Make mobile layout compact like 67% Chrome zoom --- */
+@media (max-width: 700px) {
+  .lem-quote-calculator {
+    transform: scale(0.67);
+    transform-origin: top left;
+    width: 149.25%;
+    min-height: 120vh;
+    margin-top: 2rem;
+  }
+}
+
