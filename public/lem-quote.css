@@ -129,7 +129,7 @@
   margin-top: 0.65rem;
 }
 
-.lem-quote-calculator__option-list label {
+.lem-quote-calculator__option {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -481,7 +481,7 @@
 }
 
 /* 5. Option list improvement */
-.lem-quote-calculator__option-list label {
+.lem-quote-calculator__option {
   border: 1px solid var(--divider-grey, #dfe6f5);
   background: #f3f7fc;
   border-radius: 2rem;
@@ -489,8 +489,8 @@
   transition: border 0.16s, background 0.17s;
   cursor: pointer;
 }
-.lem-quote-calculator__option-list input:checked + label,
-.lem-quote-calculator__option-list label:active {
+.lem-quote-calculator__option:active,
+.lem-quote-calculator__option--active {
   border: 1.5px solid var(--accent-blue, #2563eb);
   background: #e7f0ff;
 }

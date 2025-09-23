@@ -726,7 +726,9 @@ const QuoteCalculator = (): ReactElement => {
               </p>
               {extensionStatus === 'yes' ? (
                 <div className="lem-quote-calculator__option-list" role="group" aria-label="Extension details">
-                  <label>
+                  <label
+                    className={`lem-quote-calculator__option${hasExtended ? ' lem-quote-calculator__option--active' : ''}`}
+                  >
                     <input
                       type="checkbox"
                       name="extension-detail-extended"
@@ -738,7 +740,9 @@ const QuoteCalculator = (): ReactElement => {
                     />
                     <span>Extended</span>
                   </label>
-                  <label>
+                  <label
+                    className={`lem-quote-calculator__option${hasConverted ? ' lem-quote-calculator__option--active' : ''}`}
+                  >
                     <input
                       type="checkbox"
                       name="extension-detail-converted"
