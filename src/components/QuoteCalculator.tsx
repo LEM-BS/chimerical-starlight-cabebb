@@ -879,6 +879,69 @@ const QuoteCalculator = (): ReactElement => {
                 className="lem-quote-calculator__section-heading"
                 tabIndex={0}
               >
+                {EXTENSION_STATUS_OPTIONS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <p className="lem-quote-calculator__hint">
+                Let us know about major alterations so we can adjust inspection time.
+              </p>
+              {extensionStatus === 'yes' ? (
+                <div className="lem-quote-calculator__option-list" role="group" aria-label="Extension details">
+                  <label
+                    className={`lem-quote-calculator__option${hasExtended ? ' lem-quote-calculator__option--active' : ''}`}
+                  >
+                    <input
+                      type="checkbox"
+                      name="extension-detail-extended"
+                      value="yes"
+                      checked={hasExtended}
+                      onChange={(event) =>
+                        setExtensionTypes((prev) => ({ ...prev, extended: event.target.checked }))
+                      }
+                    />
+                    <span>Extended</span>
+                  </label>
+                  <label
+                    className={`lem-quote-calculator__option${hasConverted ? ' lem-quote-calculator__option--active' : ''}`}
+                  >
+                    <input
+                      type="checkbox"
+                      name="extension-detail-converted"
+                      value="yes"
+                      checked={hasConverted}
+                      onChange={(event) =>
+                        setExtensionTypes((prev) => ({ ...prev, converted: event.target.checked }))
+                      }
+                    />
+                    <span>Converted</span>
+                  </label>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="lem-quote-calculator__field-grid">
+              <div className="lem-quote-calculator__field">
+                <label htmlFor="property-value">Estimated property value (£)</label>
+                <input
+                  id="property-value"
+                  name="property-value"
+                  inputMode="numeric"
+                  min="0"
+                  step="1000"
+                  value={propertyValueInput}
+                  onChange={(event) => setPropertyValueInput(event.target.value)}
+                  onBlur={handleValueBlur}
+                  aria-describedby={VALUE_HINT_ID}
+                  placeholder="e.g. 275000"
+                  autoComplete="off"
+                />
+                <p className="lem-quote-calculator__hint" id={VALUE_HINT_ID}>
+                  An estimate is fine; this helps us gauge inspection time.
+                </p>
+              </div>
                 Additional information
               </h3>
 
