@@ -1984,3 +1984,14 @@ details[open] summary::after {
   box-shadow: var(--shadow-soft);
   padding: clamp(1.25rem, 3vw, 2rem);
 }
+
+/* --- Shrink the entire website on screens below 700px --- */
+@media (max-width: 700px) {
+  body {
+    transform: scale(0.67);
+    transform-origin: top left;
+    width: 149.25vw; /* Expand body so content isn't cut off after scaling */
+    min-height: 120vh; /* Ensures footer isn't clipped */
+    background: #fff; /* Optional: fixes some browser background bugs */
+  }
+}
