@@ -722,14 +722,97 @@
   }
 }
 
-/* --- Make mobile layout compact like 67% Chrome zoom --- */
-@media (max-width: 700px) {
+@media (max-width: 720px) {
+  .hero.hero-quote-calculator {
+    padding: clamp(2.75rem, 8vw, 3.5rem) 0 clamp(2rem, 7vw, 3rem);
+    text-align: center;
+  }
+
+  .hero.hero-quote-calculator .hero-container {
+    gap: clamp(1rem, 3vw, 1.75rem);
+    align-items: center;
+    text-align: inherit;
+  }
+
+  .hero.hero-quote-calculator .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero.hero-quote-calculator .hero-cta .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero.hero-quote-calculator .inline-link {
+    width: 100%;
+    text-align: center;
+  }
+
   .lem-quote-calculator {
-    transform: scale(0.67);
-    transform-origin: top left;
-    width: 149.25%;
-    min-height: 120vh;
-    margin-top: 2rem;
+    width: 100%;
+    margin-inline: auto;
+    padding: clamp(1.25rem, 1rem + 1.5vw, 1.6rem);
+    border-radius: clamp(1.1rem, 0.9rem + 1vw, 1.6rem);
+  }
+
+  .lem-quote-calculator__layout {
+    gap: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  }
+
+  .lem-quote-calculator__fieldset {
+    padding: clamp(1.1rem, 0.95rem + 0.8vw, 1.5rem);
+    margin-bottom: clamp(1rem, 0.85rem + 0.6vw, 1.4rem);
+  }
+
+  .lem-quote-calculator__legend {
+    font-size: clamp(1.35rem, 1.2rem + 1vw, 1.8rem);
+  }
+
+  .lem-quote-calculator__section {
+    gap: clamp(0.85rem, 0.75rem + 0.8vw, 1.3rem);
+  }
+
+  .lem-quote-calculator__field-grid {
+    gap: clamp(0.85rem, 0.75rem + 0.6vw, 1.2rem);
+  }
+
+  .lem-quote-calculator__field {
+    margin-bottom: 0;
+  }
+
+  .lem-quote-calculator__option-list {
+    gap: 0.65rem;
+  }
+
+  .lem-quote-calculator__cta {
+    gap: clamp(0.85rem, 0.75rem + 0.6vw, 1.25rem);
+    align-items: stretch;
+  }
+
+  .lem-quote-calculator__cta .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lem-quote-calculator__cta .inline-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lem-quote-calculator__result {
+    padding: clamp(1.2rem, 1rem + 1vw, 1.75rem);
+    text-align: center;
+    gap: clamp(1rem, 0.9rem + 0.6vw, 1.4rem);
+  }
+
+  .lem-quote-calculator__result .lem-quote-calculator__badge {
+    justify-self: center;
+  }
+
+  .lem-quote-calculator__highlights {
+    text-align: left;
+    padding-left: 1.1rem;
   }
 }
 
