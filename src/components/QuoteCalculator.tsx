@@ -536,26 +536,6 @@ const QuoteCalculator = (): ReactElement => {
             <legend className="lem-quote-calculator__legend">Request your confirmed fee</legend>
 
             <div className="lem-quote-calculator__field">
-              <label htmlFor="survey-type">Survey or service</label>
-              <select
-                id="survey-type"
-                name="survey-type"
-                value={surveyType}
-                onChange={(event) => setSurveyType(event.target.value as SurveyType)}
-                aria-describedby={SURVEY_HINT_ID}
-              >
-                {SURVEYS.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <p className="lem-quote-calculator__hint" id={SURVEY_HINT_ID}>
-                {selectedSurvey.summary}
-              </p>
-            </div>
-
-            <div className="lem-quote-calculator__field">
               <label htmlFor="contact-name">Full name</label>
               <input
                 id="contact-name"
@@ -636,6 +616,26 @@ const QuoteCalculator = (): ReactElement => {
                   Serving {matchedAreas.map((area) => area.label).join(', ')}.
                 </p>
               )}
+            </div>
+
+            <div className="lem-quote-calculator__field">
+              <label htmlFor="survey-type">Survey or service</label>
+              <select
+                id="survey-type"
+                name="survey-type"
+                value={surveyType}
+                onChange={(event) => setSurveyType(event.target.value as SurveyType)}
+                aria-describedby={SURVEY_HINT_ID}
+              >
+                {SURVEYS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <p className="lem-quote-calculator__hint" id={SURVEY_HINT_ID}>
+                {selectedSurvey.summary}
+              </p>
             </div>
 
             <div className="lem-quote-calculator__field-grid">
