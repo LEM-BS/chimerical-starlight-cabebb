@@ -15,8 +15,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/markdown-remark": "^6.3.7",
-    "@astrojs/mdx": "^3.1.0",
     "@types/node": "^20.14.10",
     "astro": "^4.13.1",
     "chokidar": "^3.5.3",
@@ -34,6 +32,8 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^6.3.7",
+    "@astrojs/mdx": "^3.1.0",
     "@astrojs/react": "^4.3.1",
     "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
