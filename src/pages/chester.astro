@@ -1,128 +1,207 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'chester';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Chester Surveyors',
+  heading: 'Home and Building Surveys in Chester',
+  description:
+    'RICS-accredited surveyor providing specialist home surveys, damp investigations, and renovation advice for properties in Chester, Hoole, Handbridge and the surrounding Cheshire villages.',
+  cta: {
+    label: 'Book a Chester survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Chester’s architectural mix is unique: from timber-framed medieval buildings and Georgian townhouses in the city centre, to Victorian terraces in Hoole, 1930s semis in Upton, and riverside flats along the Dee. Each area—and often each street—brings its own construction quirks, from historic sandstone cellars to modern cavity wall insulation and listed building restrictions. As a genuinely local practice, we combine up-to-date technical knowledge with a realistic view of Chester’s housing stock and what it takes to maintain, repair, or renovate these homes.",
+  "Conservation constraints are routine, especially for properties within the city walls, near The Rows, and along Boughton and Handbridge. Many houses are listed or located within Article 4 areas—meaning even minor repairs, like window upgrades or repointing, can need approval. Our surveys flag these issues early and highlight realistic, compliant options. In Hoole and Newton, buyers often contend with past extensions and piecemeal upgrades, so we’re alert for signs of historic damp, incomplete roof insulation, and drainage alterations.",
+  "We also inspect new-builds in Kings Moat, converted warehouses by the canal, and apartments near the station—where cladding compliance, ventilation and leasehold matters come to the fore. For all clients, our aim is to provide practical advice, highlight urgent priorities, and give you clarity on what’s necessary versus what’s simply desirable. You’ll know exactly where you stand before you exchange or invest further.",
+];
+
+const sellingPoints = {
+  heading: 'Why Chester homeowners and buyers choose LEM',
+  points: [
+    'AssocRICS surveyor with in-depth experience of Chester’s conservation policies, timber-framed and sandstone buildings, and post-war suburban developments.',
+    'Clear recommendations grounded in real-world local contractor costs and supply chain realities—no generic “London pricing” or vague assumptions.',
+    'Flexible survey scheduling—including early morning, evening, and weekend appointments—recognising the realities of working families and tight moving chains.',
+    'Ongoing post-survey support for interpreting quotes, discussing repairs with local trades, or providing written clarifications for lenders or solicitors.',
+  ],
+};
+
+const services = {
+  heading: 'Property surveys and inspections tailored for Chester',
+  intro:
+    "From Victorian terraces with hidden cellars to 1990s riverside flats with modern fire safety requirements, we match the survey level to your property's age, style and anticipated work.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most Victorian, Edwardian, and post-war homes across Hoole, Boughton and Handbridge—providing clear condition ratings, repair advice, and budget guidance.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Strongly recommended for listed, historic, or heavily altered properties—especially those within Chester’s conservation zones or with suspected structural issues.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Best for well-maintained modern flats or newer estates like Kings Moat and Saighton—covering essential checks in a concise format.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Thorough assessment of moisture ingress, ventilation and timber decay—especially relevant for period properties with cellars or properties bordering the canal and River Dee.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Advice on airflow, condensation, and compliance with Part F—particularly important for busy family homes, converted lofts and riverside flats.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate drawings and measurements for extensions, garden rooms or planning applications—including advice on working within conservation constraints.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What makes Chester property unique?',
+  paragraphs: [
+    "The historic core—inside and around the city walls—brings challenges such as ancient cellars, exposed beams, and uninsulated solid brickwork. We focus on issues like damp penetration, stone decay, and the presence of non-original alterations that can create hidden risks. In areas such as Handbridge and Queen's Park, Victorian and Edwardian houses often have slate roofs, single-glazed sashes and shared drainage runs—all of which demand careful inspection and realistic cost estimates.",
+    "Suburbs such as Hoole and Upton have a mix of 19th- and 20th-century houses, often with later extensions or converted lofts. We routinely see missing insulation, bridging in cavity walls, poorly executed knock-throughs, and historic subsidence near the canal and railway lines. Newer developments (Kings Moat, Saighton Camp, apartments off City Road) require close attention to ventilation, cladding, and fire safety certifications.",
+    "For riverside homes and properties near the canal, we investigate flood risk, groundwater issues and the ongoing impact of damp from high water tables. We also see more timber decay and air quality concerns in these locations. If your plans include extending or remodelling, we provide realistic advice on what’s possible and the pitfalls to avoid in a city with strict planning controls.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Renovation, extensions and listed building advice',
+    paragraphs: [
+      "Chester's buyers frequently want open-plan layouts, loft conversions, or new garden offices. Our surveys look at load-bearing walls, structural supports and hidden service runs so you know what's feasible before you brief a designer or contractor. For listed or conservation properties, we signpost required consents, sympathetic materials, and highlight where non-compliant past work could create problems with planning or insurance.",
+      "Damp and ventilation problems are common in Chester’s older homes. We trace moisture to its source and recommend evidence-based remedial actions—not just quick chemical treatments—so you invest in the right long-term solutions.",
+    ],
+  },
+  {
+    heading: 'Communication and post-survey support',
+    paragraphs: [
+      "Before the inspection, we discuss your goals, timescales and any information provided by the seller. During the survey, we use photographs and thermal imaging where needed to explain our findings. After the report is issued, we stay available to answer questions, speak to trades, or provide written clarification for solicitors and lenders. Our aim: complete confidence at every stage, from negotiating on price to starting your first renovation.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Chester clients',
+  description:
+    'Explore our core services for Chester homeowners, buyers and investors. Click below for further detail.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: "Understand the scope and depth of our reports for Chester's typical homes.",
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: "See what's included in our most comprehensive inspection—ideal for older or altered properties.",
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Learn how we diagnose and solve the damp, timber and condensation issues seen in Chester’s period stock.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Find out how modern ventilation helps protect Chester homes from condensation and poor air quality.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: "Discover how accurate measurements can help with extensions and planning in Chester's conservation areas.",
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Chester property FAQs',
+  items: [
+    {
+      question: 'Do you cover Chester’s conservation and listed properties?',
+      answer:
+        'Yes, we routinely inspect homes in conservation areas, listed buildings and heritage zones across the city. Our reports detail relevant planning and repair restrictions and recommend compliant solutions.',
+    },
+    {
+      question: 'Which Chester suburbs do you cover?',
+      answer:
+        'We survey all of Chester, including Hoole, Handbridge, Upton, Boughton, Newton, Queen’s Park, Saighton and Kings Moat. We also serve surrounding villages within a 10-mile radius.',
+    },
+    {
+      question: 'Can you liaise with my estate agent or vendor?',
+      answer:
+        'Absolutely. We handle all access arrangements and update you throughout. Post-survey, we can share key findings with your agent or vendor as needed.',
+    },
+    {
+      question: 'Can you advise on rebuild costs or extension potential?',
+      answer:
+        'Yes. Let us know at instruction and we will provide indicative rebuild figures and advice on what’s likely to be permitted for extensions or alterations.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in Chester and surrounds',
+  description: 'Our surveys span Chester city centre and all outlying neighbourhoods, including:',
+  areas: [
+    'Chester city centre (The Rows, Roman walls, canal side)',
+    'Hoole & Newton',
+    'Handbridge & Queen’s Park',
+    'Boughton & Vicars Cross',
+    'Upton & Kingsway',
+    'Saighton, Huntington & Kings Moat',
+    'Tarvin, Christleton, Waverton and local villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Chester survey',
+  paragraphs: [
+    'Tell us about your purchase, moving plans and any concerns. We will recommend the right survey level, quote transparently, and act quickly to keep your move on track. Our local presence means rapid response, flexible slots, and robust advice you can rely on.',
+    'From booking to final report, we manage the process, liaise with agents, and remain available for post-survey support. Our mission: no nasty surprises, and a smooth transition into your Chester home.',
+  ],
+  primaryCta: {
+    label: 'Book a Chester survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Chester,+Cheshire,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home Buyer & Building Surveys | LEM Building Surveying</title>
-    <meta content="Looking for a building surveyor in Chester? We provide RICS Level 1, 2 &amp; 3 home buyer surveys, damp reports and expert property advice for Hoole, Churton, Upton and the wider area." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/chester-damp-surveys" rel="canonical">
-    <meta content="Home Buyer & Building Surveys | LEM Building Surveying" property="og:title">
-    <meta content="Looking for a building surveyor in Chester? We provide RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and expert property advice for buyers and homeowners across Chester and surrounding areas." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/chester-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home Buyer & Building Surveys | LEM Building Surveying" name="twitter:title">
-    <meta content="Looking for a building surveyor in Chester? We provide RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and expert property advice for buyers and homeowners across Chester and surrounding areas." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/chester-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- Schema.org JSON-LD for Chester -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/chester-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Chester",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH1",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Chester, Cheshire, North Wales border",
-        "description": "Independent surveyor offering RICS Home Surveys and property inspections in Chester. Fast, clear, and qualified advice.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Chester",
-              "item": "https://www.lembuildingsurveying.co.uk/chester-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO --><section class="hero">
-  <div class="hero-container">
-  <h1>Home Buyer &amp; Building Surveys in Chester</h1>
-  <p>Independent surveys and professional advice from a qualified local expert — serving Chester and surrounding Cheshire areas including Hoole, Churton and Upton.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Chester Surveyor</h2>
-  <p>
-          Based close to the Chester–Flintshire border, LEM Building Surveying Ltd delivers clear and impartial property reports for homes across Chester. Whether you’re buying a townhouse in Handbridge, a new-build in Huntington, or a listed home in Boughton — we help you make confident decisions.
-        </p>
-  <h2>Property Surveys in Chester</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> A basic condition report for newer, well-maintained homes — no repair advice, just key findings and ratings.</li>
-  <li><strong>RICS Level 2 Survey:</strong> The most common survey for buyers — a HomeBuyer Report with clear commentary, repair risks, and advice.</li>
-  <li><strong>RICS Level 3 Survey:</strong> A full Building Survey suitable for older or extended properties — includes detailed structural commentary and repair options.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Independent diagnosis of mould, rising damp, condensation and decay — no sales pitch, just facts.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Scaled internal plans and dimensions for extensions, planning, or documentation.</li>
-  <li><strong>EPCs with Floorplans:</strong> Required for property sales or rentals — includes a marketing-ready floorplan.</li>
-  <li><strong>Ventilation Assessments:</strong> Identify airflow, humidity or mould risk issues before they become a problem.</li>
-  </ul>
-  <p><a href="/services">See full list of services →</a></p>
-  <p>Curious about costs? Read our <a href="/how-much-does-a-level-3-survey-cost-in-chester">Level 3 survey price guide for Chester</a>.</p>
-  <p>
-          Still weighing up your options? Our
-          <a href="/level-2-vs-level-3">Level 2 vs Level 3 survey guide</a>
-          outlines when to upgrade, and the
-          <a href="/independent-damp-survey-vs-contractor">independent damp survey vs contractor article</a>
-          explains how impartial advice can save you money on moisture issues.
-        </p>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>AssocRICS Qualified:</strong> All surveys are completed by Liam — a trained, accredited surveyor with local knowledge.</li>
-  <li><strong>Clear, fast reports:</strong> Written in plain English, typically delivered within 3–5 working days.</li>
-  <li><strong>Direct contact:</strong> You speak with your surveyor from the outset — no call centres, no confusion.</li>
-  </ul>
-  <h2>Serving Chester &amp; Surroundings</h2>
-  <p>
-          LEM Building Surveying covers all of Chester, including:
-          </p><ul>
-  <li>Handbridge, Hoole, Boughton, Upton, Huntington</li>
-  <li>Pulford, Eccleston, Dodleston, Saltney, Westminster Park</li>
-  <li>And surrounding areas along the North Wales–Cheshire border</li>
-  </ul>
-  <p></p>
-  <p>
-          Need a <strong>building surveyor in Hoole</strong> or <strong>building surveyor in Churton</strong>? We regularly inspect homes across these suburbs and can combine your visit with a <strong>home buyer survey in Chester</strong> or a follow-up consultation on survey findings. We are frequently instructed for a <strong>home buyers survey Chester</strong> clients can trust when negotiating.
-        </p>
-  <h2>Get a Survey or Request Advice</h2>
-  <p>
-          Ready to book or still deciding? We’re happy to help either way. Click below to request a no-obligation quote or ask a question.
-        </p>
-  <a class="cta-button" href="/enquiry">Request a Survey</a>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- Shared Footer --><!-- Inject Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Chester"
+  county="Cheshire"
+  postalCode="CH1"
+  pageTitle="Home and Building Surveys in Chester | LEM Building Surveying Ltd"
+  metaDescription="Independent Chester surveyor delivering RICS Level 1, Level 2 & Level 3 home surveys, damp investigations and practical renovation advice across Hoole, Handbridge and city centre."
+  canonicalPath="chester-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
