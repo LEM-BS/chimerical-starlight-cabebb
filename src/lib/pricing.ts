@@ -346,17 +346,17 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
     minValue: 850_001,
     maxValue: 999_999,
     bedroomsIncluded: 2,
-    level1: 795,
+    level1: 825,
     level2: 995,
-    level3: 1400,
+    level3: 1500,
   },
   {
     minValue: 1_000_000,
     maxValue: 1_500_000,
     bedroomsIncluded: 2,
-    level1: 725,
-    level2: 950,
-    level3: 1500,
+    level1: 925,
+    level2: 1200,
+    level3: 1950,
   }
 ] as const;
 
