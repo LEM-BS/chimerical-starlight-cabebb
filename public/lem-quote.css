@@ -537,35 +537,49 @@
 }
 
 .hero.hero-quote-calculator {
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.15), transparent 55%),
-    linear-gradient(160deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.85));
-  color: #ffffff;
-  padding: clamp(3rem, 2.5rem + 2vw, 5rem) 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(251, 191, 36, 0.18));
+  color: var(--primary-blue, #0f172a);
+  padding: clamp(3rem, 8vw, 4.5rem) 0 clamp(2.25rem, 6vw, 3.25rem);
+}
+
+.hero.hero-quote-calculator::before,
+.hero.hero-quote-calculator::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero.hero-quote-calculator::before {
+  background: radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.58), transparent 55%);
+}
+
+.hero.hero-quote-calculator::after {
+  background: radial-gradient(circle at 88% 10%, rgba(37, 99, 235, 0.2), transparent 60%);
 }
 
 .hero.hero-quote-calculator .hero-container {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 1.2rem;
-  max-width: 960px;
-}
-
-.hero.hero-quote-calculator .hero-eyebrow {
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(252, 211, 77, 0.9);
+  gap: clamp(1rem, 2.8vw, 1.75rem);
+  max-width: min(720px, 100%);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero.hero-quote-calculator .hero-container h1 {
-  font-size: clamp(2.4rem, 2rem + 1.2vw, 3.2rem);
-  color: #ffffff;
+  font-size: clamp(2.2rem, 1.75rem + 1.4vw, 3rem);
+  color: var(--primary-blue, #0f172a);
 }
 
 .hero.hero-quote-calculator .hero-container p {
-  font-size: 1.1rem;
-  max-width: 720px;
-  color: #ffffff;
+  font-size: 1.08rem;
+  max-width: 46rem;
+  margin: 0 auto;
+  color: var(--text-light, #5b6478);
 }
 
 .hero.hero-quote-calculator .hero-cta {
@@ -573,6 +587,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
 }
 
 .hero.hero-quote-calculator .hero-cta .cta-button {
@@ -584,14 +599,14 @@
   background: var(--cta-gold-hover, #f59e0b);
 }
 
-.hero.hero-quote-calculator .inline-link {
-  color: #fcd34d;
+.hero.hero-quote-calculator .hero-cta .inline-link {
   font-weight: 600;
+  color: var(--accent-blue, #2563eb);
   text-decoration: underline;
 }
 
-.hero.hero-quote-calculator .inline-link:hover {
-  color: #fde68a;
+.hero.hero-quote-calculator .hero-cta .inline-link:hover {
+  color: var(--hover-blue, #1d4ed8);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -708,28 +723,118 @@
   border-width: 1.5px;
 }
 
-/* Responsive tweaks for small screens */
-@media (max-width: 500px) {
-  .lem-quote-calculator__fieldset {
-    padding: 1rem;
+/* Responsive tweaks for smaller screens */
+@media (max-width: 900px) {
+  .quote-page__calculator .container {
+    padding-inline: clamp(1.25rem, 4vw, 1.75rem);
   }
-  .lem-quote-calculator__result {
-    padding: 1rem;
+
+  .lem-quote-calculator {
+    padding: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+    border-radius: 1.1rem;
   }
-  .lem-quote-calculator .cta-button {
-    width: 100%;
+
+  .lem-quote-calculator__layout {
+    gap: clamp(1.6rem, 1.3rem + 0.9vw, 2.1rem);
+  }
+
+  .lem-quote-calculator__legend {
     text-align: center;
+    letter-spacing: 0.015em;
+  }
+
+  .lem-quote-calculator__fieldset,
+  .lem-quote-calculator__result {
+    padding: clamp(1.15rem, 0.95rem + 1vw, 1.65rem);
+  }
+
+  .lem-quote-calculator__field {
+    margin-bottom: 0.85rem;
+  }
+
+  .lem-quote-calculator__result {
+    gap: clamp(1.15rem, 1rem + 0.6vw, 1.7rem);
   }
 }
 
-/* --- Make mobile layout compact like 67% Chrome zoom --- */
-@media (max-width: 700px) {
+@media (max-width: 640px) {
+  .hero.hero-quote-calculator {
+    padding: clamp(2.75rem, 7vw, 3.25rem) 0 clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .hero.hero-quote-calculator .hero-container {
+    padding-inline: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .hero.hero-quote-calculator .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero.hero-quote-calculator .hero-cta .cta-button,
+  .hero.hero-quote-calculator .hero-cta .inline-link {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+  }
+
   .lem-quote-calculator {
-    transform: scale(0.67);
-    transform-origin: top left;
-    width: 149.25%;
-    min-height: 120vh;
-    margin-top: 2rem;
+    padding: clamp(1.25rem, 1rem + 1vw, 1.6rem);
+  }
+
+  .lem-quote-calculator__legend {
+    font-size: clamp(1.35rem, 1.2rem + 0.7vw, 1.7rem);
+  }
+
+  .lem-quote-calculator__fieldset,
+  .lem-quote-calculator__result {
+    padding: clamp(1.1rem, 0.9rem + 1vw, 1.5rem);
+  }
+
+  .lem-quote-calculator__badge {
+    margin-inline: auto;
+  }
+
+  .lem-quote-calculator__result {
+    text-align: center;
+  }
+
+  .lem-quote-calculator__highlights {
+    text-align: left;
+    padding-left: 1.2rem;
+  }
+
+  .lem-quote-calculator__cta {
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .lem-quote-calculator__cta .cta-button {
+    width: 100%;
+  }
+
+  .lem-quote-calculator__status {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-page__calculator .container {
+    padding-inline: clamp(1rem, 5vw, 1.35rem);
+  }
+
+  .lem-quote-calculator__section {
+    gap: 0.9rem;
+  }
+
+  .lem-quote-calculator__field-grid {
+    gap: 0.9rem;
+  }
+
+  .lem-quote-calculator__result {
+    padding-inline: clamp(1rem, 0.9rem + 1vw, 1.4rem);
   }
 }
 
