@@ -9,6 +9,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /level-2-or-level-3.html  /level-2-vs-level-3  301
 /areas.html  /local-surveys  301
 /areas  /local-surveys  301
+/service-areas/alderley-edge-damp-surveys-rics-home-surveys.html  /alderley-edge  301
+/alderley-edge.html  /alderley-edge  301
+/alderley-edge-damp-surveys  /alderley-edge  301
 /service-areas/aldford-damp-surveys-rics-home-surveys.html  /aldford  301
 /aldford.html  /aldford  301
 /aldford-damp-surveys  /aldford  301
@@ -81,6 +84,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/helsby-damp-surveys-rics-home-surveys.html  /helsby  301
 /helsby.html  /helsby  301
 /helsby-damp-surveys  /helsby  301
+/service-areas/helsby-frodsham-damp-surveys-rics-home-surveys.html  /helsby-frodsham  301
+/helsby-frodsham.html  /helsby-frodsham  301
+/helsby-frodsham-damp-surveys  /helsby-frodsham  301
 /service-areas/higher-kinnerton-damp-surveys-rics-home-surveys.html  /higher-kinnerton  301
 /higher-kinnerton.html  /higher-kinnerton  301
 /higher-kinnerton-damp-surveys  /higher-kinnerton  301
@@ -93,6 +99,15 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/huntington-damp-surveys-rics-home-surveys.html  /huntington  301
 /huntington.html  /huntington  301
 /huntington-damp-surveys  /huntington  301
+/service-areas/kelsall-damp-surveys-rics-home-surveys.html  /kelsall  301
+/kelsall.html  /kelsall  301
+/kelsall-damp-surveys  /kelsall  301
+/service-areas/knutsford-damp-surveys-rics-home-surveys.html  /knutsford  301
+/knutsford.html  /knutsford  301
+/knutsford-damp-surveys  /knutsford  301
+/service-areas/little-budworth-delamere-damp-surveys-rics-home-surveys.html  /little-budworth-delamere  301
+/little-budworth-delamere.html  /little-budworth-delamere  301
+/little-budworth-delamere-damp-surveys  /little-budworth-delamere  301
 /service-areas/lower-kinnerton-damp-surveys-rics-home-surveys.html  /lower-kinnerton  301
 /lower-kinnerton.html  /lower-kinnerton  301
 /lower-kinnerton-damp-surveys  /lower-kinnerton  301
@@ -105,6 +120,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/mynydd-isa-damp-surveys-rics-home-surveys.html  /mynydd-isa  301
 /mynydd-isa.html  /mynydd-isa  301
 /mynydd-isa-damp-surveys  /mynydd-isa  301
+/service-areas/neston-parkgate-damp-surveys-rics-home-surveys.html  /neston-parkgate  301
+/neston-parkgate.html  /neston-parkgate  301
+/neston-parkgate-damp-surveys  /neston-parkgate  301
 /service-areas/new-brighton-damp-surveys-rics-home-surveys.html  /new-brighton  301
 /new-brighton.html  /new-brighton  301
 /new-brighton-damp-surveys  /new-brighton  301
@@ -126,6 +144,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/penyffordd-damp-surveys-rics-home-surveys.html  /penyffordd  301
 /penyffordd.html  /penyffordd  301
 /penyffordd-damp-surveys  /penyffordd  301
+/service-areas/prestbury-damp-surveys-rics-home-surveys.html  /prestbury  301
+/prestbury.html  /prestbury  301
+/prestbury-damp-surveys  /prestbury  301
 /service-areas/pulford-damp-surveys-rics-home-surveys.html  /pulford  301
 /pulford.html  /pulford  301
 /pulford-damp-surveys  /pulford  301
@@ -144,6 +165,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/sandycroft-damp-surveys-rics-home-surveys.html  /sandycroft  301
 /sandycroft.html  /sandycroft  301
 /sandycroft-damp-surveys  /sandycroft  301
+/service-areas/saughall-damp-surveys-rics-home-surveys.html  /saughall  301
+/saughall.html  /saughall  301
+/saughall-damp-surveys  /saughall  301
 /service-areas/shotton-damp-surveys-rics-home-surveys.html  /shotton  301
 /shotton.html  /shotton  301
 /shotton-damp-surveys  /shotton  301
@@ -171,6 +195,9 @@ https://lembuildingsurveying.co.uk/*  https://www.lembuildingsurveying.co.uk/:sp
 /service-areas/westminster-park-damp-surveys-rics-home-surveys.html  /westminster-park  301
 /westminster-park.html  /westminster-park  301
 /westminster-park-damp-surveys  /westminster-park  301
+/service-areas/wilmslow-damp-surveys-rics-home-surveys.html  /wilmslow  301
+/wilmslow.html  /wilmslow  301
+/wilmslow-damp-surveys  /wilmslow  301
 /about.html  /about  301
 /additional-services.html  /additional-services  301
 /blog-index.html  /blog-index  301
