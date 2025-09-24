@@ -1,107 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'curzon-park';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Curzon Park';
+const county = 'Cheshire';
+const postalCode = 'CH4';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Local Curzon Park surveyor for RICS Level 1, Level 2 & Level 3 surveys, damp inspections and renovation guidance for riverside villas and luxury homes in Chester.";
+const canonicalPath = 'curzon-park-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "Independent RICS-accredited surveyor providing bespoke home surveys, damp diagnostics and retrofit advice for Curzon Park’s period villas, apartments and modern infill homes.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Curzon Park is one of Chester’s most desirable neighbourhoods, with tree-lined avenues, large detached homes and apartments overlooking the River Dee. Architectural styles range from Edwardian villas to contemporary developments on reclaimed plots, each with bespoke detailing and expectations.",
+  "Many properties have seen extensive remodelling—basement gyms, loft conversions and garden rooms designed to maximise views. We analyse how these changes interact with original structures, drainage routes and flood resilience so you can plan future works with confidence.",
+  "Buyers and owners here demand clear reporting that balances heritage features with modern comfort. Our surveys give you that clarity, highlighting priorities, likely budgets and practical recommendations for trusted local contractors.",
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s riverside homes and Chester’s planning policies.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agent availability, concierge teams and high-value transactions.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and the surrounding Chester suburbs.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for larger, historic or heavily altered homes where structure, moisture or future works need close analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained flats that require a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—especially valuable for riverside basements and period detailing.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and mechanical ventilation to keep luxury homes comfortable, energy efficient and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Precise drawings and feasibility advice for extensions, remodels or planning submissions within Chester’s conservation context.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    'Riverside plots can experience fluctuating ground moisture and high water tables. We check basement tanking, retaining walls and damp-proofing measures to ensure they are performing as intended.',
+    'Large detached homes often feature complex roofing, multiple flat roof sections and bespoke glazing. Our surveys assess detailing around terraces, leadwork and parapets where water ingress can occur.',
+    'Many properties rely on private drives, gated access and shared landscaping. We review boundary structures, drainage and service routes so you understand maintenance responsibilities before completion.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} owners regularly explore significant renovations, from reconfiguring floorplates to adding leisure suites. We outline structural considerations, service upgrades and the permissions required within Chester’s planning framework.`,
+      'We also advise on integrating energy improvements—such as heat pumps or upgraded glazing—without compromising heritage materials or interior comfort.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services for Chester buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby suburbs.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for basements, garden rooms and traditional walls.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in large, well-sealed homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you survey homes across all of ${townName}?`,
+      answer: 'Yes. We work across Curzon Park North and South, the riverfront apartments and neighbouring streets off Hough Green and Lache Lane.',
+    },
+    {
+      question: 'Can you advise on flood resilience for riverside properties?',
+      answer: 'We review basement tanking, sump pumps, flood boards and landscaping to highlight vulnerabilities and outline improvements where necessary.',
+    },
+    {
+      question: 'Do you work with estate managers or concierge teams?',
+      answer: 'We regularly coordinate with caretakers, concierge services and estate managers to arrange access and share key findings securely.',
+    },
+    {
+      question: 'How quickly will I receive the survey report?',
+      answer: 'Most Curzon Park reports are delivered within four working days, with faster turnaround available for time-sensitive transactions.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey Curzon Park and nearby Chester neighbourhoods, including:',
+  areas: [
+    'Curzon Park North & South',
+    'Hough Green and Lache Lane',
+    'Handbridge and Overleigh',
+    'Queen’s Park and Westminster Park',
+    'Saighton Camp and Huntington',
+    'Chester city centre and Boughton',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Curzon+Park,+Chester,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home Surveys in Curzon Park | LEM Building Surveying</title>
-    <meta content="AssocRICS-qualified surveyor covering Curzon Park, Chester. Level 1, 2 &amp; 3 Home Surveys, Building Surveys and Damp Reports from a local, trusted professional." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/curzon-park-damp-surveys" rel="canonical">
-    <meta content="Home Surveys in Curzon Park | LEM Building Surveying" property="og:title">
-    <meta content="AssocRICS-qualified surveyor covering Curzon Park, Chester. Level 1, 2 &amp; 3 Home Surveys, Building Surveys and Damp Reports from a local, trusted professional." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/curzon-park-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home Surveys in Curzon Park | LEM Building Surveying" name="twitter:title">
-    <meta content="AssocRICS-qualified surveyor covering Curzon Park, Chester. Level 1, 2 &amp; 3 Home Surveys, Building Surveys and Damp Reports from a local, trusted professional." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/curzon-park-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Curzon Park -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/curzon-park-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Curzon Park",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Curzon Park, Chester",
-        "description": "Independent building surveyor offering RICS Level 1, 2 & 3 Home Surveys and damp inspections in Curzon Park, Chester.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Curzon Park",
-              "item": "https://www.lembuildingsurveying.co.uk/curzon-park-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home Surveys in Curzon Park, Chester</h1>
-  <p>RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and Measured Surveys for high-value properties in Curzon Park.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Property Surveys in Curzon Park</h2>
-  <p>
-          As one of Chester’s most desirable postcodes, Curzon Park includes premium detached homes, period houses, and extended riverside properties. I provide detailed RICS Home Surveys and tailored advice for buyers, owners, and landlords across this sought-after neighbourhood.
-        </p>
-  <h2>Surveys Available in Curzon Park</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> Entry-level condition report for newer or well-maintained homes.</li>
-  <li><strong>RICS Level 2 Survey (HomeBuyer):</strong> Ideal for conventional properties — includes condition ratings, repair advice, and ongoing maintenance guidance.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> Detailed inspection suitable for larger, older, or extended properties — with commentary on structure, risks and repair options.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Investigations for suspected rising damp, mould, or rot with impartial guidance and next steps.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate plans for extensions, design proposals, or architectural work.</li>
-  <li><strong>Residential Ventilation Assessments:</strong> Checking airflow, condensation risk, and general indoor environment.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Discreet and Professional:</strong> Trusted by homeowners, landlords and buyers in Chester’s high-value areas.</li>
-  <li><strong>AssocRICS Qualified:</strong> Surveys are carried out by Liam — not outsourced to junior staff or contractors.</li>
-  <li><strong>Fast Turnaround, Clear Advice:</strong> Most surveys delivered in 3–5 days with plain-English commentary.</li>
-  </ul>
-  <h2>Arrange Your Survey Today</h2>
-  <p>Buying or maintaining a property in Curzon Park? Get professional insight and practical advice, with no pushy sales or commissions.</p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Personal Quote</a>
-  <a class="secondary-button" href="/comparison">Survey Comparison Guide</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Shared Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

@@ -1,112 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'queensferry';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Queensferry';
+const county = 'Flintshire';
+const postalCode = 'CH5';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Local Queensferry surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice across Queensferry, Sandycroft, Shotton, Garden City and Sealand.";
+const canonicalPath = 'queensferry-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    `Independent RICS surveyor supporting buyers and owners in Queensferry with clear home surveys, damp reports and renovation guidance for local properties.`,
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  `${townName} offers a blend of historic cottages, post-war housing and newer developments, each benefiting from a tailored inspection.`,
+  `Extensions, loft conversions and energy upgrades are common throughout ${townName}; we assess how these changes interact with structure, services and ventilation so everything works together.`,
+  `Clients instructing us in ${townName} want independent reporting, clear priorities and realistic budgets before they commit to a purchase or refurbishment.`,
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and busy households.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and neighbouring communities.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for historic, heavily altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—particularly in exposed locations or properties with complex histories.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: `Precise drawings and feasibility advice for extensions, conversions or planning submissions across ${townName}.`,
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    `Clay soils and varied topography around ${townName} can influence movement and drainage; we inspect cracking, ground levels and soakaways carefully.`,
+    `Many homes feature retrofit insulation, replacement windows and upgraded heating. We check detailing and ventilation to avoid trapped moisture or condensation.`,
+    `Shared access, boundary structures and outbuildings are common. We document responsibilities and maintenance considerations for your solicitor.`,
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} households often pursue sympathetic extensions, home offices or garden studios. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby areas.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for a wide range of property types.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in well-sealed homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover ${townName} and nearby communities?`,
+      answer: 'Yes. We survey Queensferry, Sandycroft, Shotton, Garden City and Sealand, as well as the wider Queensferry area.',
+    },
+    {
+      question: 'Are you experienced with different property styles?',
+      answer: `We regularly inspect period cottages, post-war homes and contemporary developments across ${townName}, tailoring advice to each construction type.`,
+    },
+    {
+      question: 'Can you help with damp, paperwork or planned works?',
+      answer: `Yes. We identify damp sources, review documentation and outline next steps for renovations or extensions in ${townName}.`,
+    },
+    {
+      question: 'How quickly will my report be ready?',
+      answer: 'Most reports are delivered within four working days, with faster turnaround available when chains demand it.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey ${townName} and neighbouring communities, including:',
+  areas: [
+    'Queensferry town centre',
+    'Shotton and Aston',
+    'Sandycroft and Mancot',
+    'Garden City and Sealand Manor',
+    'Connah’s Quay and Deeside Industrial Park',
+    'Broughton and Hawarden'
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Queensferry,+Flintshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Queensferry | LEM Building Surveying</title>
-    <meta content="Independent building surveyor in Queensferry. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and expert advice from a trusted local AssocRICS surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/queensferry-damp-surveys" rel="canonical">
-    <meta content="RICS Home Surveys in Queensferry | LEM Building Surveying" property="og:title">
-    <meta content="Independent building surveyor in Queensferry. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and expert advice from a trusted local AssocRICS surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/queensferry-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home Surveys in Queensferry | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent building surveyor in Queensferry. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and expert advice from a trusted local AssocRICS surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/queensferry-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Queensferry -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/queensferry-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Queensferry",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Queensferry, Shotton, Sandycroft, Connah’s Quay, Deeside",
-        "description": "RICS-qualified building surveyor offering Home Surveys and damp reports in Queensferry and the surrounding area.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Queensferry",
-              "item": "https://www.lembuildingsurveying.co.uk/queensferry-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home Surveys in Queensferry</h1>
-  <p>Trusted property inspections and RICS Home Surveys carried out by a qualified local surveyor — fast, clear and independent.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Surveyor for Queensferry</h2>
-  <p>
-          Based just minutes away in Connah’s Quay, LEM Building Surveying Ltd offers independent property surveys throughout Queensferry, Shotton and the wider Deeside area. Whether you're buying your first home or assessing a rental or renovation, Liam provides reliable advice tailored to the local housing stock.
-        </p>
-  <h2>Our Property Survey Services</h2>
-  <ul>
-  <li><strong>RICS Level 1 – Condition Report:</strong> Covers overall condition of newer homes, using a simple traffic-light system to flag any concerns.</li>
-  <li><strong>RICS Level 2 – HomeBuyer Report:</strong> Suitable for most conventional properties. Identifies issues, repairs and maintenance risks.</li>
-  <li><strong>RICS Level 3 – Building Survey:</strong> Full inspection and reporting for older or altered homes, including structural observations and advice.</li>
-  <li><strong>Damp &amp; Timber Surveys:</strong> Investigate signs of mould, water ingress, or timber decay. Clear reporting with no pushy sales tactics.</li>
-  <li><strong>Measured Surveys &amp; EPCs:</strong> Floorplans and energy certificates available for listings, planning or renovation support.</li>
-  </ul>
-  <h2>Why Clients Choose LEM</h2>
-  <ul>
-  <li><strong>Local &amp; Independent:</strong> No middlemen, no corporate panels — just direct communication with Liam, your surveyor.</li>
-  <li><strong>AssocRICS Qualified:</strong> Professional reporting aligned with the RICS Home Survey Standard.</li>
-  <li><strong>Fast Turnaround:</strong> Quotes within 60 minutes, reports usually delivered within 3–5 working days.</li>
-  </ul>
-  <h2>Serving Queensferry and Surroundings</h2>
-  <p>
-          Including Shotton, Sandycroft, Connah’s Quay, Ewloe and Hawarden.
-        </p>
-  <p>
-          Not sure which survey type is right? <a href="/comparison">Compare Level 1, Level 2, and Level 3 surveys for Queensferry homes</a> or <a href="/contact">ask Liam for advice</a>.
-        </p>
-  <!-- CTA -->
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  <a class="secondary-button" href="/services">View All Services</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- Shared Footer --><!-- Header & Footer Injection -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

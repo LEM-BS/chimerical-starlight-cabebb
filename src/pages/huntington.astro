@@ -1,109 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'huntington';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Huntington';
+const county = 'Cheshire';
+const postalCode = 'CH3';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Local Huntington surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice across Huntington, Saighton, Boughton Heath, Caldy Valley and Christleton.";
+const canonicalPath = 'huntington-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    `Independent RICS surveyor supporting buyers and owners in Huntington with clear home surveys, damp reports and renovation guidance for local properties.`,
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  `${townName} offers a blend of historic cottages, post-war housing and newer developments, each benefiting from a tailored inspection.`,
+  `Extensions, loft conversions and energy upgrades are common throughout ${townName}; we assess how these changes interact with structure, services and ventilation so everything works together.`,
+  `Clients instructing us in ${townName} want independent reporting, clear priorities and realistic budgets before they commit to a purchase or refurbishment.`,
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and busy households.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and neighbouring communities.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for historic, heavily altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—particularly in exposed locations or properties with complex histories.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: `Precise drawings and feasibility advice for extensions, conversions or planning submissions across ${townName}.`,
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    `Clay soils and varied topography around ${townName} can influence movement and drainage; we inspect cracking, ground levels and soakaways carefully.`,
+    `Many homes feature retrofit insulation, replacement windows and upgraded heating. We check detailing and ventilation to avoid trapped moisture or condensation.`,
+    `Shared access, boundary structures and outbuildings are common. We document responsibilities and maintenance considerations for your solicitor.`,
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} households often pursue sympathetic extensions, home offices or garden studios. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby areas.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for a wide range of property types.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in well-sealed homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover ${townName} and nearby communities?`,
+      answer: 'Yes. We survey Huntington, Saighton, Boughton Heath, Caldy Valley and Christleton, as well as the wider Huntington area.',
+    },
+    {
+      question: 'Are you experienced with different property styles?',
+      answer: `We regularly inspect period cottages, post-war homes and contemporary developments across ${townName}, tailoring advice to each construction type.`,
+    },
+    {
+      question: 'Can you help with damp, paperwork or planned works?',
+      answer: `Yes. We identify damp sources, review documentation and outline next steps for renovations or extensions in ${townName}.`,
+    },
+    {
+      question: 'How quickly will my report be ready?',
+      answer: 'Most reports are delivered within four working days, with faster turnaround available when chains demand it.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey ${townName} and neighbouring communities, including:',
+  areas: [
+    'Huntington village and Sandy Lane',
+    'Saighton Camp and Kings Moat',
+    'Boughton Heath and Caldy Valley',
+    'Waverton and Rowton',
+    'Great Barrow and Littleton',
+    'Farndon and Aldford'
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Huntington,+Cheshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home and Building Surveys in Huntington | LEM Building Surveying</title>
-    <meta content="Independent RICS Home Surveys in Huntington, Chester. Level 1, 2 and 3 property surveys from a local qualified surveyor. Fast, professional service." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/huntington-damp-surveys" rel="canonical">
-    <meta content="Home and Building Surveys in Huntington | LEM Building Surveying" property="og:title">
-    <meta content="Independent RICS Home Surveys in Huntington, Chester. Level 1, 2 and 3 property surveys from a local qualified surveyor. Fast, professional service." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/huntington-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home and Building Surveys in Huntington | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent RICS Home Surveys in Huntington, Chester. Level 1, 2 and 3 property surveys from a local qualified surveyor. Fast, professional service." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/huntington-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Huntington -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/huntington-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Huntington",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Huntington, Chester",
-        "description": "RICS Level 1, 2 and 3 Home Surveys in Huntington, Chester by a qualified independent surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Huntington",
-              "item": "https://www.lembuildingsurveying.co.uk/huntington-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home and Building Surveys in Huntington, Chester</h1>
-  <p>RICS Level 1, 2 &amp; 3 Home Surveys from a local, independent building surveyor with experience in Huntington and Chester's residential areas.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Surveyor for Huntington</h2>
-  <p>
-          Huntington is a desirable suburb of Chester offering a mix of traditional homes, family properties, and newer builds. Whether you’re purchasing a home near Saighton Camp or an older semi near Caldy Valley, I provide clear, independent reports tailored to the property.
-        </p>
-  <h2>Available Survey Types</h2>
-  <ul>
-  <li><strong>Level 1 RICS Survey:</strong> Basic condition report ideal for modern homes in good repair.</li>
-  <li><strong>Level 2 RICS HomeBuyer Survey:</strong> In-depth inspection for most homes, with advice on defects, repairs, and maintenance.</li>
-  <li><strong>Level 3 RICS Building Survey:</strong> Full structural overview for older or larger properties — includes repair advice and condition details.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Specialist inspections for suspected moisture, decay, or mould.</li>
-  <li><strong>Measured Floorplans:</strong> Useful for extension planning or design purposes.</li>
-  <li><strong>Ventilation Assessments:</strong> Improve airflow and reduce the risk of condensation or damp-related issues.</li>
-  </ul>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>Local Experience:</strong> I regularly inspect homes in Huntington, Boughton, Caldy Valley and Saighton developments.</li>
-  <li><strong>No Upselling:</strong> You deal directly with me — Liam, an AssocRICS surveyor — for honest, independent advice.</li>
-  <li><strong>Quick Turnaround:</strong> Reports typically delivered in 3–5 working days.</li>
-  </ul>
-  <h2>Book Your Survey in Huntington</h2>
-  <p>
-          Whether you’re a first-time buyer or moving up the ladder, I’ll help you make confident decisions with the right level of survey for your property.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Quote Now</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

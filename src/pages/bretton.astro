@@ -1,106 +1,212 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'bretton';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Bretton';
+const county = 'Flintshire';
+const postalCode = 'CH4';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Independent Bretton surveyor delivering RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice for properties along the Chester and Flintshire border.";
+const canonicalPath = 'bretton-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "Local RICS surveyor offering independent home surveys, damp assessments and retrofit guidance for Bretton’s family homes, farm cottages and border-side developments.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Bretton sits on the edge of Chester, combining traditional cottages on the old Chester Road with 1960s bungalows, former local-authority homes and modern cul-de-sacs near Broughton Retail Park. Border proximity means Welsh and English planning rules can overlap, while busy commuter routes bring extra wear to driveways, garages and parking courts.",
+  "Properties close to the Airbus campus often have extensions, loft conversions or sunrooms added over time to maximise space. We review how these additions interact with the original structure, the quality of past damp-proofing, and whether ventilation keeps pace with heavier use.",
+  "Clients in Bretton include first-time buyers, relocating families and landlords seeking steady rental demand from the nearby business park. They rely on us for straight-talking reports, realistic costs and practical advice on tackling defects before they escalate.",
+];
+
+const sellingPoints = {
+  heading: 'Why Bretton homeowners choose LEM',
+  points: [
+    'AssocRICS surveyor with direct experience of cross-border property considerations between Chester and Flintshire.',
+    'Balanced advice on cavity wall upgrades, flat roofs and damp proofing common in Bretton’s post-war housing stock.',
+    'Flexible appointments to coordinate with shift workers at Airbus and busy commuting households.',
+    'Follow-up consultation included so you can discuss remedial options or negotiation tactics with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Bretton homes',
+  intro: `From red-brick terraces to modern detached houses near Broughton, we tailor surveys to suit ${townName} properties and your plans.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most semis, bungalows and standard construction homes—highlighting condition ratings, essential repairs and maintenance scheduling.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for older cottages, heavily extended houses or non-standard construction where you need detailed structural insight.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Snapshot appraisal for newer builds, apartments or landlord acquisitions needing a swift overview.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description:
+        'Thorough diagnosis of condensation, bridging damp proof courses and timber decay—useful for homes near low-lying ground or with previous tanking works.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Room-by-room ventilation assessment to improve comfort in busy households, loft conversions and sealed double-glazed homes.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate drawings and feasibility notes to support extensions, garage conversions or border planning applications.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What we see in Bretton properties',
+  paragraphs: [
+    'Many Bretton homes were built on clay soils and can show signs of historic movement, particularly where shallow foundations sit next to trees or hedging. We inspect cracking patterns, floor levels and drainage to judge risk and maintenance needs.',
+    'Cavity wall retrofits from the 1980s and 1990s sometimes bridge damp courses or leave cold spots. Our surveys look closely at ventilation, insulation continuity and the detailing of bay windows and porches that catch prevailing winds.',
+    'Homes near the A5104 and retail park often have complex service runs or shared access arrangements. We check the workmanship of driveways, garages and boundary walls so you understand responsibilities before completion.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Guidance on alterations and planning',
+    paragraphs: [
+      'Border properties can fall under Cheshire West or Flintshire planning controls depending on their exact position. We outline the likely consent route for further extensions, garden rooms or outbuildings and highlight where previous work may need certificates.',
+      'Our reports consider noise management, insulation upgrades and glazing improvements—particularly valuable for homes under the Airbus flightpath or close to the Chester southerly bypass.',
+    ],
+  },
+  {
+    heading: 'Ongoing support after your survey',
+    paragraphs: [
+      'Once the report is delivered, we stay available to answer questions, review contractors’ quotes and provide written clarifications for solicitors or lenders. That continuity helps you move forward confidently whether you are negotiating, remortgaging or planning upgrades.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Bretton clients',
+  description: 'Explore core surveying and diagnostic services that support Bretton buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'The go-to report for Bretton semis, bungalows and terraced homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Deeper investigation for cottages, large plots and heavily altered properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for homes affected by clay soils and past tanking works.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve airflow and manage condensation in busy family homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Get accurate drawings for extensions, garage conversions and planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Bretton property FAQs',
+  items: [
+    {
+      question: 'Do you cover both the Welsh and English sides of Bretton?',
+      answer:
+        'Yes. We work across Bretton, Broughton, Chester Business Park and the surrounding border villages, coordinating access with agents on either side.',
+    },
+    {
+      question: 'Can you advise on flightpath noise or insulation upgrades?',
+      answer:
+        'We comment on glazing, ventilation and roof construction to help you plan acoustic improvements and energy upgrades that suit your property.',
+    },
+    {
+      question: 'How fast will I receive my Bretton survey report?',
+      answer:
+        'Reports are typically issued within three to four working days. Let us know if a completion deadline is looming and we will prioritise accordingly.',
+    },
+    {
+      question: 'Do you inspect new-build homes near Broughton?',
+      answer:
+        'Yes. We assess workmanship, documentation and snagging concerns on recently completed developments and provide clear next steps if issues are found.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered around Bretton',
+  description: 'We regularly survey Bretton and neighbouring communities such as:',
+  areas: [
+    'Broughton and Broughton Retail Park',
+    'Higher Kinnerton and Lache Lane',
+    'Saltney and Saltney Ferry',
+    'Curzon Park and Westminster Park',
+    'Dodleston and Lavister',
+    'Penyffordd and Penymynydd',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Bretton survey',
+  paragraphs: [
+    'Share your property details, plans and timescales and we will recommend the inspection that suits your needs. You deal directly with Liam from booking to final report.',
+    'We manage access with agents, tenants or site offices and stay available after the visit to talk through recommendations, costs and practical repair options.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Bretton,+Flintshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home and Building Surveys in Bretton | LEM Building Surveying</title>
-    <meta content="RICS Level 1, 2 &amp; 3 surveys and damp inspections in Bretton. Clear, professional reporting direct from a qualified independent surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/bretton-damp-surveys" rel="canonical">
-    <meta content="Home and Building Surveys in Bretton | LEM Building Surveying" property="og:title">
-    <meta content="RICS Level 1, 2 &amp; 3 surveys and damp inspections in Bretton. Clear, professional reporting direct from a qualified independent surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/bretton-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home and Building Surveys in Bretton | LEM Building Surveying" name="twitter:title">
-    <meta content="RICS Level 1, 2 &amp; 3 surveys and damp inspections in Bretton. Clear, professional reporting direct from a qualified independent surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/bretton-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Bretton -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/bretton-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bretton",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Bretton, Flintshire",
-        "description": "Qualified RICS surveyor providing Level 1, 2 and 3 Home Surveys in Bretton, Flintshire.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Bretton",
-              "item": "https://www.lembuildingsurveying.co.uk/bretton-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home and Building Surveys in Bretton</h1>
-  <p>Independent RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports and expert inspections in Bretton and nearby.</p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Surveyor for Bretton</h2>
-  <p>
-          Conveniently located near Bretton, I provide expert advice and clear reporting for buyers, owners and landlords across the area — from detached homes and bungalows to newer estates and older cottages.
-        </p>
-  <h2>Surveying Services Available</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> A visual condition report for newer or well-maintained homes — quick and efficient.</li>
-  <li><strong>RICS Level 2 Survey:</strong> Our most popular option — a detailed HomeBuyer-style report with repair advice and maintenance guidance.</li>
-  <li><strong>RICS Level 3 Survey:</strong> Ideal for older, altered, or non-standard properties — includes structural advice and repair options.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Identify causes of damp, mould or rot — clear, unbiased diagnosis and next steps.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Internal layouts and dimensions for redesign, records or planning use.</li>
-  <li><strong>EPCs with Floorplans:</strong> Energy Performance Certificate with detailed floorplan included.</li>
-  </ul>
-  <p><a href="/services">See all services →</a></p>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> Based just minutes from Bretton with experience in the area’s housing stock.</li>
-  <li><strong>Direct Contact:</strong> Speak with me, Liam — not a booking agent or admin team.</li>
-  <li><strong>Quick Turnaround:</strong> Reports usually delivered within 3–5 working days.</li>
-  <li><strong>RICS Qualified:</strong> Fully insured and AssocRICS accredited.</li>
-  </ul>
-  <h2>Request Your Survey</h2>
-  <p>If you're buying, selling or maintaining a property in Bretton, get in touch now for trusted advice and a no-obligation quote.</p>
-  <a class="cta-button" href="/enquiry">Book Now</a>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Inject header/footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
