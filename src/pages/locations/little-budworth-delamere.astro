@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Little Budworth & Delamere Surveyors',
+  heading: 'Home and Building Surveys in Little Budworth & Delamere, Cheshire',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Little Budworth, Delamere and the Mid Cheshire villages.',
+  cta: {
+    label: 'Book a Little Budworth & Delamere survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Little Budworth and Delamere feature sandstone cottages, former estate houses, equestrian properties and modern infill homes tucked between woodland and farmland. Buyers also see barn conversions and country residences around Oulton Park and Whitegate.",
+  "Rural plots often combine traditional solid-wall construction with modern extensions, while private drainage, shared access tracks and agricultural buildings introduce extra checks. Delamere’s woodland climate and lakes create persistent moisture that affects roofs, joinery and outbuildings.",
+  "LEM provides independent rural expertise so you can understand the condition, compliance and running costs of your property. We identify urgent issues, maintenance needs and opportunities to improve efficiency without compromising character.",
+];
+
+const sellingPoints = {
+  heading: 'Why Little Budworth & Delamere clients choose LEM',
+  points: [
+    'AssocRICS surveyor familiar with countryside estates, timber structures and equestrian facilities across Mid Cheshire.',
+    'Comprehensive reports that clarify risks, budgets and project considerations in plain language.',
+    'Flexible site visits to coordinate with farms, estate offices and busy commuting households.',
+    'Aftercare support to interpret findings, plan phased works and communicate with lenders or contractors.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Little Budworth & Delamere homes',
+  intro: 'We offer a full range of surveys tailored to Mid Cheshire’s villages, farms and woodland estates.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for well-kept cottages, modern estate homes and bungalows across Little Budworth, Delamere and Whitegate.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for farmhouses, listed buildings and extensively altered properties requiring in-depth analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise overview for newer developments and lodge-style homes near Delamere Forest and Oulton Park.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Focus on moisture, timber decay and ventilation within woodland environments and older sandstone structures.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure balanced airflow in energy-upgraded cottages, holiday lets and multi-generational homes.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate plans and feasibility advice for extensions, stable blocks and rural diversification projects.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Little Budworth & Delamere homes',
+  paragraphs: [
+    'Woodland settings increase moss growth, dampness and insect activity. We inspect roof coverings, timber frames and drainage channels to confirm resilience.',
+    'Private drainage systems and shared boreholes are common. We check maintenance records, compliance with current regulations and potential upgrade requirements.',
+    'Equestrian and agricultural use can alter ground levels and access. We highlight surface water management, hardstanding condition and responsibilities for shared tracks.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'The area spans green belt and conservation zones managed by Cheshire West and Chester Council. We outline planning constraints for extensions, annexes, holiday lets and agricultural buildings.',
+      'Our surveys identify structural and services considerations so you can plan open-plan layouts, renewable energy installations or stable conversions confidently.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'We stay on hand after the report to answer questions, discuss contractor proposals and provide supporting notes for financiers or insurers.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Little Budworth & Delamere clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Suitable for many rural cottages, lodges and family homes across CW6 and CW8.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Ideal for farmhouses, listed properties and complex conversions.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate woodland moisture, timber decay and ventilation challenges.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balance airtight refurbishments with healthy airflow in rural homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support planning for extensions, stable blocks and diversification schemes.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Little Budworth & Delamere property FAQs',
+  items: [
+    {
+      question: 'Do you cover Whitegate, Rushton and Oulton Park?',
+      answer:
+        'Yes. We survey throughout Little Budworth, Delamere, Whitegate, Rushton, Oulton Park and nearby hamlets.',
+    },
+    {
+      question: 'Can you advise on equestrian facilities or agricultural outbuildings?',
+      answer:
+        'We inspect barns, stables and arenas, commenting on structure, services and planning considerations, and signposting when specialist input is needed.',
+    },
+    {
+      question: 'Do you assess private drainage, boreholes or water treatment plants?',
+      answer:
+        'We review available documentation, maintenance records and compliance with environmental regulations, advising where further testing is sensible.',
+    },
+    {
+      question: 'Are you able to work to tight completion deadlines?',
+      answer:
+        'We offer flexible scheduling and can provide expedited reporting when transactions require rapid turnaround.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Little Budworth & Delamere',
+  description: 'We cover all areas including:',
+  areas: [
+    'Little Budworth village and The Common',
+    'Delamere Forest, Hatchmere and Station Road',
+    'Whitegate, Marton and Foxwist Green',
+    'Oulton Park estate and Little Budworth Country Park',
+    'Tarporley, Rushton and Eaton borders',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Little Budworth & Delamere survey',
+  paragraphs: [
+    'Share your property plans and concerns and we will recommend the survey scope that fits your goals.',
+    'Expect honest guidance, detailed reporting and ongoing support as you purchase, renovate or manage your Mid Cheshire home.',
+  ],
+  primaryCta: {
+    label: 'Book a Little Budworth & Delamere survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Little+Budworth,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Little Budworth & Delamere"
+  county="Cheshire West and Chester"
+  postalCode="CW6"
+  pageTitle="Home and Building Surveys in Little Budworth & Delamere, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Independent surveyor for Little Budworth and Delamere delivering RICS Level 1-3 surveys, damp investigations and rural renovation guidance across Little Budworth, Delamere, Whitegate and Oulton Park."
+  canonicalPath="little-budworth-delamere-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

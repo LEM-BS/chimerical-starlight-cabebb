@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Kelsall Surveyors',
+  heading: 'Home and Building Surveys in Kelsall, Cheshire',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Kelsall, Ashton Hayes and the Sandstone Ridge villages.',
+  cta: {
+    label: 'Book a Kelsall survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Kelsall sits on the Sandstone Ridge with a mix of village cottages, 1960s and 1970s bungalows, split-level homes and newer developments off Chester Road. Buyers also see barn conversions and rural properties with large gardens extending toward Willington and Ashton Hayes.",
+  "Hillside plots can suffer from wind exposure, surface water runoff and retaining wall pressures, while older sandstone and brick structures may have limited damp proofing. Many homes rely on private drainage, oil heating or mixed construction extensions that need careful review.",
+  "LEM delivers independent surveys tailored to rural living. We highlight structural priorities, moisture risks and compliance considerations so you can buy or renovate with confidence.",
+];
+
+const sellingPoints = {
+  heading: 'Why Kelsall clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with Sandstone Ridge geology, rural services and conservation considerations.',
+    'Clear, actionable reports that set out urgent issues, ongoing maintenance and cost-effective improvement options.',
+    'Flexible scheduling to coordinate with working farms, equestrian facilities and busy family households.',
+    'Post-survey support to discuss findings, engage specialists and plan phased upgrades.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Kelsall’s homes',
+  intro: 'We offer a full range of surveys tailored to Kelsall, Willington, Ashton Hayes and surrounding countryside.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for well-maintained village houses, newer estates and upgraded bungalows across CW6.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for older cottages, split-level hillside homes and properties with significant alterations.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise option for recently built homes and downsizer developments such as Edenhurst Grange.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Targeted investigations for sandstone walls, cellars and north-facing elevations prone to moisture.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure airtight refurbishments, wood-burning stoves and upgraded glazing maintain healthy airflow.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate drawings and feasibility advice for extensions, garden rooms and rural diversification projects.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Kelsall homes',
+  paragraphs: [
+    'Sandstone bedrock and sloping topography mean surface water management and retaining walls need regular attention. We inspect drainage routes, soakaways and any signs of movement.',
+    'Older cottages often have limited foundations, solid walls and suspended floors. We review ventilation, damp management and structural alterations to ensure longevity.',
+    'Many rural homes use septic tanks, packaged treatment plants or private water supplies. We check evidence of maintenance, compliance with current regulations and any upgrade requirements.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Kelsall falls within Cheshire West and Chester planning. We outline conservation considerations, green belt restrictions and highway access requirements that could affect extensions or conversions.',
+      'Our surveys flag structural load paths, insulation needs and services upgrades so you can plan kitchen-diner knock-throughs, loft conversions or annexes confidently.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'We stay available after the report to answer questions, review contractor quotes or support discussions with lenders and solicitors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Kelsall clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Suitable for many Kelsall family homes, newer estates and bungalows.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Ideal for rural cottages, hillside properties and complex refurbishments.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate moisture where sandstone walls and mature trees keep elevations damp.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balance wood stoves, new glazing and airtight insulation with effective ventilation.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support barn conversions, annexes and agricultural diversification projects.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Kelsall property FAQs',
+  items: [
+    {
+      question: 'Do you cover neighbouring villages like Willington, Ashton Hayes and Tarvin?',
+      answer:
+        'Yes. We survey across Kelsall, Willington, Ashton Hayes, Tarvin, Oscroft and the wider Sandstone Ridge.',
+    },
+    {
+      question: 'Can you advise on private drainage or water supply systems?',
+      answer:
+        'We review available records, highlight compliance requirements and recommend when specialist testing is appropriate.',
+    },
+    {
+      question: 'Do you inspect agricultural buildings or equestrian facilities?',
+      answer:
+        'Let us know in advance and we can include barns, stables or manèges within the inspection scope.',
+    },
+    {
+      question: 'How quickly can the report be issued?',
+      answer:
+        'Reports are typically delivered within five working days, with expedited service available for tight timescales.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Kelsall',
+  description: 'We cover all areas including:',
+  areas: [
+    'Kelsall village centre and Quarry Lane',
+    'Willington and Waste Lane',
+    'Ashton Hayes and Mouldsworth',
+    'Delamere Park and Forest edge',
+    'Tarvin, Oscroft and Utkinton countryside',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Kelsall survey',
+  paragraphs: [
+    'Share your plans, property details and any concerns so we can recommend the survey that delivers the insight you need.',
+    'We provide prompt communication, practical recommendations and continued support as you progress with your Kelsall property.',
+  ],
+  primaryCta: {
+    label: 'Book a Kelsall survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Kelsall,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Kelsall"
+  county="Cheshire West and Chester"
+  postalCode="CW6"
+  pageTitle="Home and Building Surveys in Kelsall, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Independent Kelsall surveyor delivering RICS Level 1-3 surveys, damp investigations and rural renovation advice across Kelsall, Willington, Ashton Hayes and the Sandstone Ridge."
+  canonicalPath="kelsall-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

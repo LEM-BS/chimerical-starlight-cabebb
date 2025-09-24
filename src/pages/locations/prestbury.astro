@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Prestbury Surveyors',
+  heading: 'Home and Building Surveys in Prestbury, Cheshire East',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Prestbury, Tytherington and the Macclesfield fringe.',
+  cta: {
+    label: 'Book a Prestbury survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Prestbury blends historic cottages near St Peter’s Church, Victorian villas along the River Bollin and modern executive homes tucked behind gated drives. Many properties have undergone extensive renovations, extensions and landscaping that demand careful evaluation.",
+  "Sloping sites, proximity to the river and mature tree cover introduce considerations around drainage, flood resilience and structural movement. Leisure suites, basement gyms and ancillary accommodation are common in larger homes, making moisture control and fire safety key priorities.",
+  "LEM helps Prestbury clients navigate conservation rules, technical risks and contractor expectations. We deliver honest, independent advice so you can negotiate confidently and manage future works without surprises.",
+];
+
+const sellingPoints = {
+  heading: 'Why Prestbury clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with Prestbury’s conservation area, riverside plots and bespoke luxury homes.',
+    'Detailed reports that separate urgent structural issues from aesthetic upgrades and outline realistic remedial options.',
+    'Flexible appointments to coordinate with estate managers, caretakers and security-controlled access.',
+    'Continued post-survey support to interpret findings, engage specialists and plan phased maintenance.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Prestbury’s homes',
+  intro: 'We offer a full range of surveys tailored to Prestbury properties and neighbouring Tytherington and Mottram St Andrew.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for well-maintained semis and townhouses, or smaller detached homes within Prestbury village and Tytherington.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for large riverside residences, listed cottages and heavily altered properties needing detailed analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise overview for newer developments and refurbished apartments near Macclesfield Road.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Assess basements, pool houses and older stonework where high groundwater and complex HVAC systems meet.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure airtight refurbishments, wine stores and leisure suites maintain healthy air quality and manage condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate plans and feasibility guidance for extensions, annexes and landscaping within conservation controls.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Prestbury homes',
+  paragraphs: [
+    'Riverside plots can be affected by Bollin flood events and high groundwater. We review drainage strategy, damp proofing and any historical flood resilience measures.',
+    'Steep garden gradients and mature trees influence foundation movement and retaining structures. We check for historic settlement, root damage and the adequacy of structural supports.',
+    'Properties in Prestbury’s conservation area face strict controls on external changes. We highlight any non-compliant works and advise on likely planning requirements.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Prestbury sits within Cheshire East planning with Article 4 restrictions in parts of the village. We outline approvals needed for window replacements, landscaping, tree works and external finishes.',
+      'Our surveys flag structural load paths, services upgrades and waterproofing requirements before you invest in basement conversions, garden studios or leisure facilities.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'We remain on hand after the report to answer queries, join conference calls with designers or review contractor quotations.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Prestbury clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Suited to Prestbury’s townhouses, cottages and modern refurbishments.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Essential for bespoke luxury homes, listed cottages and properties near the Bollin.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate moisture in basements, pool houses and riverside structures.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Protect indoor air quality in leisure suites, spas and tightly sealed refurbishments.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Gather precise data for extensions, landscaping and complex planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Prestbury property FAQs',
+  items: [
+    {
+      question: 'Do you cover Tytherington, Mottram St Andrew and Over Alderley?',
+      answer:
+        'Yes. We inspect homes across Prestbury, Tytherington, Mottram St Andrew, Over Alderley and the Macclesfield fringe.',
+    },
+    {
+      question: 'Can you assess leisure complexes or guest accommodation?',
+      answer:
+        'We regularly review pool houses, gyms and ancillary suites—checking structure, services and compliance with fire separation.',
+    },
+    {
+      question: 'How do you report on flood or drainage risks?',
+      answer:
+        'We combine on-site investigation with available data and provide practical recommendations for mitigation and maintenance.',
+    },
+    {
+      question: 'Will you coordinate with estate staff or caretakers?',
+      answer:
+        'Absolutely. We arrange access with keyholders and provide updates throughout the inspection process.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Prestbury',
+  description: 'We cover all areas including:',
+  areas: [
+    'Prestbury village centre and Bollin Grove',
+    'Withinlee Road and Hough Lane estates',
+    'Tytherington and Brocklehurst',
+    'Mottram St Andrew and Over Alderley',
+    'Macclesfield Forest and Bollington borders',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Prestbury survey',
+  paragraphs: [
+    'Share your plans and any concerns so we can recommend the survey scope that matches your property and timescales.',
+    'Receive independent guidance, detailed reporting and ongoing support as you negotiate, renovate or manage your Prestbury home.',
+  ],
+  primaryCta: {
+    label: 'Book a Prestbury survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Prestbury,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Prestbury"
+  county="Cheshire East"
+  postalCode="SK10"
+  pageTitle="Home and Building Surveys in Prestbury, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Prestbury-focused RICS surveyor for Level 1-3 home surveys, damp assessments and renovation planning across Prestbury, Tytherington, Bollin Grove and the Macclesfield countryside."
+  canonicalPath="prestbury-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
