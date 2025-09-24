@@ -47,62 +47,88 @@ const serviceContentEntry: any = {
           />
           <div class="form-grid">
             <HomeInstantEstimate client:load />
-            <input
-              autocomplete="name"
-              name="name"
-              placeholder="Your Name"
-              required
-              type="text"
-            />
-            <input
-              autocomplete="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              type="email"
-            />
-            <input
-              autocomplete="tel"
-              inputmode="tel"
-              name="contact"
-              placeholder="Contact Number"
-              required
-              type="tel"
-            />
-            <input
-              autocomplete="postal-code"
-              name="postcode"
-              placeholder="Postcode"
-              required
-              type="text"
-            />
-            <select name="survey-type" required>
-              <option value="">Select a survey type</option>
-              <option value="level-1">Level 1 — Condition Report</option>
-              <option value="level-2">Level 2 — HomeBuyer Survey</option>
-              <option value="level-3">Level 3 — Building Survey</option>
-              <option value="unsure">Unsure</option>
-            </select>
-            <input
-              inputmode="numeric"
-              min="0"
-              name="bedrooms"
-              placeholder="No. of Bedrooms"
-              required
-              step="1"
-              type="number"
-            />
-            <input
-              aria-label="Estimated Property Value (£)"
-              autocomplete="transaction-amount"
-              inputmode="decimal"
-              min="0.01"
-              name="property-value"
-              placeholder="Estimated Property Value (£)"
-              required
-              step="0.01"
-              type="number"
-            />
+            <div class="field">
+              <label for="quote-name">Your Name</label>
+              <input
+                id="quote-name"
+                autocomplete="name"
+                name="name"
+                placeholder="Your Name"
+                required
+                type="text"
+              />
+            </div>
+            <div class="field">
+              <label for="quote-email">Your Email</label>
+              <input
+                id="quote-email"
+                autocomplete="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                type="email"
+              />
+            </div>
+            <div class="field">
+              <label for="quote-contact">Contact Number</label>
+              <input
+                id="quote-contact"
+                autocomplete="tel"
+                inputmode="tel"
+                name="contact"
+                placeholder="Contact Number"
+                required
+                type="tel"
+              />
+            </div>
+            <div class="field">
+              <label for="quote-postcode">Postcode</label>
+              <input
+                id="quote-postcode"
+                autocomplete="postal-code"
+                name="postcode"
+                placeholder="Postcode"
+                required
+                type="text"
+              />
+            </div>
+            <div class="field">
+              <label for="quote-survey-type">Survey Type</label>
+              <select id="quote-survey-type" name="survey-type" required>
+                <option value="">Select a survey type</option>
+                <option value="level-1">Level 1 — Condition Report</option>
+                <option value="level-2">Level 2 — HomeBuyer Survey</option>
+                <option value="level-3">Level 3 — Building Survey</option>
+                <option value="unsure">Unsure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quote-bedrooms">No. of Bedrooms</label>
+              <input
+                id="quote-bedrooms"
+                inputmode="numeric"
+                min="0"
+                name="bedrooms"
+                placeholder="No. of Bedrooms"
+                required
+                step="1"
+                type="number"
+              />
+            </div>
+            <div class="field">
+              <label for="quote-property-value">Estimated Property Value (£)</label>
+              <input
+                id="quote-property-value"
+                autocomplete="transaction-amount"
+                inputmode="decimal"
+                min="0.01"
+                name="property-value"
+                placeholder="Estimated Property Value (£)"
+                required
+                step="0.01"
+                type="number"
+              />
+            </div>
             <div class="field full">
               <button class="cta-button hero-contrast" type="submit">
                 Get My Survey Quote in 60 Minutes
