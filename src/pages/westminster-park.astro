@@ -1,109 +1,208 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'westminster-park';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Westminster Park Surveyors',
+  heading: 'Home and Building Surveys in Westminster Park, Chester',
+  description:
+    'RICS-qualified surveyor delivering independent home surveys, damp diagnostics and extension advice for buyers and owners in Westminster Park and Chester’s western suburbs.',
+  cta: {
+    label: 'Book a Westminster Park survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Westminster Park is renowned for its leafy streets, spacious detached and semi-detached houses, and generous gardens—making it a favourite with families and upsizers. Most properties date from the 1930s to the 1970s, though there’s a growing number of newer builds and extended houses. Typical issues include ground movement, drainage challenges, and the impact of mature trees and large plots. Many homes have seen garage conversions, rear extensions, and loft remodels—standards and compliance can vary.',
+  'Flat roofs, boundary movement, and patchy insulation upgrades are also common. We routinely see issues with damp proof courses, tree root impact, and surface water drainage after landscaping or extension work. Our surveys are tailored to the realities of Westminster Park’s housing—cutting through estate agent gloss to highlight genuine priorities.',
+  'Reports are designed to support buyers, movers and home improvers—explaining urgent repairs, regulatory risks, and the practical realities of upkeep for larger homes and gardens.',
+];
+
+const sellingPoints = {
+  heading: 'Why Westminster Park clients trust LEM',
+  points: [
+    'AssocRICS surveyor with deep experience of family homes, extensions and ground movement in the area.',
+    'Local insights into drainage, tree risks, and maintenance for bigger plots.',
+    'Flexible appointments, quick turnaround, and post-survey support.',
+    'Clear, practical reporting—prioritised for real-world decisions.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Westminster Park’s spacious homes',
+  intro:
+    "From original 1930s houses to remodelled family homes and new builds, we match our survey approach to your property and plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Most requested for detached and semi-detached homes—clear condition ratings, repair priorities and guidance for maintenance.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Best for large, altered or structurally complex houses—particularly where subsidence, damp or multiple extensions are involved.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'For modern builds or well-kept flats on the edge of the estate.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Crucial for ground floors, garages and houses near trees—diagnosing and solving persistent issues.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Helping families improve comfort and manage condensation, especially in energy-upgraded homes.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'For extensions, garden rooms, and landscaping projects—ensuring accuracy and compliance.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Westminster Park homes',
+  paragraphs: [
+    'Ground movement and subsidence are not uncommon, especially in older houses on shrinkable clay or near large trees. Flat roofs on garages and extensions can develop leaks and insulation issues. Drainage and soakaways sometimes struggle to cope after major landscaping or building work.',
+    'Garage conversions, rear and side extensions, and loft remodels are common—paperwork and compliance should never be assumed. We check for structural support, insulation, fire safety, and building control approval.',
+    'Large gardens mean mature trees and extensive fencing—potential issues for boundaries, roots, and long-term maintenance. We always assess the risks for structure, drains and ongoing costs.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, gardens and future works',
+    paragraphs: [
+      'Many Westminster Park owners plan extensions, garden rooms or layout reconfigurations. We help assess feasibility, highlight risks, and signpost local planning rules. Where past works are undocumented, we explain implications for buyers and mortgage lenders.',
+      'Our advice is practical—prioritising what’s urgent, and offering realistic solutions for ongoing maintenance.',
+    ],
+  },
+  {
+    heading: 'Aftercare and clear communication',
+    paragraphs: [
+      'From booking to final report, we keep communication open and clear. We’re available for queries and to help you prioritise next steps with contractors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Westminster Park clients',
+  description:
+    'Explore our main surveys and support for Westminster Park buyers and homeowners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Most common for detached and semi-detached houses.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'In-depth for larger or extended properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Addressing moisture and timber risks for big plots and older homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Managing comfort and air quality for family houses.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'For extensions, garden rooms and landscaping.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Westminster Park property FAQs',
+  items: [
+    {
+      question: 'Do you cover all of Westminster Park and adjacent areas?',
+      answer:
+        'Yes—we survey throughout Westminster Park, Lache Lane, Curzon Park and the west Chester districts.',
+    },
+    {
+      question: 'Are you experienced with extensions and ground movement?',
+      answer:
+        'Absolutely. We regularly inspect houses with history of movement, remodelling, and large gardens.',
+    },
+    {
+      question: 'Can you advise on tree and boundary risks?',
+      answer:
+        'Yes—our surveys highlight tree impacts and boundary issues, with advice on realistic management.',
+    },
+    {
+      question: 'Do you offer support after the survey?',
+      answer:
+        'Yes—ongoing support for queries, quotes and prioritising works is included.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Westminster Park',
+  description: 'We survey across Westminster Park and nearby Chester suburbs.',
+  areas: [
+    'Westminster Park',
+    'Lache Lane',
+    'Curzon Park',
+    'Handbridge',
+    'Saltney',
+    'Mollington',
+    'Wrexham Road',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Westminster Park survey',
+  paragraphs: [
+    'Share your Westminster Park property details and moving plans—we’ll recommend the right survey, provide a clear fee and act quickly. Local knowledge for a smooth move or project.',
+    'From booking to aftercare, you get trusted support and honest advice at every stage.',
+  ],
+  primaryCta: {
+    label: 'Book a Westminster Park survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Westminster+Park,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home Surveys in Westminster Park | LEM Building Surveying</title>
-    <meta content="RICS Level 1, 2 &amp; 3 Home Surveys in Westminster Park, Chester. Professional reports, fast turnaround, and local expertise from a qualified independent surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/westminster-park-damp-surveys" rel="canonical">
-    <meta content="Home Surveys in Westminster Park | LEM Building Surveying" property="og:title">
-    <meta content="RICS Level 1, 2 &amp; 3 Home Surveys in Westminster Park, Chester. Professional reports, fast turnaround, and local expertise from a qualified independent surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/westminster-park-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home Surveys in Westminster Park | LEM Building Surveying" name="twitter:title">
-    <meta content="RICS Level 1, 2 &amp; 3 Home Surveys in Westminster Park, Chester. Professional reports, fast turnaround, and local expertise from a qualified independent surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/westminster-park-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Westminster Park -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/westminster-park-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Westminster Park",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Westminster Park, Chester",
-        "description": "RICS Home Surveys and Building Surveys in Westminster Park, Chester. Fast, clear reports from a local AssocRICS surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Westminster Park",
-              "item": "https://www.lembuildingsurveying.co.uk/westminster-park-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home Surveys in Westminster Park, Chester</h1>
-  <p>Professional RICS Home Surveys, Damp Reports, and Measured Surveys for properties in Westminster Park and surrounding Chester areas.</p>
-  <a class="cta-button" href="/enquiry">Get a Personal Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Trusted Building Surveyor in Westminster Park</h2>
-  <p>
-          Westminster Park is one of Chester’s most established residential areas, popular with families and professionals. I provide independent RICS Home Surveys tailored to the wide mix of property styles found in this sought-after area — from modern homes to older detached and semi-detached houses.
-        </p>
-  <h2>Available Survey Services</h2>
-  <ul>
-  <li><strong>Level 1 RICS Survey:</strong> Condition report for well-maintained or new-build properties — ideal for lower-risk homes.</li>
-  <li><strong>Level 2 RICS Home Survey:</strong> Popular HomeBuyer Report with repair advice, condition ratings and maintenance recommendations.</li>
-  <li><strong>Level 3 RICS Building Survey:</strong> The most detailed inspection — suitable for larger, older or extended properties.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Clear guidance on visible or suspected issues, including rot, condensation or rising damp.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate layout drawings for extensions, planning or property records.</li>
-  <li><strong>Ventilation Assessments:</strong> Indoor air quality and airflow assessments to prevent damp and mould issues.</li>
-  </ul>
-  <h2>Why Work with LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> Based near Chester with direct experience of property types in Westminster Park.</li>
-  <li><strong>No Middlemen:</strong> All surveys are carried out by Liam — a qualified AssocRICS surveyor, not subcontractors.</li>
-  <li><strong>Quick Turnaround:</strong> Most reports returned in 3–5 working days with clear, jargon-free advice.</li>
-  </ul>
-  <h2>Arrange a Survey in Westminster Park</h2>
-  <p>
-          Whether you’re buying a family home or investing in property, I’ll help you understand its true condition with independent, professional insight.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Request Your Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Westminster Park"
+  county="Cheshire"
+  postalCode="CH4"
+  pageTitle="Home and Building Surveys in Westminster Park, Chester | LEM Building Surveying Ltd"
+  metaDescription="Trusted Westminster Park surveyor for RICS Level 1, 2 & 3 home surveys, damp inspections and advice for family homes in Westminster Park, Chester."
+  canonicalPath="westminster-park-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

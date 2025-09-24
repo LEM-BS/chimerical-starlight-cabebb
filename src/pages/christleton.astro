@@ -1,109 +1,208 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'christleton';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Christleton Surveyors',
+  heading: 'Home and Building Surveys in Christleton, Chester',
+  description:
+    'RICS-accredited surveyor providing independent home surveys, damp reports and heritage advice for buyers and owners in Christleton and Chester’s east villages.',
+  cta: {
+    label: 'Book a Christleton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Christleton combines classic Cheshire village appeal—listed cottages, handsome period homes, and modern family houses—with rivers, canals and rolling countryside on the doorstep. Flood risk, ground conditions and planning restrictions are all genuine factors for buyers here. Many homes are listed or in conservation areas, so even modest upgrades require careful planning and consent. Our surveys blend technical rigour with practical, local knowledge for buyers and owners in Christleton and nearby villages.',
+  'Older houses may have historic movement, timber or roof issues, while newer estates can present snagging, settlement or incomplete landscaping. Many properties feature extensions, barn conversions or annexes—so compliance and build quality can vary widely. We’re alert for private drainage, tree and boundary risks, and realistic ongoing maintenance requirements.',
+  'Our reports explain urgent priorities, highlight legal or planning constraints, and help you move forward with confidence—whether you’re moving to the village or upsizing within Christleton.',
+];
+
+const sellingPoints = {
+  heading: 'Why Christleton buyers choose LEM',
+  points: [
+    'AssocRICS surveyor with hands-on experience of village and rural property.',
+    'Insight into heritage, flood, and planning risks unique to Christleton and similar Cheshire villages.',
+    'Flexible survey times for busy movers and out-of-area buyers.',
+    'Ongoing aftercare for queries, quotes, and future works.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Christleton’s village and rural homes',
+  intro:
+    "From period cottages to new-build estates and barn conversions, we match our survey to the realities of Christleton’s housing stock.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Most requested for well-maintained period and modern village homes—condition ratings, maintenance guidance and repair priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for listed or heavily altered houses, conversions, or any home with movement or damp risk.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'For newer builds or flats on Christleton’s outskirts and newer estates.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Key for older houses near the canal or flood zones, and cottages with original timbers.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Helping families improve comfort and condensation control in both old and new houses.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'For extensions, conversions or landscaping—ensuring accurate plans and compliance.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to look for in Christleton property',
+  paragraphs: [
+    'Flood risk and waterlogging affect some areas near the canal and meadows. We assess historic flood history, drainage, and the impact on insurability and future works. Listed status and conservation rules shape what can and can’t be done—past unauthorised works may require regularisation.',
+    'Older houses can show signs of movement, timber decay and roof leaks. Boundary, access and private drainage are real concerns—especially where homes back onto fields or watercourses.',
+    'New builds and conversions may bring settlement, incomplete finishes, or services/landscaping that have not been fully signed off. Our advice is always practical and evidence-based.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, extension and heritage support',
+    paragraphs: [
+      'Whether you plan to remodel, extend or restore, we assess structural and planning feasibility, highlight any risks, and signpost the right approval pathways. We recommend appropriate heritage materials and can connect you to specialist contractors if needed.',
+      'For new builds, we check for outstanding snagging and review documentation to help you avoid future issues.',
+    ],
+  },
+  {
+    heading: 'Aftercare and ongoing support',
+    paragraphs: [
+      'From initial enquiry to post-survey queries, you get responsive, straightforward advice—always with local context.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Christleton clients',
+  description:
+    'Explore our key surveys and specialist advice for Christleton buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'For most period and new village houses.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'In-depth for listed, altered or rural homes.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Addressing moisture, decay and ventilation challenges in character properties.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balancing air quality in both cosy cottages and airtight new builds.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support extensions, conversions and landscaping projects.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Christleton property FAQs',
+  items: [
+    {
+      question: 'Do you survey Christleton and the neighbouring villages?',
+      answer:
+        'Yes—we cover Christleton, Littleton, Rowton, Waverton, Saighton, Boughton Heath and the wider Chester east area.',
+    },
+    {
+      question: 'Can you advise on listed buildings and conservation rules?',
+      answer:
+        'Absolutely. We flag heritage considerations, identify missing consents and outline the permissions needed for repairs or alterations.',
+    },
+    {
+      question: 'What about flood risk and private drainage?',
+      answer:
+        'We review flood history, drainage performance and private systems such as septic tanks or soakaways, highlighting legal and maintenance implications.',
+    },
+    {
+      question: 'Do you provide support after the survey?',
+      answer:
+        'Yes—post-survey calls, quote reviews and help prioritising repairs are all part of the service.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Christleton',
+  description: 'Local expertise for Christleton and Chester’s eastern villages.',
+  areas: [
+    'Christleton',
+    'Littleton',
+    'Rowton',
+    'Waverton',
+    'Saighton',
+    'Boughton Heath',
+    'Great Boughton',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Christleton survey',
+  paragraphs: [
+    'Tell us about the property, your plans and any specific concerns. We’ll recommend the right survey, provide a clear fee and arrange a convenient inspection time.',
+    'From first enquiry through to aftercare you get accessible, independent advice tailored to Christleton and the surrounding villages.',
+  ],
+  primaryCta: {
+    label: 'Book a Christleton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Christleton,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Building Surveys in Christleton | LEM Building Surveying</title>
-    <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/christleton-damp-surveys" rel="canonical">
-    <meta content="Building Surveys in Christleton | LEM Building Surveying" property="og:title">
-    <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/christleton-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Building Surveys in Christleton | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent surveyor in Christleton providing RICS Level 1, 2 and 3 Home Surveys, damp inspections and expert property advice. Local, qualified and clear." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/christleton-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Christleton -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/christleton-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Christleton",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Christleton, Cheshire",
-        "description": "RICS Level 1, 2 and 3 Home Surveys in Christleton. Damp reports and building surveys from an independent surveyor near Chester.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Christleton",
-              "item": "https://www.lembuildingsurveying.co.uk/christleton-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Building Surveys in Christleton</h1>
-  <p>RICS Level 1, 2 &amp; 3 Home Surveys for buyers, sellers, and homeowners in Christleton — clear, fast and fully independent.</p>
-  <a class="cta-button" href="/enquiry">Get a Survey Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Independent Surveyor in Christleton</h2>
-  <p>
-          Based nearby in Connah’s Quay, I regularly serve Christleton and surrounding villages with detailed RICS Home Surveys, damp inspections and ventilation checks. Whether you're buying a period cottage or modern detached home, I offer unbiased guidance and practical advice.
-        </p>
-  <h2>Christleton Surveying Services</h2>
-  <ul>
-  <li><strong>RICS Level 1 Condition Report:</strong> Entry-level survey for newer, well-maintained homes.</li>
-  <li><strong>RICS Level 2 HomeBuyer Survey:</strong> Popular option for standard homes—includes repair advice and condition ratings.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> The most detailed option—essential for older, extended or altered properties.</li>
-  <li><strong>Damp &amp; Timber Inspections:</strong> Identify and understand moisture issues, mould or decay.</li>
-  <li><strong>Residential Ventilation Assessments:</strong> Diagnose poor airflow, indoor humidity and condensation risk.</li>
-  <li><strong>Measured Floorplans:</strong> Scaled drawings for planning, marketing or renovation.</li>
-  </ul>
-  <h2>Why Choose LEM Building Surveying?</h2>
-  <ul>
-  <li><strong>AssocRICS-qualified surveyor:</strong> All surveys carried out by Liam personally.</li>
-  <li><strong>Fast turnaround:</strong> Reports usually delivered within 3–5 working days.</li>
-  <li><strong>Local knowledge:</strong> Familiar with property types and construction in Christleton, Vicars Cross and south Chester.</li>
-  </ul>
-  <h2>Get a Quote or Ask for Advice</h2>
-  <p>
-          Whether you’re exploring your options or ready to book, I’m happy to help. No pressure, no sales — just honest, expert advice.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Request a Survey</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Types</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Christleton"
+  county="Cheshire"
+  postalCode="CH3"
+  pageTitle="Home and Building Surveys in Christleton, Chester | LEM Building Surveying Ltd"
+  metaDescription="Independent Christleton surveyor for RICS Level 1, 2 & 3 home surveys, damp inspections and heritage advice in Christleton, Littleton, Rowton and Chester’s east villages."
+  canonicalPath="christleton-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

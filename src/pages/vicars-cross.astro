@@ -1,107 +1,208 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'vicars-cross';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Vicars Cross Surveyors',
+  heading: 'Home and Building Surveys in Vicars Cross, Chester',
+  description:
+    'RICS-accredited surveyor delivering independent home surveys, damp inspections and renovation advice for buyers and owners in Vicars Cross and eastern Chester.',
+  cta: {
+    label: 'Book a Vicars Cross survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Vicars Cross, just east of Chester city centre, is a classic post-war suburb: rows of 1950s-1970s semi-detached houses, bungalows, and more recent infill. Many homes have been extended or remodelled—open-plan kitchens, garage conversions and lofts are common—meaning buyers must pay close attention to the quality and compliance of past works. Typical issues include poor insulation, flat roof leaks, incomplete paperwork for extensions, and patchy upgrades to windows and electrics.',
+  'Damp, condensation and ventilation problems crop up where older construction meets new materials. We routinely find original cavity walls that have been filled poorly, leading to bridging and cold spots. With large gardens and mature planting, tree roots can affect drains and foundations.',
+  'Our surveys are clear and practical: highlighting risks, urgent repairs, and what matters for ongoing maintenance. You get advice rooted in local reality—useful for buyers, renovators, and families upgrading their home.',
+];
+
+const sellingPoints = {
+  heading: 'Why Vicars Cross clients work with LEM',
+  points: [
+    'AssocRICS surveyor with detailed experience of post-war homes, extensions and building regs.',
+    'Advice grounded in local repair costs, not generic estimates.',
+    'Flexible appointments for busy families and chain completions.',
+    'Post-survey support: explaining findings, reviewing quotes and prioritising repairs.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Vicars Cross family homes',
+  intro:
+    "From classic 1950s semis to bungalows and modern infill, we tailor our survey to your property and plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Most requested for Vicars Cross semis and bungalows—covers structure, condition, and priority repairs.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for heavily extended or altered homes, or where structural concerns exist.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'For well-maintained recent builds or flats at the estate’s edges.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Especially important for houses with flat roofs, old garages or known moisture issues.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Helping modern families improve air quality and prevent condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate plans and guidance for future extensions, conversions or planning submissions.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to look for in Vicars Cross homes',
+  paragraphs: [
+    'Poor insulation and bridging are common in cavity wall houses—especially where DIY upgrades have been made. Flat roofs on garages and rear extensions can fail, and older electrics sometimes linger beneath newer cosmetic finishes. We inspect for adequate ventilation, effective insulation, and the quality of past building work.',
+    'Boundary issues occasionally arise, as plots are generous and fences can migrate over the years. Large gardens also mean drains and soakaways are often home-made or in need of attention.',
+    'Extensions and loft conversions may lack paperwork or be completed to variable standards. We check structural support, fire safety, and compliance with building control.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, remodelling and upgrades',
+    paragraphs: [
+      'Many Vicars Cross buyers plan further works—open-plan layouts, kitchen extensions, or garden offices. We help assess feasibility, signpost planning rules, and highlight where past works need regularising or improving.',
+      'Damp and ventilation issues often crop up where insulation is lacking or old meets new. Our surveys provide actionable advice—not just a list of faults.',
+    ],
+  },
+  {
+    heading: 'Aftercare and clear communication',
+    paragraphs: [
+      'From first call to final report, we’re available for questions, clarification and to help you prioritise repairs or next steps.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Vicars Cross clients',
+  description:
+    'Our key surveys and support for Vicars Cross buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Main survey for most semis and bungalows.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'In-depth for altered or large houses.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Solving moisture and decay issues in post-war homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improving comfort and air quality.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Supporting extension and planning in Vicars Cross.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Vicars Cross property FAQs',
+  items: [
+    {
+      question: 'Do you cover all of Vicars Cross and nearby areas?',
+      answer:
+        'Yes—we survey throughout Vicars Cross and into Great Boughton, Huntington and surrounding Chester suburbs.',
+    },
+    {
+      question: 'Are you experienced with extensions and lofts?',
+      answer:
+        'Absolutely. We regularly inspect homes with new layouts, conversions and garage alterations.',
+    },
+    {
+      question: 'Can you advise on insulation and ventilation?',
+      answer:
+        'Yes—our surveys highlight where upgrades are needed for comfort and efficiency.',
+    },
+    {
+      question: 'What if there’s no paperwork for alterations?',
+      answer:
+        'We identify compliance issues and suggest next steps for buyers, owners or lenders.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Vicars Cross',
+  description: 'We survey throughout Vicars Cross and neighbouring districts.',
+  areas: [
+    'Vicars Cross',
+    'Great Boughton',
+    'Huntington',
+    'Saighton Camp',
+    'Tarvin Road',
+    'Boughton Heath',
+    'Green Lane',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Vicars Cross survey',
+  paragraphs: [
+    'Share your Vicars Cross property details and timescales—we’ll recommend the right survey, offer a clear fee and fit your schedule.',
+    'From booking to aftercare, you get expert support and honest advice at every stage of your move or project.',
+  ],
+  primaryCta: {
+    label: 'Book a Vicars Cross survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Vicars+Cross,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home and Building Surveys in Vicars Cross | LEM Building Surveying</title>
-    <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/vicars-cross-damp-surveys" rel="canonical">
-    <meta content="Home and Building Surveys in Vicars Cross | LEM Building Surveying" property="og:title">
-    <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home and Building Surveys in Vicars Cross | LEM Building Surveying" name="twitter:title">
-    <meta content="Qualified, independent building surveyor covering Vicars Cross. RICS Level 1, 2 and 3 Home Surveys with fast reports, expert advice and no sales pressure." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/vicars-cross-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Vicars Cross -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/vicars-cross-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Vicars Cross",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Vicars Cross, Chester",
-        "description": "RICS Level 1, 2 and 3 Home Surveys in Vicars Cross. Independent property surveyor offering clear reports, damp inspections and more.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Vicars Cross",
-              "item": "https://www.lembuildingsurveying.co.uk/vicars-cross-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home and Building Surveys in Vicars Cross</h1>
-  <p>RICS-qualified surveyor offering Level 1, 2 and 3 surveys for homes in Vicars Cross. Clear advice and fast, impartial reporting.</p>
-  <a class="cta-button" href="/enquiry">Get My Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Independent Surveyor for Vicars Cross</h2>
-  <p>
-          If you're buying, selling or maintaining a home in Vicars Cross, I offer reliable RICS-aligned surveys with no sales pitch. I’m Liam, an AssocRICS surveyor based locally near Connah’s Quay, providing clear and helpful reports across the Chester area.
-        </p>
-  <h2>Types of Survey Available</h2>
-  <ul>
-  <li><strong>Level 1 Home Survey (Condition Report):</strong> A basic overview for modern, well-maintained homes with no serious concerns.</li>
-  <li><strong>Level 2 HomeBuyer Report:</strong> A mid-level survey for standard properties, including repair advice and traffic-light ratings.</li>
-  <li><strong>Level 3 Building Survey:</strong> A comprehensive survey suitable for older, extended or altered properties needing detailed insight.</li>
-  <li><strong>Damp &amp; Timber Inspections:</strong> Get expert advice on damp, mould, or timber decay, with practical next steps.</li>
-  <li><strong>Floorplans &amp; Measured Surveys:</strong> Useful for renovation, marketing or compliance.</li>
-  <li><strong>Ventilation Reports:</strong> Identify airflow issues contributing to condensation or poor indoor air quality.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>No call centres:</strong> You speak to your surveyor directly—before and after the visit.</li>
-  <li><strong>Reports in 3–5 days:</strong> Clear, practical, and prioritised based on your concerns.</li>
-  <li><strong>Trusted locally:</strong> Serving Vicars Cross, Boughton, Christleton, Huntington and central Chester.</li>
-  </ul>
-  <h2>Next Steps</h2>
-  <p>Unsure which survey to choose? Use the links below to compare options or submit your details and I’ll get back to you with a tailored quote.</p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Shared Content -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Vicars Cross"
+  county="Cheshire"
+  postalCode="CH3"
+  pageTitle="Home and Building Surveys in Vicars Cross, Chester | LEM Building Surveying Ltd"
+  metaDescription="Local Vicars Cross surveyor for RICS Level 1, 2 & 3 home surveys, damp inspections and extension advice in Vicars Cross and Great Boughton."
+  canonicalPath="vicars-cross-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
