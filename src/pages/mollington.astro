@@ -1,0 +1,208 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Mollington Surveyors',
+  heading: 'Home and Building Surveys in Mollington, Chester',
+  description:
+    'RICS-qualified surveyor delivering independent home surveys, damp inspections and rural property advice for buyers and owners in Mollington and North Chester villages.',
+  cta: {
+    label: 'Book a Mollington survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Mollington combines rural village charm with Chester’s city convenience—mixing period cottages, barn conversions, executive homes, and new builds on country plots. Properties here often have private drainage, varied construction, and outbuildings or land. Buyers need to be aware of risks specific to rural settings: soakaways, septic tanks, off-mains services, boundary issues, and historic movement due to mixed ground types.',
+  'Older houses may have solid brick, sandstone or timber frames, original joinery and uninsulated walls. Newer builds may still have snagging, settlement, or unfinished landscaping. Extensions, remodelling and outbuildings are common, so paperwork and build quality can vary. Our surveys are detailed and locally focused—addressing both the charm and the challenges of village property.',
+  'We help buyers, families relocating for space, and upsizers making the move from Chester proper—offering realistic, plain-English reports and ongoing advice.',
+];
+
+const sellingPoints = {
+  heading: 'Why Mollington clients choose LEM',
+  points: [
+    'AssocRICS surveyor with deep knowledge of rural and village property.',
+    'Advice on drainage, boundary, and off-mains service risks—rare in city surveys.',
+    'Flexible survey times for remote or time-critical purchases.',
+    'Support for follow-up queries, quotes and future planning.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Mollington’s country homes',
+  intro:
+    "From period cottages and barn conversions to large new builds and plots, we match the survey to your property and future plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Best for most well-kept period homes, cottages and modern rural properties—clear condition ratings, repair priorities and maintenance advice.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for listed, historic or heavily extended homes, or those with known movement, drainage or conversion issues.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'For recent builds or well-maintained modern homes in Mollington and nearby villages.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Key for older houses, those with cellars, or buildings near ditches or low ground.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Especially useful in airtight new builds and conversions.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'For extensions, garden rooms, or future alterations—ensuring plans are accurate and compliant.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Key risks for Mollington homes',
+  paragraphs: [
+    'Private drainage (septic tanks, soakaways) needs careful inspection and legal checks. We assess systems, evidence of leaks or failures, and implications for ongoing use. Boundaries in rural areas are often poorly defined—hedges, ditches or fences may have drifted over time.',
+    'Older houses may show historic movement or repairs—especially on mixed ground. Damp, timber decay and thermal bridging can be significant where traditional materials meet later additions. Outbuildings, barns and stables may lack paperwork or present unique maintenance needs.',
+    'Mature trees and planting add charm but can impact drains, foundations and insurance. We always assess these risks and provide realistic advice for maintenance and negotiation.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, conversions and rural upgrades',
+    paragraphs: [
+      'Many buyers in Mollington plan future works—barn conversions, new garages, or major extensions. We advise on feasibility, signpost planning constraints, and highlight non-compliant past works.',
+      'For new builds, we look for outstanding snagging, settlement and site drainage—ensuring a smooth transition into your home.',
+    ],
+  },
+  {
+    heading: 'Practical support and aftercare',
+    paragraphs: [
+      'We’re available for pre-survey queries, post-survey clarifications, and help reviewing quotes for repairs or improvements.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Mollington clients',
+  description:
+    'Our main surveys and support for rural buyers and owners in Mollington.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Most requested for cottages, modern homes and conversions.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Essential for larger, historic or heavily altered properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Addressing damp, decay and ventilation in rural settings.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improving comfort in conversions and new builds.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Supporting extensions and planning applications.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Mollington property FAQs',
+  items: [
+    {
+      question: 'Do you cover all of Mollington and surrounding villages?',
+      answer:
+        'Yes—we survey throughout Mollington, Lea by Backford, Saughall, Backford and rural North Chester.',
+    },
+    {
+      question: 'Are you experienced with rural and off-mains properties?',
+      answer:
+        'Absolutely. We regularly inspect homes with private drainage, mixed construction and boundary issues.',
+    },
+    {
+      question: 'Can you help with planning or legal queries?',
+      answer:
+        'Yes—we advise on compliance, extensions and can recommend legal checks for rural land.',
+    },
+    {
+      question: 'What about barns and outbuildings?',
+      answer:
+        'We include barns, garages, stables and outbuildings within the survey and highlight unique maintenance or planning needs.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Mollington',
+  description: 'We survey across Mollington and neighbouring rural areas.',
+  areas: [
+    'Mollington',
+    'Lea by Backford',
+    'Saughall',
+    'Backford',
+    'Puddington',
+    'Little Stanney',
+    'Chester North villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Mollington survey',
+  paragraphs: [
+    'Share your Mollington property details and plans—we’ll recommend the best survey, quote clearly, and work to your moving timescale. Rural expertise for a smooth and informed purchase.',
+    'From booking to aftercare, you have an expert partner on hand for every step.',
+  ],
+  primaryCta: {
+    label: 'Book a Mollington survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Mollington,+Chester,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Mollington"
+  county="Cheshire"
+  postalCode="CH1"
+  pageTitle="Home and Building Surveys in Mollington, Chester | LEM Building Surveying Ltd"
+  metaDescription="Specialist Mollington surveyor for RICS Level 1, 2 & 3 home surveys, damp inspections and rural property advice in Mollington, Backford, Saughall and North Chester."
+  canonicalPath="mollington-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

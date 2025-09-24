@@ -1,108 +1,209 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'handbridge';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Handbridge Surveyors',
+  heading: 'Home and Building Surveys in Handbridge, Chester',
+  description:
+    'Independent RICS surveyor delivering tailored home surveys, damp investigations and heritage guidance for buyers and owners in Handbridge and along the River Dee.',
+  cta: {
+    label: 'Book a Handbridge survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Handbridge blends riverside terraces, Victorian villas and sensitive infill developments right on the edge of Chester city centre. Many homes combine period detailing with modernised interiors—loft conversions, open-plan ground floors and reworked gardens are commonplace. Buyers need reassurance that these alterations are structurally sound, appropriately approved and suitable for life beside the Dee.',
+  'Properties near the river and Meadows face higher damp and flood vigilance, while sandstone retaining walls and shared drainage add to the checks we complete. Cellars, basements and narrow terraces often reveal ventilation gaps or long-term moisture concerns. We bring local building knowledge together with national RICS standards so you receive a report rooted in Handbridge realities.',
+  'Whether you are upsizing within the suburb, moving across from the city centre or renovating a long-term family home, we explain urgent risks, compliance considerations and practical maintenance so you can move forward with confidence.',
+];
+
+const sellingPoints = {
+  heading: 'Why Handbridge clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with riverside terraces, sandstone villas and conservation constraints.',
+    'Independent advice with realistic expectations for remedial costs and future maintenance.',
+    'Flexible survey scheduling for busy buyers and chain-dependent completions.',
+    'Aftercare that covers contractor quotes, negotiations and planning next steps.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys tailored to Handbridge homes',
+  intro:
+    'From period cottages near the Old Dee Bridge to modern apartments and townhouses, we recommend the survey that fits your property and plans.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most Victorian terraces and well-maintained family houses—clear condition ratings, repair priorities and maintenance guidance.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Best for larger, altered or historic homes, including those with basements, complex roofs or extensive extensions.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Suitable for newer infill developments or modern flats around Handbridge and Queen’s Park.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Focused damp diagnostics for riverside properties, cellars and homes with long-standing moisture concerns.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Helping households manage condensation and comfort in tightly sealed or upgraded homes.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate drawings and planning insight for extensions, garden rooms and sympathetic restorations.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to look for in Handbridge homes',
+  paragraphs: [
+    'Riverside streets and older sandstone structures often reveal damp penetration, salts and movement in retaining walls. We check roof coverings, flashings and parapets carefully because driving rain and wind can exploit weaknesses quickly.',
+    'Basements, cellars and sub-floor voids demand close attention—ventilation, drainage and flood resistance vary widely depending on historic works. We also review party walls, shared access arrangements and drainage easements common to Handbridge’s terraces.',
+    'Many properties fall within conservation or Article 4 areas. We highlight undocumented alterations, replacement windows, roof lights and external finishes that may require consent or remedial action.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Supporting renovations and period upgrades',
+    paragraphs: [
+      'Buyers regularly plan kitchen extensions, loft conversions or garden studios. We assess feasibility, structural implications and approvals so you can brief designers and negotiate with confidence.',
+      'Where previous works have been completed, we evaluate their quality and flag any gaps in certification, warranties or building control sign-offs.',
+    ],
+  },
+  {
+    heading: 'Clear reporting and ongoing advice',
+    paragraphs: [
+      'Our reports translate technical findings into plain English priorities—what is urgent, what to budget for, and where specialist input may be needed.',
+      'After the survey we remain available to discuss findings, review quotes or help you plan maintenance for the seasons ahead.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Handbridge clients',
+  description:
+    'Explore the core surveys and specialist support we deliver for Handbridge buyers and homeowners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Our most requested survey for Handbridge terraces and family houses.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'In-depth analysis for complex, historic or heavily altered properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnostics for riverside homes and basements.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Practical advice to improve airflow and manage condensation.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support extensions and conservation-sensitive projects.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Handbridge property FAQs',
+  items: [
+    {
+      question: 'Do you survey properties along the River Dee and Queen’s Park?',
+      answer:
+        'Yes. We cover Handbridge, Queen’s Park and surrounding Chester neighbourhoods, adapting advice for riverside locations and higher-value period homes.',
+    },
+    {
+      question: 'Can you help with listed buildings or conservation requirements?',
+      answer:
+        'Absolutely. We highlight heritage considerations, check for consents and outline the approvals needed for repairs or alterations.',
+    },
+    {
+      question: 'Will you inspect basements, cellars and attics?',
+      answer:
+        'We inspect accessible spaces, including basements and lofts, reporting on ventilation, damp, insulation and structural support where safe access is available.',
+    },
+    {
+      question: 'Do you offer follow-up support after the survey?',
+      answer:
+        'Yes. We remain available to discuss the report, review contractor quotes and help you prioritise work.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Handbridge',
+  description: 'Local knowledge for Handbridge and Chester’s riverside districts.',
+  areas: [
+    'Handbridge',
+    'Queen’s Park',
+    'Curzon Park',
+    'Lower Bridge Street',
+    'The Groves',
+    'The Meadows',
+    'Saltney',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Handbridge survey',
+  paragraphs: [
+    'Share a few details about the property, your plans and any specific worries. We will recommend the right survey level, provide a transparent fee and arrange a convenient inspection slot.',
+    'From first enquiry to aftercare, you get local expertise, independent advice and a surveyor who stays involved when you need support the most.',
+  ],
+  primaryCta: {
+    label: 'Book a Handbridge survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Handbridge,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Handbridge | LEM Building Surveying</title>
-    <meta content="Independent building surveyor for Handbridge, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Floorplans. Clear, qualified and local service." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/handbridge-damp-surveys" rel="canonical">
-    <meta content="RICS Home Surveys in Handbridge | LEM Building Surveying" property="og:title">
-    <meta content="Independent building surveyor for Handbridge, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Floorplans. Clear, qualified and local service." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/handbridge-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home Surveys in Handbridge | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent building surveyor for Handbridge, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports &amp; Floorplans. Clear, qualified and local service." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/handbridge-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Handbridge -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/handbridge-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Handbridge",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Handbridge, Chester",
-        "description": "RICS Home Surveys, Building Surveys, Damp Reports and Floorplans for property buyers and owners in Handbridge.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Handbridge",
-              "item": "https://www.lembuildingsurveying.co.uk/handbridge-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home Surveys in Handbridge</h1>
-  <p>Independent Level 1, Level 2 &amp; Level 3 home surveys for period homes, terraced cottages and quality housing in Handbridge.</p>
-  <a class="cta-button" href="/enquiry">Request a Survey Quote</a>
-  </div>
-  </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Surveyor in Handbridge</h2>
-  <p>
-          Based near Chester, I provide professional RICS Home Surveys, Damp Inspections and Floorplans for homes across Handbridge. 
-          From period terraces to renovated townhouses, my reports are clear, impartial, and tailored to your needs.
-        </p>
-  <h2>Surveying Services Offered</h2>
-  <ul>
-  <li><strong>RICS Level 1 Home Survey:</strong> Condition Report for modern or well-maintained properties. Includes traffic-light ratings.</li>
-  <li><strong>RICS Level 2 Home Survey:</strong> HomeBuyer report with maintenance advice, repairs, and risk ratings.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> Full structural analysis ideal for older or altered homes in Handbridge.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Mould or rot issues investigated clearly and independently.</li>
-  <li><strong>Measured Floorplans:</strong> Scaled drawings for planning, records or renovation purposes.</li>
-  <li><strong>Energy &amp; Ventilation Reports:</strong> EPCs and assessments to check air quality or tackle condensation.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Experienced &amp; Local:</strong> I'm based near Chester and understand Handbridge's housing stock.</li>
-  <li><strong>AssocRICS Qualified:</strong> Fully insured, RICS-aligned and independent.</li>
-  <li><strong>Clear, Fast Reporting:</strong> Reports delivered in 3–5 working days with no jargon.</li>
-  </ul>
-  <h2>Request a Quote or Ask a Question</h2>
-  <p>Whether you're buying in Handbridge or maintaining your home, I offer fast, honest advice with no pushy sales tactics.</p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Survey Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Handbridge"
+  county="Cheshire"
+  postalCode="CH4"
+  pageTitle="Home and Building Surveys in Handbridge, Chester | LEM Building Surveying Ltd"
+  metaDescription="Local Handbridge surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and heritage advice in Handbridge, Chester and the riverside."
+  canonicalPath="handbridge-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

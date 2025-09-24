@@ -1,0 +1,208 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: "Queen’s Park Surveyors",
+  heading: "Home and Building Surveys in Queen’s Park, Chester",
+  description:
+    'RICS-qualified surveyor providing independent home surveys, damp diagnostics and bespoke advice for buyers and owners in Queen’s Park and Chester’s premium districts.',
+  cta: {
+    label: "Book a Queen’s Park survey",
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Queen’s Park stands out as one of Chester’s most desirable addresses—handsome Victorian and Edwardian houses, wide avenues, and elevated views over the Dee. Properties here often combine period grandeur with significant alteration: converted lofts, basement rooms, and open-plan extensions are common. With prestige comes complexity—buyers need a survey that addresses roof leaks, damp, roof structure, period joinery, and evidence of historic movement or settlement.',
+  'Many Queen’s Park homes are listed or within conservation areas, so unauthorised works, non-traditional materials and missing approvals can all cause headaches for buyers. Mature trees, old drains and boundary walls are other sources of risk. Our surveys blend technical rigour with a focus on what matters most for owners of these statement properties.',
+  'We provide clear, actionable reports and ongoing advice—helping buyers and owners maintain both the fabric and the value of their home.',
+];
+
+const sellingPoints = {
+  heading: "Why Queen’s Park buyers choose LEM",
+  points: [
+    'AssocRICS surveyor experienced with Queen’s Park’s period houses and high-value alterations.',
+    'Detailed, realistic advice—tailored to the realities of prestige property and period maintenance.',
+    'Flexible survey times to suit busy clients and chain purchases.',
+    'Support with repairs, contractor selection and follow-up queries after the survey.',
+  ],
+};
+
+const services = {
+  heading: "Surveys for Queen’s Park’s statement homes",
+  intro:
+    'From landmark period houses to subdivided villas and premium riverside homes, we recommend the right survey for your property and plans.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Appropriate for well-kept period houses, offering a thorough condition report, repair priorities and budget guidance.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for large, altered or listed homes—especially where past work, roof structure or damp issues are likely.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'For modern apartments or new-builds in the Queen’s Park area.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Especially relevant for cellars, roof voids and timber detailing in period properties.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Improving comfort and air quality in busy family homes and houses with historic layouts.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate plans and advice for extensions, reconfigurations and listed building consents.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: "What to look for in Queen’s Park homes",
+  paragraphs: [
+    'Large period roofs and complex guttering can mean hidden leaks, especially around dormers or valleys. Cellars and basements often show historic damp or conversion issues. Many houses have been extended or remodelled—sometimes with non-traditional materials or without the right approvals.',
+    'Mature trees and high boundary walls can impact both structure and drainage. We also look for signs of historic settlement, movement and the ongoing impact of past repairs.',
+    'Conservation status means all repairs, extensions and even external decorations are tightly regulated—our surveys flag these issues and advise on cost and compliance.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: "Renovation, restoration and heritage advice",
+    paragraphs: [
+      'Owners of Queen’s Park properties often plan high-value upgrades—loft conversions, open-plan remodelling or garden rooms. We help you assess the feasibility, guide you through planning and consent, and flag any non-compliant past works.',
+      'We prioritise practical repairs, robust heritage materials, and realistic long-term maintenance—not just cosmetic fixes.',
+    ],
+  },
+  {
+    heading: 'Ongoing support and clear reporting',
+    paragraphs: [
+      'We remain available for questions after the survey, review contractor quotes and help you interpret findings for insurance or resale.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: "Popular services for Queen’s Park clients",
+  description:
+    "See our main surveys and support for Queen’s Park owners and buyers.",
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Most requested for well-kept period homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'For large, altered or listed properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Solving persistent moisture and timber issues.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improving comfort and air quality in period properties.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'For reconfiguration, planning and heritage compliance.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: "Queen’s Park property FAQs",
+  items: [
+    {
+      question: "Do you cover all of Queen’s Park and adjacent areas?",
+      answer:
+        'Yes—we survey throughout Queen’s Park, Curzon Park, and all riverside and period homes south of the Dee.',
+    },
+    {
+      question: 'Are you experienced with listed and high-value homes?',
+      answer:
+        'Absolutely. We have deep experience with prestige properties, heritage repairs and the demands of complex remodelling.',
+    },
+    {
+      question: 'Can you help with planning, restoration or insurance?',
+      answer:
+        'Yes—we offer advice on listed building consents, restoration materials, and the impact of survey findings on insurance or resale.',
+    },
+    {
+      question: 'Do you offer aftercare for repairs and contractor quotes?',
+      answer:
+        'Yes—our service includes reviewing quotes and providing clarity after the survey.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: "Areas covered in and around Queen’s Park",
+  description: "We survey across Queen’s Park and adjacent Chester districts.",
+  areas: [
+    'Queen’s Park',
+    'Curzon Park',
+    'Handbridge',
+    'Dee Banks',
+    'The Meadows',
+    'Lower Bridge Street',
+    'Sandy Lane',
+  ],
+};
+
+const closing = {
+  heading: "Arrange your Queen’s Park survey",
+  paragraphs: [
+    'Tell us your Queen’s Park property details and plans. We’ll recommend the best survey, quote clearly, and work to your schedule. Local expertise for a premium area.',
+    'From initial booking to final aftercare, you get a responsive, practical service for Chester’s best addresses.',
+  ],
+  primaryCta: {
+    label: "Book a Queen’s Park survey",
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Queen%27s+Park,+Chester,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Queen’s Park"
+  county="Cheshire"
+  postalCode="CH4"
+  pageTitle="Home and Building Surveys in Queen’s Park, Chester | LEM Building Surveying Ltd"
+  metaDescription="Expert Queen’s Park surveyor for RICS Level 1, 2 & 3 home surveys, damp inspections and advice for period and heritage homes in Queen’s Park, Chester."
+  canonicalPath="queens-park-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
