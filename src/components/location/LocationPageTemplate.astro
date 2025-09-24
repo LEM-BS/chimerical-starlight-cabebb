@@ -226,7 +226,7 @@ const seo = {
         {intro?.length ? (
           <div class="location-intro">
             {intro.map((paragraph) => (
-              <p>{paragraph}</p>
+              <p set:html={paragraph}></p>
             ))}
           </div>
         ) : null}
@@ -234,11 +234,12 @@ const seo = {
         {services?.items?.length ? (
           <div class="location-services">
             <h2>{services.heading}</h2>
-            {services.intro ? <p>{services.intro}</p> : null}
+            {services.intro ? <p set:html={services.intro}></p> : null}
             <ul>
               {services.items.map((service) => (
                 <li>
-                  <strong>{service.name}:</strong> {service.description}
+                  <strong>{service.name}:</strong>{' '}
+                  <span set:html={service.description}></span>
                 </li>
               ))}
             </ul>
@@ -249,7 +250,7 @@ const seo = {
           <div class="location-insights">
             <h2>{localInsights.heading}</h2>
             {localInsights.paragraphs.map((paragraph) => (
-              <p>{paragraph}</p>
+              <p set:html={paragraph}></p>
             ))}
           </div>
         ) : null}
@@ -259,7 +260,7 @@ const seo = {
               <div class="location-insights">
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
-                  <p>{paragraph}</p>
+                  <p set:html={paragraph}></p>
                 ))}
               </div>
             ))
@@ -313,7 +314,7 @@ const seo = {
               {faqs.items.map((faq) => (
                 <details>
                   <summary>{faq.question}</summary>
-                  <p>{faq.answer}</p>
+                  <p set:html={faq.answer}></p>
                 </details>
               ))}
             </div>
@@ -327,7 +328,7 @@ const seo = {
             <h2>{sellingPoints.heading}</h2>
             <ul>
               {sellingPoints.points.map((point) => (
-                <li>{point}</li>
+                <li set:html={point}></li>
               ))}
             </ul>
           </div>
@@ -336,7 +337,7 @@ const seo = {
         {neighbourhoods?.areas?.length ? (
           <div class="location-card">
             <h2>{neighbourhoods.heading}</h2>
-            {neighbourhoods.description ? <p>{neighbourhoods.description}</p> : null}
+            {neighbourhoods.description ? <p set:html={neighbourhoods.description}></p> : null}
             <ul>
               {neighbourhoods.areas.map((area) => (
                 <li>{area}</li>
@@ -360,7 +361,7 @@ const seo = {
     <div class="box-container location-cta">
       <h2>{closing.heading}</h2>
       {closing.paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
+        <p set:html={paragraph}></p>
       ))}
       <div class="button-group">
         <a class="cta-button" href={closing.primaryCta.href}>{closing.primaryCta.label}</a>
