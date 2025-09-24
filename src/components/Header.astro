@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 const normalizePath = (path: string = '/') => {
   if (!path) return '/';
   const url = new URL(path, Astro.site ?? 'https://example.invalid');
@@ -88,6 +90,9 @@ const isActive = (href: string) => {
     >
       Menu
     </button>
+    <div class="theme-toggle-control">
+      <ThemeToggle />
+    </div>
     <div class="nav-links" id="nav-links">
       <ul class="primary-links">
         {primaryLinks.map(({ href, label }) => (

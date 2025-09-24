@@ -39,10 +39,28 @@ const localBusinessSchema = JSON.stringify(
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      {`(() => {
+        try {
+          const storageKey = 'theme-preference';
+          const stored = localStorage.getItem(storageKey);
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const root = document.documentElement;
+          root.classList.remove('light', 'dark');
+          if (stored === 'dark' || (stored !== 'light' && prefersDark)) {
+            root.classList.add('dark');
+          } else {
+            root.classList.add('light');
+          }
+        } catch {
+          document.documentElement.classList.add('light');
+        }
+      })();`}
+    </script>
     {seo && <Seo {...seo} />}
     <slot name="head" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

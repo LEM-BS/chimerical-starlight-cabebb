@@ -1,0 +1,87 @@
+---
+const buttonId = 'theme-toggle';
+const labelId = 'theme-label';
+---
+<button
+  id={buttonId}
+  class="flex items-center gap-2 rounded-xl border border-slate-200/70 bg-white/90 px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:bg-white dark:border-slate-600 dark:bg-slate-800/90 dark:text-slate-100 dark:hover:bg-slate-700"
+  type="button"
+  aria-label="Toggle theme"
+>
+  <span class="hidden sm:inline">Theme:</span>
+  <span id={labelId} class="capitalize">System</span>
+</button>
+
+<script type="module">
+  import {
+    applyTheme,
+    getNextTheme,
+    getStoredTheme,
+    THEME_STORAGE_KEY,
+    type ThemePreference,
+  } from '../utils/theme';
+
+  const buttonId = ${JSON.stringify(buttonId)};
+  const labelId = ${JSON.stringify(labelId)};
+
+  const root = document.documentElement;
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  const storage: Storage = (() => {
+    try {
+      return window.localStorage;
+    } catch {
+      return {
+        getItem: () => null,
+        setItem: () => {},
+      } as Storage;
+    }
+  })();
+
+  let preference: ThemePreference = getStoredTheme(storage, THEME_STORAGE_KEY);
+
+  const applyPreference = (
+    pref: ThemePreference,
+    label: HTMLElement,
+    systemPrefersDark?: boolean,
+  ) => {
+    const actual = applyTheme(pref, root, storage, {
+      systemPrefersDark: systemPrefersDark ?? media.matches,
+    });
+    label.textContent = pref === 'system' ? `${pref} (${actual})` : actual;
+    return actual;
+  };
+
+  const init = () => {
+    const button = document.getElementById(buttonId) as HTMLButtonElement | null;
+    const label = document.getElementById(labelId);
+
+    if (!button || !label) {
+      return;
+    }
+
+    applyPreference(preference, label);
+
+    button.addEventListener('click', () => {
+      preference = getNextTheme(preference);
+      applyPreference(preference, label);
+    });
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      if (preference === 'system') {
+        applyPreference('system', label, event.matches);
+      }
+    };
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', handleChange);
+    } else if (typeof media.addListener === 'function') {
+      media.addListener(handleChange);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+</script>
