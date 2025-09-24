@@ -1,0 +1,138 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Tilston Surveyors',
+  heading: 'Home and Building Surveys in Tilston, Cheshire',
+  description:
+    'RICS-accredited surveyor delivering independent home surveys, damp diagnostics and bespoke village advice for Tilston, Malpas and the south Cheshire border.',
+  cta: {
+    label: 'Book a Tilston survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Tilston is a classic Cheshire border village—period cottages, barn conversions, large country houses and some recent infill. Many properties are listed, have historic repairs, or use a mix of traditional and modern construction. Buyers need to check for issues with damp, timber decay, private drainage and compliance with conservation area rules.",
+  "Outlying homes may face boundary, drainage, or access quirks—plus maintenance challenges for larger plots. Our surveys combine local knowledge with RICS standards, cutting through estate agent gloss to prioritise what matters for buyers and owners.",
+  "We deliver practical, plain-English reports, supporting you before and after your move.",
+];
+
+const sellingPoints = {
+  heading: 'Why Tilston clients choose LEM',
+  points: [
+    'Experience with rural, period and converted properties.',
+    'Advice on listed buildings, barn conversions, and legal risks.',
+    'Flexible appointments and fast report turnaround.',
+    'Post-survey support for repairs, upgrades, and negotiations.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Tilston’s country homes',
+  intro:
+    "From listed cottages and farmhouses to new builds and conversions, we match our survey to your property and future plans.",
+  items: [
+    { name: 'RICS Level 2 Home Survey', description: 'Best for well-kept cottages and family homes.' },
+    { name: 'RICS Level 3 Building Survey', description: 'For listed, heavily altered or non-standard properties.' },
+    { name: 'RICS Level 1 Condition Report', description: 'For new builds or recent modernisation.' },
+    { name: 'Damp, Timber & Mould Investigation', description: 'Essential for older property and conversions.' },
+    { name: 'Ventilation & Indoor Air Quality Review', description: 'Advice for improving comfort in all ages of homes.' },
+    { name: 'Measured Surveys & Planning Support', description: 'For extensions, conversions and planning.' },
+  ],
+};
+
+const localInsights = {
+  heading: 'Key risks in Tilston property',
+  paragraphs: [
+    "Older houses may show historic movement, damp, timber decay and patchwork repairs. Private drainage and boundary definition are frequent concerns in rural locations. Planning and conservation rules apply for many upgrades or extensions.",
+    "Barn conversions and larger houses may have insulation, paperwork or compliance gaps. Our advice is always practical and to the point.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, upgrades, and aftercare',
+    paragraphs: [
+      "We help with feasibility and compliance for future works, and provide aftercare for all quotes and repair plans.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Tilston clients',
+  description: 'Key surveys and rural property advice for Tilston and nearby villages.',
+  links: [
+    { label: 'RICS Level 2 Home Survey', href: '/level-2', description: 'For most cottages and family homes.' },
+    { label: 'RICS Level 3 Building Survey', href: '/level-3', description: 'For listed or complex properties.' },
+    { label: 'Damp & Timber Surveys', href: '/damp-timber-surveys', description: 'Focused on damp, decay and conversion risks.' },
+    { label: 'Ventilation Assessments', href: '/ventilation-assessments', description: 'For comfort and health in all property types.' },
+    { label: 'Measured Surveys', href: '/measured-surveys', description: 'Supporting extensions, compliance and planning.' },
+  ],
+};
+
+const faqs = {
+  heading: 'Tilston property FAQs',
+  items: [
+    { question: 'Do you cover Tilston and the border villages?', answer: 'Yes—Tilston, Malpas, Churton, Shocklach and south Cheshire.' },
+    { question: 'Are you experienced with listed and converted homes?', answer: 'Absolutely—deep experience in period and rural property.' },
+    { question: 'Can you help with boundaries and drainage?', answer: 'Yes—practical, realistic advice for rural risks.' },
+    { question: 'Is aftercare included?', answer: 'Yes—ongoing support for repairs and queries.' },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered around Tilston',
+  description: 'We survey throughout Tilston, Malpas, Churton, Shocklach and border villages.',
+  areas: [
+    'Tilston',
+    'Churton',
+    'Malpas',
+    'Shocklach',
+    'Cuddington',
+    'South Cheshire villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Tilston survey',
+  paragraphs: [
+    'Tell us your Tilston property details and plans. We’ll recommend the right survey, quote transparently, and offer full local support from start to finish.',
+    'Rural experience, honest advice—every step of the way.',
+  ],
+  primaryCta: {
+    label: 'Book a Tilston survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Tilston,+Cheshire,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Tilston"
+  county="Cheshire"
+  postalCode="SY14"
+  pageTitle="Home and Building Surveys in Tilston, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Tilston’s trusted surveyor for RICS Level 1, 2 & 3 home surveys, damp and rural property advice in Tilston, Malpas, and the south Cheshire border."
+  canonicalPath="tilston-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
