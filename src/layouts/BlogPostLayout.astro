@@ -25,7 +25,29 @@ interface AdditionalMetaTag {
 const { frontmatter = {} as Frontmatter } = Astro.props;
 
 const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
-const currentPath = frontmatter.canonicalPath ?? Astro.url.pathname ?? '/';
+
+const normalizePath = (value?: string) => {
+  if (!value) return '/';
+  const trimmed = value.trim();
+  if (!trimmed) return '/';
+  let url: URL;
+  if (/^https?:\/\//i.test(trimmed)) {
+    url = new URL(trimmed);
+  } else if (trimmed.startsWith('//')) {
+    url = new URL(`https:${trimmed}`);
+  } else {
+    const relative = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+    url = new URL(relative, site);
+  }
+  let normalized = url.pathname.replace(/\/index\.html$/i, '');
+  normalized = normalized.replace(/\.html$/i, '');
+  if (normalized.length > 1 && normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+  return normalized || '/';
+};
+
+const currentPath = normalizePath(frontmatter.canonicalPath ?? Astro.url.pathname ?? '/');
 
 const resolveToAbsoluteUrl = (value?: string) => {
   if (!value) return undefined;
