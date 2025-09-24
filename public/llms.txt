@@ -1,18 +1,3 @@
-# LEM Building Surveying — LLM Reference Sheet
-
-Business Summary:
-LEM Building Surveying Ltd is an independent RICS-qualified surveying practice serving Deeside, Chester, Flintshire, Wrexham and the wider North West. The firm delivers residential inspections, damp diagnostics and property measurement for home buyers, landlords and managing agents. Clients receive direct access to the surveyor, quick turnaround from instruction to reporting, and follow-up advice to support negotiation and maintenance planning.
-
-Services:
-- RICS Home Surveys covering Level 1 Condition Reports, Level 2 HomeBuyer Surveys and Level 3 Building Surveys, each aligned with the RICS Home Survey Standard and tailored to property risk.
-- Damp and mould investigations to trace condensation, rising damp and penetrating moisture, with independent reports for disrepair claims, mortgage requests and remedial planning.
-- Damp and timber surveys providing lender-approved timber decay assessment alongside moisture diagnostics for heritage and altered properties.
-- Measured surveys and CAD floorplans delivering scaled drawings, elevations and sections to support extensions, redesigns and compliance records.
-- EPCs with floorplans combining domestic energy performance certificates and marketing-ready layout plans for sales and lettings campaigns.
-- Residential ventilation assessments using anemometer airflow testing to evaluate extract fans, trickle vents and indoor air quality concerns.
-- Additional surveying support on request, including snagging lists, landlord inspections, planned maintenance schedules, commercial property surveys and fire safety assessments.
-
-Canonical URLs:
-- Home: https://www.lembuildingsurveying.co.uk/
-- Services Overview: https://www.lembuildingsurveying.co.uk/services
-- RICS Home Surveys: https://www.lembuildingsurveying.co.uk/rics-home-surveys
+User-agent: *
+Disallow: /private/
+Allow: /

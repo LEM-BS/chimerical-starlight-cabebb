@@ -4,24 +4,7 @@ type BreadcrumbEntry = { name: string; item?: string; path?: string };
 type AlternateLink = { rel?: string; href: string; hreflang?: string };
 type AdditionalMetaTag = { name?: string; property?: string; content: string; [key: string]: string | undefined };
 
-const {
-  title = '',
-  description = '',
-  canonical,
-  canonicalPath,
-  titleSuffix = ' | LEM Building Surveying',
-  fullTitle = false,
-  robots = {},
-  openGraph = {},
-  twitter = {},
-  structuredData = [],
-  breadcrumbs = [],
-  alternates = [],
-  locale = 'en_GB',
-  siteName = 'LEM Building Surveying',
-  image = 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
-  additionalMeta = [],
-} = Astro.props as {
+export interface Props {
   title?: string;
   description?: string;
   canonical?: string;
@@ -38,12 +21,33 @@ const {
   siteName?: string;
   image?: string;
   additionalMeta?: AdditionalMetaTag[];
-};
+}
+
+const {
+  title,
+  description = '',
+  canonical,
+  canonicalPath,
+  titleSuffix = ' | LEM Building Surveying',
+  fullTitle = false,
+  robots = {},
+  openGraph = {},
+  twitter = {},
+  structuredData = [],
+  breadcrumbs = [],
+  alternates = [],
+  locale = 'en_GB',
+  siteName = 'LEM Building Surveying',
+  image = 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+  additionalMeta = [],
+} = Astro.props as Props;
 
 const clamp = (value: string, limit = 60) => {
   if (!value) return '';
   return value.length <= limit ? value : `${value.slice(0, limit - 1).trim()}…`;
 };
+
+const defaultTitle = 'LEM Building Surveying | Professional Surveyors';
 
 const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
 let canonicalUrl = canonical;
@@ -56,10 +60,13 @@ if (!canonicalUrl) {
   canonicalUrl = url.toString();
 }
 
-const baseTitle = title?.trim() ?? '';
-const computedTitle = fullTitle
-  ? clamp(baseTitle)
-  : clamp(`${baseTitle}${titleSuffix}`.trim());
+const normalizedTitle = (title ?? '').trim();
+const hasCustomTitle = normalizedTitle.length > 0;
+const computedTitle = hasCustomTitle
+  ? fullTitle
+    ? clamp(normalizedTitle)
+    : clamp(`${normalizedTitle}${titleSuffix}`.trim())
+  : defaultTitle;
 
 const robotsConfig = robots as RobotsDirectives;
 const robotsDirectives: string[] = Array.isArray(robotsConfig)
@@ -81,10 +88,8 @@ const twitterTitle = twitter.title ?? computedTitle;
 const twitterDescription = twitter.description ?? description;
 const twitterImage = twitter.image ?? ogImage;
 
-const structuredDataBlocks: Record<string, unknown>[] = [
-  ...((structuredData as Record<string, unknown>[]) ?? []),
-];
-const breadcrumbItems = (breadcrumbs as BreadcrumbEntry[]) ?? [];
+const structuredDataBlocks: Record<string, unknown>[] = [...structuredData];
+const breadcrumbItems = [...breadcrumbs];
 if (breadcrumbItems.length > 0) {
   structuredDataBlocks.push({
     '@context': 'https://schema.org',
@@ -97,8 +102,8 @@ if (breadcrumbItems.length > 0) {
     })),
   });
 }
-const alternateLinks = (alternates as AlternateLink[]) ?? [];
-const metaEntries = (additionalMeta as AdditionalMetaTag[]) ?? [];
+const alternateLinks = [...alternates];
+const metaEntries = [...additionalMeta];
 ---
 
 {computedTitle && <title>{computedTitle}</title>}

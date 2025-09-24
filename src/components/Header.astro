@@ -48,9 +48,8 @@ const isActive = (href: string) => {
 };
 ---
 
-<header>
-  <div class="header-inner container">
-    <div class="branding">
+<div class="header-inner container">
+  <div class="branding">
       <a href="/" class="logo-link" aria-label="LEM Building Surveying Ltd home">
         <picture>
           <source srcset="/logo-sticker.webp" type="image/webp" />
@@ -66,9 +65,41 @@ const isActive = (href: string) => {
         </picture>
       </a>
     </div>
-    <nav class="main-nav" aria-label="Main Navigation">
-      <ul class="cta-links">
-        {ctaLinks.map(({ href, label, isCta }) => (
+  <nav class="main-nav" aria-label="Main Navigation">
+    <ul class="cta-links">
+      {ctaLinks.map(({ href, label, isCta }) => (
+        <li>
+          <a
+            href={href}
+            aria-current={isActive(href) ? 'page' : undefined}
+            class:list={{ cta: isCta }}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      Menu
+    </button>
+    <div class="nav-links" id="nav-links">
+      <ul class="primary-links">
+        {primaryLinks.map(({ href, label }) => (
+          <li>
+            <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <ul class="secondary-links">
+        {secondaryLinks.map(({ href, label, isCta }) => (
           <li>
             <a
               href={href}
@@ -80,39 +111,6 @@ const isActive = (href: string) => {
           </li>
         ))}
       </ul>
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Menu"
-        aria-expanded="false"
-        aria-controls="nav-links"
-      >
-        Menu
-      </button>
-      <div class="nav-links" id="nav-links">
-        <ul class="primary-links">
-          {primaryLinks.map(({ href, label }) => (
-            <li>
-              <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ul class="secondary-links">
-          {secondaryLinks.map(({ href, label, isCta }) => (
-            <li>
-              <a
-                href={href}
-                aria-current={isActive(href) ? 'page' : undefined}
-                class:list={{ cta: isCta }}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
-  </div>
-</header>
+    </div>
+  </nav>
+</div>

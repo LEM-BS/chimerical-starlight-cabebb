@@ -103,12 +103,16 @@ const localBusinessSchema = JSON.stringify(
   </head>
   <body data-page={pageId} data-product-key={productKey}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <Header />
+    <header class="site-header">
+      <Header />
+    </header>
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
     {!hideSiteLinks && <SiteLinks />}
-    <Footer />
+    <footer class="site-footer">
+      <Footer />
+    </footer>
     <slot name="body-end" />
     <script type="module" src="/assets/nav.min.js" defer is:inline></script>
   </body>
