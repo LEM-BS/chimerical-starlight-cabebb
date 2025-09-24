@@ -1,109 +1,209 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'newton';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Newton Surveyors',
+  heading: 'Home and Building Surveys in Newton, Chester',
+  description:
+    'RICS-qualified surveyor delivering independent home surveys, damp diagnostics and extension advice for buyers and owners in Newton and the surrounding Chester suburbs.',
+  cta: {
+    label: 'Book a Newton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Newton is one of Chester’s classic family neighbourhoods—mainly inter-war and post-war semis, detached homes, and some older terraces close to Hoole and Brook Lane. Large gardens, quiet streets and proximity to schools make it a top choice for upsizers, but past alterations and variable build quality mean thorough surveys are essential. Common issues include historic movement (especially near the railway), past extensions without paperwork, and patchy insulation upgrades.",
+  "Many homes in Newton have been modernised or extended, with open-plan kitchens, garage conversions, and lofts. Our focus is on the quality, compliance and longevity of these alterations. We also check for roof leaks, drainage changes, and evidence of damp—especially where previous work has changed the original structure.",
+  "Our reports cut through estate agent jargon, highlight priority issues, and explain practical next steps for negotiation or maintenance. Whether you’re buying, remodelling or planning to stay long-term, you get honest, actionable advice specific to Newton’s housing stock.",
+];
+
+const sellingPoints = {
+  heading: 'Why Newton clients trust LEM',
+  points: [
+    'AssocRICS surveyor with local knowledge of Newton’s family homes, extensions and common risks.',
+    'Realistic advice with repair priorities and local contractor references—not generic checklists.',
+    'Flexible appointments, fast turnaround, and support before and after the survey.',
+    'Clear reports designed for buyers and renovators—not just solicitors.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Newton’s varied family housing',
+  intro:
+    "From inter-war semis to post-war detached homes and older terraces, we match the survey type to your property and plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most of Newton’s family homes, covering condition ratings, repair advice and maintenance planning.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for larger houses, homes with major alterations, or properties showing movement or damp.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Best for newer flats or recently built properties at Newton’s edges.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Covers ground floor damp, timber decay, and ventilation—common in extended semis and older terraces.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Tackling condensation and improving airflow, particularly after remodelling or double glazing.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Plans and site data for extensions, reconfigurations or planning applications.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Typical Newton property issues',
+  paragraphs: [
+    "Historic movement is not unusual in Newton, especially near railway embankments and older streets. We pay close attention to cracking, door/window operation and signs of previous repairs. Extensions and garage conversions are very common—so we check for adequate support, correct insulation, and compliance with regulations.",
+    "Damp and condensation can be a concern, particularly in homes with unventilated subfloors, filled cavity walls or older roofs. Many properties have seen piecemeal upgrades, so insulation and ventilation are often inconsistent between rooms.",
+    "For newer homes, we look for settlement, snags from original construction, and any issues with services or finishes.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, conversions and future plans',
+    paragraphs: [
+      "Many Newton families plan further works—kitchen extensions, lofts or garage conversions. We assess feasibility, highlight any risks, and signpost the process for planning or building control. Where paperwork is missing, we explain the implications for buyers and mortgage lenders.",
+      "We’re also realistic about ongoing maintenance, prioritising repairs that matter most for comfort, value and safety.",
+    ],
+  },
+  {
+    heading: 'Personal support throughout',
+    paragraphs: [
+      "From first call to final report, we keep communication clear and jargon-free. After the survey, we’re available for queries, clarifications, and to review any quotes or plans you receive from contractors.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Newton clients',
+  description:
+    'Explore our main surveys and specialist advice for Newton buyers and homeowners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Our most requested survey for Newton’s family houses.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'In-depth inspection for altered or larger homes.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Diagnosing damp and timber issues, especially in older or extended homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Cut condensation and improve indoor air quality.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Supporting extensions and planning in Newton.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Newton property FAQs',
+  items: [
+    {
+      question: 'Do you cover all of Newton and neighbouring areas?',
+      answer:
+        'Yes—we survey throughout Newton, including Brook Lane, Plas Newton, Kingsway, and bordering Hoole and Upton.',
+    },
+    {
+      question: 'Are you experienced with extensions and altered homes?',
+      answer:
+        'Absolutely. Most Newton houses have seen changes over the years—we focus on quality and compliance, not just ticking boxes.',
+    },
+    {
+      question: 'Can you help with damp or movement issues?',
+      answer:
+        'Yes—we diagnose root causes and provide practical repair advice, not just generic “damp-proofing”.',
+    },
+    {
+      question: 'Do you review plans or quotes post-survey?',
+      answer:
+        'Yes. We’re on hand for follow-up questions, quote reviews, and to help you prioritise remedial work.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Newton',
+  description: 'We survey across Newton and adjacent Chester suburbs.',
+  areas: [
+    'Newton',
+    'Brook Lane',
+    'Plas Newton',
+    'Kingsway',
+    'Hoole',
+    'Upton',
+    'Boughton',
+    'Flookersbrook',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Newton survey',
+  paragraphs: [
+    'Tell us about your Newton property and plans. We’ll recommend the right survey, offer a clear fee, and work to your schedule. Our local knowledge ensures quick response and honest advice you can rely on.',
+    'From booking to post-survey aftercare, we help you buy, sell or improve your Newton home with clarity and confidence.',
+  ],
+  primaryCta: {
+    label: 'Book a Newton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Newton,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home and Building Surveys in Newton | LEM Building Surveying</title>
-    <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/newton-damp-surveys" rel="canonical">
-    <meta content="Home and Building Surveys in Newton | LEM Building Surveying" property="og:title">
-    <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/newton-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home and Building Surveys in Newton | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent RICS building surveys in Newton, Chester. Level 1, 2, and 3 Home Surveys from a local, qualified surveyor. No upselling, fast turnaround." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/newton-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Newton -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/newton-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Newton",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH2",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Newton, Chester",
-        "description": "RICS Level 1, 2 and 3 Home Surveys in Newton, Chester. Local, independent, qualified surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Newton",
-              "item": "https://www.lembuildingsurveying.co.uk/newton-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home and Building Surveys in Newton, Chester</h1>
-  <p>Get expert advice from a local independent surveyor. RICS Level 1, 2 &amp; 3 Home Surveys tailored to Newton’s property types and condition.</p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Independent Newton Surveyor</h2>
-  <p>
-          Newton offers a range of 20th-century homes, traditional terraces, and family semis near schools and parks. Whether you’re buying a modernised semi or an older brick-built property, I provide reliable, qualified survey reports that make sense.
-        </p>
-  <h2>Available Surveys</h2>
-  <ul>
-  <li><strong>Level 1 RICS Condition Report:</strong> For newer or well-maintained homes needing a basic condition summary.</li>
-  <li><strong>Level 2 HomeBuyer Report:</strong> Most popular choice — defect identification with repair and maintenance advice.</li>
-  <li><strong>Level 3 Building Survey:</strong> For older, extended or altered homes — includes structural elements and detailed commentary.</li>
-  <li><strong>Damp &amp; Timber Surveys:</strong> Thorough inspections of moisture or wood-related issues, with impartial advice.</li>
-  <li><strong>Measured Surveys:</strong> Floorplans and spatial layouts for planning or documentation.</li>
-  <li><strong>Ventilation Reports:</strong> For condensation, air quality, or mould problems — ideal for buyers or landlords.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> I know the property types, issues, and building stock common to Newton and North Chester.</li>
-  <li><strong>Direct Contact:</strong> No call centres or sales teams — you deal directly with me, Liam (AssocRICS).</li>
-  <li><strong>Prompt Reports:</strong> Reports usually delivered in 3–5 working days, often sooner.</li>
-  </ul>
-  <h2>Arrange a Survey in Newton</h2>
-  <p>
-          Whether you’re buying your first home or investing in a rental, I can guide you with practical insights and clear reporting.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Types</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Newton"
+  county="Cheshire"
+  postalCode="CH2"
+  pageTitle="Home and Building Surveys in Newton, Chester | LEM Building Surveying Ltd"
+  metaDescription="Independent Newton surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp diagnostics and renovation advice in Newton, Chester."
+  canonicalPath="newton-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

@@ -1,110 +1,209 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'hoole';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Hoole Surveyors',
+  heading: 'Home and Building Surveys in Hoole, Chester',
+  description:
+    'RICS-accredited surveyor providing independent home surveys, damp diagnostics and period property advice for buyers and owners in Hoole and the neighbouring Chester districts.',
+  cta: {
+    label: 'Book a Hoole survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Hoole is Chester’s classic ‘urban village’—rows of Victorian and Edwardian terraces, converted period houses, and pockets of more modern homes near Faulkner Street and Alexandra Park. These popular streets bring character, walkability and community, but also unique survey issues: solid walls with little insulation, cellars prone to damp, and older roofs needing careful inspection. Many homes have seen extensions or loft conversions, so understanding the quality and compliance of past work is essential.",
+  "Buyers in Hoole often encounter bridging in filled cavity walls, inconsistent repairs, and evidence of historic movement—especially near the railway or in homes with shallow foundations. We routinely inspect for hidden moisture, timber decay, and missing documentation for alterations. Our reports are focused on clarity, priorities, and helping you negotiate with confidence.",
+  "Whether you’re buying your first terrace, trading up to a larger family home, or investing in a buy-to-let, we provide straightforward, practical advice and local market insight.",
+];
+
+const sellingPoints = {
+  heading: 'Why Hoole buyers choose LEM',
+  points: [
+    'AssocRICS surveyor with detailed experience of Hoole’s period terraces, conversions and family houses.',
+    'Honest advice grounded in realistic local costs and building regulations.',
+    'Flexible appointments—including weekends and evenings—to fit your schedule.',
+    'Post-survey support: clarifying findings, discussing repairs, and advising on further steps or negotiations.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Hoole’s period and modern homes',
+  intro:
+    "From Victorian terraces and bay-fronted semis to new infill and flats, we recommend the survey level to fit your property and future plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'The mainstay for Hoole’s terraces and most family homes—clear condition ratings, repair advice and maintenance priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for heavily extended, altered or unusually constructed properties—especially where cellars, structural movement or damp are present.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Ideal for well-maintained modern apartments or recent builds near the periphery.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Key for cellars, ground floors and areas with a history of moisture or decay—typical in Hoole’s older homes.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Addressing condensation, poor air flow and improving comfort—important for busy households and converted flats.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate plans and guidance for extensions, alterations or regulatory compliance.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What’s unique about Hoole homes?',
+  paragraphs: [
+    "Victorian and Edwardian terraces dominate Hoole’s streetscape, with many houses retaining original sash windows, high ceilings and fireplaces. However, these features often go hand-in-hand with uninsulated solid walls, shallow footings and cellars vulnerable to moisture. Modern cavity wall insulation can sometimes cause bridging or trap damp, and party wall issues are common during renovations.",
+    "Roof structures may show signs of age or piecemeal repair. We always check for movement, past leaks, missing insulation and the condition of chimneys and flashings. Many properties have seen extensions, loft conversions or open-plan alterations—so we’re alert for compliance gaps and structural shortcuts.",
+    "Hoole’s popularity also means high turnover, and sometimes buyers inherit problems missed or masked during cosmetic upgrades. We cut through the surface to highlight true priorities and potential negotiating points.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, lofts and alterations',
+    paragraphs: [
+      "Many Hoole terraces have had kitchens extended into the side return, lofts converted, or internal walls removed. Our surveys check whether these works are supported and compliant, and highlight any risks (like poor fire separation or missing approvals). If paperwork is absent, we can advise on next steps.",
+      "Damp, ventilation and thermal performance are real challenges in older terraces—especially if the original design has been compromised. We trace issues back to their source and give practical advice for cost-effective, lasting solutions.",
+    ],
+  },
+  {
+    heading: 'Personal service and ongoing support',
+    paragraphs: [
+      "We start by discussing your goals and any known concerns. Our reports use photos, plain English and direct recommendations. After delivery, we’re available for queries, reviewing quotes, or talking through remedial options with you or your contractor.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Hoole clients',
+  description:
+    'Explore core surveys and specialist support for Hoole buyers and homeowners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Our go-to for Hoole’s terraces and family houses.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Comprehensive analysis for larger or altered homes.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Addressing the persistent moisture issues common to Hoole properties.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve air quality and tackle condensation in older terraces.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'For extensions, reconfiguration, and planning applications.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Hoole property FAQs',
+  items: [
+    {
+      question: 'Do you cover all of Hoole and surrounding areas?',
+      answer:
+        'Yes. We survey throughout Hoole, including Canadian Avenue, Faulkner Street, the Hamilton Street area, and neighbouring parts of Newton and Boughton.',
+    },
+    {
+      question: 'Are you experienced with terraces and conversions?',
+      answer:
+        'Absolutely. Most of our Hoole work involves Victorian and Edwardian houses, with a focus on their unique risks and alteration history.',
+    },
+    {
+      question: 'Do you help with cellars or damp basements?',
+      answer:
+        'Yes—we routinely inspect cellars for damp, timber decay and ventilation issues, and provide clear recommendations for effective repair.',
+    },
+    {
+      question: 'Can you advise on planning extensions or lofts?',
+      answer:
+        'Yes. We assess structural feasibility, review any paperwork, and explain what’s needed for safe, compliant alterations.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Hoole',
+  description: 'We survey across Hoole and neighbouring districts.',
+  areas: [
+    'Hoole village',
+    'Faulkner Street & Hamilton Street',
+    'Hoole Lane',
+    'Newton',
+    'Boughton',
+    'Alexandra Park area',
+    'Canadian Avenue',
+    'Brook Lane',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Hoole survey',
+  paragraphs: [
+    'Tell us about your Hoole property and plans. We’ll recommend the right survey, provide a clear fee, and fit your timetable. Our local knowledge means fast response and advice you can trust.',
+    'From booking to post-survey support, we’re on hand to guide your move, renovation or investment in Hoole.',
+  ],
+  primaryCta: {
+    label: 'Book a Hoole survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Hoole,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home Surveys in Hoole, Chester | LEM Building Surveying</title>
-    <meta content="Independent building surveyor for Hoole, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and Measured Floorplans. Trusted, qualified and local." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/hoole-damp-surveys" rel="canonical">
-    <meta content="Home Surveys in Hoole, Chester | LEM Building Surveying" property="og:title">
-    <meta content="Independent building surveyor for Hoole, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and Measured Floorplans. Trusted, qualified and local." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/hoole-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home Surveys in Hoole, Chester | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent building surveyor for Hoole, Chester. RICS Level 1, 2 &amp; 3 Home Surveys, Damp Reports, and Measured Floorplans. Trusted, qualified and local." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/hoole-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Hoole -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/hoole-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Hoole",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH2",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Hoole, Chester",
-        "description": "RICS Home Surveys and Damp Reports for buyers and homeowners in Hoole, Chester. Level 1, 2 & 3 surveys with personal service from a local AssocRICS surveyor.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Hoole",
-              "item": "https://www.lembuildingsurveying.co.uk/hoole-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Home Surveys in Hoole, Chester</h1>
-  <p>AssocRICS-qualified surveys and damp reports for buyers, landlords and owners in Hoole — fast, clear and locally delivered.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Independent Hoole Surveyor</h2>
-  <p>
-          From red brick terraces and semis to larger period homes, Hoole’s housing stock is well suited to RICS surveys. I offer personal, qualified advice with clear written reports across Chester and Hoole — tailored to your property’s age, condition, and your concerns.
-        </p>
-  <h2>RICS Surveys &amp; Reports Available</h2>
-  <ul>
-  <li><strong>RICS Level 1 Home Survey:</strong> Entry-level condition report for well-maintained, modern homes.</li>
-  <li><strong>RICS Level 2 Home Survey:</strong> A HomeBuyer-style report ideal for conventional properties.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> A full structural report for older or altered houses in Hoole.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Focused inspection to assess damp, mould or decay risks.</li>
-  <li><strong>Measured Floorplans:</strong> Accurate plans for sales, planning or record-keeping.</li>
-  <li><strong>EPC &amp; Ventilation Advice:</strong> Help with air quality or energy efficiency concerns.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> Based near Chester and familiar with Hoole’s streets and property types.</li>
-  <li><strong>AssocRICS Qualified:</strong> Fully insured, RICS-aligned, and independent.</li>
-  <li><strong>No Sales Pitch:</strong> Clear, helpful advice tailored to your needs.</li>
-  <li><strong>Quick Turnaround:</strong> Reports typically delivered in 3–5 working days.</li>
-  </ul>
-  <h2>Get a Quote for Your Hoole Survey</h2>
-  <p>
-          Whether you're buying, investing or just need advice — I’ll help you move forward with clarity and confidence.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Free Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Levels</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Hoole"
+  county="Cheshire"
+  postalCode="CH2"
+  pageTitle="Home and Building Surveys in Hoole, Chester | LEM Building Surveying Ltd"
+  metaDescription="Local Hoole surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and practical period property advice in Hoole, Chester."
+  canonicalPath="hoole-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

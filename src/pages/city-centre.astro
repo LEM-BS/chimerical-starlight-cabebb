@@ -1,0 +1,209 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Chester City Centre Surveyors',
+  heading: 'Home and Building Surveys in Chester City Centre',
+  description:
+    'Specialist RICS surveyor providing independent home surveys, damp investigations and listed building advice for properties within Chester’s city walls, The Rows, and the historic core.',
+  cta: {
+    label: 'Book a City Centre survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Chester city centre is defined by its rich architectural heritage—medieval timber-framed houses, Georgian terraces, Victorian conversions and the unique two-tier Rows. Many properties are listed or lie within strict conservation areas, meaning buyers and owners must be extra cautious about previous alterations, repair methods, and maintenance challenges. Our surveys are tailored to this historic core, combining national RICS standards with hands-on local experience and practical advice.",
+  "From converted shops and apartments above the Rows, to mews houses tucked behind Watergate Street, every property poses unique risks. Cellars and undercrofts are prone to persistent damp; original timber frames require careful inspection for decay and beetle; and traditional brick or stonework may conceal older structural movement. We focus on highlighting not just defects, but the impact of listed status, planning controls, and local building practices.",
+  "We work with both first-time buyers and seasoned investors who need clear, jargon-free guidance before committing to a city centre property. Our reports highlight what needs urgent attention, what’s cosmetic, and what’s realistically negotiable—so you can act with confidence.",
+];
+
+const sellingPoints = {
+  heading: 'Why city centre clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with Chester’s unique city-centre architecture and heritage constraints.',
+    'Clear, practical recommendations for listed and non-listed buildings—no generic advice.',
+    'Flexible survey slots to meet tight timescales, including chain moves and cash purchases.',
+    'Ongoing support: from clarifying reports for solicitors to helping you navigate conservation requirements.',
+  ],
+};
+
+const services = {
+  heading: 'Surveying services for Chester’s historic core',
+  intro:
+    "We offer tailored surveys for every city centre property—from The Rows and converted warehouses, to Georgian terraces and modern infill.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'For most period apartments and non-listed homes—detailed condition ratings, repair guidance and practical advice for city-centre living.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for listed buildings, properties with extensive alterations or those at risk of damp, timber decay or structural movement.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Suitable for well-maintained modern flats within new developments inside the walls.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Crucial for city properties with undercrofts, cellars or timber frames—independent advice with no sales agenda.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Addressing condensation, stale air and improving comfort in historic and high-density flats.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Accurate plans for listed building applications, heritage repairs or complex refurbishment projects.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Unique issues for Chester city centre homes',
+  paragraphs: [
+    "Properties within the city walls are subject to more than just physical wear—historic fabric, protected features, and planning controls can complicate even minor repairs. We focus on identifying non-compliant past works, risk of enforcement, and areas where traditional materials are needed. Damp in basements and undercrofts is a major issue, as is decay in exposed timber and roof structures.",
+    "Noise, air quality, and fire safety standards also vary in converted buildings. We check fire escapes, compartmentation, and window safety for apartments above shops or in subdivided houses. City centre properties may also have limited access for maintenance, which can drive up repair costs or restrict contractor choice.",
+    "If you’re buying a flat in a converted building, we review lease terms for repair responsibilities and check for signs of unauthorised works or poorly managed common parts.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Listed building, planning and renovation advice',
+    paragraphs: [
+      "Many city centre homes are listed (Grade I, II* or II), meaning even routine repairs require consent. Our surveys highlight where consents are likely needed, flag unauthorised work, and suggest routes to regularisation if needed. We also advise on heritage-appropriate materials and realistic timeframes for works.",
+      "If you’re planning major alterations, our measured surveys and planning support ensure your project starts on solid ground, with full understanding of restrictions and local authority expectations.",
+    ],
+  },
+  {
+    heading: 'Client-focused communication and aftercare',
+    paragraphs: [
+      "We’ll discuss your priorities before the inspection, walk you through the report on delivery, and remain available for questions or clarifications for as long as needed. You get a clear, actionable summary—not just a checklist.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for city centre clients',
+  description:
+    'Explore core surveys for Chester city centre homeowners, investors and landlords.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Ideal for most city apartments and period homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'For listed or altered city properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Find and solve the damp, timber and mould issues so common in the city’s oldest homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve air quality and reduce condensation in city-centre flats.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Essential for listed building projects or reconfiguration of historic layouts.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Chester City Centre FAQs',
+  items: [
+    {
+      question: 'Do you cover all areas within the city walls?',
+      answer:
+        'Yes. We survey properties throughout Chester city centre, including The Rows, Watergate, Northgate, and areas around the cathedral and amphitheatre.',
+    },
+    {
+      question: 'Can you inspect listed or part-listed buildings?',
+      answer:
+        'Absolutely. We specialise in listed and historic buildings, and adapt our surveys to highlight both technical and legal issues for buyers.',
+    },
+    {
+      question: 'Do you help with leasehold flats above shops?',
+      answer:
+        'Yes—we review lease obligations, service charge arrangements, and inspect common parts for issues that could become your responsibility.',
+    },
+    {
+      question: 'What about properties with past unauthorised works?',
+      answer:
+        'We identify non-compliant alterations and provide practical advice on resolving enforcement or planning issues with the local authority.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered within Chester city centre',
+  description: 'We survey across the city core, including:',
+  areas: [
+    'The Rows',
+    'Watergate Street',
+    'Eastgate and Northgate',
+    'Bridge Street',
+    'Abbey Green',
+    'City Walls',
+    'Amphitheatre area',
+    'Roman Gardens',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your city centre survey',
+  paragraphs: [
+    'Contact us with your property details and timescale—we’ll recommend the right survey and fee. As local specialists, we can act quickly and provide post-survey support as your move progresses.',
+    'From booking to report and follow-up advice, we offer clarity, support, and practical guidance every step of the way.',
+  ],
+  primaryCta: {
+    label: 'Book a City Centre survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Chester+city+centre,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Chester City Centre"
+  county="Cheshire"
+  postalCode="CH1"
+  pageTitle="Home and Building Surveys in Chester City Centre | LEM Building Surveying Ltd"
+  metaDescription="Local Chester surveyor for RICS Level 1, Level 2 & Level 3 surveys, damp inspections and listed building advice within Chester’s city centre, The Rows and historic core."
+  canonicalPath="city-centre-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
