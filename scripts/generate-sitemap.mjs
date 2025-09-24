@@ -12,6 +12,7 @@ const pagesDir = path.join(repoRoot, 'src', 'pages');
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
 const areasPath = path.join(repoRoot, 'src', 'data', 'areas.ts');
 
+const allowedExtensions = new Set(['.astro', '.mdx']);
 const skipFiles = new Set(['404.astro']);
 
 const noindexPatterns = [
@@ -80,7 +81,7 @@ const areaSource = await fs.readFile(areasPath, 'utf8');
 const areaSlugMatches = Array.from(areaSource.matchAll(/createAreaEntry\('([^']+)'/g));
 const areaSlugs = new Set(areaSlugMatches.map((match) => match[1]));
 
-const collectAstroFiles = async (dir, relativeDir = '') => {
+const collectPageFiles = async (dir, relativeDir = '') => {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
 
@@ -89,11 +90,16 @@ const collectAstroFiles = async (dir, relativeDir = '') => {
     const fullPath = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      files.push(...(await collectAstroFiles(fullPath, relativePath)));
+      files.push(...(await collectPageFiles(fullPath, relativePath)));
       continue;
     }
 
-    if (!entry.isFile() || !entry.name.endsWith('.astro')) {
+    if (!entry.isFile()) {
+      continue;
+    }
+
+    const extension = path.extname(entry.name);
+    if (!allowedExtensions.has(extension)) {
       continue;
     }
 
@@ -107,12 +113,12 @@ const collectAstroFiles = async (dir, relativeDir = '') => {
   return files;
 };
 
-const astroFiles = await collectAstroFiles(pagesDir);
+const pageFiles = await collectPageFiles(pagesDir);
 
 const includableFiles = [];
 const excludedNoindexFiles = [];
 
-for (const relativePath of astroFiles) {
+for (const relativePath of pageFiles) {
   if (await isNoindexPage(relativePath)) {
     excludedNoindexFiles.push(relativePath);
     continue;
@@ -128,17 +134,32 @@ if (excludedNoindexFiles.length > 0) {
   );
 }
 
+const canonicalRegex = /canonicalPath\s*[:=]\s*['"]([^'"\s]+)['"]/i;
 const urls = await Promise.all(
   includableFiles.map(async (relativePath) => {
-    const baseName = relativePath.replace(/\.astro$/, '');
+    const extension = path.extname(relativePath);
+    const baseName = relativePath.slice(0, -extension.length);
     const slug = path.basename(baseName);
+    const normalizedPath = baseName.split(path.sep).join('/');
+
+    const pagePath = path.join(pagesDir, relativePath);
+    const contents = await fs.readFile(pagePath, 'utf8');
+
     let url;
-    if (baseName === 'index') {
+    const canonicalMatch = contents.match(canonicalRegex);
+    if (canonicalMatch) {
+      const rawCanonical = canonicalMatch[1].trim();
+      if (/^https?:\/\//i.test(rawCanonical)) {
+        url = rawCanonical;
+      } else {
+        const cleanedCanonical = rawCanonical.replace(/^\/+/, '');
+        url = `${site}/${cleanedCanonical}`;
+      }
+    } else if (baseName === 'index') {
       url = `${site}/`;
     } else if (areaSlugs.has(slug)) {
       url = `${site}/${slug}-damp-surveys`;
     } else {
-      const normalizedPath = baseName.split(path.sep).join('/');
       url = `${site}/${normalizedPath}`;
     }
 
