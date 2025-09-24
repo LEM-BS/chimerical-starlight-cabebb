@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Saughall Surveyors',
+  heading: 'Home and Building Surveys in Saughall, Cheshire',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Saughall, Shotwick and the Chester Green Belt.',
+  cta: {
+    label: 'Book a Saughall survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Saughall combines former farm cottages, Victorian terraces, post-war semis and modern infill developments along the Chester approach roads. Buyers also encounter barn conversions and properties with extensive gardens edging the Dee marshes.",
+  "Flat topography, reclaimed land and nearby agricultural drainage influence how well homes handle groundwater and surface water. Many properties feature extensions, conservatories and converted lofts that must be assessed for structural adequacy and compliance.",
+  "LEM offers local, independent advice that brings together building pathology, planning knowledge and realistic maintenance guidance. We help you understand what needs immediate attention and what can be planned over time.",
+];
+
+const sellingPoints = {
+  heading: 'Why Saughall clients choose LEM',
+  points: [
+    'AssocRICS surveyor familiar with Dee marsh geology, agricultural conversions and suburban housing stock.',
+    'Clear reporting that prioritises risks, budgets and maintenance strategies for families, investors and downsizers.',
+    'Flexible appointments to coordinate with busy households, farms and properties with limited access.',
+    'Post-survey support to answer questions, liaise with contractors and provide additional documentation when required.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Saughall’s homes',
+  intro: 'We offer a full range of surveys tailored to Saughall, Shotwick and the Chester outskirts.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for post-war semis, village houses and modern estate homes around Long Lane and Hermitage Road.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for older cottages, barn conversions and properties with extensive alterations or complex drainage.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise option for newer builds and well-maintained bungalows popular with downsizers.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Assess moisture, ventilation and timber decay where high water tables and sheltered elevations create persistent damp.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure air circulation, extract systems and trickle vents counter condensation from sealed glazing and solid walls.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate plans and feasibility advice for extensions, annexes and green belt-friendly developments.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Saughall homes',
+  paragraphs: [
+    'Ground conditions near the Dee marshes can be soft or peaty. We check for settlement, drainage issues and appropriate foundation details.',
+    'Older housing stock often features single-skin walls and suspended floors. We inspect ventilation, insulation and moisture management, especially where extensions meet original fabric.',
+    'Properties close to Sealand Road and the A540 may experience traffic noise and air quality concerns. We comment on glazing upgrades and ventilation strategies to maintain comfort.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Saughall lies within Cheshire West and Chester planning jurisdiction and the Chester Green Belt. We outline considerations for extending rural properties, converting outbuildings or altering façades.',
+      'Our surveys highlight structural load paths, insulation needs and service upgrades so you can plan kitchen extensions, garden offices or accessibility adaptations responsibly.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'We remain available after the inspection to talk through recommendations, review quotes and assist with negotiations or lender queries.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Saughall clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Common choice for family homes and village properties across CH1.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Essential for barns, cottages and extensively altered homes near the Dee marshes.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Diagnose persistent damp where high water tables and mature hedgerows keep elevations wet.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balance energy upgrades with indoor air quality in sealed or heavily insulated homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support planning for extensions, annexes and agricultural conversions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Saughall property FAQs',
+  items: [
+    {
+      question: 'Do you cover Shotwick, Sealand and the Blacon fringe?',
+      answer:
+        'Yes. We survey throughout Great Saughall, Shotwick, Sealand, Blacon borders and nearby Chester suburbs.',
+    },
+    {
+      question: 'Can you assess barns or outbuildings for conversion potential?',
+      answer:
+        'We inspect structure, services and planning considerations, advising when specialist input or additional testing is needed.',
+    },
+    {
+      question: 'How do you evaluate flood or drainage risk?',
+      answer:
+        'We review site topography, drainage arrangements and available data, highlighting where further specialist reports may be sensible.',
+    },
+    {
+      question: 'Do you provide post-survey support for negotiations?',
+      answer:
+        'Absolutely. We can summarise key findings for solicitors or agents and help you prioritise remedial discussions.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Saughall',
+  description: 'We cover all areas including:',
+  areas: [
+    'Great Saughall village and Lodge Lane',
+    'Shotwick and Shotwick Park',
+    'Sealand Road corridor and Sealand Manor',
+    'Blacon fringe and Newfield Crescent',
+    'Dee marshes, Puddington and Chester Business Park borders',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Saughall survey',
+  paragraphs: [
+    'Tell us about your property plans and timescales so we can recommend the survey approach that delivers clarity.',
+    'We provide responsive communication, practical advice and continued support as you progress with your Saughall home.',
+  ],
+  primaryCta: {
+    label: 'Book a Saughall survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Saughall,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Saughall"
+  county="Cheshire West and Chester"
+  postalCode="CH1"
+  pageTitle="Home and Building Surveys in Saughall, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Independent Saughall surveyor providing RICS Level 1-3 surveys, damp investigations and renovation guidance across Saughall, Shotwick, Sealand and the Chester outskirts."
+  canonicalPath="saughall-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

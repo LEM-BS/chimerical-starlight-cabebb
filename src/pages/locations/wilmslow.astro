@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Wilmslow Surveyors',
+  heading: 'Home and Building Surveys in Wilmslow, Cheshire East',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Wilmslow, Handforth and Styal.',
+  cta: {
+    label: 'Book a Wilmslow survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Wilmslow brings together late Victorian villas, 1920s and 1930s family homes, modern gated developments and riverside apartments along the Bollin. Each neighbourhood has its own quirks—from historic sandstone cellars in the town centre to timber-framed barns converted near Lindow Common.",
+  "Extensions, loft conversions and open-plan reconfigurations are commonplace, making it important to understand how older structures interact with modern materials. Properties close to the River Bollin or Lindow Moss require careful consideration of drainage, ground conditions and potential flood impacts.",
+  "LEM supports Wilmslow clients with balanced, independent advice. We combine practical building pathology, local planning knowledge and cost awareness so you can negotiate, maintain and improve your property with confidence.",
+];
+
+const sellingPoints = {
+  heading: 'Why Wilmslow clients choose LEM',
+  points: [
+    'AssocRICS surveyor with first-hand experience of Wilmslow’s mix of heritage homes, suburban developments and new-build schemes.',
+    'Comprehensive reports that distinguish urgent repairs from planned improvements and include realistic budget guidance.',
+    'Flexible booking options to coordinate with busy households, relocation agents and corporate sellers.',
+    'Responsive aftercare so you can clarify findings, prioritise works and brief local contractors effectively.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Wilmslow’s homes',
+  intro: 'We offer a full range of surveys tailored to Wilmslow properties and surrounding Cheshire East villages.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for traditional semis, townhouses and modern infill developments throughout Wilmslow and Handforth.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for larger detached residences, older cottages and heavily altered properties needing detailed analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Provides a concise health check for newer apartments and turnkey homes around the town centre and Alderley Road.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Focus on moisture ingress, ventilation and timber decay—especially for properties near the River Bollin or with basements.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess MVHR, extractor systems and passive airflow to protect homes affected by cooking moisture or aircraft noise insulation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Accurate drawings and feasibility insight for extensions, loft conversions or outbuildings subject to Cheshire East planning.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Wilmslow homes',
+  paragraphs: [
+    'Areas along the Bollin can experience high water tables and soft ground. We review flood records, inspect retaining walls and check for past movement or damp penetration in basements and lower ground floors.',
+    'Historic and post-war houses often include multiple extensions. We examine roof junctions, lintels and drainage adaptations to ensure alterations were executed safely and comply with Building Regulations.',
+    'Flight-path glazing upgrades and whole-house ventilation systems are common. We test how well these perform, especially where airtightness improvements may have introduced condensation risk.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Wilmslow falls under Cheshire East Council with conservation areas around Chapel Lane, Hawthorn Street and Styal. We outline approvals needed for façade changes, tree works and large-scale remodelling.',
+      'Our surveys help you scope future works—such as kitchen extensions or garden rooms—highlighting structural considerations, drainage upgrades and energy-efficiency opportunities.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'Following the inspection we remain available to discuss findings, liaise with contractors or provide written clarifications for solicitors and lenders.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Wilmslow clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Frequently chosen for Wilmslow family homes and town centre apartments.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Ideal for substantial villas, cottages and properties with complex alterations.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Diagnose moisture and decay affecting riverside and moss-edge properties.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Protect indoor air quality where acoustic upgrades reduce natural ventilation.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Provide accurate plans for reconfigurations, loft conversions and extensions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Wilmslow property FAQs',
+  items: [
+    {
+      question: 'Do you cover Handforth, Styal and Lacey Green?',
+      answer:
+        'Yes. We survey throughout Wilmslow, Handforth, Styal, Lacey Green and the nearby Alderley Edge fringe.',
+    },
+    {
+      question: 'Can you help assess new-build snagging issues?',
+      answer:
+        'We regularly inspect new-build houses and apartments, documenting snagging concerns and compliance issues for developers to address.',
+    },
+    {
+      question: 'Do you provide advice on energy upgrades or heat pump installations?',
+      answer:
+        'Our reports highlight insulation, ventilation and services considerations so you can plan low-carbon upgrades with confidence.',
+    },
+    {
+      question: 'How soon will I receive my report after the survey?',
+      answer:
+        'Reports are usually issued within five working days, with faster turnaround available when required.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Wilmslow',
+  description: 'We cover all areas including:',
+  areas: [
+    'Wilmslow town centre and Fulshaw Park',
+    'Lindow and Racecourse estates',
+    'Handforth and Colshaw Farm',
+    'Styal and Morley Green',
+    'Dean Row and Alderley Edge borders',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Wilmslow survey',
+  paragraphs: [
+    'Share your property plans and concerns and we will recommend the survey level that provides the clarity you need.',
+    'Expect responsive communication, thorough reporting and ongoing support as you negotiate, renovate or maintain your Wilmslow home.',
+  ],
+  primaryCta: {
+    label: 'Book a Wilmslow survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Wilmslow,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Wilmslow"
+  county="Cheshire East"
+  postalCode="SK9"
+  pageTitle="Home and Building Surveys in Wilmslow, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Wilmslow-based RICS surveyor providing Level 1-3 home surveys, damp investigations and renovation advice across Wilmslow, Handforth, Styal and the Bollin Valley."
+  canonicalPath="wilmslow-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

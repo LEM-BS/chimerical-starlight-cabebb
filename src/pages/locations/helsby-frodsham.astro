@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Helsby & Frodsham Surveyors',
+  heading: 'Home and Building Surveys in Helsby & Frodsham, Cheshire',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Helsby, Frodsham, Kingsley and surrounding Mersey villages.',
+  cta: {
+    label: 'Book a Helsby & Frodsham survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Helsby and Frodsham offer a mix of sandstone cottages, post-war semis, hillside bungalows and modern estates near the M56. Buyers also encounter barn conversions around Kingsley and Norley, along with executive developments on former industrial land.",
+  "Properties on Helsby Hill and Frodsham’s slopes experience exposure to wind and driving rain, while low-lying streets by the River Weaver face drainage challenges. Many homes have been extended or reconfigured to capture views, making structural alterations and retaining walls key inspection points.",
+  "LEM provides grounded, local advice for this varied market. We help you understand building condition, moisture risks and planning constraints so you can negotiate confidently and plan improvements effectively.",
+];
+
+const sellingPoints = {
+  heading: 'Why Helsby & Frodsham clients choose LEM',
+  points: [
+    'AssocRICS surveyor with hands-on knowledge of sandstone construction, hillside plots and marsh-edge properties.',
+    'Detailed reports that explain issues clearly, prioritise urgent repairs and highlight realistic maintenance strategies.',
+    'Flexible appointments to suit commuting buyers and coordinate with agents along the M56 corridor.',
+    'Post-survey follow-up so you can discuss findings, review quotes and brief contractors or lenders.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Helsby & Frodsham homes',
+  intro: 'We offer a full range of surveys tailored to Helsby, Frodsham and surrounding villages.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for 1930s semis, modern estates and well-kept terraces across Helsby, Frodsham and Kingsley.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for sandstone cottages, hillside properties and heavily altered homes requiring detailed analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise overview for recently built houses and apartments near the station or new developments off the A56.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Focus on moisture ingress, condensation and timber decay—especially in hillside basements and riverside properties.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess extract systems, loft ventilation and passive airflow where insulation upgrades and sealed glazing may trap moisture.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate drawings and feasibility insight for extensions, balconies and split-level reconfigurations.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Helsby & Frodsham homes',
+  paragraphs: [
+    'Sandstone escarpments and steep driveways demand attention to retaining walls, surface water drainage and steps that can deteriorate over time.',
+    'Low-lying parts of Frodsham and Sutton Weaver can experience groundwater pressure and combined sewer flooding. We look for damp proofing, sump pumps and evidence of historical flooding.',
+    'Industrial legacy sites and modern infill developments may have complex service routes or ground remediation. We review documentation and workmanship to flag potential risks.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Helsby and Frodsham sit within Cheshire West and Chester planning jurisdiction. We highlight conservation areas, flood zone considerations and Article 4 restrictions affecting façade changes or tree works.',
+      'Our surveys help you plan loft conversions, garden rooms or hillside terraces by outlining structural implications, drainage upgrades and ventilation requirements.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'After the report we remain available to clarify recommendations, liaise with damp specialists or provide notes for lenders and solicitors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Helsby & Frodsham clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Common choice for family homes and modern estates throughout WA6.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Best for sandstone cottages, hillside properties and significant remodels.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Identify moisture concerns linked to hill runoff, basements and riverside plots.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balance airtight upgrades with healthy airflow and condensation control.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support split-level extensions, balcony additions and rural planning applications.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Helsby & Frodsham property FAQs',
+  items: [
+    {
+      question: 'Do you survey villages like Kingsley, Alvanley and Norley?',
+      answer:
+        'Yes. We cover the full WA6 area including Helsby Hill, Frodsham, Kingsley, Alvanley, Norley and Sutton Weaver.',
+    },
+    {
+      question: 'Can you advise on hillside stability or retaining wall issues?',
+      answer:
+        'We inspect retaining structures, drainage and evidence of movement, recommending when specialist engineering input is needed.',
+    },
+    {
+      question: 'Do you review documentation for former industrial or brownfield sites?',
+      answer:
+        'We consider available remediation reports, warranties and service plans, highlighting gaps that require follow-up.',
+    },
+    {
+      question: 'How fast can you provide the survey report?',
+      answer:
+        'Reports are typically delivered within five working days, with priority options for tight transaction deadlines.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Helsby & Frodsham',
+  description: 'We cover all areas including:',
+  areas: [
+    'Helsby Hill and Lower Rake',
+    'Frodsham town centre and Overton',
+    'Kingsley, Norley and Delamere fringe',
+    'Sutton Weaver and Aston',
+    'Ince, Elton and M56 corridor villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Helsby & Frodsham survey',
+  paragraphs: [
+    'Tell us about your planned purchase or renovation and we will recommend the most suitable survey approach.',
+    'You benefit from clear communication, practical recommendations and ongoing support as you move forward with your Helsby or Frodsham property.',
+  ],
+  primaryCta: {
+    label: 'Book a Helsby & Frodsham survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Helsby,+Frodsham,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Helsby & Frodsham"
+  county="Cheshire West and Chester"
+  postalCode="WA6"
+  pageTitle="Home and Building Surveys in Helsby & Frodsham, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Independent Helsby and Frodsham surveyor for RICS Level 1-3 surveys, damp investigations and renovation advice across Helsby Hill, Frodsham, Kingsley and nearby Mersey villages."
+  canonicalPath="helsby-frodsham-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

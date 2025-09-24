@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Knutsford Surveyors',
+  heading: 'Home and Building Surveys in Knutsford, Cheshire East',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Knutsford, Mobberley and the Tatton Estate.',
+  cta: {
+    label: 'Book a Knutsford survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Knutsford’s property market spans Georgian townhouses on King Street, Victorian terraces, estate cottages and contemporary developments near Longridge and Tabley. Many homes retain original detailing, cellars and outbuildings that require careful inspection.",
+  "Conservation areas, listed status and proximity to Tatton Park bring additional planning controls. Buyers also encounter barn conversions, thatched cottages and architect-designed replacements where structural alterations and modern services must be checked thoroughly.",
+  "LEM provides independent reporting that links building pathology with local regulations and contractor pricing. You receive pragmatic advice that supports negotiations and future project planning.",
+];
+
+const sellingPoints = {
+  heading: 'Why Knutsford clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with Tatton Estate cottages, Georgian townhouses and bespoke countryside homes.',
+    'Reports explain structural issues, moisture risks and compliance matters in clear language with actionable priorities.',
+    'Flexible site visits arranged with estate offices, agents and property managers across the Knutsford area.',
+    'Post-survey guidance to help you plan remedial works, discuss findings with builders or brief designers.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Knutsford’s homes',
+  intro: 'We offer a full range of surveys tailored to Knutsford, Mobberley and the surrounding Cheshire East villages.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for Victorian terraces, 20th-century semis and modern developments around Knutsford town and Longridge.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for listed buildings, converted barns and large detached homes where detailed investigation is essential.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise overview for newer apartments, downsizer developments and recently built estate homes.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Target solid brick cottages, cellars and riverside homes where moisture control and ventilation are critical.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess how mechanical systems, sash window upgrades and airtight refurbishments affect everyday comfort.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate plans and feasibility advice for extensions, annexes and reconfigurations subject to estate approvals.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Knutsford homes',
+  paragraphs: [
+    'Clay soils around Knutsford can shrink and swell, particularly near mature trees. We look for historic movement, drainage changes and underpinning that may affect structural stability.',
+    'Tatton Park and town-centre conservation areas impose strict controls on external alterations. We highlight past works that may need retrospective consent, along with the implications for maintenance.',
+    'Country properties often rely on private drainage or wells. We check documentation, capacity and compliance so you understand ongoing maintenance responsibilities.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'We outline Cheshire East planning policies, estate covenants and listed building requirements that could shape your project scope.',
+      'Our surveys identify structural limitations, roof loading considerations and services upgrades required before undertaking kitchen extensions or garden rooms.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'Expect responsive follow-up to discuss findings, join calls with contractors or provide supporting notes for mortgage lenders and solicitors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Knutsford clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Suitable for many Knutsford terraces, semis and modern infill properties.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Best for listed homes, barns and large countryside residences.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate moisture in cellars, estate cottages and riverside homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Balance airtight refurbishments with healthy airflow and condensation control.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Produce accurate drawings and data to support planning or listed building consent.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Knutsford property FAQs',
+  items: [
+    {
+      question: 'Do you inspect Mobberley, High Legh and Tabley?',
+      answer:
+        'Yes. We cover the wider WA16 area including Mobberley, High Legh, Tabley, Pickmere and surrounding hamlets.',
+    },
+    {
+      question: 'Can you help assess listed building obligations?',
+      answer:
+        'We identify where listed status affects maintenance, alterations or planning so you can engage specialists early.',
+    },
+    {
+      question: 'Do you review outbuildings, stables or paddock structures?',
+      answer:
+        'Let us know in advance and we will include ancillary buildings, barns or equestrian facilities within the inspection scope.',
+    },
+    {
+      question: 'Will you liaise with Tatton Estate or managing agents?',
+      answer:
+        'We are accustomed to coordinating with estate offices and agents to arrange access and share key findings.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Knutsford',
+  description: 'We cover all areas including:',
+  areas: [
+    'Knutsford town centre and King Street',
+    'Legh Road and Bexton conservation areas',
+    'Mobberley and Knolls Green',
+    'High Legh and Mere',
+    'Tabley, Pickmere and surrounding countryside',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Knutsford survey',
+  paragraphs: [
+    'Tell us about your prospective purchase, sale or renovation and we will recommend the survey approach that suits your plans.',
+    'From first enquiry to post-report follow-up, you receive straightforward advice that helps you protect and enhance your Knutsford property.',
+  ],
+  primaryCta: {
+    label: 'Book a Knutsford survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Knutsford,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Knutsford"
+  county="Cheshire East"
+  postalCode="WA16"
+  pageTitle="Home and Building Surveys in Knutsford, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Local Knutsford surveyor delivering RICS Level 1, 2 & 3 surveys, damp investigations and heritage guidance across Knutsford, Mobberley, High Legh and the Tatton Estate."
+  canonicalPath="knutsford-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

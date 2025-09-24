@@ -1,0 +1,199 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Alderley Edge Surveyors',
+  heading: 'Home and Building Surveys in Alderley Edge, Cheshire East',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Alderley Edge, Nether Alderley and the Bollin Valley.',
+  cta: {
+    label: 'Book an Alderley Edge survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Alderley Edge combines Victorian villas, Arts & Crafts houses and discreet modern mansions tucked behind mature hedging. High-end refurbishments, bespoke glazing and complex services upgrades are common, often layered over original sandstone and brick structures that need careful assessment.",
+  "Tree-lined plots on the Edge can hide subsidence, root damage and drainage changes, while basement gyms, wine stores and cinema rooms require close attention to waterproofing and ventilation. Many homes incorporate smart technologies or recent extensions that must be checked for approvals and build quality.",
+  "Clients instruct LEM to provide independent advice that bridges heritage construction with contemporary upgrades. We flag structural priorities, moisture risks and compliance issues early so you can negotiate confidently and plan your renovations with clarity.",
+];
+
+const sellingPoints = {
+  heading: 'Why Alderley Edge clients choose LEM',
+  points: [
+    'AssocRICS surveyor familiar with the bespoke builds and conservation requirements that shape Alderley Edge homes.',
+    'Detailed, plain-English reports that quantify repair priorities and future spending—ideal for high-value negotiations.',
+    'Flexible inspection slots to coordinate with estate agents, security teams and caretakers managing premium properties.',
+    'Comprehensive aftercare so you can discuss findings with contractors, architects or lenders as plans progress.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Alderley Edge’s homes',
+  intro:
+    'We offer a full range of surveys tailored to Alderley Edge properties, from period villas on the Edge to contemporary rebuilds near Alderley Park.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for well-kept 1930s semis and modern townhouses around West Street, highlighting maintenance and upgrade priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for large detached estates, listed houses and heavily altered properties needing deep structural analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise option for newly built apartments or turnkey homes where you need a snapshot of condition and compliance.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Targeted inspections of basements, pool houses and spa suites where moisture control and ventilation are critical.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure whole-house MVHR, smart controls and sealed building envelopes deliver healthy air throughout the property.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Accurate drawings, floor plans and feasibility advice for extensions, annexes and conservation-sensitive alterations.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Alderley Edge homes',
+  paragraphs: [
+    'Sloping plots and mature tree roots can affect drainage and foundations, particularly on the sandstone ridge. We look for past underpinning, retaining wall movement and evidence of water pressure on basement walls.',
+    'Many properties blend heritage facades with modern extensions. We check that flat roofs, glazing systems and balconies are detailed correctly to avoid cold bridging and leaks, and that structural openings are supported appropriately.',
+    'Private roads and shared drives are common, so we highlight maintenance responsibilities, utility access, and any restrictions arising from gated estate covenants or conservation area status.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Alderley Edge falls within Cheshire East planning jurisdiction with strict expectations on design quality. We outline which elements may need listed building consent, tree protection measures or specialist engineering input.',
+      'Our surveys consider the feasibility of basement conversions, gym fit-outs and pool installations, ensuring waterproofing, ventilation and energy systems are appropriately specified.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'Receive ongoing support to interpret contractor quotes, clarify report items with lenders, or prioritise maintenance programmes for estate managers and busy families.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Alderley Edge clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Common choice for Alderley Edge semis, apartments and smaller detached homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Essential for bespoke builds, heritage villas and complex refurbishments.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate moisture risks in basements, pool houses and garden suites.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Ensure MVHR and home automation deliver balanced airflow and comfort.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support architects and designers with accurate plans for planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Alderley Edge property FAQs',
+  items: [
+    {
+      question: 'Do you cover the private roads and gated estates around Alderley Edge?',
+      answer:
+        'Yes. We routinely coordinate access with estate managers and security teams across The Edge, Harden Park, Mottram St Andrew and Nether Alderley.',
+    },
+    {
+      question: 'Can you advise on basement waterproofing and pool facilities?',
+      answer:
+        'Absolutely. We inspect tanking, drainage and ventilation strategies so you can address any weaknesses before committing to remedial works.',
+    },
+    {
+      question: 'Do you work alongside architects or interior designers?',
+      answer:
+        'We regularly liaise with professional teams, providing technical insight and measured information to keep projects on track.',
+    },
+    {
+      question: 'How quickly can you deliver a comprehensive survey report?',
+      answer:
+        'Reports are typically issued within five working days, with expedited delivery available for time-sensitive transactions.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Alderley Edge',
+  description: 'We cover all areas including:',
+  areas: [
+    'Alderley Edge village centre',
+    'Nether Alderley and Alderley Park',
+    'Mottram St Andrew',
+    'Harden Park and Trafford Road estates',
+    'Bollin Valley and Whitehall estate',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Alderley Edge survey',
+  paragraphs: [
+    'Tell us about your purchase or planned works and we will recommend the survey level that fits your property type and ambitions.',
+    'You receive responsive communication, detailed guidance and continued support—from first enquiry through to managing contractors and future maintenance.',
+  ],
+  primaryCta: {
+    label: 'Book an Alderley Edge survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Alderley+Edge,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Alderley Edge"
+  county="Cheshire East"
+  postalCode="SK9"
+  pageTitle="Home and Building Surveys in Alderley Edge, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Independent Alderley Edge surveyor delivering RICS home surveys, damp assessments and renovation advice for the village, Alderley Park and neighbouring Cheshire East hamlets."
+  canonicalPath="alderley-edge-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

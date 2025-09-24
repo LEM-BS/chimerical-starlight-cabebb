@@ -1,0 +1,198 @@
+---
+import LocationPageTemplate from '../../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Neston & Parkgate Surveyors',
+  heading: 'Home and Building Surveys in Neston & Parkgate, Cheshire',
+  description:
+    'RICS-accredited surveyor offering independent home surveys, damp reports and renovation advice for buyers and owners in Neston, Parkgate and the Dee Estuary villages.',
+  cta: {
+    label: 'Book a Neston & Parkgate survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Neston and Parkgate mix Georgian sea-bathing terraces, Victorian villas, sandstone cottages and modern estates stretching toward Little Neston and Ness. Apartments above shops and converted warehouses along Parkgate Parade sit alongside new infill developments on former industrial plots.",
+  "Exposure to estuary winds, salt-laden air and tidal conditions can accelerate weathering of masonry, joinery and metalwork. Low-lying areas and reclaimed land demand careful attention to drainage, damp proofing and insulation details—especially where older properties meet recent extensions.",
+  "LEM provides independent insight tailored to estuary-side living. We help you understand structural condition, moisture risks and planning constraints so you can negotiate with confidence and maintain your investment effectively.",
+];
+
+const sellingPoints = {
+  heading: 'Why Neston & Parkgate clients choose LEM',
+  points: [
+    'AssocRICS surveyor with experience across Dee Estuary settlements, conservation areas and marsh-adjacent properties.',
+    'Clear, detailed reports that prioritise repairs, outline maintenance needs and highlight long-term resilience measures.',
+    'Flexible appointments to coordinate with residents, holiday lets and second-home owners.',
+    'Responsive aftercare to discuss findings, support negotiations and liaise with contractors or lenders.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Neston & Parkgate homes',
+  intro: 'We offer a full range of surveys tailored to properties along the Dee Estuary and surrounding Cheshire villages.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for well-maintained terraces, semis and modern homes across Neston, Parkgate and Little Neston.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Recommended for historic waterfront houses, sandstone cottages and properties with extensive alterations.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'A concise overview for newer apartments, retirement schemes and turnkey developments.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description: 'Address salt-laden air, marsh humidity and basement moisture affecting estuary-side homes.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure extractor systems and passive airflow manage condensation where windows are upgraded for energy efficiency.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Provide accurate drawings and feasibility advice for extensions, balconies and heritage-sensitive refurbishments.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Neston & Parkgate homes',
+  paragraphs: [
+    'Salt air can corrode metal fixings, balconies and railings. We check coatings, flashings and joinery to ensure longevity.',
+    'Older properties with mixed construction often show damp penetration and insulation gaps. We identify detailing issues between original fabric and newer additions.',
+    'Ground conditions near the estuary may involve reclaimed land, culverted brooks or tidal flood zones. We review drainage, damp proofing and available flood data.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Neston and Parkgate include conservation areas and sit near the Dee Estuary SSSI. We outline permissions required for façade changes, window replacements and waterfront deck extensions.',
+      'Our surveys flag structural implications, insulation upgrades and services improvements before you commit to loft conversions, open-plan layouts or garden studios.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'We remain available after the inspection to answer questions, join calls with contractors or provide evidence for lenders and insurers.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Neston & Parkgate clients',
+  description: 'Explore our core services for local buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Suitable for many terraces, semis and apartments throughout CH64.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Ideal for estuary-fronted homes, listed buildings and extensive refurbishments.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Investigate salt, moisture and ventilation issues caused by marsh climates.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Ensure upgraded glazing and insulation maintain healthy airflow and air quality.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Produce accurate plans for extensions, balconies and conservation area submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Neston & Parkgate property FAQs',
+  items: [
+    {
+      question: 'Do you survey Little Neston, Burton and Ness?',
+      answer:
+        'Yes. We cover Neston town centre, Parkgate, Little Neston, Burton, Ness and neighbouring villages along the Dee.',
+    },
+    {
+      question: 'Can you advise on flood resilience or insurance requirements?',
+      answer:
+        'We review available flood mapping, comment on resilience measures and signpost where specialist advice or insurer confirmation is recommended.',
+    },
+    {
+      question: 'Are you experienced with listed and conservation area properties?',
+      answer:
+        'We regularly inspect Grade II properties and homes within Parkgate and Neston conservation areas, highlighting relevant obligations and sympathetic repair options.',
+    },
+    {
+      question: 'Do you inspect holiday lets or second homes?',
+      answer:
+        'Yes. We coordinate access with property managers and tailor our reporting to investment or rental objectives.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Neston & Parkgate',
+  description: 'We cover all areas including:',
+  areas: [
+    'Neston town centre and High Street',
+    'Parkgate Parade and The Marshes',
+    'Little Neston and Ness',
+    'Burton and Puddington',
+    'Thornton Hough, Willaston and Heswall borders',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Neston & Parkgate survey',
+  paragraphs: [
+    'Share your property goals and any concerns so we can recommend the survey scope that meets your needs.',
+    'You receive prompt communication, detailed reporting and ongoing support as you purchase, maintain or renovate your estuary-side home.',
+  ],
+  primaryCta: {
+    label: 'Book a Neston & Parkgate survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Neston,+Cheshire,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName="Neston & Parkgate"
+  county="Cheshire West and Chester"
+  postalCode="CH64"
+  pageTitle="Home and Building Surveys in Neston & Parkgate, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Local Neston and Parkgate surveyor delivering RICS Level 1-3 surveys, damp investigations and estuary-side property advice across Neston, Parkgate, Little Neston and Burton."
+  canonicalPath="neston-parkgate-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
