@@ -12,6 +12,6 @@ Disallow:
 
 User-agent: *
 Allow: /
-Disallow: /thank-you
+Disallow:
 
 Sitemap: https://www.lembuildingsurveying.co.uk/sitemap.xml
