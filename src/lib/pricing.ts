@@ -305,7 +305,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 0,
     maxValue: 150_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 325,
     level2: 450,
     level3: 625,
@@ -313,15 +313,15 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 150_001,
     maxValue: 250_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 370,
-    level2: 475,
+    level2: 545,
     level3: 675,
   },
   {
     minValue: 250_001,
     maxValue: 400_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 390,
     level2: 545,
     level3: 735,
@@ -329,23 +329,23 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 400_001,
     maxValue: 600_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 410,
-    level2: 595,
+    level2: 645,
     level3: 825,
   },
   {
     minValue: 600_001,
     maxValue: 850_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 625,
-    level2: 825,
-    level3: 995,
+    level2: 685,
+    level3: 1125,
   },
   {
     minValue: 850_001,
     maxValue: 999_999,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 825,
     level2: 995,
     level3: 1500,
@@ -353,7 +353,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 1_000_000,
     maxValue: 1_500_000,
-    bedroomsIncluded: 2,
+    bedroomsIncluded: 4,
     level1: 925,
     level2: 1500,
     level3: 2100,
@@ -411,7 +411,7 @@ export const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, number> = {
 export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> = {
   unknown: 0,
   no: 0,
-  yes: 20,
+  yes: 75,
 };
 
 const VALUE_TIERS: { limit: number; amount: number }[] = [

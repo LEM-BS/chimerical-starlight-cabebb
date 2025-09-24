@@ -16,6 +16,24 @@ export const AREA_OUTCODES = {
     outcodes: ['CH5', 'CH6'],
     aliases: ['Connah’s Quay', 'Shotton', 'Queensferry'],
   },
+  connahsQuay: {
+    id: 'connahs-quay',
+    label: 'Connah’s Quay',
+    county: 'Flintshire',
+    outcodes: ['CH5'],
+  },
+  shotton: {
+    id: 'shotton',
+    label: 'Shotton',
+    county: 'Flintshire',
+    outcodes: ['CH5'],
+  },
+  queensferry: {
+    id: 'queensferry',
+    label: 'Queensferry',
+    county: 'Flintshire',
+    outcodes: ['CH5'],
+  },
   flint: {
     id: 'flint',
     label: 'Flint',
@@ -248,7 +266,8 @@ export type AreaKey = keyof typeof AREA_OUTCODES;
 
 export const AREA_ORDER: AreaKey[] = [
   // Core Flintshire & Deeside
-  'flint', 'buckley', 'mold', 'deeside', 'hawarden', 'ewloe', 'northop', 'northopHall', 'oakenholt', 'broughton', 'saltney',
+  'flint', 'buckley', 'mold', 'connahsQuay', 'shotton', 'queensferry', 'hawarden', 'ewloe', 'deeside',
+  'northop', 'northopHall', 'oakenholt', 'broughton', 'saltney',
   // Chester & Cheshire West
   'chester', 'hoole', 'boughton', 'vicarsCross', 'waverton', 'tarporley', 'kelsall', 'tarvin',
   'ellesmerePort', 'frodsham', 'helsby', 'winsford', 'northwich', 'malpas',
@@ -309,8 +328,13 @@ export const getAreasForOutcode = (outcode: string): AreaInfo[] => {
     return [];
   }
   const normalised = normaliseOutcode(outcode);
-  const match = normalised.match(/^([A-Z]{1,2}\\d[A-Z\\d]?)(\\d[A-Z]{2})$/);
-  const outwardCode = match ? match[1] : normalised;
+  if (!normalised) {
+    return [];
+  }
+  const outwardCode =
+    normalised.length > 3 && /\d[A-Z]{2}$/.test(normalised)
+      ? normalised.slice(0, -3)
+      : normalised;
   return OUTCODE_LOOKUP.get(outwardCode) ?? [];
 };
 
