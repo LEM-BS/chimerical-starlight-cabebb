@@ -1,108 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'waverton';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Waverton';
+const county = 'Cheshire';
+const postalCode = 'CH3';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Local Waverton surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice across Waverton, Rowton, Christleton, Saighton and Great Barrow.";
+const canonicalPath = 'waverton-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    `Independent RICS surveyor supporting buyers and owners in Waverton with clear home surveys, damp reports and renovation guidance for local properties.`,
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  `${townName} offers a blend of historic cottages, post-war housing and newer developments, each benefiting from a tailored inspection.`,
+  `Extensions, loft conversions and energy upgrades are common throughout ${townName}; we assess how these changes interact with structure, services and ventilation so everything works together.`,
+  `Clients instructing us in ${townName} want independent reporting, clear priorities and realistic budgets before they commit to a purchase or refurbishment.`,
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and busy households.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and neighbouring communities.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for historic, heavily altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—particularly in exposed locations or properties with complex histories.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: `Precise drawings and feasibility advice for extensions, conversions or planning submissions across ${townName}.`,
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    `Clay soils and varied topography around ${townName} can influence movement and drainage; we inspect cracking, ground levels and soakaways carefully.`,
+    `Many homes feature retrofit insulation, replacement windows and upgraded heating. We check detailing and ventilation to avoid trapped moisture or condensation.`,
+    `Shared access, boundary structures and outbuildings are common. We document responsibilities and maintenance considerations for your solicitor.`,
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} households often pursue sympathetic extensions, home offices or garden studios. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby areas.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for a wide range of property types.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in well-sealed homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover ${townName} and nearby communities?`,
+      answer: 'Yes. We survey Waverton, Rowton, Christleton, Saighton and Great Barrow, as well as the wider Waverton area.',
+    },
+    {
+      question: 'Are you experienced with different property styles?',
+      answer: `We regularly inspect period cottages, post-war homes and contemporary developments across ${townName}, tailoring advice to each construction type.`,
+    },
+    {
+      question: 'Can you help with damp, paperwork or planned works?',
+      answer: `Yes. We identify damp sources, review documentation and outline next steps for renovations or extensions in ${townName}.`,
+    },
+    {
+      question: 'How quickly will my report be ready?',
+      answer: 'Most reports are delivered within four working days, with faster turnaround available when chains demand it.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey ${townName} and neighbouring communities, including:',
+  areas: [
+    'Waverton village and Eggbridge Lane',
+    'Rowton and Christleton',
+    'Saighton and Huntington',
+    'Great Barrow and Littleton',
+    'Tattenhall and Hargrave',
+    'Guilden Sutton and Mickle Trafford'
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Waverton,+Cheshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Waverton | LEM Building Surveying</title>
-    <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/waverton-damp-surveys" rel="canonical">
-    <meta content="RICS Home Surveys in Waverton | LEM Building Surveying" property="og:title">
-    <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/waverton-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home Surveys in Waverton | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent surveyor providing RICS Level 1, 2 and 3 Home Surveys in Waverton. Damp reports, building surveys and clear expert advice from a qualified local surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/waverton-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Waverton -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/waverton-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Waverton",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Waverton, Cheshire",
-        "description": "RICS Level 1, 2 and 3 Home Surveys in Waverton. Independent property surveyor offering building surveys, damp inspections and more.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Waverton",
-              "item": "https://www.lembuildingsurveying.co.uk/waverton-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home Surveys in Waverton</h1>
-  <p>Professional RICS Level 1, 2 &amp; 3 surveys for buyers, owners and landlords in Waverton. Delivered clearly, quickly, and independently by a local expert.</p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Waverton Surveyor</h2>
-  <p>
-          Based nearby in Connah’s Quay, I offer a professional, personal service for residential surveys across Waverton and the surrounding area. All reports are written by me, Liam — an AssocRICS-qualified surveyor with a focus on clarity and client care.
-        </p>
-  <h2>Home Survey Options</h2>
-  <ul>
-  <li><strong>RICS Level 1 Condition Report:</strong> A short-form survey for well-maintained properties with no major alterations or issues.</li>
-  <li><strong>RICS Level 2 HomeBuyer Survey:</strong> Ideal for standard homes—includes repair advice and colour-coded condition ratings.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> A detailed report for older, extended or unusual properties with structural advice and recommendations.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Clear, unbiased inspections for damp, mould, or timber decay.</li>
-  <li><strong>Ventilation Assessments:</strong> Identify causes of condensation and poor airflow in older homes or problem rooms.</li>
-  <li><strong>Measured Floorplans:</strong> Accurate internal layouts for planning, letting, or refurbishment.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Direct service:</strong> Deal with your surveyor from start to finish—no admin teams or third-party contractors.</li>
-  <li><strong>Local knowledge:</strong> Experience with property types around Waverton, Rowton, Christleton and Great Barrow.</li>
-  <li><strong>Flexible and honest:</strong> Quotes with no pressure and support even outside office hours when possible.</li>
-  </ul>
-  <h2>Request a Quote or Ask a Question</h2>
-  <p>If you're unsure which survey is right or want a no-obligation quote, just get in touch. I'm happy to help and respond quickly.</p>
-  <!-- CTA Buttons -->
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Request a Survey</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Types</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

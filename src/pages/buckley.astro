@@ -1,114 +1,204 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'buckley';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Buckley';
+const county = 'Flintshire';
+const postalCode = 'CH7';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Independent Buckley surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp investigations and retrofit advice across Drury, Padeswood and the surrounding hills.";
+const canonicalPath = 'buckley-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "RICS-accredited surveyor delivering thorough home surveys, damp reports and renovation guidance for Buckley’s terraces, estates and rural fringes.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Buckley grew from clay pits and brickworks, so its streets mix stone cottages, Victorian terraces and larger housing estates around Alltami, Drury and Mountain Lane. Properties often sit on sloping plots with retaining walls and varied drainage arrangements.",
+  "Post-war estates and self-build plots have seen extensions, dormers and garage conversions added over decades. We review how alterations tie into the original structure, assess ventilation and insulation, and check whether documentation supports the work.",
+  "Residents and investors instruct us for honest guidance on older roofs, damp in basements and the feasibility of retrofit upgrades. Reports are written in plain English with clear priorities and realistic maintenance advice for local contractors.",
+];
+
+const sellingPoints = {
+  heading: 'Why Buckley clients choose LEM',
+  points: [
+    'AssocRICS surveyor familiar with Buckley’s mining-era terraces, post-war estates and hillside homes.',
+    'Clear, prioritised recommendations that reflect the cost and availability of trusted local trades.',
+    'Flexible appointments to coordinate with commuting families and contractors already on site.',
+    'Ongoing aftercare—discuss findings, check quotes and plan remedial works with confidence.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Buckley homes',
+  intro: `We tailor surveys to ${townName} properties—whether you are buying a town centre terrace or a modern build near Padeswood.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Ideal for most terraces, bungalows and semi-detached homes, highlighting urgent repairs and routine maintenance.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for older cottages, heavily extended properties and homes with structural alterations that need deeper investigation.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments, apartments or rental acquisitions with straightforward construction.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Find the root cause of condensation, penetrating damp or timber decay common in hillside plots and basements.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Balance airtight retrofits with fresh air supply to keep family homes comfortable and mould-free.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Accurate drawings and feasibility guidance for extensions, loft conversions or replacement outbuildings.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Buckley property considerations',
+  paragraphs: [
+    'Clay subsoils and historic mining activity can cause movement or settlement. We review cracks, floor levels and retaining structures to identify risk and necessary monitoring.',
+    'Many properties have had cavity wall insulation or solid-wall upgrades. We inspect for bridging, trapped moisture and ventilation issues that can follow retrofit works.',
+    'Older chimneys, flat roofs and valley gutters on Buckley terraces demand regular maintenance. Our surveys highlight urgent repairs and outline realistic timeframes for budgeting.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning improvements and energy upgrades',
+    paragraphs: [
+      'Loft conversions, kitchen extensions and new garden rooms are popular in Buckley. We outline structural considerations and any planning constraints before you commit to designs.',
+      'Energy bills drive many clients to explore insulation, glazing and heating changes. We advise on balanced upgrades that avoid condensation and comply with Part L requirements.',
+    ],
+  },
+  {
+    heading: 'Aftercare tailored to your project',
+    paragraphs: [
+      'Need a second opinion on quotes or negotiation strategy? We remain available after the survey to review information, speak with contractors and support discussions with lenders or solicitors.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Buckley homeowners',
+  description: 'Dive deeper into our main surveying and diagnostic services for Buckley properties.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Most common choice for Buckley terraces and suburban homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Comprehensive review for older cottages, farmhouses and complex extensions.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent assessment of damp ingress and decay in hillside properties.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve airflow and prevent mould in insulated family homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Detailed plans to support extensions or replacement structures.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Buckley property FAQs',
+  items: [
+    {
+      question: 'Do you cover all neighbourhoods within Buckley?',
+      answer: 'Yes, including Drury, Padeswood, Alltami, Mountain Lane, Bryn Awelon and the surrounding villages.',
+    },
+    {
+      question: 'Can you inspect former council houses or Right to Buy properties?',
+      answer: 'Absolutely. We check structural alterations, cavity insulation and service upgrades so you know the true condition.',
+    },
+    {
+      question: 'Will you report on subsidence or movement risks?',
+      answer: 'Yes. We assess cracking, ground conditions and historic mining records where relevant, and outline next steps if specialist advice is needed.',
+    },
+    {
+      question: 'How soon will I receive the survey?',
+      answer: 'Most Buckley reports are delivered within four working days. Tell us about chain pressures and we will plan accordingly.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Buckley',
+  description: 'We survey Buckley and neighbouring communities such as:',
+  areas: [
+    'Drury and Burntwood',
+    'Mountain Lane and Nant Mawr Road',
+    'Alltami and Bryn Y Baal',
+    'Padeswood and Penyffordd',
+    'Mynydd Isa and New Brighton',
+    'Hawarden and Ewloe',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Buckley survey',
+  paragraphs: [
+    'Share the address, property type and your concerns. We will recommend the right inspection level and provide a clear fixed fee.',
+    'You stay in touch with Liam throughout—coordinating access, receiving the report and planning repairs or negotiations with confidence.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Buckley,+Flintshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Building Surveys & Damp Reports | LEM Building Surveying</title>
-    <meta content="Independent building surveyor in Buckley and across Cheshire villages such as Cholmondeley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/buckley-damp-surveys" rel="canonical">
-    <meta content="Building Surveys & Damp Reports | LEM Building Surveying" property="og:title">
-    <meta content="Independent building surveyor in Buckley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Friendly, local and professional." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/buckley-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Building Surveys & Damp Reports | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent building surveyor in Buckley. RICS Level 2 &amp; 3 Home Surveys, Damp Reports &amp; Property Inspections. Friendly, local and professional." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/buckley-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Buckley -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/buckley-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Buckley",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH7",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Buckley, Flintshire",
-        "description": "Professional property surveys and damp inspections for homes in Buckley and surrounding areas.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Buckley",
-              "item": "https://www.lembuildingsurveying.co.uk/buckley-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Building Surveys &amp; Damp Reports in Buckley</h1>
-  <p>RICS Level 2 &amp; 3 Surveys, expert damp inspections, and local property advice for homeowners, landlords and buyers in Buckley.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Buckley Surveyor</h2>
-  <p>
-          Based nearby in Connah’s Quay, LEM Building Surveying Ltd provides independent RICS-aligned surveys across Buckley. Whether you’re buying a stone-built cottage, a 1960s semi, or managing rental properties, we deliver clear, timely reports and personal service.
-        </p>
-  <h2>Home Survey Options for Buckley</h2>
-  <ul>
-  <li><strong>RICS Level 2 Home Survey:</strong> Ideal for typical properties in good condition — includes advice on defects, repairs, and maintenance.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> For older, extended or altered homes — detailed analysis of structure, materials and defects.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Independent diagnosis of rising damp, condensation and mould with actionable recommendations.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate internal drawings for design, compliance or planning.</li>
-  <li><strong>EPCs with Floorplans:</strong> Energy ratings + layout — useful for listings and compliance.</li>
-  <li><strong>Ventilation Assessments:</strong> Identify airflow issues contributing to damp, condensation and poor air quality.</li>
-  </ul>
-  <p><a href="/services">View Full List of Services</a></p>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Experienced &amp; Qualified:</strong> Reports delivered by Liam, an AssocRICS surveyor — no salespeople or third parties.</li>
-  <li><strong>Honest &amp; Independent:</strong> You get clear, unbiased information to help you make confident decisions.</li>
-  <li><strong>Local Knowledge:</strong> Familiar with Buckley housing stock — from stone terraces to new-build estates.</li>
-  </ul>
-  <h2>Serving Buckley &amp; Nearby</h2>
-  <p>
-          We cover all areas of Buckley including Bryn-y-Baal, Lane End, Drury, and Alltami — plus surrounding areas like Mynydd Isa, New Brighton, Penyffordd and Mold.
-          Travelling into Cheshire? We regularly complete a <strong>building survey in Cholmondeley</strong> and other rural villages, providing consistent reporting for cross-border moves.
-        </p>
-  <iframe allowfullscreen="" height="300" loading="lazy" src="https://www.google.com/maps?q=Buckley,+Flintshire,+UK&amp;output=embed" class="map-embed" width="100%"></iframe>
-  <!-- CTA -->
-  <div class="cta-section">
-  <h2>Book a Survey in Buckley</h2>
-  <p>Call <a href="tel:07378732037">07378 732037</a> or <a href="/enquiry">request your quote online</a>.</p>
-  <a class="cta-button" href="/enquiry">Request Your Survey Quote</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- Footer --><!-- JS for header/footer includes -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

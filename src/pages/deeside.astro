@@ -1,122 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'deeside';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Deeside';
+const county = 'Flintshire';
+const postalCode = 'CH5';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Independent Deeside surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp reports and retrofit advice across Connah’s Quay, Shotton and Queensferry.";
+const canonicalPath = 'deeside-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "RICS-accredited surveyor delivering thorough home surveys, damp diagnostics and renovation guidance for Deeside’s terraces, estates and riverside developments.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Deeside spans Connah’s Quay, Shotton, Queensferry and Garden City—areas shaped by industry, estuary weather and steady post-war development. Streets mix red-brick terraces, 1960s semis and newer estates serving local manufacturing and distribution hubs.",
+  "Many homes have been extended in stages or upgraded to meet modern energy expectations. We examine how structural alterations tie into original fabric, whether damp proofing has kept pace and if ventilation supports busy family life.",
+  "Clients include first-time buyers, landlords maintaining rental portfolios and households relocating for employment in Deeside Industrial Park. They value accessible reports that highlight priorities, realistic budgets and next steps for lenders or contractors.",
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and active working households.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and neighbouring Deeside communities.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for older, altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained rental homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—particularly in properties exposed to estuary weather or historic industry.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Precise drawings and feasibility advice for extensions, conversions or planning submissions across Deeside.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    'High water tables and estuary winds can stress brickwork, pointing and external joinery. We review roof coverings, gutters and cavity detailing to ensure rainwater is managed effectively.',
+    'Many Deeside properties were extended to add kitchens, sunrooms or attic bedrooms. We inspect steelwork, drainage alterations and insulation continuity so you understand structural performance.',
+    'Industrial heritage means some streets have shared access, mixed-use plots or legacy materials. We highlight service routes, boundary responsibilities and any signs of former commercial use.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} homeowners often explore open-plan layouts, external insulation and upgraded heating systems. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services for Deeside buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby communities.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for coastal weather and industrial building fabrics.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in busy family homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover all parts of ${townName}?`,
+      answer: 'Yes. We regularly inspect homes in Connah’s Quay, Shotton, Queensferry, Garden City, Mancot and Sandycroft.',
+    },
+    {
+      question: 'Are you familiar with ex-local authority or steel-framed houses?',
+      answer: 'We assess structure, documentation and insulation upgrades on former council stock and non-standard construction common across Deeside.',
+    },
+    {
+      question: 'Can you help if my lender raises damp or timber concerns?',
+      answer: 'Absolutely. Our independent damp and timber investigations provide evidence-based recommendations you can share with lenders, agents or contractors.',
+    },
+    {
+      question: 'How quickly will my report arrive?',
+      answer: 'Most Deeside reports are delivered within four working days. Let us know if you have chain or mortgage deadlines and we will schedule accordingly.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey across the wider Deeside area, including:',
+  areas: [
+    'Connah’s Quay and Wepre',
+    'Shotton and Aston',
+    'Queensferry and Sandycroft',
+    'Garden City and Sealand',
+    'Mancot and Hawarden',
+    'Oakenholt and Flint',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Deeside,+Flintshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Building Surveyors Near Me | LEM Building Surveying</title>
-    <meta content="Looking for building surveyors near me in Deeside? Book RICS Level 1, 2 &amp; 3 home surveys, structural surveys and damp reports with a qualified independent surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/deeside-damp-surveys" rel="canonical">
-    <meta content="Building Surveyors Near Me | LEM Building Surveying" property="og:title">
-    <meta content="Qualified RICS surveyor offering Level 1, 2 &amp; 3 home surveys in Deeside. Fast, clear and local property survey reports with no sales pressure." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/deeside-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Building Surveyors Near Me | LEM Building Surveying" name="twitter:title">
-    <meta content="Qualified RICS surveyor offering Level 1, 2 &amp; 3 home surveys in Deeside. Fast, clear and local property survey reports with no sales pressure." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/deeside-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Deeside -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/deeside-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Deeside",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Deeside, Flintshire",
-        "description": "Property surveyor offering RICS Level 1, 2 & 3 home surveys and damp reports in Deeside and surrounding areas.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Deeside",
-              "item": "https://www.lembuildingsurveying.co.uk/deeside-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- HERO --><section class="hero">
-  <div class="hero-container">
-  <h1>Building Surveyors Near Me in Deeside</h1>
-  <p>Qualified and independent RICS home surveys with clear advice — covering all areas of Deeside and surrounding Flintshire with local building surveyors near you.</p>
-  <a class="cta-button" href="/enquiry">Get a Fast Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Trusted Local Surveyor for Deeside</h2>
-  <p>
-          Whether you're buying, selling or managing a property in Deeside, we provide fast, practical surveying services tailored to your needs. From high-street terraces to newer developments in areas like Shotton and Queensferry, you'll get honest reporting — direct from Liam, your local AssocRICS surveyor.
-        </p>
-  <h2>Survey Options Available</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> A basic condition report suitable for newer properties with no visible issues. Includes traffic-light ratings.</li>
-  <li><strong>RICS Level 2 Survey:</strong> Ideal for most standard homes — includes repair advice and maintenance recommendations.</li>
-  <li><strong>RICS Level 3 Survey:</strong> A full structural report for older, extended or non-standard homes — includes analysis of materials and defects.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Independent reports on moisture, mould, or wood decay. Perfect for peace of mind or mortgage conditions.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate internal plans for extensions or documentation.</li>
-  <li><strong>EPCs with Floorplans:</strong> Energy certificates with floorplan included — ideal for letting or resale.</li>
-  <li><strong>Ventilation Assessments:</strong> Diagnose condensation, stuffy rooms or poor indoor air quality.</li>
-  </ul>
-  <p>
-          Need a structural survey or a detailed <strong>homebuyers report</strong>? As independent building surveyors near Deeside, we combine local market knowledge with RICS methodology so you receive a survey report that highlights priorities and provides peace of mind before exchange.
-        </p>
-  <p><a href="/comparison">Compare Survey Levels →</a></p>
-  <p>
-          Need extra detail before booking? Read our
-          <a href="/level-2-vs-level-3">Level 2 vs Level 3 survey guide</a>
-          and
-          <a href="/independent-damp-survey-vs-contractor">independent damp survey comparison</a>
-          to see how we approach complex properties in Deeside.
-        </p>
-  <h2>Why Clients in Deeside Choose LEM</h2>
-  <ul>
-  <li><strong>Locally Based:</strong> We’re right here in Connah’s Quay — not an agency or national call centre.</li>
-  <li><strong>AssocRICS Qualified:</strong> Every survey is conducted by Liam — an experienced and insured surveyor.</li>
-  <li><strong>Clear Reports:</strong> Written in plain language, with useful recommendations and photos.</li>
-  <li><strong>Fast Turnaround:</strong> Most reports are delivered in 3–5 working days.</li>
-  </ul>
-  <h2>Book a Home Survey in Deeside</h2>
-  <p>
-          Whether you're purchasing, refinancing or planning a renovation, we’ll help you make a confident decision about your property in Deeside.
-        </p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  <a class="secondary-button" href="/services">Browse All Services</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Shared Includes -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

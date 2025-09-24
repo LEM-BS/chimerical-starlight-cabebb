@@ -1,142 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'cheshire';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Cheshire';
+const county = 'Cheshire';
+const postalCode = '';
+const pageTitle = `Home and Building Surveys in ${townName} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Cheshire surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and retrofit advice across Chester, Northwich, Nantwich, Knutsford and the wider county.";
+const canonicalPath = 'cheshire-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys across ${townName}`,
+  description:
+    'Independent RICS surveyor supporting buyers and owners across Cheshire with clear home surveys, damp reports and renovation guidance for historic market towns, rural villages and modern developments.',
+  cta: {
+    label: 'Book a Cheshire survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'Cheshire’s housing stock is incredibly varied—from sandstone cottages on the River Dee and grand Victorian terraces in Crewe, to barn conversions, new garden villages and waterside apartments. Each project demands a tailored inspection to understand condition, future maintenance and potential for improvement.',
+  'Growth around Chester, Northwich, Winsford and Warrington has brought extensive extensions, loft conversions and retrofit upgrades. We examine how these changes integrate with original structures, the quality of drainage and ventilation, and any paperwork needed to keep transactions moving.',
+  'Clients across the county rely on us for clear, independent advice that balances technical detail with realistic budgets. Whether you are buying a listed townhouse, a commuter estate property or a farmhouse ready for renovation, you receive practical reporting and responsive support.',
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    'AssocRICS surveyor with hands-on experience of Cheshire’s conservation policies, rural planning and modern developments.',
+    'Reports include prioritised actions, realistic budget guidance and maintenance tips you can discuss with contractors or lenders.',
+    'Flexible appointments arranged around agents, tenants and busy relocation schedules across the county.',
+    'Aftercare support for reviewing quotes, discussing remedial work or clarifying findings with solicitors and lenders.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: 'We match the level of inspection to properties in Cheshire—covering rural villages, market towns and growing commuter hubs.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Independent inspection for most houses, bungalows and apartments across the county, highlighting condition ratings and maintenance priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Comprehensive investigation for listed buildings, barn conversions and heavily altered homes where structure, moisture or future works require deeper analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition for peace of mind.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Locate the causes of damp, mould or timber decay—particularly important for sandstone, timber-framed and riverside properties.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extraction to keep family homes, apartments and retrofit projects comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Accurate drawings and feasibility advice for extensions, conversions or planning submissions anywhere in Cheshire.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'What to watch for in Cheshire homes',
+  paragraphs: [
+    'Clay soils, high water tables and mature trees are common across the county. We inspect cracking patterns, drainage routes and ground levels to judge structural movement or flood resilience.',
+    'Many villages feature retrofit insulation, replacement windows and mechanical ventilation upgrades. We assess workmanship to prevent trapped moisture, thermal bridging and condensation issues.',
+    'Large estates, shared driveways and outbuildings often accompany Cheshire properties. We document boundaries, access rights and service routes so your legal team can address them early.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      'Cheshire homeowners frequently explore open-plan layouts, rear extensions, barn conversions and sustainable heating. Our surveys outline structural considerations, permissions and practical phasing to keep projects compliant.',
+      'We provide evidence-based advice on damp treatment, ventilation improvements and energy retrofits, helping you invest wisely without harming historic fabric.',
+    ],
+  },
+  {
+    heading: 'Aftercare and county-wide support',
+    paragraphs: [
+      'You stay in direct contact with Liam before and after the survey. We review follow-up photos, discuss quotes and clarify findings for solicitors, lenders or contractors—wherever you are in Cheshire.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Cheshire clients',
+  description: 'Explore our core surveying and diagnostic services for buyers, sellers and homeowners across the county.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'The go-to report for Cheshire’s family homes, terraces and commuter properties.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Comprehensive inspection for listed buildings, rural homes and major renovation projects.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent diagnosis for sandstone cottages, riverside houses and converted barns.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Keep county homes comfortable while meeting retrofit and ventilation requirements.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support extensions, conversions and planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Cheshire property FAQs',
+  items: [
+    {
+      question: 'Do you cover all parts of Cheshire?',
+      answer: 'Yes. We regularly inspect homes in Chester, Northwich, Nantwich, Knutsford, Wilmslow, Congleton and the surrounding villages.',
+    },
+    {
+      question: 'Are you experienced with rural estates and town-centre apartments?',
+      answer: 'We tailor advice for everything from country houses and barn conversions to new-build apartments and commuter estates across the county.',
+    },
+    {
+      question: 'Can you help with damp issues, paperwork or planned renovations?',
+      answer: 'Absolutely. We diagnose damp, review documentation, and outline next steps for planning applications, lender queries or refurbishment projects.',
+    },
+    {
+      question: 'How quickly will my Cheshire survey report arrive?',
+      answer: 'Most reports are delivered within four working days, with faster turnaround available when transactions demand it.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered across Cheshire',
+  description: 'We work county-wide, including:',
+  areas: [
+    'Chester, Hoole and Handbridge',
+    'Northwich, Hartford and Winnington',
+    'Nantwich, Tarporley and Bunbury',
+    'Knutsford, Wilmslow and Alderley Edge',
+    'Crewe, Sandbach and Middlewich',
+    'Congleton, Macclesfield and Poynton',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Cheshire survey',
+  paragraphs: [
+    'Tell us about your property, key dates and long-term plans. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to post-survey discussions, you deal directly with Liam—ensuring consistent advice and rapid responses wherever you are in Cheshire.',
+  ],
+  primaryCta: {
+    label: 'Book a Cheshire survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Cheshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Cheshire | LEM Building Surveying</title>
-    <meta content="Independent building surveyor for Cheshire delivering RICS Level 1, Level 2 &amp; Level 3 surveys, homebuyers reports, damp inspections and home condition reports in Chester, Helsby, Farndon, Northwich and beyond." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/cheshire-damp-surveys" rel="canonical">
-    <meta content="RICS Home Surveys in Cheshire | LEM Building Surveying" property="og:title">
-    <meta content="RICS Home Surveys across Cheshire. Clear, independent reporting by a qualified surveyor. Level 1, Level 2 &amp; Level 3 surveys, damp inspections, and floorplans available." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/cheshire-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home Surveys in Cheshire | LEM Building Surveying" name="twitter:title">
-    <meta content="RICS Home Surveys across Cheshire. Clear, independent reporting by a qualified surveyor. Level 1, Level 2 &amp; Level 3 surveys, damp inspections, and floorplans available." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/cheshire-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- JSON-LD Schema for Cheshire -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/cheshire-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Cheshire",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Cheshire, Chester, North Wales Border",
-        "description": "Independent building surveyor providing RICS Home Surveys and inspections in Cheshire including Chester, Pulford, Kinnerton and beyond.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Cheshire",
-              "item": "https://www.lembuildingsurveying.co.uk/cheshire-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home Surveys in Cheshire</h1>
-  <p>Clear, independent property reports across Cheshire — from Chester to Pulford, Kinnerton and surrounding areas.</p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  </section><!-- CONTENT SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Your Local Cheshire Surveyor</h2>
-  <p>
-          Based near the Cheshire–North Wales border, LEM Building Surveying Ltd offers reliable property inspections throughout the area. Whether you’re buying in Chester, renovating in Kinnerton, or investing near Dodleston, we provide trusted surveyor insight at every step.
-        </p>
-  <p>
-          Clients searching for a <strong>homebuyers report in Cheshire</strong>, <strong>building survey in Baddiley</strong> or <strong>home condition reports in Northwich</strong> rely on our independent advice to understand each property’s condition before exchange.
-        </p>
-  <h2>Available Surveys Across Cheshire</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> Suitable for modern, well-maintained homes — clear summary of key issues.</li>
-  <li><strong>RICS Level 2 Survey:</strong> A HomeBuyer Report with advice on repairs, risks and maintenance planning.</li>
-  <li><strong>RICS Level 3 Survey:</strong> A full Building Survey covering structure, materials, defects and repair options.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Targeted investigations with practical, impartial advice on resolution.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Ideal for planning, space analysis and documentation.</li>
-  <li><strong>EPCs with Floorplans:</strong> Perfect for listings, compliance or landlord records.</li>
-  <li><strong>Ventilation Reports:</strong> Helpful where mould, condensation or air quality is a concern.</li>
-  </ul>
-  <p><a href="/services">See all services →</a></p>
-  <h2>Why Use LEM?</h2>
-  <ul>
-  <li><strong>Independent &amp; Qualified:</strong> All surveys are carried out by Liam — an AssocRICS building surveyor with local experience.</li>
-  <li><strong>No call centres or subcontractors:</strong> You deal directly with your surveyor at every stage.</li>
-  <li><strong>Plain English reporting:</strong> Fast turnaround, practical language, no waffle.</li>
-  </ul>
-  <h2>Surveying in Cheshire &amp; Surroundings</h2>
-  <p>We cover the following Cheshire areas and border villages:</p>
-  <ul>
-  <li>Chester, Pulford, Dodleston, Higher Kinnerton, Lower Kinnerton</li>
-  <li>Bretton, Saltney, Eccleston, Marford, Rossett, <a href="/farndon-damp-surveys">Farndon building surveys</a></li>
-  <li>
-            Wider Cheshire villages including Helsby, Warmingham, Leftwich, Davenham, Shocklach, Baddiley and Tattenhall — ideal if you need a surveyor on hand without travelling far for a <strong>building survey in Davenham</strong> or <strong>building survey in Shocklach</strong>.
-          </li>
-  </ul>
-  <p>Explore our dedicated area guides for more detail:</p>
-  <ul>
-          <li><a href="/chester-damp-surveys">Chester building surveyor</a></li>
-          <li><a href="/hoole-damp-surveys">Hoole home survey specialist</a></li>
-          <li><a href="/tarvin-damp-surveys">Tarvin building survey support</a></li>
-          <li><a href="/tattenhall-damp-surveys">Tattenhall property surveys</a></li>
-          <li><a href="/tarporley-damp-surveys">Tarporley home survey advice</a></li>
-          <li><a href="/helsby-damp-surveys">Helsby building survey reports</a></li>
-          <li><a href="/waverton-damp-surveys">Waverton surveyor services</a></li>
-          <li><a href="/vicars-cross-damp-surveys">Vicars Cross building surveys</a></li>
-          <li><a href="/boughton-damp-surveys">Boughton RICS surveyor</a></li>
-          <li><a href="/saighton-damp-surveys">Saighton home survey guidance</a></li>
-          <li><a href="/farndon-damp-surveys">Farndon building survey insight</a></li>
-          <li><a href="/dodleston-damp-surveys">Dodleston surveyor services</a></li>
-          <li><a href="/pulford-damp-surveys">Pulford property survey reports</a></li>
-        </ul>
-  <p>
-          Need a <strong>building surveyor in Leftwich</strong> or a <strong>building survey in Winsford</strong>? We provide the same level of detail for every instruction, whether it is a Georgian townhouse or a new-build apartment.
-        </p>
-  <p>
-          From arranging a <strong>building survey in Warmingham</strong> to supporting rural purchases that need a <strong>building survey in Baddiley</strong>, our reports combine local knowledge with RICS methodology so you can proceed with confidence.
-        </p>
-  <h2>Book a Survey or Ask a Question</h2>
-  <p>
-          Click below to request your tailored quote or get no-obligation advice. Fast response guaranteed.
-        </p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- Shared Footer --><!-- Header/Footer Inject -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

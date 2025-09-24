@@ -1,108 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'dodleston';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Dodleston';
+const county = 'Cheshire';
+const postalCode = 'CH4';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Dodleston surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice across the Cheshire and Flintshire border villages.";
+const canonicalPath = 'dodleston-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "Independent RICS surveyor delivering home surveys, damp reports and retrofit guidance for Dodleston’s cottages, farmhouses and executive homes near Chester.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Dodleston combines estate cottages, rural farmsteads and contemporary homes overlooking the Dee valley and Welsh hills.",
+  "Alterations range from barn conversions to open-plan kitchen extensions, so we check structure, drainage and ventilation work hand-in-hand with original fabric.",
+  "Clients value straight-talking guidance that balances heritage charm with realistic maintenance and energy upgrade advice.",
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and country lifestyle commitments.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and the surrounding border villages.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and cottages in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for historic, heavily altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—particularly in sandstone walls and converted outbuildings.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Precise drawings and feasibility advice for extensions, conversions or planning submissions across Dodleston.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    'Soft ground and mature trees can influence movement around village cottages; we assess cracking, drainage and retaining walls carefully.',
+    'Many properties rely on oil heating, septic tanks or shared drainage, so we highlight service condition and any evidence of upgrade needs.',
+    'Exposure to prevailing winds means roofs, chimneys and sandstone pointing need regular care; we prioritise maintenance actions to protect the envelope.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} households often pursue sympathetic extensions, barn conversions or garden studios. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services for Cheshire border buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby villages.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for sandstone cottages, barns and cellars.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in well-insulated rural homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover ${townName} and the surrounding hamlets?`,
+      answer: 'Yes. We survey throughout Dodleston, Lower Kinnerton, Higher Kinnerton, Pulford and the wider Chester border.',
+    },
+    {
+      question: 'Can you advise on listed buildings or conservation requirements?',
+      answer: 'We flag heritage considerations, check for historic alterations and signpost the consents needed for sympathetic upgrades.',
+    },
+    {
+      question: 'Do you inspect outbuildings, barns or annexes?',
+      answer: 'Where access is available we include attached and detached structures, noting condition and further investigations where required.',
+    },
+    {
+      question: 'How quickly will I receive my report?',
+      answer: 'Most Dodleston reports are delivered within four working days, with faster turnaround possible for time-sensitive moves.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey Dodleston and neighbouring Cheshire and Flintshire communities, including:',
+  areas: [
+    'Lower Kinnerton and Cuckoo’s Nest',
+    'Pulford and Poulton',
+    'Higher Kinnerton and Lavister',
+    'Eccleston and Aldford',
+    'Handbridge and Westminster Park',
+    'Rossett and Marford',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Dodleston,+Cheshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Home and Building Surveys in Dodleston | LEM Building Surveying</title>
-    <meta content="Professional home and building surveys in Dodleston. RICS Level 2 &amp; 3 surveys, damp reports, and expert local advice from LEM Building Surveying Ltd." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/dodleston-damp-surveys" rel="canonical">
-    <meta content="Home and Building Surveys in Dodleston | LEM Building Surveying" property="og:title">
-    <meta content="Professional home and building surveys in Dodleston. RICS Level 2 &amp; 3 surveys, damp reports, and expert local advice from LEM Building Surveying Ltd." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dodleston-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Home and Building Surveys in Dodleston | LEM Building Surveying" name="twitter:title">
-    <meta content="Professional home and building surveys in Dodleston. RICS Level 2 &amp; 3 surveys, damp reports, and expert local advice from LEM Building Surveying Ltd." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dodleston-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Dodleston -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/dodleston-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dodleston",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH4",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Dodleston, Cheshire",
-        "description": "RICS surveys and property inspections in Dodleston including HomeBuyer Reports, Building Surveys, and Damp Reports.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Dodleston",
-              "item": "https://www.lembuildingsurveying.co.uk/dodleston-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <section class="hero">
-  <div class="hero-container">
-  <h1>Home and Building Surveys in Dodleston</h1>
-  <p>Local RICS surveys, damp reports, and clear advice for homebuyers and homeowners in Dodleston and surrounding Cheshire villages.</p>
-  <a class="cta-button" href="/enquiry">Get a Quote</a>
-  </div>
-  </section><section class="service-detail">
-  <div class="box-container">
-  <h2>Property Surveys in Dodleston</h2>
-  <p>LEM Building Surveying Ltd provides reliable, professional inspections in Dodleston and nearby. With detailed, impartial reporting and local knowledge, we help you make confident decisions about your property.</p>
-  <h2>Our Core Survey Services</h2>
-  <ul>
-  <li><strong>RICS Level 2 Home Survey:</strong> Ideal for well-maintained, conventional homes. Includes condition ratings, repair advice, and maintenance guidance.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> Suitable for older or extended homes, or those needing renovation. Includes detailed analysis of structure, defects, and repair options.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Investigate mould, rising damp or timber decay with a clear, specialist report.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Accurate drawings for planning, extension, or documentation purposes.</li>
-  <li><strong>EPCs with Floorplans:</strong> Combined energy rating and layout plan, ideal for property marketing or lettings.</li>
-  <li><strong>Ventilation Assessments:</strong> Identify poor airflow, condensation risks, or persistent damp issues.</li>
-  </ul>
-  <p><a href="/services">View all survey services →</a></p>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> We’re based near Dodleston and understand the area's housing types and conditions.</li>
-  <li><strong>Qualified Expertise:</strong> RICS-aligned, with clear, jargon-free reporting direct from Liam — your local AssocRICS surveyor.</li>
-  <li><strong>No Call Centres:</strong> You’ll speak directly to the surveyor handling your case.</li>
-  </ul>
-  <h2>Serving Dodleston &amp; Beyond</h2>
-  <p>We serve Dodleston, Pulford, Eccleston, Lower Kinnerton, Higher Kinnerton, Chester and surrounding countryside.</p>
-  <iframe allowfullscreen="" height="300" loading="lazy" src="https://www.google.com/maps?q=Dodleston,+Cheshire,+UK&amp;output=embed" class="map-embed" width="100%"></iframe>
-  <div class="cta-section">
-  <h2>Arrange a Survey in Dodleston</h2>
-  <p>Get in touch for a quote or to ask a question — we’re happy to help.</p>
-  <a class="cta-button" href="/enquiry">Request a Survey</a>
-  </div>
-  </div>
-  </section>
-  <RelatedAreas currentSlug={currentSlug} />
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

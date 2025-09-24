@@ -1,106 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'dobshill';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'Dobshill';
+const county = 'Flintshire';
+const postalCode = 'CH5';
+const pageTitle = `Home and Building Surveys in ${townName}, ${county} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Local Dobshill surveyor delivering RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and retrofit advice for modern estates near the A55 and rural Flintshire homes.";
+const canonicalPath = 'dobshill-damp-surveys';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home and Building Surveys in ${townName}, ${county}`,
+  description:
+    "Independent RICS-accredited surveyor supporting Dobshill buyers and owners with clear home surveys, damp reports and renovation guidance across the Buckley and Hawarden area.",
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Dobshill sits between Buckley and Hawarden, with family estates developed from the 1980s onward alongside older cottages and farmhouses on the A550 corridor. Easy access to the A55 means properties are popular with commuters and service families stationed nearby.",
+  "Houses here often feature garage conversions, conservatories and recently upgraded heating systems. We check how these alterations integrate with the original structure, whether damp-proofing remains effective and if ventilation supports everyday living.",
+  "Clients range from first-time buyers securing their first detached home to downsizers moving within Flintshire. They appreciate concise, jargon-free reporting with realistic next steps for maintenance or negotiation.",
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with on-the-ground experience of ${townName}'s housing mix and local planning context.`,
+    'Reports set out clear priorities, realistic budgets and maintenance tips that support informed negotiations.',
+    'Flexible appointments arranged around agents, tenants and busy travel schedules.',
+    'Aftercare support so you can review findings, compare quotes and plan improvements directly with your surveyor.',
+  ],
+};
+
+const services = {
+  heading: `Surveys for ${townName} homes`,
+  intro: `We match the level of inspection to properties in ${townName} and neighbouring Buckley and Hawarden communities.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Independent inspection for most houses, bungalows and apartments in ${townName}, highlighting condition ratings and maintenance needs.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Detailed investigation for older, altered or non-standard properties where structure, moisture or future works require careful analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes that need a snapshot of condition.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify the cause of damp, mould or timber decay—especially important for properties on exposed plots or with historic alterations.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extractor performance to keep homes comfortable and free from condensation.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Precise drawings and feasibility advice for extensions, conversions or planning submissions across Dobshill.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName} homes`,
+  paragraphs: [
+    'Former Ministry of Defence land and reclaimed sites can feature made ground or varying foundation depths. We review cracks, drainage runs and garden levels to assess stability.',
+    'Many Dobshill houses have dormer loft conversions or reconfigured ground floors. We inspect structural supports, insulation and fire protection so you understand any follow-up actions.',
+    'Exposure on the hill means wind-driven rain can affect brickwork, render and roof detailing. We highlight maintenance priorities for soffits, gutters and pointing to avoid damp ingress.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, renovation and future works',
+    paragraphs: [
+      `${townName} homeowners often explore additional living space, from kitchen extensions to garden offices. We outline structural considerations, permissions and realistic phasing to keep projects compliant.`,
+      'We provide balanced advice on damp treatment, ventilation upgrades and energy improvements so investment delivers comfort without creating new moisture risks.',
+    ],
+  },
+  {
+    heading: 'Aftercare and client support',
+    paragraphs: [
+      'You remain in direct contact with Liam before and after the survey. We review follow-up photos, clarify report items for solicitors and help you prioritise works so decisions are well informed.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} clients`,
+  description: 'Explore our core surveying and diagnostic services for Dobshill buyers and owners.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support purchases in ${townName} and nearby communities.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the depth of analysis available for complex or historic properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis for exposed and hilltop housing.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve indoor air quality and manage humidity in busy family homes.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support redesigns, extensions or planning submissions.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover all of ${townName} and nearby estates?`,
+      answer: 'Yes. We survey homes across Dobshill, the former RAF housing, nearby Padeswood developments and Buckley’s southern estates.',
+    },
+    {
+      question: 'Can you inspect recently built homes or timber-frame properties?',
+      answer: 'We review workmanship, documentation and ventilation on modern builds, timber-frame houses and self-build plots common in Dobshill.',
+    },
+    {
+      question: 'Do you advise on drainage or soakaway issues?',
+      answer: 'We assess site drainage, check for signs of standing water and recommend further investigation where soakaways or private drains need attention.',
+    },
+    {
+      question: 'How quickly can I expect my report?',
+      answer: 'Most Dobshill reports are delivered within four working days. Tell us about key dates and we will plan the inspection accordingly.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey Dobshill and neighbouring Flintshire communities, including:',
+  areas: [
+    'Dobshill estate and Manor Lane',
+    'Padeswood and Drury',
+    'Buckley and Mountain Lane',
+    'Hawarden and Ewloe',
+    'Penyffordd and Penymynydd',
+    'Alltami and New Brighton',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timelines and any known documentation. We will recommend the most suitable inspection and provide a clear fixed fee.',
+    'From booking to follow-up calls, you work directly with Liam—ensuring consistent advice and rapid answers when negotiations or planning decisions depend on it.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Dobshill,+Flintshire,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home Surveys in Dobshill | LEM Building Surveying</title>
-    <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/dobshill-damp-surveys" rel="canonical">
-    <meta content="RICS Home Surveys in Dobshill | LEM Building Surveying" property="og:title">
-    <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dobshill-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home Surveys in Dobshill | LEM Building Surveying" name="twitter:title">
-    <meta content="Local building surveyor providing RICS Level 1, 2 &amp; 3 Home Surveys in Dobshill. Clear, fast reports direct from a qualified AssocRICS surveyor." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/dobshill-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Dobshill -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/dobshill-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dobshill",
-          "addressRegion": "Flintshire",
-          "postalCode": "CH5",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Dobshill, Flintshire",
-        "description": "RICS Home Surveys, Building Surveys and Damp Reports in Dobshill, Flintshire. Independent, qualified and local.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Dobshill",
-              "item": "https://www.lembuildingsurveying.co.uk/dobshill-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home Surveys in Dobshill</h1>
-  <p>Serving Dobshill with RICS Level 1, 2 &amp; 3 Home Surveys, damp reports and expert inspections — direct from a qualified local surveyor.</p>
-  <a class="cta-button" href="/enquiry">Request a Survey</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Independent Property Surveys in Dobshill</h2>
-  <p>
-          Based nearby in Connah’s Quay, I provide trusted surveying services for clients in Dobshill and the surrounding area — including tailored reports, expert advice and responsive turnaround times.
-        </p>
-  <h2>Survey Options Available</h2>
-  <ul>
-  <li><strong>RICS Level 1 Survey:</strong> Basic visual condition report for modern or well-maintained homes — clear and affordable.</li>
-  <li><strong>RICS Level 2 Survey:</strong> Ideal for conventional homes — includes condition ratings, repair advice and maintenance notes.</li>
-  <li><strong>RICS Level 3 Survey:</strong> Full building survey for older, extended or altered homes — structural analysis and repair guidance.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Clear diagnosis of visible damp, mould or decay — with practical recommendations.</li>
-  <li><strong>Measured Floorplans:</strong> Accurate layout drawings for planning, redesign or property records.</li>
-  <li><strong>EPCs with Floorplans:</strong> Energy Performance Certificate and visual layout — ideal for listings or compliance.</li>
-  </ul>
-  <p><a href="/services">View all services →</a></p>
-  <h2>Why LEM Surveying?</h2>
-  <ul>
-  <li><strong>AssocRICS Qualified:</strong> Every survey is carried out by Liam — not subcontracted.</li>
-  <li><strong>Truly Local:</strong> Covering Dobshill and the surrounding A55 corridor from nearby Deeside.</li>
-  <li><strong>No-nonsense Reports:</strong> Practical, honest advice — no sales, no jargon.</li>
-  <li><strong>Fast Turnaround:</strong> Reports usually delivered within 3–5 working days.</li>
-  </ul>
-  <h2>Book or Enquire Now</h2>
-  <p>Fill out a quick form or call direct for a fast quote — no obligation, just honest advice.</p>
-  <a class="cta-button" href="/enquiry">Get My Survey Quote</a>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Inject header/footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

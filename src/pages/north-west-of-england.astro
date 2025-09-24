@@ -1,91 +1,203 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'north-west-of-england';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
 
+const townName = 'North West of England';
+const county = 'North West';
+const postalCode = '';
+const pageTitle = `Home and Building Surveys in the ${townName} | LEM Building Surveying Ltd`;
+const metaDescription =
+  "Independent North West surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and retrofit advice across Cheshire, Merseyside, Greater Manchester and surrounding counties.";
+const canonicalPath = 'north-west-of-england-damp-surveys';
+
+const hero = {
+  eyebrow: 'Regional Surveyors',
+  heading: `Home and Building Surveys across the ${townName}`,
+  description:
+    'RICS-accredited surveyor delivering clear home surveys, damp investigations and renovation guidance for buyers and owners throughout Cheshire, Merseyside, Greater Manchester, Lancashire and North Wales.',
+  cta: {
+    label: 'Book a North West survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  'From Victorian terraces in Liverpool and Manchester to rural farmhouses in Cheshire and Lancashire, the North West’s homes demand inspections that recognise local materials, planning policies and market pressures.',
+  'We work with relocating families, landlords, investors and homeowners managing renovations. Our surveys balance technical detail with practical advice, highlighting priorities, budgets and regulatory considerations across city, suburban and rural settings.',
+  'With a base on the Cheshire–Flintshire border we travel quickly throughout the region, coordinating access with agents and sellers while keeping communication responsive for every client.',
+];
+
+const sellingPoints = {
+  heading: 'Why North West clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with diverse housing—from listed townhouses and mill conversions to new garden villages and coastal apartments.',
+    'Reports include prioritised actions, realistic cost guidance and maintenance tips tailored to regional contractors and suppliers.',
+    'Flexible scheduling to support relocations, corporate moves and time-critical transactions across the North West.',
+    'Post-survey support for reviewing quotes, speaking with contractors or clarifying findings for solicitors and lenders.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for North West homes',
+  intro: 'We tailor inspection levels to properties across Cheshire, Merseyside, Greater Manchester, Lancashire and North Wales.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Detailed condition report for most standard houses, bungalows and apartments across the region, highlighting urgent repairs and maintenance priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description: 'Comprehensive investigation for historic properties, complex refurbishments and non-standard construction where structure, moisture or future works require deeper analysis.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for newer developments or well-maintained homes when you need a snapshot of condition and key risks.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Evidence-based diagnosis of damp, mould and timber decay in everything from sandstone terraces to tower-block basements.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess airflow and extraction to keep homes comfortable, compliant and free from condensation across urban and rural settings.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description: 'Accurate drawings and feasibility advice for extensions, conversions and planning submissions anywhere in the North West.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Regional property considerations',
+  paragraphs: [
+    'Former industrial areas often hide complex histories—filled cellars, modified drainage and structural alterations. We examine workmanship and documentation to avoid surprises.',
+    'High rainfall, exposed coastlines and retrofit programmes can introduce damp and ventilation challenges. Our surveys identify root causes and provide actionable recommendations.',
+    'Shared access, leasehold arrangements and estate management charges vary widely across cities and new developments. We flag responsibilities early so your legal team can investigate.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Planning, retrofit and renovation support',
+    paragraphs: [
+      'Whether you are modernising a period terrace, extending a commuter home or reconfiguring a penthouse, we outline structural considerations, permissions and realistic phasing to keep projects compliant.',
+      'We provide balanced guidance on damp treatment, ventilation improvements and energy upgrades so investments deliver comfort without unintended consequences.',
+    ],
+  },
+  {
+    heading: 'Aftercare wherever you are based',
+    paragraphs: [
+      'Following every survey you remain in direct contact with Liam—reviewing quotes, clarifying report items or providing written updates for solicitors, lenders and contractors anywhere in the North West.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for North West clients',
+  description: 'Explore key surveying and diagnostic services delivered across the region.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Ideal for most family homes and apartments across the North West.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Comprehensive review for listed properties, barn conversions and major refurbishments.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent diagnosis for coastal terraces, high-rise apartments and rural cottages.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Manage condensation and air quality in densely occupied homes and retrofit projects.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Accurate plans to support extensions, conversions and commercial change-of-use applications.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'North West property FAQs',
+  items: [
+    {
+      question: 'Which areas do you cover?',
+      answer: 'We travel throughout Cheshire, Merseyside, Greater Manchester, Lancashire and North Wales—including Chester, Liverpool, Manchester, Warrington, Preston and Wrexham.',
+    },
+    {
+      question: 'Do you inspect both city apartments and rural homes?',
+      answer: 'Yes. We tailor advice for high-rise apartments, suburban estates, coastal terraces and countryside properties alike.',
+    },
+    {
+      question: 'Can you assist with damp issues, planning and retrofit decisions?',
+      answer: 'Absolutely. We provide independent damp investigations, review documentation and outline next steps for retrofits, extensions and lender queries.',
+    },
+    {
+      question: 'How quickly will my report be delivered?',
+      answer: 'Most regional reports are issued within four working days, with faster turnaround available to meet chain and relocation deadlines.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered across the North West',
+  description: 'Representative locations we work in include:',
+  areas: [
+    'Chester, Ellesmere Port and Wirral towns',
+    'Liverpool, Sefton and St Helens',
+    'Manchester, Salford and Trafford',
+    'Warrington, Widnes and Runcorn',
+    'Preston, South Ribble and Lancashire villages',
+    'North Wales border communities and Cheshire Plain',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your North West survey',
+  paragraphs: [
+    'Share your property details, location and project goals. We will recommend the right inspection, provide a clear fixed fee and coordinate travel to suit your timeline.',
+    'From first enquiry to post-survey support you speak directly with Liam, ensuring consistent advice and rapid answers wherever you are in the North West.',
+  ],
+  primaryCta: {
+    label: 'Book a North West survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=North+West+England,+UK&output=embed';
 ---
 
-<BaseLayout>
-  <Fragment slot="head">
-    <title>RICS Home and Building Surveys | LEM Building Surveying</title>
-    <meta content="Independent home surveys across the North West. RICS Level 1, Level 2, and Level 3 Surveys, Damp Reports and more by LEM Building Surveying Ltd." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/north-west-of-england-damp-surveys" rel="canonical">
-    <meta content="RICS Home and Building Surveys | LEM Building Surveying" property="og:title">
-    <meta content="Independent home surveys across the North West. RICS Level 1, Level 2, and Level 3 Surveys, Damp Reports and more by LEM Building Surveying Ltd." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/north-west-of-england-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="RICS Home and Building Surveys | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent home surveys across the North West. RICS Level 1, Level 2, and Level 3 Surveys, Damp Reports and more by LEM Building Surveying Ltd." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/north-west-of-england-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "North West of England",
-              "item": "https://www.lembuildingsurveying.co.uk/north-west-of-england-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO --><section class="hero">
-  <div class="hero-container">
-  <h1>RICS Home and Building Surveys in the North West</h1>
-  <p>Independent property surveys for homebuyers, sellers, landlords, and homeowners across the North West of England.</p>
-  <a class="cta-button" href="/enquiry">Get a Free Quote</a>
-  </div>
-  </section><!-- MAIN CONTENT --><section class="service-detail">
-  <div class="box-container">
-  <h2>Trusted Property Surveyor for the North West</h2>
-  <p>Based in Deeside and proudly serving the North West, LEM Building Surveying Ltd provides independent, reliable reports to support confident property decisions—whether you're buying, renovating, or addressing specific concerns.</p>
-  <h2>Our Surveying Services</h2>
-  <ul>
-  <li><strong>RICS Level 1 Home Survey:</strong> Entry-level report for newer homes in good condition. Covers visible issues with traffic-light ratings.</li>
-  <li><strong>RICS Level 2 Home Survey:</strong> Our most popular survey—includes repair advice, maintenance insights, and risk explanations.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> A detailed structural report for older, larger or altered homes. Ideal for renovation or peace of mind.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Independent inspections of rising damp, mould, rot, or woodworm—backed by data and recommendations.</li>
-  <li><strong>Ventilation Assessments:</strong> Diagnose persistent condensation or indoor air issues, especially in tenanted or energy-efficient homes.</li>
-  <li><a href="/services">View All Services →</a></li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Locally Based, Regionally Experienced:</strong> From Chester to Greater Manchester, we know the property types and challenges common across the North West.</li>
-  <li><strong>AssocRICS Qualified:</strong> Surveys completed personally by Liam, with no outsourcing or upselling.</li>
-  <li><strong>Clear, Actionable Reports:</strong> Easy to understand and full of useful insights to guide your decision.</li>
-  <li><strong>Fast Turnaround:</strong> Most surveys completed within 3–5 working days.</li>
-  </ul>
-  <h2>Areas We Cover</h2>
-  <p>LEM serves across the North West including Cheshire, Wirral, Merseyside, Flintshire border towns, and selected Greater Manchester suburbs.</p>
-  <!-- CTA SECTION -->
-  <div class="cta-section">
-  <h2>Book Your Survey in the North West</h2>
-  <p>Need a quote or advice from a qualified RICS surveyor? <a href="tel:07378732037">Call Liam on 07378 732037</a> or use the form below.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><footer>
-  <p>© 2025 LEM Building Surveying Ltd. All rights reserved.</p>
-  </footer><!-- Shared Includes -->
-</BaseLayout>
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
