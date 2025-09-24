@@ -1,107 +1,209 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import RelatedAreas from '../components/location/RelatedAreas.astro';
-const currentSlug = 'boughton';
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Boughton Surveyors',
+  heading: 'Home and Building Surveys in Boughton, Chester',
+  description:
+    'RICS-accredited surveyor offering home surveys, damp investigations and renovation advice for buyers and owners in Boughton, the canal quarter, and Chester’s riverside.',
+  cta: {
+    label: 'Book a Boughton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Boughton, stretching along Chester’s eastern riverbank and canal, is home to an eclectic mix: Georgian and Victorian terraces, riverside cottages, converted warehouses, and modern apartments. Many properties are within conservation areas or subject to flood risk, meaning buyers need a careful survey to avoid costly surprises. We bring a local, practical approach—highlighting heritage restrictions, moisture risks, and the realities of maintaining riverside homes.",
+  "Flooding and damp are real concerns for lower Boughton, while older terraces higher up the hill may show movement, cellar moisture, and signs of historic repair. Canal-side homes, especially converted warehouses, come with their own quirks—cladding, fire safety, and non-standard construction details. Our surveys identify what’s urgent, what’s ongoing, and what’s likely to crop up after you move in.",
+  "We support both first-time buyers and seasoned owners with no-nonsense reports, prioritised actions, and support dealing with both listed building and insurance queries.",
+];
+
+const sellingPoints = {
+  heading: 'Why Boughton buyers choose LEM',
+  points: [
+    'AssocRICS surveyor with hands-on experience of Boughton’s riverside, terraces, and canal conversions.',
+    'Local insights into flood risk, heritage repairs, and the quirks of period homes.',
+    'Flexible survey slots, including out-of-hours for urgent completions.',
+    'Post-survey advice—help with repairs, clarifying reports, and dealing with planning or insurance.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Boughton’s varied homes',
+  intro:
+    "From riverside cottages to canal-side apartments and period terraces, we match the survey to your property and plans.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most terraces and semi-detached houses, offering clear condition ratings and repair priorities.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Essential for riverside or historic homes, converted warehouses, or any building with suspected flood or structural issues.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Suitable for modern flats or well-maintained newer builds along the canal.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Invaluable for homes near the river or with cellars—targeted assessment and practical solutions.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Advice on preventing condensation and improving comfort in period or high-density buildings.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Measured plans for heritage repairs, flood resilience projects or complex refurbishments.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Boughton-specific surveying knowledge',
+  paragraphs: [
+    "Flood zones along the Dee and canal demand extra scrutiny. We assess damp proofing, past flood mitigation and drainage arrangements, highlighting where further protection or maintenance may be needed.",
+    "Stepped streets and sloping plots often hide movement and retaining wall issues. We examine brickwork, boundary walls and roof structures to separate historic settlement from ongoing risk.",
+    "Converted warehouses and newer developments need careful review of cladding, balconies and communal services to ensure compliance with fire and safety regulations.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Heritage, conservation and flood planning',
+    paragraphs: [
+      "Boughton’s conservation areas demand sympathetic repairs and careful material choices. We flag where approvals are likely required and highlight any unauthorised alterations that could delay your purchase.",
+      "For river or canal-side homes we outline realistic flood resilience improvements, insurance considerations, and maintenance strategies to keep moisture under control.",
+    ],
+  },
+  {
+    heading: 'Clear reporting and aftercare',
+    paragraphs: [
+      "We tailor each report to your priorities, from restoration projects to rental investments. After delivery we remain available to discuss quotes, liaise with contractors or clarify next steps with your solicitor.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Boughton clients',
+  description:
+    'Explore our core services for riverside and canal-side properties in Boughton.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Ideal for most terraces and traditional family homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Best for riverside, listed or significantly altered properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Pinpoint moisture sources in cellars, retaining walls and river-facing elevations.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Reduce condensation and improve air flow in compact terraces and apartments.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Support planning submissions, heritage repairs and flood resilience upgrades.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Boughton property FAQs',
+  items: [
+    {
+      question: 'Do you cover both riverside and canal-side Boughton?',
+      answer:
+        'Yes—our surveys span lower Boughton by the Dee, the canal quarter, and higher streets leading towards Hoole and Newton.',
+    },
+    {
+      question: 'Can you advise on flood risk mitigation?',
+      answer:
+        'We review existing protections, highlight vulnerabilities and recommend practical steps—from sump pumps to resilient materials and insurance considerations.',
+    },
+    {
+      question: 'Do you inspect listed terraces or cottages?',
+      answer:
+        'Absolutely. We assess historic materials, highlight consent requirements and flag any unauthorised works or risky alterations.',
+    },
+    {
+      question: 'What about apartments in converted warehouses?',
+      answer:
+        'We check building services, fire safety documentation and maintenance of communal areas, plus lease obligations relevant to your flat.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered across Boughton',
+  description: 'We work across Boughton and nearby Chester districts.',
+  areas: [
+    'Lower Boughton',
+    'Boughton Heath',
+    'The Bars',
+    'Chester Canal quarter',
+    'Dee Banks',
+    'Hoole Lane',
+    'Sandy Lane',
+    'Tarvin Road corridor',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Boughton survey',
+  paragraphs: [
+    'Share your Boughton property details and plans with us—we’ll recommend the right survey, outline fees clearly and fit around your timescale.',
+    'From initial call through to post-survey support, you receive practical, honest advice tailored to Boughton’s riverside neighbourhoods.',
+  ],
+  primaryCta: {
+    label: 'Book a Boughton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Boughton,+Chester,+UK&output=embed';
 
 ---
-
-<BaseLayout>
-  <Fragment slot="head">
-    <title>Building Surveys in Boughton | LEM Building Surveying</title>
-    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." name="description">
-    <link href="https://www.lembuildingsurveying.co.uk/boughton-damp-surveys" rel="canonical">
-    <meta content="Building Surveys in Boughton | LEM Building Surveying" property="og:title">
-    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." property="og:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/boughton-damp-surveys" property="og:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="Building Surveys in Boughton | LEM Building Surveying" name="twitter:title">
-    <meta content="Independent RICS surveyor covering Boughton, Chester. Level 1, 2 &amp; 3 Home Surveys, Damp Reports and professional property inspections from a local expert." name="twitter:description">
-    <meta content="https://www.lembuildingsurveying.co.uk/boughton-damp-surveys" name="twitter:url">
-    <meta content="https://www.lembuildingsurveying.co.uk/logo-sticker.png" name="twitter:image">
-
-    <!-- LocalBusiness Schema for Boughton -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LEM Building Surveying Ltd",
-        "url": "https://www.lembuildingsurveying.co.uk/boughton-damp-surveys",
-        "telephone": "+447378732037",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Boughton",
-          "addressRegion": "Cheshire",
-          "postalCode": "CH3",
-          "addressCountry": "GB"
-        },
-        "areaServed": "Boughton, Chester",
-        "description": "RICS Level 1, 2 & 3 Home Surveys in Boughton by an independent AssocRICS surveyor. Clear reports, fast turnaround and local insight.",
-        "image": "https://www.lembuildingsurveying.co.uk/logo-sticker.png"
-      }
-      </script>
-      <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.lembuildingsurveying.co.uk/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Areas We Cover",
-              "item": "https://www.lembuildingsurveying.co.uk/local-surveys"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Boughton",
-              "item": "https://www.lembuildingsurveying.co.uk/boughton-damp-surveys"
-            }
-          ]
-        }
-      </script>
-  </Fragment>
-
-  <!-- Shared Header --><!-- HERO SECTION --><section class="hero">
-  <div class="hero-container">
-  <h1>Building Surveys in Boughton, Chester</h1>
-  <p>Level 1, 2 &amp; 3 RICS Home Surveys, Damp Reports and floorplans from a local independent surveyor.</p>
-  <a class="cta-button" href="/enquiry">Request a Quote</a>
-  </div>
-  </section><!-- SERVICE DETAIL SECTION --><section class="service-detail">
-  <div class="box-container">
-  <h2>Trusted Surveying in Boughton</h2>
-  <p>
-          Based near Chester, I provide RICS Home Surveys and damp inspections throughout Boughton — from the Victorian terraces on Hoole Lane to modern riverside developments. You get straightforward advice, fast responses, and expert insight from a qualified local surveyor.
-        </p>
-  <h2>Survey Types Available</h2>
-  <ul>
-  <li><strong>RICS Level 1 Home Survey:</strong> Basic condition report for well-kept, newer properties.</li>
-  <li><strong>RICS Level 2 Home Survey:</strong> HomeBuyer Report with repair advice and condition ratings.</li>
-  <li><strong>RICS Level 3 Building Survey:</strong> In-depth analysis for older or altered properties, including structural advice.</li>
-  <li><strong>Damp &amp; Timber Reports:</strong> Clear investigation of damp, mould, or timber decay.</li>
-  <li><strong>Measured Surveys &amp; Floorplans:</strong> Ideal for renovations, planning or letting.</li>
-  <li><strong>Ventilation &amp; EPC Assessments:</strong> Support with airflow or compliance concerns.</li>
-  </ul>
-  <h2>Why Choose LEM?</h2>
-  <ul>
-  <li><strong>Local Knowledge:</strong> Familiar with the housing styles and typical issues across Boughton.</li>
-  <li><strong>No Salespeople:</strong> You deal directly with me — Liam — a qualified AssocRICS surveyor.</li>
-  <li><strong>Fast, Honest Reporting:</strong> No jargon, just clear facts and practical advice.</li>
-  </ul>
-  <h2>Get Your Survey Quote for Boughton</h2>
-  <p>Whether you're buying, planning works, or managing a rental — I’ll help you understand your property clearly and confidently.</p>
-  <div class="cta-section">
-  <a class="cta-button" href="/enquiry">Get a Free Quote</a>
-  <a class="secondary-button" href="/comparison">Compare Survey Types</a>
-  </div>
-  </div>
-  <RelatedAreas currentSlug={currentSlug} />
-  </section><!-- FOOTER --><!-- Load Header/Footer -->
-</BaseLayout>
+<LocationPageTemplate
+  townName="Boughton"
+  county="Cheshire"
+  postalCode="CH3"
+  pageTitle="Home and Building Surveys in Boughton, Chester | LEM Building Surveying Ltd"
+  metaDescription="Boughton-based surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp investigations and renovation advice along the River Dee and Chester Canal."
+  canonicalPath="boughton-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

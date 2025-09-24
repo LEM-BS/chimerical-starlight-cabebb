@@ -1,0 +1,208 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Upton Surveyors',
+  heading: 'Home and Building Surveys in Upton, Chester',
+  description:
+    'RICS-qualified surveyor offering independent home surveys, damp reports and renovation advice for buyers and homeowners in Upton and the northern Chester area.',
+  cta: {
+    label: 'Book an Upton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Upton is a popular suburb just north of Chester city centre, known for its spacious detached and semi-detached homes, larger gardens, and access to schools and the zoo. Most properties date from the inter-war and post-war period, with pockets of modern estates and some earlier cottages near Upton Lane. Extensions, garage conversions and open-plan remodelling are very common—meaning buyers must be alert to the quality, compliance, and impact of past works.",
+  "Common issues include movement or subsidence (particularly in older houses or those near former clay pits), cold bridging, flat roof leaks on extensions, and inconsistent insulation. Many Upton homes have seen kitchen extensions, conservatories or lofts; paperwork is not always complete, and standards can vary widely. We also see drainage changes and issues with garden walls or mature trees affecting the structure.",
+  "Our surveys focus on identifying risks, prioritising urgent repairs, and offering straightforward advice about what’s necessary and what’s cosmetic. Reports are practical and jargon-free, designed for buyers, movers and families upgrading their space.",
+];
+
+const sellingPoints = {
+  heading: 'Why Upton clients choose LEM',
+  points: [
+    'AssocRICS surveyor experienced with Upton’s family homes, extensions and post-war construction.',
+    'Local repair costs and contractor insights included—no out-of-area guesswork.',
+    'Flexible appointments to fit with moving chains and family life.',
+    'Full support after the survey—reviewing quotes, explaining findings, and answering queries.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Upton’s family housing stock',
+  intro:
+    "We recommend the right level of survey based on your property’s age, condition and your future plans—whether you’re buying, remodelling, or investing.",
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description:
+        'Ideal for most Upton semis, detached homes and 20th-century builds—comprehensive condition ratings, repair guidance, and maintenance advice.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Recommended for larger houses, heavily altered properties, or those with suspected structural or moisture issues.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description:
+        'Best for modern flats or recent builds in newer estates on Upton’s outskirts.',
+    },
+    {
+      name: 'Damp, Timber & Mould Investigation',
+      description:
+        'Important for ground floors, extensions, and homes with known damp or timber issues—especially after layout changes.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description:
+        'Helping busy households improve comfort, air quality and reduce condensation, particularly after energy upgrades.',
+    },
+    {
+      name: 'Measured Surveys & Planning Support',
+      description:
+        'Detailed plans for future extensions, outbuildings or planning submissions.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: 'Typical Upton property issues',
+  paragraphs: [
+    "Structural movement is not uncommon in Upton, especially in houses built on clay or near filled pits. We inspect for signs of historic settlement, cracking, and any movement in garden walls or outbuildings. Flat roofs over extensions or garages often develop leaks or insulation issues—particularly if not renewed recently.",
+    "Many houses feature single-storey extensions or converted garages—some with missing approvals or incomplete paperwork. We check for structural support, fire safety, and thermal performance. Drainage alterations and surface water management are also important, given Upton’s plot sizes and garden development.",
+    "Mature trees near boundaries can affect foundations, drainage and outbuildings. We always assess the risk and highlight any issues with root impact or overhanging vegetation.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, conversions and future alterations',
+    paragraphs: [
+      "Many Upton buyers plan kitchen knock-throughs, rear extensions or new loft conversions. Our surveys look for feasibility, structural requirements, and potential planning hurdles. We highlight any existing non-compliance and suggest practical next steps.",
+      "Damp and cold bridging in extensions or altered houses are common problems. We provide practical, costed advice for remediation—never just recommending expensive, unnecessary works.",
+    ],
+  },
+  {
+    heading: 'Ongoing support and clear advice',
+    paragraphs: [
+      "We’re available before and after your survey to answer questions, clarify findings and review quotes from contractors. Our mission is practical, local support every step of the way.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Upton clients',
+  description:
+    'Explore our key surveys and support for Upton homeowners and buyers.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Most popular for Upton’s semis and detached homes.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'For altered, larger or structurally complex houses.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Addressing moisture, timber and ventilation issues in post-war homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Improve comfort and reduce condensation after upgrades.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'For extensions, reconfiguration and planning in Upton.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: 'Upton property FAQs',
+  items: [
+    {
+      question: 'Do you cover all parts of Upton and nearby areas?',
+      answer:
+        'Yes. We survey across Upton, Upton Grange, Upton Heath, and neighbouring villages towards Chester Zoo and Moston.',
+    },
+    {
+      question: 'Are you experienced with extended or altered homes?',
+      answer:
+        'Absolutely. Most Upton properties have had some form of extension or conversion—we focus on compliance, support and practical risks.',
+    },
+    {
+      question: 'Can you advise on movement or cracking?',
+      answer:
+        'Yes—we assess signs of structural movement and provide clear recommendations, including when specialist input is needed.',
+    },
+    {
+      question: 'Do you help after the survey with quotes or works?',
+      answer:
+        'Yes. We review quotes, clarify findings and help you plan remedial work.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered in and around Upton',
+  description: 'We survey throughout Upton and surrounding Chester suburbs.',
+  areas: [
+    'Upton',
+    'Upton Grange',
+    'Upton Heath',
+    'Moston',
+    'Bache',
+    'Newton',
+    'Hoole',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Upton survey',
+  paragraphs: [
+    'Let us know your Upton property details and plans. We’ll recommend the right survey, quote clearly and work to your timetable. Local expertise ensures fast turnaround and solid advice.',
+    'From booking through aftercare, you’ll have clear, practical guidance for every step of your Upton move or project.',
+  ],
+  primaryCta: {
+    label: 'Book an Upton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Upton,+Chester,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Upton"
+  county="Cheshire"
+  postalCode="CH2"
+  pageTitle="Home and Building Surveys in Upton, Chester | LEM Building Surveying Ltd"
+  metaDescription="Local Upton surveyor for RICS Level 1, Level 2 & Level 3 home surveys, damp inspections and renovation advice for Upton and North Chester."
+  canonicalPath="upton-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
