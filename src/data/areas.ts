@@ -22,6 +22,7 @@ const createAreaEntry = (slug: string, name: string, anchor?: string): AreaLink 
 });
 
 const areaEntries: AreaLink[] = [
+  createAreaEntry('alderley-edge', 'Alderley Edge'),
   createAreaEntry('aldford', 'Aldford'),
   createAreaEntry('boughton', 'Boughton'),
   createAreaEntry('bretton', 'Bretton'),
@@ -31,6 +32,7 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('chester', 'Chester'),
   createAreaEntry('city-centre', 'Chester City Centre'),
   createAreaEntry('christleton', 'Christleton'),
+  createAreaEntry('churton', 'Churton'),
   createAreaEntry('connahs-quay', 'Connah’s Quay'),
   createAreaEntry('curzon-park', 'Curzon Park'),
   createAreaEntry('deeside', 'Deeside'),
@@ -50,12 +52,15 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('holywell', 'Holywell'),
   createAreaEntry('hoole', 'Hoole'),
   createAreaEntry('huntington', 'Huntington'),
+  createAreaEntry('kelsall', 'Kelsall'),
+  createAreaEntry('knutsford', 'Knutsford'),
   createAreaEntry('lower-kinnerton', 'Lower Kinnerton'),
   createAreaEntry('malpas', 'Malpas'),
   createAreaEntry('marford', 'Marford'),
   createAreaEntry('mold', 'Mold'),
   createAreaEntry('mollington', 'Mollington'),
   createAreaEntry('mynydd-isa', 'Mynydd Isa'),
+  createAreaEntry('neston-parkgate', 'Neston & Parkgate'),
   createAreaEntry('new-brighton', 'New Brighton'),
   createAreaEntry('newton', 'Newton'),
   createAreaEntry('north-west-of-england', 'North West of England'),
@@ -63,6 +68,7 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('northop-hall', 'Northop Hall'),
   createAreaEntry('oakenholt', 'Oakenholt'),
   createAreaEntry('penyffordd', 'Penyffordd'),
+  createAreaEntry('prestbury', 'Prestbury'),
   createAreaEntry('pulford', 'Pulford'),
   createAreaEntry('queens-park', 'Queen’s Park'),
   createAreaEntry('queensferry', 'Queensferry'),
@@ -70,15 +76,18 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('saighton', 'Saighton'),
   createAreaEntry('saltney', 'Saltney'),
   createAreaEntry('sandycroft', 'Sandycroft'),
+  createAreaEntry('saughall', 'Saughall'),
   createAreaEntry('shotton', 'Shotton'),
   createAreaEntry('sychdyn', 'Sychdyn'),
   createAreaEntry('tarporley', 'Tarporley'),
   createAreaEntry('tarvin', 'Tarvin'),
   createAreaEntry('tattenhall', 'Tattenhall'),
+  createAreaEntry('tilston', 'Tilston'),
   createAreaEntry('upton', 'Upton'),
   createAreaEntry('vicars-cross', 'Vicars Cross'),
   createAreaEntry('waverton', 'Waverton'),
   createAreaEntry('westminster-park', 'Westminster Park'),
+  createAreaEntry('wilmslow', 'Wilmslow'),
 ];
 
 const areaLookup = new Map(areaEntries.map((area) => [area.slug, area]));
