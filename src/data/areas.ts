@@ -51,6 +51,7 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('hoole', 'Hoole'),
   createAreaEntry('huntington', 'Huntington'),
   createAreaEntry('lower-kinnerton', 'Lower Kinnerton'),
+  createAreaEntry('malpas', 'Malpas'),
   createAreaEntry('marford', 'Marford'),
   createAreaEntry('mold', 'Mold'),
   createAreaEntry('mollington', 'Mollington'),
