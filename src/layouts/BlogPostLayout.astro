@@ -1,0 +1,119 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Frontmatter {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  canonical?: string;
+  image?: string;
+  publishDate?: string;
+  datePublished?: string;
+  updatedDate?: string;
+  dateModified?: string;
+  breadcrumbs?: { name: string; path?: string; item?: string }[];
+  pageId?: string;
+}
+
+interface AdditionalMetaTag {
+  name?: string;
+  property?: string;
+  content: string;
+  [key: string]: string | undefined;
+}
+
+const { frontmatter = {} as Frontmatter } = Astro.props;
+
+const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
+const currentPath = frontmatter.canonicalPath ?? Astro.url.pathname ?? '/';
+
+const resolveToAbsoluteUrl = (value?: string) => {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  if (!trimmed) return undefined;
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  if (trimmed.startsWith('//')) {
+    return `https:${trimmed}`;
+  }
+  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  return new URL(normalized, site).toString();
+};
+
+const toIsoString = (value?: string) => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  if (Number.isNaN(date.valueOf())) return undefined;
+  return date.toISOString();
+};
+
+const imageUrl = resolveToAbsoluteUrl(frontmatter.image);
+const publishedIso = toIsoString(frontmatter.publishDate ?? frontmatter.datePublished);
+const modifiedIso = toIsoString(frontmatter.updatedDate ?? frontmatter.dateModified);
+
+const additionalMeta: AdditionalMetaTag[] = [];
+if (publishedIso) {
+  additionalMeta.push({ property: 'article:published_time', content: publishedIso });
+}
+if (modifiedIso) {
+  additionalMeta.push({ property: 'article:modified_time', content: modifiedIso });
+}
+
+const breadcrumbSource =
+  Array.isArray(frontmatter.breadcrumbs) && frontmatter.breadcrumbs.length > 0
+    ? [...frontmatter.breadcrumbs]
+    : [
+        { name: 'Home', path: '/' },
+        { name: 'Blog', path: '/blog' },
+      ];
+
+const titleForBreadcrumb = frontmatter.title ?? 'Article';
+const hasTerminalBreadcrumb = breadcrumbSource.some((crumb) => {
+  if (!crumb) return false;
+  if (crumb.name === titleForBreadcrumb) return true;
+  return crumb.path === currentPath || crumb.item === currentPath;
+});
+
+if (!hasTerminalBreadcrumb) {
+  breadcrumbSource.push({ name: titleForBreadcrumb, path: currentPath });
+}
+
+const openGraph: Record<string, string> = {
+  type: 'article',
+  url: new URL(currentPath, site).toString(),
+};
+
+if (imageUrl) {
+  openGraph.image = imageUrl;
+}
+if (publishedIso) {
+  openGraph['article:published_time'] = publishedIso;
+}
+if (modifiedIso) {
+  openGraph['article:modified_time'] = modifiedIso;
+}
+
+const twitter: Record<string, string> = {
+  card: 'summary_large_image',
+};
+
+if (imageUrl) {
+  twitter.image = imageUrl;
+}
+
+const seo = {
+  title: frontmatter.title,
+  description: frontmatter.description,
+  canonical: frontmatter.canonical,
+  canonicalPath: currentPath,
+  image: imageUrl,
+  openGraph,
+  twitter,
+  breadcrumbs: breadcrumbSource,
+  additionalMeta,
+};
+---
+<BaseLayout pageId={frontmatter.pageId ?? 'blog-post'} seo={seo}>
+  <slot />
+</BaseLayout>
