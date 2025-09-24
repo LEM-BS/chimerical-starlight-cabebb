@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*───────────────────────────────────────────────────────
   0. GLOBAL VARIABLES & CSS RESET
   Centralized control for colors, fonts, and spacings
@@ -23,9 +27,39 @@
   --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
   --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);
 
+  /* Theming Helpers */
+  --body-background: linear-gradient(
+    180deg,
+    rgba(245, 247, 251, 0.96) 0%,
+    #ffffff 40%,
+    rgba(232, 240, 255, 0.7) 100%
+  );
+
   /* Typography */
   --heading-font: "Merriweather", "Georgia", serif;
   --body-font: "Open Sans", "Segoe UI", sans-serif;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+  --primary-blue: #e0e7ff;
+  --primary-blue-soft: #c7d2fe;
+  --accent-blue: #60a5fa;
+  --hover-blue: #3b82f6;
+  --cta-gold: #facc15;
+  --cta-gold-hover: #eab308;
+  --soft-bg: #111827;
+  --card-bg: rgba(17, 24, 39, 0.85);
+  --text-main: #f1f5f9;
+  --text-light: #cbd5f5;
+  --divider-grey: rgba(148, 163, 184, 0.5);
+  --shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.25);
+  --body-background: radial-gradient(circle at top, rgba(30, 41, 59, 0.92), #0f172a 65%);
 }
 
 /* Modern CSS Reset */
@@ -50,12 +84,7 @@ body {
 
 body {
   font-family: var(--body-font);
-  background: linear-gradient(
-    180deg,
-    rgba(245, 247, 251, 0.96) 0%,
-    #ffffff 40%,
-    rgba(232, 240, 255, 0.7) 100%
-  );
+  background: var(--body-background);
   color: var(--text-main);
   line-height: 1.7;
   min-height: 100vh;
@@ -228,7 +257,7 @@ section {
 .card {
   background: var(--card-bg);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   box-shadow: var(--shadow-soft);
   padding: clamp(1.6rem, 4vw, 2.2rem);
   display: flex;
@@ -264,7 +293,7 @@ section > .box-container {
   padding: clamp(2rem, 5vw, 3rem);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   backdrop-filter: blur(6px);
 }
 
@@ -670,6 +699,18 @@ header {
   color: #fff;
 }
 
+.theme-toggle-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
+.theme-toggle-control button {
+  white-space: nowrap;
+}
+
 @media (max-width: 767px) {
   .header-inner {
     gap: 0.75rem;
@@ -1061,7 +1102,7 @@ header {
   padding: clamp(1.8rem, 4vw, 2.4rem);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   transition:
     transform 0.18s ease,
     box-shadow 0.22s ease,
@@ -1167,7 +1208,7 @@ form textarea {
   width: 100%;
   padding: 0.9rem 1rem;
   margin-bottom: 1.1rem;
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   border-radius: 10px;
   font-family: var(--body-font);
   font-size: 1rem;
@@ -1360,7 +1401,7 @@ form button:hover,
   box-shadow: var(--shadow);
   padding: clamp(2rem, 5vw, 2.6rem) clamp(1.6rem, 4vw, 2.1rem);
   margin-bottom: 2rem;
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   backdrop-filter: blur(10px);
 }
 
@@ -1571,12 +1612,12 @@ table {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
 }
 
 th,
 td {
-  border-bottom: 1px solid rgba(229, 234, 242, 0.9);
+  border-bottom: 1px solid var(--divider-grey);
   padding: 0.85rem 1.1rem;
   text-align: center;
 }
@@ -1650,7 +1691,7 @@ details {
   padding: 1.1rem 1.25rem;
   margin: 1.4rem 0;
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   transition:
     box-shadow 0.2s ease,
     border-color 0.2s ease;
@@ -1692,7 +1733,7 @@ details[open] summary::after {
   margin: 2.2rem 0;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
 }
 
 .services-toc .toc-list {
@@ -1750,7 +1791,7 @@ details[open] summary::after {
   padding: clamp(2rem, 5vw, 2.8rem) 1.5rem;
   margin: 2rem 0;
   border-radius: var(--border-radius);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1787,7 +1828,7 @@ details[open] summary::after {
   padding: clamp(1.8rem, 4vw, 2.5rem);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(229, 234, 242, 0.9);
+  border: 1px solid var(--divider-grey);
 }
 
 .service-block.alt {

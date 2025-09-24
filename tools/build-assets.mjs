@@ -5,6 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import postcss from 'postcss';
 import cssnano from 'cssnano';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -43,7 +45,11 @@ async function buildScripts() {
 async function buildStyles() {
   await ensureOutDir();
   const source = await fs.readFile(cssSrc, 'utf8');
-  const result = await postcss([cssnano({ preset: 'default' })]).process(source, {
+  const result = await postcss([
+    tailwindcss({ config: path.join(root, 'tailwind.config.cjs') }),
+    autoprefixer(),
+    cssnano({ preset: 'default' }),
+  ]).process(source, {
     from: cssSrc,
     to: cssOut,
   });

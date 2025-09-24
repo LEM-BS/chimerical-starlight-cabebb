@@ -15,8 +15,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20.14.10",
     "astro": "^4.13.1",
+    "autoprefixer": "^10.4.21",
     "chokidar": "^3.5.3",
     "cssnano": "^6.1.2",
     "esbuild": "^0.23.0",
@@ -27,6 +29,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^4.1.13",
     "terser": "^5.31.3",
     "typescript": "^5.5.4",
     "vitest": "^1.6.0"
