@@ -18,7 +18,7 @@ const createAreaEntry = (slug: string, name: string, anchor?: string): AreaLink 
   slug,
   anchor,
   name,
-  permalink: `/${slug}-damp-surveys`,
+  permalink: `/${slug}`,
 });
 
 const areaEntries: AreaLink[] = [

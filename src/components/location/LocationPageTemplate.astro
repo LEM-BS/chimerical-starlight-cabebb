@@ -130,8 +130,43 @@ const computedMapEmbedUrl = mapEmbedUrl ?? `https://www.google.com/maps?q=${enco
 const areaServedList = [townName, ...(neighbourhoods?.areas ?? [])];
 const areaServed = areaServedList.map((area) => `${area}, ${county}`);
 
+const normalizedProvidedTitle = pageTitle?.trim() ?? '';
+const defaultTitle = `${townName} Surveyors | LEM Building Surveying`;
+const fallbackTitle = `${townName} Surveyors | LEM Surveying`;
+const minimalTitle = `${townName} Surveyors | LEM`;
+
+const resolveTitle = () => {
+  if (normalizedProvidedTitle.length > 0 && normalizedProvidedTitle.length <= 60) {
+    return normalizedProvidedTitle;
+  }
+
+  const candidate = normalizedProvidedTitle.length > 0 ? normalizedProvidedTitle : defaultTitle;
+  if (candidate.length <= 60) {
+    return candidate;
+  }
+
+  if (normalizedProvidedTitle.length > 0) {
+    const compressed = normalizedProvidedTitle.replace('LEM Building Surveying', 'LEM Surveying');
+    if (compressed.length <= 60) {
+      return compressed;
+    }
+  }
+
+  if (fallbackTitle.length <= 60) {
+    return fallbackTitle;
+  }
+
+  if (minimalTitle.length <= 60) {
+    return minimalTitle;
+  }
+
+  return `${candidate.slice(0, 59).trimEnd()}…`;
+};
+
+const resolvedPageTitle = resolveTitle();
+
 const baseSeo = createLocationSeo({
-  title: pageTitle,
+  title: resolvedPageTitle,
   description: metaDescription,
   canonical: canonicalUrl,
   breadcrumbLabel: townName,
@@ -162,6 +197,7 @@ const faqStructuredData =
 
 const seo = {
   ...baseSeo,
+  title: resolvedPageTitle,
   fullTitle: true,
   structuredData: [
     ...(baseSeo.structuredData ?? []),
