@@ -1,0 +1,138 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Churton Surveyors',
+  heading: 'Home and Building Surveys in Churton, Cheshire',
+  description:
+    'RICS-accredited surveyor delivering independent home surveys, damp reports and rural property advice for Churton and the Chester–Aldford–Farndon corridor.',
+  cta: {
+    label: 'Book a Churton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Churton is a sought-after Cheshire village—classic brick cottages, country houses, barn conversions and modern infill along quiet lanes. Buyers must be alert to boundary, drainage and planning quirks, plus the risks of damp, timber decay, and the practicalities of maintaining rural property.",
+  "Many homes are listed or within the conservation area—so repairs and upgrades require sensitive planning. Private drainage and historic repairs are frequent features. Our surveys blend local expertise with clear, practical priorities—no generic checklists, just what matters in a rural setting.",
+  "We work with buyers, owners and landlords—supporting you from first enquiry to aftercare.",
+];
+
+const sellingPoints = {
+  heading: 'Why Churton clients trust LEM',
+  points: [
+    'Local rural and period property expertise.',
+    'Advice on barn conversions, drainage and conservation area rules.',
+    'Flexible booking and quick reporting.',
+    'Aftercare for queries, repairs, and upgrades.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Churton’s village homes',
+  intro:
+    "From listed cottages and country houses to modern infill and barn conversions, we tailor the survey to your property and future plans.",
+  items: [
+    { name: 'RICS Level 2 Home Survey', description: 'For most well-kept cottages and modern family homes.' },
+    { name: 'RICS Level 3 Building Survey', description: 'For listed, altered, or converted property.' },
+    { name: 'RICS Level 1 Condition Report', description: 'For new builds or recent modernisation.' },
+    { name: 'Damp, Timber & Mould Investigation', description: 'Key for older and converted property.' },
+    { name: 'Ventilation & Indoor Air Quality Review', description: 'Advice for all ages and types of homes.' },
+    { name: 'Measured Surveys & Planning Support', description: 'Supporting extensions and compliance.' },
+  ],
+};
+
+const localInsights = {
+  heading: 'Key risks in Churton property',
+  paragraphs: [
+    "Historic repairs, private drainage, and boundary drift are frequent in Churton. Many houses show signs of movement, patchy insulation and damp—especially where modern works meet original brickwork or timber.",
+    "Conservation status means even minor changes may need permission. We flag legal and practical issues, giving you clarity and confidence.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, planning and ongoing support',
+    paragraphs: [
+      "We advise on the feasibility of upgrades and help with planning compliance. Aftercare covers queries, repairs and future projects.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Churton clients',
+  description: 'Surveys and advice for Churton, Aldford, Farndon and Cheshire border villages.',
+  links: [
+    { label: 'RICS Level 2 Home Survey', href: '/level-2', description: 'Most requested for cottages and family homes.' },
+    { label: 'RICS Level 3 Building Survey', href: '/level-3', description: 'For listed and converted property.' },
+    { label: 'Damp & Timber Surveys', href: '/damp-timber-surveys', description: 'Focused on damp, decay and rural risks.' },
+    { label: 'Ventilation Assessments', href: '/ventilation-assessments', description: 'For comfort and air quality.' },
+    { label: 'Measured Surveys', href: '/measured-surveys', description: 'For planning and extensions.' },
+  ],
+};
+
+const faqs = {
+  heading: 'Churton property FAQs',
+  items: [
+    { question: 'Do you cover Churton and neighbouring villages?', answer: 'Yes—Churton, Aldford, Farndon, and rural Chester/South Cheshire.' },
+    { question: 'Are you experienced with listed and converted homes?', answer: 'Absolutely—deep experience in rural and period property.' },
+    { question: 'Can you help with drainage, boundaries or compliance?', answer: 'Yes—practical, local support for all risks.' },
+    { question: 'Is aftercare included?', answer: 'Yes—ongoing help for quotes and repairs.' },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered around Churton',
+  description: 'We survey throughout Churton, Aldford, Farndon, and the Chester–Malpas corridor.',
+  areas: [
+    'Churton',
+    'Aldford',
+    'Farndon',
+    'Tilston',
+    'Saighton',
+    'Cheshire border villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Churton survey',
+  paragraphs: [
+    'Share your Churton property details and plans. We’ll recommend the right survey, quote transparently, and support you every step of the way.',
+    'From booking to aftercare, rural experience and practical support as standard.',
+  ],
+  primaryCta: {
+    label: 'Book a Churton survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Churton,+Cheshire,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Churton"
+  county="Cheshire"
+  postalCode="CH3"
+  pageTitle="Home and Building Surveys in Churton, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Churton’s local surveyor for RICS Level 1, 2 & 3 home surveys, damp and rural property advice in Churton, Aldford, Farndon and the Cheshire border."
+  canonicalPath="churton-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
