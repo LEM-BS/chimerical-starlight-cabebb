@@ -10,11 +10,37 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '..');
 const srcDir = path.join(root, 'src');
-const cssSrc = path.join(srcDir, 'css', 'style.css');
 const scriptsDir = path.join(srcDir, 'scripts');
 const outDir = path.join(root, 'public', 'assets');
-const jsOut = path.join(outDir, 'nav.min.js');
-const cssOut = path.join(outDir, 'styles.min.css');
+const cssEntries = [
+  {
+    source: path.join(srcDir, 'css', 'style.css'),
+    destination: path.join(outDir, 'styles.min.css'),
+  },
+  {
+    source: path.join(srcDir, 'css', 'lem-quote.css'),
+    destination: path.join(outDir, 'lem-quote.min.css'),
+  },
+];
+
+const scriptEntries = [
+  {
+    entry: path.join(scriptsDir, 'nav.js'),
+    outfile: path.join(outDir, 'nav.min.js'),
+    bundle: true,
+    format: 'esm',
+  },
+  {
+    entry: path.join(scriptsDir, 'includes.js'),
+    outfile: path.join(outDir, 'js', 'includes.js'),
+    bundle: false,
+  },
+  {
+    entry: path.join(scriptsDir, 'review-schema.js'),
+    outfile: path.join(outDir, 'js', 'review-schema.js'),
+    bundle: false,
+  },
+];
 
 const args = new Set(process.argv.slice(2));
 const watchMode = args.has('--watch');
@@ -28,27 +54,45 @@ async function ensureOutDir() {
 
 async function buildScripts() {
   await ensureOutDir();
-  await esbuild({
-    entryPoints: [path.join(scriptsDir, 'nav.js')],
-    bundle: true,
-    minify: true,
-    sourcemap: withSourceMaps,
-    outfile: jsOut,
-    target: 'es2018',
-    format: 'esm',
-  });
-  log(`Built ${path.relative(root, jsOut)}`);
+  await Promise.all(
+    scriptEntries.map(async ({ entry, outfile, bundle, format }) => {
+      await fs.mkdir(path.dirname(outfile), { recursive: true });
+      const options = {
+        entryPoints: [entry],
+        bundle,
+        minify: true,
+        sourcemap: withSourceMaps,
+        outfile,
+        target: 'es2018',
+        platform: 'browser',
+        logLevel: 'silent',
+        legalComments: 'none',
+      };
+
+      if (format && bundle) {
+        options.format = format;
+      }
+
+      await esbuild(options);
+      log(`Built ${path.relative(root, outfile)}`);
+    }),
+  );
 }
 
 async function buildStyles() {
   await ensureOutDir();
-  const source = await fs.readFile(cssSrc, 'utf8');
-  const result = await postcss([cssnano({ preset: 'default' })]).process(source, {
-    from: cssSrc,
-    to: cssOut,
-  });
-  await fs.writeFile(cssOut, result.css, 'utf8');
-  log(`Built ${path.relative(root, cssOut)}`);
+  await Promise.all(
+    cssEntries.map(async ({ source, destination }) => {
+      const css = await fs.readFile(source, 'utf8');
+      const result = await postcss([cssnano({ preset: 'default' })]).process(css, {
+        from: source,
+        to: destination,
+      });
+      await fs.mkdir(path.dirname(destination), { recursive: true });
+      await fs.writeFile(destination, result.css, 'utf8');
+      log(`Built ${path.relative(root, destination)}`);
+    }),
+  );
 }
 
 async function buildAll(reason = 'manual run') {
