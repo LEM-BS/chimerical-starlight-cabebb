@@ -1,0 +1,140 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const hero = {
+  eyebrow: 'Malpas Surveyors',
+  heading: 'Home and Building Surveys in Malpas, Cheshire',
+  description:
+    'Independent RICS surveyor providing tailored home surveys, damp investigations and rural property advice for Malpas, Bickerton, and south-west Cheshire villages.',
+  cta: {
+    label: 'Book a Malpas survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  "Malpas sits at the heart of rural south-west Cheshire—known for its historic High Street, red-brick cottages, period townhouses, and modern homes on the edges of the village. Outlying hamlets and farms bring barn conversions, listed buildings, and unique rural challenges: private drainage, boundary quirks, and historic movement. Flood risk is low, but older properties may have damp or timber decay, especially around cellars and original ground floors.",
+  "Our surveys are honest, practical, and focused on the realities of rural property—highlighting essential repairs, compliance issues and sensible priorities. Whether you’re relocating for village life or investing in a character home, we deliver advice grounded in local knowledge and RICS standards.",
+  "We support buyers, owners and landlords in Malpas and surrounding villages, offering ongoing support long after the report is delivered.",
+];
+
+const sellingPoints = {
+  heading: 'Why Malpas clients choose LEM',
+  points: [
+    'Rural and village property expertise for all of south-west Cheshire.',
+    'Advice on listed buildings, barn conversions, and modern developments.',
+    'Flexible survey slots and quick report turnaround.',
+    'Full aftercare and support for repairs, upgrades and negotiation.',
+  ],
+};
+
+const services = {
+  heading: 'Surveys for Malpas and rural Cheshire homes',
+  intro:
+    "From listed High Street houses to barn conversions and new builds, we match the survey to your property and plans.",
+  items: [
+    { name: 'RICS Level 2 Home Survey', description: 'Most requested for period cottages, modern family homes and converted property.' },
+    { name: 'RICS Level 3 Building Survey', description: 'For listed, altered, or unusual buildings—essential for barn conversions and substantial houses.' },
+    { name: 'RICS Level 1 Condition Report', description: 'For new builds or recently refurbished property.' },
+    { name: 'Damp, Timber & Mould Investigation', description: 'Key for older homes, cellars and conversions.' },
+    { name: 'Ventilation & Indoor Air Quality Review', description: 'Advice for both traditional and new-build properties.' },
+    { name: 'Measured Surveys & Planning Support', description: 'Supporting extensions, conversions and compliance with planning rules.' },
+  ],
+};
+
+const localInsights = {
+  heading: 'Key risks and issues in Malpas property',
+  paragraphs: [
+    "Older brick cottages and High Street properties may have solid walls, shallow footings and cellars—damp and historic movement are common. Barn conversions need careful review of paperwork, insulation, and compliance. Outlying homes often have private drainage (septic tanks, soakaways) and boundaries marked by hedges, streams or ditches.",
+    "Modern developments may have snagging, drainage or access issues. We focus on what matters most for buyers—clarity, cost, and compliance.",
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Extensions, conversions and future works',
+    paragraphs: [
+      "Malpas buyers often plan upgrades, extensions, or garden rooms. We review the feasibility, signpost planning or conservation constraints, and highlight past works that may need regularising.",
+      "Aftercare is included—reviewing quotes, clarifying findings, and ongoing advice for maintenance and upgrades.",
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: 'Popular services for Malpas clients',
+  description: 'Explore our key surveys and support for Malpas and rural Cheshire.',
+  links: [
+    { label: 'RICS Level 2 Home Survey', href: '/level-2', description: 'For most village, rural and converted property.' },
+    { label: 'RICS Level 3 Building Survey', href: '/level-3', description: 'For listed or complex homes and barn conversions.' },
+    { label: 'Damp & Timber Surveys', href: '/damp-timber-surveys', description: 'Targeted at rural damp, decay and ventilation issues.' },
+    { label: 'Ventilation Assessments', href: '/ventilation-assessments', description: 'For all ages and types of property.' },
+    { label: 'Measured Surveys', href: '/measured-surveys', description: 'Supporting extensions, planning and compliance.' },
+  ],
+};
+
+const faqs = {
+  heading: 'Malpas property FAQs',
+  items: [
+    { question: 'Do you cover Malpas and surrounding villages?', answer: 'Yes—Malpas, Bickerton, Tushingham, No Mans Heath, and all rural areas nearby.' },
+    { question: 'Are you experienced with listed and converted property?', answer: 'Absolutely—deep experience in period and rural homes.' },
+    { question: 'Can you advise on drainage, boundaries or planning?', answer: 'Yes—support for compliance, legal and upgrade queries.' },
+    { question: 'Is aftercare included?', answer: 'Yes—ongoing support for quotes, negotiation and future works.' },
+  ],
+};
+
+const neighbourhoods = {
+  heading: 'Areas covered around Malpas',
+  description: 'We survey throughout Malpas, Bickerton, No Mans Heath, Tushingham, and rural south-west Cheshire.',
+  areas: [
+    'Malpas',
+    'Bickerton',
+    'No Mans Heath',
+    'Tushingham',
+    'Tilston',
+    'Cholmondeley',
+    'Cheshire/South Cheshire villages',
+  ],
+};
+
+const closing = {
+  heading: 'Arrange your Malpas survey',
+  paragraphs: [
+    'Share your Malpas property details and plans. We’ll recommend the best survey, quote clearly, and provide ongoing support from booking to aftercare.',
+    'Local knowledge and rural experience—every step of the way.',
+  ],
+  primaryCta: {
+    label: 'Book a Malpas survey',
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Malpas,+Cheshire,+UK&output=embed';
+
+---
+<LocationPageTemplate
+  townName="Malpas"
+  county="Cheshire"
+  postalCode="SY14"
+  pageTitle="Home and Building Surveys in Malpas, Cheshire | LEM Building Surveying Ltd"
+  metaDescription="Malpas’s trusted surveyor for RICS Level 1, 2 & 3 home surveys, damp diagnostics and rural property advice in Malpas, Bickerton, Tushingham and south Cheshire."
+  canonicalPath="malpas-damp-surveys"
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
