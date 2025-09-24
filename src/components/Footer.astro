@@ -2,24 +2,26 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-top">
-    <section class="footer-col">
+<div class="footer-inner" role="contentinfo">
+  <section class="footer-top">
+    <section class="footer-col" aria-label="Contact details">
       <h3>Contact</h3>
-      <p><strong>LEM Building Surveying Ltd</strong></p>
-      <p>
-        Marlowe Avenue<br />
-        Connah's Quay<br />
-        Deeside, Flintshire<br />
-        CH5&nbsp;4HS
-      </p>
-      <p>
-        <strong>T:</strong> <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:enquiries@lembuildingsurveying.co.uk">enquiries@lembuildingsurveying.co.uk</a>
-      </p>
+      <address>
+        <p><strong>LEM Building Surveying Ltd</strong></p>
+        <p>
+          Marlowe Avenue<br />
+          Connah's Quay<br />
+          Deeside, Flintshire<br />
+          CH5&nbsp;4HS
+        </p>
+        <p>
+          <strong>T:</strong> <a href="tel:07378732037">07378&nbsp;732&nbsp;037</a>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:enquiries@lembuildingsurveying.co.uk">enquiries@lembuildingsurveying.co.uk</a>
+        </p>
+      </address>
       <p>
         <strong>Enquiries:</strong>
         <a href="/enquiry">Request a survey quote</a>
@@ -131,14 +133,14 @@ const currentYear = new Date().getFullYear();
         </li>
       </ul>
     </section>
-  </div>
+  </section>
 
-  <div class="footer-cta">
+  <section class="footer-cta">
     <a href="/enquiry" class="cta-button">Request a Survey Quote</a>
-  </div>
+  </section>
 
-  <div class="footer-bottom">
+  <section class="footer-bottom">
     <p>&copy; {currentYear} LEM Building Surveying Ltd. All rights reserved.</p>
     <p class="small"><a href="/privacy-policy">Privacy Policy</a></p>
-  </div>
-</footer>
+  </section>
+</div>
