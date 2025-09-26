@@ -1,0 +1,206 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const townName = 'Wrexham';
+const county = 'Wrexham County Borough';
+const postalCode = '';
+const pageTitle = `${townName} Surveyors | LEM Building Surveying`;
+const metaDescription =
+  'Independent Wrexham surveyor delivering RICS home surveys, damp investigations and measured building surveys for town and village properties.';
+const canonicalPath = 'wrexham';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `Home, Damp and Measured Surveys in ${townName}`,
+  description:
+    `AssocRICS surveyor covering ${townName}, Rhos, Gresford and surrounding villages with detailed RICS reports, damp diagnostics and accurate measured surveys.`,
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  `${townName} combines Victorian terraces, post-war estates and rural farmhouses that each need a tailored inspection approach. We review build dates, extensions and alterations so the chosen survey level reflects real risks.`,
+  `Buyers and homeowners across ${townName} regularly instruct RICS Level 2 and Level 3 surveys to understand damp issues, structural changes and retrofit upgrades before committing to works.`,
+  `From town centre conversions to modern developments in nearby villages, we deliver independent reporting that highlights priorities, costs and compliance considerations.`,
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    `AssocRICS surveyor with first-hand knowledge of ${townName}'s terraces, non-standard rural homes and new estates.`,
+    'Balanced advice that breaks down urgent repairs, damp risks and future maintenance in plain language.',
+    'Flexible scheduling across North East Wales to coordinate with agents, tenants and renovation timelines.',
+    'Direct access to your surveyor before and after inspection for follow-up questions and planning support.',
+  ],
+};
+
+const services = {
+  heading: `Survey services across ${townName}`,
+  intro: `RICS and specialist inspections tailored to the property styles found throughout ${townName} and its villages.`,
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: `Ideal for most houses and apartments in ${townName}, providing condition ratings, moisture observations and practical repair advice.`,
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Full structural appraisal for historic cottages, converted chapels or extensively altered homes where damp and movement need deeper investigation.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise overview for well-maintained modern builds that still benefit from an independent check.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Root-cause diagnosis of penetrating damp, condensation and timber decay common in valley terraces and countryside properties.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Assess extractor performance, trickle vents and air pathways to help homes cope with modern insulation upgrades.',
+    },
+    {
+      name: 'Measured Surveys & CAD Plans',
+      description: `Accurate floor plans and elevations to support extensions, barn conversions and lease plans throughout ${townName}.`,
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `What to watch for in ${townName}`,
+  paragraphs: [
+    `${townName}'s terraces and cottages often show historic movement and patch repairs. We review masonry, lintels and roof structures to ensure issues are properly recorded.`,
+    'Floodplains around the Clywedog and Alyn valleys demand attention to drainage, damp-proofing and ventilation. We highlight realistic mitigation steps.',
+    'Conversions and extensions are popular across the borough. We examine detailing, approvals and workmanship so you understand long-term implications.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Support for renovation and retrofit projects',
+    paragraphs: [
+      'We advise on insulation upgrades, heating changes and ventilation strategies so improvements reduce damp risk rather than increase it.',
+      'Measured surveys provide accurate baselines for planning drawings, steel designs or heritage consent submissions.',
+    ],
+  },
+  {
+    heading: 'Client care throughout the process',
+    paragraphs: [
+      'You receive the report directly from your surveyor along with follow-up time to discuss findings, quotes and negotiations.',
+      'Need written clarification for a lender or contractor? We provide targeted addenda that help keep your timeline on track.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} homeowners`,
+  description: 'Dig deeper into the specialist surveys we provide across Wrexham and the surrounding villages.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: `See how our Level 2 reports support confident decisions in ${townName}.`,
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Understand the benefits of an in-depth structural inspection for complex properties.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent damp diagnosis across North East Wales.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Keep retrofitted homes balanced with tailored airflow advice.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Obtain CAD-ready plans for extensions, conversions and lease agreements.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: `Do you cover all of ${townName} and nearby villages?`,
+      answer:
+        'Yes. We inspect homes across the town centre, Rhosllanerchrugog, Gresford, Coedpoeth, Ruabon and throughout the wider borough.',
+    },
+    {
+      question: 'Can you investigate damp and mould in older terraces?',
+      answer:
+        'Absolutely. We combine moisture profiling with ventilation checks to identify causes and recommend realistic remedial options.',
+    },
+    {
+      question: 'Do you provide measured surveys for planning applications?',
+      answer:
+        'Yes, we capture accurate dimensions and elevations to support extensions, conversions and compliance submissions.',
+    },
+    {
+      question: 'How quickly will I receive my report?',
+      answer: 'Most reports are issued within four working days, with faster turnaround available when chains require it.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered in and around ${townName}`,
+  description: 'We survey Wrexham County Borough and neighbouring communities, including:',
+  areas: [
+    'Wrexham city centre and Acton',
+    'Rhosllanerchrugog, Johnstown and Ruabon',
+    'Gresford, Marford and Rossett',
+    'Coedpoeth, Minera and Bwlchgwyn',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Share your objectives, timescales and any known concerns. We will recommend the most suitable inspection and confirm a fixed fee.',
+    'You work directly with Liam throughout—from booking and site access to post-survey calls—so you receive consistent, practical advice.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=Wrexham,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>

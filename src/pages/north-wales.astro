@@ -1,0 +1,206 @@
+---
+import LocationPageTemplate from '../components/location/LocationPageTemplate.astro';
+
+const townName = 'North Wales';
+const county = 'North Wales';
+const postalCode = '';
+const pageTitle = `${townName} Surveyors | LEM Building Surveying`;
+const metaDescription =
+  'RICS surveyor for North Wales providing Level 2 and Level 3 surveys, damp investigations and measured building surveys across coastal and rural communities.';
+const canonicalPath = 'north-wales';
+
+const hero = {
+  eyebrow: `${townName} Surveyors`,
+  heading: `RICS Surveys and Damp Specialists in ${townName}`,
+  description:
+    'Independent practice supporting homeowners, buyers and landlords across Flintshire, Denbighshire, Conwy and Gwynedd with detailed surveys, damp reports and measured building surveys.',
+  cta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const intro = [
+  `${townName} offers an array of property types—from seaside terraces and apartments to stone farmhouses and modern eco homes. We tailor every inspection so the survey level and reporting align with the construction and local exposure.`,
+  'Our reports address the realities of coastal weathering, tourism-led refurbishments and retrofitted insulation common across the region. Clients receive clear guidance on moisture control, structural care and maintenance planning.',
+  'Measured surveys and feasibility advice support renovation projects, barn conversions and planning submissions throughout the region, ensuring drawings and specifications start from accurate data.',
+];
+
+const sellingPoints = {
+  heading: `Why ${townName} clients choose LEM`,
+  points: [
+    'AssocRICS surveyor with hands-on experience across Flintshire, Denbighshire, Conwy and Gwynedd housing stock.',
+    'Balanced reporting that prioritises damp management, structural integrity and future maintenance for exposed locations.',
+    'Efficient scheduling that minimises travel delays and keeps purchase chains moving.',
+    'Direct communication with your surveyor from instruction through aftercare for rapid clarification.',
+  ],
+};
+
+const services = {
+  heading: `Specialist surveys across ${townName}`,
+  intro: 'RICS and diagnostic services tailored to varied landscapes and building styles across the region.',
+  items: [
+    {
+      name: 'RICS Level 2 Home Survey',
+      description: 'Thorough inspection and condition ratings suited to most modern houses, coastal terraces and village homes.',
+    },
+    {
+      name: 'RICS Level 3 Building Survey',
+      description:
+        'Detailed structural analysis for listed buildings, stone farmhouses, converted chapels and complex renovations.',
+    },
+    {
+      name: 'RICS Level 1 Condition Report',
+      description: 'Concise reporting for newer developments and investment apartments needing independent verification.',
+    },
+    {
+      name: 'Independent Damp & Timber Investigation',
+      description: 'Identify salt contamination, driving rain and ventilation issues in exposed coastal and upland homes.',
+    },
+    {
+      name: 'Ventilation & Indoor Air Quality Review',
+      description: 'Ensure mechanical and natural ventilation strategies cope with airtight retrofits and holiday-let occupancy.',
+    },
+    {
+      name: 'Measured Surveys & CAD Plans',
+      description: 'Accurate plans and sections for extensions, conversions and compliance submissions throughout North Wales.',
+    },
+  ],
+};
+
+const localInsights = {
+  heading: `Survey considerations unique to ${townName}`,
+  paragraphs: [
+    'Coastal towns contend with wind-driven rain, salt-laden air and maintenance backlogs. We highlight detailing that protects masonry, render and joinery.',
+    'Rural farmhouses and barns often have mixed materials and piecemeal upgrades. We review structure, moisture and ventilation to keep traditional fabric breathable.',
+    'Tourism and holiday-let conversions bring intensive usage. We assess fire safety, sound insulation and drainage to ensure properties remain compliant.',
+  ],
+};
+
+const additionalInsights = [
+  {
+    heading: 'Support for planners and designers',
+    paragraphs: [
+      'Measured surveys feed into architectural design, structural calculations and heritage applications across the region.',
+      'We coordinate with local architects and contractors to ensure retrofit and extension plans respect conservation requirements.',
+    ],
+  },
+  {
+    heading: 'Aftercare and guidance',
+    paragraphs: [
+      'Post-survey calls walk you through priorities, negotiations and contractor briefs.',
+      'Need evidence for a lender, insurer or grant application? We prepare supplementary notes that keep paperwork aligned.',
+    ],
+  },
+];
+
+const internalLinks = {
+  heading: `Popular services for ${townName} homeowners`,
+  description: 'Explore the key services North Wales clients regularly request.',
+  links: [
+    {
+      label: 'RICS Level 2 Home Survey',
+      href: '/level-2',
+      description: 'Discover how our Level 2 surveys support confident decisions across the region.',
+    },
+    {
+      label: 'RICS Level 3 Building Survey',
+      href: '/level-3',
+      description: 'Learn why complex and historic buildings benefit from comprehensive reporting.',
+    },
+    {
+      label: 'Damp & Timber Surveys',
+      href: '/damp-timber-surveys',
+      description: 'Independent diagnosis for damp-prone coastal and upland homes.',
+    },
+    {
+      label: 'Ventilation Assessments',
+      href: '/ventilation-assessments',
+      description: 'Tailored ventilation guidance for well-sealed or high-occupancy properties.',
+    },
+    {
+      label: 'Measured Surveys',
+      href: '/measured-surveys',
+      description: 'Precision data for extensions, conversions and compliance across North Wales.',
+    },
+  ],
+};
+
+const faqs = {
+  heading: `${townName} property FAQs`,
+  items: [
+    {
+      question: 'Which areas of North Wales do you cover?',
+      answer:
+        'We travel throughout Flintshire, Denbighshire, Conwy, Gwynedd and Anglesey, including rural villages and coastal towns.',
+    },
+    {
+      question: 'Can you investigate damp in exposed coastal homes?',
+      answer:
+        'Yes. We assess salt attack, pointing, guttering and ventilation to pinpoint causes and recommend practical solutions.',
+    },
+    {
+      question: 'Do you offer measured surveys for planning submissions?',
+      answer:
+        'Absolutely. Our laser-measured drawings support extensions, barn conversions and lease plans.',
+    },
+    {
+      question: 'How soon will I receive my RICS report?',
+      answer: 'Most surveys are delivered within four working days, with expedited services available when timelines are tight.',
+    },
+  ],
+};
+
+const neighbourhoods = {
+  heading: `Areas covered across ${townName}`,
+  description: 'We work throughout North Wales, regularly visiting:',
+  areas: [
+    'Flintshire towns including Mold, Buckley and Holywell',
+    'Denbighshire and Conwy coastal resorts such as Rhyl, Prestatyn and Llandudno',
+    'Gwynedd communities including Bangor, Caernarfon and the Llŷn Peninsula',
+    'Anglesey villages and rural mainland hamlets',
+  ],
+};
+
+const closing = {
+  heading: `Arrange your ${townName} survey`,
+  paragraphs: [
+    'Tell us about the property, timescales and any known issues. We will recommend the right level of inspection and confirm fees upfront.',
+    'From booking to follow-up conversations you deal directly with Liam, ensuring consistent advice wherever your property sits in North Wales.',
+  ],
+  primaryCta: {
+    label: `Book a ${townName} survey`,
+    href: '/enquiry',
+  },
+  secondaryCta: {
+    label: 'Call 07378 732037',
+    href: 'tel:07378732037',
+  },
+};
+
+const mapEmbedUrl = 'https://www.google.com/maps?q=North+Wales,+UK&output=embed';
+---
+
+<LocationPageTemplate
+  townName={townName}
+  county={county}
+  postalCode={postalCode}
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  canonicalPath={canonicalPath}
+  hero={hero}
+  intro={intro}
+  sellingPoints={sellingPoints}
+  services={services}
+  internalLinks={internalLinks}
+  localInsights={localInsights}
+  additionalInsights={additionalInsights}
+  faqs={faqs}
+  neighbourhoods={neighbourhoods}
+  closing={closing}
+  mapEmbedUrl={mapEmbedUrl}
+/>
