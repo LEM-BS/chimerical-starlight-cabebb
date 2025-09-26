@@ -34,6 +34,10 @@ const PROPERTY_SECTION_HEADING_ID = 'quote-property-heading';
 const SURVEY_SECTION_HEADING_ID = 'quote-survey-preferences-heading';
 const NOTES_SECTION_HEADING_ID = 'quote-additional-info-heading';
 
+const SURVEY_ALIASES: Record<string, SurveyType> = {
+  damp: 'damp-survey',
+};
+
 const FULL_POSTCODE_PATTERN = /^([A-Z]{1,2}\d[A-Z\d]?)(\d[A-Z]{2})$/;
 const OUTWARD_POSTCODE_PATTERN = /^[A-Z]{1,2}\d[A-Z\d]?$/;
 
@@ -235,8 +239,12 @@ const QuoteCalculator = (): ReactElement => {
     if (outcodeParam) setPostcodeInput(normaliseOutcode(outcodeParam));
 
     const surveyParam = params.get('survey');
-    if (surveyParam && SURVEYS.some((option) => option.id === surveyParam)) {
-      setSurveyType(surveyParam as SurveyType);
+    const normalisedSurveyParam = surveyParam && (SURVEY_ALIASES[surveyParam] ?? surveyParam);
+    if (
+      normalisedSurveyParam &&
+      SURVEYS.some((option) => option.id === normalisedSurveyParam)
+    ) {
+      setSurveyType(normalisedSurveyParam as SurveyType);
     }
   }, []);
 

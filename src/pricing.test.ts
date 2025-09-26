@@ -7,6 +7,7 @@ import {
   COMPLEXITY_OPTIONS,
   DISTANCE_BANDS,
   formatCurrency,
+  SURVEYS,
   getDistanceBandById,
   getDistanceBandForMiles,
   getSurveyById,
@@ -215,5 +216,70 @@ describe('quote engine', () => {
     expect(valueAdjustment?.amount.gross).toBe(scenario.expectedValueGross);
     expect(result.total.gross).toBe(scenario.expectedTotal);
     expect(result.range).toEqual(scenario.expectedRange);
+  });
+});
+
+describe('specialist damp surveys', () => {
+  it('lists all specialist damp surveys with updated labels', () => {
+    const ids = ['timber-and-damp', 'damp-survey', 'damp-and-mould'] as const;
+    const dampSurveys = SURVEYS.filter((survey) => ids.includes(survey.id as (typeof ids)[number]));
+    expect(dampSurveys).toHaveLength(3);
+    expect(dampSurveys.map((survey) => survey.label)).toEqual([
+      'Timber and Damp Investigation',
+      'Damp Survey',
+      'Damp and Mould Survey',
+    ]);
+  });
+
+  it('calculates quotes for Timber and Damp Investigation including travel scaling', () => {
+    const result = calculateQuote({
+      surveyType: 'timber-and-damp',
+      propertyValue: 300000,
+      bedrooms: 3,
+      complexity: 'standard',
+      distanceBandId: 'within-35-miles',
+    });
+
+    expect(result.survey.label).toBe('Timber and Damp Investigation');
+    expect(result.base.gross).toBe(595);
+    expect(result.adjustments.map((entry) => entry.id)).toEqual(['value', 'distance']);
+    expect(result.adjustments.find((entry) => entry.id === 'distance')?.amount.gross).toBe(35);
+    expect(result.total.gross).toBe(655);
+    expect(result.range).toEqual({ min: 605, max: 705 });
+  });
+
+  it('applies value and complexity scaling for the Damp Survey', () => {
+    const result = calculateQuote({
+      surveyType: 'damp-survey',
+      propertyValue: 600000,
+      bedrooms: 2,
+      complexity: 'period',
+      distanceBandId: 'within-10-miles',
+    });
+
+    expect(result.survey.label).toBe('Damp Survey');
+    expect(result.base.gross).toBe(495);
+    expect(result.adjustments.map((entry) => entry.id)).toEqual(['complexity', 'value']);
+    expect(result.adjustments.find((entry) => entry.id === 'complexity')?.amount.gross).toBe(25);
+    expect(result.adjustments.find((entry) => entry.id === 'value')?.amount.gross).toBe(70);
+    expect(result.total.gross).toBe(590);
+    expect(result.range).toEqual({ min: 545, max: 635 });
+  });
+
+  it('captures mould-focused reporting adjustments for the Damp and Mould Survey', () => {
+    const result = calculateQuote({
+      surveyType: 'damp-and-mould',
+      propertyValue: 220000,
+      bedrooms: 2,
+      complexity: 'extended',
+      distanceBandId: 'within-20-miles',
+    });
+
+    expect(result.survey.label).toBe('Damp and Mould Survey');
+    expect(result.base.gross).toBe(525);
+    expect(result.adjustments.map((entry) => entry.id)).toEqual(['complexity', 'distance']);
+    expect(result.adjustments.find((entry) => entry.id === 'distance')?.amount.gross).toBe(20);
+    expect(result.total.gross).toBe(550);
+    expect(result.range).toEqual({ min: 505, max: 595 });
   });
 });

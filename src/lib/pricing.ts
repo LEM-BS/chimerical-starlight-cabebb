@@ -11,7 +11,9 @@ export type SurveyType =
   | 'level1'
   | 'level2'
   | 'level3'
-  | 'damp'
+  | 'timber-and-damp'
+  | 'damp-survey'
+  | 'damp-and-mould'
   | 'ventilation'
   | 'epc'
   | 'measured';
@@ -181,20 +183,52 @@ export const SURVEYS: readonly SurveyDefinition[] = [
     bedroomsIncluded: 2,
   },
   {
-    id: 'damp',
-    label: 'Specialist Damp & Timber Investigation',
-    baseFee: 575,
+    id: 'timber-and-damp',
+    label: 'Timber and Damp Investigation',
+    baseFee: 595,
     summary:
-      'Independent moisture diagnosis with root-cause analysis and action plan.',
-    turnaround: 'Report issued within 2–3 working days of the visit.',
-    valueWeight: 0.65,
+      'Comprehensive timber decay and damp investigation with evidence-led diagnosis.',
+    turnaround: 'Report issued within 3–4 working days of the visit.',
+    valueWeight: 0.7,
     highlights: [
-      'Moisture profiling and timber checks without upselling treatments.',
-      'Clear next steps to resolve condensation, rising damp or leaks.',
-      'Optional verification visit once remedial work is complete.',
+      'Borescope checks, moisture profiling and timber condition assessments.',
+      'Independent advice with no ties to treatment contractors or sales.',
+      'Prioritised repair strategy covering ventilation, drainage and monitoring.',
     ],
     bedroomsIncluded: 2,
     travelMultiplier: 0.75,
+  },
+  {
+    id: 'damp-survey',
+    label: 'Damp Survey',
+    baseFee: 495,
+    summary:
+      'Focused damp survey for leaks, rising damp or penetrating moisture concerns.',
+    turnaround: 'Summary call on the day with written findings within 2–3 working days.',
+    valueWeight: 0.6,
+    highlights: [
+      'Moisture mapping to confirm source and extent of damp patches.',
+      'Clear remedial steps tailored to property construction and occupancy.',
+      'Useful for homebuyers, landlords and warranty claims needing evidence.',
+    ],
+    bedroomsIncluded: 0,
+    travelMultiplier: 0.7,
+  },
+  {
+    id: 'damp-and-mould',
+    label: 'Damp and Mould Survey',
+    baseFee: 525,
+    summary:
+      'Damp and mould assessment tackling condensation, humidity and indoor air quality.',
+    turnaround: 'Action-focused report within three working days of inspection.',
+    valueWeight: 0.62,
+    highlights: [
+      'Humidity, ventilation and thermal bridge analysis to pinpoint mould triggers.',
+      'Health-focused recommendations for occupants and property managers.',
+      'Ongoing monitoring guidance and optional post-remedial verification.',
+    ],
+    bedroomsIncluded: 0,
+    travelMultiplier: 0.7,
   },
   {
     id: 'ventilation',
