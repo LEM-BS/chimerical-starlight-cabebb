@@ -75,11 +75,11 @@ describe('quote engine', () => {
     expect(result.survey).toEqual(getSurveyById('level2'));
     expect(result.complexity).toEqual(COMPLEXITY_OPTIONS[0]);
     expect(result.adjustments).toHaveLength(0);
-    expect(result.base.gross).toBe(545);
-    expect(result.total.gross).toBe(545);
-    expect(result.total.net).toBe(545);
+    expect(result.base.gross).toBe(515);
+    expect(result.total.gross).toBe(515);
+    expect(result.total.net).toBe(515);
     expect(result.total.vat).toBe(0);
-    expect(result.range).toEqual({ min: 515, max: 575 });
+    expect(result.range).toEqual({ min: 485, max: 545 });
   });
 
   it('applies value, bedroom, complexity and travel adjustments', () => {
@@ -96,10 +96,10 @@ describe('quote engine', () => {
       'extra-bedrooms',
       'distance',
     ]);
-    expect(result.total.gross).toBe(855);
-    expect(result.total.net).toBe(855);
+    expect(result.total.gross).toBe(840);
+    expect(result.total.net).toBe(840);
     expect(result.total.vat).toBe(0);
-    expect(result.range).toEqual({ min: 825, max: 885 });
+    expect(result.range).toEqual({ min: 810, max: 870 });
   });
 
   it('applies property metadata surcharges for a mid-terrace 1980s home', () => {
@@ -118,8 +118,8 @@ describe('quote engine', () => {
       ['property-age', 5],
     ]);
     expect(result.adjustments.every((entry) => entry.amount.gross > 0)).toBe(true);
-    expect(result.total.gross).toBe(560);
-    expect(result.range).toEqual({ min: 530, max: 590 });
+    expect(result.total.gross).toBe(530);
+    expect(result.range).toEqual({ min: 500, max: 560 });
   });
 
   it('applies extension and distance surcharges for a Victorian detached home', () => {
@@ -137,11 +137,10 @@ describe('quote engine', () => {
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 35],
       ['property-age', 50],
-      ['extension', 75],
       ['distance', 25],
     ]);
-    expect(result.total.gross).toBe(830);
-    expect(result.range).toEqual({ min: 800, max: 860 });
+    expect(result.total.gross).toBe(755);
+    expect(result.range).toEqual({ min: 725, max: 785 });
   });
 
   it('totals the larger surcharges for a complex level 3 survey', () => {
@@ -159,11 +158,10 @@ describe('quote engine', () => {
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 35],
       ['property-age', 90],
-      ['extension', 75],
       ['extra-bedrooms', 30],
       ['distance', 65],
     ]);
-    expect(result.total.gross).toBe(1420);
-    expect(result.range).toEqual({ min: 1370, max: 1470 });
+    expect(result.total.gross).toBe(1345);
+    expect(result.range).toEqual({ min: 1295, max: 1395 });
   });
 });

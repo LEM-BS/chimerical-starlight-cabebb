@@ -411,7 +411,7 @@ export const PROPERTY_AGE_ADJUSTMENTS: Record<PropertyAgeId, number> = {
 export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> = {
   unknown: 0,
   no: 0,
-  yes: 75,
+  yes: 0,
 };
 
 const VALUE_TIERS: { limit: number; amount: number }[] = [
