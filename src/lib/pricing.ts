@@ -414,14 +414,48 @@ export const EXTENDED_CONVERTED_ADJUSTMENTS: Record<ExtensionStatusId, number> =
   yes: 0,
 };
 
-const VALUE_TIERS: { limit: number; amount: number }[] = [
-  { limit: 250_000, amount: 0 },
-  { limit: 400_000, amount: 35 },
-  { limit: 550_000, amount: 70 },
-  { limit: 750_000, amount: 115 },
-  { limit: 950_000, amount: 170 },
-  { limit: Number.POSITIVE_INFINITY, amount: 240 },
+type ValueTier = { limit: number; amount: number };
+
+// Services that do not appear in VALUE_TIERS_BY_SURVEY default to zero uplift so we
+// can opt-in to bespoke property value surcharges on a per-survey basis.
+const DEFAULT_VALUE_TIERS: ValueTier[] = [
+  {
+    limit: Number.POSITIVE_INFINITY,
+    amount: 0,
+  },
 ];
+
+// NOTE: each specialist survey can now specify its own value breakpoints. This keeps
+// the level surveys unaffected (they use fee bands) while allowing damp, ventilation,
+// EPC and measured services to scale independently.
+const VALUE_TIERS_BY_SURVEY: Partial<Record<SurveyType, ValueTier[]>> = {
+  damp: [
+    { limit: 250_000, amount: 0 },
+    { limit: 450_000, amount: 25 },
+    { limit: 650_000, amount: 45 },
+    { limit: 900_000, amount: 65 },
+    { limit: Number.POSITIVE_INFINITY, amount: 80 },
+  ],
+  ventilation: [
+    { limit: 250_000, amount: 0 },
+    { limit: 450_000, amount: 20 },
+    { limit: 700_000, amount: 40 },
+    { limit: Number.POSITIVE_INFINITY, amount: 65 },
+  ],
+  epc: [
+    { limit: 200_000, amount: 0 },
+    { limit: 400_000, amount: 10 },
+    { limit: 600_000, amount: 20 },
+    { limit: Number.POSITIVE_INFINITY, amount: 30 },
+  ],
+  measured: [
+    { limit: 300_000, amount: 0 },
+    { limit: 500_000, amount: 40 },
+    { limit: 750_000, amount: 70 },
+    { limit: 950_000, amount: 100 },
+    { limit: Number.POSITIVE_INFINITY, amount: 135 },
+  ],
+};
 
 const currencyFormatter = new Intl.NumberFormat('en-GB', {
   style: 'currency',
@@ -485,11 +519,14 @@ export const getDistanceBandForMiles = (distanceMiles: number): DistanceBand => 
   return DISTANCE_BANDS[DISTANCE_BANDS.length - 1];
 };
 
-const getValueAdjustment = (propertyValue: number, weight: number): number => {
-  if (!(propertyValue > 0)) return 0;
-  const tier =
-    VALUE_TIERS.find((entry) => propertyValue <= entry.limit) ??
-    VALUE_TIERS[VALUE_TIERS.length - 1];
+const getValueAdjustment = (
+  surveyType: SurveyType,
+  propertyValue: number,
+  weight: number,
+): number => {
+  if (!(propertyValue > 0) || !(weight > 0)) return 0;
+  const tiers = VALUE_TIERS_BY_SURVEY[surveyType] ?? DEFAULT_VALUE_TIERS;
+  const tier = tiers.find((entry) => propertyValue <= entry.limit) ?? tiers[tiers.length - 1];
   return roundToNearestFive(tier.amount * weight);
 };
 
@@ -604,7 +641,11 @@ export const calculateQuote = ({
 
   // Value tier scaling only for non-level surveys
   if (!isLevelSurvey) {
-    const valueAdjustment = getValueAdjustment(propertyValue, survey.valueWeight);
+    const valueAdjustment = getValueAdjustment(
+      survey.id,
+      propertyValue,
+      survey.valueWeight,
+    );
     if (valueAdjustment !== 0) {
       adjustments.push({
         id: 'value',
