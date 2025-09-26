@@ -166,4 +166,54 @@ describe('quote engine', () => {
     expect(result.total.gross).toBe(1405);
     expect(result.range).toEqual({ min: 1355, max: 1455 });
   });
+
+  it.each([
+    {
+      name: 'damp & timber investigation',
+      surveyType: 'damp' as const,
+      propertyValue: 1_050_000,
+      expectedValueGross: 50,
+      expectedTotal: 625,
+      expectedRange: { min: 575, max: 675 },
+    },
+    {
+      name: 'ventilation assessment',
+      surveyType: 'ventilation' as const,
+      propertyValue: 980_000,
+      expectedValueGross: 45,
+      expectedTotal: 620,
+      expectedRange: { min: 570, max: 670 },
+    },
+    {
+      name: 'EPC with floorplan',
+      surveyType: 'epc' as const,
+      propertyValue: 875_000,
+      expectedValueGross: 15,
+      expectedTotal: 195,
+      expectedRange: { min: 165, max: 225 },
+    },
+    {
+      name: 'measured survey & floorplans',
+      surveyType: 'measured' as const,
+      propertyValue: 1_200_000,
+      expectedValueGross: 130,
+      expectedTotal: 525,
+      expectedRange: { min: 485, max: 565 },
+    },
+  ])('applies bespoke high-value scaling for $name services', (scenario) => {
+    const result = calculateQuote({
+      surveyType: scenario.surveyType,
+      propertyValue: scenario.propertyValue,
+      bedrooms: 3,
+      complexity: 'standard',
+      distanceBandId: 'within-10-miles',
+    });
+
+    const valueAdjustment = result.adjustments.find((entry) => entry.id === 'value');
+    expect(valueAdjustment).toBeDefined();
+    expect(valueAdjustment?.label).toBe('Higher value property review');
+    expect(valueAdjustment?.amount.gross).toBe(scenario.expectedValueGross);
+    expect(result.total.gross).toBe(scenario.expectedTotal);
+    expect(result.range).toEqual(scenario.expectedRange);
+  });
 });
