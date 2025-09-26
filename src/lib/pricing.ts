@@ -253,7 +253,7 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'interwar',
     label: 'Interwar era (1919–1944)',
-    adjustment: 25,
+    adjustment: 10,
     helper:
       'Homes from 1919–1944 that benefit from extra checks on cavities, insulation and services.',
   },
@@ -274,14 +274,14 @@ export const COMPLEXITY_OPTIONS: readonly ComplexityOption[] = [
   {
     id: 'victorian',
     label: 'Victorian / Edwardian',
-    adjustment: 35,
+    adjustment: 20,
     helper:
       'Late 1800s or early 1900s homes with period detailing and known maintenance quirks.',
   },
   {
     id: 'period',
     label: 'Pre-1900 / non-standard',
-    adjustment: 55,
+    adjustment: 40,
     helper: 'Pre-1900 homes, listed buildings or properties with unusual materials.',
   },
 ] as const;
@@ -315,7 +315,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
     maxValue: 250_000,
     bedroomsIncluded: 4,
     level1: 370,
-    level2: 545,
+    level2: 515,
     level3: 675,
   },
   {
