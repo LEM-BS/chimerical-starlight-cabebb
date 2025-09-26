@@ -68,6 +68,7 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('north-west-of-england', 'North West of England'),
   createAreaEntry('northop', 'Northop'),
   createAreaEntry('northop-hall', 'Northop Hall'),
+  createAreaEntry('north-wales', 'North Wales'),
   createAreaEntry('oakenholt', 'Oakenholt'),
   createAreaEntry('penyffordd', 'Penyffordd'),
   createAreaEntry('prestbury', 'Prestbury'),
@@ -89,6 +90,7 @@ const areaEntries: AreaLink[] = [
   createAreaEntry('vicars-cross', 'Vicars Cross'),
   createAreaEntry('waverton', 'Waverton'),
   createAreaEntry('westminster-park', 'Westminster Park'),
+  createAreaEntry('wrexham', 'Wrexham'),
   createAreaEntry('wilmslow', 'Wilmslow'),
 ];
 
@@ -105,6 +107,8 @@ export const featuredAreas = [
   'flint',
   'hawarden',
   'queensferry',
+  'wrexham',
+  'north-wales',
 ];
 
 export const areaSelectorSlugs = [
@@ -121,6 +125,8 @@ export const areaSelectorSlugs = [
   'northop-hall',
   'mold',
   'north-west-of-england',
+  'wrexham',
+  'north-wales',
 ];
 
 export const getAreaBySlug = (slug: string) => areaLookup.get(slug);
