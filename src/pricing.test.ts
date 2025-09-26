@@ -67,7 +67,7 @@ describe('quote engine', () => {
     const result = calculateQuote({
       surveyType: 'level2',
       propertyValue: 250000,
-      bedrooms: 3,
+      bedrooms: 2,
       complexity: 'standard',
       distanceBandId: 'within-10-miles',
     });
@@ -96,10 +96,10 @@ describe('quote engine', () => {
       'extra-bedrooms',
       'distance',
     ]);
-    expect(result.total.gross).toBe(840);
-    expect(result.total.net).toBe(840);
+    expect(result.total.gross).toBe(900);
+    expect(result.total.net).toBe(900);
     expect(result.total.vat).toBe(0);
-    expect(result.range).toEqual({ min: 810, max: 870 });
+    expect(result.range).toEqual({ min: 870, max: 930 });
   });
 
   it('applies property metadata surcharges for a mid-terrace 1980s home', () => {
@@ -116,10 +116,11 @@ describe('quote engine', () => {
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 10],
       ['property-age', 5],
+      ['extra-bedrooms', 30],
     ]);
     expect(result.adjustments.every((entry) => entry.amount.gross > 0)).toBe(true);
-    expect(result.total.gross).toBe(530);
-    expect(result.range).toEqual({ min: 500, max: 560 });
+    expect(result.total.gross).toBe(560);
+    expect(result.range).toEqual({ min: 530, max: 590 });
   });
 
   it('applies extension and distance surcharges for a Victorian detached home', () => {
@@ -137,10 +138,11 @@ describe('quote engine', () => {
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 35],
       ['property-age', 50],
+      ['extra-bedrooms', 60],
       ['distance', 25],
     ]);
-    expect(result.total.gross).toBe(755);
-    expect(result.range).toEqual({ min: 725, max: 785 });
+    expect(result.total.gross).toBe(815);
+    expect(result.range).toEqual({ min: 785, max: 845 });
   });
 
   it('totals the larger surcharges for a complex level 3 survey', () => {
@@ -158,10 +160,10 @@ describe('quote engine', () => {
     expect(result.adjustments.map((entry) => [entry.id, entry.amount.gross])).toEqual([
       ['property-type', 35],
       ['property-age', 90],
-      ['extra-bedrooms', 30],
+      ['extra-bedrooms', 90],
       ['distance', 65],
     ]);
-    expect(result.total.gross).toBe(1345);
-    expect(result.range).toEqual({ min: 1295, max: 1395 });
+    expect(result.total.gross).toBe(1405);
+    expect(result.range).toEqual({ min: 1355, max: 1455 });
   });
 });

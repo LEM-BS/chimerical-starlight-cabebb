@@ -193,7 +193,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
       'Clear next steps to resolve condensation, rising damp or leaks.',
       'Optional verification visit once remedial work is complete.',
     ],
-    bedroomsIncluded: 0,
+    bedroomsIncluded: 2,
     travelMultiplier: 0.75,
   },
   {
@@ -209,7 +209,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
       'Practical improvements tailored to the property layout.',
       'Advice on balancing heat recovery, trickle vents and extraction.',
     ],
-    bedroomsIncluded: 0,
+    bedroomsIncluded: 2,
     travelMultiplier: 0.7,
   },
   {
@@ -225,7 +225,7 @@ export const SURVEYS: readonly SurveyDefinition[] = [
       'High-quality floorplans supplied as PDF and JPG files.',
       'Guidance on quick-win efficiency improvements.',
     ],
-    bedroomsIncluded: 0,
+    bedroomsIncluded: 2,
     travelMultiplier: 0.55,
   },
   {
@@ -305,7 +305,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 0,
     maxValue: 150_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 325,
     level2: 450,
     level3: 625,
@@ -313,7 +313,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 150_001,
     maxValue: 250_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 370,
     level2: 515,
     level3: 675,
@@ -321,7 +321,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 250_001,
     maxValue: 400_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 390,
     level2: 545,
     level3: 735,
@@ -329,7 +329,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 400_001,
     maxValue: 600_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 410,
     level2: 645,
     level3: 825,
@@ -337,7 +337,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 600_001,
     maxValue: 850_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 625,
     level2: 685,
     level3: 1125,
@@ -345,7 +345,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 850_001,
     maxValue: 999_999,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 825,
     level2: 995,
     level3: 1500,
@@ -353,7 +353,7 @@ export const SURVEY_FEE_BANDS: readonly SurveyFeeBand[] = [
   {
     minValue: 1_000_000,
     maxValue: 1_500_000,
-    bedroomsIncluded: 4,
+    bedroomsIncluded: 2,
     level1: 925,
     level2: 1500,
     level3: 2100,
@@ -579,7 +579,7 @@ export const calculateQuote = ({
   // - Level surveys: take from fee band (SURVEY_FEE_BANDS). SURVEYS[].baseFee is ignored here by design.
   // - Non-level: use SURVEYS[].baseFee directly.
   let baseGross = survey.baseFee;
-  let bedroomsIncluded = survey.bedroomsIncluded ?? 3;
+  let bedroomsIncluded = survey.bedroomsIncluded ?? 2;
 
   if (isLevelSurvey && band) {
     const levelId = survey.id as (typeof LEVEL_SURVEYS)[number];
