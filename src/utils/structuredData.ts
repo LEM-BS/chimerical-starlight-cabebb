@@ -152,6 +152,12 @@ export interface ServiceSchemaOptions {
   areaServed?: string[];
   faqs?: FaqItem[];
   review?: ReviewDetails;
+  sku?: string;
+  price?: number | string;
+  priceCurrency?: string;
+  priceValidUntil?: string;
+  availability?: string;
+  brandName?: string;
 }
 
 export const buildServiceStructuredData = ({
@@ -166,14 +172,57 @@ export const buildServiceStructuredData = ({
   ],
   faqs = [],
   review,
+  sku,
+  price,
+  priceCurrency,
+  priceValidUntil,
+  availability,
+  brandName,
 }: ServiceSchemaOptions) => {
-  const serviceId = `${url}#service`;
+  const productId = `${url}#product`;
   const faqId = `${url}#faq`;
-  const reviewId = `${url}#review`;
+  const normalizedSku = sku ?? name.toLowerCase().replace(/[^a-z0-9]+/gi, '-').replace(/(^-|-$)/g, '');
+  const rawPrice = price ?? '0';
+  const normalizedPrice =
+    typeof rawPrice === 'number' ? rawPrice.toFixed(2) : rawPrice;
+  const normalizedCurrency = priceCurrency ?? 'GBP';
+  const normalizedAvailability = availability ?? 'https://schema.org/InStock';
+  const productBrand = brandName ?? 'LEM Building Surveying Ltd';
+
+  const productReviews = [
+    ...(review
+      ? [
+          {
+            '@type': 'Review',
+            datePublished: review.datePublished,
+            reviewBody: review.body,
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: review.ratingValue,
+              bestRating: '5',
+              worstRating: '1',
+            },
+            author: {
+              '@type': 'Person',
+              name: review.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: review.publisher ?? 'Google Reviews',
+            },
+          },
+        ]
+      : []),
+    ...REVIEWS,
+  ].slice(0, 5);
 
   const schemas: Record<string, unknown>[] = [
     buildLocalBusinessSchema({
       description,
+      areaServed: areaServed.map((area) => ({
+        '@type': 'AdministrativeArea',
+        name: area,
+      })),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: `${name} packages`,
@@ -181,10 +230,18 @@ export const buildServiceStructuredData = ({
           {
             '@type': 'Offer',
             name,
+            price: normalizedPrice,
+            priceCurrency: normalizedCurrency,
+            availability: normalizedAvailability,
+            areaServed: areaServed.map((area) => ({
+              '@type': 'AdministrativeArea',
+              name: area,
+            })),
             itemOffered: {
-              '@type': 'Service',
+              '@type': 'Product',
               name,
-              serviceType: serviceType ?? name,
+              sku: normalizedSku,
+              category: serviceType ?? name,
             },
           },
         ],
@@ -192,46 +249,39 @@ export const buildServiceStructuredData = ({
     }),
     {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      '@id': serviceId,
+      '@type': 'Product',
+      '@id': productId,
       name,
       description,
-      serviceType: serviceType ?? name,
-      provider: {
-        '@id': BUSINESS_ID,
+      sku: normalizedSku,
+      brand: {
+        '@type': 'Brand',
+        name: productBrand,
       },
-      areaServed,
-      url,
       image: LOGO_WEBP_URL,
+      url,
+      category: serviceType ?? name,
+      offers: {
+        '@type': 'Offer',
+        url,
+        priceCurrency: normalizedCurrency,
+        price: normalizedPrice,
+        availability: normalizedAvailability,
+        itemCondition: 'https://schema.org/NewCondition',
+        seller: {
+          '@type': 'Organization',
+          '@id': BUSINESS_ID,
+        },
+        areaServed: areaServed.map((area) => ({
+          '@type': 'AdministrativeArea',
+          name: area,
+        })),
+        ...(priceValidUntil ? { priceValidUntil } : {}),
+      },
+      aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
+      ...(productReviews.length > 0 ? { review: productReviews } : {}),
     },
   ];
-
-  if (review) {
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'Review',
-      '@id': reviewId,
-      itemReviewed: {
-        '@id': serviceId,
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: review.ratingValue,
-        bestRating: '5',
-        worstRating: '1',
-      },
-      author: {
-        '@type': 'Person',
-        name: review.author,
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: review.publisher ?? 'Google Reviews',
-      },
-      datePublished: review.datePublished,
-      reviewBody: review.body,
-    });
-  }
 
   if (faqs.length > 0) {
     schemas.push({
@@ -262,6 +312,12 @@ export interface ServiceSeoOptions {
   faqs?: FaqItem[];
   review?: ReviewDetails;
   openGraphImage?: string;
+  sku?: string;
+  price?: number | string;
+  priceCurrency?: string;
+  priceValidUntil?: string;
+  availability?: string;
+  brandName?: string;
 }
 
 export const createServiceSeo = ({
@@ -274,6 +330,12 @@ export const createServiceSeo = ({
   faqs,
   review,
   openGraphImage,
+  sku,
+  price,
+  priceCurrency,
+  priceValidUntil,
+  availability,
+  brandName,
 }: ServiceSeoOptions) => {
   const normalizedPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
   const url = `${SITE_URL}${normalizedPath}`;
@@ -285,6 +347,12 @@ export const createServiceSeo = ({
     areaServed,
     faqs,
     review,
+    sku,
+    price,
+    priceCurrency,
+    priceValidUntil,
+    availability,
+    brandName,
   });
 
   const image = openGraphImage ?? LOGO_WEBP_URL;
