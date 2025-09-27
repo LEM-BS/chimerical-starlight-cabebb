@@ -127,8 +127,7 @@ const computedMapEmbedUrl = mapEmbedUrl ?? `https://www.google.com/maps?q=${enco
   townName + ', ' + county + ', UK'
 )}&output=embed`;
 
-const areaServedList = [townName, ...(neighbourhoods?.areas ?? [])];
-const areaServed = areaServedList.map((area) => `${area}, ${county}`);
+const areaServed = [townName, ...(neighbourhoods?.areas ?? [])];
 
 const normalizedProvidedTitle = pageTitle?.trim() ?? '';
 const defaultTitle = `${townName} Surveyors | LEM Building Surveying`;
