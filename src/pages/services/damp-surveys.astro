@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { BUSINESS_AGGREGATE_RATING } from "../../utils/structuredData";
+import { GOOGLE_REVIEWS } from "../../data/googleReviews";
 
 export const title =
   "Damp Surveys in North Wales & Cheshire | LEM Building Surveying";
@@ -31,42 +33,45 @@ const seo = {
   ],
 };
 
-const serviceSchema = {
+const productSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Professional Damp Surveys",
-  provider: { "@type": "Organization", name: "LEM Building Surveying Ltd" },
-  areaServed: ["Chester", "Wrexham", "Flintshire", "Connah's Quay"],
-  serviceType: "Professional damp survey",
+  "@type": "Product",
+  name: "Professional Damp Survey",
   description:
     "Professional damp surveys by RICS-accredited surveyors serving Chester, Wrexham, Flintshire and nearby towns.",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Damp & Mould Investigation",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "RICS-accredited damp survey and recommendations report",
-        },
-      },
-    ],
+  sku: "LEM-DAMP-SURVEY",
+  brand: {
+    "@type": "Organization",
+    name: "LEM Building Surveying Ltd",
+    url: "https://lembuildingsurveying.co.uk",
   },
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    priceCurrency: "GBP",
+    price: "495",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+  aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
+  review: GOOGLE_REVIEWS,
+  url: canonicalUrl,
 };
+
+const productSchemaJson = JSON.stringify(productSchema);
 ---
 
 <BaseLayout seo={seo}>
-  <article itemscope itemtype="https://schema.org/Service">
+  <article itemscope itemtype="https://schema.org/Product">
     <header>
       <h1 itemprop="name">Professional Damp Surveys</h1>
-      <p>
+      <p itemprop="description">
         <strong>Service areas:</strong> Chester, Wrexham, Flintshire, Connah's Quay and
         nearby towns.
       </p>
     </header>
 
-    <section itemprop="serviceType">
+    <section>
       <h2>Why Get a Damp Survey?</h2>
       <p>
         Whether you're buying a home or spotting suspicious patches in your current
@@ -81,7 +86,7 @@ const serviceSchema = {
       </ul>
     </section>
 
-    <section>
+    <section itemprop="description">
       <h2>What's Included in Our Survey</h2>
       <p>Our damp inspections include:</p>
       <ul>
@@ -132,7 +137,7 @@ const serviceSchema = {
     <script
       type="application/ld+json"
       is:inline
-      set:html={JSON.stringify(serviceSchema)}
+      set:html={productSchemaJson}
     />
   </article>
 </BaseLayout>
