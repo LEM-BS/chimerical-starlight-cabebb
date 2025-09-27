@@ -1,5 +1,52 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Why choose an independent damp surveyor?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Independent surveyors diagnose the root cause of moisture issues without selling treatments. You receive impartial advice, photographs, moisture profiles and practical recommendations aligned with building pathology rather than a sales pitch.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do damp contractors provide unbiased reports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Many contractor reports are free because they are designed to sell chemical damp-proof courses or ventilation products. While some offer useful insight, they usually lack independent verification, calibration records or alternative solutions.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does an independent damp survey cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our independent damp and mould surveys typically start from £275 with no VAT to add locally. Pricing depends on property size, scope and whether lab testing or follow-up monitoring is required.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Will an independent report satisfy my mortgage lender or insurer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Our reports are fully documented with readings, photographs and clear recommendations, making them suitable for lenders, housing associations, local authorities and dispute resolution.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you recommend trustworthy contractors after the survey?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Once the cause of damp is confirmed we can advise on the type of specialist you may need—such as roofers, drainage engineers or ventilation installers—and provide questions to ask when sourcing quotes.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout>
@@ -47,54 +94,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       name="twitter:image"
     />
 
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Why choose an independent damp surveyor?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Independent surveyors diagnose the root cause of moisture issues without selling treatments. You receive impartial advice, photographs, moisture profiles and practical recommendations aligned with building pathology rather than a sales pitch."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do damp contractors provide unbiased reports?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Many contractor reports are free because they are designed to sell chemical damp-proof courses or ventilation products. While some offer useful insight, they usually lack independent verification, calibration records or alternative solutions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does an independent damp survey cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our independent damp and mould surveys typically start from £275 with no VAT to add locally. Pricing depends on property size, scope and whether lab testing or follow-up monitoring is required."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Will an independent report satisfy my mortgage lender or insurer?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Our reports are fully documented with readings, photographs and clear recommendations, making them suitable for lenders, housing associations, local authorities and dispute resolution."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can you recommend trustworthy contractors after the survey?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Once the cause of damp is confirmed we can advise on the type of specialist you may need—such as roofers, drainage engineers or ventilation installers—and provide questions to ask when sourcing quotes."
-            }
-          }
-        ]
-      }
-    </script>
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqSchema)}
+    ></script>
   </Fragment>
 
   <section class="hero">

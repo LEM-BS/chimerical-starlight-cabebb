@@ -7,6 +7,23 @@ author: "LEM Building Surveying Ltd"
 image: "/images/blog/practical-damp-guide.webp"
 ---
 
+export const practicalGuideSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lembuildingsurveying.co.uk/blog/damp-mould-practical-guide',
+  },
+  headline: 'Damp and Mould: The Practical Guide (UK)',
+  description:
+    'Understand the real causes of damp and mould, how to diagnose them effectively, legal responsibilities, and what fixes actually work.',
+  image: 'https://lembuildingsurveying.co.uk/images/blog/practical-damp-guide.webp',
+  author: { '@type': 'Organization', name: 'LEM Building Surveying Ltd' },
+  publisher: { '@type': 'Organization', name: 'LEM Building Surveying Ltd' },
+  datePublished: '2025-09-20',
+  dateModified: '2025-09-20',
+};
+
 <article itemscope itemtype="https://schema.org/Article">
   <header>
     <h1 itemprop="headline">Damp and Mould: The Practical Guide (UK)</h1>
@@ -167,23 +184,9 @@ image: "/images/blog/practical-damp-guide.webp"
     </p>
   </section>
 
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://lembuildingsurveying.co.uk/blog/damp-mould-practical-guide",
-      },
-      headline: "Damp and Mould: The Practical Guide (UK)",
-      description:
-        "Understand the real causes of damp and mould, how to diagnose them effectively, legal responsibilities, and what fixes actually work.",
-      image:
-        "https://lembuildingsurveying.co.uk/images/blog/practical-damp-guide.webp",
-      author: { "@type": "Organization", name: "LEM Building Surveying Ltd" },
-      publisher: { "@type": "Organization", name: "LEM Building Surveying Ltd" },
-      datePublished: "2025-09-20",
-      dateModified: "2025-09-20",
-    })}
-  </script>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(practicalGuideSchema)}
+  ></script>
 </article>
