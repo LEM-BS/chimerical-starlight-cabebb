@@ -1,4 +1,8 @@
-import { SCHEMA_LOGO_URL, SITE_URL } from './structuredData';
+import {
+  BUSINESS_AGGREGATE_RATING,
+  SCHEMA_LOGO_URL,
+  SITE_URL,
+} from './structuredData';
 
 interface LocationSeoOptions {
   title: string;
@@ -77,6 +81,7 @@ export const createLocationSeo = ({
       name: primaryAreaName,
     },
     description: localBusiness.description,
+    aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
   };
 
   return {
