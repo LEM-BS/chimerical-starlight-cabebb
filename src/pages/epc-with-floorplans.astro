@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { SURVEYS } from '../lib/pricing';
+
+const epcBaseFee = SURVEYS.find((survey) => survey.id === 'epc')?.baseFee ?? 0;
 
 const epcFaqs = [
   {
@@ -42,6 +45,8 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     ratingValue: 5,
     datePublished: '2024-06-05',
   },
+  price: epcBaseFee,
+  priceCurrency: 'GBP',
 });
 
 const breadcrumbSchema = {

@@ -2,6 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { SURVEYS } from '../lib/pricing';
+
+const getSurveyBaseFee = (id: typeof SURVEYS[number]['id']) => {
+  const survey = SURVEYS.find((item) => item.id === id);
+  if (!survey) {
+    throw new Error(`Missing survey pricing for ${id}`);
+  }
+
+  return survey.baseFee;
+};
+
+const timberAndDampBaseFee = getSurveyBaseFee('timber-and-damp');
+const dampSurveyBaseFee = getSurveyBaseFee('damp-survey');
+const dampAndMouldBaseFee = getSurveyBaseFee('damp-and-mould');
 
 const dampTimberFaqs = [
   {
@@ -51,6 +65,9 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     ratingValue: 5,
     datePublished: '2024-07-04',
   },
+  // Bundle headline uses entry-level Damp Survey base fee.
+  price: dampSurveyBaseFee,
+  priceCurrency: 'GBP',
 });
 
 const breadcrumbSchema = {
@@ -78,9 +95,44 @@ const breadcrumbSchema = {
   ],
 };
 
+const specialistSurveySchemas = [
+  {
+    id: 'timber-and-damp',
+    name: 'Timber and Damp Investigation',
+    baseFee: timberAndDampBaseFee,
+  },
+  {
+    id: 'damp-survey',
+    name: 'Damp Survey',
+    baseFee: dampSurveyBaseFee,
+  },
+  {
+    id: 'damp-and-mould',
+    name: 'Damp and Mould Survey',
+    baseFee: dampAndMouldBaseFee,
+  },
+].map(({ id, name, baseFee }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  '@id': `${pageUrl}#${id}`,
+  name,
+  sku: `LEM-${id.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`,
+  brand: {
+    '@type': 'Organization',
+    name: 'LEM Building Surveying Ltd',
+  },
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    priceCurrency: 'GBP',
+    price: baseFee.toFixed(2),
+    availability: 'https://schema.org/InStock',
+  },
+}));
+
 const seo = {
   ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  structuredData: [...baseSeo.structuredData, breadcrumbSchema, ...specialistSurveySchemas],
 };
 ---
 

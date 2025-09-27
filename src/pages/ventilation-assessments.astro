@@ -2,6 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { SURVEYS } from '../lib/pricing';
+
+const ventilationBaseFee =
+  SURVEYS.find((survey) => survey.id === 'ventilation')?.baseFee ?? 0;
 
 const ventilationFaqs = [
   {
@@ -47,7 +51,7 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     datePublished: '2024-08-02',
   },
   sku: 'VENTILATION-ASSESSMENT',
-  price: 250,
+  price: ventilationBaseFee,
   priceCurrency: 'GBP',
 });
 
