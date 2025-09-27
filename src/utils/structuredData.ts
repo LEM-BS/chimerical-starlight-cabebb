@@ -14,6 +14,17 @@ export const SOCIAL_PROFILES = [
   'https://www.linkedin.com/company/lem-building-surveying-ltd/',
 ];
 
+export const BUSINESS_RATING_VALUE = '5';
+export const BUSINESS_REVIEW_COUNT = 5;
+
+export const BUSINESS_AGGREGATE_RATING = {
+  '@type': 'AggregateRating',
+  ratingValue: BUSINESS_RATING_VALUE,
+  reviewCount: BUSINESS_REVIEW_COUNT,
+  bestRating: '5',
+  worstRating: '1',
+} as const;
+
 const REVIEWS = [
   {
     '@type': 'Review',
@@ -116,6 +127,7 @@ export const buildLocalBusinessSchema = (overrides: Record<string, unknown> = {}
   ],
   sameAs: SOCIAL_PROFILES,
   review: REVIEWS,
+  aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
   ...overrides,
 });
 

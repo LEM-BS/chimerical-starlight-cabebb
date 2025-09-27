@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
+import { BUSINESS_AGGREGATE_RATING } from '../utils/structuredData';
 
 const pageUrl = 'https://lembuildingsurveying.co.uk/damp-mould-surveys';
 
@@ -35,6 +36,7 @@ const serviceSchema = {
       'https://www.facebook.com/share/1DZpcsZUUB/',
       'https://www.linkedin.com/company/lem-building-surveying-ltd/',
     ],
+    aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
   },
   areaServed: {
     '@type': 'Place',
