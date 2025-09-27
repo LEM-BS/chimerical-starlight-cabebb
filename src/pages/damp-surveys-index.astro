@@ -1,23 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { createServiceSeo } from '../utils/structuredData';
 
-const description =
-  'Compare independent damp inspection options for homes, landlords and housing providers across Deeside, Chester and Flintshire.';
+const pageTitle = 'Damp & Timber Surveys – Independent RICS Surveyor Flintshire';
+const metaDescription =
+  'Independent damp and timber surveys across Chester, Wrexham & Mold. No contractor bias. Clear action plan reports.';
+const canonicalPath = '/damp-surveys-index';
+const pageUrl = `https://lembuildingsurveying.co.uk${canonicalPath}`;
 
-const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'Damp Survey Options & Independent Reports | LEM Building Surveying',
-  description,
-  canonicalPath: '/damp-surveys-index',
-  serviceName: 'Damp Survey Options',
-  serviceType: 'Damp Investigation Services',
-  review: {
-    author: 'Homeowner in Chester',
-    body: 'Our chosen damp inspection explained the source of moisture clearly and the impartial recommendations helped us plan repairs without overspending.',
-    ratingValue: 5,
-    datePublished: '2024-07-12',
+const providerSchema = {
+  '@type': 'LocalBusiness',
+  name: 'LEM Building Surveying Ltd',
+  image: 'https://lembuildingsurveying.co.uk/logo.png',
+  url: 'https://lembuildingsurveying.co.uk',
+  telephone: '+44-7378-732037',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marlowe Avenue',
+    addressLocality: 'Deeside',
+    addressRegion: 'Flintshire',
+    postalCode: 'CH5 4HS',
+    addressCountry: 'UK',
   },
-});
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '53.1913',
+    longitude: '-2.8919',
+  },
+  sameAs: [
+    'https://www.facebook.com/share/1DZpcsZUUB/',
+    'https://www.linkedin.com/company/lem-building-surveying-ltd/',
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Damp & Timber Surveys',
+  name: 'Damp & Timber Surveys – Independent RICS Surveyor Flintshire',
+  description: metaDescription,
+  provider: providerSchema,
+  areaServed: {
+    '@type': 'Place',
+    name: 'Flintshire, Chester & Wrexham',
+  },
+  url: pageUrl,
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    priceCurrency: 'GBP',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Why choose an independent damp survey?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Independent damp surveys provide unbiased diagnosis and action plans without selling treatments, so you understand the root cause and best-value remedies before hiring contractors.',
+      },
+    },
+  ],
+};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -27,26 +74,38 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
+      item: 'https://lembuildingsurveying.co.uk/',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
+      item: 'https://lembuildingsurveying.co.uk/services',
     },
     {
       '@type': 'ListItem',
       position: 3,
-      name: 'Damp Survey Options',
+      name: 'Damp & Timber Surveys',
       item: pageUrl,
     },
   ],
 };
 
 const seo = {
-  ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  title: pageTitle,
+  description: metaDescription,
+  canonicalPath,
+  fullTitle: true,
+  openGraph: {
+    title: pageTitle,
+    description: metaDescription,
+    url: pageUrl,
+  },
+  twitter: {
+    title: pageTitle,
+    description: metaDescription,
+  },
+  structuredData: [serviceSchema, faqSchema, breadcrumbSchema],
 };
 
 const serviceCards = [

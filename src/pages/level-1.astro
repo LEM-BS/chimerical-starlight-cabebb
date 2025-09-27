@@ -1,42 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { createServiceSeo } from '../utils/structuredData';
 
-const levelOneFaqs = [
-  {
-    question: 'When is a Level 1 survey the right choice?',
-    answer:
-      'Level 1 suits newer homes built with standard materials where you need a quick condition snapshot and there are no signs of major defects.',
-  },
-  {
-    question: 'Will the report include repair advice?',
-    answer:
-      'Level 1 reports highlight urgent risks using traffic-light ratings but do not provide detailed repair advice or cost estimates. We will advise if a higher level is more suitable.',
-  },
-  {
-    question: 'How fast can I receive the Level 1 report?',
-    answer:
-      'Turnaround is typically within two working days of the inspection, and we can provide same-day updates if anything urgent is spotted.',
-  },
-];
+const pageTitle = 'RICS Level 1 Survey (Condition Report) – Flintshire & Chester';
+const metaDescription =
+  'Independent RICS Condition Reports for modern homes. Clear traffic-light results. Fixed fees, fast reports.';
+const canonicalPath = '/level-1';
+const pageUrl = `https://lembuildingsurveying.co.uk${canonicalPath}`;
 
-const description =
-  'Need a quick health-check on a modern home? Our RICS Level 1 Condition Survey (Condition Report) delivers traffic-light ratings and impartial advice across Deeside, Chester and Flintshire.';
-
-const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'RICS Level 1 Condition Report | LEM Building Surveying',
-  description,
-  canonicalPath: '/level-1',
-  serviceName: 'RICS Level 1 Condition Report',
-  serviceType: 'Level 1 Condition Report',
-  faqs: levelOneFaqs,
-  review: {
-    author: 'First-time buyer in Deeside',
-    body: 'Helpful Level 1 snapshot that confirmed the property was in good order without paying for a deeper survey.',
-    ratingValue: 5,
-    datePublished: '2024-05-18',
+const providerSchema = {
+  '@type': 'LocalBusiness',
+  name: 'LEM Building Surveying Ltd',
+  image: 'https://lembuildingsurveying.co.uk/logo.png',
+  url: 'https://lembuildingsurveying.co.uk',
+  telephone: '+44-7378-732037',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marlowe Avenue',
+    addressLocality: 'Deeside',
+    addressRegion: 'Flintshire',
+    postalCode: 'CH5 4HS',
+    addressCountry: 'UK',
   },
-});
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '53.1913',
+    longitude: '-2.8919',
+  },
+  sameAs: [
+    'https://www.facebook.com/share/1DZpcsZUUB/',
+    'https://www.linkedin.com/company/lem-building-surveying-ltd/',
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'RICS Level 1 Survey (Condition Report)',
+  name: 'RICS Level 1 Survey (Condition Report) – Flintshire & Chester',
+  description: metaDescription,
+  provider: providerSchema,
+  areaServed: {
+    '@type': 'Place',
+    name: 'Flintshire & Chester',
+  },
+  url: pageUrl,
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    priceCurrency: 'GBP',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is included in a Level 1?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A Level 1 survey provides a visual inspection with traffic-light ratings covering the main elements of the property, highlighting any urgent risks or legal concerns without detailed repair advice.',
+      },
+    },
+  ],
+};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -46,26 +74,38 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
+      item: 'https://lembuildingsurveying.co.uk/',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
+      item: 'https://lembuildingsurveying.co.uk/services',
     },
     {
       '@type': 'ListItem',
       position: 3,
-      name: 'Level 1 Condition Report',
+      name: 'RICS Level 1 Survey (Condition Report)',
       item: pageUrl,
     },
   ],
 };
 
 const seo = {
-  ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  title: pageTitle,
+  description: metaDescription,
+  canonicalPath,
+  fullTitle: true,
+  openGraph: {
+    title: pageTitle,
+    description: metaDescription,
+    url: pageUrl,
+  },
+  twitter: {
+    title: pageTitle,
+    description: metaDescription,
+  },
+  structuredData: [serviceSchema, faqSchema, breadcrumbSchema],
 };
 ---
 
