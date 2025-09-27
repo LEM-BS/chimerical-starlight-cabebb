@@ -4,6 +4,7 @@ import ServiceContent from '../components/ServiceContent.astro';
 import HomeInstantEstimate from '../components/HomeInstantEstimate';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { SURVEY_FEE_BANDS } from '../lib/pricing';
 import { getEntry } from 'astro:content';
 
 const conversionSendToValue =
@@ -42,6 +43,9 @@ const ricsFaqs = [
 const description =
   'Compare Level 1, Level 2 and Level 3 RICS home surveys in Deeside, Chester and Flintshire with pricing guidance, quick booking and clear local reporting.';
 
+const entryLevelBand = SURVEY_FEE_BANDS[0];
+const representativeLevel2BaseFee = entryLevelBand.level2;
+
 const { seo: baseSeo, pageUrl } = createServiceSeo({
   title: 'Book Your RICS Home Survey — Fast | LEM Building Surveying',
   description,
@@ -56,7 +60,8 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     datePublished: '2024-07-08',
   },
   sku: 'RICS-HOME-SURVEYS',
-  price: 350,
+  // Representative entry-level Level 2 fee for properties within £150k.
+  price: representativeLevel2BaseFee,
   priceCurrency: 'GBP',
 });
 

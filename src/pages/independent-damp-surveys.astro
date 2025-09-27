@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceSeo } from "../utils/structuredData";
+import { SURVEYS } from "../lib/pricing";
+
+const dampSurveyBaseFee =
+  SURVEYS.find((survey) => survey.id === "damp-survey")?.baseFee ?? 0;
 
 const independentDampFaqs = [
   {
@@ -36,7 +40,7 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     datePublished: "2024-05-22",
   },
   sku: "INDEPENDENT-DAMP-SURVEY",
-  price: 275,
+  price: dampSurveyBaseFee,
   priceCurrency: "GBP",
 });
 
