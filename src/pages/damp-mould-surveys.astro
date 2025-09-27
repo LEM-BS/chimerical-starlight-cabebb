@@ -1,9 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
-import { createServiceSeo } from '../utils/structuredData';
 
 const dampFaqs = [
+  {
+    question: 'Can a survey identify black mould causes?',
+    answer:
+      'Yes. We trace condensation, leaks and ventilation faults using moisture readings, humidity logging and airflow testing so you understand exactly why black mould is forming and how to resolve it.',
+  },
   {
     question: 'Will walls need to be opened up during the inspection?',
     answer: `No destructive work is normally required. We rely on calibrated moisture meters, humidity data, thermal imaging, and visual checks to trace the root cause. Where we need to see behind finishes we only use small borescope inspections with your permission.`,
@@ -23,51 +27,28 @@ const dampFaqs = [
   },
 ];
 
-const serviceDescription =
-  'Independent damp and mould surveys across Deeside, Chester, Flintshire and Wrexham, tracing condensation, leaks and ventilation faults with impartial reports.';
-
-const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'Damp & Mould Surveys | LEM Building Surveying',
-  description: serviceDescription,
-  canonicalPath: '/damp-mould-surveys',
-  serviceName: 'Damp & Mould Surveys',
-  faqs: dampFaqs,
-  review: {
-    author: 'Homeowner in Flintshire',
-    body: 'Liam pinpointed the ventilation faults behind our mould issues and produced a report that satisfied our housing association.',
-    ratingValue: 5,
-    datePublished: '2024-06-18',
-  },
-});
-
-const breadcrumbSchema = {
+const faqSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
-    },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'Damp & Mould Surveys',
-      item: pageUrl,
+      '@type': 'Question',
+      name: 'Can a survey identify black mould causes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Independent damp and mould surveys analyse ventilation, humidity and moisture sources to pinpoint the reasons behind black mould and outline practical remediation steps.',
+      },
     },
   ],
 };
 
 const seo = {
-  ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  title: 'Damp & Mould Surveys – Chester & North Wales',
+  description:
+    'Expert damp and mould surveys with actionable reports. Serving Flintshire, Wrexham & Cheshire. Fixed-fee service.',
+  canonicalPath: '/damp-mould-surveys',
+  fullTitle: true,
+  structuredData: [faqSchema],
 };
 ---
 
