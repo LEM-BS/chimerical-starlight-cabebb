@@ -1,51 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { BUSINESS_AGGREGATE_RATING } from '../utils/structuredData';
+import { GOOGLE_REVIEWS } from '../data/googleReviews';
 
 const pageUrl = 'https://lembuildingsurveying.co.uk/level-3';
 
-const serviceSchema = {
+const productSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
+  '@type': 'Product',
   name: 'RICS Level 3 Building Survey',
-  serviceType: 'RICS Level 3 Building Survey',
   description:
     'Comprehensive building survey for older or altered homes. Indepth advice by RICS surveyors. Instant estimate tool.',
-  provider: {
-    '@type': 'LocalBusiness',
+  sku: 'LEM-L3-SURVEY',
+  brand: {
+    '@type': 'Organization',
     name: 'LEM Building Surveying Ltd',
-    image: 'https://lembuildingsurveying.co.uk/logo.png',
-    logo: 'https://lembuildingsurveying.co.uk/logo.png',
     url: 'https://lembuildingsurveying.co.uk',
-    telephone: '+44-7378-732037',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Marlowe Avenue',
-      addressLocality: 'Deeside',
-      addressRegion: 'Flintshire',
-      postalCode: 'CH5 4HS',
-      addressCountry: 'UK',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '53.1913',
-      longitude: '-2.8919',
-    },
-    sameAs: [
-      'https://www.facebook.com/share/1DZpcsZUUB/',
-      'https://www.linkedin.com/company/lem-building-surveying-ltd/',
-    ],
-    aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
-  },
-  areaServed: {
-    '@type': 'Place',
-    name: 'Chester, Flintshire, Wrexham, Cheshire, North Wales',
   },
   offers: {
     '@type': 'Offer',
     url: pageUrl,
     priceCurrency: 'GBP',
+    price: '625',
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
   },
+  aggregateRating: { ...BUSINESS_AGGREGATE_RATING },
+  review: GOOGLE_REVIEWS,
   url: pageUrl,
 };
 
@@ -70,7 +51,7 @@ const seo = {
     'Comprehensive building survey for older or altered homes. Indepth advice by RICS surveyors. Instant estimate tool.',
   canonicalPath: '/level-3',
   fullTitle: true,
-  structuredData: [serviceSchema, faqSchema],
+  structuredData: [productSchema, faqSchema],
 };
 ---
 

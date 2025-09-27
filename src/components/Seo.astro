@@ -153,6 +153,9 @@ if (breadcrumbItems.length > 0) {
     })),
   });
 }
+const structuredDataJsonBlocks = structuredDataBlocks.map((schema) =>
+  JSON.stringify(schema),
+);
 const alternateLinks = [...alternates];
 const metaEntries = [...additionalMeta];
 ---
@@ -186,10 +189,10 @@ const metaEntries = [...additionalMeta];
 {metaEntries.map((meta: AdditionalMetaTag) => (
   <meta {...meta} />
 ))}
-{structuredDataBlocks.map((schema) => (
+{structuredDataJsonBlocks.map((schemaJson) => (
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(schema)}
+    set:html={schemaJson}
   ></script>
 ))}
