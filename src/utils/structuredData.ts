@@ -1,6 +1,7 @@
 export const SITE_URL = 'https://www.lembuildingsurveying.co.uk';
 export const LOGO_WEBP_URL = `${SITE_URL}/logo-sticker.webp`;
 export const LOGO_PNG_URL = `${SITE_URL}/logo-sticker.png`;
+export const SCHEMA_LOGO_URL = 'https://lembuildingsurveying.co.uk/logo.png';
 export const BUSINESS_ID = `${SITE_URL}#localBusiness`;
 
 export const CONTACT_EMAIL = 'enquiries@lembuildingsurveying.co.uk';
@@ -9,9 +10,7 @@ export const GOOGLE_BUSINESS_PROFILE_URL = 'https://share.google/Ab6iUZ0rNTNvHr2
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/BAQ5QRVn7q3Bimdi9';
 
 export const SOCIAL_PROFILES = [
-  GOOGLE_BUSINESS_PROFILE_URL,
-  GOOGLE_MAPS_URL,
-  'https://www.facebook.com/share/1FcAuDEpT4/',
+  'https://www.facebook.com/share/1DZpcsZUUB/',
   'https://www.linkedin.com/company/lem-building-surveying-ltd/',
 ];
 
@@ -66,24 +65,31 @@ export const buildLocalBusinessSchema = (overrides: Record<string, unknown> = {}
   '@id': BUSINESS_ID,
   name: 'LEM Building Surveying Ltd',
   url: SITE_URL,
-  image: LOGO_WEBP_URL,
-  logo: LOGO_PNG_URL,
-  telephone: '+44 7378 732037',
+  image: SCHEMA_LOGO_URL,
+  logo: SCHEMA_LOGO_URL,
+  telephone: '+44-7378-732037',
   email: CONTACT_EMAIL,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Marlowe Avenue',
-    addressLocality: "Connah's Quay",
-    addressRegion: 'Deeside, Flintshire',
+    addressLocality: 'Deeside',
+    addressRegion: 'Flintshire',
     postalCode: 'CH5 4HS',
-    addressCountry: 'GB',
+    addressCountry: 'UK',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 53.2203,
-    longitude: -3.065,
+    latitude: '53.1913',
+    longitude: '-2.8919',
   },
-  openingHours: 'Mo-Fr 08:30-17:30',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  ],
   founder: {
     '@type': 'Person',
     name: 'Liam Butler',

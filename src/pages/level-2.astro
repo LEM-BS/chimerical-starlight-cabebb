@@ -1,81 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { createServiceSeo } from '../utils/structuredData';
 
-const levelTwoFaqs = [
-  {
-    question: 'What does a Level 2 HomeBuyer Report include?',
-    answer:
-      'This Level 2 homebuyer survey covers a visual inspection of the building fabric, roofs, services and outbuildings, highlights significant defects, and explains priorities for repair or maintenance with annotated photographs and moisture readings where relevant.',
-  },
-  {
-    question: 'Which properties are suitable for a Level 2 survey?',
-    answer:
-      'It suits conventional houses, bungalows and flats built from standard materials after the 1930s that appear in reasonable condition and have not been heavily altered.',
-  },
-  {
-    question: 'Does the Level 2 survey include a valuation or reinstatement figure?',
-    answer:
-      'A standard Level 2 inspection does not include a market valuation or insurance reinstatement cost. If you need either figure we can arrange a valuation separately.',
-  },
-  {
-    question: 'How long will the inspection and report take?',
-    answer:
-      'Most Level 2 surveys take two to three hours on site depending on property size, followed by a written report delivered within three to five working days.',
-  },
-  {
-    question: 'Can I speak to the surveyor after receiving the report?',
-    answer:
-      'Yes. Every Level 2 instruction includes a follow-up call so you can discuss the findings, prioritise works and plan negotiations.',
-  },
-];
+const pageUrl = 'https://lembuildingsurveying.co.uk/level-2';
 
-const description =
-  'Buying a typical home in Chester or Deeside? Our RICS Level 2 HomeBuyer Report (homebuyer survey) highlights defects, repair priorities and moisture risks without upsells.';
-
-const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'RICS Level 2 HomeBuyer Report | LEM Building Surveying',
-  description,
-  canonicalPath: '/level-2',
-  serviceName: 'RICS Level 2 HomeBuyer Report',
-  serviceType: 'Level 2 HomeBuyer Report',
-  faqs: levelTwoFaqs,
-  review: {
-    author: 'Buyer in Mold',
-    body: 'Thorough Level 2 survey with clear repair priorities that helped us negotiate confidently.',
-    ratingValue: 5,
-    datePublished: '2024-06-08',
-  },
-});
-
-const breadcrumbSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
+  '@type': 'Service',
+  name: 'RICS HomeBuyer Survey (Level 2)',
+  serviceType: 'RICS HomeBuyer Survey (Level 2)',
+  description:
+    'Most popular RICS survey. Photos + advice. Serving Chester, Mold, Flintshire. Get an instant quote online.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'LEM Building Surveying Ltd',
+    image: 'https://lembuildingsurveying.co.uk/logo.png',
+    logo: 'https://lembuildingsurveying.co.uk/logo.png',
+    url: 'https://lembuildingsurveying.co.uk',
+    telephone: '+44-7378-732037',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Marlowe Avenue',
+      addressLocality: 'Deeside',
+      addressRegion: 'Flintshire',
+      postalCode: 'CH5 4HS',
+      addressCountry: 'UK',
     },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '53.1913',
+      longitude: '-2.8919',
     },
+    sameAs: [
+      'https://www.facebook.com/share/1DZpcsZUUB/',
+      'https://www.linkedin.com/company/lem-building-surveying-ltd/',
+    ],
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: 'Chester, Mold, Flintshire, Cheshire, North Wales',
+  },
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    priceCurrency: 'GBP',
+  },
+  url: pageUrl,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'Level 2 HomeBuyer Report',
-      item: pageUrl,
+      '@type': 'Question',
+      name: 'How long does an RHS L2 take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A typical RICS HomeBuyer (Level 2) inspection takes around 3–4 hours on site, with your illustrated report delivered within three working days and a same-day call for urgent findings.',
+      },
     },
   ],
 };
 
 const seo = {
-  ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  title: 'RICS HomeBuyer Survey (Level 2) – Cheshire & North Wales',
+  description: 'Most popular RICS survey. Photos + advice. Serving Chester, Mold, Flintshire. Get an instant quote online.',
+  canonicalPath: '/level-2',
+  fullTitle: true,
+  structuredData: [serviceSchema, faqSchema],
 };
 ---
 

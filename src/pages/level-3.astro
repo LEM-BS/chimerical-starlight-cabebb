@@ -1,81 +1,74 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { createServiceSeo } from '../utils/structuredData';
 
-const levelThreeFaqs = [
-  {
-    question: 'Who needs a Level 3 Building Survey?',
-    answer:
-      'A Level 3 survey is ideal for older or altered properties, listed buildings, or any home showing signs of disrepair where you need a thorough diagnosis before committing to purchase or renovation.',
-  },
-  {
-    question: 'What extra detail does a Level 3 survey provide?',
-    answer:
-      'The report sets out the cause of defects, the likely consequences if they are ignored, repair options and maintenance guidance with supporting photographs and moisture profiles.',
-  },
-  {
-    question: 'Do you access lofts and sub-floor voids?',
-    answer:
-      'Yes—where it is safe and accessible we enter roof spaces, cellars and sub-floor voids to inspect timbers, insulation and ventilation, reporting any areas that cannot be checked.',
-  },
-  {
-    question: 'Can you include repair budgets or contractor recommendations?',
-    answer:
-      'Indicative repair budgets and tailored scopes of work can be added for an agreed fee. We remain independent, so while we do not recommend specific contractors we explain which trade to approach and the questions to ask.',
-  },
-  {
-    question: 'How long does the survey and report take?',
-    answer:
-      'Level 3 inspections usually take half a day on site with the written report issued within five to seven working days depending on property complexity. Urgent findings are relayed the same day.',
-  },
-];
+const pageUrl = 'https://lembuildingsurveying.co.uk/level-3';
 
-const description =
-  'Planning to buy or renovate an older or altered property? Our RICS Level 3 Building Survey delivers in-depth structural insight, repair advice and budget guidance across Chester and North Wales.';
-
-const { seo: baseSeo, pageUrl } = createServiceSeo({
-  title: 'RICS Level 3 Building Survey | LEM Building Surveying',
-  description,
-  canonicalPath: '/level-3',
-  serviceName: 'RICS Level 3 Building Survey',
-  serviceType: 'Level 3 Building Survey',
-  faqs: levelThreeFaqs,
-  review: {
-    author: 'Renovator in Chester',
-    body: 'Detailed Level 3 report with clear repair phasing that helped plan our restoration budget.',
-    ratingValue: 5,
-    datePublished: '2024-06-20',
-  },
-});
-
-const breadcrumbSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.lembuildingsurveying.co.uk/',
+  '@type': 'Service',
+  name: 'RICS Level 3 Building Survey',
+  serviceType: 'RICS Level 3 Building Survey',
+  description:
+    'Comprehensive building survey for older or altered homes. Indepth advice by RICS surveyors. Instant estimate tool.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'LEM Building Surveying Ltd',
+    image: 'https://lembuildingsurveying.co.uk/logo.png',
+    logo: 'https://lembuildingsurveying.co.uk/logo.png',
+    url: 'https://lembuildingsurveying.co.uk',
+    telephone: '+44-7378-732037',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Marlowe Avenue',
+      addressLocality: 'Deeside',
+      addressRegion: 'Flintshire',
+      postalCode: 'CH5 4HS',
+      addressCountry: 'UK',
     },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Services',
-      item: 'https://www.lembuildingsurveying.co.uk/services',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '53.1913',
+      longitude: '-2.8919',
     },
+    sameAs: [
+      'https://www.facebook.com/share/1DZpcsZUUB/',
+      'https://www.linkedin.com/company/lem-building-surveying-ltd/',
+    ],
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: 'Chester, Flintshire, Wrexham, Cheshire, North Wales',
+  },
+  offers: {
+    '@type': 'Offer',
+    url: pageUrl,
+    priceCurrency: 'GBP',
+  },
+  url: pageUrl,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'Level 3 Building Survey',
-      item: pageUrl,
+      '@type': 'Question',
+      name: 'When do I need a Level 3?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Choose a Level 3 survey for older, historic, or extensively altered homes, or whenever you need detailed advice on defects, repair options, and maintenance before committing to a purchase or renovation.',
+      },
     },
   ],
 };
 
 const seo = {
-  ...baseSeo,
-  structuredData: [...baseSeo.structuredData, breadcrumbSchema],
+  title: 'RICS Level 3 Building Survey – Detailed Home Inspections',
+  description:
+    'Comprehensive building survey for older or altered homes. Indepth advice by RICS surveyors. Instant estimate tool.',
+  canonicalPath: '/level-3',
+  fullTitle: true,
+  structuredData: [serviceSchema, faqSchema],
 };
 ---
 
