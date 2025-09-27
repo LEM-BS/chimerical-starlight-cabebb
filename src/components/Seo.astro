@@ -38,7 +38,7 @@ const {
   alternates = [],
   locale = 'en_GB',
   siteName = 'LEM Building Surveying',
-  image = 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+  image = 'https://lembuildingsurveying.co.uk/logo-sticker.png',
   additionalMeta = [],
 } = Astro.props as Props;
 
@@ -49,7 +49,7 @@ const clamp = (value: string, limit = 60) => {
 
 const defaultTitle = 'LEM Building Surveying | Professional Surveyors';
 
-const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
+const site = Astro.site ?? new URL('https://lembuildingsurveying.co.uk');
 
 const stripHtmlExtension = (pathname: string = '/') => {
   if (!pathname) return '/';

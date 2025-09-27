@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 Disallow:
 
-Sitemap: https://www.lembuildingsurveying.co.uk/sitemap.xml
+Sitemap: https://lembuildingsurveying.co.uk/sitemap.xml

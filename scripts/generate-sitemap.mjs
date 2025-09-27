@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { execFile } from 'child_process';
 import { promisify } from 'util';
 
-const site = 'https://www.lembuildingsurveying.co.uk';
+const site = 'https://lembuildingsurveying.co.uk';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');

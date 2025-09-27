@@ -692,7 +692,7 @@ export async function handler(event) {
     email: process.env.COMPANY_EMAIL || null,
     phone: process.env.COMPANY_PHONE || null,
     website:
-      process.env.COMPANY_WEBSITE || 'https://www.lembuildingsurveying.co.uk',
+      process.env.COMPANY_WEBSITE || 'https://lembuildingsurveying.co.uk',
     address: process.env.COMPANY_ADDRESS || null,
   };
 

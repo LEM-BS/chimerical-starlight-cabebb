@@ -24,7 +24,7 @@ interface AdditionalMetaTag {
 
 const { frontmatter = {} as Frontmatter } = Astro.props;
 
-const site = Astro.site ?? new URL('https://www.lembuildingsurveying.co.uk');
+const site = Astro.site ?? new URL('https://lembuildingsurveying.co.uk');
 
 const normalizePath = (value?: string) => {
   if (!value) return '/';
