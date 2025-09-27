@@ -1,5 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "What’s the difference between a Level 2 and Level 3 survey?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Level 2 (HomeBuyer Report): Ideal for standard, modern homes. Offers a visual inspection, identifies urgent defects, and includes practical advice. Level 3 (Building Survey): Designed for older, extended, or non-standard properties. It provides in-depth analysis of structure, defects, and repairs.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a home survey take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most inspections take 2–4 hours, depending on size and condition. Reports are typically delivered within 3–5 working days.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a damp & timber survey on a newer property?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'If you see any signs of moisture, musty smells, or mould—even in new homes—it’s wise to get a targeted damp & timber inspection.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are your reports RICS-compliant?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All surveys follow the latest RICS Home Survey Standard to ensure accuracy, transparency, and consistency across every report.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What areas do you cover?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We serve Deeside, Chester, Flintshire, Wrexham, Cheshire and surrounding parts of North Wales & the North West.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'When should I arrange a survey?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Book after your offer is accepted but before you exchange contracts. That gives you time to act on any issues found.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What will the report include?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Each report highlights urgent repairs, hidden issues, structural concerns, and next steps—clearly laid out and jargon-free.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "Should I still get a survey for a 'good condition' or newer property?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Even well-maintained or new homes can hide costly issues. For a light-touch check, explore our Level 1 Survey.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout>
@@ -43,78 +114,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       name="twitter:image"
       content="https://lembuildingsurveying.co.uk/logo-sticker.png"
     />
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What’s the difference between a Level 2 and Level 3 survey?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Level 2 (HomeBuyer Report): Ideal for standard, modern homes. Offers a visual inspection, identifies urgent defects, and includes practical advice. Level 3 (Building Survey): Designed for older, extended, or non-standard properties. It provides in-depth analysis of structure, defects, and repairs."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How long does a home survey take?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Most inspections take 2–4 hours, depending on size and condition. Reports are typically delivered within 3–5 working days."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I need a damp &amp; timber survey on a newer property?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "If you see any signs of moisture, musty smells, or mould—even in new homes—it’s wise to get a targeted damp &amp; timber inspection."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are your reports RICS-compliant?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. All surveys follow the latest RICS Home Survey Standard to ensure accuracy, transparency, and consistency across every report."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What areas do you cover?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We serve Deeside, Chester, Flintshire, Wrexham, Cheshire and surrounding parts of North Wales &amp; the North West."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "When should I arrange a survey?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Book after your offer is accepted but before you exchange contracts. That gives you time to act on any issues found."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What will the report include?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Each report highlights urgent repairs, hidden issues, structural concerns, and next steps—clearly laid out and jargon-free."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should I still get a survey for a 'good condition' or newer property?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Even well-maintained or new homes can hide costly issues. For a light-touch check, explore our Level 1 Survey."
-            }
-          }
-        ]
-      }
-    </script>
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqSchema)}
+    ></script>
   </Fragment>
 
   <section class="hero">

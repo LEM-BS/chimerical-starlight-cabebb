@@ -7,6 +7,39 @@ author: "Liam Butler"
 image: "/images/blog/damp-and-mould-cover.webp"
 ---
 
+export const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lembuildingsurveying.co.uk/blog/damp-and-mould',
+  },
+  headline: 'Damp and Mould in Homes: What Buyers Need to Know',
+  description:
+    'A guide by LEM Building Surveying on identifying and resolving damp and mould issues in properties across North Wales and Cheshire.',
+  image: 'https://lembuildingsurveying.co.uk/images/blog/damp-and-mould-cover.webp',
+  author: {
+    '@type': 'Person',
+    name: 'Liam Butler',
+    url: 'https://lembuildingsurveying.co.uk/about',
+    jobTitle: 'Building Surveyor',
+    affiliation: {
+      '@type': 'Organization',
+      name: 'LEM Building Surveying Ltd',
+    },
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LEM Building Surveying Ltd',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lembuildingsurveying.co.uk/images/logo.webp',
+    },
+  },
+  datePublished: '2025-09-20',
+  dateModified: '2025-09-20',
+};
+
 <article itemscope itemtype="https://schema.org/Article">
   <header>
     <h1 itemprop="headline">Damp and Mould in Homes: What Buyers Need to Know</h1>
@@ -109,39 +142,9 @@ image: "/images/blog/damp-and-mould-cover.webp"
     </p>
   </section>
 
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://lembuildingsurveying.co.uk/blog/damp-and-mould",
-      },
-      headline: "Damp and Mould in Homes: What Buyers Need to Know",
-      description:
-        "A guide by LEM Building Surveying on identifying and resolving damp and mould issues in properties across North Wales and Cheshire.",
-      image:
-        "https://lembuildingsurveying.co.uk/images/blog/damp-and-mould-cover.webp",
-      author: {
-        "@type": "Person",
-        name: "Liam Butler",
-        url: "https://lembuildingsurveying.co.uk/about",
-        jobTitle: "Building Surveyor",
-        affiliation: {
-          "@type": "Organization",
-          name: "LEM Building Surveying Ltd",
-        },
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "LEM Building Surveying Ltd",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://lembuildingsurveying.co.uk/images/logo.webp",
-        },
-      },
-      datePublished: "2025-09-20",
-      dateModified: "2025-09-20",
-    })}
-  </script>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(blogPostingSchema)}
+  ></script>
 </article>
