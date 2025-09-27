@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.lembuildingsurveying.co.uk';
+export const SITE_URL = 'https://lembuildingsurveying.co.uk';
 export const LOGO_WEBP_URL = `${SITE_URL}/logo-sticker.webp`;
 export const LOGO_PNG_URL = `${SITE_URL}/logo-sticker.png`;
 export const SCHEMA_LOGO_URL = 'https://lembuildingsurveying.co.uk/logo.png';

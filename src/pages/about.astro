@@ -2,15 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { areaSelectorOptions } from '../data/areas';
 
-const canonicalUrl = 'https://www.lembuildingsurveying.co.uk/about';
+const canonicalUrl = 'https://lembuildingsurveying.co.uk/about';
 const aboutDescription =
   'Meet Liam Butler BSc AssocRICS MRPSA—an independent surveyor serving Deeside, Chester and the surrounding North West with clear, trustworthy reporting.';
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'LEM Building Surveying Ltd',
-  url: 'https://www.lembuildingsurveying.co.uk',
-  logo: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+  url: 'https://lembuildingsurveying.co.uk',
+  logo: 'https://lembuildingsurveying.co.uk/logo-sticker.png',
   areaServed: ['North Wales', 'Chester', 'Cheshire', 'North West England'],
   address: {
     '@type': 'PostalAddress',
@@ -36,16 +36,16 @@ const seo = {
     title: 'About LEM Building Surveying Ltd | LEM Building Surveying',
     description: aboutDescription,
     url: canonicalUrl,
-    image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+    image: 'https://lembuildingsurveying.co.uk/logo-sticker.png',
   },
   twitter: {
     title: 'About LEM Building Surveying Ltd | LEM Building Surveying',
     description: aboutDescription,
-    image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+    image: 'https://lembuildingsurveying.co.uk/logo-sticker.png',
     card: 'summary_large_image',
   },
   structuredData: [organizationSchema],
-  image: 'https://www.lembuildingsurveying.co.uk/logo-sticker.png',
+  image: 'https://lembuildingsurveying.co.uk/logo-sticker.png',
 };
 ---
 <BaseLayout seo={seo}>

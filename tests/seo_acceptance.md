@@ -5,7 +5,7 @@ This checklist covers the highest-priority actions from the 19 September 2025 au
 ## 1. Metadata
 
 - Confirm every indexable template sets a `<title>` ≤ 60 characters once rendered. Use the helper in `scripts/build_fixes_spreadsheet.py` or inspect the generated HTML in `dist/`.
-- Ensure each page exposes a self-referential `<link rel="canonical">` pointing to `https://www.lembuildingsurveying.co.uk/...` with a single hop redirect path.
+- Ensure each page exposes a self-referential `<link rel="canonical">` pointing to `https://lembuildingsurveying.co.uk/...` with a single hop redirect path.
 - Verify meta descriptions exist and fall between 130–160 characters for the top converting pages (home, services, enquiry, privacy policy).
 
 ## 2. Structured data
