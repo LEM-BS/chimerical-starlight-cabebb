@@ -4,7 +4,6 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import postcss from 'postcss';
-import cssnano from 'cssnano';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -52,6 +51,32 @@ async function ensureOutDir() {
   await fs.mkdir(outDir, { recursive: true });
 }
 
+let cachedCssnano;
+let cssnanoWarningLogged = false;
+
+async function loadCssnano() {
+  if (cachedCssnano !== undefined) {
+    return cachedCssnano;
+  }
+
+  try {
+    const module = await import('cssnano');
+    cachedCssnano = module.default ?? module;
+  } catch (error) {
+    if (error?.code === 'ERR_MODULE_NOT_FOUND') {
+      if (!cssnanoWarningLogged) {
+        log('cssnano not found; skipping CSS minification.');
+        cssnanoWarningLogged = true;
+      }
+      cachedCssnano = null;
+    } else {
+      throw error;
+    }
+  }
+
+  return cachedCssnano;
+}
+
 async function buildScripts() {
   await ensureOutDir();
   await Promise.all(
@@ -81,10 +106,12 @@ async function buildScripts() {
 
 async function buildStyles() {
   await ensureOutDir();
+  const cssnanoPlugin = await loadCssnano();
   await Promise.all(
     cssEntries.map(async ({ source, destination }) => {
       const css = await fs.readFile(source, 'utf8');
-      const result = await postcss([cssnano({ preset: 'default' })]).process(css, {
+      const plugins = cssnanoPlugin ? [cssnanoPlugin({ preset: 'default' })] : [];
+      const result = await postcss(plugins).process(css, {
         from: source,
         to: destination,
       });

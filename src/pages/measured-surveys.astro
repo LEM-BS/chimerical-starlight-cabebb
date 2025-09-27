@@ -3,7 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceContent from '../components/ServiceContent.astro';
 import { areaSelectorOptions } from '../data/areas';
 import { createServiceSeo } from '../utils/structuredData';
+import { SURVEYS } from '../lib/pricing';
 import { getEntry } from 'astro:content';
+
+const measuredSurveyBaseFee =
+  SURVEYS.find((survey) => survey.id === 'measured')?.baseFee ?? 0;
 
 const measuredSurveyFaqs = [
   {
@@ -38,6 +42,8 @@ const { seo: baseSeo, pageUrl } = createServiceSeo({
     ratingValue: 5,
     datePublished: '2024-04-10',
   },
+  price: measuredSurveyBaseFee,
+  priceCurrency: 'GBP',
 });
 
 const breadcrumbSchema = {
