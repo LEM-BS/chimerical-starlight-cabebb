@@ -77,28 +77,6 @@ export const createLocationSeo = ({
       name: primaryAreaName,
     },
     description: localBusiness.description,
-    faq: {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `Do you cover ${primaryAreaName} properties?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Yes, we provide RICS Home Surveys (Levels 1, 2, 3) and Damp Reports for properties in ${primaryAreaName}.`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: `Can I get an instant quote for a survey in ${primaryAreaName}?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Yes, our online calculator provides instant, fixed-fee quotes for surveys in ${primaryAreaName}.`,
-          },
-        },
-      ],
-    },
   };
 
   return {
