@@ -35,10 +35,8 @@
 
           var payload = {
             "@context": "https://schema.org",
-            "@type": "Product",
-            name: item.name,
-            description: item.description,
-            brand: { "@type": "Organization", name: "LEM Building Surveying Ltd" },
+            "@type": "LocalBusiness",
+            "@id": "https://lembuildingsurveying.co.uk#localBusiness",
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: String(item.ratingValue),
