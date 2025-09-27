@@ -36,9 +36,15 @@ export const createLocationSeo = ({
     },
   ];
 
-  const areaServedArray = Array.isArray(localBusiness.areaServed)
-    ? localBusiness.areaServed
-    : [localBusiness.areaServed];
+  const areaServedRaw = localBusiness.areaServed;
+  const areaServedArray = Array.isArray(areaServedRaw)
+    ? areaServedRaw
+    : areaServedRaw
+    ? [areaServedRaw]
+    : [];
+  const primaryAreaRaw = areaServedArray[0] ?? localBusiness.addressLocality;
+  const primaryAreaName = (primaryAreaRaw ?? '').split(',')[0]?.trim() || localBusiness.addressLocality;
+  const schemaUrl = canonical.replace('https://www.', 'https://');
 
   const locationSchema = {
     '@context': 'https://schema.org',
@@ -46,7 +52,7 @@ export const createLocationSeo = ({
     name: 'LEM Building Surveying Ltd',
     image: SCHEMA_LOGO_URL,
     logo: SCHEMA_LOGO_URL,
-    url: canonical,
+    url: schemaUrl,
     telephone: '+44-7378-732037',
     address: {
       '@type': 'PostalAddress',
@@ -66,11 +72,33 @@ export const createLocationSeo = ({
       'https://www.facebook.com/share/1DZpcsZUUB/',
       'https://www.linkedin.com/company/lem-building-surveying-ltd/',
     ],
-    areaServed: areaServedArray.map((area) => ({
+    areaServed: {
       '@type': 'Place',
-      name: area,
-    })),
+      name: primaryAreaName,
+    },
     description: localBusiness.description,
+    faq: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `Do you cover ${primaryAreaName} properties?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Yes, we provide RICS Home Surveys (Levels 1, 2, 3) and Damp Reports for properties in ${primaryAreaName}.`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `Can I get an instant quote for a survey in ${primaryAreaName}?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Yes, our online calculator provides instant, fixed-fee quotes for surveys in ${primaryAreaName}.`,
+          },
+        },
+      ],
+    },
   };
 
   return {
